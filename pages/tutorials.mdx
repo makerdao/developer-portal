@@ -1,0 +1,267 @@
+import { Container, Card, Checkbox, Box, Flex, Input } from 'theme-ui';
+import { Icon } from '@makerdao/dai-ui-icons';
+import SidebarLayout from '../layouts/SidebarLayout';
+
+<SidebarLayout>
+
+# Maker Tutorials
+
+## Dai.js SDK Introduction
+
+- [Dai.js GitHub](https://github.com/makerdao/dai.js/tree/dev/packages/dai)
+- [Dai.js Documentation](https://docs.makerdao.com/dai.js/maker)
+- [Dai.js Test Suite](https://github.com/makerdao/dai.js/tree/dev/packages/dai/test)
+
+Dai.js is a services-based javascript library providing an easy to use interface with the Maker protocol contracts, account management, interacting with smart contracts, handling transactions, and a lot more.
+
+### Create the Maker instance
+
+```js
+import Maker from '@makerdao/dai';
+
+const config = {
+  log: true,
+  autoAuthenticate: false,
+};
+const maker = await Maker.create('browser', config);
+await maker.authenticate();
+```
+
+The first argument, `browser` is a preset that makes it easy to connect to a browser provider such as MetaMask.
+
+### Accessing services
+
+```js
+const accountService = maker.service('accounts');
+const accounts = accountService.listAccounts();
+```
+
+See usage in `MakerProvider.js` for examples.
+
+To learn more check out the docs or read the source code.
+
+## Dai.js Plugins / Governance plugin overview
+
+- [Governance Plugin](https://github.com/makerdao/dai.js/tree/dev/packages/dai-plugin-governance)
+- [ChiefService spec](https://github.com/makerdao/dai.js/blob/dev/packages/dai-plugin-governance/test/ChiefService.test.js)
+- [ChiefService source code](https://github.com/makerdao/dai.js/blob/dev/packages/dai-plugin-governance/src/ChiefService.js)
+- [Chief contract documentation](https://docs.makerdao.com/smart-contract-modules/governance-module/chief-detailed-documentation)
+
+Plugins allow a developer to add functionality (hardware wallet support, exchange support, etc.) for specific needs without increasing the size and dependency list of the core library. You can add new services for contracts that you create, and use them, along with the other benefits of the SDK such as account management.
+
+### Basic Plugin Setup
+
+Create the maker object similarly as before, this time passing a plugins array.
+
+```js
+import Maker from '@makerdao/dai';
+import governancePlugin from '@makerdao/dai-plugin-governance';
+
+const config = {
+  log: true,
+  autoAuthenticate: false,
+  plugins: [[governancePlugin, { network: 'kovan' }]],
+};
+const maker = await Maker.create('browser', config);
+await maker.authenticate();
+
+const chiefService = maker.service('chief');
+```
+
+The `Ds-Chief` smart contract provides a method to elect a "chief" contract via an approval voting system. This may be combined with another contract, such as DSAuthority, to elect a ruleset for a smart contract system.
+This `ChiefService` test is a good example of the full voting process
+
+```js
+test('can cast vote with a slate hash', async () => {
+  const picks = ['0x26EC003c72ebA27749083d588cdF7EBA665c0A1D'];
+
+  // create the slate to vote on
+  await chiefService.etch(picks);
+
+  // hash the picks to get slate hash
+  const hash = web3utils.soliditySha3({ type: 'address[]', value: picks });
+
+  // cast a vote for the slate hash
+  await chiefService.vote(hash);
+
+  // get slate voted on by an address
+  const slate = await chiefService.getVotedSlate(
+    maker.currentAccount().address
+  );
+  expect(slate).toBe(hash);
+  expect(slate).not.toBe(ZERO_ADDRESS);
+
+  // get all addresses that have voted for a slate
+  const addresses = await chiefService.getSlateAddresses(slate);
+
+  expect(addresses).toEqual(picks);
+});
+```
+
+## Creating your own plugin for Dai.js
+
+This example will demonstrate creating a plugin that adds a service for a custom contract.
+
+1. Generate an ABI for your contract, and add it to the app, (eg. `/plugins/contracts/abis/MyContract.json`)
+2. Add the contract address to the addresses file for each network you want to use: (eg. `/plugin/contracts/addresses/mainnet.json`)
+
+```json
+// mainnet.json
+{
+  "CONTRACT_NAME": "0x0000000000000000000000000000000000000000"
+}
+```
+
+3. Create your custom service by extending one of the default service
+
+   - `PrivateService` - requires both a network connection and authentication
+   - `PublicService` - requires just a network connection
+   - `LocalService` - requires neither
+
+4. To access your contract, inject the `smartContract` service, and use `getContractByName`
+   - you can now build your service using your contract methods
+
+```js
+// CustomService.js
+import { PublicService } from '@makerdao/services-core';
+
+export default class CustomService extends PublicService {
+  constructor(name = 'custom') {
+    // add any dependency services you want to inject here:
+    super(name, ['web3', 'smartContract']);
+  }
+  _getContractName() {
+    // access dependency services like this:
+    return this.get('smartContract').getContractByName('CONTRACT_NAME');
+  }
+  // easily build out your service by accessing your contract methods, for example:
+  myContractMethod() {
+    return this._getContractName().myContractMethod();
+  }
+}
+```
+
+5. In the index.js file of your plugin, add the services, and config data to the `addConfig` property.
+
+```js
+// plugin/index.js
+import { map, prop } from 'ramda';
+import CustomService from './CustomService';
+import { createCurrency } from '@makerdao/currency';
+
+const CONTRACT_NAME = 'CONTRACT_NAME';
+
+export default {
+  // The second parameter for this function is an optional object containing additional config parameters
+  // See the maker.js file for how it is used.
+  addConfig: function (config) {
+    // Store contract names and addresses as demonstrated in the files below
+    const contractAddresses = {
+      mainnet: require('../contracts/addresses/mainnet.json'),
+      kovan: require('../contracts/addresses/kovan.json'),
+    };
+
+    // For each contract that you want to add, include the abi and address
+    const addContracts = {
+      [CONTRACT_NAME]: {
+        // address property should have a key for each network you wish to use
+        address: map(prop('CONTRACT_NAME'), contractAddresses),
+        abi: require('../contracts/abis/ContractName.json'),
+      },
+    };
+
+    // To add Erc20 tokens, first create a currency function for the token...
+    const MOCK = createCurrency('MOCK');
+
+    // Then include it with the SDK config object
+    const token = {
+      erc20: [{ currency: MOCK, address: addContracts.MOCK.address }],
+    };
+
+    const makerConfig = {
+      ...config,
+      additionalServices: ['custom'], // this tells the SDK which service names to look for
+      custom: [CustomService], // each new service must be added to the config keyed by its name
+      smartContract: { addContracts },
+      token,
+    };
+
+    return makerConfig;
+  },
+};
+```
+
+6. Finally, in your frontend, import the plugin, and add it to the maker config, just like we've seen in the previous examples.
+
+```js
+import Maker from '@makerdao/dai';
+import governancePlugin from '@makerdao/dai-plugin-governance';
+
+const config = {
+  log: true,
+  autoAuthenticate: false,
+  // config options can be passed to your plugin like this
+  plugins: [[governancePlugin, { network: 'kovan' }]],
+};
+const maker = await Maker.create('browser', config);
+await maker.authenticate();
+
+const chiefService = maker.service('chief');
+```
+
+## Dai UI Introduction
+
+- [Dai UI Styleguide](https://dai-ui.now.sh/)
+- [Theme File](https://github.com/makerdao/dai-ui/blob/master/packages/dai-ui-theme-maker-neue%20/lib/index.js)
+- [Icons reference](https://dai-ui.now.sh/icons)
+- [Theme-UI Docs](https://theme-ui.com/components/)
+- [Playroom Docs](https://github.com/seek-oss/playroom)
+
+We want the system to be as frictionless as possible for our teams to use, and versatile enough to give them freedom. We packaged our theme into an npm package that is included with this boilerplate. It can be used as is, or extended upon in the `theme.js` file.
+
+### Basic theme setup
+
+1. Wrap your app in the `ThemeProvider` component, and pass in the theme object.
+
+```js
+// app.js
+import { ThemeProvider } from 'theme-ui';
+import theme from './theme';
+
+export default props => (
+  <ThemeProvider theme={theme}>{props.children}</ThemeProvider>
+);
+```
+
+2. The theme.js file allows you to extend the theme locally, as well as add the icons package.
+
+```js
+import makerTheme from '@makerdao/dai-ui-theme-maker';
+import { icons } from '@makerdao/dai-ui-icons';
+
+const theme = {
+  ...makerTheme,
+  icons,
+  /* Default styles can be overridden here 
+    and later published as an npm package if desired. */
+  layout: {
+    container: { ...makerTheme.layout.container, pt: 2 },
+  },
+};
+```
+
+### Icons package
+
+Use the `Icon` component that's part of the icons package, and pass the name as a prop.
+
+```js
+<Icon name="dai_circle_color" size={5} />
+```
+
+### Playroom & Recipes
+
+We use [playroom](https://dai-ui.now.sh/playroom) to quickly prototype components and layouts, and compare them across themes.
+
+While we don't package components in our library, we have some [recipes](https://dai-ui.now.sh/recipes) to give you an idea of how to use the components.
+
+</SidebarLayout>
