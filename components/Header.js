@@ -3,7 +3,6 @@ import { useState } from 'react';
 import { Container, jsx, Link as ThemeLink, NavLink, Flex } from 'theme-ui';
 import Link from 'next/link';
 import { Icon } from '@makerdao/dai-ui-icons';
-import AccountConnect from './AccountConnect';
 
 const LINKS = [
   { url: '/', name: 'Home' },
@@ -64,16 +63,6 @@ const Header = ({ query }) => {
             }}
           >
             <NavLinks {...{ setOpened, query }} />
-            <NavLink
-              href="https://github.com/makerdao/nextjs-daijs-dai-ui-example"
-              target="_blank"
-              sx={{
-                pr: [0, 3],
-                pl: [0, 2],
-              }}
-            >
-              GitHub
-            </NavLink>
           </Flex>
           <Icon
             name={opened ? 'close' : 'menu'}
@@ -87,9 +76,6 @@ const Header = ({ query }) => {
             }}
             onClick={() => setOpened(!opened)}
           />
-          <Flex sx={{ order: [-1, 0] }}>
-            <AccountConnect />
-          </Flex>
         </Flex>
       </Flex>
     </Container>

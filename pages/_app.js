@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { ThemeProvider } from 'theme-ui';
-import Prism from '@theme-ui/prism';
+import ThemeUIPrism from '@theme-ui/prism';
+import PrismCore from 'prismjs/components/prism-core';
 import MakerProvider from '../providers/MakerProvider';
 import theme from '../theme';
 import Header from '../components/Header';
@@ -9,7 +10,7 @@ import Footer from '../components/Footer';
 
 const components = {
   pre: ({ children }) => <>{children}</>,
-  code: Prism,
+  code: props => <ThemeUIPrism {...props} Prism={PrismCore} />,
 };
 
 const MyApp = ({ Component, pageProps }) => {
