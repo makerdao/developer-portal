@@ -2,7 +2,7 @@
 import { Fragment } from 'react';
 import { jsx, Flex, NavLink, Box } from 'theme-ui';
 import Link from 'next/link';
-import { tableOfContents } from '../pages/tutorials.mdx';
+import { tableOfContents } from '../pages/resources/guides/tutorials.mdx';
 
 const MenuItem = ({ title, slug, root }) => {
   return (
@@ -12,7 +12,7 @@ const MenuItem = ({ title, slug, root }) => {
         variant: 'styles.fakeLi',
       }}
     >
-      <Link href={`/tutorials#${slug}`}>
+      <Link href={`/resources/guides/tutorials#${slug}`}>
         <NavLink
           variant="sidebar"
           sx={{

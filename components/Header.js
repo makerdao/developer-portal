@@ -6,7 +6,7 @@ import { Icon } from '@makerdao/dai-ui-icons';
 
 const LINKS = [
   { url: '/', name: 'Home' },
-  { url: '/tutorials', name: 'Tutorials' },
+  { url: '/resources/guides/tutorials', name: 'Resources' },
   { url: '/about', name: 'About' },
 ];
 
