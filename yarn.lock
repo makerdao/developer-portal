@@ -3112,7 +3112,7 @@
   dependencies:
     ganache-cli makerdao/ganache-cli#fix/gas-est-crash
 
-"@mdx-js/loader@^1.6.1":
+"@mdx-js/loader@^1.6.16":
   version "1.6.16"
   resolved "https://registry.yarnpkg.com/@mdx-js/loader/-/loader-1.6.16.tgz#5a9c3b0ab41885cd2df85bcf360644ca63e44e88"
   integrity sha512-jYIAav17lXmEvweO6bzbsqY9mRTm49UeXXSZPAB81uCX8j91Pgi50Z0NnEN777yQEgGm2Z5PMtnJdxGFQIAjJQ==
@@ -3164,7 +3164,7 @@
     call-me-maybe "^1.0.1"
     glob-to-regexp "^0.3.0"
 
-"@next/mdx@^9.3.6":
+"@next/mdx@^9.5.1":
   version "9.5.1"
   resolved "https://registry.yarnpkg.com/@next/mdx/-/mdx-9.5.1.tgz#c7e2fd457810b34e8ce598f57075b799ca48751b"
   integrity sha512-jmNKqEMWkCPQWWeoq6CiOShngGv99Cs+rQSLlU7BZMVCZzbcTVEkAsUqR4WfLA97K2ihjtNidY5jwbKFu4h83Q==
@@ -4531,7 +4531,7 @@ async-eventemitter@^0.2.2:
   dependencies:
     async "^2.4.0"
 
-"async-eventemitter@github:ahultgren/async-eventemitter#fa06e39e56786ba541c180061dbf2c0a5bbf951c":
+async-eventemitter@ahultgren/async-eventemitter#fa06e39e56786ba541c180061dbf2c0a5bbf951c:
   version "0.2.3"
   resolved "https://codeload.github.com/ahultgren/async-eventemitter/tar.gz/fa06e39e56786ba541c180061dbf2c0a5bbf951c"
   dependencies:
@@ -9238,7 +9238,7 @@ functional-red-black-tree@^1.0.1, functional-red-black-tree@~1.0.1:
   resolved "https://registry.yarnpkg.com/functional-red-black-tree/-/functional-red-black-tree-1.0.1.tgz#1b0ab3bd553b2a0d6399d29c0e3ea0b252078327"
   integrity sha1-GwqzvVU7Kg1jmdKcDj6gslIHgyc=
 
-"ganache-cli@github:makerdao/ganache-cli#fix/gas-est-crash":
+ganache-cli@makerdao/ganache-cli#fix/gas-est-crash:
   version "6.4.3-beta.0"
   resolved "https://codeload.github.com/makerdao/ganache-cli/tar.gz/3e512b61da2479042627e6155231dcb038110650"
   dependencies:

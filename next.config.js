@@ -1,5 +1,5 @@
 const slug = require('remark-slug');
-const mdxTableOfContents = require('./tocModule');
+const mdxTableOfContents = require('./lib/toc-module');
 
 const withMDX = require('@next/mdx')({
   options: {
