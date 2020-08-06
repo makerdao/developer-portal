@@ -2,7 +2,7 @@
 import { Container, jsx, Card, Grid } from 'theme-ui';
 import Sidebar from '../components/Sidebar';
 
-const SidebarLayout = ({ children }) => {
+const SingleSidebarLayout = ({ children }) => {
   return (
     <Container mt={3}>
       <Grid columns={['auto', '200px auto']} gap="0">
@@ -13,4 +13,4 @@ const SidebarLayout = ({ children }) => {
   );
 };
 
-export default SidebarLayout;
+export default SingleSidebarLayout;

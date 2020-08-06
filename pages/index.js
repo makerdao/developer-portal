@@ -1,8 +1,6 @@
 /** @jsx jsx */
 import { useState } from 'react';
 import { Container, jsx, Card, Heading, Text, Grid, Box, Flex } from 'theme-ui';
-import useMaker from '../hooks/useMaker';
-import { useEffect } from 'react';
 
 const Index = () => {
   return (
