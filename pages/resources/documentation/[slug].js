@@ -7,13 +7,15 @@ import { Container, jsx, Card, Heading, Text, Grid, Box, Flex } from 'theme-ui';
 import SingleSidebarLayout from 'layouts/SingleSidebarLayout';
 
 const Document = ({ slug, metadata }) => {
+  const { title } = metadata;
   console.log(metadata);
+  const menu = [{ title, id: 1 }];
   const Mdx = dynamic(() =>
     import(`content/resources/documentation/${slug}/index.mdx`)
   );
 
   return (
-    <SingleSidebarLayout>
+    <SingleSidebarLayout menu={menu}>
       <Mdx />
     </SingleSidebarLayout>
   );
@@ -32,13 +34,11 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const slug = params?.slug;
-  console.log('params slug getstaticProps', slug);
-
+  const mdx = require(`content/resources/documentation/${slug}/index.mdx`);
   return {
     props: {
       slug,
-      metadata: require(`content/resources/documentation/${slug}/index.mdx`)
-        .metadata,
+      metadata: mdx.metadata,
     },
   };
 }

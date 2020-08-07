@@ -2,7 +2,7 @@
 import { Fragment } from 'react';
 import { jsx, Flex, NavLink, Box } from 'theme-ui';
 import Link from 'next/link';
-import { tableOfContents } from '../pages/resources/guides/tutorials.mdx';
+// import { tableOfContents } from '../pages/resources/guides/tutorials.mdx';
 
 const MenuItem = ({ title, slug, root }) => {
   return (
@@ -31,8 +31,7 @@ const MenuItem = ({ title, slug, root }) => {
   );
 };
 
-const Sidebar = () => {
-  const toc = tableOfContents();
+const Sidebar = ({ menu }) => {
   return (
     <aside>
       <Flex
@@ -42,7 +41,7 @@ const Sidebar = () => {
           px: 2,
         }}
       >
-        {toc.map(({ title, id, children }) => {
+        {menu.map(({ title, id, children }) => {
           return (
             <Fragment key={id}>
               <MenuItem key={id} title={title} slug={id} root />
