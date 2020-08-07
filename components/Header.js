@@ -13,88 +13,54 @@ import {
 } from 'theme-ui';
 import Link from 'next/link';
 import { Icon } from '@makerdao/dai-ui-icons';
-import Portal from './Portal';
+import MenuPopup from 'components/MenuPopup';
 
 const LINKS = [
   { url: '/', name: 'Technology' },
   { url: '/', name: 'Modules' },
   { url: '/resources/guides/tutorials', name: 'Resources' },
-  { url: '/contribute', name: 'Contribute' },
+  { url: '/community', name: 'Community' },
 ];
 
-// const NavLinks = ({ setOpened, show, query }) =>
-//   LINKS.map(({ url, name }) => (
-//     <Link href={{ pathname: url, query }} passHref key={url}>
-//       <>
-//         <NavLink
-//           sx={{ '&:last-child': { pr: [null, 0] } }}
-//           onClick={() => setOpened(false)}
-//           variant="links.nav"
-//         >
-//           {name}
-//         </NavLink>
-//         <Bubble show={show} />
-//       </>
-//     </Link>
-//   ));
-
-const Bubble = ({ setState, state }) => {
-  const { show, left, top } = state;
-  return show ? (
-    <Portal selector="#portal">
-      <Card
-        onMouseLeave={() => setState({ ...state, show: false })}
-        sx={{
-          top: top,
-          left: left,
-          width: 7,
-          zIndex: 100,
-          position: 'fixed',
-        }}
-      >
-        <Grid columns={['1fr 1fr']}>
-          {[
-            'first',
-            'second',
-            'third',
-            'fourth',
-            'fifth',
-            'sixth',
-            'seventh',
-            'eighth',
-          ].map(link => {
-            return <Text key={link}>{link}</Text>;
-          })}
-        </Grid>
-      </Card>
-    </Portal>
-  ) : null;
-};
-
-const NavLinks = ({ setPopupState }) =>
-  LINKS.map(({ name, offset }) => (
+const NavLinks = ({ opened, setMobileOpened, setPopupState, query }) =>
+  LINKS.map(({ name, url }) => (
     <>
-      <NavLink
-        sx={{ '&:last-child': { pr: [null, 0] } }}
-        onClick={e => {
-          const targetRect = e.target.getBoundingClientRect();
-          setPopupState({
-            name,
-            offset,
-            show: true,
-            left: targetRect.left - targetRect.width / 2,
-            top: targetRect.bottom,
-          });
-        }}
-        variant="links.nav"
-      >
-        {name}
-      </NavLink>
+      {opened ? (
+        <Link href={{ pathname: url, query }} passHref key={url}>
+          <>
+            <NavLink
+              sx={{ '&:last-child': { pr: [null, 0] } }}
+              onClick={() => setMobileOpened(false)}
+              variant="links.nav"
+            >
+              {name}
+            </NavLink>
+          </>
+        </Link>
+      ) : (
+        <NavLink
+          sx={{
+            '&:last-child': { pr: [null, 0] },
+          }}
+          onClick={e => {
+            const targetRect = e.target.getBoundingClientRect();
+            setPopupState({
+              name,
+              show: true,
+              left: targetRect.left - targetRect.width / 2,
+              top: targetRect.bottom,
+            });
+          }}
+          variant="links.nav"
+        >
+          {name}
+        </NavLink>
+      )}
     </>
   ));
 
 const Header = ({ query }) => {
-  const [opened, setOpened] = useState(false);
+  const [opened, setMobileOpened] = useState(false);
   const [popupState, setPopupState] = useState({ show: false });
   return (
     <Container
@@ -133,8 +99,8 @@ const Header = ({ query }) => {
               }),
             }}
           >
-            <NavLinks {...{ setOpened, setPopupState, query }} />
-            <Bubble setState={setPopupState} state={popupState} />
+            <NavLinks {...{ opened, setMobileOpened, setPopupState, query }} />
+            <MenuPopup setState={setPopupState} state={popupState} />
           </Flex>
           <Icon
             name={opened ? 'close' : 'menu'}
@@ -146,7 +112,7 @@ const Header = ({ query }) => {
               position: 'relative',
               zIndex: 1,
             }}
-            onClick={() => setOpened(!opened)}
+            onClick={() => setMobileOpened(!opened)}
           />
         </Flex>
       </Flex>
