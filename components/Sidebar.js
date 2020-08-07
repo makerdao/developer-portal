@@ -2,9 +2,10 @@
 import { Fragment } from 'react';
 import { jsx, Flex, NavLink, Box } from 'theme-ui';
 import Link from 'next/link';
-// import { tableOfContents } from '../pages/resources/guides/tutorials.mdx';
 
-const MenuItem = ({ title, slug, root }) => {
+const MenuItem = ({ slug, title, anchor, root }) => {
+  // TODO something wrong with the toc-module plugin
+  if (typeof title !== 'string') title = anchor;
   return (
     <Box
       as="li"
@@ -12,7 +13,10 @@ const MenuItem = ({ title, slug, root }) => {
         variant: 'styles.fakeLi',
       }}
     >
-      <Link href={`/resources/guides/tutorials#${slug}`}>
+      <Link
+        href={'/resources/documentation/[slug]'}
+        as={`/resources/documentation/${slug}#${anchor}`}
+      >
         <NavLink
           variant="sidebar"
           sx={{
@@ -31,7 +35,7 @@ const MenuItem = ({ title, slug, root }) => {
   );
 };
 
-const Sidebar = ({ menu = [] }) => {
+const Sidebar = ({ slug, menu, toc = [] }) => {
   return (
     <aside>
       <Flex
@@ -41,10 +45,10 @@ const Sidebar = ({ menu = [] }) => {
           px: 2,
         }}
       >
-        {menu.map(({ title, id, children }) => {
+        {toc.map(({ title, id, children }) => {
           return (
             <Fragment key={id}>
-              <MenuItem key={id} title={title} slug={id} root />
+              <MenuItem slug={slug} key={id} title={title} anchor={id} root />
               {children && children.length > 0 && (
                 <ul
                   sx={{
@@ -54,7 +58,7 @@ const Sidebar = ({ menu = [] }) => {
                   }}
                 >
                   {children.map(({ title, id }) => (
-                    <MenuItem key={id} title={title} slug={id} />
+                    <MenuItem slug={slug} key={id} title={title} anchor={id} />
                   ))}
                 </ul>
               )}

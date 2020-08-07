@@ -2,11 +2,11 @@
 import fs from 'fs';
 import { join } from 'path';
 import dynamic from 'next/dynamic';
-import { Container, jsx, Card, Heading, Text, Grid, Box, Flex } from 'theme-ui';
+import { jsx } from 'theme-ui';
 // import { getFileNames } from 'lib/api';
 import SingleSidebarLayout from 'layouts/SingleSidebarLayout';
 
-const Document = ({ slug, metadata }) => {
+const Document = ({ slug, metadata, tableOfContents }) => {
   const { title } = metadata;
   console.log(metadata);
   const menu = [{ title, id: 1 }];
@@ -15,7 +15,7 @@ const Document = ({ slug, metadata }) => {
   );
 
   return (
-    <SingleSidebarLayout menu={menu}>
+    <SingleSidebarLayout slug={slug} menu={menu} toc={tableOfContents}>
       <Mdx />
     </SingleSidebarLayout>
   );
@@ -39,6 +39,7 @@ export async function getStaticProps({ params }) {
     props: {
       slug,
       metadata: mdx.metadata,
+      tableOfContents: JSON.parse(JSON.stringify(mdx.tableOfContents())),
     },
   };
 }
