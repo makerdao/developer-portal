@@ -31,7 +31,7 @@ const MenuItem = ({ title, slug, root }) => {
   );
 };
 
-const Sidebar = ({ menu }) => {
+const Sidebar = ({ menu = [] }) => {
   return (
     <aside>
       <Flex
