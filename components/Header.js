@@ -10,6 +10,8 @@ import {
   Card,
   Grid,
   Button,
+  Input,
+  Box,
 } from 'theme-ui';
 import Link from 'next/link';
 import { Icon } from '@makerdao/dai-ui-icons';
@@ -114,6 +116,20 @@ const Header = ({ query }) => {
             }}
             onClick={() => setMobileOpened(!opened)}
           />
+        </Flex>
+        <Flex sx={{ position: 'relative' }}>
+          <Icon
+            sx={{
+              position: 'absolute',
+              top: '50%',
+              transform: 'translateY(-50%)',
+              right: 3,
+            }}
+            name="search"
+            size={3}
+            viewBox="0 0 16 16"
+          />
+          <Input sx={{ bg: 'surface', p: 1, fontSize: 4, pl: 3 }} />
         </Flex>
       </Flex>
     </Container>
