@@ -24,6 +24,7 @@
     "@mdx-js/loader": "^1.6.16",
     "@next/mdx": "^9.5.1",
     "@theme-ui/prism": "^0.3.0",
+    "babel-plugin-import-glob-array": "^0.2.0",
     "bignumber.js": "^9.0.0",
     "ipfs": "^0.43.3",
     "jest-transformer-mdx": "^2.1.0",

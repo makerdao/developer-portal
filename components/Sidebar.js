@@ -21,7 +21,6 @@ const MenuItem = ({ resourceType, slug, title, anchor, root }) => {
           variant="sidebar"
           sx={{
             textAlign: 'left',
-
             color: 'text',
             borderRadius: 'xs',
             pl: 0,
