@@ -3,7 +3,7 @@ import { Fragment } from 'react';
 import { jsx, Flex, NavLink, Box } from 'theme-ui';
 import Link from 'next/link';
 
-const MenuItem = ({ slug, title, anchor, root }) => {
+const MenuItem = ({ resourceType, slug, title, anchor, root }) => {
   // TODO something wrong with the toc-module plugin
   if (typeof title !== 'string') title = anchor;
   return (
@@ -14,8 +14,8 @@ const MenuItem = ({ slug, title, anchor, root }) => {
       }}
     >
       <Link
-        href={'/resources/documentation/[slug]'}
-        as={`/resources/documentation/${slug}#${anchor}`}
+        href={`/resources/${resourceType}/[slug]`}
+        as={`/resources/${resourceType}/${slug}#${anchor}`}
       >
         <NavLink
           variant="sidebar"
@@ -35,7 +35,7 @@ const MenuItem = ({ slug, title, anchor, root }) => {
   );
 };
 
-const Sidebar = ({ slug, menu, toc = [] }) => {
+const Sidebar = ({ resourceType, slug, menu, toc = [] }) => {
   return (
     <aside>
       <Flex
@@ -48,7 +48,14 @@ const Sidebar = ({ slug, menu, toc = [] }) => {
         {toc.map(({ title, id, children }) => {
           return (
             <Fragment key={id}>
-              <MenuItem slug={slug} key={id} title={title} anchor={id} root />
+              <MenuItem
+                resourceType={resourceType}
+                slug={slug}
+                key={id}
+                title={title}
+                anchor={id}
+                root
+              />
               {children && children.length > 0 && (
                 <ul
                   sx={{
@@ -58,7 +65,13 @@ const Sidebar = ({ slug, menu, toc = [] }) => {
                   }}
                 >
                   {children.map(({ title, id }) => (
-                    <MenuItem slug={slug} key={id} title={title} anchor={id} />
+                    <MenuItem
+                      resourceType={resourceType}
+                      slug={slug}
+                      key={id}
+                      title={title}
+                      anchor={id}
+                    />
                   ))}
                 </ul>
               )}
