@@ -4,7 +4,7 @@ import { join } from 'path';
 import dynamic from 'next/dynamic';
 import { jsx } from 'theme-ui';
 // import { getFileNames } from 'lib/api';
-import SingleSidebarLayout from 'layouts/SingleSidebarLayout';
+import DoubleSidebarLayout from 'layouts/DoubleSidebarLayout';
 
 const Document = ({ slug, metadata, tableOfContents }) => {
   const { title } = metadata;
@@ -15,14 +15,14 @@ const Document = ({ slug, metadata, tableOfContents }) => {
   );
 
   return (
-    <SingleSidebarLayout
+    <DoubleSidebarLayout
       slug={slug}
       menu={menu}
       toc={tableOfContents}
       resourceType={'guides'}
     >
       <Mdx />
-    </SingleSidebarLayout>
+    </DoubleSidebarLayout>
   );
 };
 
