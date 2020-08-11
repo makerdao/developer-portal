@@ -24,8 +24,9 @@ const Index = ({ list }) => {
   return (
     <Container>
       <Box sx={{ mt: 2, ml: [0, 'auto'], mr: [null, 0] }}>
-        <Heading variant="mediumHeading">Guides</Heading>
+        <Heading variant="mediumHeading">Resources</Heading>
         <Card sx={{ py: 0, px: 3, my: 2 }}>
+          <Heading>Guides</Heading>
           {list.map(({ slug, title }) => (
             <Box as="li" key={slug}>
               <Link key={title} href={`/resources/guides/${slug}/`}>

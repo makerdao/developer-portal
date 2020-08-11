@@ -20,31 +20,27 @@ import MenuPopup from 'components/MenuPopup';
 const LINKS = [
   { url: '/', name: 'Technology' },
   { url: '/', name: 'Modules' },
-  { url: '/resources/guides/tutorials', name: 'Resources' },
+  { url: '/resources', name: 'Resources' },
   { url: '/community', name: 'Community' },
 ];
 
-const NavLinks = ({ opened, setMobileOpened, setPopupState, query }) =>
+const NavLinks = ({ mobileOpened, setMobileOpened, setPopupState, query }) =>
   LINKS.map(({ name, url }) => (
-    <>
-      {opened ? (
-        <Link href={{ pathname: url, query }} passHref key={url}>
-          <>
-            <NavLink
-              sx={{ '&:last-child': { pr: [null, 0] } }}
-              onClick={() => setMobileOpened(false)}
-              variant="links.nav"
-            >
-              {name}
-            </NavLink>
-          </>
-        </Link>
+    <Link href={{ pathname: url, query }} passHref key={url}>
+      {mobileOpened ? (
+        <NavLink
+          sx={{ '&:last-child': { pr: [null, 0] } }}
+          onClick={() => setMobileOpened(false)}
+          variant="links.nav"
+        >
+          {name}
+        </NavLink>
       ) : (
         <NavLink
           sx={{
             '&:last-child': { pr: [null, 0] },
           }}
-          onClick={e => {
+          onMouseEnter={e => {
             const targetRect = e.target.getBoundingClientRect();
             setPopupState({
               name,
@@ -58,16 +54,16 @@ const NavLinks = ({ opened, setMobileOpened, setPopupState, query }) =>
           {name}
         </NavLink>
       )}
-    </>
+    </Link>
   ));
 
 const Header = ({ query }) => {
-  const [opened, setMobileOpened] = useState(false);
+  const [mobileOpened, setMobileOpened] = useState(false);
   const [popupState, setPopupState] = useState({ show: false });
   return (
     <Container
       as="header"
-      sx={{ position: [opened ? 'fixed' : 'initial', 'initial'] }}
+      sx={{ position: [mobileOpened ? 'fixed' : 'initial', 'initial'] }}
       mt={2}
     >
       <Flex
@@ -86,8 +82,8 @@ const Header = ({ query }) => {
           <Flex
             as="nav"
             sx={{
-              display: [opened ? 'flex' : 'none', 'flex'],
-              ...(opened && {
+              display: [mobileOpened ? 'flex' : 'none', 'flex'],
+              ...(mobileOpened && {
                 position: ['fixed', 'initial'],
                 top: ['0', 'initial'],
                 bottom: ['0', 'initial'],
@@ -101,11 +97,13 @@ const Header = ({ query }) => {
               }),
             }}
           >
-            <NavLinks {...{ opened, setMobileOpened, setPopupState, query }} />
+            <NavLinks
+              {...{ mobileOpened, setMobileOpened, setPopupState, query }}
+            />
             <MenuPopup setState={setPopupState} state={popupState} />
           </Flex>
           <Icon
-            name={opened ? 'close' : 'menu'}
+            name={mobileOpened ? 'close' : 'menu'}
             size={4}
             color="text"
             sx={{
@@ -114,7 +112,7 @@ const Header = ({ query }) => {
               position: 'relative',
               zIndex: 1,
             }}
-            onClick={() => setMobileOpened(!opened)}
+            onClick={() => setMobileOpened(!mobileOpened)}
           />
         </Flex>
         {/* <Flex sx={{}}>
