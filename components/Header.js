@@ -117,7 +117,7 @@ const Header = ({ query }) => {
             onClick={() => setMobileOpened(!opened)}
           />
         </Flex>
-        <Flex sx={{ position: 'relative' }}>
+        {/* <Flex sx={{}}>
           <Icon
             sx={{
               position: 'absolute',
@@ -129,8 +129,8 @@ const Header = ({ query }) => {
             size={3}
             viewBox="0 0 16 16"
           />
-          {/* <Input sx={{ bg: 'surface', p: 1, fontSize: 4, pl: 3 }} /> */}
-        </Flex>
+          <Input sx={{ bg: 'surface', p: 1, fontSize: 4, pl: 3 }} />
+        </Flex> */}
       </Flex>
     </Container>
   );
