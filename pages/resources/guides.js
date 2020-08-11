@@ -15,10 +15,10 @@ import {
   Flex,
   Link as ThemeLink,
 } from 'theme-ui';
-import {
-  default as guides,
-  _importMeta as metadata,
-} from './../../../content/resources/**/*.mdx';
+// import {
+//   default as guides,
+//   _importMeta as metadata,
+// } from './../../../content/resources/**/*.mdx';
 
 const Index = ({ list }) => {
   return (
@@ -37,15 +37,21 @@ const Index = ({ list }) => {
   );
 };
 
+const trimMdx = string => {
+  if (string.indexOf('.md') === -1) {
+    return string.substring(0, string.length - 3);
+  }
+  return string.substring(0, string.length - 4);
+};
+
 export async function getStaticProps() {
   const targetPath = 'content/resources/guides';
   const slugs = fs.readdirSync(join(process.cwd(), targetPath));
   console.log('slugsbackend', slugs);
   const list = slugs.map(slug => {
-    const title = require(`content/resources/guides/${slug}/index.mdx`).metadata
-      .title;
+    const title = require(`content/resources/guides/${slug}`).metadata.title;
     return {
-      slug,
+      slug: trimMdx(slug),
       title,
     };
   });

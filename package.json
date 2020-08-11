@@ -29,6 +29,7 @@
     "ipfs": "^0.43.3",
     "jest-transformer-mdx": "^2.1.0",
     "next": "^9.5.1",
+    "next-mdx-enhanced": "^3.1.0",
     "prismjs": "^1.20.0",
     "ramda": "^0.27.0",
     "react": "^16.13.1",

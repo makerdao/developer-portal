@@ -5,9 +5,7 @@ const Item = () => {
   return (
     <Card>
       <Styled.pre>
-        <Styled.code className="language-js" sx={{ m: 0, p: 0 }}>
-          {"var test = '234"}
-        </Styled.code>
+        <Styled.code sx={{ m: 0, p: 0 }}>{"var test = '234"}</Styled.code>
       </Styled.pre>
     </Card>
   );

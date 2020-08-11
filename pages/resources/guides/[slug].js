@@ -10,9 +10,7 @@ const Document = ({ slug, metadata, tableOfContents }) => {
   const { title } = metadata;
   console.log(metadata);
   const menu = [{ title, id: 1 }];
-  const Mdx = dynamic(() =>
-    import(`content/resources/guides/${slug}/index.mdx`)
-  );
+  const Mdx = dynamic(() => import(`content/resources/guides/${slug}.mdx`));
 
   return (
     <DoubleSidebarLayout
@@ -26,10 +24,17 @@ const Document = ({ slug, metadata, tableOfContents }) => {
   );
 };
 
+const trimMdx = string => {
+  if (string.indexOf('.md') === -1) {
+    return string.substring(0, string.length - 3);
+  }
+  return string.substring(0, string.length - 4);
+};
+
 export async function getStaticPaths() {
   const targetPath = 'content/resources/guides';
   const slugs = fs.readdirSync(join(process.cwd(), targetPath));
-  const paths = slugs?.map(slug => ({ params: { slug } }));
+  const paths = slugs?.map(slug => ({ params: { slug: trimMdx(slug) } }));
 
   return {
     paths,
@@ -39,8 +44,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const slug = params?.slug;
-  const mdx = require(`content/resources/guides/${slug}/index.mdx`);
-  console.log('mdx', mdx);
+  const mdx = require(`content/resources/guides/${slug}.mdx`);
   return {
     props: {
       slug,
