@@ -26,7 +26,7 @@ const LINKS = [
 
 const NavLinks = ({ mobileOpened, setMobileOpened, setPopupState, query }) =>
   LINKS.map(({ name, url }) => (
-    <Link href={{ pathname: url, query }} passHref key={url}>
+    <Link href={{ pathname: url, query }} passHref key={name}>
       {mobileOpened ? (
         <NavLink
           sx={{ '&:last-child': { pr: [null, 0] } }}

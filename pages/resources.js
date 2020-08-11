@@ -1,9 +1,9 @@
 /** @jsx jsx */
-import fs from 'fs';
-import { join } from 'path';
-import dynamic from 'next/dynamic';
 import Link from 'next/link';
-import { useState } from 'react';
+import useResourceStore from 'stores/store';
+import { trimMdx } from 'lib/utils';
+import { getFileNames } from 'lib/api';
+
 import {
   Container,
   jsx,
@@ -21,13 +21,18 @@ import {
 // } from './../../../content/resources/**/*.mdx';
 
 const Index = ({ list }) => {
+  const setResources = useResourceStore(state => state.setResources);
+  setResources(list);
+  const resources = useResourceStore(state => state.resources);
+  console.log('resources', resources);
+
   return (
     <Container>
       <Box sx={{ mt: 2, ml: [0, 'auto'], mr: [null, 0] }}>
         <Heading variant="mediumHeading">Resources</Heading>
         <Card sx={{ py: 0, px: 3, my: 2 }}>
           <Heading>Guides</Heading>
-          {list.map(({ slug, title }) => (
+          {resources.map(({ slug, title }) => (
             <Box as="li" key={slug}>
               <Link key={title} href={`/resources/guides/${slug}/`}>
                 <ThemeLink>{title}</ThemeLink>
@@ -40,17 +45,9 @@ const Index = ({ list }) => {
   );
 };
 
-const trimMdx = string => {
-  if (string.indexOf('.md') === -1) {
-    return string.substring(0, string.length - 3);
-  }
-  return string.substring(0, string.length - 4);
-};
-
 export async function getStaticProps() {
   const targetPath = 'content/resources/guides';
-  const slugs = fs.readdirSync(join(process.cwd(), targetPath));
-  console.log('slugsbackend', slugs);
+  const slugs = getFileNames(targetPath);
   const list = slugs.map(slug => {
     const title =
       require(`content/resources/guides/${slug}`).metadata?.title ?? '';

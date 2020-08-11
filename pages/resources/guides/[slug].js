@@ -1,9 +1,7 @@
 /** @jsx jsx */
-import fs from 'fs';
-import { join } from 'path';
 import dynamic from 'next/dynamic';
 import { jsx } from 'theme-ui';
-// import { getFileNames } from 'lib/api';
+import { getFileNames } from 'lib/api';
 import DoubleSidebarLayout from 'layouts/DoubleSidebarLayout';
 
 const Document = ({ slug, metadata, tableOfContents }) => {
@@ -33,7 +31,7 @@ const trimMdx = string => {
 
 export async function getStaticPaths() {
   const targetPath = 'content/resources/guides';
-  const slugs = fs.readdirSync(join(process.cwd(), targetPath));
+  const slugs = getFileNames(targetPath);
   const paths = slugs?.map(slug => ({ params: { slug: trimMdx(slug) } }));
 
   return {
