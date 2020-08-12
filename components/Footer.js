@@ -23,16 +23,16 @@ const Footer = () => {
         >
           Chat
         </NavLink>
-        <Link href="/terms" passHref>
-          <NavLink
-            variant="footer"
-            sx={{
-              px: [2, 3],
-            }}
-          >
-            Terms of Service
-          </NavLink>
-        </Link>
+        <NavLink
+          href="https://forum.makerdao.com/c/devs/19"
+          target="_blank"
+          variant="footer"
+          sx={{
+            px: [2, 3],
+          }}
+        >
+          Forums
+        </NavLink>
       </Flex>
     </Container>
   );
