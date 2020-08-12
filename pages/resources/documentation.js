@@ -8,12 +8,11 @@ import {
   jsx,
   Card,
   Heading,
-  Text,
-  Grid,
   Box,
-  Flex,
   Link as ThemeLink,
 } from 'theme-ui';
+import Subheader from 'components/Subheader';
+import { RESOURCE_LINKS } from 'components/MenuPopup';
 // import {
 //   default as guides,
 //   _importMeta as metadata,
@@ -25,20 +24,23 @@ const Index = ({ list }) => {
   const resources = useResourceStore(state => state.resources);
 
   return (
-    <Container>
-      <Box sx={{ mt: 2, ml: [0, 'auto'], mr: [null, 0] }}>
-        <Heading variant="mediumHeading">Documentation</Heading>
-        <Card sx={{ py: 0, px: 3, my: 2 }}>
-          {resources.map(({ slug, title }) => (
-            <Box as="li" key={slug}>
-              <Link key={title} href={`/resources/guides/${slug}/`}>
-                <ThemeLink>{title}</ThemeLink>
-              </Link>
-            </Box>
-          ))}
-        </Card>
-      </Box>
-    </Container>
+    <>
+      <Subheader links={RESOURCE_LINKS} />
+      <Container>
+        <Box sx={{ mt: 2, ml: [0, 'auto'], mr: [null, 0] }}>
+          <Heading variant="mediumHeading">Documentation</Heading>
+          <Card sx={{ py: 0, px: 3, my: 2 }}>
+            {resources.map(({ slug, title }) => (
+              <Box as="li" key={slug}>
+                <Link key={title} href={`/resources/guides/${slug}/`}>
+                  <ThemeLink>{title}</ThemeLink>
+                </Link>
+              </Box>
+            ))}
+          </Card>
+        </Box>
+      </Container>
+    </>
   );
 };
 

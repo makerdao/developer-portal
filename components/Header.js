@@ -21,7 +21,7 @@ const LINKS = [
   { url: '/', name: 'Technology' },
   { url: '/', name: 'Modules' },
   { url: '/resources', name: 'Resources', popup: true },
-  { url: '/community', name: 'Community' },
+  { url: '/', name: 'Community' },
 ];
 
 const NavLinks = ({ mobileOpened, setMobileOpened, setPopupState, query }) =>
@@ -73,7 +73,7 @@ const Header = ({ query }) => {
         sx={{
           alignItems: 'center',
           justifyContent: 'space-between',
-          mb: [2, 4],
+          mb: 2,
         }}
       >
         <Link href="/" passHref>
