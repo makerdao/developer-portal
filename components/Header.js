@@ -20,12 +20,12 @@ import MenuPopup from 'components/MenuPopup';
 const LINKS = [
   { url: '/', name: 'Technology' },
   { url: '/', name: 'Modules' },
-  { url: '/resources', name: 'Resources' },
+  { url: '/resources', name: 'Resources', popup: true },
   { url: '/community', name: 'Community' },
 ];
 
 const NavLinks = ({ mobileOpened, setMobileOpened, setPopupState, query }) =>
-  LINKS.map(({ name, url }) => (
+  LINKS.map(({ name, url, popup }) => (
     <Link href={{ pathname: url, query }} passHref key={name}>
       {mobileOpened ? (
         <NavLink
@@ -40,15 +40,18 @@ const NavLinks = ({ mobileOpened, setMobileOpened, setPopupState, query }) =>
           sx={{
             '&:last-child': { pr: [null, 0] },
           }}
-          onMouseEnter={e => {
-            const targetRect = e.target.getBoundingClientRect();
-            setPopupState({
-              name,
-              show: true,
-              left: targetRect.left - targetRect.width / 2,
-              top: targetRect.bottom,
-            });
-          }}
+          onMouseEnter={
+            popup &&
+            (e => {
+              const targetRect = e.target.getBoundingClientRect();
+              setPopupState({
+                name,
+                show: true,
+                left: targetRect.left - targetRect.width / 2,
+                top: targetRect.bottom,
+              });
+            })
+          }
           variant="links.nav"
         >
           {name}

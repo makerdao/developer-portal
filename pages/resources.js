@@ -24,7 +24,6 @@ const Index = ({ list }) => {
   const setResources = useResourceStore(state => state.setResources);
   setResources(list);
   const resources = useResourceStore(state => state.resources);
-  console.log('resources', resources);
 
   return (
     <Container>

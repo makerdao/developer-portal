@@ -1,38 +1,31 @@
 /** @jsx jsx */
-import {
-  Container,
-  jsx,
-  Link as ThemeLink,
-  NavLink,
-  Flex,
-  Text,
-  Card,
-  Grid,
-  Heading,
-} from 'theme-ui';
+import Link from 'next/link';
+import { jsx, Card, Grid, NavLink } from 'theme-ui';
 import Portal from './Portal';
 
-const MenuContent = () => {
+const ResourcesMenu = () => {
   return (
     <Grid>
-      <Heading>Interfaces</Heading>
-      <Grid columns={['1fr 1fr']}>
-        {['first', 'second', 'third', 'fourth'].map(name => {
-          return <Text key={name}>{name}</Text>;
-        })}
-      </Grid>
-      <Heading>Tools</Heading>
-      <Grid columns={['1fr 1fr']}>
-        {['aaaaa', 'bbbbb', 'ccccccc', 'dddddd'].map(name => {
-          return <Text key={name}>{name}</Text>;
-        })}
-      </Grid>
+      {[
+        { url: '/resources/guides', name: 'Guides' },
+        { url: '/resources/documentation', name: 'API Documentation' },
+        { url: '/resources/community', name: 'Community Content' },
+      ].map(({ name, url }) => {
+        return (
+          <Link key={name} href={{ pathname: `${url}` }} passHref>
+            <NavLink>{name}</NavLink>
+          </Link>
+        );
+      })}
     </Grid>
   );
 };
+const template = {
+  Resources: <ResourcesMenu />,
+};
 
 const MenuPopup = ({ setState, state }) => {
-  const { show, left, top } = state;
+  const { show, left, top, name } = state;
   return show ? (
     <Portal selector="#portal">
       <Card
@@ -40,12 +33,11 @@ const MenuPopup = ({ setState, state }) => {
         sx={{
           top: top,
           left: left,
-          width: 7,
           zIndex: 100,
           position: 'fixed',
         }}
       >
-        <MenuContent />
+        {template[name]}
       </Card>
     </Portal>
   ) : null;

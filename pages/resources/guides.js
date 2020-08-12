@@ -3,7 +3,6 @@ import Link from 'next/link';
 import useResourceStore from 'stores/store';
 import { trimMdx } from 'lib/utils';
 import { getFileNames } from 'lib/api';
-
 import {
   Container,
   jsx,
