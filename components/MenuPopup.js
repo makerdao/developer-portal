@@ -3,14 +3,16 @@ import Link from 'next/link';
 import { jsx, Card, Grid, NavLink } from 'theme-ui';
 import Portal from './Portal';
 
+export const RESOURCE_LINKS = [
+  { url: '/resources/guides', name: 'Guides' },
+  { url: '/resources/documentation', name: 'API Documentation' },
+  { url: '/resources/community', name: 'Community Content' },
+];
+
 const ResourcesMenu = () => {
   return (
     <Grid>
-      {[
-        { url: '/resources/guides', name: 'Guides' },
-        { url: '/resources/documentation', name: 'API Documentation' },
-        { url: '/resources/community', name: 'Community Content' },
-      ].map(({ name, url }) => {
+      {RESOURCE_LINKS.map(({ name, url }) => {
         return (
           <Link key={name} href={{ pathname: `${url}` }} passHref>
             <NavLink>{name}</NavLink>

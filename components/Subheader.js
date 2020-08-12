@@ -17,15 +17,14 @@ import Link from 'next/link';
 import { Icon } from '@makerdao/dai-ui-icons';
 import MenuPopup from 'components/MenuPopup';
 
-const LINKS = [
-  { url: '/', name: 'Technology' },
-  { url: '/', name: 'Modules' },
-  { url: '/resources', name: 'Resources', popup: true },
-  { url: '/community', name: 'Community' },
-];
-
-const NavLinks = ({ mobileOpened, setMobileOpened, setPopupState, query }) =>
-  LINKS.map(({ name, url, popup }) => (
+const NavLinks = ({
+  mobileOpened,
+  setMobileOpened,
+  setPopupState,
+  links,
+  query,
+}) =>
+  links.map(({ name, url, popup }) => (
     <Link href={{ pathname: url, query }} passHref key={name}>
       {mobileOpened ? (
         <NavLink
@@ -60,27 +59,23 @@ const NavLinks = ({ mobileOpened, setMobileOpened, setPopupState, query }) =>
     </Link>
   ));
 
-const Header = ({ query }) => {
+const Subheader = ({ links, query }) => {
   const [mobileOpened, setMobileOpened] = useState(false);
   const [popupState, setPopupState] = useState({ show: false });
   return (
     <Container
       as="header"
-      sx={{ position: [mobileOpened ? 'fixed' : 'initial', 'initial'] }}
-      mt={2}
+      sx={{
+        position: [mobileOpened ? 'fixed' : 'initial', 'initial'],
+      }}
     >
       <Flex
         sx={{
           alignItems: 'center',
-          justifyContent: 'space-between',
+          justifyContent: 'flex-end',
           mb: [2, 4],
         }}
       >
-        <Link href="/" passHref>
-          <ThemeLink>
-            <Icon name="maker" color="text" size={4} />
-          </ThemeLink>
-        </Link>
         <Flex sx={{ alignItems: 'center' }}>
           <Flex
             as="nav"
@@ -101,7 +96,13 @@ const Header = ({ query }) => {
             }}
           >
             <NavLinks
-              {...{ mobileOpened, setMobileOpened, setPopupState, query }}
+              {...{
+                mobileOpened,
+                setMobileOpened,
+                setPopupState,
+                links,
+                query,
+              }}
             />
             <MenuPopup setState={setPopupState} state={popupState} />
           </Flex>
@@ -123,4 +124,4 @@ const Header = ({ query }) => {
   );
 };
 
-export default Header;
+export default Subheader;
