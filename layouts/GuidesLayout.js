@@ -3,7 +3,7 @@ import { Container, jsx, Card, Grid } from 'theme-ui';
 import Sidebar from '../components/Sidebar';
 import Infobar from '../components/Infobar';
 
-const DoubleSidebarLayout = ({ resourceType, slug, menu, toc, children }) => {
+const GuidesLayout = ({ resourceType, slug, menu, toc, children }) => {
   return (
     <Container mt={3}>
       <Grid columns={['auto', '200px auto 200px']} gap="0">
@@ -20,4 +20,4 @@ const DoubleSidebarLayout = ({ resourceType, slug, menu, toc, children }) => {
   );
 };
 
-export default DoubleSidebarLayout;
+export default GuidesLayout;

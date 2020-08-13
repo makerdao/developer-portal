@@ -18,7 +18,7 @@ import { RESOURCE_LINKS } from 'components/MenuPopup';
 //   _importMeta as metadata,
 // } from './../../../content/resources/**/*.mdx';
 
-const Index = ({ list }) => {
+const Community = ({ list }) => {
   const setResources = useResourceStore(state => state.setResources);
   setResources(list);
   const resources = useResourceStore(state => state.resources);
@@ -62,4 +62,4 @@ export async function getStaticProps() {
   };
 }
 
-export default Index;
+export default Community;

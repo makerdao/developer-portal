@@ -2,7 +2,7 @@
 import dynamic from 'next/dynamic';
 import { jsx } from 'theme-ui';
 import { getFileNames } from 'lib/api';
-import SingleSidebarLayout from 'layouts/SingleSidebarLayout';
+import DocumentationLayout from 'layouts/DocumentationLayout';
 
 const Document = ({ slug, metadata, tableOfContents }) => {
   const { title } = metadata;
@@ -13,9 +13,9 @@ const Document = ({ slug, metadata, tableOfContents }) => {
   );
 
   return (
-    <SingleSidebarLayout slug={slug} menu={menu} toc={tableOfContents}>
+    <DocumentationLayout slug={slug} menu={menu} toc={tableOfContents}>
       <Mdx />
-    </SingleSidebarLayout>
+    </DocumentationLayout>
   );
 };
 

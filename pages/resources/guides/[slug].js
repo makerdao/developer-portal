@@ -4,9 +4,9 @@ import { jsx } from 'theme-ui';
 import useResourceStore from 'stores/store';
 import { getFileNames } from 'lib/api';
 import { trimMdx } from 'lib/utils';
-import DoubleSidebarLayout from 'layouts/DoubleSidebarLayout';
+import GuidesLayout from 'layouts/GuidesLayout';
 
-const Document = ({ slug, list, metadata, tableOfContents }) => {
+const Guide = ({ slug, list, metadata, tableOfContents }) => {
   const setResources = useResourceStore(state => state.setResources);
   setResources(list);
   const { title } = metadata;
@@ -15,14 +15,14 @@ const Document = ({ slug, list, metadata, tableOfContents }) => {
   const Mdx = dynamic(() => import(`content/resources/guides/${slug}.mdx`));
 
   return (
-    <DoubleSidebarLayout
+    <GuidesLayout
       slug={slug}
       menu={menu}
       toc={tableOfContents}
       resourceType={'guides'}
     >
       <Mdx />
-    </DoubleSidebarLayout>
+    </GuidesLayout>
   );
 };
 
@@ -62,4 +62,4 @@ export async function getStaticProps({ params }) {
   };
 }
 
-export default Document;
+export default Guide;
