@@ -2,6 +2,7 @@
 import dynamic from 'next/dynamic';
 import { jsx } from 'theme-ui';
 import { getFileNames } from 'lib/api';
+import { trimMdx } from 'lib/utils';
 import DocumentationLayout from 'layouts/DocumentationLayout';
 
 const Document = ({ slug, metadata, tableOfContents }) => {
@@ -9,7 +10,7 @@ const Document = ({ slug, metadata, tableOfContents }) => {
   console.log(metadata);
   const menu = [{ title, id: 1 }];
   const Mdx = dynamic(() =>
-    import(`content/resources/documentation/${slug}/index.mdx`)
+    import(`content/resources/documentation/${slug}.mdx`)
   );
 
   return (
@@ -31,12 +32,24 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
+  const targetPath = 'content/resources/documentation';
+  const slugs = getFileNames(targetPath);
+  const list = slugs.map(slug => {
+    const title =
+      require(`content/resources/documentation/${slug}`).metadata?.title ?? '';
+    return {
+      slug: trimMdx(slug),
+      title,
+    };
+  });
+
   const slug = params?.slug;
-  const mdx = require(`content/resources/documentation/${slug}/index.mdx`);
+  const mdx = require(`content/resources/documentation/${slug}.mdx`);
   return {
     props: {
       slug,
-      metadata: mdx.metadata,
+      list,
+      metadata: mdx.metadata ?? {},
       tableOfContents: JSON.parse(JSON.stringify(mdx.tableOfContents())),
     },
   };
