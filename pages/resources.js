@@ -9,10 +9,7 @@ import {
   jsx,
   Card,
   Heading,
-  Text,
-  Grid,
   Box,
-  Flex,
   Link as ThemeLink,
 } from 'theme-ui';
 import Subheader from 'components/Subheader';
@@ -28,24 +25,22 @@ const Index = ({ list }) => {
   const resources = useResourceStore(state => state.resources);
 
   return (
-    <>
+    <Container sx={{ px: 0 }}>
       <Subheader links={RESOURCE_LINKS} />
-      <Container>
-        <Box sx={{ mt: 2, ml: [0, 'auto'], mr: [null, 0] }}>
-          <Heading variant="mediumHeading">Resources</Heading>
-          <Card sx={{ py: 0, px: 3, my: 2 }}>
-            <Heading>Guides</Heading>
-            {resources.map(({ slug, title }) => (
-              <Box as="li" key={slug}>
-                <Link key={title} href={`/resources/guides/${slug}/`}>
-                  <ThemeLink>{title}</ThemeLink>
-                </Link>
-              </Box>
-            ))}
-          </Card>
-        </Box>
-      </Container>
-    </>
+      <Box sx={{ mt: 2, ml: [0, 'auto'], mr: [null, 0] }}>
+        <Heading variant="mediumHeading">Resources</Heading>
+        <Card sx={{ py: 0, px: 3, my: 2 }}>
+          <Heading>Guides</Heading>
+          {resources.map(({ slug, title }) => (
+            <Box as="li" key={slug}>
+              <Link key={title} href={`/resources/guides/${slug}/`}>
+                <ThemeLink>{title}</ThemeLink>
+              </Link>
+            </Box>
+          ))}
+        </Card>
+      </Box>
+    </Container>
   );
 };
 
