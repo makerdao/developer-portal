@@ -5,8 +5,10 @@ import Link from 'next/link';
 import SingleLayout from '../layouts/SingleLayout.js';
 
 const content = [
-  ['decentralized finance', 'text goes here', 'Learn More', '/technology'],
-  ['Be part of the revolution', 'text goes here', 'Governance', '/governance'],
+  ['Dai', 'text goes here', 'Learn More', '/technology'],
+  ['Vaults', 'text goes here', 'Learn More', '/technology'],
+  ['governance', 'text goes here', 'Learn More', '/technology'],
+  ['DSR', 'text goes here', 'Governance', '/governance'],
 ];
 
 const Index = () => {
@@ -21,8 +23,8 @@ const Index = () => {
           }}
         >
           <Box>
-            <Heading variant="mediumHeading">Maker Protocol</Heading>
-            <Text>For developers</Text>
+            <Heading variant="mediumHeading">Technology</Heading>
+            <Text>For a better finance</Text>
           </Box>
         </Flex>
 

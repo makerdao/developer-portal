@@ -15,14 +15,60 @@ import {
 } from 'theme-ui';
 import Link from 'next/link';
 import { Icon } from '@makerdao/dai-ui-icons';
-import MenuPopup from 'components/MenuPopup';
+// import MenuPopup from 'components/MenuPopup';
+
+import Portal from './Portal';
 
 const LINKS = [
-  { url: '/', name: 'Technology' },
-  { url: '/', name: 'Modules' },
+  { url: '/technology', name: 'Technology' },
+  { url: '/governance', name: 'Modules' },
   { url: '/resources', name: 'Resources', popup: true },
   { url: '/', name: 'Community' },
 ];
+
+export const RESOURCE_LINKS = [
+  { url: '/resources/guides', name: 'Guides' },
+  { url: '/resources/documentation', name: 'API Documentation' },
+  { url: '/resources/community', name: 'Community Content' },
+];
+
+const ResourcesMenu = ({ links }) => {
+  return (
+    <Grid>
+      {RESOURCE_LINKS.map(({ name, url }) => {
+        return (
+          <Link key={name} href={{ pathname: `${url}` }} passHref>
+            <NavLink>{name}</NavLink>
+          </Link>
+        );
+      })}
+    </Grid>
+  );
+};
+
+const template = {
+  Resources: <ResourcesMenu />,
+};
+
+const modules = ['governance', '/ggoverna'];
+const MenuPopup = ({ setState, state }) => {
+  const { show, left, top, name } = state;
+  return show ? (
+    <Portal selector="#portal">
+      <Card
+        onMouseLeave={() => setState({ ...state, show: false })}
+        sx={{
+          top: top,
+          left: left,
+          zIndex: 100,
+          position: 'fixed',
+        }}
+      >
+        {template[name]}
+      </Card>
+    </Portal>
+  ) : null;
+};
 
 const NavLinks = ({ mobileOpened, setMobileOpened, setPopupState, query }) =>
   LINKS.map(({ name, url, popup }) => (
