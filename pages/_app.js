@@ -5,20 +5,18 @@ import { ThemeProvider } from 'theme-ui';
 import ThemeUIPrism from '@theme-ui/prism';
 import PrismCore from 'prismjs/components/prism-core';
 import MakerProvider from '../providers/MakerProvider';
+import useResourceStore from 'stores/store';
 import theme from '../theme';
-import { getPosts } from '../lib/api';
-// import {
-//   default as pages,
-//   _importMeta as metadata,
-//   frontMatter,
-// } from '../content/**/*.mdx';
+import { fetchAllContent } from '../lib/api';
 
 const components = {
   pre: ({ children }) => <>{children}</>,
   code: props => <ThemeUIPrism {...props} Prism={PrismCore} />,
 };
 
-const MyApp = ({ Component, pageProps }) => {
+const MyApp = ({ Component, pageProps, content }) => {
+  const setResources = useResourceStore(state => state.setResources);
+  setResources(content);
   const { query } = useRouter();
   const [network, setNetwork] = useState();
   const queryParams = network ? { network } : {};
@@ -45,10 +43,9 @@ MyApp.getInitialProps = async appContext => {
   // calls page's `getInitialProps` and fills `appProps.pageProps`
   const appProps = await App.getInitialProps(appContext);
 
-  getPosts();
-  // if (Component.getInitialProps) pageProps = await Component.getInitialProps(ctx);
+  const content = fetchAllContent();
 
-  return { ...appProps };
+  return { ...appProps, content };
 };
 
 export default MyApp;
