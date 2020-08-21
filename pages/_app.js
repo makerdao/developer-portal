@@ -7,7 +7,12 @@ import PrismCore from 'prismjs/components/prism-core';
 import MakerProvider from '../providers/MakerProvider';
 import useResourceStore from 'stores/store';
 import theme from '../theme';
-import { fetchAllContent } from '../lib/api';
+// import { fetchAllContent } from '../lib/api';
+import {
+  default as pages,
+  _importMeta as metadata,
+  frontMatter,
+} from '../content/**/*.mdx';
 
 const components = {
   pre: ({ children }) => <>{children}</>,
@@ -42,10 +47,11 @@ const MyApp = ({ Component, pageProps, content }) => {
 MyApp.getInitialProps = async appContext => {
   // calls page's `getInitialProps` and fills `appProps.pageProps`
   const appProps = await App.getInitialProps(appContext);
+  console.log('frontMatter', frontMatter);
 
-  const content = fetchAllContent();
+  // const content = fetchAllContent();
 
-  return { ...appProps, content };
+  return { ...appProps };
 };
 
 export default MyApp;
