@@ -2,6 +2,7 @@
   "absolutePath": "/",
   "importedPath": "/",
   "frontMatter": {
+    "slug": "file-slug-title",
     "tags": ["daijs", "oracles"],
     "parent": "oracles",
     "contentType": "guide"
