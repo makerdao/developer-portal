@@ -29,7 +29,6 @@ const Index = () => {
         {content.map(([title, text, cta, ctaRoute]) => {
           return (
             <Flex
-              key={title}
               sx={{
                 justifyContent: 'center',
                 mb: 6,
@@ -39,9 +38,7 @@ const Index = () => {
                 <Heading>{title}</Heading>
                 <Text>{text}</Text>
 
-                <Link href={ctaRoute}>
-                  <a>{cta}</a>
-                </Link>
+                <Link href={ctaRoute}>{cta}</Link>
               </Box>
             </Flex>
           );

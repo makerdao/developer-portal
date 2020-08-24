@@ -57,7 +57,7 @@ export async function getStaticProps({ params }) {
       slug,
       list,
       metadata: mdx.metadata ?? {},
-      tableOfContents: [], //JSON.parse(JSON.stringify(mdx.tableOfContents())),
+      tableOfContents: JSON.parse(JSON.stringify(mdx.tableOfContents())),
     },
   };
 }
