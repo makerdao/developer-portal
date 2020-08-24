@@ -14,8 +14,8 @@ const MenuItem = ({ resourceType, slug, title, anchor, root }) => {
       }}
     >
       <Link
-        href={`/resources/${resourceType}/[slug]`}
-        as={`/resources/${resourceType}/${slug}#${anchor}`}
+        href={`/${resourceType}/[slug]`}
+        as={`/${resourceType}/${slug}#${anchor}`}
       >
         <NavLink
           variant="sidebar"

@@ -1,22 +1,21 @@
 const path = require('path');
+const slug = require('remark-slug');
 const mdxTableOfContents = require('./lib/toc-module');
 
-// "uu64" implementation https://github.com/uu64/nextjs-mdx-blog-sample/blob/master/next.config.js
-module.exports = {
+const withMDX = require('@next/mdx')({
+  extension: /\.(md|mdx)$/,
+  options: {
+    remarkPlugins: [slug],
+    compilers: [mdxTableOfContents],
+  },
+});
+
+module.exports = withMDX({
   pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
-  webpack: (config, options) => {
+  webpack: config => {
     config.module.rules.push({
       test: /\.(md|mdx)$/,
-      // test: /\.md?$/,
-      use: [
-        options.defaultLoaders.babel,
-        {
-          loader: '@mdx-js/loader',
-          options: { compilers: [mdxTableOfContents] },
-        },
-
-        path.join(__dirname, './lib/fm-loader'),
-      ],
+      use: path.join(__dirname, './lib/fm-loader'),
     });
 
     config.node = {
@@ -25,4 +24,4 @@ module.exports = {
 
     return config;
   },
-};
+});
