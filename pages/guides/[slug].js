@@ -18,7 +18,7 @@ const Guide = ({ slug, list, metadata, tableOfContents }) => {
       slug={slug}
       menu={menu}
       toc={tableOfContents}
-      resourceType={'guides'}
+      resourcePath={'guides'}
     >
       <Mdx />
     </GuidesLayout>

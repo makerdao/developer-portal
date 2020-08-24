@@ -3,12 +3,12 @@ import { jsx, Card, Grid } from 'theme-ui';
 import Sidebar from '../components/Sidebar';
 import KnowledgebaseLayout from 'layouts/KnowledgebaseLayout';
 
-const DocumentationLayout = ({ resourceType, slug, menu, toc, children }) => {
+const DocumentationLayout = ({ resourcePath, slug, menu, toc, children }) => {
   return (
     <KnowledgebaseLayout>
       <Grid columns={['auto', '200px auto']} gap="0">
         <Sidebar
-          resourceType={resourceType}
+          resourcePath={resourcePath}
           slug={slug}
           menu={menu}
           toc={toc}

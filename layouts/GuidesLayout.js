@@ -4,12 +4,12 @@ import Sidebar from '../components/Sidebar';
 import Infobar from '../components/Infobar';
 import KnowledgebaseLayout from 'layouts/KnowledgebaseLayout';
 
-const GuidesLayout = ({ resourceType, slug, menu, toc, children }) => {
+const GuidesLayout = ({ resourcePath, slug, menu, toc, children }) => {
   return (
     <KnowledgebaseLayout>
       <Grid columns={['auto', '200px auto 200px']} gap="0">
         <Sidebar
-          resourceType={resourceType}
+          resourcePath={resourcePath}
           slug={slug}
           menu={menu}
           toc={toc}
