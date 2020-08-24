@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import { ThemeProvider } from 'theme-ui';
 import ThemeUIPrism from '@theme-ui/prism';
 import PrismCore from 'prismjs/components/prism-core';
+import useResourceStore from 'stores/store';
 import { fetchAllContent } from '../lib/api';
 import MakerProvider from '../providers/MakerProvider';
 import theme from '../theme';
@@ -13,7 +14,9 @@ const components = {
   code: props => <ThemeUIPrism {...props} Prism={PrismCore} />,
 };
 
-const MyApp = ({ Component, pageProps }) => {
+const MyApp = ({ Component, pageProps, content }) => {
+  const setResources = useResourceStore(state => state.setResources);
+  setResources(content);
   const { query } = useRouter();
   const [network, setNetwork] = useState();
   const queryParams = network ? { network } : {};
@@ -40,9 +43,9 @@ MyApp.getInitialProps = async appContext => {
   // calls page's `getInitialProps` and fills `appProps.pageProps`
   const appProps = await App.getInitialProps(appContext);
 
-  fetchAllContent();
+  const content = fetchAllContent();
 
-  return { ...appProps };
+  return { ...appProps, content };
 };
 
 export default MyApp;
