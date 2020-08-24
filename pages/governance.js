@@ -13,49 +13,9 @@ import {
 } from 'theme-ui';
 import Link from 'next/link';
 import SingleLayout from '../layouts/SingleLayout.js';
+import GuideList from 'components/GuideList';
 
 const content = [
-  [
-    'Guides',
-    'text goes here',
-    () => {
-      const guides = [
-        [
-          'How to la la',
-          'Maker is unlocking the power of decentralized finance for everyone by creating an inclusive platform for economic empowerment',
-        ],
-        [
-          'How to la la',
-          'Maker is unlocking the power of decentralized finance for everyone by creating an inclusive platform for economic empowerment',
-        ],
-        [
-          'How to la la',
-          'Maker is unlocking the power of decentralized finance for everyone by creating an inclusive platform for economic empowerment',
-        ],
-        [
-          'How to la la',
-          'Maker is unlocking the power of decentralized finance for everyone by creating an inclusive platform for economic empowerment',
-        ],
-      ];
-
-      return (
-        <Flex>
-          {guides.map(([title, text]) => {
-            return (
-              <Card
-                sx={{
-                  mr: 3,
-                }}
-              >
-                <Heading>{title}</Heading>
-                <Text>{text}</Text>
-              </Card>
-            );
-          })}
-        </Flex>
-      );
-    },
-  ],
   [
     'Documentation',
     '',
@@ -93,9 +53,9 @@ const content = [
         <Flex>
           {guides.map(title => {
             return (
-              <Card>
+              <Card key={title}>
                 <Heading>{title}</Heading>
-                <Text>{title} </Text>
+                <Text>Description</Text>
               </Card>
             );
           })}
@@ -121,11 +81,11 @@ const Governance = () => {
             <Text>Participate, vote.</Text>
           </Box>
         </Flex>
-
+        <GuideList topic={'governance'} />
         {content.map(([title, text, Content]) => {
-          console.log(Content, 'laala');
           return (
             <Flex
+              key={title}
               sx={{
                 mb: 6,
               }}

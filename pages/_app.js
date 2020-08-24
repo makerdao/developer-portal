@@ -17,6 +17,7 @@ const components = {
 const MyApp = ({ Component, pageProps, content }) => {
   const setResources = useResourceStore(state => state.setResources);
   setResources(content);
+  console.log('content', content);
   const { query } = useRouter();
   const [network, setNetwork] = useState();
   const queryParams = network ? { network } : {};

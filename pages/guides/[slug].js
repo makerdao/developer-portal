@@ -10,7 +10,6 @@ const Guide = ({ slug, list, metadata, tableOfContents }) => {
   const setResources = useResourceStore(state => state.setResources);
   setResources(list);
   const { title } = metadata;
-  console.log(metadata);
   const menu = [{ title, id: 1 }];
   const Mdx = dynamic(() => import(`content/resources/guides/${slug}.mdx`));
 
