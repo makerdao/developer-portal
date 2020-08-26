@@ -1,14 +1,10 @@
 /** @jsx jsx */
 import dynamic from 'next/dynamic';
 import { jsx } from 'theme-ui';
-import useResourceStore from 'stores/store';
-import { getFileNames } from 'lib/api';
-import { trimMdx } from 'lib/utils';
+import { fetchAllContent } from 'lib/api';
 import GuidesLayout from 'layouts/GuidesLayout';
 
-const Guide = ({ slug, list, metadata, tableOfContents }) => {
-  const setResources = useResourceStore(state => state.setResources);
-  setResources(list);
+const Guide = ({ slug, metadata, tableOfContents }) => {
   const { title } = metadata;
   const menu = [{ title, id: 1 }];
   const Mdx = dynamic(() => import(`content/resources/guides/${slug}.mdx`));
@@ -26,9 +22,12 @@ const Guide = ({ slug, list, metadata, tableOfContents }) => {
 };
 
 export async function getStaticPaths() {
-  const targetPath = 'content/resources/guides';
-  const slugs = getFileNames(targetPath);
-  const paths = slugs?.map(slug => ({ params: { slug: trimMdx(slug) } }));
+  const content = fetchAllContent();
+  const paths = content
+    ?.filter(x => x.frontMatter.contentType === 'guide')
+    .map(({ frontMatter: { slug, parent } }) => ({
+      params: { slug, module: parent },
+    }));
 
   return {
     paths,
@@ -37,24 +36,12 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const targetPath = 'content/resources/guides';
-  const slugs = getFileNames(targetPath);
-  const list = slugs.map(slug => {
-    const title =
-      require(`content/resources/guides/${slug}`).metadata?.title ?? '';
-    return {
-      slug: trimMdx(slug),
-      title,
-    };
-  });
-
   const slug = params?.slug;
   const mdx = require(`content/resources/guides/${slug}.mdx`);
 
   return {
     props: {
       slug,
-      list,
       metadata: mdx.metadata ?? {},
       tableOfContents: JSON.parse(JSON.stringify(mdx.tableOfContents())),
     },
