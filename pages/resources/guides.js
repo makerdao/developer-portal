@@ -11,6 +11,7 @@ import {
   Box,
   Link as ThemeLink,
 } from 'theme-ui';
+import SingleLayout from 'layouts/SingleLayout.js';
 import Subheader from 'components/Subheader';
 import { RESOURCE_LINKS } from 'components/MenuPopup';
 // import {
@@ -24,8 +25,7 @@ const Guides = ({ list }) => {
   const resources = useResourceStore(state => state.resources);
 
   return (
-    <>
-      <Subheader links={RESOURCE_LINKS} />
+    <SingleLayout subnavFor={'resources'}>
       <Container>
         <Box sx={{ mt: 2, ml: [0, 'auto'], mr: [null, 0] }}>
           <Heading variant="mediumHeading">Guides</Heading>
@@ -40,7 +40,7 @@ const Guides = ({ list }) => {
           </Card>
         </Box>
       </Container>
-    </>
+    </SingleLayout>
   );
 };
 

@@ -15,6 +15,7 @@ import {
 } from 'theme-ui';
 import Link from 'next/link';
 import { Icon } from '@makerdao/dai-ui-icons';
+import Subheader from 'components/Subheader';
 // import MenuPopup from 'components/MenuPopup';
 
 import Portal from './Portal';
@@ -26,16 +27,18 @@ const LINKS = [
   { url: '/', name: 'Community' },
 ];
 
-export const RESOURCE_LINKS = [
-  { url: '/resources/guides', name: 'Guides' },
-  { url: '/resources/documentation', name: 'API Documentation' },
-  { url: '/resources/community', name: 'Community Content' },
-];
+const subnavLinks = {
+  resources: [
+    { url: '/resources/guides', name: 'Guides' },
+    { url: '/resources/documentation', name: 'API Documentation' },
+    { url: '/resources/community', name: 'Community Content' },
+  ],
+};
 
 const ResourcesMenu = () => {
   return (
     <Grid>
-      {RESOURCE_LINKS.map(({ name, url }) => {
+      {subnavLinks.resources.map(({ name, url }) => {
         return (
           <Link key={name} href={{ pathname: `${url}` }} passHref>
             <NavLink>{name}</NavLink>
@@ -51,12 +54,11 @@ const template = {
 };
 
 const modules = ['governance', '/ggoverna'];
-const MenuPopup = ({ setState, state }) => {
-  const { show, left, top, name } = state;
+const MenuPopup = ({ setState, show, left, top, name }) => {
   return show ? (
     <Portal selector="#portal">
       <Card
-        onMouseLeave={() => setState({ ...state, show: false })}
+        onMouseLeave={() => setState({ show: false })}
         sx={{
           top: top,
           left: left,
@@ -130,9 +132,10 @@ const NavLinks = ({ mobileOpened, setMobileOpened, setPopupState, query }) =>
     </>
   ));
 
-const Header = ({ query }) => {
+const Header = ({ query, subnavFor }) => {
   const [mobileOpened, setMobileOpened] = useState(false);
   const [popupState, setPopupState] = useState({ show: false });
+  const { show, left, top, name } = popupState;
   return (
     <Container
       as="header"
@@ -173,7 +176,13 @@ const Header = ({ query }) => {
             <NavLinks
               {...{ mobileOpened, setMobileOpened, setPopupState, query }}
             />
-            <MenuPopup setState={setPopupState} state={popupState} />
+            <MenuPopup
+              setState={setPopupState}
+              show={show}
+              left={left}
+              top={top}
+              name={name}
+            />
           </Flex>
           <Icon
             name={mobileOpened ? 'close' : 'menu'}
@@ -189,6 +198,7 @@ const Header = ({ query }) => {
           />
         </Flex>
       </Flex>
+      {subnavFor && <Subheader links={subnavLinks[subnavFor]} />}
     </Container>
   );
 };
