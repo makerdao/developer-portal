@@ -18,7 +18,7 @@ const GuideList = ({ topic }) => {
         <Heading>Guides</Heading>
         <Text>text goes here</Text>
         <Flex>
-          {guides.map(({ frontMatter: { title, slug } }) => {
+          {guides.map(({ frontMatter: { title, slug, description } }) => {
             return (
               <Card
                 key={title}
@@ -29,7 +29,7 @@ const GuideList = ({ topic }) => {
                 <Link key={title} href={`/guides/${slug}/`}>
                   <Heading as="a">{title}</Heading>
                 </Link>
-                <Text>description</Text>
+                <Text>{description}</Text>
               </Card>
             );
           })}

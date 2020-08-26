@@ -3,6 +3,7 @@
   "importedPath": "/",
   "frontMatter": {
     "slug": "file-slug-title",
+    "description": "Short Description",
     "tags": ["daijs", "oracles"],
     "parent": "oracles",
     "contentType": "guide"
