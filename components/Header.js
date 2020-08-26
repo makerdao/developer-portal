@@ -22,7 +22,7 @@ import Portal from './Portal';
 const LINKS = [
   { url: '/technology', name: 'Technology' },
   { url: '/governance', name: 'Modules' },
-  { url: '/resources', name: 'Resources', popup: true },
+  { url: '/resources', name: 'Resources', type: 'menu', popup: true },
   { url: '/', name: 'Community' },
 ];
 
@@ -32,7 +32,7 @@ export const RESOURCE_LINKS = [
   { url: '/resources/community', name: 'Community Content' },
 ];
 
-const ResourcesMenu = ({ links }) => {
+const ResourcesMenu = () => {
   return (
     <Grid>
       {RESOURCE_LINKS.map(({ name, url }) => {
@@ -71,39 +71,63 @@ const MenuPopup = ({ setState, state }) => {
 };
 
 const NavLinks = ({ mobileOpened, setMobileOpened, setPopupState, query }) =>
-  LINKS.map(({ name, url, popup }) => (
-    <Link href={{ pathname: url, query }} passHref key={name}>
-      {mobileOpened ? (
-        <NavLink
-          sx={{ '&:last-child': { pr: [null, 0] } }}
-          onClick={() => setMobileOpened(false)}
-          variant="links.nav"
-        >
-          {name}
-        </NavLink>
+  LINKS.map(({ name, url, type, popup }) => (
+    <>
+      {type === 'menu' ? (
+        mobileOpened ? null : (
+          <Text
+            variant="links.nav"
+            onMouseEnter={
+              popup &&
+              (e => {
+                const targetRect = e.target.getBoundingClientRect();
+                setPopupState({
+                  name,
+                  show: true,
+                  left: targetRect.left - targetRect.width / 2,
+                  top: targetRect.bottom,
+                });
+              })
+            }
+          >
+            {name}
+          </Text>
+        )
       ) : (
-        <NavLink
-          sx={{
-            '&:last-child': { pr: [null, 0] },
-          }}
-          onMouseEnter={
-            popup &&
-            (e => {
-              const targetRect = e.target.getBoundingClientRect();
-              setPopupState({
-                name,
-                show: true,
-                left: targetRect.left - targetRect.width / 2,
-                top: targetRect.bottom,
-              });
-            })
-          }
-          variant="links.nav"
-        >
-          {name}
-        </NavLink>
+        <Link href={{ pathname: url, query }} passHref key={name}>
+          {mobileOpened ? (
+            <NavLink
+              sx={{ '&:last-child': { pr: [null, 0] } }}
+              onClick={() => setMobileOpened(false)}
+              variant="links.nav"
+            >
+              {name}
+            </NavLink>
+          ) : (
+            <NavLink
+              sx={{
+                '&:last-child': { pr: [null, 0] },
+              }}
+              onMouseEnter={
+                popup &&
+                (e => {
+                  const targetRect = e.target.getBoundingClientRect();
+                  setPopupState({
+                    name,
+                    show: true,
+                    left: targetRect.left - targetRect.width / 2,
+                    top: targetRect.bottom,
+                  });
+                })
+              }
+              variant="links.nav"
+            >
+              {name}
+            </NavLink>
+          )}
+        </Link>
       )}
-    </Link>
+    </>
   ));
 
 const Header = ({ query }) => {
