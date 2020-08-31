@@ -31,6 +31,7 @@ const content = [
           {guides.map(title => {
             return (
               <Box
+                key={title}
                 sx={{
                   mt: 3,
                 }}

@@ -4,9 +4,9 @@ import { useRouter } from 'next/router';
 import { ThemeProvider } from 'theme-ui';
 import ThemeUIPrism from '@theme-ui/prism';
 import PrismCore from 'prismjs/components/prism-core';
-import useResourceStore from 'stores/store';
 import { fetchAllContent } from '../lib/api';
 import MakerProvider from '../providers/MakerProvider';
+import ResourceProvider from '../providers/ResourceProvider';
 import theme from '../theme';
 
 const components = {
@@ -15,9 +15,6 @@ const components = {
 };
 
 const MyApp = ({ Component, pageProps, content }) => {
-  const setResources = useResourceStore(state => state.setResources);
-  setResources(content);
-  console.log('content', content);
   const { query } = useRouter();
   const [network, setNetwork] = useState();
   const queryParams = network ? { network } : {};
@@ -29,7 +26,9 @@ const MyApp = ({ Component, pageProps, content }) => {
   return (
     <ThemeProvider theme={theme} components={components}>
       <MakerProvider network={network}>
-        <Component {...pageProps} />
+        <ResourceProvider resources={content}>
+          <Component {...pageProps} />
+        </ResourceProvider>
       </MakerProvider>
     </ThemeProvider>
   );
