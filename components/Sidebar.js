@@ -4,8 +4,6 @@ import { jsx, Flex, NavLink, Box } from 'theme-ui';
 import Link from 'next/link';
 
 const MenuItem = ({ resourcePath, slug, title, anchor, root }) => {
-  // TODO something wrong with the toc-module plugin
-  if (typeof title !== 'string') title = anchor;
   return (
     <Box
       as="li"
@@ -44,18 +42,20 @@ const Sidebar = ({ resourcePath, slug, menu, toc = [] }) => {
           px: 2,
         }}
       >
-        {toc.map(({ title, id, children }) => {
+        {toc.map(({ content, slug: heading, lvl }) => {
+          const root = lvl === 1;
           return (
-            <Fragment key={id}>
-              <MenuItem
-                resourcePath={resourcePath}
-                slug={slug}
-                key={id}
-                title={title}
-                anchor={id}
-                root
-              />
-              {children && children.length > 0 && (
+            <Fragment key={slug}>
+              {root ? (
+                <MenuItem
+                  resourcePath={resourcePath}
+                  slug={slug}
+                  key={slug}
+                  title={content}
+                  anchor={heading}
+                  root
+                />
+              ) : (
                 <ul
                   sx={{
                     m: 0,
@@ -63,15 +63,13 @@ const Sidebar = ({ resourcePath, slug, menu, toc = [] }) => {
                     pl: 3,
                   }}
                 >
-                  {children.map(({ title, id }) => (
-                    <MenuItem
-                      resourcePath={resourcePath}
-                      slug={slug}
-                      key={id}
-                      title={title}
-                      anchor={id}
-                    />
-                  ))}
+                  <MenuItem
+                    resourcePath={resourcePath}
+                    slug={slug}
+                    key={slug}
+                    title={content}
+                    anchor={heading}
+                  />
                 </ul>
               )}
             </Fragment>

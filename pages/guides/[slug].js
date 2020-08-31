@@ -5,7 +5,7 @@ import useResources from 'hooks/useResources';
 import ReactMarkdown from 'react-markdown';
 import GuidesLayout from 'layouts/GuidesLayout';
 
-const Guide = ({ metadata = {}, tableOfContents = {} }) => {
+const Guide = ({ metadata = {} }) => {
   const { query } = useRouter();
   const resources = useResources();
   const guide = resources.find(
@@ -20,7 +20,7 @@ const Guide = ({ metadata = {}, tableOfContents = {} }) => {
     <GuidesLayout
       slug={guide.frontMatter.slug}
       menu={menu}
-      toc={[]}
+      toc={guide.toc}
       resourcePath={'guides'}
     >
       <ReactMarkdown source={guide.content} />

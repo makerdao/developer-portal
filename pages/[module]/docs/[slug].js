@@ -5,7 +5,7 @@ import useResources from 'hooks/useResources';
 import ReactMarkdown from 'react-markdown';
 import DocumentationLayout from 'layouts/DocumentationLayout';
 
-const Document = ({ slug, module, metadata = {}, tableOfContents }) => {
+const Document = ({ metadata = {} }) => {
   const { query } = useRouter();
   const resources = useResources();
   const doc = resources.find(
@@ -21,7 +21,7 @@ const Document = ({ slug, module, metadata = {}, tableOfContents }) => {
     <DocumentationLayout
       slug={doc.frontMatter.parent}
       menu={menu}
-      toc={tableOfContents}
+      toc={doc.toc}
       resourcePath={`${doc.frontMatter.parent}/docs`}
     >
       <ReactMarkdown source={doc.content} />
