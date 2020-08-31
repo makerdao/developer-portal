@@ -1,11 +1,11 @@
 /** @jsx jsx */
 import { jsx, Card, Grid } from 'theme-ui';
 import Sidebar from '../components/Sidebar';
-import KnowledgebaseLayout from 'layouts/KnowledgebaseLayout';
+import SingleLayout from 'layouts/SingleLayout';
 
 const DocumentationLayout = ({ resourcePath, slug, menu, toc, children }) => {
   return (
-    <KnowledgebaseLayout>
+    <SingleLayout>
       <Grid columns={['auto', '200px auto']} gap="0">
         <Sidebar
           resourcePath={resourcePath}
@@ -15,7 +15,7 @@ const DocumentationLayout = ({ resourcePath, slug, menu, toc, children }) => {
         />
         <Card sx={{ py: 0, px: 4 }}>{children}</Card>
       </Grid>
-    </KnowledgebaseLayout>
+    </SingleLayout>
   );
 };
 
