@@ -1,12 +1,15 @@
 /** @jsx jsx */
 import { jsx, Card, Heading, Text, Box, Flex } from 'theme-ui';
-import useResourceStore from 'stores/store';
+import useResources from 'hooks/useResources';
 import Link from 'next/link';
 
 const GuideList = ({ topic }) => {
-  const setGuidesByTag = useResourceStore(state => state.setGuidesByTag);
-  setGuidesByTag(topic);
-  const guides = useResourceStore(state => state.guides);
+  const resources = useResources();
+  const guides = resources.filter(
+    r =>
+      r.frontMatter.contentType === 'guide' &&
+      r.frontMatter.tags.includes(topic)
+  );
 
   return (
     <Flex
