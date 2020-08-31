@@ -1,7 +1,6 @@
 /** @jsx jsx */
-import { jsx, Card, Grid } from 'theme-ui';
+import { jsx, Card, Grid, BaseStyles } from 'theme-ui';
 import Sidebar from '../components/Sidebar';
-import Infobar from '../components/Infobar';
 import SingleLayout from 'layouts/SingleLayout';
 
 const GuidesLayout = ({ resourcePath, slug, menu, toc, children }) => {
@@ -14,8 +13,9 @@ const GuidesLayout = ({ resourcePath, slug, menu, toc, children }) => {
           menu={menu}
           toc={toc}
         />
-        <Card sx={{ py: 0, px: 4 }}>{children}</Card>
-        <Infobar />
+        <Card sx={{ py: 0, px: 4 }}>
+          <BaseStyles>{children}</BaseStyles>
+        </Card>
       </Grid>
     </SingleLayout>
   );
