@@ -12,6 +12,7 @@ import {
   Image,
 } from 'theme-ui';
 import Link from 'next/link';
+import useResources from 'hooks/useResources';
 import SingleLayout from '../layouts/SingleLayout.js';
 import GuideList from 'components/GuideList';
 
@@ -67,6 +68,12 @@ const content = [
 ];
 
 const Governance = () => {
+  const resources = useResources();
+  const guides = resources.filter(
+    r =>
+      r.frontMatter.contentType === 'guide' &&
+      r.frontMatter.tags.includes('governance')
+  );
   return (
     <SingleLayout>
       <Container>
@@ -82,7 +89,7 @@ const Governance = () => {
             <Text>Participate, vote.</Text>
           </Box>
         </Flex>
-        <GuideList topic={'governance'} />
+        <GuideList guides={guides} />
         {content.map(([title, text, Content]) => {
           return (
             <Flex
