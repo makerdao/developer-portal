@@ -19,7 +19,7 @@ const Document = ({ metadata = {} }) => {
 
   return (
     <DocumentationLayout
-      slug={doc.frontMatter.parent}
+      slug={doc.frontMatter.slug}
       menu={menu}
       toc={doc.toc}
       resourcePath={`${doc.frontMatter.parent}/docs`}
