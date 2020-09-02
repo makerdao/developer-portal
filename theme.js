@@ -36,6 +36,14 @@ const theme = {
     ul: {
       pl: 4,
     },
+    pre: {
+      bg: 'background',
+    },
+    code: {
+      ...makerTheme.styles.code,
+      p: 0,
+      m: 0,
+    },
     // applies to single-backticks
     inlineCode: {
       fontFamily: 'monospace',

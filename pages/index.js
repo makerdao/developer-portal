@@ -5,7 +5,9 @@ import Link from 'next/link';
 import useResources from 'hooks/useResources';
 import SingleLayout from '../layouts/SingleLayout.js';
 import GuideList from 'components/GuideList';
-import { default as featured } from 'data/featuredGuides.json';
+import DocumentationList from 'components/DocumentationList';
+import { default as featGuides } from 'data/featuredGuides.json';
+import { default as featDocs } from 'data/featuredDocs.json';
 
 const content = [
   ['decentralized finance', 'text goes here', 'Learn More', '/technology'],
@@ -14,10 +16,18 @@ const content = [
 
 const Index = () => {
   const resources = useResources();
-  const guides = resources.filter(r => {
-    const idx = featured.indexOf(r.frontMatter.slug);
-    if (idx !== -1) return r.frontMatter.slug === featured[idx];
+
+  const initialGuides = resources.filter(r => {
+    const idx = featGuides.indexOf(r.frontMatter.slug);
+    if (idx !== -1) return r.frontMatter.slug === featGuides[idx];
   });
+  const initialDocs = resources.filter(r => {
+    const idx = featDocs.indexOf(r.frontMatter.slug);
+    if (idx !== -1) return r.frontMatter.slug === featDocs[idx];
+  });
+  const [guides, setGuides] = useState(initialGuides);
+  const [docs, setDocs] = useState(initialDocs);
+
   return (
     <SingleLayout>
       <Container>
@@ -33,7 +43,6 @@ const Index = () => {
             <Text>For developers</Text>
           </Box>
         </Flex>
-        <GuideList guides={guides} />
         {content.map(([title, text, cta, ctaRoute]) => {
           return (
             <Flex
@@ -52,6 +61,8 @@ const Index = () => {
             </Flex>
           );
         })}
+        <GuideList guides={guides} />
+        <DocumentationList docs={docs} />
       </Container>
     </SingleLayout>
   );
