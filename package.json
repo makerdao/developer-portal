@@ -26,6 +26,7 @@
     "@theme-ui/prism": "^0.3.0",
     "babel-plugin-import-glob-array": "^0.2.0",
     "bignumber.js": "^9.0.0",
+    "globby": "^11.0.1",
     "gray-matter": "^4.0.2",
     "ipfs": "^0.43.3",
     "jest-transformer-mdx": "^2.1.0",
@@ -54,6 +55,6 @@
     "eslint-plugin-react-hooks": "^4.0.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^26.0.1",
-    "prettier": "^2.0.5"
+    "prettier": "^2.1.1"
   }
 }

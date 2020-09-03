@@ -2,14 +2,20 @@
 
 module.exports = {
   pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
-  webpack: (config, options) => {
+  webpack: (config, { defaultLoaders, isServer }) => {
     config.module.rules.push({
       test: /\.(md|mdx)$/,
-      use: [options.defaultLoaders.babel, 'raw-loader'],
+      use: [defaultLoaders.babel, 'raw-loader'],
     });
+
     config.node = {
       fs: 'empty',
     };
+
+    if (isServer) {
+      require('./scripts/generate-sitemap');
+    }
+
     return config;
   },
 };
