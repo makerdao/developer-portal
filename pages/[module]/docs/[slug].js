@@ -4,57 +4,52 @@ import { jsx } from 'theme-ui';
 import useResources from 'hooks/useResources';
 import ReactMarkdown from 'react-markdown';
 import DocumentationLayout from 'layouts/DocumentationLayout';
+import { fetchAllContent } from 'lib/api';
 
-const Document = ({ metadata = {} }) => {
-  const { query } = useRouter();
-  const resources = useResources();
-  const doc = resources.find(
-    r =>
-      r.frontMatter.contentType === 'documentation' &&
-      r.frontMatter.slug === query.slug
-  );
-
+const Document = ({ slug, module, markdownBody, toc, metadata = {} }) => {
   const { title } = metadata;
   const menu = [{ title: '', id: 1 }];
 
   return (
     <DocumentationLayout
-      slug={doc.frontMatter.slug}
+      slug={slug}
       menu={menu}
-      toc={doc.toc}
-      resourcePath={`${doc.frontMatter.parent}/docs`}
+      toc={toc}
+      resourcePath={`${module}/docs`}
     >
-      <ReactMarkdown source={doc.content} />
+      <ReactMarkdown source={markdownBody} />
     </DocumentationLayout>
   );
 };
 
-// export async function getStaticPaths() {
-//   const content = fetchAllContent();
-//   const paths = content
-//     ?.filter(x => x.frontMatter.contentType === 'documentation')
-//     .map(({ frontMatter: { slug, parent } }) => ({
-//       params: { slug, module: parent },
-//     }));
+export async function getStaticPaths() {
+  const content = fetchAllContent();
+  const paths = content
+    ?.filter(x => x.frontMatter.contentType === 'documentation')
+    .map(({ frontMatter: { slug, parent } }) => ({
+      params: { slug, module: parent },
+    }));
 
-//   return {
-//     paths,
-//     fallback: false,
-//   };
-// }
+  return {
+    paths,
+    fallback: false,
+  };
+}
 
-// export async function getStaticProps({ params }) {
-//   const slug = params?.slug;
-//   const module = params?.module;
-//   const mdx = require(`content/resources/documentation/${slug}.mdx`);
-//   return {
-//     props: {
-//       slug,
-//       module,
-//       metadata: mdx.metadata ?? {},
-//       tableOfContents: [], //JSON.parse(JSON.stringify(mdx.tableOfContents())),
-//     },
-//   };
-// }
+export async function getStaticProps({ params }) {
+  const slug = params?.slug;
+  const module = params?.module;
+
+  const content = fetchAllContent();
+  const doc = content?.find(x => x.frontMatter.slug === slug);
+  return {
+    props: {
+      slug,
+      module,
+      markdownBody: doc.content,
+      toc: doc.toc,
+    },
+  };
+}
 
 export default Document;

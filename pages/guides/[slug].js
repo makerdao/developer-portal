@@ -4,55 +4,46 @@ import { jsx } from 'theme-ui';
 import useResources from 'hooks/useResources';
 import ReactMarkdown from 'react-markdown';
 import GuidesLayout from 'layouts/GuidesLayout';
+import { fetchAllContent } from 'lib/api';
 
-const Guide = ({ metadata = {} }) => {
-  const { query } = useRouter();
-  const resources = useResources();
-  const guide = resources.find(
-    r =>
-      r.frontMatter.contentType === 'guide' && r.frontMatter.slug === query.slug
-  );
-
+const Guide = ({ slug, markdownBody, toc, metadata = {} }) => {
   const { title } = metadata;
   const menu = [{ title, id: 1 }];
 
   return (
-    <GuidesLayout
-      slug={guide.frontMatter.slug}
-      menu={menu}
-      toc={guide.toc}
-      resourcePath={'guides'}
-    >
-      <ReactMarkdown source={guide.content} />
+    <GuidesLayout slug={slug} menu={menu} toc={toc} resourcePath={'guides'}>
+      <ReactMarkdown source={markdownBody} />
     </GuidesLayout>
   );
 };
 
-// export async function getStaticPaths() {
-//   const content = fetchAllContent();
-//   const paths = content
-//     ?.filter(x => x.frontMatter.contentType === 'guide')
-//     .map(({ frontMatter: { slug, parent } }) => ({
-//       params: { slug, module: parent },
-//     }));
+export async function getStaticPaths() {
+  const content = fetchAllContent();
+  const paths = content
+    ?.filter(x => x.frontMatter.contentType === 'guide')
+    .map(({ frontMatter: { slug, parent } }) => ({
+      params: { slug, module: parent },
+    }));
 
-//   return {
-//     paths,
-//     fallback: false,
-//   };
-// }
+  return {
+    paths,
+    fallback: false,
+  };
+}
 
-// export async function getStaticProps({ params }) {
-//   const slug = params?.slug;
-//   const mdx = require(`content/resources/guides/${slug}.mdx`);
+export async function getStaticProps({ params }) {
+  const slug = params?.slug;
 
-//   return {
-//     props: {
-//       slug,
-//       metadata: mdx.metadata ?? {},
-//       tableOfContents: [], //JSON.parse(JSON.stringify(mdx.tableOfContents())),
-//     },
-//   };
-// }
+  const content = fetchAllContent();
+  const doc = content?.find(x => x.frontMatter.slug === slug);
+
+  return {
+    props: {
+      slug,
+      markdownBody: doc.content,
+      toc: doc.toc,
+    },
+  };
+}
 
 export default Guide;

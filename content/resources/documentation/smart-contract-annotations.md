@@ -2,7 +2,7 @@
 title: 'Smart Contract Annotations'
 description: In-line comments on the Maker Protocol's Core Smart Contracts
 tags: ['keepers']
-slug: 'market-maker-keeper-bot-setup-guide'
+slug: 'smart-contract-annotations'
 parent: 'governance'
 contentType: 'documentation'
 ---
