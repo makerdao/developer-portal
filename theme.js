@@ -8,6 +8,18 @@ const theme = {
   ...makerTheme,
   icons,
 
+  colors: {
+    ...makerTheme.colors,
+    background: '#242134',
+    surface: '#282538',
+    text: '#eaebf0',
+    onBackground: '#eaebf0',
+
+    muted: '#282538',
+    onBackgroundAlt: '#ABA8bc',
+    onSurface: '#ABA8bc',
+  },
+
   links: {
     ...makerTheme.links,
     sidebar: {
@@ -35,6 +47,14 @@ const theme = {
     },
     ul: {
       pl: 4,
+    },
+    pre: {
+      bg: 'background',
+    },
+    code: {
+      ...makerTheme.styles.code,
+      p: 0,
+      m: 0,
     },
     // applies to single-backticks
     inlineCode: {

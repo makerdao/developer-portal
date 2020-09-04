@@ -1,44 +1,75 @@
-import { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
+import React from 'react';
+import App from 'next/app';
 import { ThemeProvider } from 'theme-ui';
-import ThemeUIPrism from '@theme-ui/prism';
-import PrismCore from 'prismjs/components/prism-core';
-import MakerProvider from '../providers/MakerProvider';
+import { TinaProvider, TinaCMS } from 'tinacms';
+import { TinacmsGithubProvider, GithubMediaStore } from 'react-tinacms-github';
+import { AlpacaGitHubClient } from '../utils/githubClient';
 import theme from '../theme';
 
-const components = {
-  pre: ({ children }) => <>{children}</>,
-  code: props => <ThemeUIPrism {...props} Prism={PrismCore} />,
+class MyApp extends App {
+  constructor(props) {
+    super(props);
+    const client = new AlpacaGitHubClient({
+      proxy: '/api/proxy-github',
+      authCallbackRoute: '/api/create-github-access-token',
+      clientId: process.env.GITHUB_CLIENT_ID,
+      baseRepoFullName: process.env.REPO_FULL_NAME, // e.g: tinacms/tinacms.org,
+      baseBranch: process.env.BASE_BRANCH,
+      authScope: 'repo',
+    });
+    const store = new GithubMediaStore(client);
+    this.cms = new TinaCMS({
+      enabled: props.pageProps.preview,
+      media: {
+        store: store,
+      },
+      apis: {
+        /**
+         * 2. Register the GithubClient
+         */
+        github: client,
+      },
+      sidebar: false,
+      toolbar: props.pageProps.preview,
+    });
+  }
+
+  render() {
+    const { Component, pageProps } = this.props;
+    return (
+      <ThemeProvider theme={theme}>
+        <TinaProvider cms={this.cms}>
+          <TinacmsGithubProvider
+            onLogin={enterEditMode}
+            onLogout={exitEditMode}
+            error={pageProps.error}
+          >
+            <Component {...pageProps} />
+          </TinacmsGithubProvider>
+        </TinaProvider>
+      </ThemeProvider>
+    );
+  }
+}
+
+const enterEditMode = () => {
+  const token = localStorage.getItem('tinacms-github-token') || null;
+
+  const headers = new Headers();
+
+  if (token) {
+    headers.append('Authorization', 'Bearer ' + token);
+  }
+
+  return fetch('/api/preview', { headers: headers }).then(() => {
+    window.location.href = window.location.pathname;
+  });
 };
 
-const MyApp = ({ Component, pageProps }) => {
-  const { query } = useRouter();
-  const [network, setNetwork] = useState();
-  const queryParams = network ? { network } : {};
-
-  useEffect(() => {
-    setNetwork(query.network);
-  }, [query.network]);
-
-  return (
-    <ThemeProvider theme={theme} components={components}>
-      <MakerProvider network={network}>
-        <Component {...pageProps} />
-      </MakerProvider>
-    </ThemeProvider>
-  );
+const exitEditMode = () => {
+  return fetch('/api/reset-preview').then(() => {
+    window.location.reload();
+  });
 };
-
-// Only uncomment this method if you have blocking data requirements for
-// every single page in your application. This disables the ability to
-// perform automatic static optimization, causing every page in your app to
-// be server-side rendered.
-//
-// MyApp.getInitialProps = async (appContext) => {
-//   // calls page's `getInitialProps` and fills `appProps.pageProps`
-//   const appProps = await App.getInitialProps(appContext);
-//
-//   return { ...appProps }
-// }
 
 export default MyApp;

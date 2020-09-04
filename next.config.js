@@ -1,16 +1,34 @@
-const slug = require('remark-slug');
-const mdxTableOfContents = require('./lib/toc-module');
+const path = require('path');
+const withSvgr = require('next-svgr');
+require('dotenv').config();
 
-const withMDX = require('@next/mdx')({
-  extension: /\.(md|mdx)$/,
-  options: {
-    remarkPlugins: [slug],
-    compilers: [mdxTableOfContents],
+module.exports = withSvgr({
+  webpack: (config) => {
+    config.node = {
+      fs: 'empty',
+    };
+    config.module.rules.push({
+      test: /\.md$/,
+      use: 'raw-loader',
+    });
+
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      '@components': path.resolve(__dirname, './components'),
+      '@layouts': path.resolve(__dirname, './layouts'),
+      '@utils': path.resolve(__dirname, './utils'),
+      '@docs': path.resolve(__dirname, './docs'),
+      '@hooks': path.resolve(__dirname, './hooks'),
+    };
+
+    return config;
   },
-});
-module.exports = withMDX({
-  pageExtensions: ['js', 'jsx', 'md', 'mdx'],
   env: {
-    IPFS: process.env.IPFS,
+    GITHUB_CLIENT_ID: process.env.GITHUB_CLIENT_ID,
+    REPO_FULL_NAME: process.env.REPO_FULL_NAME,
+    BASE_BRANCH: process.env.BASE_BRANCH,
+    ALGOLIA_APP_ID: process.env.ALGOLIA_APP_ID,
+    ALGOLIA_API_KEY: process.env.ALGOLIA_API_KEY,
+    FEEDBACK_ENDPOINT: process.env.FEEDBACK_ENDPOINT,
   },
 });

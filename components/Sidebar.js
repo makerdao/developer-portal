@@ -3,9 +3,7 @@ import { Fragment } from 'react';
 import { jsx, Flex, NavLink, Box } from 'theme-ui';
 import Link from 'next/link';
 
-const MenuItem = ({ resourceType, slug, title, anchor, root }) => {
-  // TODO something wrong with the toc-module plugin
-  if (typeof title !== 'string') title = anchor;
+const MenuItem = ({ resourcePath, slug, title, anchor, root }) => {
   return (
     <Box
       as="li"
@@ -13,10 +11,7 @@ const MenuItem = ({ resourceType, slug, title, anchor, root }) => {
         variant: 'styles.fakeLi',
       }}
     >
-      <Link
-        href={`/resources/${resourceType}/[slug]`}
-        as={`/resources/${resourceType}/${slug}#${anchor}`}
-      >
+      <Link href={`/${resourcePath}/[slug]`} as={`/${resourcePath}/${slug}#${anchor}`}>
         <NavLink
           variant="sidebar"
           sx={{
@@ -34,7 +29,7 @@ const MenuItem = ({ resourceType, slug, title, anchor, root }) => {
   );
 };
 
-const Sidebar = ({ resourceType, slug, menu, toc = [] }) => {
+const Sidebar = ({ resourcePath, slug, menu, toc = [] }) => {
   return (
     <aside>
       <Flex
@@ -44,18 +39,20 @@ const Sidebar = ({ resourceType, slug, menu, toc = [] }) => {
           px: 2,
         }}
       >
-        {toc.map(({ title, id, children }) => {
+        {toc.map(({ content, slug: heading, lvl }) => {
+          const root = lvl === 1;
           return (
-            <Fragment key={id}>
-              <MenuItem
-                resourceType={resourceType}
-                slug={slug}
-                key={id}
-                title={title}
-                anchor={id}
-                root
-              />
-              {children && children.length > 0 && (
+            <Fragment key={slug}>
+              {root ? (
+                <MenuItem
+                  resourcePath={resourcePath}
+                  slug={slug}
+                  key={slug}
+                  title={content}
+                  anchor={heading}
+                  root
+                />
+              ) : (
                 <ul
                   sx={{
                     m: 0,
@@ -63,15 +60,13 @@ const Sidebar = ({ resourceType, slug, menu, toc = [] }) => {
                     pl: 3,
                   }}
                 >
-                  {children.map(({ title, id }) => (
-                    <MenuItem
-                      resourceType={resourceType}
-                      slug={slug}
-                      key={id}
-                      title={title}
-                      anchor={id}
-                    />
-                  ))}
+                  <MenuItem
+                    resourcePath={resourcePath}
+                    slug={slug}
+                    key={slug}
+                    title={content}
+                    anchor={heading}
+                  />
                 </ul>
               )}
             </Fragment>

@@ -15,10 +15,10 @@ import {
 } from 'theme-ui';
 import Link from 'next/link';
 import { Icon } from '@makerdao/dai-ui-icons';
-import Subheader from 'components/Subheader';
+// import Subheader from "components/Subheader"
 // import MenuPopup from 'components/MenuPopup';
 
-import Portal from './Portal';
+// import Portal from "./Portal"
 
 const LINKS = [
   { url: '/technology', name: 'Technology' },
@@ -54,23 +54,23 @@ const template = {
 };
 
 const modules = ['governance', '/ggoverna'];
-const MenuPopup = ({ setState, show, left, top, name }) => {
-  return show ? (
-    <Portal selector="#portal">
-      <Card
-        onMouseLeave={() => setState({ show: false })}
-        sx={{
-          top: top,
-          left: left,
-          zIndex: 100,
-          position: 'fixed',
-        }}
-      >
-        {template[name]}
-      </Card>
-    </Portal>
-  ) : null;
-};
+// const MenuPopup = ({ setState, show, left, top, name }) => {
+//   return show ? (
+//     <Portal selector="#portal">
+//       <Card
+//         onMouseLeave={() => setState({ show: false })}
+//         sx={{
+//           top: top,
+//           left: left,
+//           zIndex: 100,
+//           position: "fixed",
+//         }}
+//       >
+//         {template[name]}
+//       </Card>
+//     </Portal>
+//   ) : null
+// }
 
 const NavLinks = ({ mobileOpened, setMobileOpened, setPopupState, query }) =>
   LINKS.map(({ name, url, type, popup }) => (
@@ -81,7 +81,7 @@ const NavLinks = ({ mobileOpened, setMobileOpened, setPopupState, query }) =>
             variant="links.nav"
             onMouseEnter={
               popup &&
-              (e => {
+              ((e) => {
                 const targetRect = e.target.getBoundingClientRect();
                 setPopupState({
                   name,
@@ -112,7 +112,7 @@ const NavLinks = ({ mobileOpened, setMobileOpened, setPopupState, query }) =>
               }}
               onMouseEnter={
                 popup &&
-                (e => {
+                ((e) => {
                   const targetRect = e.target.getBoundingClientRect();
                   setPopupState({
                     name,
@@ -173,16 +173,8 @@ const Header = ({ query, subnavFor }) => {
               }),
             }}
           >
-            <NavLinks
-              {...{ mobileOpened, setMobileOpened, setPopupState, query }}
-            />
-            <MenuPopup
-              setState={setPopupState}
-              show={show}
-              left={left}
-              top={top}
-              name={name}
-            />
+            <NavLinks {...{ mobileOpened, setMobileOpened, setPopupState, query }} />
+            {/* <MenuPopup setState={setPopupState} show={show} left={left} top={top} name={name} /> */}
           </Flex>
           <Icon
             name={mobileOpened ? 'close' : 'menu'}
@@ -198,7 +190,7 @@ const Header = ({ query, subnavFor }) => {
           />
         </Flex>
       </Flex>
-      {subnavFor && <Subheader links={subnavLinks[subnavFor]} />}
+      {/* {subnavFor && <Subheader links={subnavLinks[subnavFor]} />} */}
     </Container>
   );
 };

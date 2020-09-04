@@ -1,42 +1,29 @@
-import React from 'react';
-import Document, { Html, Head, Main, NextScript } from 'next/document';
-import { InitializeColorMode } from 'theme-ui';
+import Document from "next/document"
+import { ServerStyleSheet } from "styled-components"
 
-const ipfsScript = `
-(function () {
-  const { pathname } = window.location
-  const ipfsMatch = /.*\\/Qm\\w{44}\\//.exec(pathname)
-  const base = document.createElement('base')
-
-  base.href = ipfsMatch ? ipfsMatch[0] : '/'
-  document.head.append(base)
-})();
-`;
-
-class MyDocument extends Document {
+export default class MyDocument extends Document {
   static async getInitialProps(ctx) {
-    const initialProps = await Document.getInitialProps(ctx);
-    return { ...initialProps };
-  }
+    const sheet = new ServerStyleSheet()
+    const originalRenderPage = ctx.renderPage
 
-  render() {
-    return (
-      <Html>
-        <Head>
-          <link rel="shortcut icon" href="/favicon.ico" />
-          {process.env.IPFS && (
-            <script dangerouslySetInnerHTML={{ __html: ipfsScript }} />
-          )}
-        </Head>
-        <body>
-          <InitializeColorMode />
-          <Main />
-          <div id="portal" />
-          <NextScript />
-        </body>
-      </Html>
-    );
+    try {
+      ctx.renderPage = () =>
+        originalRenderPage({
+          enhanceApp: (App) => (props) => sheet.collectStyles(<App {...props} />),
+        })
+
+      const initialProps = await Document.getInitialProps(ctx)
+      return {
+        ...initialProps,
+        styles: (
+          <>
+            {initialProps.styles}
+            {sheet.getStyleElement()}
+          </>
+        ),
+      }
+    } finally {
+      sheet.seal()
+    }
   }
 }
-
-export default MyDocument;
