@@ -8,6 +8,18 @@ const theme = {
   ...makerTheme,
   icons,
 
+  colors: {
+    ...makerTheme.colors,
+    background: '#242134',
+    surface: '#282538',
+    text: '#eaebf0',
+    onBackground: '#eaebf0',
+
+    muted: '#282538',
+    onBackgroundAlt: '#ABA8bc',
+    onSurface: '#ABA8bc',
+  },
+
   links: {
     ...makerTheme.links,
     sidebar: {
