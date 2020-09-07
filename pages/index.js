@@ -3,6 +3,10 @@ import { useGithubJsonForm } from 'react-tinacms-github';
 import Router from 'next/router';
 import SingleLayout from '../layouts/SingleLayout.js';
 import GuideList from '../components/GuideList';
+import ArticlesList from '../components/ArticlesList';
+import PageLead from '../components/PageLead';
+import CommunityCta from '../components/CommunityCta';
+import SignupCta from '../components/SignupCta';
 import { Container, jsx, Card, Heading, Text, Grid, Box, Flex } from 'theme-ui';
 import { createToc, getGuides } from '@utils';
 import { usePlugin } from 'tinacms';
@@ -32,7 +36,11 @@ const Page = ({ file, preview, styleFile, guides }) => {
 
   return (
     <SingleLayout>
+      <PageLead />
       <GuideList guides={initialGuides} />
+      <ArticlesList articles={[]} />
+      <CommunityCta />
+      <SignupCta />
     </SingleLayout>
   );
 };

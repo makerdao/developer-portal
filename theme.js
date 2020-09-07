@@ -20,6 +20,14 @@ const theme = {
     onSurface: '#ABA8bc',
   },
 
+  text: {
+    ...makerTheme.text,
+    megaHeading: {
+      variant: 'text.heading',
+      fontSize: [9, 10],
+    },
+  },
+
   links: {
     ...makerTheme.links,
     sidebar: {

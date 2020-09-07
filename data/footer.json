@@ -1,0 +1,45 @@
+[
+  {
+    "title": "Resources",
+    "items": [
+      { "name": "Guides", "link": "http://" },
+      { "name": "Api Documentation", "link": "http://" }
+    ]
+  },
+  {
+    "title": "Interfaces",
+    "items": [
+      { "name": "Dai", "link": "http://" },
+      { "name": "Governance", "link": "http://" },
+      { "name": "Auctions", "link": "http://" },
+      { "name": "DSR", "link": "http://" },
+      { "name": "Vaults", "link": "http://" },
+      { "name": "Oracles", "link": "http://" }
+    ]
+  },
+  {
+    "title": "Tools",
+    "items": [
+      { "name": "Data Api", "link": "http://" },
+      { "name": "Dai.js", "link": "http://" },
+      { "name": "Dai UI", "link": "http://" }
+    ]
+  },
+  {
+    "title": "Technology",
+    "items": [
+      { "name": "The Protocol", "link": "http://" },
+      { "name": "Vat", "link": "http://" }
+    ]
+  },
+  {
+    "title": "Community",
+    "items": [
+      { "name": "Comms dev  portal", "link": "http://" },
+      { "name": "Blog", "link": "http://" },
+      { "name": "Chat", "link": "http://" },
+      { "name": "Forum", "link": "http://" },
+      { "name": "Events", "link": "http://" }
+    ]
+  }
+]

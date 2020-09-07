@@ -1,44 +1,52 @@
 /** @jsx jsx */
-import { jsx, Card, Heading, Text, Box, Flex } from 'theme-ui';
+import { jsx, Card, Heading, Text, Box, Flex, Grid, Container } from 'theme-ui';
 import Link from 'next/link';
 
-const GuideList = ({ guides, title = 'Guides', subtitle = 'See our featured guides' }) => {
+const GuideList = ({ guides, title = 'Guides', cta = '→ View All', module = 'governance' }) => {
+  guides = [...guides, ...guides];
   return (
-    <Flex
-      sx={{
-        mb: 6,
-      }}
-    >
-      <Box>
-        <Heading>{title}</Heading>
-        <Text>{subtitle}</Text>
-        <Flex>
-          {guides.map(
-            ({
-              data: {
-                frontmatter: { title, slug, description },
-              },
-            }) => {
-              return (
-                <Card
-                  key={title}
-                  sx={{
-                    mr: 3,
-                  }}
-                >
-                  <Link key={title} href={`/guides/${slug}/`}>
-                    <Heading as="a" sx={{ cursor: 'pointer' }}>
-                      {title}
-                    </Heading>
-                  </Link>
-                  <Text>{description}</Text>
-                </Card>
-              );
-            }
-          )}
-        </Flex>
-      </Box>
-    </Flex>
+    <Container>
+      <Flex
+        sx={{
+          mb: 6,
+        }}
+      >
+        <Box>
+          <Flex>
+            <Heading>{title}</Heading>
+            <Text>{cta}</Text>
+          </Flex>
+          <Grid columns={[2, 4]}>
+            {guides.map(
+              ({
+                data: {
+                  frontmatter: { title, slug },
+                },
+              }) => {
+                return (
+                  <Grid
+                    key={title}
+                    sx={{
+                      mr: 3,
+                    }}
+                  >
+                    <Flex sx={{ flexDirection: 'column' }}>
+                      <Box sx={{ height: 6, border: 'light' }}></Box>
+                      <Text variant="caps">{module}</Text>
+                    </Flex>
+                    <Link key={title} href={`/guides/${slug}/`}>
+                      <Heading as="a" sx={{ cursor: 'pointer' }}>
+                        {title}
+                      </Heading>
+                    </Link>
+                  </Grid>
+                );
+              }
+            )}
+          </Grid>
+        </Box>
+      </Flex>
+    </Container>
   );
 };
 
