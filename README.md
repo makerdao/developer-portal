@@ -1,116 +1,59 @@
-# <img width="50" src="https://raw.githubusercontent.com/tinacms/tinacms.org/master/public/svg/tina-icon.svg" /> Tina Starter Alpaca
+# Dai.js frontend boilerplate app
 
-> A starting point for your documentation
+## Getting Started
 
-## :sparkles: Features
+For development run:
 
-- Full integration with [TinaCMS](https://tinacms.org)
-- Edit and add new documentation pages
-- Fully customizable Navigation
-  - Organized your documentation into groups and subgroups
-  - Change order of or the navigation
-- Theme Customization
+`yarn run dev`
 
-  - Colors
-  - Fonts
-  - Titles
+Open [http://localhost:3000](http://localhost:3000), or to connect the kovan network pass the query string `network=kovan` like this: [http://localhost:3000/?network=kovan](http://localhost:3000/?network=kovan)
 
-## :memo: Getting started on localhost
+## Theming
 
-1. Clone the repo `git clone https://github.com/tinacms/tina-starter-alpaca.git`
-2. `cd tina-starter-alpaca`
-3. [Set up a GitHub OAuth App](https://tinacms.org/guides/nextjs/github-open-authoring/github-oauth-app)
-4. Add a new file called `.env` with the credentials from your Github OAuth App
+This app uses theme-ui with the dai-ui Maker theme. For more information [see here](https://github.com/makerdao/dai-ui/tree/master/packages/dai-ui-theme-maker), or start editing the `theme.js` file right away.
 
-```env
-# OAuth App Credentials from GitHub
-GITHUB_CLIENT_ID=************
-GITHUB_CLIENT_SECRET=************
-SIGNING_KEY=*********
+## Dai.js
 
-# The path to your repository in GitHub
-REPO_FULL_NAME=<GitHub Username>/<Repo Name>
+This app includes the Dai.js SDK along with a minimal Context Provider to connect web3 browser accounts & fetch some data. By default the app will connect to mainnet. To connect to the kovan network pass the query string `network=kovan` in the URL.
 
-# The base branch that new changes and forks are created from. Defaults to 'master'.
-BASE_BRANCH=master
-```
+## MDX Support
 
-You can learn more about [Open Authoring With Github in our guide](https://tinacms.org/guides/nextjs/github-open-authoring/initial-setup)
+Included is the `next-mdx` plugin for markdown support. You can import `.mdx` files as react components, or drop files in your `pages` directory and they will be served by Next. See [here](https://github.com/mdx-js/mdx) for more information.
 
-5. Install dependencies and run the doc starter:
+## Testing
 
-```bash
-yarn install
-yarn dev
-```
+To spin up a local testchain and run jest:
 
-#### or
+`yarn test`
 
-```bash
-npm install
-npm run dev
-```
+To spin up the testchain separately:
 
-6. Your doc starter should be up and running on [http://localhost:3000](http://localhost:3000)!
+`yarn testchain`
 
-7. If you want the search functionality to work, follow these steps
+This app uses jest with [react-testing-library](https://github.com/testing-library/react-testing-library) and is preconfigured with a custom `render` function that wraps the UI elements in `ThemeProvider` and `MakerProvider`.
 
-   1. Make an account at [algolia](https://www.algolia.com/)
-   2. add environment variables to env file (found it the dashboard under the api keys tab)
+Jest is configured to look in the `test/helpers` directory for helper utilities so you can import the custom render function like this:
+`import { render } from 'render';`
 
-   ```
-    ALGOLIA_APP_ID=***
-    ALGOLIA_API_KEY=***
-    ALGOLIA_ADMIN_KEY=***
-   ```
+## IPFS
 
-   3. run `yarn create-indices` (this command will have to be run every time you wish to update the indices)
-   4. Complete the setup for each index (located on the right side panel)
-      1. Configure searchable attributes (must add excerpt)
-      2. Configure custom ranking (must add excerpt)
-   5. Test and see the search is now working
+Requires [IPFS](https://docs.ipfs.io/guides/guides/install/) to be installed locally.
+First build and export the project.
 
-## Deploy on Vercel
+`yarn build && yarn export`
 
-## Gathering Feedback with Github
+Add output directory to ipfs.
 
-People can submit  feedback from any documentation page. This feedback is immediately posted to GitHub and stored as issues to the repository of your choosing.
-GitHub issues are an awesome way to store feeback, make it searchable, filterable on page URL or reaction types for instance, and you can choose to be notified of any new comment on your website 🔔.
+`ipfs add -r out`
 
-### Setup
+## Resources
 
-1. [Make a personal GitHub access token](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token) 👈 This is the GitHub user that posts any new feedback. Feel free to create a dedicated GitHub account for this.
-2. Add the following environement variables:
-```env
-USERNAME_ISSUES=<GitHub username>
-GITHUB_ACCESS_TOKEN=<personal access token>
-REPO_ISSUES=<repository-name> 
-```
-
-Make sure issues are activated in the repository settings.
-
-3. Run NextJS in development mode to test:
-```bash
-yarn
-yarn dev
-```
-4. Submit a feedback from the form at the bottom of a documenation page on your site. 
-5.  👀 Check your GitHub repository if an issue has been created.
-
-## Gathering Feedback with another endpoint
-
-If you want to use another service ([like Formspree](https://formspree.io/)) you can change the endpoint that the form is send to. Simple add the following line to your `.env` file 
-```
-FEEDBACK_ENDPOINT=https://example.com
-```
-
-## :link: Hosting
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/project?template=https%3A%2F%2Fgithub.com%2Ftinacms%2Ftina-starter-alpaca%2F&env=REPO_FULL_NAME,GITHUB_CLIENT_ID,GITHUB_CLIENT_SECRET,SIGNING_KEY&envDescription=GitHub%20OAuth%20needed%20for%20TinaCMS&envLink=https%3A%2F%2Ftinacms.org%2Fguides%2Fnextjs%2Fgithub%2Fhosting-vercel&project-name=tinacms-next-documentation&repo-name=tinacms-next-documentation)
-
-- [See how to deploy NextJS on Vercel](https://nextjs.org/docs/deployment).
-- [You have to **create a GitHub OAuth App** with your Vercel URL](https://tinacms.org/guides/nextjs/github-open-authoring/hosting-vercel).
-
-## :octocat: Issues
-
-If you notice any bugs or have any problems please [report them here](https://github.com/tinacms/tina-starter-alpaca/issues/new)
+- [Dai.js](https://github.com/makerdao/dai.js/tree/dev/packages/dai) - Javascript SDK for interacting with the Maker system.
+- [Dai-ui](https://github.com/makerdao/dai-ui/tree/master/packages/dai-ui-theme-maker) - Theme colors and scales built with theme-ui.
+- [Theme UI](https://theme-ui.com/getting-started/) - A constraint-based system for organizing styles in UI design.
+- [Testchain](https://github.com/makerdao/testchain) - Start a local test chain with the MakerDAO contracts deployed on it, quickly and easily.
+- [MDX](https://github.com/mdx-js/mdx) - Markdown for the component era.
+- [React testing library](https://github.com/testing-library/react-testing-library) - Simple and complete React DOM testing utilities that encourage good testing practices.
+- [IPFS](https://docs.ipfs.io/guides/guides/install/) - A peer-to-peer hypermedia protocol
+  designed to make the web faster, safer, and more open.
+- [Next.js](https://nextjs.org/docs) - Learn about Next.js features and API.

@@ -1,30 +1,28 @@
-import Head from '@components/head';
-import Layout from '@components/layout';
-import Container from '@components/container';
+import { Container, Card } from 'theme-ui';
 import { getBlogPosts } from '@utils';
 import { useGlobalStyleForm } from '@hooks';
 import getGlobalStaticProps from '../../utils/getGlobalStaticProps';
 import useCreateBlogPage from '../../hooks/useCreateBlogPage';
-import BlogCard from '@components/blogCard';
+
+import SingleLayout from '@layouts/SingleLayout';
 
 const Blog = (props) => {
   useCreateBlogPage(props.posts);
   const [styleData] = useGlobalStyleForm(props.styleFile, props.preview);
   return (
-    <Layout
+    <SingleLayout
       searchText="Search blog posts"
       showDocsSearcher
       searchIndex="tina-starter-alpaca-Blogs"
       theme={styleData}
     >
-      <Head title="Blog" />
       <Container>
         <h1>Blog</h1>
         {props.posts.map((post) => {
-          return <BlogCard key={post.fileName} post={post} />;
+          return <Card key={post.fileName}>{post}</Card>;
         })}
       </Container>
-    </Layout>
+    </SingleLayout>
   );
 };
 

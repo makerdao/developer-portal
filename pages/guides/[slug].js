@@ -8,15 +8,9 @@ import { getGithubPreviewProps, parseMarkdown } from 'next-tinacms-github';
 import { InlineWysiwyg } from 'react-tinacms-editor';
 import { jsx, Button, Flex, NavLink, Box, Link as ThemeLink, Text } from 'theme-ui';
 
-import Head from '@components/head';
-// import Layout from '@components/layout';
 // import Toc from '@components/Toc';
-// import PostFeedback from '@components/post-feedback';
-// import DocWrapper from '@components/doc-wrapper';
 import MarkdownWrapper from '@components/markdown-wrapper';
-// import { PrimaryAnchor } from '@components/Anchor';
 import { usePlugin, useCMS } from 'tinacms';
-// import RichText from '@components/rich-text';
 import { createToc, getBlogPosts, getGuides } from '@utils';
 import useCreateBlogPage from '../../hooks/useCreateBlogPage';
 
@@ -33,8 +27,6 @@ const BlogPage = (props) => {
   if (router.isFallback) {
     return <div>Loading...</div>;
   }
-
-  console.log('^^^Alltocs', props.Alltocs);
 
   useCreateBlogPage(props.posts);
   const formOptions = {
@@ -55,9 +47,7 @@ const BlogPage = (props) => {
   const menu = [{ title: 'tests', id: 1 }];
 
   return (
-    // <Layout searchText="Search blog posts" showDocsSearcher searchIndex="tina-starter-alpaca-Blogs">
     <GuidesLayout slug={props.slug} menu={menu} toc={[]} resourcePath={'guides'}>
-      <Head title={`${data.frontmatter.title} | Blog`} />
       <p>
         <Link href="/blog">
           <ThemeLink>Blog</ThemeLink>
@@ -65,7 +55,6 @@ const BlogPage = (props) => {
         / {data.frontmatter.title}
       </p>
       <InlineForm form={form}>
-        {/* <DocWrapper styled={false}> */}
         <Text>
           <main>
             <h1>
@@ -98,63 +87,11 @@ const BlogPage = (props) => {
             </InlineWysiwyg>
           </main>
         </Text>
-        {/* <PostFeedback /> */}
-        {/* </DocWrapper> */}
       </InlineForm>
       <EditLink />
     </GuidesLayout>
-    // </Layout>
   );
 };
-//   return (
-//     <Layout searchText="Search blog posts" showDocsSearcher searchIndex="tina-starter-alpaca-Blogs">
-//       <Head title={`${data.frontmatter.title} | Blog`} />
-//       <p>
-//         <Link href="/blog">
-//           <PrimaryAnchor>Blog</PrimaryAnchor>
-//         </Link>{' '}
-//         / {data.frontmatter.title}
-//       </p>
-//       <InlineForm form={form}>
-//         <DocWrapper styled={false}>
-//           <RichText>
-//             <main>
-//               <h1>
-//                 <InlineTextField name="frontmatter.title" />
-//               </h1>
-//               {!props.preview && props.Alltocs.length > 0 && <Toc tocItems={props.Alltocs} />}
-
-//               <InlineWysiwyg
-//                 sticky={'calc(var(--tina-toolbar-height) + var(--tina-padding-small))'}
-//                 imageProps={{
-//                   async upload(files) {
-//                     const directory = '/public/images/';
-//                     let media = await cms.media.store.persist(
-//                       files.map((file) => {
-//                         return {
-//                           directory,
-//                           file,
-//                         };
-//                       })
-//                     );
-//                     return media.map((m) => `public/images/${m.filename}`);
-//                   },
-//                   previewUrl: (str) => {
-//                     return `${previewURL}/${str}`;
-//                   },
-//                 }}
-//                 name="markdownBody"
-//               >
-//                 <MarkdownWrapper source={data.markdownBody} />
-//               </InlineWysiwyg>
-//             </main>
-//           </RichText>
-//           <PostFeedback />
-//         </DocWrapper>
-//       </InlineForm>
-//     </Layout>
-//   );
-// };
 
 export const EditLink = () => {
   const cms = useCMS();
