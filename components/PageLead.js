@@ -25,7 +25,7 @@ const PageLead = () => {
           <Link href="/technology">
             <Text>→ Learn more about the technology.</Text>
           </Link>
-          {/* <Text>{'The foundation of decentralized finance, "Defi".'}</Text> */}
+          {/* <Text>{ 'The foundation of decentralized finance, "Defi".'}</Text> */}
         </Flex>
       </Flex>
     </Container>
