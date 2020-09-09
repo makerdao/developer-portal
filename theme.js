@@ -10,14 +10,23 @@ const theme = {
 
   colors: {
     ...makerTheme.colors,
-    background: '#242134',
-    surface: '#282538',
-    text: '#eaebf0',
+    background: '#212',
+    surface: '#ffffff08',
+    text: '#fffff0',
     onBackground: '#eaebf0',
+    primary: '#F012BE',
 
-    muted: '#282538',
-    onBackgroundAlt: '#ABA8bc',
+    muted: '#ffffff08',
+    onBackgroundAlt: '#e1dfec',
+    onBackgroundMuted: '#ffffff99',
     onSurface: '#ABA8bc',
+  },
+
+  fonts: {
+    body: 'Inconsolata, sans-serif',
+    heading:
+      "'FT Base',-apple-system,system-ui,BlinkMacSystemFont,'SF Pro Text','Segoe UI',Roboto,Helvetica,Arial,sans-serif",
+    monospace: 'monospace',
   },
 
   text: {
@@ -30,6 +39,10 @@ const theme = {
 
   links: {
     ...makerTheme.links,
+    nav: {
+      ...makerTheme.links.nav,
+      fontFamily: 'heading',
+    },
     sidebar: {
       variant: 'links.nav',
       fontSize: 1,

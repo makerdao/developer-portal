@@ -1,14 +1,14 @@
-import { jsx, Card, Grid, Container, Box } from 'theme-ui';
+import { jsx, Card, Grid, Box } from 'theme-ui';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 const SingleLayout = ({ subnavFor, children }) => {
   return (
-    <>
+    <Box>
       <Header subnavFor={subnavFor} />
-      <Box as="main">{children}</Box>
+      {children}
       <Footer />
-    </>
+    </Box>
   );
 };
 

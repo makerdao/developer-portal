@@ -18,7 +18,7 @@ const GetGuides = async (preview, previewData, contentDir) => {
 
   // console.log('^^FILES', files);
 
-  const posts = await Promise.all(
+  const guides = await Promise.all(
     files.map(async (file) => {
       if (preview) {
         const previewProps = await getGithubPreviewProps({
@@ -34,23 +34,18 @@ const GetGuides = async (preview, previewData, contentDir) => {
       }
       const content = fs.readFileSync(`${file}`, 'utf8');
       const data = matter(content);
+
       return {
         fileName: file.substring(contentDir.length + 1, file.length - 3),
         fileRelativePath: file,
         data: {
-          frontmatter: {
-            description: data.data.description || '',
-            title: data.data.title,
-            slug: data.data.slug,
-            date: data.data.date || '',
-            author: data.data.author || '',
-          },
+          frontmatter: data.data,
           markdownBody: data.content,
         },
       };
     })
   );
-  return posts;
+  return guides;
 };
 
 const getLocalFiles = async (filePath) => {

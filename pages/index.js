@@ -1,9 +1,11 @@
+import { useState } from 'react';
 import { getGithubPreviewProps, parseJson } from 'next-tinacms-github';
 import { useGithubJsonForm } from 'react-tinacms-github';
 import Router from 'next/router';
 import SingleLayout from '../layouts/SingleLayout.js';
 import GuideList from '../components/GuideList';
 import ArticlesList from '../components/ArticlesList';
+import Link from 'next/link';
 import PageLead from '../components/PageLead';
 import CommunityCta from '../components/CommunityCta';
 import SignupCta from '../components/SignupCta';
@@ -13,12 +15,184 @@ import { usePlugin } from 'tinacms';
 import getGlobalStaticProps from '../utils/getGlobalStaticProps';
 import { useGlobalStyleForm } from '@hooks';
 import { default as featGuides } from '../data/featuredGuides.json';
+import { Icon } from '@makerdao/dai-ui-icons';
+// import Link from 'next/link';
 
+const CodeBox = () => {
+  const [activeTool, setActiveTool] = useState(0);
+
+  const tools = [
+    {
+      title: 'Dai.js',
+      des: 'the JS lib',
+      code: `hello world!`,
+    },
+    {
+      title: 'Data API',
+      des: 'much GraphQL',
+      code: `data yo`,
+    },
+
+    {
+      title: 'pyMaker',
+      des: 'python pything ',
+      code: 'snippet',
+    },
+  ];
+  return (
+    <Container>
+      <Grid
+        columns={'1fr auto'}
+        sx={{
+          columnGap: 4,
+        }}
+      >
+        <Box>
+          <Card
+            sx={{
+              height: '500px',
+              width: '100%',
+              // bg: 'red',
+            }}
+          >
+            <pre>{tools[activeTool].code}</pre>
+          </Card>
+        </Box>
+        <Box sx={{}}>
+          <Heading pb={4} variant="mediumHeading">
+            Dive in the code
+          </Heading>
+          <Grid
+            sx={{
+              rowGap: 4,
+            }}
+          >
+            {tools.map((tool, i) => {
+              const { title, des } = tool;
+              const isActive = i === activeTool;
+              return (
+                <Box>
+                  <Heading
+                    variant="microHeading"
+                    onClick={() => {
+                      setActiveTool(i);
+                    }}
+                  >
+                    {title}
+                  </Heading>
+                  {!isActive ? null : (
+                    <Grid
+                      sx={{
+                        rowGap: 2,
+                        pt: 2,
+                      }}
+                    >
+                      <Text>{des}</Text>
+                      <Link href="/">
+                        <Text>→ read more</Text>
+                      </Link>
+                    </Grid>
+                  )}
+                </Box>
+              );
+            })}
+          </Grid>
+        </Box>
+      </Grid>
+    </Container>
+  );
+};
+const ModulesList = () => {
+  const modules = [
+    {
+      title: 'Governance',
+      description: 'all about gov',
+      cta: '',
+    },
+
+    {
+      title: 'Auctions',
+      description: 'liquidations 101',
+      cta: '',
+    },
+    {
+      title: 'DSR',
+      description: 'earn passively',
+      cta: '',
+    },
+    {
+      title: 'Oracles',
+      description: 'all seeing',
+      cta: '',
+    },
+    {
+      title: 'Vaults',
+      description: 'debt generation',
+      cta: '',
+    },
+  ];
+  return (
+    <Container>
+      <Grid
+        columns={'1fr 1fr 1fr 1fr'}
+        sx={{
+          columnGap: 3,
+          rowGap: 3,
+        }}
+      >
+        {modules.map(({ title, description }) => {
+          return (
+            <Card>
+              <Grid>
+                <Heading>{title}</Heading>
+                <Text>{description}</Text>
+              </Grid>
+            </Card>
+          );
+        })}
+      </Grid>
+    </Container>
+  );
+};
+
+const IntroText = () => {
+  return (
+    <Container>
+      <Heading
+        sx={{
+          pb: 4,
+        }}
+      >
+        Maker Protocol is the technology behind MakerDAO, MakerDAO is a decentralized organization
+        dedicated to bringing stability to the cryptocurrency economy. The Maker Protocol employs a
+        two-token system. The first being, Dai, a collateral-backed stablecoin that offers
+        stability.
+      </Heading>
+      <Text
+        sx={{
+          pb: 4,
+          color: 'onBackgroundMuted',
+          columns: '2 200px',
+        }}
+      >
+        The Maker Foundation and the MakerDAO community believe that a decentralized stablecoin is
+        required to have any business or individual realize the advantages of digital money. Second,
+        there is MKR, a governance token that is used by stakeholders to maintain the system and
+        manage Dai. MKR token holders are the decision-makers of the Maker Protocol, supported by
+        the larger public community and various other external parties. Maker is unlocking the power
+        of decentralized finance for everyone by creating an inclusive platform for economic
+        empowerment; enabling everyone with equal access to the global financial marketplace.
+      </Text>
+
+      <Link href="/technology">
+        <Text>→ Learn more about the technology.</Text>
+      </Link>
+    </Container>
+  );
+};
 const Page = ({ file, preview, styleFile, guides }) => {
-  const initialGuides = guides.filter((g) => {
-    const idx = featGuides.indexOf(g.data.frontmatter.slug);
-    if (idx !== -1) return g.data.frontmatter.slug === featGuides[idx];
-  });
+  console.log(guides, 'init');
+  const initialGuides = guides;
 
   const formOptions = {
     label: 'home page',
@@ -31,16 +205,25 @@ const Page = ({ file, preview, styleFile, guides }) => {
   };
   const [data, form] = useGithubJsonForm(file, formOptions);
   usePlugin(form);
-
   const [styleData, styleForm] = useGlobalStyleForm(styleFile, preview);
-
   return (
     <SingleLayout>
       <PageLead />
-      <GuideList guides={initialGuides} />
-      <ArticlesList articles={[]} />
-      <CommunityCta />
-      <SignupCta />
+      {/* <GuideList guides={[]} />
+       */}
+
+      <Grid
+        sx={{
+          rowGap: 6,
+        }}
+      >
+        <ModulesList />
+        <IntroText />
+        <CodeBox />
+        <ArticlesList resources={initialGuides} />
+        <CommunityCta />
+        {/* <SignupCta /> */}
+      </Grid>
     </SingleLayout>
   );
 };

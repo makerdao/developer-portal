@@ -3,51 +3,67 @@ import { jsx, Card, Heading, Text, Container, Flex, Grid } from 'theme-ui';
 import Link from 'next/link';
 import { Icon } from '@makerdao/dai-ui-icons';
 
-export const articles = [
-  { title: 'title', author: 'author', link: 'www.com', linkText: 'linktext' },
-  { title: 'title', author: 'author', link: 'www.com', linkText: 'linktext' },
-  { title: 'title', author: 'author', link: 'www.com', linkText: 'linktext' },
-  { title: 'title', author: 'author', link: 'www.com', linkText: 'linktext' },
-];
-
-const ListItem = ({ title, author, link, linkText }) => (
+const ListItem = ({ title, type, link, linkText, description }) => (
   <Card px={4}>
-    <Grid columns={3}>
-      <Flex sx={{ flexDirection: 'column' }}>
-        <Heading variant="smallHeader">{title}</Heading>
-        <Text variant="smallText">by {author}</Text>
-      </Flex>
-      <Link href={link}>
-        <Flex sx={{ alignItems: 'center', justifyContent: 'flex-end' }}>
-          <Text sx={{ fontFamily: 'heading', fontSize: [4, 5], mr: 2 }}>{linkText}</Text>
+    <Link href={link}>
+      <Grid columns={'1fr 1fr auto'}>
+        <Flex sx={{ flexDirection: 'column' }}>
+          <Heading variant="microHeading">{title}</Heading>
+          <Text>{description}</Text>
         </Flex>
-      </Link>
-      <Flex sx={{ alignItems: 'center' }}>
-        <Icon sx={{ ml: 'auto' }} name="increase" />
-      </Flex>
-    </Grid>
+
+        <Flex sx={{ alignItems: 'center' }}>
+          <Text>{type}</Text>
+        </Flex>
+
+        <Flex sx={{ alignItems: 'center', justifyContent: 'flex-end' }}>
+          <Text sx={{ variant: 'smallText' }} pr={2}>
+            {linkText}
+          </Text>
+          <Icon name="increase" />
+        </Flex>
+      </Grid>
+    </Link>
   </Card>
 );
 
-const ArticlesList = ({ title = 'Articles', cta = '→ View All' }) => {
+const ArticlesList = ({ resources, title = 'Recent Guides', cta = '→ View All' }) => {
+  // console.log(resources, 'lere');
   return (
     <Container>
       <Flex
         sx={{
           flexDirection: 'column',
-          mb: 6,
         }}
       >
-        <Flex>
-          <Heading>{title}</Heading>
+        <Flex
+          sx={{
+            pb: 4,
+            alignItems: 'center',
+          }}
+        >
+          <Heading pr={3}>{title}</Heading>
           <Text>{cta}</Text>
         </Flex>
         <Grid sx={{ width: '100%' }}>
-          {articles.map(({ title, author, link, linkText }) => {
-            return (
-              <ListItem key={title} title={title} author={author} link={link} linkText={linkText} />
-            );
-          })}
+          {resources.map(
+            ({
+              data: {
+                frontmatter: { parent, title, slug, description },
+              },
+            }) => {
+              return (
+                <ListItem
+                  key={title}
+                  title={title}
+                  type={parent}
+                  description={description}
+                  link={`/guides/${slug}/`}
+                  linkText={'Read'}
+                />
+              );
+            }
+          )}
         </Grid>
       </Flex>
     </Container>

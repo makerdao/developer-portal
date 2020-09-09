@@ -6,6 +6,9 @@ import { TinacmsGithubProvider, GithubMediaStore } from 'react-tinacms-github';
 import { AlpacaGitHubClient } from '../utils/githubClient';
 import theme from '../theme';
 
+import Head from 'next/head';
+import { Global, css } from '@emotion/core';
+
 class MyApp extends App {
   constructor(props) {
     super(props);
@@ -35,9 +38,44 @@ class MyApp extends App {
   }
 
   render() {
+    console.log('yess?');
     const { Component, pageProps } = this.props;
     return (
       <ThemeProvider theme={theme}>
+        <Global
+          styles={css`
+            @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;500;700&display=swap');
+
+            @font-face {
+              font-family: 'FT Base';
+              src: url('/fonts/FTBase-Bold.woff2') format('woff2'),
+                url('/fonts/FTBase-Bold.woff') format('woff');
+              font-weight: bold;
+              font-style: normal;
+            }
+
+            @font-face {
+              font-family: 'FT Base';
+              src: url('/fonts/FTBase-Regular.woff2') format('woff2'),
+                url('/fonts/FTBase-Regular.woff') format('woff');
+              font-weight: normal;
+              font-style: normal;
+            }
+
+            @font-face {
+              font-family: 'FT Base';
+              src: url('/fonts/FTBase-Medium.woff2') format('woff2'),
+                url('/fonts/FTBase-Medium.woff') format('woff');
+              font-weight: 500;
+              font-style: normal;
+            }
+
+            html,
+            body {
+              background: 'red';
+            }
+          `}
+        />
         <TinaProvider cms={this.cms}>
           <TinacmsGithubProvider
             onLogin={enterEditMode}

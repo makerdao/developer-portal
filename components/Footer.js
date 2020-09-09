@@ -10,16 +10,27 @@ const Footer = () => {
       <Flex sx={{ justifyContent: 'space-between' }}>
         {footerContent.map(({ title, items }) => {
           return (
-            <Flex as="nav" sx={{ flexDirection: 'column' }} key={title}>
-              <Text sx={{ fontWeight: 'heading' }}>{title}</Text>
+            <Grid as="nav" sx={{ GridDirection: 'column' }} key={title}>
+              <Text sx={{ fontWeight: 'heading', fontFamily: 'heading' }}>{title}</Text>
               {items.map(({ name }) => {
-                return <Text key={name}>{name}</Text>;
+                return (
+                  <Text
+                    sx={{
+                      fontFamily: 'heading',
+                    }}
+                    key={name}
+                  >
+                    {name}
+                  </Text>
+                );
               })}
-            </Flex>
+            </Grid>
           );
         })}
         <Flex sx={{ flexDirection: 'column' }}>
-          <Text sx={{ fontWeight: 'heading' }}>Signup for our newsletter</Text>
+          <Text sx={{ fontWeight: 'heading', fontFamily: 'heading' }}>
+            Signup for our newsletter
+          </Text>
           <EmailSignup placeholder="Enter your email address" />
         </Flex>
       </Flex>

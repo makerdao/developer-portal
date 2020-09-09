@@ -6,21 +6,18 @@ const GuideList = ({ guides, title = 'Guides', cta = '→ View All', module = 'g
   guides = [...guides, ...guides];
   return (
     <Container>
-      <Flex
-        sx={{
-          mb: 6,
-        }}
-      >
+      <Flex>
         <Box>
           <Flex>
             <Heading>{title}</Heading>
             <Text>{cta}</Text>
           </Flex>
+
           <Grid columns={[2, 4]}>
             {guides.map(
               ({
                 data: {
-                  frontmatter: { title, slug },
+                  frontmatter: { parent, title, slug },
                 },
               }) => {
                 return (
@@ -34,6 +31,7 @@ const GuideList = ({ guides, title = 'Guides', cta = '→ View All', module = 'g
                       <Box sx={{ height: 6, border: 'light' }}></Box>
                       <Text variant="caps">{module}</Text>
                     </Flex>
+
                     <Link key={title} href={`/guides/${slug}/`}>
                       <Heading as="a" sx={{ cursor: 'pointer' }}>
                         {title}
