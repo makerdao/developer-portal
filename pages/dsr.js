@@ -1,8 +1,11 @@
 /** @jsx jsx */
+import { useState } from 'react';
 import { Container, jsx, Card, Heading, Text, Grid, Flex, Image } from 'theme-ui';
 import Link from 'next/link';
+import useMaker from '../hooks/useMaker';
 import SingleLayout from '@layouts/SingleLayout.js';
 import { Icon } from '@makerdao/dai-ui-icons';
+import { useEffect } from 'react';
 
 const PageLead = () => {
   return (
@@ -96,7 +99,19 @@ const Ecosystem = () => {
   );
 };
 
-const Governance = () => {
+const Dsr = () => {
+  const { maker } = useMaker();
+  const [rate, setRate] = useState(null);
+
+  useEffect(() => {
+    if (!maker) return;
+    const getDsr = async () => {
+      const rate = await maker.service('mcd:savings').getYearlyRate();
+      setRate(rate.toNumber());
+    };
+    getDsr();
+  }, [maker]);
+
   return (
     <SingleLayout>
       <PageLead />
@@ -106,4 +121,4 @@ const Governance = () => {
   );
 };
 
-export default Governance;
+export default Dsr;
