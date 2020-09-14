@@ -27,7 +27,7 @@ const ListItem = ({ title, type, link, linkText, description }) => (
   </Card>
 );
 
-const ArticlesList = ({ resources, title = 'Recent Guides', cta = '→ View All' }) => {
+const ArticlesList = ({ resources, title = 'Recent Guides' }) => {
   // console.log(resources, 'lere');
   return (
     <Container>
@@ -43,7 +43,6 @@ const ArticlesList = ({ resources, title = 'Recent Guides', cta = '→ View All'
           }}
         >
           <Heading pr={3}>{title}</Heading>
-          <Text>{cta}</Text>
         </Flex>
         <Grid sx={{ width: '100%' }}>
           {resources.map(

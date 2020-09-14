@@ -1,5 +1,17 @@
 /** @jsx jsx */
-import { jsx, Card, Heading, Text, Box, Flex, Grid, Container, Input } from 'theme-ui';
+import {
+  jsx,
+  Card,
+  Heading,
+  Text,
+  Box,
+  Flex,
+  Grid,
+  Container,
+  Input,
+  Link as ThemeLink,
+} from 'theme-ui';
+import { Icon } from '@makerdao/dai-ui-icons';
 
 const NewsletterSignup = () => {
   const placeholder = 'We saved a slot for your email';
@@ -24,9 +36,21 @@ const NewsletterSignup = () => {
 
 const CommunitySection = () => {
   const ctaContent = [
-    { title: 'Join our dev community', link: '', text: 'Join our chat' },
-    { title: 'Join the conversation', link: '', text: 'Join our forum' },
-    { title: 'Be a contributor', link: '', text: 'Github' },
+    {
+      title: 'Join our dev community',
+      link: 'https://chat.makerdao.com/channel/dev',
+      text: 'Join our chat',
+    },
+    {
+      title: 'Join the conversation',
+      link: 'https://forum.makerdao.com/c/devs/19',
+      text: 'Join our forum',
+    },
+    {
+      title: 'Be a contributor',
+      link: 'https://github.com/makerdao/developer-portal',
+      text: 'Github',
+    },
   ];
 
   return (
@@ -44,7 +68,12 @@ const CommunitySection = () => {
                   <Heading sx={{ color: 'background' }} variant="microHeading">
                     {title}
                   </Heading>
-                  <Text sx={{ color: 'background' }}>→ {text}</Text>
+                  <ThemeLink href={link} target="_blank">
+                    <Flex sx={{ alignItems: 'center' }}>
+                      <Text sx={{ color: 'background' }}>{text}</Text>
+                      <Icon name="increase"></Icon>
+                    </Flex>
+                  </ThemeLink>
                 </Grid>
               </Card>
             ))}

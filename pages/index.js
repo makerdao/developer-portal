@@ -9,7 +9,7 @@ import Link from 'next/link';
 import PageLead from '../components/PageLead';
 import CommunityCta from '../components/CommunityCta';
 import SignupCta from '../components/SignupCta';
-import { Container, jsx, Card, Heading, Text, Grid, Box, Flex } from 'theme-ui';
+import { Container, jsx, Card, Heading, Text, Grid, Box, Flex, Link as ThemeLink } from 'theme-ui';
 import { createToc, getGuides } from '@utils';
 import { usePlugin } from 'tinacms';
 import getGlobalStaticProps from '../utils/getGlobalStaticProps';
@@ -25,12 +25,12 @@ const CodeBox = () => {
     {
       title: 'Dai.js',
       des: 'the JS lib',
-      code: `hello world!`,
+      code: 'hello world!',
     },
     {
       title: 'Data API',
       des: 'much GraphQL',
-      code: `data yo`,
+      code: 'data yo',
     },
 
     {
@@ -142,10 +142,15 @@ const ModulesList = () => {
       >
         {modules.map(({ title, description }) => {
           return (
-            <Card>
+            <Card key={title}>
               <Grid>
                 <Heading>{title}</Heading>
-                <Text>{description}</Text>
+                <Link href={`${title.toLowerCase()}`} passHref>
+                  <Flex sx={{ alignItems: 'center' }}>
+                    <Icon sx={{ mr: 2 }} name={'arrow_right'}></Icon>
+                    <ThemeLink sx={{ color: 'text' }}>Learn More</ThemeLink>
+                  </Flex>
+                </Link>
               </Grid>
             </Card>
           );
