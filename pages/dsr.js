@@ -7,7 +7,26 @@ import SingleLayout from '@layouts/SingleLayout.js';
 import { Icon } from '@makerdao/dai-ui-icons';
 import { useEffect } from 'react';
 
-const PageLead = () => {
+const DsrInfo = ({ rate, totalDai }) => {
+  return (
+    <Grid columns={2}>
+      <Card>
+        <Flex sx={{ p: 3, flexDirection: 'column', alignItems: 'center' }}>
+          <Heading sx={{ pb: 2 }}>{`${rate}%`}</Heading>
+          <Heading>Dai Savings Rate</Heading>
+        </Flex>
+      </Card>
+      <Card>
+        <Flex sx={{ p: 3, flexDirection: 'column', alignItems: 'center' }}>
+          <Heading sx={{ pb: 2 }}>{totalDai}</Heading>
+          <Heading>Dai In DSR</Heading>
+        </Flex>
+      </Card>
+    </Grid>
+  );
+};
+
+const PageLead = ({ rate, totalDai }) => {
   return (
     <Container>
       <Flex sx={{ flexDirection: 'column', alignItems: 'center' }}>
@@ -18,6 +37,7 @@ const PageLead = () => {
           The DSR is the Dai savings rate. It allows users to deposit dai and activate the Dai
           Savings Rate and earning savings on their dai.
         </Text>
+        <DsrInfo rate={rate} totalDai={totalDai} />
       </Flex>
     </Container>
   );
@@ -101,20 +121,26 @@ const Ecosystem = () => {
 
 const Dsr = () => {
   const { maker } = useMaker();
-  const [rate, setRate] = useState(null);
+  const [rate, setRate] = useState('0.00');
+  const [totalDai, setTotalDai] = useState('0.00');
 
   useEffect(() => {
     if (!maker) return;
     const getDsr = async () => {
       const rate = await maker.service('mcd:savings').getYearlyRate();
-      setRate(rate.toNumber());
+      setRate(rate.toFormat(2));
+    };
+    const getTotalDai = async () => {
+      const total = await maker.service('mcd:savings').getTotalDai();
+      setTotalDai(total._amount.toFormat(2));
     };
     getDsr();
+    getTotalDai();
   }, [maker]);
 
   return (
     <SingleLayout>
-      <PageLead />
+      <PageLead rate={rate} totalDai={totalDai} />
       <Intro />
       <Ecosystem />
     </SingleLayout>
