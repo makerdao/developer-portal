@@ -145,9 +145,14 @@ const Dsr = ({ documentation }) => {
     <SingleLayout>
       <PageLead rate={rate} totalDai={totalDai} />
       <Intro />
-      <GuideList title="Resources" guides={documentation} columns={3} path="documentation" />
-
-      <Ecosystem />
+      <Grid
+        sx={{
+          rowGap: 6,
+        }}
+      >
+        <ArticlesList title="Resources" path="documentation" resources={documentation} />
+        <Ecosystem />
+      </Grid>
     </SingleLayout>
   );
 };

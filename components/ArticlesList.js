@@ -5,7 +5,7 @@ import { Icon } from '@makerdao/dai-ui-icons';
 
 const ListItem = ({ title, type, link, linkText, description }) => (
   <Card px={4}>
-    <Link href={link}>
+    <Link href={link} passHref>
       <Grid columns={'1fr 1fr auto'}>
         <Flex sx={{ flexDirection: 'column' }}>
           <Heading variant="microHeading">{title}</Heading>
@@ -27,7 +27,7 @@ const ListItem = ({ title, type, link, linkText, description }) => (
   </Card>
 );
 
-const ArticlesList = ({ resources, title = 'Recent Guides' }) => {
+const ArticlesList = ({ resources, title, path }) => {
   // console.log(resources, 'lere');
   return (
     <Container>
@@ -57,7 +57,7 @@ const ArticlesList = ({ resources, title = 'Recent Guides' }) => {
                   title={title}
                   type={parent}
                   description={description}
-                  link={`/guides/${slug}/`}
+                  link={`/${path}/${slug}/`}
                   linkText={'Read'}
                 />
               );

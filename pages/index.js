@@ -225,7 +225,7 @@ const Page = ({ file, preview, styleFile, guides }) => {
         <ModulesList />
         <IntroText />
         <CodeBox />
-        <ArticlesList resources={initialGuides} />
+        <ArticlesList title="Recent Guides" resources={initialGuides} />
         <CommunityCta />
         {/* <SignupCta /> */}
       </Grid>
