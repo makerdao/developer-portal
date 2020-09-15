@@ -17,7 +17,6 @@ import useCreateBlogPage from '../../hooks/useCreateBlogPage';
 import GuidesLayout from '@layouts/GuidesLayout';
 
 const BlogPage = (props) => {
-  console.log('^^^props', props);
   const cms = useCMS();
   const previewURL = props.previewURL || '';
   const router = useRouter();
@@ -41,8 +40,6 @@ const BlogPage = (props) => {
   };
 
   const [data, form] = useGithubMarkdownForm(props.file, formOptions);
-  console.log('data', data);
-  console.log('form', form);
   usePlugin(form);
 
   //TODO remove

@@ -122,37 +122,7 @@ const Ecosystem = () => {
   );
 };
 
-const DocsList = ({ docs, title }) => {
-  return (
-    <Container>
-      <Flex sx={{ flexDirection: 'column' }}>
-        <Heading sx={{ mb: 3 }}>Resources</Heading>
-        <Grid sx={{ mb: 6 }} gap={5} key={title} columns={3}>
-          {docs.map(
-            ({
-              data: {
-                frontmatter: { parent, title, slug, description },
-              },
-            }) => {
-              return (
-                <Flex key={title} sx={{ justifyContent: 'space-between', flexDirection: 'column' }}>
-                  <Image src="https://dummyimage.com/260x160/000/fff"></Image>
-                  <Link href={`/documentation/${slug}`} passHref>
-                    <Heading>{title}</Heading>
-                  </Link>
-                  <Text>{description}</Text>
-                </Flex>
-              );
-            }
-          )}
-        </Grid>
-      </Flex>
-    </Container>
-  );
-};
-
 const Dsr = ({ documentation }) => {
-  console.log('^^^documentation', documentation);
   const { maker } = useMaker();
   const [rate, setRate] = useState('0.00');
   const [totalDai, setTotalDai] = useState('0.00');
@@ -175,8 +145,7 @@ const Dsr = ({ documentation }) => {
     <SingleLayout>
       <PageLead rate={rate} totalDai={totalDai} />
       <Intro />
-      {/* <ArticlesList resources={documentation} /> */}
-      <DocsList docs={documentation} />
+      <GuideList title="Resources" guides={documentation} columns={3} />
 
       <Ecosystem />
     </SingleLayout>
