@@ -1,11 +1,14 @@
 /** @jsx jsx */
-import { useState } from 'react';
-import { Container, jsx, Card, Heading, Text, Grid, Flex, Image } from 'theme-ui';
+import { useState, useEffect } from 'react';
+import { Container, jsx, Card, Heading, Text, Grid, Flex, Image, Box } from 'theme-ui';
 import Link from 'next/link';
 import useMaker from '../hooks/useMaker';
 import SingleLayout from '@layouts/SingleLayout.js';
 import { Icon } from '@makerdao/dai-ui-icons';
-import { useEffect } from 'react';
+import ArticlesList from '@components/ArticlesList';
+import GuideList from '../components/GuideList';
+import getGlobalStaticProps from '../utils/getGlobalStaticProps';
+import { getGuides } from '@utils';
 
 const DsrInfo = ({ rate, totalDai }) => {
   return (
@@ -85,6 +88,7 @@ const Ecosystem = () => {
       <Flex
         sx={{
           flexDirection: 'column',
+          mb: 6,
         }}
       >
         <Flex
@@ -94,7 +98,6 @@ const Ecosystem = () => {
           }}
         >
           <Heading pr={3}>Ecosystem</Heading>
-          <Text>→ View All</Text>
         </Flex>
         <Grid columns={2} sx={{ width: '100%' }}>
           {[
@@ -119,7 +122,37 @@ const Ecosystem = () => {
   );
 };
 
-const Dsr = () => {
+const DocsList = ({ docs, title }) => {
+  return (
+    <Container>
+      <Flex sx={{ flexDirection: 'column' }}>
+        <Heading sx={{ mb: 3 }}>Resources</Heading>
+        <Grid sx={{ mb: 6 }} gap={5} key={title} columns={3}>
+          {docs.map(
+            ({
+              data: {
+                frontmatter: { parent, title, slug, description },
+              },
+            }) => {
+              return (
+                <Flex key={title} sx={{ justifyContent: 'space-between', flexDirection: 'column' }}>
+                  <Image src="https://dummyimage.com/260x160/000/fff"></Image>
+                  <Link href={`/documentation/${slug}`} passHref>
+                    <Heading>{title}</Heading>
+                  </Link>
+                  <Text>{description}</Text>
+                </Flex>
+              );
+            }
+          )}
+        </Grid>
+      </Flex>
+    </Container>
+  );
+};
+
+const Dsr = ({ documentation }) => {
+  console.log('^^^documentation', documentation);
   const { maker } = useMaker();
   const [rate, setRate] = useState('0.00');
   const [totalDai, setTotalDai] = useState('0.00');
@@ -142,9 +175,27 @@ const Dsr = () => {
     <SingleLayout>
       <PageLead rate={rate} totalDai={totalDai} />
       <Intro />
+      {/* <ArticlesList resources={documentation} /> */}
+      <DocsList docs={documentation} />
+
       <Ecosystem />
     </SingleLayout>
   );
+};
+
+export const getStaticProps = async function ({ preview, previewData }) {
+  const documentation = await getGuides(preview, previewData, 'content/resources');
+  const dsrDocs = documentation.filter(
+    (g) => g.data.frontmatter.parent === 'dsr' || g.data.frontmatter.tags.includes('dsr')
+  );
+  return {
+    props: {
+      sourceProvider: null,
+      error: null,
+      preview: false,
+      documentation: dsrDocs,
+    },
+  };
 };
 
 export default Dsr;
