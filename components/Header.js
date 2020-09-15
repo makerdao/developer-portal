@@ -15,10 +15,7 @@ import {
 } from 'theme-ui';
 import Link from 'next/link';
 import { Icon } from '@makerdao/dai-ui-icons';
-// import Subheader from "components/Subheader"
-// import MenuPopup from 'components/MenuPopup';
-
-// import Portal from "./Portal"
+import { Fragment } from 'react';
 
 const LINKS = [
   { url: '/technology', name: 'Technology' },
@@ -27,57 +24,13 @@ const LINKS = [
   { url: '/', name: 'Community' },
 ];
 
-const subnavLinks = {
-  resources: [
-    { url: '/resources/guides', name: 'Guides' },
-    { url: '/resources/documentation', name: 'API Documentation' },
-    { url: '/resources/community', name: 'Community Content' },
-  ],
-};
-
-const ResourcesMenu = () => {
-  return (
-    <Grid>
-      {subnavLinks.resources.map(({ name, url }) => {
-        return (
-          <Link key={name} href={{ pathname: `${url}` }} passHref>
-            <NavLink>{name}</NavLink>
-          </Link>
-        );
-      })}
-    </Grid>
-  );
-};
-
-const template = {
-  Resources: <ResourcesMenu />,
-};
-
-const modules = ['governance', '/ggoverna'];
-// const MenuPopup = ({ setState, show, left, top, name }) => {
-//   return show ? (
-//     <Portal selector="#portal">
-//       <Card
-//         onMouseLeave={() => setState({ show: false })}
-//         sx={{
-//           top: top,
-//           left: left,
-//           zIndex: 100,
-//           position: "fixed",
-//         }}
-//       >
-//         {template[name]}
-//       </Card>
-//     </Portal>
-//   ) : null
-// }
-
 const NavLinks = ({ mobileOpened, setMobileOpened, setPopupState, query }) =>
   LINKS.map(({ name, url, type, popup }) => (
-    <>
+    <Fragment key={name}>
       {type === 'menu' ? (
         mobileOpened ? null : (
           <Text
+            key={name}
             variant="links.nav"
             onMouseEnter={
               popup &&
@@ -107,6 +60,7 @@ const NavLinks = ({ mobileOpened, setMobileOpened, setPopupState, query }) =>
             </NavLink>
           ) : (
             <NavLink
+              key={name}
               sx={{
                 '&:last-child': { pr: [null, 0] },
               }}
@@ -129,10 +83,10 @@ const NavLinks = ({ mobileOpened, setMobileOpened, setPopupState, query }) =>
           )}
         </Link>
       )}
-    </>
+    </Fragment>
   ));
 
-const Header = ({ query, subnavFor }) => {
+const Header = ({ query, subnav }) => {
   const [mobileOpened, setMobileOpened] = useState(false);
   const [popupState, setPopupState] = useState({ show: false });
   const { show, left, top, name } = popupState;
@@ -190,7 +144,7 @@ const Header = ({ query, subnavFor }) => {
           />
         </Flex>
       </Flex>
-      {/* {subnavFor && <Subheader links={subnavLinks[subnavFor]} />} */}
+      {subnav ?? null}
     </Container>
   );
 };

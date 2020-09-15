@@ -16,8 +16,6 @@ const GetGuides = async (preview, previewData, contentDir) => {
       )
     : await getLocalFiles(contentDir);
 
-  // console.log('^^FILES', files);
-
   const guides = await Promise.all(
     files.map(async (file) => {
       if (preview) {
@@ -49,7 +47,7 @@ const GetGuides = async (preview, previewData, contentDir) => {
 };
 
 const getLocalFiles = async (filePath) => {
-  console.log('`${filePath}**/*.md`', `${filePath}**/*.md`);
+  console.log('This is the filepath we try to glob in getGuides:', `${filePath}/**/*.md`);
   // grab all md files
   const fg = require('fast-glob');
   const files = await fg(`${filePath}/**/*.md`);

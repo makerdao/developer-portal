@@ -239,7 +239,9 @@ const Page = ({ file, preview, styleFile, guides }) => {
 export const getStaticProps = async function ({ preview, previewData }) {
   const global = await getGlobalStaticProps(preview, previewData);
 
-  const guides = await getGuides(preview, previewData, 'content/resources');
+  const resources = await getGuides(preview, previewData, 'content/resources');
+  const documentation = resources.filter((g) => g.data.frontmatter.contentType === 'documentation');
+  const guides = resources.filter((g) => g.data.frontmatter.contentType === 'guide');
 
   if (preview) {
     // get data from github
@@ -268,6 +270,7 @@ export const getStaticProps = async function ({ preview, previewData }) {
         data: (await import('../content/home.json')).default,
       },
       guides,
+      documentation,
       ...global,
     },
   };

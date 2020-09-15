@@ -2,10 +2,10 @@ import { jsx, Card, Grid, Box } from 'theme-ui';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
-const SingleLayout = ({ subnavFor, children }) => {
+const SingleLayout = ({ subnav, children }) => {
   return (
     <Box>
-      <Header subnavFor={subnavFor} />
+      <Header subnav={subnav} />
       {children}
       <Footer />
     </Box>

@@ -109,7 +109,7 @@ export const EditLink = () => {
 export const getStaticProps = async function ({ preview, previewData, params }) {
   const { slug } = params;
   const fileRelativePath = `content/resources/guides/${slug}.md`;
-  let Alltocs = '';
+  // let Alltocs = '';
 
   let posts = await getGuides();
   if (preview) {
@@ -118,13 +118,13 @@ export const getStaticProps = async function ({ preview, previewData, params }) 
       fileRelativePath,
       parse: parseMarkdown,
     });
-    if (typeof window === 'undefined') {
-      Alltocs = createToc(previewProps.props.file.data.markdownBody);
-    }
+    // if (typeof window === 'undefined') {
+    //   Alltocs = createToc(previewProps.props.file.data.markdownBody);
+    // }
     return {
       props: {
         posts,
-        Alltocs,
+        // Alltocs,
         previewURL: `https://raw.githubusercontent.com/${previewData.working_repo_full_name}/${previewData.head_branch}`,
         ...previewProps.props,
       },
@@ -134,13 +134,13 @@ export const getStaticProps = async function ({ preview, previewData, params }) 
   const content = await import(`../../content/resources/guides/${slug}.md`);
   const data = matter(content.default);
 
-  if (typeof window === 'undefined') {
-    Alltocs = createToc(data.content);
-  }
+  // if (typeof window === 'undefined') {
+  // Alltocs = createToc(data.content);
+  // }
   return {
     props: {
       posts,
-      Alltocs,
+      // Alltocs,
       sourceProvider: null,
       error: null,
       preview: false,
