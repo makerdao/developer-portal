@@ -2,7 +2,7 @@
 import { jsx, Card, Heading, Text, Box, Flex, Grid, Container } from 'theme-ui';
 import Link from 'next/link';
 
-const GuideList = ({ guides, title, smallText, columns = [2, 3] }) => {
+const GuideList = ({ guides, title, smallText, columns = [2, 3], path }) => {
   return (
     <Container>
       <Flex sx={{ mb: 6 }}>
@@ -15,7 +15,7 @@ const GuideList = ({ guides, title, smallText, columns = [2, 3] }) => {
             {guides.map(
               ({
                 data: {
-                  frontmatter: { parent, title, slug },
+                  frontmatter: { title, description, slug },
                 },
               }) => {
                 return (
@@ -30,10 +30,13 @@ const GuideList = ({ guides, title, smallText, columns = [2, 3] }) => {
                       {smallText && <Text variant="caps">{smallText}</Text>}
                     </Flex>
 
-                    <Link key={title} href={`/guides/${slug}/`}>
-                      <Heading as="a" sx={{ cursor: 'pointer' }}>
-                        {title}
-                      </Heading>
+                    <Link key={title} href={`/${path}/${slug}/`}>
+                      <Flex sx={{ flexDirection: 'column' }}>
+                        <Heading as="a" sx={{ cursor: 'pointer' }}>
+                          {title}
+                        </Heading>
+                        <Text>{description}</Text>
+                      </Flex>
                     </Link>
                   </Grid>
                 );

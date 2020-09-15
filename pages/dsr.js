@@ -145,7 +145,7 @@ const Dsr = ({ documentation }) => {
     <SingleLayout>
       <PageLead rate={rate} totalDai={totalDai} />
       <Intro />
-      <GuideList title="Resources" guides={documentation} columns={3} />
+      <GuideList title="Resources" guides={documentation} columns={3} path="documentation" />
 
       <Ecosystem />
     </SingleLayout>
