@@ -42,44 +42,24 @@ const BlogPage = (props) => {
   const [data, form] = useGithubMarkdownForm(props.file, formOptions);
   usePlugin(form);
 
-  //TODO remove
-  const menu = [{ title: 'tests', id: 1 }];
-
   return (
-    <GuidesLayout slug={props.slug} menu={menu} toc={[]} resourcePath={'documentation'}>
+    <GuidesLayout slug={props.slug} toc={[]} resourcePath={'documentation'}>
       <InlineForm form={form}>
-        <Text>
-          <main>
-            <h1>
-              <InlineTextField name={props.file.data.frontmatter.title} />
-            </h1>
-            {/* {!props.preview && props.Alltocs.length > 0 && <Toc tocItems={props.Alltocs} />} */}
+        {/* {!props.preview && props.Alltocs.length > 0 && <Toc tocItems={props.Alltocs} />} */}
 
-            <InlineWysiwyg
-              sticky={'calc(var(--tina-toolbar-height) + var(--tina-padding-small))'}
-              imageProps={{
-                async upload(files) {
-                  const directory = '/public/images/';
-                  let media = await cms.media.store.persist(
-                    files.map((file) => {
-                      return {
-                        directory,
-                        file,
-                      };
-                    })
-                  );
-                  return media.map((m) => `public/images/${m.filename}`);
-                },
-                previewUrl: (str) => {
-                  return `${previewURL}/${str}`;
-                },
-              }}
-              name="markdownBody"
-            >
-              <MarkdownWrapper source={data.markdownBody} />
-            </InlineWysiwyg>
-          </main>
-        </Text>
+        <InlineWysiwyg
+          name="markdownBody"
+          sticky={'calc(var(--tina-toolbar-height) + var(--tina-padding-small))'}
+          imageProps={{
+            directory: 'public/images/',
+            parse: (filename) => '/images/' + filename,
+            previewSrc(src) {
+              return cms.api.github.getDownloadUrl('public/' + src);
+            },
+          }}
+        >
+          <MarkdownWrapper source={data.markdownBody} />
+        </InlineWysiwyg>
       </InlineForm>
       <EditLink />
     </GuidesLayout>

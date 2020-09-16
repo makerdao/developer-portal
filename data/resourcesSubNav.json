@@ -1,0 +1,7 @@
+[
+  { "url": "/dsr", "name": "DSR" },
+  { "url": "/auctions", "name": "Auctions" },
+  { "url": "/governance", "name": "Governance" },
+  { "url": "/dai-js", "name": "Dai.js" },
+  { "url": "/maker-data-api", "name": "Maker Data API" }
+]

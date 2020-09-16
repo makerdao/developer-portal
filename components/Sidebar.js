@@ -29,7 +29,7 @@ const MenuItem = ({ resourcePath, slug, title, anchor, root }) => {
   );
 };
 
-const Sidebar = ({ resourcePath, slug, menu, toc = [] }) => {
+const Sidebar = ({ resourcePath, slug, toc = [] }) => {
   return (
     <aside>
       <Flex

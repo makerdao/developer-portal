@@ -6,7 +6,8 @@ import matter from 'gray-matter';
 import { useGithubMarkdownForm } from 'react-tinacms-github';
 import { getGithubPreviewProps, parseMarkdown } from 'next-tinacms-github';
 import { InlineWysiwyg } from 'react-tinacms-editor';
-import { jsx, Button, Flex, NavLink, Box, Link as ThemeLink, Text } from 'theme-ui';
+import { jsx, Button, Flex, NavLink, Box, Link as ThemeLink, Heading, Text } from 'theme-ui';
+import { Icon } from '@makerdao/dai-ui-icons';
 
 // import Toc from '@components/Toc';
 import MarkdownWrapper from '@components/markdown-wrapper';
@@ -28,7 +29,7 @@ const BlogPage = (props) => {
     return <div>Loading...</div>;
   }
 
-  useCreateBlogPage(props.posts);
+  // useCreateBlogPage(props.posts);
   const formOptions = {
     label: 'Edit doc page',
     fields: [
@@ -43,50 +44,24 @@ const BlogPage = (props) => {
   const [data, form] = useGithubMarkdownForm(props.file, formOptions);
   usePlugin(form);
 
-  //TODO remove
-  const menu = [{ title: 'tests', id: 1 }];
-
   return (
-    <GuidesLayout slug={props.slug} menu={menu} toc={[]} resourcePath={'guides'}>
-      <p>
-        <Link href="/blog">
-          <ThemeLink>Blog</ThemeLink>
-        </Link>{' '}
-        / {data.frontmatter.title}
-      </p>
+    <GuidesLayout slug={props.slug} toc={[]} resourcePath={'guides'}>
       <InlineForm form={form}>
-        <Text>
-          <main>
-            <h1>
-              <InlineTextField name="frontmatter.title" />
-            </h1>
-            {/* {!props.preview && props.Alltocs.length > 0 && <Toc tocItems={props.Alltocs} />} */}
+        {/* {!props.preview && props.Alltocs.length > 0 && <Toc tocItems={props.Alltocs} />} */}
 
-            <InlineWysiwyg
-              sticky={'calc(var(--tina-toolbar-height) + var(--tina-padding-small))'}
-              imageProps={{
-                async upload(files) {
-                  const directory = '/public/images/';
-                  let media = await cms.media.store.persist(
-                    files.map((file) => {
-                      return {
-                        directory,
-                        file,
-                      };
-                    })
-                  );
-                  return media.map((m) => `public/images/${m.filename}`);
-                },
-                previewUrl: (str) => {
-                  return `${previewURL}/${str}`;
-                },
-              }}
-              name="markdownBody"
-            >
-              <MarkdownWrapper source={data.markdownBody} />
-            </InlineWysiwyg>
-          </main>
-        </Text>
+        <InlineWysiwyg
+          name="markdownBody"
+          sticky={'calc(var(--tina-toolbar-height) + var(--tina-padding-small))'}
+          imageProps={{
+            directory: 'public/images/',
+            parse: (filename) => '/images/' + filename,
+            previewSrc(src) {
+              return cms.api.github.getDownloadUrl('public/' + src);
+            },
+          }}
+        >
+          <MarkdownWrapper source={data.markdownBody} />
+        </InlineWysiwyg>
       </InlineForm>
       <EditLink />
     </GuidesLayout>
@@ -96,9 +71,11 @@ const BlogPage = (props) => {
 export const EditLink = () => {
   const cms = useCMS();
   return (
-    <Button onClick={() => cms.toggle()}>
-      <i className="icon-edit" />
-      {cms.enabled ? 'Exit Edit Mode' : 'Edit This Site With TinaCMS'}
+    <Button sx={{ my: 4 }} onClick={() => cms.toggle()}>
+      <Flex sx={{ alignItems: 'center' }}>
+        <Icon name={'edit'} sx={{ mr: 1 }}></Icon>
+        {cms.enabled ? 'Exit Edit Mode' : 'Edit This Site With TinaCMS'}
+      </Flex>
     </Button>
   );
 };
