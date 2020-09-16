@@ -7,6 +7,7 @@ import { useGithubMarkdownForm } from 'react-tinacms-github';
 import { getGithubPreviewProps, parseMarkdown } from 'next-tinacms-github';
 import { InlineWysiwyg } from 'react-tinacms-editor';
 import { jsx, Button, Flex, NavLink, Box, Link as ThemeLink, Text } from 'theme-ui';
+import { Icon } from '@makerdao/dai-ui-icons';
 
 // import Toc from '@components/Toc';
 import MarkdownWrapper from '@components/markdown-wrapper';
@@ -69,9 +70,11 @@ const BlogPage = (props) => {
 export const EditLink = () => {
   const cms = useCMS();
   return (
-    <Button onClick={() => cms.toggle()}>
-      <i className="icon-edit" />
-      {cms.enabled ? 'Exit Edit Mode' : 'Edit This Site With TinaCMS'}
+    <Button sx={{ my: 4 }} onClick={() => cms.toggle()}>
+      <Flex sx={{ alignItems: 'center' }}>
+        <Icon name={'edit'} sx={{ mr: 1 }}></Icon>
+        {cms.enabled ? 'Exit Edit Mode' : 'Edit This Site With TinaCMS'}
+      </Flex>
     </Button>
   );
 };
