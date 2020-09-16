@@ -9,7 +9,7 @@ const Subheader = ({ links, query }) => {
         as="nav"
         sx={{
           alignItems: 'center',
-          justifyContent: 'flex-end',
+          justifyContent: 'space-between',
           mb: [2, 4],
           mr: 0,
         }}
