@@ -7,8 +7,28 @@ import SingleLayout from '@layouts/SingleLayout.js';
 import { Icon } from '@makerdao/dai-ui-icons';
 import ArticlesList from '@components/ArticlesList';
 import GuideList from '../components/GuideList';
+import { CodeBox } from '../pages/';
 import getGlobalStaticProps from '../utils/getGlobalStaticProps';
 import { getGuides } from '@utils';
+
+const codeSections = [
+  {
+    title: 'Dai.js',
+    des: 'the JS lib',
+    code: 'hello world!',
+  },
+  {
+    title: 'Data API',
+    des: 'much GraphQL',
+    code: 'data yo',
+  },
+
+  {
+    title: 'pyMaker',
+    des: 'python pything ',
+    code: 'snippet',
+  },
+];
 
 const DsrInfo = ({ rate, totalDai }) => {
   return (
@@ -150,6 +170,7 @@ const Dsr = ({ documentation }) => {
           rowGap: 6,
         }}
       >
+        <CodeBox sections={codeSections} />
         <ArticlesList title="Resources" path="documentation" resources={documentation} />
         <Ecosystem />
       </Grid>

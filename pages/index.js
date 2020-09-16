@@ -18,27 +18,28 @@ import { default as featGuides } from '../data/featuredGuides.json';
 import { Icon } from '@makerdao/dai-ui-icons';
 // import Link from 'next/link';
 
-const CodeBox = () => {
+const codeSections = [
+  {
+    title: 'Dai.js',
+    des: 'the JS lib',
+    code: 'hello world!',
+  },
+  {
+    title: 'Data API',
+    des: 'much GraphQL',
+    code: 'data yo',
+  },
+
+  {
+    title: 'pyMaker',
+    des: 'python pything ',
+    code: 'snippet',
+  },
+];
+
+export const CodeBox = ({ sections }) => {
   const [activeTool, setActiveTool] = useState(0);
 
-  const tools = [
-    {
-      title: 'Dai.js',
-      des: 'the JS lib',
-      code: 'hello world!',
-    },
-    {
-      title: 'Data API',
-      des: 'much GraphQL',
-      code: 'data yo',
-    },
-
-    {
-      title: 'pyMaker',
-      des: 'python pything ',
-      code: 'snippet',
-    },
-  ];
   return (
     <Container>
       <Grid
@@ -55,7 +56,7 @@ const CodeBox = () => {
               // bg: 'red',
             }}
           >
-            <pre>{tools[activeTool].code}</pre>
+            <pre>{sections[activeTool].code}</pre>
           </Card>
         </Box>
         <Box sx={{}}>
@@ -67,11 +68,11 @@ const CodeBox = () => {
               rowGap: 4,
             }}
           >
-            {tools.map((tool, i) => {
+            {sections.map((tool, i) => {
               const { title, des } = tool;
               const isActive = i === activeTool;
               return (
-                <Box>
+                <Box key={tool}>
                   <Heading
                     variant="microHeading"
                     onClick={() => {
@@ -224,7 +225,7 @@ const Page = ({ file, preview, styleFile, guides }) => {
       >
         <ModulesList />
         <IntroText />
-        <CodeBox />
+        <CodeBox sections={codeSections} />
         <ArticlesList title="Recent Guides" path="guides" resources={initialGuides} />
         <CommunityCta />
         {/* <SignupCta /> */}
