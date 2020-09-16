@@ -1,5 +1,12 @@
-import toc from "markdown-toc"
+import toc from 'markdown-toc';
 
 export default function generateTOC(markdown) {
-  return markdown.length > 0 ? toc(markdown).content : ""
+  const tc =
+    markdown.length > 0
+      ? toc(markdown, {
+          firsth1: false,
+          slugify: (value) => require('slugify')(value, { lower: true }),
+        }).json
+      : '';
+  return tc;
 }

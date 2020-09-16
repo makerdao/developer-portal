@@ -9,7 +9,6 @@ import { InlineWysiwyg } from 'react-tinacms-editor';
 import { jsx, Button, Flex, NavLink, Box, Link as ThemeLink, Text } from 'theme-ui';
 import { Icon } from '@makerdao/dai-ui-icons';
 
-// import Toc from '@components/Toc';
 import MarkdownWrapper from '@components/markdown-wrapper';
 import { usePlugin, useCMS } from 'tinacms';
 import { createToc, getBlogPosts, getGuides } from '@utils';
@@ -17,7 +16,7 @@ import useCreateBlogPage from '../../hooks/useCreateBlogPage';
 
 import GuidesLayout from '@layouts/GuidesLayout';
 
-const BlogPage = (props) => {
+const DocsPage = (props) => {
   const cms = useCMS();
   const previewURL = props.previewURL || '';
   const router = useRouter();
@@ -44,10 +43,8 @@ const BlogPage = (props) => {
   usePlugin(form);
 
   return (
-    <GuidesLayout slug={props.slug} toc={[]} resourcePath={'documentation'}>
+    <GuidesLayout slug={props.slug} toc={props.Alltocs} resourcePath={'documentation'}>
       <InlineForm form={form}>
-        {/* {!props.preview && props.Alltocs.length > 0 && <Toc tocItems={props.Alltocs} />} */}
-
         <InlineWysiwyg
           name="markdownBody"
           sticky={'calc(var(--tina-toolbar-height) + var(--tina-padding-small))'}
@@ -85,7 +82,7 @@ export const EditLink = () => {
 export const getStaticProps = async function ({ preview, previewData, params }) {
   const { slug } = params;
   const fileRelativePath = `content/resources/documentation/${slug}.md`;
-  // let Alltocs = '';
+  let Alltocs = '';
 
   let posts = await getGuides();
   if (preview) {
@@ -94,13 +91,13 @@ export const getStaticProps = async function ({ preview, previewData, params }) 
       fileRelativePath,
       parse: parseMarkdown,
     });
-    // if (typeof window === 'undefined') {
-    //   Alltocs = createToc(previewProps.props.file.data.markdownBody);
-    // }
+    if (typeof window === 'undefined') {
+      Alltocs = createToc(previewProps.props.file.data.markdownBody);
+    }
     return {
       props: {
         posts,
-        // Alltocs,
+        Alltocs,
         previewURL: `https://raw.githubusercontent.com/${previewData.working_repo_full_name}/${previewData.head_branch}`,
         ...previewProps.props,
       },
@@ -110,13 +107,14 @@ export const getStaticProps = async function ({ preview, previewData, params }) 
   const content = await import(`../../content/resources/documentation/${slug}.md`);
   const data = matter(content.default);
 
-  // if (typeof window === 'undefined') {
-  //   Alltocs = createToc(data.content);
-  // }
+  if (typeof window === 'undefined') {
+    Alltocs = createToc(data.content);
+  }
   return {
     props: {
+      slug,
       posts,
-      // Alltocs,
+      Alltocs,
       sourceProvider: null,
       error: null,
       preview: false,
@@ -148,4 +146,4 @@ export const getStaticPaths = async function () {
   };
 };
 
-export default BlogPage;
+export default DocsPage;
