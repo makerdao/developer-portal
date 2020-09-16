@@ -47,7 +47,6 @@ const GetGuides = async (preview, previewData, contentDir) => {
 };
 
 const getLocalFiles = async (filePath) => {
-  console.log('This is the filepath we try to glob in getGuides:', `${filePath}/**/*.md`);
   // grab all md files
   const fg = require('fast-glob');
   const files = await fg(`${filePath}/**/*.md`);
