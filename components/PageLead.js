@@ -2,7 +2,7 @@
 import { jsx, Card, Heading, Text, Box, Flex, Grid, Container } from 'theme-ui';
 import Link from 'next/link';
 
-const PageLead = () => {
+const PageLead = ({ content }) => {
   return (
     <Container>
       <Flex sx={{ py: 6, flexDirection: 'column' }}>
@@ -18,10 +18,10 @@ const PageLead = () => {
               color: 'onBackgroundMuted',
               mb: 2,
             }}
-          >
-            Find all you need to build on top of the Maker Protocol <br /> or integrate Dai, the
-            decentralized stablecoin.
-          </Text>
+            dangerouslySetInnerHTML={{
+              __html: content.subtext,
+            }}
+          ></Text>
           <Link href="/technology">
             <Text>→ Learn more about the technology.</Text>
           </Link>

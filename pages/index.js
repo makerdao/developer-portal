@@ -9,9 +9,20 @@ import Link from 'next/link';
 import PageLead from '../components/PageLead';
 import CommunityCta from '../components/CommunityCta';
 import SignupCta from '../components/SignupCta';
-import { Container, jsx, Card, Heading, Text, Grid, Box, Flex, Link as ThemeLink } from 'theme-ui';
+import {
+  Container,
+  jsx,
+  Card,
+  Heading,
+  Text,
+  Grid,
+  Box,
+  Flex,
+  Link as ThemeLink,
+  Button,
+} from 'theme-ui';
 import { createToc, getGuides } from '@utils';
-import { usePlugin } from 'tinacms';
+import { usePlugin, useCMS } from 'tinacms';
 import getGlobalStaticProps from '../utils/getGlobalStaticProps';
 import { useGlobalStyleForm } from '@hooks';
 import { default as featGuides } from '../data/featuredGuides.json';
@@ -203,17 +214,20 @@ const Page = ({ file, preview, styleFile, guides }) => {
     label: 'home page',
     fields: [
       {
-        name: 'title',
+        name: 'subtext',
         component: 'text',
       },
     ],
   };
   const [data, form] = useGithubJsonForm(file, formOptions);
+  console.log('form', form);
   usePlugin(form);
   const [styleData, styleForm] = useGlobalStyleForm(styleFile, preview);
+
+  console.log('data', data);
   return (
     <SingleLayout>
-      <PageLead />
+      <PageLead content={data} />
       {/* <GuideList guides={[]} />
        */}
 
@@ -229,7 +243,20 @@ const Page = ({ file, preview, styleFile, guides }) => {
         <CommunityCta />
         {/* <SignupCta /> */}
       </Grid>
+      <EditLink />
     </SingleLayout>
+  );
+};
+
+export const EditLink = () => {
+  const cms = useCMS();
+  return (
+    <Button sx={{ my: 4 }} onClick={() => cms.toggle()}>
+      <Flex sx={{ alignItems: 'center' }}>
+        <Icon name={'edit'} sx={{ mr: 1 }}></Icon>
+        {cms.enabled ? 'Exit Edit Mode' : 'Edit This Site With TinaCMS'}
+      </Flex>
+    </Button>
   );
 };
 
@@ -248,7 +275,7 @@ export const getStaticProps = async function ({ preview, previewData }) {
     const file = (
       await getGithubPreviewProps({
         ...previewData,
-        fileRelativePath: 'content/home.json',
+        fileRelativePath: 'data/landingPage.json',
         parse: parseJson,
       })
     ).props;
@@ -266,8 +293,8 @@ export const getStaticProps = async function ({ preview, previewData }) {
       error: null,
       preview: false,
       file: {
-        fileRelativePath: 'content/home.json',
-        data: (await import('../content/home.json')).default,
+        fileRelativePath: 'data/landingPage.json',
+        data: (await import('../data/landingPage.json')).default,
       },
       guides,
       documentation,
