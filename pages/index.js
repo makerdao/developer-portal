@@ -9,20 +9,43 @@ import Link from 'next/link';
 import PageLead from '../components/PageLead';
 import CommunityCta from '../components/CommunityCta';
 import SignupCta from '../components/SignupCta';
-import { Container, jsx, Card, Heading, Text, Grid, Box, Flex, Link as ThemeLink } from 'theme-ui';
+import {
+  Container,
+  jsx,
+  Card,
+  Heading,
+  Text,
+  Grid,
+  Box,
+  Flex,
+  Link as ThemeLink,
+  BaseStyles,
+} from 'theme-ui';
 import { createToc, getGuides } from '@utils';
 import { usePlugin } from 'tinacms';
 import getGlobalStaticProps from '../utils/getGlobalStaticProps';
 import { useGlobalStyleForm } from '@hooks';
 import { default as featGuides } from '../data/featuredGuides.json';
 import { Icon } from '@makerdao/dai-ui-icons';
+import CodeBlock from '@components/markdown-wrapper/CodeBlock';
 // import Link from 'next/link';
 
 const codeSections = [
   {
     title: 'Dai.js',
     des: 'the JS lib',
-    code: 'hello world!',
+    code: `import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+    // import Codetheme from "./styles"
+    
+    const CodeBlock = ({ value }) => {
+      return (
+        // <SyntaxHighlighter language="jsx" style={Codetheme}>
+        <SyntaxHighlighter language="jsx">{value}</SyntaxHighlighter>
+      );
+    };
+    
+    export default CodeBlock;
+    `,
   },
   {
     title: 'Data API',
@@ -37,7 +60,7 @@ const codeSections = [
   },
 ];
 
-export const CodeBox = ({ sections }) => {
+export const CodeBox = ({ cta, sections }) => {
   const [activeTool, setActiveTool] = useState(0);
 
   return (
@@ -53,15 +76,17 @@ export const CodeBox = ({ sections }) => {
             sx={{
               height: '500px',
               width: '100%',
-              // bg: 'red',
+              bg: 'background', //TODO check CodeTag prop in CodeBlock
             }}
           >
-            <pre>{sections[activeTool].code}</pre>
+            <BaseStyles>
+              <CodeBlock value={sections[activeTool].code} />
+            </BaseStyles>
           </Card>
         </Box>
         <Box sx={{}}>
           <Heading pb={4} variant="mediumHeading">
-            Dive in the code
+            {cta}
           </Heading>
           <Grid
             sx={{
@@ -225,7 +250,7 @@ const Page = ({ file, preview, styleFile, guides }) => {
       >
         <ModulesList />
         <IntroText />
-        <CodeBox sections={codeSections} />
+        <CodeBox cta="Dive in the code" sections={codeSections} />
         <ArticlesList title="Recent Guides" path="guides" resources={initialGuides} />
         <CommunityCta />
         {/* <SignupCta /> */}

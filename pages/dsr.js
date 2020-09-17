@@ -22,7 +22,6 @@ const codeSections = [
     des: 'much GraphQL',
     code: 'data yo',
   },
-
   {
     title: 'pyMaker',
     des: 'python pything ',
@@ -170,7 +169,7 @@ const Dsr = ({ documentation }) => {
           rowGap: 6,
         }}
       >
-        <CodeBox sections={codeSections} />
+        <CodeBox cta="Dive in the code" sections={codeSections} />
         <ArticlesList title="Resources" path="documentation" resources={documentation} />
         <Ecosystem />
       </Grid>
