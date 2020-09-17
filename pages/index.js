@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { getGithubPreviewProps, parseJson } from 'next-tinacms-github';
 import { useGithubJsonForm } from 'react-tinacms-github';
+import { InlineForm, InlineText } from 'react-tinacms-inline';
 import Router from 'next/router';
 import SingleLayout from '../layouts/SingleLayout.js';
 import GuideList from '../components/GuideList';
 import ArticlesList from '../components/ArticlesList';
 import Link from 'next/link';
-import PageLead from '../components/PageLead';
 import CommunityCta from '../components/CommunityCta';
 import SignupCta from '../components/SignupCta';
 import {
@@ -28,6 +28,39 @@ import { useGlobalStyleForm } from '@hooks';
 import { default as featGuides } from '../data/featuredGuides.json';
 import { Icon } from '@makerdao/dai-ui-icons';
 // import Link from 'next/link';
+
+const PageLead = ({ content }) => {
+  return (
+    <Container>
+      <Flex sx={{ py: 6, flexDirection: 'column' }}>
+        <Heading variant="megaHeading" sx={{ fontSize: 9 }}>
+          Maker Protocol
+        </Heading>
+        <Heading variant="megaHeading" sx={{ fontSize: 9 }}>
+          For Developers
+        </Heading>
+        <Flex sx={{ flexDirection: 'column', pl: 7, mt: 3 }}>
+          <Text
+            className="subtext"
+            sx={{
+              color: 'onBackgroundMuted',
+              mb: 2,
+            }}
+            // dangerouslySetInnerHTML={{
+            //   __html: content.subtext,
+            // }}
+          >
+            <InlineText name="subtext" />
+          </Text>
+          <Link href="/technology">
+            <Text>→ Learn more about the technology.</Text>
+          </Link>
+          {/* <Text>{ 'The foundation of decentralized finance, "Defi".'}</Text> */}
+        </Flex>
+      </Flex>
+    </Container>
+  );
+};
 
 const CodeBox = () => {
   const [activeTool, setActiveTool] = useState(0);
@@ -227,22 +260,24 @@ const Page = ({ file, preview, styleFile, guides }) => {
   console.log('data', data);
   return (
     <SingleLayout>
-      <PageLead content={data} />
-      {/* <GuideList guides={[]} />
-       */}
+      <InlineForm form={form}>
+        <PageLead content={data} />
+        {/* <GuideList guides={[]} />
+         */}
 
-      <Grid
-        sx={{
-          rowGap: 6,
-        }}
-      >
-        <ModulesList />
-        <IntroText />
-        <CodeBox />
-        <ArticlesList title="Recent Guides" path="guides" resources={initialGuides} />
-        <CommunityCta />
-        {/* <SignupCta /> */}
-      </Grid>
+        <Grid
+          sx={{
+            rowGap: 6,
+          }}
+        >
+          <ModulesList />
+          <IntroText />
+          <CodeBox />
+          <ArticlesList title="Recent Guides" path="guides" resources={initialGuides} />
+          <CommunityCta />
+          {/* <SignupCta /> */}
+        </Grid>
+      </InlineForm>
       <EditLink />
     </SingleLayout>
   );
@@ -284,6 +319,8 @@ export const getStaticProps = async function ({ preview, previewData }) {
       props: {
         ...file,
         ...global,
+        guides,
+        documentation,
       },
     };
   }

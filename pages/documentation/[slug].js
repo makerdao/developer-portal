@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Error from 'next/error';
 import { useRouter } from 'next/router';
-import { InlineForm, InlineTextField } from 'react-tinacms-inline';
+import { InlineForm, InlineText } from 'react-tinacms-inline';
 import matter from 'gray-matter';
 import { useGithubMarkdownForm } from 'react-tinacms-github';
 import { getGithubPreviewProps, parseMarkdown } from 'next-tinacms-github';
