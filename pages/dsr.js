@@ -7,15 +7,26 @@ import SingleLayout from '@layouts/SingleLayout.js';
 import { Icon } from '@makerdao/dai-ui-icons';
 import ArticlesList from '@components/ArticlesList';
 import GuideList from '../components/GuideList';
-import { CodeBox } from '../pages/';
-import getGlobalStaticProps from '../utils/getGlobalStaticProps';
+import CodeBox from '@components/CodeBox';
 import { getGuides } from '@utils';
 
 const codeSections = [
   {
     title: 'Dai.js',
     des: 'the JS lib',
-    code: 'hello world!',
+    code: `
+    import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+    // import Codetheme from "./styles"
+    
+    const CodeBlock = ({ value }) => {
+      return (
+        // <SyntaxHighlighter language="jsx" style={Codetheme}>
+        <SyntaxHighlighter language="jsx">{value}</SyntaxHighlighter>
+      );
+    };
+    
+    export default CodeBlock;
+    `,
   },
   {
     title: 'Data API',
