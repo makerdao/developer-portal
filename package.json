@@ -67,7 +67,7 @@
     "react-tinacms-inline": "^0.28.0",
     "remark-slug": "^6.0.0",
     "remarkable": "^2.0.0",
-    "slugify": "^1.4.0",
+    "slugify": "^1.4.5",
     "stringify-object": "^3.3.0",
     "styled-components": "^5.1.1",
     "styled-normalize": "^8.0.7",

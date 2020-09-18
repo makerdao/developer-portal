@@ -12,7 +12,7 @@ import { Icon } from '@makerdao/dai-ui-icons';
 import MarkdownWrapper from '@components/markdown-wrapper';
 import { usePlugin, useCMS } from 'tinacms';
 import { createToc, getBlogPosts, getGuides } from '@utils';
-import useCreateBlogPage from '../../hooks/useCreateBlogPage';
+import useCreateDocument from '../../hooks/useCreateDocument';
 
 import GuidesLayout from '@layouts/GuidesLayout';
 
@@ -28,7 +28,7 @@ const DocsPage = (props) => {
     return <div>Loading...</div>;
   }
 
-  // useCreateBlogPage(props.posts);
+  useCreateDocument(props.posts);
   const formOptions = {
     label: 'Edit doc page',
     fields: [
