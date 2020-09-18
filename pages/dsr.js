@@ -7,8 +7,38 @@ import SingleLayout from '@layouts/SingleLayout.js';
 import { Icon } from '@makerdao/dai-ui-icons';
 import ArticlesList from '@components/ArticlesList';
 import GuideList from '../components/GuideList';
-import getGlobalStaticProps from '../utils/getGlobalStaticProps';
+import CodeBox from '@components/CodeBox';
 import { getGuides } from '@utils';
+
+const codeSections = [
+  {
+    title: 'Dai.js',
+    des: 'the JS lib',
+    code: `
+    import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+    // import Codetheme from "./styles"
+    
+    const CodeBlock = ({ value }) => {
+      return (
+        // <SyntaxHighlighter language="jsx" style={Codetheme}>
+        <SyntaxHighlighter language="jsx">{value}</SyntaxHighlighter>
+      );
+    };
+    
+    export default CodeBlock;
+    `,
+  },
+  {
+    title: 'Data API',
+    des: 'much GraphQL',
+    code: 'data yo',
+  },
+  {
+    title: 'pyMaker',
+    des: 'python pything ',
+    code: 'snippet',
+  },
+];
 
 const DsrInfo = ({ rate, totalDai }) => {
   return (
@@ -150,6 +180,7 @@ const Dsr = ({ documentation }) => {
           rowGap: 6,
         }}
       >
+        <CodeBox cta="Dive in the code" sections={codeSections} />
         <ArticlesList title="Resources" path="documentation" resources={documentation} />
         <Ecosystem />
       </Grid>
