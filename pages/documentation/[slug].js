@@ -34,6 +34,7 @@ const DocsPage = (props) => {
     label: 'Edit doc page',
     fields: [
       {
+        name: 'frontmatter.title',
         label: 'Title',
         component: 'text',
       },

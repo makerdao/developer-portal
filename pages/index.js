@@ -132,7 +132,7 @@ const IntroText = () => {
   );
 };
 const Page = ({ file, preview, styleFile, guides }) => {
-  console.log(guides, 'init');
+  // console.log(guides, 'init');
   const initialGuides = guides;
 
   const formOptions = {
