@@ -42,8 +42,20 @@ const DocsPage = (props) => {
   const [data, form] = useGithubMarkdownForm(props.file, formOptions);
   usePlugin(form);
 
+  const moduleResources = props.resources
+    ?.filter((r) => r.data.frontmatter.parent === props.file.data.frontmatter.parent)
+    .reduce((acc, val) => {
+      acc.push({ title: val.data.frontmatter.title, slug: val.data.frontmatter.slug });
+      return acc;
+    }, []);
+
   return (
-    <GuidesLayout slug={props.slug} toc={props.Alltocs} resourcePath={'documentation'}>
+    <GuidesLayout
+      resources={moduleResources}
+      slug={props.slug}
+      toc={props.Alltocs}
+      resourcePath={'documentation'}
+    >
       <InlineForm form={form}>
         <InlineWysiwyg
           name="markdownBody"
@@ -84,7 +96,8 @@ export const getStaticProps = async function ({ preview, previewData, params }) 
   const fileRelativePath = `content/resources/documentation/${slug}.md`;
   let Alltocs = '';
 
-  let posts = await getGuides();
+  //TODO will this affect Tina?
+  const resources = await getGuides(preview, previewData, 'content/resources');
   if (preview) {
     const previewProps = await getGithubPreviewProps({
       ...previewData,
@@ -96,7 +109,7 @@ export const getStaticProps = async function ({ preview, previewData, params }) 
     }
     return {
       props: {
-        posts,
+        resources,
         Alltocs,
         previewURL: `https://raw.githubusercontent.com/${previewData.working_repo_full_name}/${previewData.head_branch}`,
         ...previewProps.props,
@@ -113,7 +126,7 @@ export const getStaticProps = async function ({ preview, previewData, params }) 
   return {
     props: {
       slug,
-      posts,
+      resources,
       Alltocs,
       sourceProvider: null,
       error: null,
