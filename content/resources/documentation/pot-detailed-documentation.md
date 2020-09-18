@@ -19,8 +19,6 @@ contentType: 'documentation'
 
 The Pot is the core of the`Dai Savings Rate`. It allows users to deposit `dai` and activate the Dai Savings Rate and earning savings on their `dai`. The DSR is set by Maker Governance, and will typically be less than the base stability fee to remain sustainable. The purpose of Pot is to offer another incentive for holding Dai.
 
-![](../../.gitbook/assets/screen-shot-2019-11-17-at-2.19.45-pm.png)
-
 ## 2. Contract Details
 
 #### Math

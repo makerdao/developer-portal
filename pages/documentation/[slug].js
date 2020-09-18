@@ -13,6 +13,7 @@ import MarkdownWrapper from '@components/markdown-wrapper';
 import { usePlugin, useCMS } from 'tinacms';
 import { createToc, getBlogPosts, getGuides } from '@utils';
 import useCreateBlogPage from '../../hooks/useCreateBlogPage';
+import { ContentTypes } from '../../utils/constants';
 
 import GuidesLayout from '@layouts/GuidesLayout';
 
@@ -43,7 +44,11 @@ const DocsPage = (props) => {
   usePlugin(form);
 
   const moduleResources = props.resources
-    ?.filter((r) => r.data.frontmatter.parent === props.file.data.frontmatter.parent)
+    ?.filter(
+      (r) =>
+        r.data.frontmatter.parent === props.file.data.frontmatter.parent &&
+        r.data.frontmatter.contentType === ContentTypes.DOCUMENTATION
+    )
     .reduce((acc, val) => {
       acc.push({ title: val.data.frontmatter.title, slug: val.data.frontmatter.slug });
       return acc;
@@ -54,7 +59,7 @@ const DocsPage = (props) => {
       resources={moduleResources}
       slug={props.slug}
       toc={props.Alltocs}
-      resourcePath={'documentation'}
+      resourcePath={ContentTypes.DOCUMENTATION}
     >
       <InlineForm form={form}>
         <InlineWysiwyg
