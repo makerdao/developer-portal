@@ -50,9 +50,14 @@ const DocsPage = (props) => {
         r.data.frontmatter.contentType === ContentTypes.DOCUMENTATION
     )
     .reduce((acc, val) => {
-      acc.push({ title: val.data.frontmatter.title, slug: val.data.frontmatter.slug });
+      acc.push({
+        title: val.data.frontmatter.title,
+        slug: val.data.frontmatter.slug,
+        root: val.data.frontmatter.root,
+      });
       return acc;
-    }, []);
+    }, [])
+    .sort((a, b) => (a.root ? -1 : b.root ? 1 : 0));
 
   return (
     <GuidesLayout

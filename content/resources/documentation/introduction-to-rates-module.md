@@ -5,6 +5,7 @@ tags: ['dsr']
 slug: introduction-to-rates-module
 parent: 'dsr'
 contentType: 'documentation'
+root: true
 ---
 
 # Rates Module

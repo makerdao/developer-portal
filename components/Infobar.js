@@ -31,10 +31,10 @@ const ContentsMenuItem = ({ resourcePath, slug, title, anchor, root }) => {
 
 const FileContents = ({ resourcePath, slug, toc }) => {
   const h1s = toc.filter((x) => x.lvl === 1);
-  return toc.map(({ content: title, slug: anchor, lvl }) => {
+  return toc.map(({ content: title, slug: anchor, lvl }, i) => {
     const root = h1s.length === 1 ? lvl === 1 || lvl === 2 : lvl === 1;
     return (
-      <Fragment key={anchor}>
+      <Fragment key={`${anchor}${i}`}>
         {root ? (
           <ContentsMenuItem
             resourcePath={resourcePath}
@@ -83,9 +83,9 @@ const Infobar = ({ resourcePath, slug, toc }) => {
           borderColor: 'onBackgroundMuted',
           borderWidth: '0 0 1px 0',
           width: '100%',
-          mb: 3,
           mt: 2,
-          mr: 0,
+          pb: 2,
+          pl: 2,
         }}
       >
         <NavLink>Contents</NavLink>

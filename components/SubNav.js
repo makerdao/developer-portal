@@ -6,7 +6,7 @@ const Subheader = ({ links, query }) => {
   return (
     <Box
       sx={{
-        border: 'solid',
+        border: 'light',
         borderColor: 'onBackgroundMuted',
         borderWidth: '1px 0 1px 0',
       }}
@@ -17,8 +17,7 @@ const Subheader = ({ links, query }) => {
           sx={{
             alignItems: 'center',
             justifyContent: 'space-between',
-            mb: 3,
-            mr: 0,
+            pb: 2,
           }}
         >
           {links.map(({ name, url }) => (

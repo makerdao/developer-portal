@@ -6,6 +6,7 @@ tags:
 slug: introduction-to-governance-module
 parent: governance
 contentType: documentation
+root: true
 ---
 
 # Governance Module
