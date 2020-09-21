@@ -2,7 +2,7 @@
   { "url": "/documentation/introduction-to-rates-module", "name": "DSR" },
   { "url": "/auctions", "name": "Auctions" },
   { "url": "/documentation/introduction-to-governance-module", "name": "Governance" },
-  { "url": "/dai-js", "name": "Dai.js" },
+  { "url": "/documentation/introduction-to-dai-js", "name": "Dai.js" },
   { "url": "/maker-data-api", "name": "Maker Data API" },
   { "url": "/vaults", "name": "Vaults" },
   { "url": "/oracles", "name": "Oracles" },
