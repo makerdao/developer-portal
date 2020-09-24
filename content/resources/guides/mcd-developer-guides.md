@@ -4,7 +4,7 @@ description: 'A collection of guides'
 tags: ['keepers', 'governance']
 slug: mcd-developer-guides
 parent: 'governance'
-contentType: 'guide'
+contentType: 'guides'
 ---
 
 # Developer Guides and Tutorials

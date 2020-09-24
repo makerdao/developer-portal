@@ -1,14 +1,20 @@
 /** @jsx jsx */
 import { useState, useEffect } from 'react';
 import { Container, jsx, Card, Heading, Text, Grid, Flex, Image, Box } from 'theme-ui';
+import { useGithubToolbarPlugins, useGithubJsonForm } from 'react-tinacms-github';
+import { usePlugin } from 'tinacms';
+import { getGithubPreviewProps, parseJson } from 'next-tinacms-github';
+import { InlineForm, InlineText } from 'react-tinacms-inline';
 import Link from 'next/link';
 import useMaker from '../hooks/useMaker';
 import SingleLayout from '@layouts/SingleLayout.js';
 import { Icon } from '@makerdao/dai-ui-icons';
 import ArticlesList from '@components/ArticlesList';
 import GuideList from '../components/GuideList';
+import EditLink from '../components/EditLink';
 import CodeBox from '@components/CodeBox';
 import { getGuides } from '@utils';
+import useCreateDocument from '../hooks/useCreateDocument';
 
 const codeSections = [
   {
@@ -82,9 +88,8 @@ const Intro = () => {
       <Grid columns={'1fr 2fr'} sx={{ mb: 4, p: 6 }}>
         <Heading variant="largeHeading">What is DSR?</Heading>
         <Grid>
-          <Text variant="smallHeading">
-            The DSR rate initially can be set through the Chief. Governance will be able to change
-            the DSR based on the rules that the DS-Chief employs.
+          <Text className="subtext" variant="smallHeading">
+            <InlineText name="subtext" />
           </Text>
           <Text sx={{ color: 'onBackgroundMuted' }}>
             Raising and lowering the DSR helps control the supply and demand of Dai, which in turn
@@ -152,7 +157,7 @@ const Ecosystem = () => {
   );
 };
 
-const Dsr = ({ documentation }) => {
+const Dsr = ({ file, preview, documentation }) => {
   const { maker } = useMaker();
   const [rate, setRate] = useState('0.00');
   const [totalDai, setTotalDai] = useState('0.00');
@@ -171,33 +176,77 @@ const Dsr = ({ documentation }) => {
     getTotalDai();
   }, [maker]);
 
+  const formOptions = {
+    label: 'home page',
+    fields: [
+      {
+        name: 'subtext',
+        component: 'text',
+      },
+    ],
+  };
+
+  const [data, form] = useGithubJsonForm(file, formOptions);
+  usePlugin(form);
+  useGithubToolbarPlugins();
+  // TODO pass resources in
+  useCreateDocument([], 'dsr');
+
   return (
     <SingleLayout>
-      <PageLead rate={rate} totalDai={totalDai} />
-      <Intro />
-      <Grid
-        sx={{
-          rowGap: 6,
-        }}
-      >
-        <CodeBox cta="Dive in the code" sections={codeSections} />
-        <ArticlesList title="Resources" path="documentation" resources={documentation} />
-        <Ecosystem />
-      </Grid>
+      <InlineForm form={form}>
+        <PageLead rate={rate} totalDai={totalDai} />
+        <Intro />
+        <Grid
+          sx={{
+            rowGap: 6,
+          }}
+        >
+          <CodeBox cta="Dive in the code" sections={codeSections} />
+          <ArticlesList title="Resources" path="documentation" resources={documentation} />
+          <Ecosystem />
+        </Grid>
+      </InlineForm>
+      <Container>
+        <EditLink enterText="Create a New Page" />
+      </Container>
     </SingleLayout>
   );
 };
 
 export const getStaticProps = async function ({ preview, previewData }) {
+  //TODO fix path:
   const documentation = await getGuides(preview, previewData, 'content/resources');
   const dsrDocs = documentation.filter(
     (g) => g.data.frontmatter.parent === 'dsr' || g.data.frontmatter.tags.includes('dsr')
   );
+
+  if (preview) {
+    const file = (
+      await getGithubPreviewProps({
+        ...previewData,
+        fileRelativePath: 'data/dsrPage.json',
+        parse: parseJson,
+      })
+    ).props;
+
+    return {
+      props: {
+        ...file,
+        documentation: dsrDocs,
+      },
+    };
+  }
+
   return {
     props: {
       sourceProvider: null,
       error: null,
       preview: false,
+      file: {
+        fileRelativePath: 'data/dsrPage.json',
+        data: (await import('../data/dsrPage.json')).default,
+      },
       documentation: dsrDocs,
     },
   };

@@ -6,7 +6,7 @@ import { FORM_ERROR } from 'final-form';
 import { toMarkdownString, flatDocs, getRandID } from '@utils';
 import { removeInvalidChars } from '../utils/removeInvalidChars';
 
-const useCreateDocument = (resources) => {
+const useCreateDocument = (resources, module) => {
   const router = useRouter();
   const cms = useCMS();
   usePlugins([
@@ -47,17 +47,12 @@ const useCreateDocument = (resources) => {
           },
         },
         {
-          name: 'parent',
-          label: 'Parent Module',
-          component: 'text',
-          required: false,
-        },
-        {
           component: 'select',
           name: 'contentType',
           label: 'Content Type',
           description: 'Select the content type for this resource.',
-          options: ['documentation', 'guide'],
+          options: ['documentation', 'guides'],
+          required: true,
           validate(value, allValues, meta, field) {
             if (!value) {
               return 'Content type is required';
@@ -68,9 +63,10 @@ const useCreateDocument = (resources) => {
       onSubmit: async (frontMatter) => {
         const github = cms.api.github;
         const slug = removeInvalidChars(slugify(frontMatter.title, { lower: true }));
-        const fileRelativePath = `content/resources/documentation/${slug}.md`;
+        const fileRelativePath = `content/resources/${frontMatter.contentType}/${slug}.md`;
         frontMatter.date = frontMatter.date || new Date().toString();
         frontMatter.slug = slug;
+        frontMatter.parent = module;
         return await github
           .commit(
             fileRelativePath,
@@ -86,7 +82,7 @@ const useCreateDocument = (resources) => {
           .then((response) => {
             // After creating the document with frontmatter, redirect to the new URL.
             // Since we're still in preview mode, the document is pulled from github and can now be edited.
-            setTimeout(() => router.push(`/documentation/${slug}`), 1500);
+            setTimeout(() => router.push(`/${frontMatter.contentType}/${slug}`), 1500);
           })
           .catch((e) => {
             return { [FORM_ERROR]: e };

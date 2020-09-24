@@ -1,20 +1,19 @@
 import Link from 'next/link';
 import Error from 'next/error';
 import { useRouter } from 'next/router';
-import { InlineForm, InlineTextField } from 'react-tinacms-inline';
+import { InlineForm, InlineText } from 'react-tinacms-inline';
 import matter from 'gray-matter';
 import { useGithubMarkdownForm } from 'react-tinacms-github';
 import { getGithubPreviewProps, parseMarkdown } from 'next-tinacms-github';
 import { InlineWysiwyg } from 'react-tinacms-editor';
-import { jsx, Button, Flex, NavLink, Box, Link as ThemeLink, Heading, Text } from 'theme-ui';
+import { jsx, Button, Flex, NavLink, Box, Link as ThemeLink, Text } from 'theme-ui';
 import { Icon } from '@makerdao/dai-ui-icons';
 
 import MarkdownWrapper from '@components/markdown-wrapper';
+import EditLink from '@components/EditLink';
 import { usePlugin, useCMS } from 'tinacms';
 import { createToc, getBlogPosts, getGuides } from '@utils';
-import useCreateBlogPage from '../../hooks/useCreateBlogPage';
 import { ContentTypes } from '../../utils/constants';
-import EditLink from '@components/EditLink';
 
 import GuidesLayout from '@layouts/GuidesLayout';
 
@@ -30,7 +29,6 @@ const GuidesPage = (props) => {
     return <div>Loading...</div>;
   }
 
-  // useCreateBlogPage(props.posts);
   const formOptions = {
     label: 'Edit doc page',
     fields: [
@@ -96,7 +94,7 @@ export const getStaticProps = async function ({ preview, previewData, params }) 
   const fileRelativePath = `content/resources/guides/${slug}.md`;
   let Alltocs = '';
 
-  const resources = await getGuides(preview, previewData, 'content/resources');
+  const resources = await getGuides(preview, previewData, 'content/resources/guides');
   if (preview) {
     const previewProps = await getGithubPreviewProps({
       ...previewData,

@@ -13,7 +13,6 @@ import MarkdownWrapper from '@components/markdown-wrapper';
 import EditLink from '@components/EditLink';
 import { usePlugin, useCMS } from 'tinacms';
 import { createToc, getBlogPosts, getGuides } from '@utils';
-import useCreateDocument from '../../hooks/useCreateDocument';
 import { ContentTypes } from '../../utils/constants';
 
 import GuidesLayout from '@layouts/GuidesLayout';
@@ -30,7 +29,6 @@ const DocsPage = (props) => {
     return <div>Loading...</div>;
   }
 
-  useCreateDocument(props.resources);
   const formOptions = {
     label: 'Edit doc page',
     fields: [

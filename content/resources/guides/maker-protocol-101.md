@@ -4,7 +4,7 @@ description: Getting Started with Maker Protocol
 tags: ['keepers', 'governance']
 slug: maker-protocol-101
 parent: 'governance'
-contentType: 'guide'
+contentType: 'guides'
 ---
 
 # Maker Protocol 101
