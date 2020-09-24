@@ -7,6 +7,6 @@ export default function generateTOC(markdown) {
           firsth1: false,
           slugify: (value) => require('slugify')(value, { lower: true }),
         }).json
-      : '';
+      : [];
   return tc;
 }

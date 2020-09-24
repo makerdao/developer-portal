@@ -6,8 +6,8 @@ import { FORM_ERROR } from 'final-form';
 import { toMarkdownString, flatDocs, getRandID } from '@utils';
 import { removeInvalidChars } from '../utils/removeInvalidChars';
 
-const useCreateBlogPage = (allBlogs) => {
-  // const router = useRouter();
+const useCreateDocument = (resources) => {
+  const router = useRouter();
   const cms = useCMS();
   usePlugins([
     {
@@ -23,8 +23,8 @@ const useCreateBlogPage = (allBlogs) => {
             if (!value) {
               return 'A title is required';
             }
-            if (allBlogs.some((post) => post.fileName === slugify(value, { lower: true }))) {
-              return 'Sorry the blog title must be unique';
+            if (resources.some((post) => post.fileName === slugify(value, { lower: true }))) {
+              return 'Sorry the document title must be unique';
             }
           },
         },
@@ -39,7 +39,7 @@ const useCreateBlogPage = (allBlogs) => {
           component: 'tags',
           label: 'Tags',
           required: true,
-          description: 'Tags for this post',
+          description: 'Tags for this file',
           validate(value, allValues, meta, field) {
             if (!value) {
               return 'Tags are required';
@@ -84,8 +84,9 @@ const useCreateBlogPage = (allBlogs) => {
             `Created new document: ${frontMatter.title}`
           )
           .then((response) => {
-            // setTimeout(() => router.push(`/documentation/${slug}`), 1500);
-            console.log(`resource created with slug ${slug}`);
+            // After creating the document with frontmatter, redirect to the new URL.
+            // Since we're still in preview mode, the document is pulled from github and can now be edited.
+            setTimeout(() => router.push(`/documentation/${slug}`), 1500);
           })
           .catch((e) => {
             return { [FORM_ERROR]: e };
@@ -95,4 +96,4 @@ const useCreateBlogPage = (allBlogs) => {
   ]);
 };
 
-export default useCreateBlogPage;
+export default useCreateDocument;

@@ -29,7 +29,7 @@ const DocsPage = (props) => {
     return <div>Loading...</div>;
   }
 
-  useCreateDocument(props.posts);
+  useCreateDocument(props.resources);
   const formOptions = {
     label: 'Edit doc page',
     fields: [
@@ -107,8 +107,7 @@ export const getStaticProps = async function ({ preview, previewData, params }) 
   const fileRelativePath = `content/resources/documentation/${slug}.md`;
   let Alltocs = '';
 
-  //TODO will this affect Tina?
-  const resources = await getGuides(preview, previewData, 'content/resources');
+  const resources = await getGuides(preview, previewData, 'content/resources/documentation');
   if (preview) {
     const previewProps = await getGithubPreviewProps({
       ...previewData,
