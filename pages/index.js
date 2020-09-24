@@ -10,6 +10,7 @@ import Link from 'next/link';
 import CommunityCta from '../components/CommunityCta';
 import CodeBox from '../components/CodeBox';
 import SignupCta from '../components/SignupCta';
+import EditLink from '../components/EditLink';
 import {
   Container,
   jsx,
@@ -216,18 +217,6 @@ const Page = ({ file, preview, styleFile, guides }) => {
       </InlineForm>
       <EditLink />
     </SingleLayout>
-  );
-};
-
-export const EditLink = () => {
-  const cms = useCMS();
-  return (
-    <Button sx={{ my: 4 }} onClick={() => cms.toggle()}>
-      <Flex sx={{ alignItems: 'center' }}>
-        <Icon name={'edit'} sx={{ mr: 1 }}></Icon>
-        {cms.enabled ? 'Exit Edit Mode' : 'Edit This Site With TinaCMS'}
-      </Flex>
-    </Button>
   );
 };
 

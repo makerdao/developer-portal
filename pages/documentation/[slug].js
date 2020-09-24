@@ -10,6 +10,7 @@ import { jsx, Button, Flex, NavLink, Box, Link as ThemeLink, Text } from 'theme-
 import { Icon } from '@makerdao/dai-ui-icons';
 
 import MarkdownWrapper from '@components/markdown-wrapper';
+import EditLink from '@components/EditLink';
 import { usePlugin, useCMS } from 'tinacms';
 import { createToc, getBlogPosts, getGuides } from '@utils';
 import useCreateDocument from '../../hooks/useCreateDocument';
@@ -84,18 +85,6 @@ const DocsPage = (props) => {
       </InlineForm>
       <EditLink />
     </GuidesLayout>
-  );
-};
-
-export const EditLink = () => {
-  const cms = useCMS();
-  return (
-    <Button sx={{ my: 4 }} onClick={() => cms.toggle()}>
-      <Flex sx={{ alignItems: 'center' }}>
-        <Icon name={'edit'} sx={{ mr: 1 }}></Icon>
-        {cms.enabled ? 'Exit Edit Mode' : 'Edit This Site With TinaCMS'}
-      </Flex>
-    </Button>
   );
 };
 

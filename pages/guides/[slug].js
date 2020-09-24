@@ -14,6 +14,7 @@ import { usePlugin, useCMS } from 'tinacms';
 import { createToc, getBlogPosts, getGuides } from '@utils';
 import useCreateBlogPage from '../../hooks/useCreateBlogPage';
 import { ContentTypes } from '../../utils/constants';
+import EditLink from '@components/EditLink';
 
 import GuidesLayout from '@layouts/GuidesLayout';
 
@@ -84,18 +85,6 @@ const GuidesPage = (props) => {
       </InlineForm>
       <EditLink />
     </GuidesLayout>
-  );
-};
-
-export const EditLink = () => {
-  const cms = useCMS();
-  return (
-    <Button sx={{ my: 4 }} onClick={() => cms.toggle()}>
-      <Flex sx={{ alignItems: 'center' }}>
-        <Icon name={'edit'} sx={{ mr: 1 }}></Icon>
-        {cms.enabled ? 'Exit Edit Mode' : 'Edit This Site With TinaCMS'}
-      </Flex>
-    </Button>
   );
 };
 
