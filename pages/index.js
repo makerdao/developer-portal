@@ -8,6 +8,7 @@ import GuideList from '../components/GuideList';
 import ArticlesList from '../components/ArticlesList';
 import Link from 'next/link';
 import CommunityCta from '../components/CommunityCta';
+import CodeBox from '../components/CodeBox';
 import SignupCta from '../components/SignupCta';
 import {
   Container,
@@ -62,90 +63,25 @@ const PageLead = ({ content }) => {
   );
 };
 
-const CodeBox = () => {
-  const [activeTool, setActiveTool] = useState(0);
+const codeSections = [
+  {
+    title: 'Dai.js',
+    des: 'the JS lib',
+    code: 'hello world!',
+  },
+  {
+    title: 'Data API',
+    des: 'much GraphQL',
+    code: 'data yo',
+  },
 
-  const tools = [
-    {
-      title: 'Dai.js',
-      des: 'the JS lib',
-      code: 'hello world!',
-    },
-    {
-      title: 'Data API',
-      des: 'much GraphQL',
-      code: 'data yo',
-    },
+  {
+    title: 'pyMaker',
+    des: 'python pything ',
+    code: 'snippet',
+  },
+];
 
-    {
-      title: 'pyMaker',
-      des: 'python pything ',
-      code: 'snippet',
-    },
-  ];
-  return (
-    <Container>
-      <Grid
-        columns={'1fr auto'}
-        sx={{
-          columnGap: 4,
-        }}
-      >
-        <Box>
-          <Card
-            sx={{
-              height: '500px',
-              width: '100%',
-              // bg: 'red',
-            }}
-          >
-            <pre>{tools[activeTool].code}</pre>
-          </Card>
-        </Box>
-        <Box sx={{}}>
-          <Heading pb={4} variant="mediumHeading">
-            Dive in the code
-          </Heading>
-          <Grid
-            sx={{
-              rowGap: 4,
-            }}
-          >
-            {tools.map((tool, i) => {
-              const { title, des } = tool;
-              const isActive = i === activeTool;
-              return (
-                <Box>
-                  <Heading
-                    variant="microHeading"
-                    onClick={() => {
-                      setActiveTool(i);
-                    }}
-                  >
-                    {title}
-                  </Heading>
-                  {!isActive ? null : (
-                    <Grid
-                      sx={{
-                        rowGap: 2,
-                        pt: 2,
-                      }}
-                    >
-                      <Text>{des}</Text>
-                      <Link href="/">
-                        <Text>→ read more</Text>
-                      </Link>
-                    </Grid>
-                  )}
-                </Box>
-              );
-            })}
-          </Grid>
-        </Box>
-      </Grid>
-    </Container>
-  );
-};
 const ModulesList = () => {
   const modules = [
     {
@@ -240,7 +176,7 @@ const IntroText = () => {
   );
 };
 const Page = ({ file, preview, styleFile, guides }) => {
-  console.log(guides, 'init');
+  // console.log(guides, 'init');
   const initialGuides = guides;
 
   const formOptions = {
@@ -272,7 +208,7 @@ const Page = ({ file, preview, styleFile, guides }) => {
         >
           <ModulesList />
           <IntroText />
-          <CodeBox />
+          <CodeBox cta="Dive in the code" sections={codeSections} />
           <ArticlesList title="Recent Guides" path="guides" resources={initialGuides} />
           <CommunityCta />
           {/* <SignupCta /> */}

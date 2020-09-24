@@ -1,10 +1,11 @@
 ---
 description: The Maker Protocol's Rate Accumulation Mechanism
-title: 'Rates Module'
+title: 'Introduction'
 tags: ['dsr']
-slug: rates-introduction
+slug: introduction-to-rates-module
 parent: 'dsr'
 contentType: 'documentation'
+root: true
 ---
 
 # Rates Module

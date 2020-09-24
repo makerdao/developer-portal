@@ -13,6 +13,7 @@ import MarkdownWrapper from '@components/markdown-wrapper';
 import { usePlugin, useCMS } from 'tinacms';
 import { createToc, getBlogPosts, getGuides } from '@utils';
 import useCreateDocument from '../../hooks/useCreateDocument';
+import { ContentTypes } from '../../utils/constants';
 
 import GuidesLayout from '@layouts/GuidesLayout';
 
@@ -33,6 +34,7 @@ const DocsPage = (props) => {
     label: 'Edit doc page',
     fields: [
       {
+        name: 'frontmatter.title',
         label: 'Title',
         component: 'text',
       },
@@ -42,8 +44,29 @@ const DocsPage = (props) => {
   const [data, form] = useGithubMarkdownForm(props.file, formOptions);
   usePlugin(form);
 
+  const moduleResources = props.resources
+    ?.filter(
+      (r) =>
+        r.data.frontmatter.parent === props.file.data.frontmatter.parent &&
+        r.data.frontmatter.contentType === ContentTypes.DOCUMENTATION
+    )
+    .reduce((acc, val) => {
+      acc.push({
+        title: val.data.frontmatter.title,
+        slug: val.data.frontmatter.slug,
+        root: val.data.frontmatter.root,
+      });
+      return acc;
+    }, [])
+    .sort((a, b) => (a.root ? -1 : b.root ? 1 : 0));
+
   return (
-    <GuidesLayout slug={props.slug} toc={props.Alltocs} resourcePath={'documentation'}>
+    <GuidesLayout
+      resources={moduleResources}
+      slug={props.slug}
+      toc={props.Alltocs}
+      resourcePath={ContentTypes.DOCUMENTATION}
+    >
       <InlineForm form={form}>
         <InlineWysiwyg
           name="markdownBody"
@@ -84,7 +107,8 @@ export const getStaticProps = async function ({ preview, previewData, params }) 
   const fileRelativePath = `content/resources/documentation/${slug}.md`;
   let Alltocs = '';
 
-  let posts = await getGuides();
+  //TODO will this affect Tina?
+  const resources = await getGuides(preview, previewData, 'content/resources');
   if (preview) {
     const previewProps = await getGithubPreviewProps({
       ...previewData,
@@ -96,7 +120,7 @@ export const getStaticProps = async function ({ preview, previewData, params }) 
     }
     return {
       props: {
-        posts,
+        resources,
         Alltocs,
         previewURL: `https://raw.githubusercontent.com/${previewData.working_repo_full_name}/${previewData.head_branch}`,
         ...previewProps.props,
@@ -113,7 +137,7 @@ export const getStaticProps = async function ({ preview, previewData, params }) 
   return {
     props: {
       slug,
-      posts,
+      resources,
       Alltocs,
       sourceProvider: null,
       error: null,

@@ -91,61 +91,63 @@ const Header = ({ query, subnav }) => {
   const [popupState, setPopupState] = useState({ show: false });
   const { show, left, top, name } = popupState;
   return (
-    <Container
-      as="header"
-      sx={{ position: [mobileOpened ? 'fixed' : 'initial', 'initial'] }}
-      mt={2}
-    >
-      <Flex
-        sx={{
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          mb: 2,
-        }}
+    <>
+      <Container
+        as="header"
+        sx={{ position: [mobileOpened ? 'fixed' : 'initial', 'initial'] }}
+        mt={2}
       >
-        <Link href="/" passHref>
-          <ThemeLink>
-            <Icon name="maker" color="text" size={4} />
-          </ThemeLink>
-        </Link>
-        <Flex sx={{ alignItems: 'center' }}>
-          <Flex
-            as="nav"
-            sx={{
-              display: [mobileOpened ? 'flex' : 'none', 'flex'],
-              ...(mobileOpened && {
-                position: ['fixed', 'initial'],
-                top: ['0', 'initial'],
-                bottom: ['0', 'initial'],
-                left: ['0', 'initial'],
-                right: ['0', 'initial'],
-                bg: ['surface', 'initial'],
-                alignItems: ['center', 'initial'],
-                justifyContent: ['flex-start', 'initial'],
-                flexDirection: ['column', 'initial'],
-                pt: [6, 'initial'],
-              }),
-            }}
-          >
-            <NavLinks {...{ mobileOpened, setMobileOpened, setPopupState, query }} />
-            {/* <MenuPopup setState={setPopupState} show={show} left={left} top={top} name={name} /> */}
+        <Flex
+          sx={{
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            mb: 3,
+          }}
+        >
+          <Link href="/" passHref>
+            <ThemeLink>
+              <Icon name="maker" color="text" size={4} />
+            </ThemeLink>
+          </Link>
+          <Flex sx={{ alignItems: 'center' }}>
+            <Flex
+              as="nav"
+              sx={{
+                display: [mobileOpened ? 'flex' : 'none', 'flex'],
+                ...(mobileOpened && {
+                  position: ['fixed', 'initial'],
+                  top: ['0', 'initial'],
+                  bottom: ['0', 'initial'],
+                  left: ['0', 'initial'],
+                  right: ['0', 'initial'],
+                  bg: ['surface', 'initial'],
+                  alignItems: ['center', 'initial'],
+                  justifyContent: ['flex-start', 'initial'],
+                  flexDirection: ['column', 'initial'],
+                  pt: [6, 'initial'],
+                }),
+              }}
+            >
+              <NavLinks {...{ mobileOpened, setMobileOpened, setPopupState, query }} />
+              {/* <MenuPopup setState={setPopupState} show={show} left={left} top={top} name={name} /> */}
+            </Flex>
+            <Icon
+              name={mobileOpened ? 'close' : 'menu'}
+              size={4}
+              color="text"
+              sx={{
+                display: ['block', 'none'],
+                cursor: 'pointer',
+                position: 'relative',
+                zIndex: 1,
+              }}
+              onClick={() => setMobileOpened(!mobileOpened)}
+            />
           </Flex>
-          <Icon
-            name={mobileOpened ? 'close' : 'menu'}
-            size={4}
-            color="text"
-            sx={{
-              display: ['block', 'none'],
-              cursor: 'pointer',
-              position: 'relative',
-              zIndex: 1,
-            }}
-            onClick={() => setMobileOpened(!mobileOpened)}
-          />
         </Flex>
-      </Flex>
+      </Container>
       {subnav ?? null}
-    </Container>
+    </>
   );
 };
 
