@@ -39,7 +39,6 @@ class MyApp extends App {
   }
 
   render() {
-    console.log('yess?');
     const { Component, pageProps } = this.props;
     return (
       <ThemeProvider theme={theme}>

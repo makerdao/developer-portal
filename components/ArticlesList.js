@@ -28,7 +28,6 @@ const ListItem = ({ title, type, link, linkText, description }) => (
 );
 
 const ArticlesList = ({ resources, title, path }) => {
-  // console.log(resources, 'lere');
   return (
     <Container>
       <Flex

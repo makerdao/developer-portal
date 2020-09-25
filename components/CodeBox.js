@@ -1,7 +1,9 @@
-import { jsx, Container, Card, Heading, Text, Grid, Box, BaseStyles } from 'theme-ui';
+/** @jsx jsx */
 import { useState } from 'react';
-import CodeBlock from '@components/markdown-wrapper/CodeBlock';
 import Link from 'next/link';
+import { jsx, Container, Card, Heading, Text, Grid, Box, Flex, Link as ThemeLink } from 'theme-ui';
+import { Icon } from '@makerdao/dai-ui-icons';
+import CodeWrapper from '@components/CodeWrapper';
 
 export const CodeBox = ({ cta, sections }) => {
   const [activeTool, setActiveTool] = useState(0);
@@ -19,12 +21,13 @@ export const CodeBox = ({ cta, sections }) => {
             sx={{
               height: '500px',
               width: '100%',
-              bg: 'background', //TODO check CodeTag prop in CodeBlock
+              bg: 'background',
             }}
           >
-            <BaseStyles>
-              <CodeBlock value={sections[activeTool].code} />
-            </BaseStyles>
+            <CodeWrapper
+              value={sections[activeTool].code}
+              language={sections[activeTool].language}
+            />
           </Card>
         </Box>
         <Box sx={{}}>
@@ -37,7 +40,7 @@ export const CodeBox = ({ cta, sections }) => {
             }}
           >
             {sections.map((tool, i) => {
-              const { title, des } = tool;
+              const { title, des, link } = tool;
               const isActive = i === activeTool;
               return (
                 <Box key={tool.title}>
@@ -57,8 +60,11 @@ export const CodeBox = ({ cta, sections }) => {
                       }}
                     >
                       <Text>{des}</Text>
-                      <Link href="/">
-                        <Text>→ read more</Text>
+                      <Link href={link} passHref>
+                        <Flex sx={{ alignItems: 'center' }}>
+                          <Icon sx={{ mr: 2 }} name={'arrow_right'}></Icon>
+                          <ThemeLink sx={{ color: 'text' }}>Read More</ThemeLink>
+                        </Flex>
                       </Link>
                     </Grid>
                   )}

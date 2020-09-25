@@ -48,16 +48,12 @@ const PageLead = ({ content }) => {
               color: 'onBackgroundMuted',
               mb: 2,
             }}
-            // dangerouslySetInnerHTML={{
-            //   __html: content.subtext,
-            // }}
           >
             <InlineText name="subtext" />
           </Text>
           <Link href="/technology">
             <Text>→ Learn more about the technology.</Text>
           </Link>
-          {/* <Text>{ 'The foundation of decentralized finance, "Defi".'}</Text> */}
         </Flex>
       </Flex>
     </Container>
@@ -68,17 +64,20 @@ const codeSections = [
   {
     title: 'Dai.js',
     des: 'the JS lib',
+    link: '/',
     code: 'hello world!',
   },
   {
     title: 'Data API',
     des: 'much GraphQL',
+    link: '/',
     code: 'data yo',
   },
 
   {
     title: 'pyMaker',
     des: 'python pything ',
+    link: '/',
     code: 'snippet',
   },
 ];
@@ -177,7 +176,6 @@ const IntroText = () => {
   );
 };
 const Page = ({ file, preview, styleFile, guides }) => {
-  // console.log(guides, 'init');
   const initialGuides = guides;
 
   const formOptions = {
@@ -190,11 +188,9 @@ const Page = ({ file, preview, styleFile, guides }) => {
     ],
   };
   const [data, form] = useGithubJsonForm(file, formOptions);
-  console.log('form', form);
   usePlugin(form);
   const [styleData, styleForm] = useGlobalStyleForm(styleFile, preview);
 
-  console.log('data', data);
   return (
     <SingleLayout>
       <InlineForm form={form}>

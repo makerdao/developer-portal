@@ -20,27 +20,40 @@ const codeSections = [
   {
     title: 'Dai.js',
     des: 'the JS lib',
+    language: 'javascript',
+    link: '/documentation/savingsservice',
     code: `
-    import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-    // import Codetheme from "./styles"
-    
-    const CodeBlock = ({ value }) => {
-      return (
-        // <SyntaxHighlighter language="jsx" style={Codetheme}>
-        <SyntaxHighlighter language="jsx">{value}</SyntaxHighlighter>
+    async getTotalDai() {
+      const totalPie = new BigNumber(await this._pot.Pie());
+      const chi = await this.chi();
+      return DAI(
+        totalPie
+          .times(chi)
+          .div(WAD)
+          .dp(18)
       );
-    };
-    
-    export default CodeBlock;
+    }
     `,
   },
   {
-    title: 'Data API',
-    des: 'much GraphQL',
-    code: 'data yo',
+    title: 'Pot.sol',
+    des: 'How join works in the contract',
+    language: 'clike',
+    link: '/documentation/pot-detailed-documentation',
+    code: `
+    // --- Savings Dai Management ---
+    function join(uint wad) external note {
+        require(now == rho, "Pot/rho-not-updated");
+        pie[msg.sender] = add(pie[msg.sender], wad);
+        Pie             = add(Pie,             wad);
+        vat.move(msg.sender, address(this), mul(chi, wad));
+    }
+    `,
   },
   {
     title: 'pyMaker',
+    language: 'python',
+    link: '/',
     des: 'python pything ',
     code: 'snippet',
   },

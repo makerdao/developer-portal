@@ -37,41 +37,5 @@ const Footer = () => {
     </Container>
   );
 };
-// const Footer = () => {
-//   console.log('footer', footerContent);
-//   return (
-//     <Container as="footer">
-//       <Flex
-//         as="nav"
-//         sx={{
-//           ml: [0, 'auto'],
-//           mr: [null, 0],
-//           justifyContent: 'flex-end',
-//         }}
-//       >
-//         <NavLink
-//           href="https://chat.makerdao.com/channel/help"
-//           target="_blank"
-//           variant="footer"
-//           sx={{
-//             px: [2, 3],
-//           }}
-//         >
-//           Chat
-//         </NavLink>
-//         <NavLink
-//           href="https://forum.makerdao.com/c/devs/19"
-//           target="_blank"
-//           variant="footer"
-//           sx={{
-//             px: [2, 3],
-//           }}
-//         >
-//           Forums
-//         </NavLink>
-//       </Flex>
-//     </Container>
-//   );
-// };
 
 export default Footer;
