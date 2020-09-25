@@ -77,6 +77,7 @@ const DocsPage = (props) => {
               return cms.api.github.getDownloadUrl('public/' + src);
             },
           }}
+          focusRing={{ offset: { x: 35, y: 0 }, borderRadius: 0 }}
         >
           <MarkdownWrapper source={data.markdownBody} />
         </InlineWysiwyg>
