@@ -1,14 +1,15 @@
 import { useCMS, usePlugins } from 'tinacms';
-import { useRouter } from 'next/router';
 import slugify from 'slugify';
 import { FORM_ERROR } from 'final-form';
+import { MarkdownFieldPlugin } from 'react-tinacms-editor';
 
-import { toMarkdownString, flatDocs, getRandID } from '@utils';
+import { toMarkdownString } from '@utils';
 import { removeInvalidChars } from '../utils/removeInvalidChars';
 
 const useCreateDocument = (resources, module) => {
-  const router = useRouter();
   const cms = useCMS();
+  cms.plugins.add(MarkdownFieldPlugin);
+
   usePlugins([
     {
       __type: 'content-creator',
@@ -59,14 +60,24 @@ const useCreateDocument = (resources, module) => {
             }
           },
         },
+        {
+          name: 'body',
+          label: 'Document Body',
+          component: 'markdown',
+        },
       ],
-      onSubmit: async (frontMatter) => {
+      onSubmit: async (form, cms) => {
         const github = cms.api.github;
-        const slug = removeInvalidChars(slugify(frontMatter.title, { lower: true }));
-        const fileRelativePath = `content/resources/${frontMatter.contentType}/${slug}.md`;
-        frontMatter.date = frontMatter.date || new Date().toString();
-        frontMatter.slug = slug;
-        frontMatter.parent = module;
+
+        const slug = removeInvalidChars(slugify(form.title, { lower: true }));
+        const fileRelativePath = `content/resources/${form.contentType}/${slug}.md`;
+        const rawMarkdownBody = form.body;
+
+        form.slug = slug;
+        form.date = form.date || new Date().toString();
+        form.parent = module;
+        delete form.body;
+
         return await github
           .commit(
             fileRelativePath,
@@ -74,17 +85,17 @@ const useCreateDocument = (resources, module) => {
             toMarkdownString({
               fileRelativePath,
               rawFrontmatter: {
-                ...frontMatter,
+                ...form,
               },
+              rawMarkdownBody,
             }),
-            `Created new document: ${frontMatter.title}`
+            `Created new document: ${form.title}`
           )
           .then((response) => {
-            // After creating the document with frontmatter, redirect to the new URL.
-            // Since we're still in preview mode, the document is pulled from github and can now be edited.
-            setTimeout(() => router.push(`/${frontMatter.contentType}/${slug}`), 1500);
+            cms.alerts.success(`Document committed successfully to branch: ${github.branchName}.`);
           })
           .catch((e) => {
+            cms.alerts.error(`Error committing document: ${e.message()}`);
             return { [FORM_ERROR]: e };
           });
       },
