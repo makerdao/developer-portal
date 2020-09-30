@@ -119,8 +119,12 @@ const ListItem = ({ title, link, description }) => (
     <Link href={link}>
       <Grid columns={'1fr auto'}>
         <Flex sx={{ flexDirection: 'column' }}>
-          <Heading variant="microHeading">{title}</Heading>
-          <Text variant="smallText">{description}</Text>
+          <Heading sx={{ cursor: 'pointer' }} variant="microHeading">
+            {title}
+          </Heading>
+          <Text sx={{ cursor: 'pointer' }} variant="smallText">
+            {description}
+          </Text>
         </Flex>
         <Flex sx={{ alignItems: 'center', justifyContent: 'flex-end' }}>
           <Icon name="increase" />

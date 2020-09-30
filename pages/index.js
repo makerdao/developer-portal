@@ -52,7 +52,7 @@ const PageLead = ({ content }) => {
             <InlineText name="subtext" />
           </Text>
           <Link href="/technology">
-            <Text>→ Learn more about the technology.</Text>
+            <Text sx={{ cursor: 'pointer' }}>→ Learn more about the technology.</Text>
           </Link>
         </Flex>
       </Flex>
@@ -128,7 +128,7 @@ const ModulesList = () => {
                 <Link href={`${title.toLowerCase()}`} passHref>
                   <Flex sx={{ alignItems: 'center' }}>
                     <Icon sx={{ mr: 2 }} name={'arrow_right'}></Icon>
-                    <ThemeLink sx={{ color: 'text' }}>Learn More</ThemeLink>
+                    <ThemeLink sx={{ color: 'text', cursor: 'pointer' }}>Learn More</ThemeLink>
                   </Flex>
                 </Link>
               </Grid>
@@ -170,7 +170,7 @@ const IntroText = () => {
       </Text>
 
       <Link href="/technology">
-        <Text>→ Learn more about the technology.</Text>
+        <Text sx={{ cursor: 'pointer' }}>→ Learn more about the technology.</Text>
       </Link>
     </Container>
   );

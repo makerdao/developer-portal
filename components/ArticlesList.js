@@ -8,8 +8,10 @@ const ListItem = ({ title, type, link, linkText, description }) => (
     <Link href={link} passHref>
       <Grid columns={'1fr 1fr auto'}>
         <Flex sx={{ flexDirection: 'column' }}>
-          <Heading variant="microHeading">{title}</Heading>
-          <Text>{description}</Text>
+          <Heading sx={{ cursor: 'pointer' }} variant="microHeading">
+            {title}
+          </Heading>
+          <Text sx={{ cursor: 'pointer' }}>{description}</Text>
         </Flex>
 
         <Flex sx={{ alignItems: 'center' }}>
@@ -17,7 +19,7 @@ const ListItem = ({ title, type, link, linkText, description }) => (
         </Flex>
 
         <Flex sx={{ alignItems: 'center', justifyContent: 'flex-end' }}>
-          <Text sx={{ variant: 'smallText' }} pr={2}>
+          <Text sx={{ variant: 'smallText', cursor: 'pointer' }} pr={2}>
             {linkText}
           </Text>
           <Icon name="increase" />

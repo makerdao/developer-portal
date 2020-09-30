@@ -49,6 +49,7 @@ export const CodeBox = ({ cta, sections }) => {
                     onClick={() => {
                       setActiveTool(i);
                     }}
+                    sx={{ cursor: 'pointer' }}
                   >
                     {title}
                   </Heading>
@@ -63,7 +64,7 @@ export const CodeBox = ({ cta, sections }) => {
                       <Link href={link} passHref>
                         <Flex sx={{ alignItems: 'center' }}>
                           <Icon sx={{ mr: 2 }} name={'arrow_right'}></Icon>
-                          <ThemeLink sx={{ color: 'text' }}>Read More</ThemeLink>
+                          <ThemeLink sx={{ color: 'text', cursor: 'pointer' }}>Read More</ThemeLink>
                         </Flex>
                       </Link>
                     </Grid>
