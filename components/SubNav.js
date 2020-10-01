@@ -9,22 +9,29 @@ const Subheader = ({ links, query }) => {
         border: 'light',
         borderColor: 'onBackgroundMuted',
         borderWidth: '1px 0 1px 0',
+        '::-webkit-scrollbar': {
+          width: '0px',
+        },
+        scrollbarWidth: 'none',
       }}
     >
-      <Container sx={{ px: 0, mt: 2 }}>
+      <Container sx={{ mt: 2 }}>
         <Flex
           as="nav"
           sx={{
             alignItems: 'center',
-            justifyContent: 'space-between',
             pb: 2,
+            overflow: 'auto',
           }}
         >
           {links.map(({ name, url }) => (
             <Link href={{ pathname: url, query }} passHref key={name}>
               <NavLink
                 sx={{
-                  '&:last-child': { pr: 0 },
+                  minWidth: 'max-content',
+                  pl: 2,
+                  pr: 4,
+                  '&:first-child': { pl: 0 },
                 }}
               >
                 {name}

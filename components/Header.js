@@ -30,6 +30,7 @@ const NavLinks = ({ mobileOpened, setMobileOpened, setPopupState, query }) =>
       {type === 'menu' ? (
         mobileOpened ? null : (
           <Text
+            sx={{ pr: 4, '&:last-child': { pr: [null, 0] } }}
             key={name}
             variant="links.nav"
             onMouseEnter={
@@ -62,6 +63,7 @@ const NavLinks = ({ mobileOpened, setMobileOpened, setPopupState, query }) =>
             <NavLink
               key={name}
               sx={{
+                pr: 4,
                 '&:last-child': { pr: [null, 0] },
               }}
               onMouseEnter={
