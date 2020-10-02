@@ -9,7 +9,7 @@ import { useGithubToolbarPlugins } from 'react-tinacms-github';
 
 const GuidesLayout = ({ resources, resourcePath, slug: activeSlug, toc, children }) => {
   useGithubToolbarPlugins();
-  const subnav = <SubNav links={subNavLinks} />;
+  const subnav = <SubNav links={subNavLinks.navItems} />;
   return (
     <SingleLayout subnav={subnav}>
       <Grid columns={['auto', '300px auto 250px']} gap="0">

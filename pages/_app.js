@@ -33,7 +33,7 @@ class MyApp extends App {
          */
         github: client,
       },
-      sidebar: false,
+      sidebar: props.pageProps.preview,
       toolbar: props.pageProps.preview,
     });
   }

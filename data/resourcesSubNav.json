@@ -1,10 +1,19 @@
-[
-  { "url": "/documentation/introduction-to-rates-module", "name": "DSR" },
-  { "url": "/auctions", "name": "Auctions" },
-  { "url": "/documentation/introduction-to-governance-module", "name": "Governance" },
-  { "url": "/documentation/introduction-to-dai-js", "name": "Dai.js" },
-  { "url": "/maker-data-api", "name": "Maker Data API" },
-  { "url": "/vaults", "name": "Vaults" },
-  { "url": "/oracles", "name": "Oracles" },
-  { "url": "/dai-ui", "name": "Dai UI" }
-]
+{
+  "navItems": [
+    {
+      "type": "link",
+      "url": "/auctions",
+      "name": "Auctions"
+    },
+    {
+      "type": "link",
+      "url": "/documentation/introduction-to-rates-module",
+      "name": "DSR"
+    },
+    {
+      "type": "link",
+      "url": "/documentation/introduction-to-governance-module",
+      "name": "Governancey"
+    }
+  ]
+}
