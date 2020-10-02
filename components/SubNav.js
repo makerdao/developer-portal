@@ -31,7 +31,7 @@ const Subheader = ({ links, query }) => {
                   minWidth: 'max-content',
                   pl: 2,
                   pr: 4,
-                  '&:first-child': { pl: 0 },
+                  '&:first-of-type': { pl: 0 },
                 }}
               >
                 {name}

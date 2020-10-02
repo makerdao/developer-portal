@@ -15,16 +15,8 @@ import useSubNavForm from '../../hooks/useSubNavForm';
 
 import GuidesLayout from '@layouts/GuidesLayout';
 
-const DocsPage = (props) => {
+const Resource = (props) => {
   const cms = useCMS();
-  const router = useRouter();
-  if (!props.file) {
-    return <Error statusCode={404} />;
-  }
-
-  if (router.isFallback) {
-    return <div>Loading...</div>;
-  }
 
   const formOptions = {
     label: 'Edit doc page',
@@ -87,15 +79,29 @@ const DocsPage = (props) => {
   );
 };
 
+const DocsPage = ({ file, ...props }) => {
+  const router = useRouter();
+
+  return !file ? (
+    <Error statusCode={404} />
+  ) : router.isFallback ? (
+    <div>Loading...</div>
+  ) : (
+    <Resource file={file} {...props} />
+  );
+};
+
 /**
  * Fetch data with getStaticProps based on 'preview' mode
  */
 export const getStaticProps = async function ({ preview, previewData, params }) {
   const { slug } = params;
-  const fileRelativePath = `content/resources/documentation/${slug}.md`;
   let Alltocs = '';
 
   const resources = await getGuides(preview, previewData, 'content/resources/documentation');
+  const resource = resources.find((r) => r.data.frontmatter.slug === slug);
+  const fileRelativePath = resource.fileRelativePath;
+
   if (preview) {
     const navFile = await getGithubPreviewProps({
       ...previewData,
@@ -124,11 +130,8 @@ export const getStaticProps = async function ({ preview, previewData, params }) 
     };
   }
 
-  const content = await import(`../../content/resources/documentation/${slug}.md`);
-  const data = matter(content.default);
-
   if (typeof window === 'undefined') {
-    Alltocs = createToc(data.content);
+    Alltocs = createToc(resource.data.markdownBody);
   }
   return {
     props: {
@@ -144,10 +147,10 @@ export const getStaticProps = async function ({ preview, previewData, params }) 
       preview: false,
       // the markdown file
       file: {
-        fileRelativePath,
+        fileRelativePath: resource.fileRelativePath,
         data: {
-          frontmatter: data.data,
-          markdownBody: data.content,
+          frontmatter: resource.data.frontmatter,
+          markdownBody: resource.data.markdownBody,
         },
       },
     },
@@ -157,12 +160,17 @@ export const getStaticProps = async function ({ preview, previewData, params }) 
 export const getStaticPaths = async function () {
   const fg = require('fast-glob');
   const contentDir = 'content/resources/documentation';
-  const files = await fg(`${contentDir}/*.md`);
+  const files = await fg(`${contentDir}/**/*.md`);
   const paths = files
     .filter((file) => !file.endsWith('index.md'))
     .map((file) => {
-      const path = file.substring(contentDir.length + 1, file.length - 3);
-      return { params: { slug: path } };
+      const content = require(`../../content/resources/documentation${file.replace(
+        contentDir,
+        ''
+      )}`);
+      const { data } = matter(content.default);
+
+      return { params: { slug: data.slug } };
     });
   return {
     fallback: true,
