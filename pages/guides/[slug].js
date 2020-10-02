@@ -1,25 +1,22 @@
-import Link from 'next/link';
 import Error from 'next/error';
 import { useRouter } from 'next/router';
-import { InlineForm, InlineText } from 'react-tinacms-inline';
+import { InlineForm } from 'react-tinacms-inline';
 import matter from 'gray-matter';
 import { useGithubMarkdownForm } from 'react-tinacms-github';
-import { getGithubPreviewProps, parseMarkdown } from 'next-tinacms-github';
+import { getGithubPreviewProps, parseMarkdown, parseJson } from 'next-tinacms-github';
 import { InlineWysiwyg } from 'react-tinacms-editor';
-import { jsx, Button, Flex, NavLink, Box, Link as ThemeLink, Text } from 'theme-ui';
-import { Icon } from '@makerdao/dai-ui-icons';
+import { usePlugin, useCMS, useFormScreenPlugin } from 'tinacms';
 
 import MarkdownWrapper from '@components/markdown-wrapper';
 import EditLink from '@components/EditLink';
-import { usePlugin, useCMS } from 'tinacms';
-import { createToc, getBlogPosts, getGuides } from '@utils';
+import { createToc, getGuides } from '@utils';
 import { ContentTypes } from '../../utils/constants';
+import useSubNavForm from '../../hooks/useSubNavForm';
 
 import GuidesLayout from '@layouts/GuidesLayout';
 
 const GuidesPage = (props) => {
   const cms = useCMS();
-  const previewURL = props.previewURL || '';
   const router = useRouter();
   if (!props.file) {
     return <Error statusCode={404} />;
@@ -39,6 +36,9 @@ const GuidesPage = (props) => {
       },
     ],
   };
+
+  const [navData, navForm] = useSubNavForm(props.navFile, props.preview);
+  useFormScreenPlugin(navForm);
 
   const [data, form] = useGithubMarkdownForm(props.file, formOptions);
   usePlugin(form);
@@ -97,20 +97,29 @@ export const getStaticProps = async function ({ preview, previewData, params }) 
 
   const resources = await getGuides(preview, previewData, 'content/resources/guides');
   if (preview) {
-    const previewProps = await getGithubPreviewProps({
+    const navFile = await getGithubPreviewProps({
+      ...previewData,
+      fileRelativePath: 'data/resourcesSubNav.json',
+      parse: parseJson,
+    });
+
+    const markdownFile = await getGithubPreviewProps({
       ...previewData,
       fileRelativePath,
       parse: parseMarkdown,
     });
     if (typeof window === 'undefined') {
-      Alltocs = createToc(previewProps.props.file.data.markdownBody);
+      Alltocs = createToc(markdownFile.props.file.data.markdownBody);
     }
     return {
       props: {
+        navFile: {
+          ...navFile.props.file,
+        },
         resources,
         Alltocs,
         previewURL: `https://raw.githubusercontent.com/${previewData.working_repo_full_name}/${previewData.head_branch}`,
-        ...previewProps.props,
+        ...markdownFile.props,
       },
     };
   }
@@ -123,6 +132,10 @@ export const getStaticProps = async function ({ preview, previewData, params }) 
   }
   return {
     props: {
+      navFile: {
+        fileRelativePath: 'data/resourcesSubNav.json',
+        data: (await import('../../data/resourcesSubNav.json')).default,
+      },
       slug,
       resources,
       Alltocs,

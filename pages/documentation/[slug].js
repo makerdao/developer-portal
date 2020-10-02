@@ -1,18 +1,15 @@
-import Link from 'next/link';
 import Error from 'next/error';
 import { useRouter } from 'next/router';
-import { InlineForm, InlineText } from 'react-tinacms-inline';
+import { InlineForm } from 'react-tinacms-inline';
 import matter from 'gray-matter';
-import { useGithubMarkdownForm, useGithubJsonForm } from 'react-tinacms-github';
+import { useGithubMarkdownForm } from 'react-tinacms-github';
 import { getGithubPreviewProps, parseMarkdown, parseJson } from 'next-tinacms-github';
 import { InlineWysiwyg } from 'react-tinacms-editor';
-import { jsx, Button, Flex, NavLink, Box, Link as ThemeLink, Text } from 'theme-ui';
-import { Icon } from '@makerdao/dai-ui-icons';
+import { usePlugin, useCMS, useFormScreenPlugin } from 'tinacms';
 
 import MarkdownWrapper from '@components/markdown-wrapper';
 import EditLink from '@components/EditLink';
-import { usePlugin, useCMS, useFormScreenPlugin } from 'tinacms';
-import { createToc, getGuides, getRandID } from '@utils';
+import { createToc, getGuides } from '@utils';
 import { ContentTypes } from '../../utils/constants';
 import useSubNavForm from '../../hooks/useSubNavForm';
 
@@ -20,7 +17,6 @@ import GuidesLayout from '@layouts/GuidesLayout';
 
 const DocsPage = (props) => {
   const cms = useCMS();
-  const previewURL = props.previewURL || '';
   const router = useRouter();
   if (!props.file) {
     return <Error statusCode={404} />;
@@ -107,26 +103,23 @@ export const getStaticProps = async function ({ preview, previewData, params }) 
       parse: parseJson,
     });
 
-    const previewProps = await getGithubPreviewProps({
+    const markdownFile = await getGithubPreviewProps({
       ...previewData,
       fileRelativePath,
       parse: parseMarkdown,
     });
     if (typeof window === 'undefined') {
-      Alltocs = createToc(previewProps.props.file.data.markdownBody);
+      Alltocs = createToc(markdownFile.props.file.data.markdownBody);
     }
-    // console.log('^^^previewProps', previewProps.props);
     return {
       props: {
         navFile: {
           ...navFile.props.file,
-          fileRelativePath: 'data/resourcesSubNav.json',
         },
-
         resources,
         Alltocs,
         previewURL: `https://raw.githubusercontent.com/${previewData.working_repo_full_name}/${previewData.head_branch}`,
-        ...previewProps.props,
+        ...markdownFile.props,
       },
     };
   }

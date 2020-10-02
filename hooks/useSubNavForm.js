@@ -8,7 +8,7 @@ const useSubNavForm = (jsonFile, preview) => {
   }
 
   const navFormOptions = {
-    label: 'Navigation',
+    label: 'Sub-Navigation',
     __type: 'screen',
     fields: [
       {
@@ -18,19 +18,22 @@ const useSubNavForm = (jsonFile, preview) => {
         description: 'You can edit or re-arrange the menu items.',
         itemProps: (item) => ({
           key: item.id,
-          label: `${item.name} (${item.name})`,
+          label: item.name,
         }),
         defaultItem: () => ({
-          type: 'link',
-          slug: 'dsr',
-          title: 'new slug',
-          children: [],
+          name: 'New SubNav Item',
+          url: '/',
           id: getRandID(),
         }),
         fields: [
           {
             label: 'name',
             name: 'name',
+            component: 'text',
+          },
+          {
+            label: 'url',
+            name: 'url',
             component: 'text',
           },
         ],
