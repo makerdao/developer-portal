@@ -1,20 +1,20 @@
 /** @jsx jsx */
 import { useState, useEffect } from 'react';
-import { Container, jsx, Card, Heading, Text, Grid, Flex, Image, Box } from 'theme-ui';
+import { Container, jsx, Card, Heading, Text, Grid, Flex } from 'theme-ui';
 import { useGithubToolbarPlugins, useGithubJsonForm } from 'react-tinacms-github';
 import { usePlugin } from 'tinacms';
 import { getGithubPreviewProps, parseJson } from 'next-tinacms-github';
 import { InlineForm, InlineText } from 'react-tinacms-inline';
-import Link from 'next/link';
 import useMaker from '../hooks/useMaker';
+import useCreateDocument from '../hooks/useCreateDocument';
+import ecosystem from '../data/dsrEcosystem.json';
 import SingleLayout from '@layouts/SingleLayout.js';
-import { Icon } from '@makerdao/dai-ui-icons';
 import ArticlesList from '@components/ArticlesList';
-import GuideList from '../components/GuideList';
+import Ecosystem from '../components/Ecosystem';
 import EditLink from '../components/EditLink';
 import CodeBox from '@components/CodeBox';
 import { getGuides } from '@utils';
-import useCreateDocument from '../hooks/useCreateDocument';
+import { EcosystemCategories } from '../utils/constants';
 
 const codeSections = [
   {
@@ -114,66 +114,6 @@ const Intro = () => {
   );
 };
 
-const ListItem = ({ title, link, description }) => (
-  <Card px={4}>
-    <Link href={link}>
-      <Grid columns={'1fr auto'}>
-        <Flex sx={{ flexDirection: 'column' }}>
-          <Heading sx={{ cursor: 'pointer' }} variant="microHeading">
-            {title}
-          </Heading>
-          <Text sx={{ cursor: 'pointer' }} variant="smallText">
-            {description}
-          </Text>
-        </Flex>
-        <Flex sx={{ alignItems: 'center', justifyContent: 'flex-end' }}>
-          <Icon name="increase" />
-        </Flex>
-      </Grid>
-    </Link>
-  </Card>
-);
-
-const Ecosystem = () => {
-  return (
-    <Container>
-      <Flex
-        sx={{
-          flexDirection: 'column',
-          mb: 6,
-        }}
-      >
-        <Flex
-          sx={{
-            pb: 4,
-            alignItems: 'center',
-          }}
-        >
-          <Heading pr={3}>Ecosystem</Heading>
-        </Flex>
-        <Grid columns={2} sx={{ width: '100%' }}>
-          {[
-            {
-              title: 'Chai.money',
-              description:
-                'Manage, optimise and deploy your assets to get the best returns across products',
-              link: '/dsr',
-            },
-            {
-              title: 'test',
-              description:
-                'Manage, optimise and deploy your assets to get the best returns across products',
-              link: '/dsr',
-            },
-          ].map(({ title, link, description }) => {
-            return <ListItem key={title} title={title} description={description} link={link} />;
-          })}
-        </Grid>
-      </Flex>
-    </Container>
-  );
-};
-
 const Dsr = ({ file, preview, documentation }) => {
   const { maker } = useMaker();
   const [rate, setRate] = useState('0.00');
@@ -221,7 +161,11 @@ const Dsr = ({ file, preview, documentation }) => {
         >
           <CodeBox cta="Dive in the code" sections={codeSections} />
           <ArticlesList title="Resources" path="documentation" resources={documentation} />
-          <Ecosystem />
+          <Ecosystem
+            title={'Developer Ecosystem'}
+            items={ecosystem}
+            tabs={Object.keys(EcosystemCategories)}
+          />
         </Grid>
       </InlineForm>
       <Container>
