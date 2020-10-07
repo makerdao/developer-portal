@@ -2,14 +2,11 @@
 import { jsx, Box, Grid, BaseStyles } from 'theme-ui';
 import Sidebar from '@components/Sidebar';
 import SingleLayout from '@layouts/SingleLayout';
-import SubNav from '../components/SubNav';
 import Infobar from '../components/Infobar';
-import subNavLinks from '../data/resourcesSubNav.json';
 import { useGithubToolbarPlugins } from 'react-tinacms-github';
 
-const GuidesLayout = ({ resources, resourcePath, slug: activeSlug, toc, children }) => {
+const GuidesLayout = ({ resources, resourcePath, slug: activeSlug, toc, subnav, children }) => {
   useGithubToolbarPlugins();
-  const subnav = <SubNav links={subNavLinks.navItems} />;
   return (
     <SingleLayout subnav={subnav}>
       <Grid columns={['auto', '300px auto 250px']} gap="0">

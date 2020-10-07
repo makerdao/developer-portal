@@ -2,12 +2,12 @@
 import { Container, jsx, NavLink, Flex, Box } from 'theme-ui';
 import Link from 'next/link';
 
-const Subheader = ({ links, query }) => {
+const SubNav = ({ links, query }) => {
   return (
     <Box
       sx={{
         border: 'light',
-        borderColor: 'onBackgroundMuted',
+        borderColor: 'mutedAlt',
         borderWidth: '1px 0 1px 0',
         '::-webkit-scrollbar': {
           width: '0px',
@@ -44,4 +44,4 @@ const Subheader = ({ links, query }) => {
   );
 };
 
-export default Subheader;
+export default SubNav;

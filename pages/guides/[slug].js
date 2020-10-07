@@ -9,10 +9,10 @@ import { usePlugin, useCMS, useFormScreenPlugin } from 'tinacms';
 
 import MarkdownWrapper from '@components/markdown-wrapper';
 import EditLink from '@components/EditLink';
+import SubNav from '@components/SubNav';
 import { createToc, getGuides } from '@utils';
 import { ContentTypes } from '../../utils/constants';
 import useSubNavForm from '../../hooks/useSubNavForm';
-
 import GuidesLayout from '@layouts/GuidesLayout';
 
 const Resource = (props) => {
@@ -57,6 +57,7 @@ const Resource = (props) => {
       slug={props.slug}
       toc={props.Alltocs}
       resourcePath={ContentTypes.GUIDES}
+      subnav={<SubNav links={navData.navItems} />}
     >
       <InlineForm form={form}>
         <InlineWysiwyg
