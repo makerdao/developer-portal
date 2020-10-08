@@ -97,7 +97,7 @@ const ModulesList = () => {
       cta: '',
     },
     {
-      title: 'Vaults',
+      title: 'Keepers',
       description: 'debt generation',
       cta: '',
     },
