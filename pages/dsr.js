@@ -1,11 +1,10 @@
 /** @jsx jsx */
-import { useState, useEffect } from 'react';
 import { Container, jsx, Card, Heading, Text, Grid, Flex } from 'theme-ui';
 import { useGithubToolbarPlugins, useGithubJsonForm } from 'react-tinacms-github';
 import { usePlugin } from 'tinacms';
 import { getGithubPreviewProps, parseJson } from 'next-tinacms-github';
 import { InlineForm, InlineText } from 'react-tinacms-inline';
-import useMaker from '../hooks/useMaker';
+import shallow from 'zustand/shallow';
 import useCreateDocument from '../hooks/useCreateDocument';
 import ecosystem from '../data/dsrEcosystem.json';
 import SingleLayout from '@layouts/SingleLayout.js';
@@ -15,6 +14,7 @@ import EditLink from '../components/EditLink';
 import CodeBox from '@components/CodeBox';
 import { getGuides } from '@utils';
 import { EcosystemCategories } from '../utils/constants';
+import useStore from '../stores/store';
 
 const codeSections = [
   {
@@ -115,23 +115,10 @@ const Intro = () => {
 };
 
 const Dsr = ({ file, resources, dsrDocs }) => {
-  const { maker } = useMaker();
-  const [rate, setRate] = useState('0.00');
-  const [totalDai, setTotalDai] = useState('0.00');
-
-  useEffect(() => {
-    if (!maker) return;
-    const getDsr = async () => {
-      const rate = await maker.service('mcd:savings').getYearlyRate();
-      setRate(rate.toFormat(2));
-    };
-    const getTotalDai = async () => {
-      const total = await maker.service('mcd:savings').getTotalDai();
-      setTotalDai(total._amount.toFormat(2));
-    };
-    getDsr();
-    getTotalDai();
-  }, [maker]);
+  const [dsrRate, totalSavingsDai] = useStore(
+    (state) => [state.dsrRate, state.totalSavingsDai],
+    shallow
+  );
 
   const formOptions = {
     label: 'home page',
@@ -152,7 +139,7 @@ const Dsr = ({ file, resources, dsrDocs }) => {
   return (
     <SingleLayout>
       <InlineForm form={form}>
-        <PageLead rate={rate} totalDai={totalDai} />
+        <PageLead rate={dsrRate} totalDai={totalSavingsDai} />
         <Intro />
         <Grid
           sx={{
