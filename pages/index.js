@@ -1,35 +1,23 @@
-import { useState } from 'react';
+/** @jsx jsx */
 import { getGithubPreviewProps, parseJson } from 'next-tinacms-github';
 import { useGithubJsonForm } from 'react-tinacms-github';
 import { InlineForm, InlineText } from 'react-tinacms-inline';
-import Router from 'next/router';
 import SingleLayout from '../layouts/SingleLayout.js';
 import GuideList from '../components/GuideList';
 import ArticlesList from '../components/ArticlesList';
+import Ecosystem from '../components/Ecosystem';
 import Link from 'next/link';
 import CommunityCta from '../components/CommunityCta';
 import CodeBox from '../components/CodeBox';
-import SignupCta from '../components/SignupCta';
 import EditLink from '../components/EditLink';
-import {
-  Container,
-  jsx,
-  Card,
-  Heading,
-  Text,
-  Grid,
-  Box,
-  Flex,
-  Link as ThemeLink,
-  Button,
-} from 'theme-ui';
-import { createToc, getGuides } from '@utils';
-import { usePlugin, useCMS } from 'tinacms';
+import { Container, jsx, Card, Heading, Text, Grid, Flex, Link as ThemeLink } from 'theme-ui';
+import { getGuides } from '@utils';
+import { usePlugin } from 'tinacms';
 import getGlobalStaticProps from '../utils/getGlobalStaticProps';
 import { useGlobalStyleForm } from '@hooks';
-import { default as featGuides } from '../data/featuredGuides.json';
 import { Icon } from '@makerdao/dai-ui-icons';
-// import Link from 'next/link';
+import ecosystem from '../data/dsrEcosystem.json';
+import { EcosystemCategories } from '../utils/constants';
 
 const PageLead = ({ content }) => {
   return (
@@ -52,7 +40,10 @@ const PageLead = ({ content }) => {
             <InlineText name="subtext" />
           </Text>
           <Link href="/technology">
-            <Text sx={{ cursor: 'pointer' }}>→ Learn more about the technology.</Text>
+            <Flex sx={{ alignItems: 'center' }}>
+              <Icon sx={{ mr: 2 }} color="primary" name={'arrow_right'}></Icon>
+              <Text sx={{ cursor: 'pointer' }}>Learn more about the technology.</Text>
+            </Flex>
           </Link>
         </Flex>
       </Flex>
@@ -176,8 +167,6 @@ const IntroText = () => {
   );
 };
 const Page = ({ file, preview, styleFile, guides }) => {
-  const initialGuides = guides;
-
   const formOptions = {
     label: 'home page',
     fields: [
@@ -194,24 +183,28 @@ const Page = ({ file, preview, styleFile, guides }) => {
   return (
     <SingleLayout>
       <InlineForm form={form}>
-        <PageLead content={data} />
-        {/* <GuideList guides={[]} />
-         */}
-
         <Grid
           sx={{
             rowGap: 6,
           }}
         >
+          <PageLead content={data} />
           <ModulesList />
           <IntroText />
           <CodeBox cta="Dive in the code" sections={codeSections} />
-          <ArticlesList title="Recent Guides" path="guides" resources={initialGuides} />
+          <GuideList title="Guides" path="guides" guides={guides} />
+          <ArticlesList title="Articles" path="guides" resources={guides} />
           <CommunityCta />
-          {/* <SignupCta /> */}
+          <Ecosystem
+            title={'Developer Ecosystem'}
+            items={ecosystem}
+            tabs={Object.keys(EcosystemCategories)}
+          />
         </Grid>
       </InlineForm>
-      <EditLink />
+      <Container>
+        <EditLink />
+      </Container>
     </SingleLayout>
   );
 };

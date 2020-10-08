@@ -55,7 +55,7 @@ const CommunitySection = () => {
 
   return (
     <Container>
-      <Card sx={{ mb: 6 }}>
+      <Card>
         <Grid sx={{ p: 4, rowGap: 4 }}>
           <Flex sx={{ justifyContent: 'center' }}>
             <Heading variant="mediumHeading">Join the Developer Community</Heading>
