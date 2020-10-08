@@ -1,19 +1,10 @@
 import matter from 'gray-matter';
-import {
-  getFiles as getGithubFiles,
-  getGithubPreviewProps,
-  parseMarkdown,
-} from 'next-tinacms-github';
+import { getContent, getGithubPreviewProps, parseMarkdown } from 'next-tinacms-github';
 
 const GetGuides = async (preview, previewData, contentDir) => {
   const fs = require('fs');
   const files = preview
-    ? await getGithubFiles(
-        contentDir,
-        previewData.working_repo_full_name,
-        previewData.head_branch,
-        previewData.github_access_token
-      )
+    ? await getGithubFiles(contentDir, previewData)
     : await getLocalFiles(contentDir);
 
   const guides = await Promise.all(
@@ -50,6 +41,27 @@ const getLocalFiles = async (filePath) => {
   // grab all md files
   const fg = require('fast-glob');
   const files = await fg(`${filePath}/**/*.md`);
+  return files;
+};
+
+const getGithubFiles = async (contentDir, previewData) => {
+  const files = [];
+
+  const getNestedGithubFiles = async (dir) => {
+    const { data } = await getContent(
+      previewData.working_repo_full_name,
+      previewData.head_branch,
+      dir,
+      previewData.github_access_token
+    );
+
+    for (let item of data) {
+      if (item.type === 'file') files.push(item.path);
+      else if (item.type === 'dir') await getNestedGithubFiles(item.path);
+    }
+  };
+
+  await getNestedGithubFiles(contentDir);
   return files;
 };
 

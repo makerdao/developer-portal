@@ -114,7 +114,7 @@ const Intro = () => {
   );
 };
 
-const Dsr = ({ file, preview, documentation }) => {
+const Dsr = ({ file, resources, dsrDocs }) => {
   const { maker } = useMaker();
   const [rate, setRate] = useState('0.00');
   const [totalDai, setTotalDai] = useState('0.00');
@@ -147,7 +147,7 @@ const Dsr = ({ file, preview, documentation }) => {
   usePlugin(form);
   useGithubToolbarPlugins();
   // TODO pass resources in
-  useCreateDocument([], 'dsr');
+  useCreateDocument(resources, 'dsr');
 
   return (
     <SingleLayout>
@@ -160,7 +160,7 @@ const Dsr = ({ file, preview, documentation }) => {
           }}
         >
           <CodeBox cta="Dive in the code" sections={codeSections} />
-          <ArticlesList title="Resources" path="documentation" resources={documentation} />
+          <ArticlesList title="Resources" path="documentation" resources={dsrDocs} />
           <Ecosystem
             title={'Developer Ecosystem'}
             items={ecosystem}
@@ -177,8 +177,8 @@ const Dsr = ({ file, preview, documentation }) => {
 
 export const getStaticProps = async function ({ preview, previewData }) {
   //TODO fix path:
-  const documentation = await getGuides(preview, previewData, 'content/resources');
-  const dsrDocs = documentation.filter(
+  const resources = await getGuides(preview, previewData, 'content/resources');
+  const dsrDocs = resources.filter(
     (g) => g.data.frontmatter.parent === 'dsr' || g.data.frontmatter.tags.includes('dsr')
   );
 
@@ -194,7 +194,8 @@ export const getStaticProps = async function ({ preview, previewData }) {
     return {
       props: {
         ...file,
-        documentation: dsrDocs,
+        dsrDocs,
+        resources,
       },
     };
   }
@@ -208,7 +209,8 @@ export const getStaticProps = async function ({ preview, previewData }) {
         fileRelativePath: 'data/dsrPage.json',
         data: (await import('../data/dsrPage.json')).default,
       },
-      documentation: dsrDocs,
+      dsrDocs,
+      resources,
     },
   };
 };

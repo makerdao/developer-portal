@@ -24,7 +24,11 @@ const useCreateDocument = (resources, module) => {
             if (!value) {
               return 'A title is required';
             }
-            if (resources.some((post) => post.fileName === slugify(value, { lower: true }))) {
+            if (
+              resources.some(
+                (post) => post.data.frontmatter.slug === slugify(value, { lower: true })
+              )
+            ) {
               return 'Sorry the document title must be unique';
             }
           },

@@ -43,11 +43,13 @@
   this is what is used for the next aritical button
 */
 
-export default (docs) =>
-  docs.reduce((newArray, item) => [...newArray, ...[item], ...flatChilds(item.children)], [])
+const flatDocs = (docs) =>
+  docs.reduce((newArray, item) => [...newArray, ...[item], ...flatChilds(item.children)], []);
 
 const flatChilds = (docs) =>
   docs.reduce(
     (a, b) => a.concat(b.children && b.children.length > 0 ? flatChilds(b.children) : b),
     []
-  )
+  );
+
+export default flatDocs;
