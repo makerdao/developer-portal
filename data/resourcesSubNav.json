@@ -21,22 +21,22 @@
       "id": "4"
     },
     {
-      "url": "/maker-data-api",
+      "url": "/documentation",
       "name": "Maker Data API",
       "id": "5"
     },
     {
-      "url": "/vaults",
-      "name": "Vaults",
+      "url": "/documentation",
+      "name": "Keepers",
       "id": "6"
     },
     {
-      "url": "/oracles",
+      "url": "/documentation",
       "name": "Oracles",
       "id": "7"
     },
     {
-      "url": "/dai-ui",
+      "url": "/documentation",
       "name": "Dai UI",
       "id": "8"
     }

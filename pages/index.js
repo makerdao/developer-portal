@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { getGithubPreviewProps, parseJson } from 'next-tinacms-github';
 import { useGithubJsonForm } from 'react-tinacms-github';
-import { InlineForm, InlineText } from 'react-tinacms-inline';
+import { InlineForm, InlineText, InlineTextarea } from 'react-tinacms-inline';
 import SingleLayout from '../layouts/SingleLayout.js';
 import GuideList from '../components/GuideList';
 import ArticlesList from '../components/ArticlesList';
@@ -17,6 +17,7 @@ import getGlobalStaticProps from '../utils/getGlobalStaticProps';
 import { useGlobalStyleForm } from '@hooks';
 import { Icon } from '@makerdao/dai-ui-icons';
 import ecosystem from '../data/dsrEcosystem.json';
+import { navItems as docLinks } from '../data/resourcesSubNav.json';
 import { EcosystemCategories } from '../utils/constants';
 
 const PageLead = ({ content }) => {
@@ -37,7 +38,7 @@ const PageLead = ({ content }) => {
               mb: 2,
             }}
           >
-            <InlineText name="subtext" />
+            <InlineTextarea name="subtext" />
           </Text>
           <Link href="/technology">
             <Flex sx={{ alignItems: 'center' }}>
@@ -122,6 +123,15 @@ const ModulesList = () => {
                     <ThemeLink sx={{ color: 'text', cursor: 'pointer' }}>Learn More</ThemeLink>
                   </Flex>
                 </Link>
+                <Link
+                  href={`${docLinks.find((r) => r.name.toLowerCase() === title.toLowerCase()).url}`}
+                  passHref
+                >
+                  <Flex sx={{ alignItems: 'center' }}>
+                    <Icon sx={{ mr: 2 }} name={'arrow_right'}></Icon>
+                    <ThemeLink sx={{ color: 'text', cursor: 'pointer' }}>View Docs</ThemeLink>
+                  </Flex>
+                </Link>
               </Grid>
             </Card>
           );
@@ -161,7 +171,10 @@ const IntroText = () => {
       </Text>
 
       <Link href="/technology">
-        <Text sx={{ cursor: 'pointer' }}>→ Learn more about the technology.</Text>
+        <Flex sx={{ alignItems: 'center' }}>
+          <Icon sx={{ mr: 2 }} color="primary" name={'arrow_right'}></Icon>
+          <Text sx={{ cursor: 'pointer' }}>Learn more about the technology.</Text>
+        </Flex>
       </Link>
     </Container>
   );
