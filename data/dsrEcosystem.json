@@ -4,25 +4,29 @@
       "title": "Chai.money",
       "description": "Manage, optimise and deploy your assets to get the best returns across products",
       "link": "https://www.makerdao.com",
-      "categories": ["libraries"]
+      "categories": ["libraries"],
+      "id": 1
     },
     {
       "title": "test",
       "description": "Manage, optimise and deploy your assets to get the best returns across products",
       "link": "https://www.makerdao.com",
-      "categories": ["libraries"]
+      "categories": ["libraries"],
+      "id": 2
     },
     {
       "title": "another.money",
       "description": "Manage, optimise and deploy your assets to get the best returns across products",
       "link": "https://www.makerdao.com",
-      "categories": ["libraries"]
+      "categories": ["libraries"],
+      "id": 3
     },
     {
       "title": "test boilerplate",
       "description": "Manage, optimise and deploy your assets to get the best returns across products",
       "link": "https://www.makerdao.com",
-      "categories": ["boilerPlates"]
+      "categories": ["boilerPlates"],
+      "id": 4
     }
   ]
 }

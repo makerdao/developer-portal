@@ -1,11 +1,12 @@
 /** @jsx jsx */
 import { Container, jsx, Card, Heading, Text, Grid, Flex } from 'theme-ui';
 import { useGithubToolbarPlugins, useGithubJsonForm } from 'react-tinacms-github';
-import { usePlugin } from 'tinacms';
+import { usePlugin, useFormScreenPlugin } from 'tinacms';
 import { getGithubPreviewProps, parseJson } from 'next-tinacms-github';
 import { InlineForm, InlineText } from 'react-tinacms-inline';
 import shallow from 'zustand/shallow';
 import useCreateDocument from '../hooks/useCreateDocument';
+import useEcosystemForm from '../hooks/useEcosystemForm';
 import ecosystem from '../data/dsrEcosystem.json';
 import SingleLayout from '@layouts/SingleLayout.js';
 import ArticlesList from '@components/ArticlesList';
@@ -114,7 +115,7 @@ const Intro = () => {
   );
 };
 
-const Dsr = ({ file, resources, dsrDocs }) => {
+const Dsr = ({ file, resources, dsrDocs, ecosystemFile, preview }) => {
   const [dsrRate, totalSavingsDai] = useStore(
     (state) => [state.dsrRate, state.totalSavingsDai],
     shallow
@@ -129,6 +130,9 @@ const Dsr = ({ file, resources, dsrDocs }) => {
       },
     ],
   };
+
+  const [ecoData, ecoForm] = useEcosystemForm(ecosystemFile, preview);
+  useFormScreenPlugin(ecoForm);
 
   const [data, form] = useGithubJsonForm(file, formOptions);
   usePlugin(form);
@@ -149,7 +153,7 @@ const Dsr = ({ file, resources, dsrDocs }) => {
           <ArticlesList title="Resources" path="documentation" resources={dsrDocs} />
           <Ecosystem
             title={'Developer Ecosystem'}
-            items={ecosystem}
+            items={ecosystem.ecosystem}
             tabs={Object.keys(EcosystemCategories)}
           />
         </Grid>
@@ -176,9 +180,18 @@ export const getStaticProps = async function ({ preview, previewData }) {
       })
     ).props;
 
+    const ecosystemFile = await getGithubPreviewProps({
+      ...previewData,
+      fileRelativePath: 'data/dsrEcosystem.json',
+      parse: parseJson,
+    });
+
     return {
       props: {
         ...file,
+        ecosystemFile: {
+          ...ecosystemFile.props.file,
+        },
         dsrDocs,
         resources,
       },
@@ -193,6 +206,10 @@ export const getStaticProps = async function ({ preview, previewData }) {
       file: {
         fileRelativePath: 'data/dsrPage.json',
         data: (await import('../data/dsrPage.json')).default,
+      },
+      ecosystemFile: {
+        fileRelativePath: 'data/dsrEcosystem.json',
+        data: (await import('../data/dsrEcosystem.json')).default,
       },
       dsrDocs,
       resources,

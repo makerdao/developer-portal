@@ -210,7 +210,7 @@ const Page = ({ file, preview, styleFile, guides }) => {
           <CommunityCta />
           <Ecosystem
             title={'Developer Ecosystem'}
-            items={ecosystem}
+            items={ecosystem.ecosystem}
             tabs={Object.keys(EcosystemCategories)}
           />
         </Grid>
