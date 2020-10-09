@@ -133,7 +133,6 @@ const Dsr = ({ file, resources, dsrDocs }) => {
   const [data, form] = useGithubJsonForm(file, formOptions);
   usePlugin(form);
   useGithubToolbarPlugins();
-  // TODO pass resources in
   useCreateDocument(resources, 'dsr');
 
   return (
@@ -163,7 +162,6 @@ const Dsr = ({ file, resources, dsrDocs }) => {
 };
 
 export const getStaticProps = async function ({ preview, previewData }) {
-  //TODO fix path:
   const resources = await getGuides(preview, previewData, 'content/resources');
   const dsrDocs = resources.filter(
     (g) => g.data.frontmatter.parent === 'dsr' || g.data.frontmatter.tags.includes('dsr')
