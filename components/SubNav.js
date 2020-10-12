@@ -1,8 +1,10 @@
 /** @jsx jsx */
 import { Container, jsx, NavLink, Flex, Box } from 'theme-ui';
 import Link from 'next/link';
+import useStore from '../stores/store';
 
 const SubNav = ({ links, query }) => {
+  const activeModule = useStore((state) => state.activeModule);
   return (
     <Box
       sx={{
@@ -24,10 +26,11 @@ const SubNav = ({ links, query }) => {
             overflow: 'auto',
           }}
         >
-          {links.map(({ name, url }) => (
+          {links.map(({ name, url, slug }) => (
             <Link href={{ pathname: url, query }} passHref key={name}>
               <NavLink
                 sx={{
+                  color: slug === activeModule ? 'primary' : undefined,
                   minWidth: 'max-content',
                   pl: 2,
                   pr: 4,

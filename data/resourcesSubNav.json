@@ -3,41 +3,49 @@
     {
       "url": "/documentation/introduction-to-rates-module",
       "name": "DSR",
+      "slug": "dsr",
       "id": "1"
     },
     {
       "url": "/auctions",
       "name": "Auctions",
+      "slug": "auctions",
       "id": "2"
     },
     {
       "url": "/documentation/introduction-to-governance-module",
       "name": "Governance",
+      "slug": "governance",
       "id": "3"
     },
     {
       "url": "/documentation/introduction-to-dai-js",
       "name": "Dai.js",
+      "slug": "daijs",
       "id": "4"
     },
     {
       "url": "/documentation",
       "name": "Maker Data API",
+      "slug": "data-api",
       "id": "5"
     },
     {
       "url": "/documentation",
       "name": "Keepers",
+      "slug": "keepers",
       "id": "6"
     },
     {
       "url": "/documentation",
       "name": "Oracles",
+      "slug": "oracles",
       "id": "7"
     },
     {
       "url": "/documentation",
       "name": "Dai UI",
+      "slug": "dai-ui",
       "id": "8"
     }
   ]

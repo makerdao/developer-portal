@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import Error from 'next/error';
 import { useRouter } from 'next/router';
 import { InlineForm } from 'react-tinacms-inline';
@@ -14,9 +15,15 @@ import { createToc, getGuides } from '@utils';
 import { ContentTypes } from '../../utils/constants';
 import useSubNavForm from '../../hooks/useSubNavForm';
 import GuidesLayout from '@layouts/GuidesLayout';
+import useStore from '../../stores/store';
 
 const Resource = (props) => {
   const cms = useCMS();
+  const setActiveModule = useStore((state) => state.setActiveModule);
+
+  useEffect(() => {
+    setActiveModule(props.file.data.frontmatter.parent);
+  }, [setActiveModule, props.file.data.frontmatter.parent]);
 
   const formOptions = {
     label: 'Edit doc page',
