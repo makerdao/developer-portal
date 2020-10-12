@@ -1,6 +1,16 @@
 {
   "navItems": [
     {
+      "name": "MCD CLI",
+      "url": "/",
+      "id": "nw0929b9r"
+    },
+    {
+      "url": "/documentation",
+      "name": "Maker Data API",
+      "id": "5"
+    },
+    {
       "url": "/documentation/introduction-to-rates-module",
       "name": "DSR",
       "id": "1"
@@ -19,11 +29,6 @@
       "url": "/documentation/introduction-to-dai-js",
       "name": "Dai.js",
       "id": "4"
-    },
-    {
-      "url": "/documentation",
-      "name": "Maker Data API",
-      "id": "5"
     },
     {
       "url": "/documentation",
