@@ -11,9 +11,7 @@ const GuidesLayout = ({ resources, resourcePath, slug: activeSlug, toc, subnav, 
     <SingleLayout subnav={subnav}>
       <Grid columns={['auto', '300px auto 250px']} gap="0">
         <Sidebar resources={resources} resourcePath={resourcePath} activeSlug={activeSlug} />
-        <Box sx={{ bg: 'surface', borderRadius: 0, py: 0, px: 4 }}>
-          <BaseStyles>{children}</BaseStyles>
-        </Box>
+        <Box sx={{ bg: 'surface', borderRadius: 0, py: 0, px: 4 }}>{children}</Box>
         <Infobar resourcePath={resourcePath} slug={activeSlug} toc={toc} />
       </Grid>
     </SingleLayout>

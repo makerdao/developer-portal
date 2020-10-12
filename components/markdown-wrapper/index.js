@@ -1,17 +1,13 @@
-import { shape } from 'prop-types';
+import { BaseStyles } from 'theme-ui';
+import ReactMarkdown from 'react-markdown';
 
 import CodeWrapper from '@components/CodeWrapper';
 import Heading from './Heading';
 
-// import { ReactMarkdowStyled } from "./styles"
-import ReactMarkdown from 'react-markdown';
-
 const MarkdownWrapper = ({ source }) => (
-  <ReactMarkdown source={source} renderers={{ code: CodeWrapper, heading: Heading }} />
+  <BaseStyles>
+    <ReactMarkdown source={source} renderers={{ code: CodeWrapper, heading: Heading }} />
+  </BaseStyles>
 );
-
-MarkdownWrapper.propTypes = {
-  post: shape(),
-};
 
 export default MarkdownWrapper;

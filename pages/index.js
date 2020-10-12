@@ -13,14 +13,14 @@ import EditLink from '../components/EditLink';
 import { Container, jsx, Card, Heading, Text, Grid, Flex, Link as ThemeLink } from 'theme-ui';
 import { getGuides } from '@utils';
 import { usePlugin } from 'tinacms';
-import getGlobalStaticProps from '../utils/getGlobalStaticProps';
-import { useGlobalStyleForm } from '@hooks';
+// import getGlobalStaticProps from '../utils/getGlobalStaticProps';
+// import { useGlobalStyleForm } from '@hooks';
 import { Icon } from '@makerdao/dai-ui-icons';
 import ecosystem from '../data/dsrEcosystem.json';
 import { navItems as docLinks } from '../data/resourcesSubNav.json';
 import { EcosystemCategories } from '../utils/constants';
 
-const PageLead = ({ content }) => {
+const PageLead = () => {
   return (
     <Container>
       <Flex sx={{ py: 6, flexDirection: 'column' }}>
@@ -179,7 +179,7 @@ const IntroText = () => {
     </Container>
   );
 };
-const Page = ({ file, preview, styleFile, guides }) => {
+const Page = ({ file, guides }) => {
   const formOptions = {
     label: 'home page',
     fields: [
@@ -191,7 +191,7 @@ const Page = ({ file, preview, styleFile, guides }) => {
   };
   const [data, form] = useGithubJsonForm(file, formOptions);
   usePlugin(form);
-  const [styleData, styleForm] = useGlobalStyleForm(styleFile, preview);
+  // const [styleData, styleForm] = useGlobalStyleForm(styleFile, preview);
 
   return (
     <SingleLayout>
@@ -226,7 +226,7 @@ const Page = ({ file, preview, styleFile, guides }) => {
  * Fetch data with getStaticProps based on 'preview' mode
  */
 export const getStaticProps = async function ({ preview, previewData }) {
-  const global = await getGlobalStaticProps(preview, previewData);
+  // const global = await getGlobalStaticProps(preview, previewData);
 
   const resources = await getGuides(preview, previewData, 'content/resources');
   const documentation = resources.filter((g) => g.data.frontmatter.contentType === 'documentation');
@@ -245,7 +245,7 @@ export const getStaticProps = async function ({ preview, previewData }) {
     return {
       props: {
         ...file,
-        ...global,
+        // ...global,
         guides,
         documentation,
       },
@@ -262,7 +262,7 @@ export const getStaticProps = async function ({ preview, previewData }) {
       },
       guides,
       documentation,
-      ...global,
+      // ...global,
     },
   };
 };
