@@ -1,38 +1,44 @@
 import matter from 'gray-matter';
 import { getContent, getGithubPreviewProps, parseMarkdown } from 'next-tinacms-github';
 
-const GetGuides = async (preview, previewData, contentDir) => {
+const getGuides = async (preview, previewData, contentDir) => {
   const fs = require('fs');
   const files = preview
     ? await getGithubFiles(contentDir, previewData)
     : await getLocalFiles(contentDir);
 
   const guides = await Promise.all(
-    files.map(async (file) => {
-      if (preview) {
-        const previewProps = await getGithubPreviewProps({
-          ...previewData,
-          fileRelativePath: file,
-          parse: parseMarkdown,
-        });
+    files
+      .filter((file) => {
+        const content = fs.readFileSync(`${file}`, 'utf8');
+        const { data } = matter(content);
+        return data.slug;
+      })
+      .map(async (file) => {
+        if (preview) {
+          const previewProps = await getGithubPreviewProps({
+            ...previewData,
+            fileRelativePath: file,
+            parse: parseMarkdown,
+          });
+          return {
+            fileName: file.substring(contentDir.length + 1, file.length - 3),
+            fileRelativePath: file,
+            data: previewProps.props.file?.data,
+          };
+        }
+        const content = fs.readFileSync(`${file}`, 'utf8');
+        const data = matter(content);
+
         return {
           fileName: file.substring(contentDir.length + 1, file.length - 3),
           fileRelativePath: file,
-          data: previewProps.props.file?.data,
+          data: {
+            frontmatter: data.data,
+            markdownBody: data.content,
+          },
         };
-      }
-      const content = fs.readFileSync(`${file}`, 'utf8');
-      const data = matter(content);
-
-      return {
-        fileName: file.substring(contentDir.length + 1, file.length - 3),
-        fileRelativePath: file,
-        data: {
-          frontmatter: data.data,
-          markdownBody: data.content,
-        },
-      };
-    })
+      })
   );
   return guides;
 };
@@ -65,4 +71,4 @@ const getGithubFiles = async (contentDir, previewData) => {
   return files;
 };
 
-export default GetGuides;
+export default getGuides;

@@ -85,14 +85,14 @@ export const getStaticPaths = async function () {
   const fg = require('fast-glob');
   const contentDir = 'content/resources/guides';
   const files = await fg(`${contentDir}/**/*.md`);
-  const paths = files
-    .filter((file) => !file.endsWith('index.md'))
-    .map((file) => {
-      const content = require(`../../content/resources/guides${file.replace(contentDir, '')}`);
-      const { data } = matter(content.default);
 
-      return { params: { slug: data.slug } };
-    });
+  const paths = files.reduce((acc, file) => {
+    const content = require(`../../content/resources/guides${file.replace(contentDir, '')}`);
+    const { data } = matter(content.default);
+    if (data.slug) acc.push({ params: { slug: data.slug } });
+    return acc;
+  }, []);
+
   return {
     fallback: true,
     paths,
