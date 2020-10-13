@@ -80,6 +80,7 @@ const useCreateDocument = (resources, module) => {
         form.slug = slug;
         form.date = form.date || new Date().toString();
         form.parent = module;
+        form.author = await github.getUser();
         delete form.body;
 
         return await github
@@ -87,7 +88,6 @@ const useCreateDocument = (resources, module) => {
             fileRelativePath,
             null,
             toMarkdownString({
-              fileRelativePath,
               rawFrontmatter: {
                 ...form,
               },
