@@ -177,6 +177,7 @@ const IntroText = () => {
     </Container>
   );
 };
+
 const Page = ({ file, guides }) => {
   const formOptions = {
     label: 'home page',

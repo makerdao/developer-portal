@@ -12,6 +12,7 @@ import {
   Link as ThemeLink,
 } from 'theme-ui';
 import { Icon } from '@makerdao/dai-ui-icons';
+import EmailSignup from './EmailSignup';
 
 const NewsletterSignup = () => {
   const placeholder = 'We saved a slot for your email';
@@ -27,7 +28,7 @@ const NewsletterSignup = () => {
       </Box>
       <Flex sx={{ justifyContent: 'center', alignItems: 'center' }}>
         <Box sx={{ width: '100%' }}>
-          <Input placeholder={placeholder}></Input>
+          <EmailSignup placeholder={placeholder} />
         </Box>
       </Flex>
     </Grid>
