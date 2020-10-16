@@ -6,3 +6,4 @@ export { default as isActiveNav } from './isNavActive';
 export { default as getRandID } from './getRandID';
 export { default as getBlogPosts } from './getBlogPosts';
 export { default as getGuides } from './getGuides';
+export { default as validateEmail } from './validateEmail';

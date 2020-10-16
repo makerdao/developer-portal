@@ -1,4 +1,5 @@
 import { useRef, useState } from 'react';
+import { validateEmail } from '@utils';
 
 const useAddSubscriberEmail = ({ tags, metadata } = {}) => {
   const [loading, setLoading] = useState(false);
@@ -6,6 +7,7 @@ const useAddSubscriberEmail = ({ tags, metadata } = {}) => {
 
   const subscribe = async (e) => {
     e.preventDefault();
+    if (!validateEmail(inputEl.current.value)) return alert('Please enter a valid email address.');
     setLoading(true);
 
     const res = await fetch('/api/subscribe', {
