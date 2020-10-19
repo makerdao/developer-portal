@@ -7,7 +7,7 @@ import { InlineForm, InlineText } from 'react-tinacms-inline';
 import shallow from 'zustand/shallow';
 import useCreateDocument from '../hooks/useCreateDocument';
 import useEcosystemForm from '../hooks/useEcosystemForm';
-import ecosystem from '../data/dsrEcosystem.json';
+import { ecosystem } from '../data/ecosystem.json';
 import SingleLayout from '@layouts/SingleLayout.js';
 import ArticlesList from '@components/ArticlesList';
 import Ecosystem from '../components/Ecosystem';
@@ -153,7 +153,7 @@ const Dsr = ({ file, resources, dsrDocs, ecosystemFile, preview }) => {
           <ArticlesList title="Resources" path="documentation" resources={dsrDocs} />
           <Ecosystem
             title={'Developer Ecosystem'}
-            items={ecosystem.ecosystem}
+            items={ecosystem.filter(({ parent }) => parent === 'dsr')}
             tabs={Object.keys(EcosystemCategories)}
           />
         </Grid>
@@ -182,7 +182,7 @@ export const getStaticProps = async function ({ preview, previewData }) {
 
     const ecosystemFile = await getGithubPreviewProps({
       ...previewData,
-      fileRelativePath: 'data/dsrEcosystem.json',
+      fileRelativePath: 'data/ecosystem.json',
       parse: parseJson,
     });
 
@@ -208,8 +208,8 @@ export const getStaticProps = async function ({ preview, previewData }) {
         data: (await import('../data/dsrPage.json')).default,
       },
       ecosystemFile: {
-        fileRelativePath: 'data/dsrEcosystem.json',
-        data: (await import('../data/dsrEcosystem.json')).default,
+        fileRelativePath: 'data/ecosystem.json',
+        data: (await import('../data/ecosystem.json')).default,
       },
       dsrDocs,
       resources,

@@ -4,6 +4,9 @@
       "title": "DSR SDK",
       "link": "https://www.makerdao.com",
       "categories": ["tools", "libraries"],
+      "tags": ["dsr"],
+      "parent": "dsr",
+      "contentType": "ecosystem",
       "id": 1
     },
     {
@@ -11,6 +14,9 @@
       "description": "Manage, optimise and deploy your assets to get the best returns across products",
       "link": "https://www.makerdao.com",
       "categories": ["libraries"],
+      "tags": ["dsr"],
+      "parent": "dsr",
+      "contentType": "ecosystem",
       "id": 2
     },
     {
@@ -18,6 +24,9 @@
       "description": "Manage, optimise and deploy your assets to get the best returns across products",
       "link": "https://www.makerdao.com",
       "categories": ["libraries"],
+      "tags": ["dsr"],
+      "parent": "dsr",
+      "contentType": "ecosystem",
       "id": 3
     },
     {
@@ -25,6 +34,9 @@
       "description": "Manage, optimise and deploy your assets to get the best returns across products",
       "link": "https://www.makerdao.com",
       "categories": ["libraries"],
+      "tags": ["dsr"],
+      "parent": "dsr",
+      "contentType": "ecosystem",
       "id": 4
     },
     {
@@ -32,6 +44,9 @@
       "description": "Manage, optimise and deploy your assets to get the best returns across products",
       "link": "https://www.makerdao.com",
       "categories": ["boilerPlates"],
+      "tags": ["dsr"],
+      "parent": "dsr",
+      "contentType": "ecosystem",
       "id": 5
     }
   ]

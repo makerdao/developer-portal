@@ -14,6 +14,9 @@ import {
 import { EcosystemCategories } from '../utils/constants';
 import { Icon } from '@makerdao/dai-ui-icons';
 
+const SUBMIT_LINK =
+  'https://docs.google.com/forms/d/e/1FAIpQLScbdfZdX-AM9N0vhowHKGfyWWuPtpkaBeIC46T2H1hg4hfsUw/viewform';
+
 const ListItem = ({ title, link, description }) => (
   <Card px={4}>
     <ThemeLink href={link} target="_blank">
@@ -50,7 +53,15 @@ const Ecosystem = ({ title, items, tabs }) => {
             alignItems: 'center',
           }}
         >
-          <Heading pr={3}>{title}</Heading>
+          <Flex sx={{ width: '100%', justifyContent: 'space-between' }}>
+            <Heading>{title}</Heading>
+            <ThemeLink href={SUBMIT_LINK} target="_blank">
+              <Flex sx={{ alignItems: 'center' }}>
+                <Text sx={{ color: 'text', cursor: 'pointer' }}>Submit your tool</Text>
+                <Icon sx={{ ml: 2 }} color="primary" name={'arrow_right'}></Icon>
+              </Flex>
+            </ThemeLink>
+          </Flex>
         </Flex>
         <Flex
           sx={{
