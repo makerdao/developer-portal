@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import matter from 'gray-matter';
 import { getGithubPreviewProps, parseMarkdown, parseJson } from 'next-tinacms-github';
 import ResourceEditor from '@components/ResourceEditor';
-import { createToc, getGuides } from '@utils';
+import { createToc, getResources } from '@utils';
 import { ContentTypes } from '../../utils/constants';
 
 const GuidesPage = ({ file, ...props }) => {
@@ -22,7 +22,7 @@ export const getStaticProps = async function ({ preview, previewData, params }) 
   const { slug } = params;
   let toc = '';
 
-  const resources = await getGuides(preview, previewData, 'content/resources/guides');
+  const resources = await getResources(preview, previewData, 'content/resources/guides');
   const resource = resources.find((r) => r.data.frontmatter.slug === slug);
   const fileRelativePath = resource.fileRelativePath;
 

@@ -1,13 +1,13 @@
 import matter from 'gray-matter';
 import { getContent, getGithubPreviewProps, parseMarkdown } from 'next-tinacms-github';
 
-const getGuides = async (preview, previewData, contentDir) => {
+const getResources = async (preview, previewData, contentDir) => {
   const fs = require('fs');
   const files = preview
     ? await getGithubFiles(contentDir, previewData)
     : await getLocalFiles(contentDir);
 
-  const guides = await Promise.all(
+  const resources = await Promise.all(
     files
       .filter((file) => {
         const content = fs.readFileSync(`${file}`, 'utf8');
@@ -40,7 +40,7 @@ const getGuides = async (preview, previewData, contentDir) => {
         };
       })
   );
-  return guides;
+  return resources;
 };
 
 const getLocalFiles = async (filePath) => {
@@ -71,4 +71,4 @@ const getGithubFiles = async (contentDir, previewData) => {
   return files;
 };
 
-export default getGuides;
+export default getResources;

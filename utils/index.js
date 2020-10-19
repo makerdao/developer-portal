@@ -5,5 +5,5 @@ export { default as theme } from './theme';
 export { default as isActiveNav } from './isNavActive';
 export { default as getRandID } from './getRandID';
 export { default as getBlogPosts } from './getBlogPosts';
-export { default as getGuides } from './getGuides';
+export { default as getResources } from './getResources';
 export { default as validateEmail } from './validateEmail';

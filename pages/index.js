@@ -11,7 +11,7 @@ import CommunityCta from '../components/CommunityCta';
 import CodeBox from '../components/CodeBox';
 import EditLink from '../components/EditLink';
 import { Container, jsx, Card, Heading, Text, Grid, Flex, Link as ThemeLink } from 'theme-ui';
-import { getGuides } from '@utils';
+import { getResources } from '@utils';
 import { usePlugin } from 'tinacms';
 import { Icon } from '@makerdao/dai-ui-icons';
 import ecosystem from '../data/dsrEcosystem.json';
@@ -224,7 +224,7 @@ const Page = ({ file, guides }) => {
  * Fetch data with getStaticProps based on 'preview' mode
  */
 export const getStaticProps = async function ({ preview, previewData }) {
-  const resources = await getGuides(preview, previewData, 'content/resources');
+  const resources = await getResources(preview, previewData, 'content/resources');
   const documentation = resources.filter((g) => g.data.frontmatter.contentType === 'documentation');
   const guides = resources.filter((g) => g.data.frontmatter.contentType === 'guides');
 

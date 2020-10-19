@@ -13,7 +13,7 @@ import ArticlesList from '@components/ArticlesList';
 import Ecosystem from '../components/Ecosystem';
 import EditLink from '../components/EditLink';
 import CodeBox from '@components/CodeBox';
-import { getGuides } from '@utils';
+import { getResources } from '@utils';
 import { EcosystemCategories } from '../utils/constants';
 import useStore from '../stores/store';
 
@@ -166,7 +166,7 @@ const Dsr = ({ file, resources, dsrDocs, ecosystemFile, preview }) => {
 };
 
 export const getStaticProps = async function ({ preview, previewData }) {
-  const resources = await getGuides(preview, previewData, 'content/resources');
+  const resources = await getResources(preview, previewData, 'content/resources');
   const dsrDocs = resources.filter(
     (g) => g.data.frontmatter.parent === 'dsr' || g.data.frontmatter.tags.includes('dsr')
   );

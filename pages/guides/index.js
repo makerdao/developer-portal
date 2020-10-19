@@ -1,6 +1,6 @@
 import ArticlesList from '@components/ArticlesList';
 import SingleLayout from '@layouts/SingleLayout';
-import { getGuides } from '@utils';
+import { getResources } from '@utils';
 
 const Page = ({ guides }) => {
   return (
@@ -11,7 +11,7 @@ const Page = ({ guides }) => {
 };
 
 export const getStaticProps = async function ({ preview, previewData }) {
-  const resources = await getGuides(preview, previewData, 'content/resources');
+  const resources = await getResources(preview, previewData, 'content/resources');
   const guides = resources.filter((g) => g.data.frontmatter.contentType === 'guides');
 
   return {
