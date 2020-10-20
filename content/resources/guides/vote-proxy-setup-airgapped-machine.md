@@ -7,27 +7,26 @@ slug: vote-proxy-setup-air-gapped-machine
 parent: governance
 contentType: guides
 ---
-
 # VoteProxy Setup: Air-gapped Machine
 
 **Level:** Intermediate  
 **Estimated Time:** 60 minutes
 
-- [VoteProxy Setup: Air-gapped Machine](#voteproxy-setup-air-gapped-machine)
-  - [Overview](#overview)
-  - [Learning objectives](#learning-objectives)
-  - [Pre-requisites and Disclaimers](#pre-requisites-and-disclaimers)
-  - [Sections](#sections)
-    - [Configure geth](#configure-geth)
-      - [Signing Process - example](#signing-process---example)
-    - [Configure seth](#configure-seth)
-    - [Initiate link](#initiate-link)
-    - [Approve link](#approve-link)
-    - [Approve MKR transfer](#approve-mkr-transfer)
-    - [Lock MKR](#lock-mkr)
-    - [Using this guide on Mainnet](#using-this-guide-on-mainnet)
-  - [Summary](#summary)
-  - [Additional Resources](#additional-resources)
+* [VoteProxy Setup: Air-gapped Machine](#voteproxy-setup-air-gapped-machine)
+  * [Overview](#overview)
+  * [Learning objectives](#learning-objectives)
+  * [Pre-requisites and Disclaimers](#pre-requisites-and-disclaimers)
+  * [Sections](#sections)
+    * [Configure geth](#configure-geth)
+      * [Signing Process - example](#signing-process---example)
+    * [Configure seth](#configure-seth)
+    * [Initiate link](#initiate-link)
+    * [Approve link](#approve-link)
+    * [Approve MKR transfer](#approve-mkr-transfer)
+    * [Lock MKR](#lock-mkr)
+    * [Using this guide on Mainnet](#using-this-guide-on-mainnet)
+  * [Summary](#summary)
+  * [Additional Resources](#additional-resources)
 
 ## Overview
 
@@ -39,22 +38,22 @@ More specifically, it will show how to set up the cold-hot wallet link on your p
 
 In this guide, we will learn how to
 
-- Set up the VoteProxy contract with an air-gapped machine
-- Use geth to sign offline transactions for broadcasting
+* Set up the VoteProxy contract with an air-gapped machine
+* Use geth to sign offline transactions for broadcasting
 
 ## Pre-requisites and Disclaimers
 
-- It is assumed that you have correctly set up an air-gapped computer. Do not use these instructions if you have any concerns regarding the security of your machine.
-- It is assumed that you broadcast signed transaction immediately after transaction fabrication. Especially near/after hard forks, we suggest researching methods of replay protection if signed transactions are not immediately broadcasted. [EIP-155](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-155.md) is a great starting point.
+* It is assumed that you have correctly set up an air-gapped computer. Do not use these instructions if you have any concerns regarding the security of your machine.
+* It is assumed that you broadcast signed transaction immediately after transaction fabrication. Especially near/after hard forks, we suggest researching methods of replay protection if signed transactions are not immediately broadcasted. [EIP-155](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-155.md) is a great starting point.
 
 ## Sections
 
 ### Configure geth
 
 Download a standalone bundle of geth and transfer it to your air-gapped machine:
-<https://github.com/ethereum/go-ethereum/wiki/Installing-Geth#download-standalone-bundle>
+[https://github.com/ethereum/go-ethereum/wiki/Installing-Geth#download-standalone-bundle](https://github.com/ethereum/go-ethereum/wiki/Installing-Geth#download-standalone-bundle)
 
-Confirm that your cold wallet is in a local keystore file.\
+Confirm that your cold wallet is in a local keystore file.  
 Let’s list which accounts are visible to geth.
 
 ```bash
@@ -63,8 +62,8 @@ geth account list
 
 If your account is not listed, be sure to store the keystore and password file in geth’s default location, which is:
 
-- `~/Library/Ethereum/keystore/<UTC...time.info…>--<yourPublicAddress>`
-- `~/Library/Ethereum/passwords/<yourPublicAddress>.txt`
+* `~/Library/Ethereum/keystore/<UTC...time.info…>--<yourPublicAddress>`
+* `~/Library/Ethereum/passwords/<yourPublicAddress>.txt`
 
 #### Signing Process - example
 
@@ -79,14 +78,13 @@ If geth is the only program on the air-gapped computer, then the user would need
    ```
 
    Output: `0xdaea85c50000000000000000000000008e2a84d6ade1e7fffee039a35ef5f19f13057152`
-
 2. Geth (air-gapped machine) - from the geth console and with your unlocked wallet, create and sign a transaction with the calldata, which is shown as bytecode from seth’s output.
 
    ```bash
    geth --verbosity 0 --unlock <0x123ABC cold address> --password <~/path/to/passwordFile console>
    ```
 
-   Consult <https://ethgasstation.info/> for current gas price information
+   Consult [https://ethgasstation.info/](https://ethgasstation.info/) for current gas price information
 
    ```bash
    > var tx = eth.signTransaction({from:"<cold wallet address>", to:"<ERC20 Token Address>", gas: <gas>, gasPrice:<Wei per unit of gas>, nonce:<transaction number>, data:"<calldata output 0x12345>"}, "<cold wallet address>")
@@ -100,14 +98,12 @@ If geth is the only program on the air-gapped computer, then the user would need
    ```bash
    echo "<tx.raw output 0x12345>" | tr -d '[:space:]' | qrencode -t ANSIUTF8
    ```
-
 3. Seth - publish the signed transaction, which is shown as bytecode from geth’s output
 
    ```bash
    seth publish "<tx.raw output 0x12345>"
    ```
-
-4. Optional - publish the QR code of the signed transaction hash through a Broadcasting tool, such as <https://etherscan.io/pushTx> or <https://www.mycrypto.com/pushTx>
+4. Optional - publish the QR code of the signed transaction hash through a Broadcasting tool, such as [https://etherscan.io/pushTx](https://etherscan.io/pushTx) or [https://www.mycrypto.com/pushTx](https://www.mycrypto.com/pushTx)
 
 ### Configure seth
 
@@ -149,7 +145,6 @@ Following the Signing Process outlined over in the Configure geth section
    HOTADDRESS=<address of one of your MetaMask wallets>
    seth calldata "initiateLink(address)" $HOTADDRESS
    ```
-
 2. Geth console - airgapped machine
 
    ```bash
@@ -168,16 +163,16 @@ Following the Signing Process outlined over in the Configure geth section
    ```bash
    echo "<tx.raw output 0x12345>" | tr -d '[:space:]' | qrencode -t ANSIUTF8
    ```
-
 3. Seth - hot machine
 
    ```bash
    seth publish "<tx.raw output 0x12345>"
    ```
-
-4. Optional - publish the QR code of the signed transaction hash through a Broadcasting tool, such as <https://etherscan.io/pushTx> or <https://www.mycrypto.com/pushTx>
+4. Optional - publish the QR code of the signed transaction hash through a Broadcasting tool, such as [https://etherscan.io/pushTx](https://etherscan.io/pushTx) or [https://www.mycrypto.com/pushTx](https://www.mycrypto.com/pushTx)
 
 ### Approve link
+
+![](public/images/makerlogo2.png)
 
 To approve the link, we need to call `approveLink(coldAddress)` with our MetaMask wallet. To mitigate the risks in moving multiple private keys at once, we will use etherscan.io to call this smart contract function.
 
@@ -199,9 +194,9 @@ Note: Every cold-hot wallet link is one to one, meaning for any approved link, t
 
 Before we can lock up MKR, we need to approve our VoteProxy to make ERC20 Token (MKR) transfers. That way MKR can be pulled from the cold wallet and pushed to the voting contract (DSChief). Feel free to change the allowance to a value more appropriate for your case.
 
-- Allowance: 100000 MKR
-- Gas price: 10 Gwei
-- Gas: 75000
+* Allowance: 100000 MKR
+* Gas price: 10 Gwei
+* Gas: 75000
 
 The approve(address, uint256) method requires us to provide the amount argument in hex, denominated in WEI. Fortunately, seth has a number of simple conversion commands that will allow you to easily convert the amount in ether to wei and then to uint256:
 
@@ -227,7 +222,6 @@ Following the Signing Process outlined over in the Configure geth section
    KVOTEPROXY=< your VoteProxy address >
    seth calldata "approve(address,uint256)" $KVOTEPROXY $ALLOWANCE
    ```
-
 2. Geth console - airgapped machine
 
    ```bash
@@ -246,29 +240,27 @@ Following the Signing Process outlined over in the Configure geth section
    ```bash
    echo "<tx.raw output 0x12345>" | tr -d '[:space:]' | qrencode -t ANSIUTF8
    ```
-
 3. Seth - hot machine
 
    ```bash
    seth publish "<tx.raw output 0x12345>"
    ```
-
-4. Optional - publish the QR code of the signed transaction hash through a Broadcasting tool, such as <https://etherscan.io/pushTx> or <https://www.mycrypto.com/pushTx>
+4. Optional - publish the QR code of the signed transaction hash through a Broadcasting tool, such as [https://etherscan.io/pushTx](https://etherscan.io/pushTx) or [https://www.mycrypto.com/pushTx](https://www.mycrypto.com/pushTx)
 
 ### Lock MKR
 
 With both the proxy link and MKR transfer approved, the hot wallet can be used to move MKR to and from DSChief. To call the `lock()` method on your VoteProxy contract, we will use MyCrypto, though the method can be called with your cold wallet as well. We are using MyCrypto instead of Etherscan because the former allows us to pass in our own ABI Interface sections on the fly. The lock method will pull MKR from your cold wallet and push it to DSChief. In this example, we will lock 5 MKR. Note that the MKR amount has to be represented in units of WEI.
 
-<https://www.mycrypto.com/contracts/interact>
+[https://www.mycrypto.com/contracts/interact](https://www.mycrypto.com/contracts/interact)
 
 ![LockMKR](./pictures/lockmkr.png)
 
 Input the kovan vote-proxy contract and `lock()` ABI as follows:
 
-- Contract address:
-  - `< your VoteProxy address >`
-- ABI / JSON Interface:
-  - `[{"constant":false,"inputs":[{"name":"wad","type":"uint256"}],"name":"lock","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"}]`
+* Contract address:
+  * `< your VoteProxy address >`
+* ABI / JSON Interface:
+  * `[{"constant":false,"inputs":[{"name":"wad","type":"uint256"}],"name":"lock","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"}]`
 
 Confirm you are on the kovan network (top right of screen), and click `Access` (bottom left).
 Below, you’ll be able to select the `lock()` method.
@@ -279,7 +271,7 @@ After selection, include the number of MKR you wish to lock in the parameter fie
 
 If the transaction went through without any reverts, great!
 
-When ready, head over to <https://vote.makerdao.com> with your MetaMask hotwallet. At the top of the screen, you should see your MKR locked up and cold wallet linked.
+When ready, head over to [https://vote.makerdao.com](https://vote.makerdao.com) with your MetaMask hotwallet. At the top of the screen, you should see your MKR locked up and cold wallet linked.
 
 ![vote](./pictures/voteFront.png)
 
@@ -299,7 +291,7 @@ PROXYFACTORY=0xa63E145309cadaa6A903a19993868Ef7E85058BE
 
 ## Summary
 
-In this guide, you signed transactions on your air-gapped machine, initiated and approved a cold-hot wallet link, approved an MKR transfer, and locked MKR in DSChief. You can now participate in Polling and Executive Voting at the Governance dapp at <https://vote.makerdao.com>
+In this guide, you signed transactions on your air-gapped machine, initiated and approved a cold-hot wallet link, approved an MKR transfer, and locked MKR in DSChief. You can now participate in Polling and Executive Voting at the Governance dapp at [https://vote.makerdao.com](https://vote.makerdao.com)
 
 If you have any questions, we’re always here to help either on our subreddit or chat.makerdao.com.
 
@@ -307,5 +299,5 @@ Happy voting!
 
 ## Additional Resources
 
-- [DSChief](https://github.com/dapphub/ds-chief)
-- [VoteProxy](https://github.com/makerdao/vote-proxy)
+* [DSChief](https://github.com/dapphub/ds-chief)
+* [VoteProxy](https://github.com/makerdao/vote-proxy)
