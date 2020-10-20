@@ -185,7 +185,7 @@ Now, let’s head over to the `Write Contract` tab under the Kovan etherscan Add
 
 Select `Connect with MetaMask`:
 
-![Etherscan](./pictures/voteproxyfactory.png)
+![Etherscan](/images/voteproxyfactory.png)
 
 Below, you’ll be able to select the `approveLink()` method.
 
