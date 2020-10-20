@@ -37,8 +37,13 @@ const ListItem = ({ title, link, description }) => (
   </Card>
 );
 
-const Ecosystem = ({ title, items, tabs }) => {
+const Ecosystem = ({ title, items }) => {
+  const tabs = items
+    .reduce((acc, { categories }) => acc.push(...categories) && acc, [])
+    .filter((item, idx, array) => array.indexOf(item) === idx)
+    .sort();
   const [activeTab, setActiveTab] = useState(tabs[0]);
+
   return (
     <Container>
       <Flex
@@ -89,7 +94,7 @@ const Ecosystem = ({ title, items, tabs }) => {
 
         <Grid columns={2} sx={{ width: '100%' }}>
           {items
-            .filter((x) => x.categories.includes(activeTab))
+            .filter(({ categories }) => categories.includes(activeTab))
             .map(({ title, link, description }) => {
               return <ListItem key={title} title={title} description={description} link={link} />;
             })}

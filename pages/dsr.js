@@ -154,7 +154,6 @@ const Dsr = ({ file, resources, dsrDocs, ecosystemFile, preview }) => {
           <Ecosystem
             title={'Developer Ecosystem'}
             items={ecosystem.filter(({ parent }) => parent === 'dsr')}
-            tabs={Object.keys(EcosystemCategories)}
           />
         </Grid>
       </InlineForm>

@@ -14,9 +14,8 @@ import { Container, jsx, Card, Heading, Text, Grid, Flex, Link as ThemeLink } fr
 import { getResources } from '@utils';
 import { usePlugin } from 'tinacms';
 import { Icon } from '@makerdao/dai-ui-icons';
-import ecosystem from '../data/ecosystem.json';
+import { ecosystem } from '../data/ecosystem.json';
 import { navItems as docLinks } from '../data/resourcesSubNav.json';
-import { EcosystemCategories } from '../utils/constants';
 
 const PageLead = () => {
   return (
@@ -206,11 +205,7 @@ const Page = ({ file, guides }) => {
           <GuideList title="Guides" path="guides" guides={guides} />
           <ArticlesList title="Articles" path="guides" resources={guides} />
           <CommunityCta />
-          <Ecosystem
-            title={'Developer Ecosystem'}
-            items={ecosystem.ecosystem}
-            tabs={Object.keys(EcosystemCategories)}
-          />
+          <Ecosystem title={'Developer Ecosystem'} items={ecosystem} />
         </Grid>
       </InlineForm>
       <Container>
