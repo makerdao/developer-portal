@@ -174,6 +174,8 @@ Following the Signing Process outlined over in the Configure geth section
 
 ![](public/images/makerlogo2.png)
 
+![](/images/makerlogo3.png)
+
 To approve the link, we need to call `approveLink(coldAddress)` with our MetaMask wallet. To mitigate the risks in moving multiple private keys at once, we will use etherscan.io to call this smart contract function.
 
 Now, let’s head over to the `Write Contract` tab under the Kovan etherscan Address page for the [VoteProxyFactory](https://kovan.etherscan.io/address/0x3e08741a68c2d964d172793cd0ad14292f658cd8#writeContract)
