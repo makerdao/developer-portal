@@ -53,7 +53,7 @@ const Ecosystem = ({ title, items, tabs }) => {
             alignItems: 'center',
           }}
         >
-          <Flex sx={{ width: '100%', justifyContent: 'space-between' }}>
+          <Flex sx={{ width: '100%', justifyContent: 'space-between', alignItems: 'center' }}>
             <Heading>{title}</Heading>
             <ThemeLink href={SUBMIT_LINK} target="_blank">
               <Flex sx={{ alignItems: 'center' }}>

@@ -1,14 +1,19 @@
+/** @jsx jsx */
 import { useEffect } from 'react';
 import { InlineForm } from 'react-tinacms-inline';
 import { useGithubMarkdownForm } from 'react-tinacms-github';
 import { InlineWysiwyg } from 'react-tinacms-editor';
 import { usePlugin, useCMS, useFormScreenPlugin } from 'tinacms';
+import { jsx, Text, Flex, Link as ThemeLink } from 'theme-ui';
+import { Icon } from '@makerdao/dai-ui-icons';
 import MarkdownWrapper from '@components/markdown-wrapper';
 import EditLink from '@components/EditLink';
 import SubNav from '@components/SubNav';
 import useSubNavForm from '../hooks/useSubNavForm';
 import GuidesLayout from '@layouts/GuidesLayout';
 import useStore from '../stores/store';
+
+const EDIT_LINK = 'https://github.com/makerdao/developer-portal/edit/master/';
 
 const ResourceEditor = ({ file, navFile, contentType, preview, resources, slug, toc }) => {
   const cms = useCMS();
@@ -64,7 +69,15 @@ const ResourceEditor = ({ file, navFile, contentType, preview, resources, slug, 
           <MarkdownWrapper source={data.markdownBody} />
         </InlineWysiwyg>
       </InlineForm>
-      <EditLink />
+      <Flex sx={{ my: 4, flexDirection: 'column', alignItems: 'flex-start' }}>
+        <EditLink />
+        <ThemeLink href={`${EDIT_LINK}${file.fileRelativePath}`} target="_blank">
+          <Flex sx={{ alignItems: 'center', mt: 2 }}>
+            <Text sx={{ color: 'text', cursor: 'pointer' }}>Edit on Github</Text>
+            <Icon sx={{ ml: 2 }} color="primary" name={'arrow_right'}></Icon>
+          </Flex>
+        </ThemeLink>
+      </Flex>
     </GuidesLayout>
   );
 };
