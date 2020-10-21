@@ -1,3 +1,5 @@
+import { SUBSCRIBERS_ENDPOINT } from '../../utils/constants';
+
 export default async (req, res) => {
   const { email, metadata, tags } = req.body;
 
@@ -7,7 +9,7 @@ export default async (req, res) => {
 
   try {
     const API_KEY = process.env.BUTTONDOWN_API_KEY;
-    const response = await fetch('https://api.buttondown.email/v1/subscribers', {
+    const response = await fetch(SUBSCRIBERS_ENDPOINT, {
       body: JSON.stringify({
         email,
         metadata,

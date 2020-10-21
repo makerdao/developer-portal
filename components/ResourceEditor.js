@@ -12,8 +12,7 @@ import SubNav from '@components/SubNav';
 import useSubNavForm from '../hooks/useSubNavForm';
 import GuidesLayout from '@layouts/GuidesLayout';
 import useStore from '../stores/store';
-
-const EDIT_LINK = 'https://github.com/makerdao/developer-portal/edit/master/';
+import { GITHUB_EDIT_LINK } from '../utils/constants';
 
 const ResourceEditor = ({ file, navFile, contentType, preview, resources, slug, toc }) => {
   const cms = useCMS();
@@ -71,7 +70,7 @@ const ResourceEditor = ({ file, navFile, contentType, preview, resources, slug, 
       </InlineForm>
       <Flex sx={{ my: 4, flexDirection: 'column', alignItems: 'flex-start' }}>
         <EditLink />
-        <ThemeLink href={`${EDIT_LINK}${file.fileRelativePath}`} target="_blank">
+        <ThemeLink href={`${GITHUB_EDIT_LINK}${file.fileRelativePath}`} target="_blank">
           <Flex sx={{ alignItems: 'center', mt: 2 }}>
             <Text sx={{ color: 'text', cursor: 'pointer' }}>Edit on Github</Text>
             <Icon sx={{ ml: 2 }} color="primary" name={'arrow_right'}></Icon>
