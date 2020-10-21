@@ -172,6 +172,8 @@ Following the Signing Process outlined over in the Configure geth section
 
 ### Approve link
 
+![](/images/makerlogo4.png)
+
 ![](public/images/makerlogo2.png)
 
 ![](/images/makerlogo3.png)
