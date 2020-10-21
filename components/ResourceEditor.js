@@ -61,7 +61,7 @@ const ResourceEditor = ({ file, navFile, contentType, preview, resources, slug, 
             directory: 'public/images/',
             parse: (filename) => '/images/' + filename,
             previewSrc(src) {
-              return cms.api.github.getDownloadUrl('public/' + src);
+              return cms.media.previewSrc(src);
             },
           }}
           focusRing={{ offset: { x: 35, y: 0 }, borderRadius: 0 }}
