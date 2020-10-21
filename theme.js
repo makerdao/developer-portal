@@ -49,6 +49,29 @@ const theme = {
       fontSize: 1,
     },
   },
+  buttons: {
+    ...makerTheme.buttons,
+    contrastButtonSmall: {
+      variant: 'buttons.small',
+      bg: 'onBackgroundAlt',
+      color: 'background',
+      '&:hover': {
+        bg: 'primary',
+        color: 'onPrimary',
+      },
+      '&:active': {
+        bg: 'primary',
+        color: 'onPrimary',
+      },
+    },
+  },
+  forms: {
+    ...makerTheme.forms,
+    contrastTextarea: {
+      color: 'background',
+      bg: 'onBackgroundAlt',
+    },
+  },
   styles: {
     ...makerTheme.styles,
     fakeLi: {
