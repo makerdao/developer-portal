@@ -9,7 +9,7 @@ export default async (req, res) => {
 
   try {
     const username = process.env.USERNAME_ISSUES;
-    const password = process.env.GITHUB_ACCESS_TOKEN;
+    const password = process.env.GH_TOKEN_ISSUES;
     const repo = process.env.REPO_ISSUES;
 
     if (!username || !password || !repo) {
