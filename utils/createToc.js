@@ -1,4 +1,4 @@
-import toc from 'markdown-toc';
+import toc from 'markdown-toc-unlazy';
 
 export default function generateTOC(markdown) {
   const tc =

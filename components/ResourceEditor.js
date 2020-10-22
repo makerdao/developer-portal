@@ -6,7 +6,7 @@ import { InlineWysiwyg } from 'react-tinacms-editor';
 import { usePlugin, useCMS, useFormScreenPlugin } from 'tinacms';
 import { jsx, Text, Flex, Link as ThemeLink } from 'theme-ui';
 import { Icon } from '@makerdao/dai-ui-icons';
-import MarkdownWrapper from '@components/markdown-wrapper';
+import MarkdownWrapper from '@components/MarkdownWrapper';
 import EditLink from '@components/EditLink';
 import SubNav from '@components/SubNav';
 import useSubNavForm from '../hooks/useSubNavForm';
