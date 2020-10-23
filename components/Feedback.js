@@ -25,8 +25,7 @@ const Feedback = () => {
         body: JSON.stringify({
           reaction,
           comment: ref.current?.value === '' ? '👎' : ref.current?.value ?? '👍',
-          location: window.location.pathname,
-          tag: 'feedback',
+          tags: ['feedback', window.location.pathname],
         }),
         headers: {
           'Content-Type': 'application/json',

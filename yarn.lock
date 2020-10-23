@@ -3839,10 +3839,10 @@
     debug "^4.1.1"
     ramda "^0.25.0"
 
-"@makerdao/dai-plugin-mcd@^1.6.1":
-  version "1.6.1"
-  resolved "https://registry.yarnpkg.com/@makerdao/dai-plugin-mcd/-/dai-plugin-mcd-1.6.1.tgz#f41e40744fe773825caefbbc758052d014a471b5"
-  integrity sha512-JueivCToerg5EuYnsAYmvZbr3ys9GDy0CG5+7qw3EEVdlZYFEsuZSFDVFZONkqcidHaZAx2EQTaJHosrOSZ6sQ==
+"@makerdao/dai-plugin-mcd@^1.6.9":
+  version "1.6.9"
+  resolved "https://registry.yarnpkg.com/@makerdao/dai-plugin-mcd/-/dai-plugin-mcd-1.6.9.tgz#b6f8362c8558d8ab91bb6e6e2b8856db7365746e"
+  integrity sha512-6WEJr6rEiNdKCbR9bksOWqMe0tqSKDhhhqScXZ9lq3In6b6XrNfn88MlQtF1FoR+R+RVtDoxbVf0NZTD5QqX7w==
   dependencies:
     "@makerdao/currency" "^0.9.9"
     "@makerdao/services-core" "^0.9.9"
@@ -3873,10 +3873,10 @@
   dependencies:
     "@theme-ui/color" "^0.3.1"
 
-"@makerdao/dai@^0.32.2":
-  version "0.32.2"
-  resolved "https://registry.yarnpkg.com/@makerdao/dai/-/dai-0.32.2.tgz#9a701a67c364ccc0590a6c3123fe7507a15ed83d"
-  integrity sha512-r/NYiar9w5sYqvY407ebjw4ozRr9auMyCSP39bU1LuRBmeJ3bHGqN/uDw+7DkXnCwdVuCuEKi+/hGgVl70ZMWQ==
+"@makerdao/dai@^0.32.5":
+  version "0.32.5"
+  resolved "https://registry.yarnpkg.com/@makerdao/dai/-/dai-0.32.5.tgz#6c1b2f4c6b43b862d85f016de69d5345bba04c26"
+  integrity sha512-IUdg6Xi7NsDZK/lHIwcXjSyVefCS5BMHRlHokJXNoeV0/ikTbFuYGYFWTJrV5/Zhg4VwIdKfdVBi+QlczQl9Sg==
   dependencies:
     "@babel/cli" "^7.2.3"
     "@babel/core" "^7.4.5"

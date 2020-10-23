@@ -1,7 +1,7 @@
 import { FEEDBACK_ENDPOINT } from '../../utils/constants';
 
 export default async (req, res) => {
-  const { reaction, comment, tag, location } = req.body;
+  const { reaction, comment, tags } = req.body;
 
   if (!reaction) {
     return res.status(400).json({ error: "'reaction' is a required prop" });
@@ -25,7 +25,7 @@ export default async (req, res) => {
       body: JSON.stringify({
         title: `${reaction} feedback received`,
         body: comment,
-        labels: [tag, location],
+        labels: tags,
       }),
       headers: {
         Authorization: `Basic ${token}`,
