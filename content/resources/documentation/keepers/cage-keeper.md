@@ -1,10 +1,17 @@
 ---
+title: Cage Keeper
 description: A Keeper to facilitate Emergency Shutdown
+parent: keepers
+tags:
+	- keepers
+    - auctions
+slug: cage-keeper
+contentType: documentation
 ---
 
 # Cage Keeper
 
-## Introduction 
+## Introduction
 
 The `cage-keeper` is used to help facilitate [Emergency Shutdown](https://blog.makerdao.com/introduction-to-emergency-shutdown-in-multi-collateral-dai/) of the [Maker Protocol](https://github.com/makerdao/dss). Emergency shutdown is an involved, deterministic process, requiring interaction from all user types: Vault owners, Dai holders, Redemption keepers, MKR governors, and other Maker Protocol Stakeholders. A high level overview is as follows:
 
@@ -20,8 +27,8 @@ The following section assumes familiarity with Emergency Shutdown. Good places t
 
 **To be consistent with the Protocol's technical terminology for the rest of this description:**
 
-* `urn` = Vault
-* `ilk` = Collateral Type
+- `urn` = Vault
+- `ilk` = Collateral Type
 
 ## Architecture
 
@@ -72,7 +79,7 @@ Make a run-cage-keeper.sh to easily spin up the cage-keeper.
 
 **Prerequisites:**
 
-* Download [docker and docker-compose](https://www.docker.com/get-started)
+- Download [docker and docker-compose](https://www.docker.com/get-started)
 
 This project uses [pytest](https://docs.pytest.org/en/latest/) for unit testing. Testing of Multi-collateral Dai is performed on a Dockerized local testchain included in `tests\config`.
 
@@ -95,4 +102,3 @@ See [COPYING](https://github.com/makerdao/auction-keeper/blob/master/COPYING) fi
 ## Support
 
 If you have questions regarding Cage Keepers, please reach out to us on the [\#keeper](https://chat.makerdao.com/channel/keeper) channel on [**chat.makerdao.com**](http://chat.makerdao.com/).
-

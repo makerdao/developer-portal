@@ -1,3 +1,13 @@
+---
+title: Price Service
+description: PriceService exposes the collateral and governance tokens' price information
+parent: dai-js
+tags:
+	- dai-js
+slug: dai-js-price-service
+contentType: documentation
+---
+
 # Price Service
 
 ## Summary
@@ -45,7 +55,7 @@ await price.setEthPrice(475);
 Set the current USD price of the governance token MKR. This requires the necessary permissions and will only be useful in a testing environment.
 
 ```javascript
-await price.setMkrPrice(950.00);
+await price.setMkrPrice(950.0);
 ```
 
 ## getWethToPethRatio
@@ -55,4 +65,3 @@ Returns the current WETH to PETH ratio.
 ```javascript
 await price.getWethToPethRatio();
 ```
-

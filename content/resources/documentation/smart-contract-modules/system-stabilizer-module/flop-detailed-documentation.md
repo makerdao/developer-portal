@@ -1,14 +1,20 @@
 ---
+title: Flopper - Detailed Documentation
 description: The Maker Protocol's Debt Auction House
+parent: auctions
+tags:
+  - auctions
+slug: flopper-detailed-documentation
+contentType: documentation
 ---
 
 # Flopper - Detailed Documentation
 
-* **Contract Name:** flop.sol
-* **Type/Category:** DSS —&gt; System Stabilizer Module
-* \*\*\*\*[**Associated MCD System Diagram**](https://github.com/makerdao/dss/wiki)
-* \*\*\*\*[**Contract Source**](https://github.com/makerdao/dss/blob/master/src/flop.sol)
-* \*\*\*\*[**Etherscan**](https://etherscan.io/address/0xa41b6ef151e06da0e34b009b86e828308986736d#code)\*\*\*\*
+- **Contract Name:** flop.sol
+- **Type/Category:** DSS —&gt; System Stabilizer Module
+- \*\*\*\*[**Associated MCD System Diagram**](https://github.com/makerdao/dss/wiki)
+- \*\*\*\*[**Contract Source**](https://github.com/makerdao/dss/blob/master/src/flop.sol)
+- \*\*\*\*[**Etherscan**](https://etherscan.io/address/0xa41b6ef151e06da0e34b009b86e828308986736d#code)\*\*\*\*
 
 ## 1. Introduction \(Summary\)
 
@@ -20,33 +26,33 @@ description: The Maker Protocol's Debt Auction House
 
 #### Flopper \(Glossary\)
 
-* `flop`: debt auction \(covering debt by inflating MKR and selling for stablecoins\)
-* `lot`: quantity up for auction / gems for sale \(MKR\)
-* `guy`: high bidder \(address\)
-* `gal`: recipient of auction income / receives dai income \(this is the Vow contract\)
-* `ttl`: bid lifetime \(Max bid duration / single bid lifetime\)
-* `beg`: minimum bid decrease
-* `pad`: Increase for `lot` size during `tick` \(default to 50%\)
-* `tau`: maximum auction duration
-* `end`: when the auction will finish / max auction duration
-* `kick`: start an auction / Put up a new MKR `bid` for auction
-* `dent`: make a bid, decreasing the lot size \(Submit a fixed DAI `bid` with decreasing `lot` size\)
-* `deal`: claim a winning bid / settles a completed auction
-* `vat` - the Vat's address
-* `gem`- MKR Token \(address\)
-* `kicks` - Total auction count, used to track auction `id`s
-* `live` - Cage flag
-* `wards [usr: address]`, `rely`/`deny`/`auth` - Auth mechanisms
-* `Bid` - State of a specific Auction {`bid`, `lot`, `guy`, `tic`, `end`}
-* `bid` - Bid amount inDAI / DAI paid
-* `tic` - Bid expiry
-* `tick` - restarts an auction
+- `flop`: debt auction \(covering debt by inflating MKR and selling for stablecoins\)
+- `lot`: quantity up for auction / gems for sale \(MKR\)
+- `guy`: high bidder \(address\)
+- `gal`: recipient of auction income / receives dai income \(this is the Vow contract\)
+- `ttl`: bid lifetime \(Max bid duration / single bid lifetime\)
+- `beg`: minimum bid decrease
+- `pad`: Increase for `lot` size during `tick` \(default to 50%\)
+- `tau`: maximum auction duration
+- `end`: when the auction will finish / max auction duration
+- `kick`: start an auction / Put up a new MKR `bid` for auction
+- `dent`: make a bid, decreasing the lot size \(Submit a fixed DAI `bid` with decreasing `lot` size\)
+- `deal`: claim a winning bid / settles a completed auction
+- `vat` - the Vat's address
+- `gem`- MKR Token \(address\)
+- `kicks` - Total auction count, used to track auction `id`s
+- `live` - Cage flag
+- `wards [usr: address]`, `rely`/`deny`/`auth` - Auth mechanisms
+- `Bid` - State of a specific Auction {`bid`, `lot`, `guy`, `tic`, `end`}
+- `bid` - Bid amount inDAI / DAI paid
+- `tic` - Bid expiry
+- `tick` - restarts an auction
 
 #### **Parameters Set By Governance**
 
-* The Maker Governance voters determine the debt limit. The Debt auction is triggered when the system has DAI debt above that limit.
-* Maker Governance sets the `Vow.dump` which determines the starting `lot` for an auction as well as the `pad` which determines how much that `lot` can increase during `tick`.
-* The contracts that are `auth`'ed to call `kick()` \(should only be `Vow`\) and `file()` to change `beg`, `ttl`, `tau` \(should only be governance contracts\).
+- The Maker Governance voters determine the debt limit. The Debt auction is triggered when the system has DAI debt above that limit.
+- Maker Governance sets the `Vow.dump` which determines the starting `lot` for an auction as well as the `pad` which determines how much that `lot` can increase during `tick`.
+- The contracts that are `auth`'ed to call `kick()` \(should only be `Vow`\) and `file()` to change `beg`, `ttl`, `tau` \(should only be governance contracts\).
 
 **Informational Note:** The `cage` sets the Flop to not be live anymore and the `yank` is used during Global Settlement in order to return a bid to the bidder since the `dent` and `deal` can no longer be called.
 
@@ -89,11 +95,10 @@ When a bid is beaten out by another bidder, the new winner's internal DAI balanc
 
 In the context of running a keeper \(more info [here](https://github.com/makerdao/developerguides/tree/master/keepers)\) to perform bids within an auction, a primary failure mode would occur when a keeper specifies an unprofitable price for MKR.
 
-* This failure mode is due to the fact that there is nothing the system can do stop a user from paying significantly more than the fair market value for the token in an auction \(this goes for all auction types, `flip`, `flop`, and `flap`\).
-* This means, in the case of Flop, that since the Dai amount is fixed for the entire auction, the risk to the keeper is that they would make a "winning" bid that pays the bid amount in Dai but does not receive any MKR \(`lot` == 0\). Subsequent executions of this bad strategy would be limited by the amount of Dai \(not MKR\) in their vat balance.
+- This failure mode is due to the fact that there is nothing the system can do stop a user from paying significantly more than the fair market value for the token in an auction \(this goes for all auction types, `flip`, `flop`, and `flap`\).
+- This means, in the case of Flop, that since the Dai amount is fixed for the entire auction, the risk to the keeper is that they would make a "winning" bid that pays the bid amount in Dai but does not receive any MKR \(`lot` == 0\). Subsequent executions of this bad strategy would be limited by the amount of Dai \(not MKR\) in their vat balance.
 
 ## 5. Failure Modes \(Bounds on Operating Conditions & External Risk Factors\)
 
 1. `Flopper` has the potential to issue an excessively huge amount of MKR and despite the mitigation efforts \(the addition of the `dump` and `pad` parameters\), if `dump` is not set correctly by governance, the huge issuance of MKR could still occur.
 2. See [System Stabilizer Module Documentation](https://docs.makerdao.com/smart-contract-modules/system-stabilizer-module).
-

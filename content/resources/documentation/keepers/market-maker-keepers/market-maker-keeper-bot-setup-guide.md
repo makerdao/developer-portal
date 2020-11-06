@@ -1,5 +1,12 @@
 ---
+title: Market Maker Keeper Bot Setup Guide
 description: A Marketing Making Bot Set up Guide
+parent: keepers
+tags:
+	- keepers
+  - auctions
+slug: market-maker-keeper-bot-setup-guide
+contentType: documentation
 ---
 
 # Market Maker Keeper Bot Setup Guide
@@ -32,23 +39,23 @@ This guide is dedicated to showing you how to create your very own Market Maker 
 
 ### List of current exchanges that Market Maker Keeper Bots can be built for
 
-* OasisDEX \(`oasis-market-maker-keeper`\)
-* EtherDelta \(`etherdelta-market-maker-keeper`\)
-* RadarRelay and ERCdEX \(`0x-market-maker-keeper`\)
-* Paradex \(`paradex-market-maker-keeper`\)
-* DDEX \(`ddex-market-maker-keeper`\)
-* Ethfinex \(`ethfinex-market-maker-keeper`\)
-* GoPax \(`gopax-market-maker-keeper`\)
-* OKEX \(`okex-market-maker-keeper`\)
-* TheOcean \(`theocean-market-maker-keeper`\)
+- OasisDEX \(`oasis-market-maker-keeper`\)
+- EtherDelta \(`etherdelta-market-maker-keeper`\)
+- RadarRelay and ERCdEX \(`0x-market-maker-keeper`\)
+- Paradex \(`paradex-market-maker-keeper`\)
+- DDEX \(`ddex-market-maker-keeper`\)
+- Ethfinex \(`ethfinex-market-maker-keeper`\)
+- GoPax \(`gopax-market-maker-keeper`\)
+- OKEX \(`okex-market-maker-keeper`\)
+- TheOcean \(`theocean-market-maker-keeper`\)
 
 ## 2. Prerequisite
 
-* Git
-* [Python v3.6.6](https://www.python.org/downloads/release/python-366/)
-* [virtualenv](https://virtualenv.pypa.io/en/latest/)
-  * This project requires _virtualenv_ to be installed if you want to use Maker's python tools. This helps with making sure that you are running the right version of python and checks that all of the pip packages that are installed in the [install.sh](http://install.sh/) are in the right place and have the right versions.
-* [X-code](https://apps.apple.com/ca/app/xcode/id497799835?mt=12) \(for macs\)
+- Git
+- [Python v3.6.6](https://www.python.org/downloads/release/python-366/)
+- [virtualenv](https://virtualenv.pypa.io/en/latest/)
+  - This project requires _virtualenv_ to be installed if you want to use Maker's python tools. This helps with making sure that you are running the right version of python and checks that all of the pip packages that are installed in the [install.sh](http://install.sh/) are in the right place and have the right versions.
+- [X-code](https://apps.apple.com/ca/app/xcode/id497799835?mt=12) \(for macs\)
 
 ## 3. Getting Started \(Installation\)
 
@@ -56,7 +63,7 @@ This guide is dedicated to showing you how to create your very own Market Maker 
 
 ```text
  git clone git@github.com:makerdao/market-maker-keeper.git
- cd market-maker-keeper 
+ cd market-maker-keeper
 ```
 
 **2. Initializing the git submodules that will bring in both the pymaker and the pyexchange library:**
@@ -84,20 +91,20 @@ git submodule update --init --recursive
 pip3 install $(cat requirements.txt $(find lib -name requirements.txt | sort) | sort | uniq | sed 's/ *== */==/g')
 ```
 
-* **Note:** This command is \(used in place of `pip install -r requirements.txt`\) for iterating through all the dependencies in the lib directory to grab all of the requirements needed.
+- **Note:** This command is \(used in place of `pip install -r requirements.txt`\) for iterating through all the dependencies in the lib directory to grab all of the requirements needed.
 
 #### Potential errors that could arise:
 
-* Needing to upgrade to **pip** version 19.2.2.
-  * Run: `pip install --upgrade pip` to fix.
-* Installing **jsonnet** \(if running macOS Mojave\)
+- Needing to upgrade to **pip** version 19.2.2.
+  - Run: `pip install --upgrade pip` to fix.
+- Installing **jsonnet** \(if running macOS Mojave\)
 
   **To fix, run the following:**
 
-  * `xcode-select --install`
-  * `open /Library/Developer/CommandLineTools/Packages/macOS_SDK_headers_for_macOS_10.14.pkg`
-  * `pip3 install jsonnet==0.9.5`
-  * **Re-run:** `pip3 install $(cat requirements.txt $(find lib -name requirements.txt | sort) | sort | uniq | sed 's/ *== */==/g')`
+  - `xcode-select --install`
+  - `open /Library/Developer/CommandLineTools/Packages/macOS_SDK_headers_for_macOS_10.14.pkg`
+  - `pip3 install jsonnet==0.9.5`
+  - **Re-run:** `pip3 install $(cat requirements.txt $(find lib -name requirements.txt | sort) | sort | uniq | sed 's/ *== */==/g')`
 
 #### Other **Potential Installation Issues:**
 
@@ -128,7 +135,7 @@ pip3 install -r requirements-dev.txt
 platform darwin -- Python 3.6.6, pytest-3.3.0, py-1.8.0, pluggy-0.6.0
 rootdir: /Users/charlesst.louis/market-maker-keeper, inifile:
 plugins: timeout-1.2.1, mock-1.6.3, cov-2.5.1, asyncio-0.8.0
-collected 97 items                                                                            
+collected 97 items
 
 tests/test_airswap_market_maker_keeper.py ................                              [ 16%]
 tests/test_band.py ......                                                               [ 22%]
@@ -214,7 +221,7 @@ The _`minMargin`_ and _`maxMargin`_ fields in each band object represent the mar
 2. _`avgAmount`_ - the target amount for keeper engagement for a band.
 3. _`maxAmount` - the_ maximum amount for keeper engagement for a band.
 4. _`dustCutoff` - a_ field for the minimum amount of every single order created in each individual band \(expressed in buy tokens for buy bands and in sell tokens for sell bands\).
-   * Setting this to a non-zero value prevents Keepers from creating a lot of very tiny orders, which can cost a lot of gas. For example, in the case of OasisDEX, it can result in an order that is too small getting rejected by other exchanges.
+   - Setting this to a non-zero value prevents Keepers from creating a lot of very tiny orders, which can cost a lot of gas. For example, in the case of OasisDEX, it can result in an order that is too small getting rejected by other exchanges.
 
 ### Setting up your own Bands Configuration File:
 
@@ -292,14 +299,14 @@ Here, we will be going over some example interactions using the [bands.json file
 
 **Using Band 1**
 
-* If we look at the first buy band, the initial buy order will be 30 DAI \(_`avgAmount`_\) with the price of -&gt; `price - (price * avgMargin)` -&gt; `0.1 - (0.1 * 0.01)` -&gt; `0.099 ETH per Dai`.
-* If the `buy` order listed above \(30 DAI @ 0.099 ETH\) gets partially filled \(15 DAI are purchased\), then we will have \(15 DAI remaining in the order\). However, this amount is below the band's _`minAmount`_ \(20 DAI\), therefore, another whole order of 15 DAI will be placed on the exchange at the same price of 0.099 ETH.
-* In addition to the `buy` orders, when the Market Maker Keeper starts up, two `sell` orders will also be placed.
+- If we look at the first buy band, the initial buy order will be 30 DAI \(_`avgAmount`_\) with the price of -&gt; `price - (price * avgMargin)` -&gt; `0.1 - (0.1 * 0.01)` -&gt; `0.099 ETH per Dai`.
+- If the `buy` order listed above \(30 DAI @ 0.099 ETH\) gets partially filled \(15 DAI are purchased\), then we will have \(15 DAI remaining in the order\). However, this amount is below the band's _`minAmount`_ \(20 DAI\), therefore, another whole order of 15 DAI will be placed on the exchange at the same price of 0.099 ETH.
+- In addition to the `buy` orders, when the Market Maker Keeper starts up, two `sell` orders will also be placed.
 
 **Using Band 2**
 
-* For ease of explanation, let's assume we are selling ETH priced at 100.00 DAI \(5 ETH @ 101 DAI and 6 ETH @ 102.5 DAI\).
-* Now imagine a situation where the price of ETH suddenly drops to 97.50 DAI, pushing the bands down. In this scenario, the second band will start working and will become responsible for both of the `sell` orders, as they fit in between the second band's _`minMargin`_ and _`maxMargin`_.
+- For ease of explanation, let's assume we are selling ETH priced at 100.00 DAI \(5 ETH @ 101 DAI and 6 ETH @ 102.5 DAI\).
+- Now imagine a situation where the price of ETH suddenly drops to 97.50 DAI, pushing the bands down. In this scenario, the second band will start working and will become responsible for both of the `sell` orders, as they fit in between the second band's _`minMargin`_ and _`maxMargin`_.
 
 **The Market Maker Keeper will now reset it's bands by performing the following:**
 
@@ -310,9 +317,9 @@ Here, we will be going over some example interactions using the [bands.json file
 
 **This results in a total of 3 orders:**
 
-* **Band 1** -&gt; \(5 ETH @ 98.475 DAI\)
-* **Band 2** -&gt; \(5 ETH @ 101 DAI\)
-* **Band 2** -&gt; \(1 ETH @ 99.837 DAI\)
+- **Band 1** -&gt; \(5 ETH @ 98.475 DAI\)
+- **Band 2** -&gt; \(5 ETH @ 101 DAI\)
+- **Band 2** -&gt; \(1 ETH @ 99.837 DAI\)
 
 ## 6. **Order Rate Limitation**
 
@@ -335,8 +342,8 @@ There are two \(optional\) limit sections \(_`buyLimits`_ and _`sendLimits`_\) t
 ]
 ```
 
-* The `period` defines the amount of time that the limit should be applied over.
-* The `amount` is the maximum amount of orders that should be placed during the set `period` amount.
+- The `period` defines the amount of time that the limit should be applied over.
+- The `amount` is the maximum amount of orders that should be placed during the set `period` amount.
 
 In the example above, the `period`s are set to 1-hour and 1-day and the `amount`s are set to 50.0 orders and 200.0 orders. This means that over the course of 1-hour, only 50.0 orders can be placed and over the course of 1-day, only 200.0 orders can be placed. The amounts will be expressed either in terms of the `buy` or the `sell` token, this will depend on the section. Note that the above snippet imposes a limit of _50.0_ `buy` token within each 60-minute window. Additionally, a maximum of _200.0_ `buy` tokens within each 24-hour window. Note that the supported time units are `s`, `m`, `h`, `d`, and `w`.
 
@@ -380,16 +387,16 @@ Below, we list some of the existing public feeds. You can also use web sockets i
 
 **As of today, these are the possible values of this argument that we list some of the existing public feeds:**
 
-* `fixed:200` - uses a fixed price, \(`1.56` in this example\). See below for a more in-depth example. When on mainnet, you typically won't use a fixed amount but it is an ideal example for this walkthrough as there aren't price feeds for Kovan.
-* `eth_dai` - uses the price from the GDAX WebSocket ETH/USD price feed.
-* `eth_dai-setzer` - uses the average of Kraken and Gemini ETH/USD prices.
-* `eth_dai-tub` - uses the price feed from `Tub` \(only works for keepers being able to access an Ethereum node\).
-* `dai_eth` - inverse of the `eth_dai` price feed.
-* `dai_eth-setzer` - inverse of the `eth_dai-setzer` price feed.
-* `dai_eth-tub` - inverse of the `eth_dai-tub` price feed.
-* `btc_dai` - uses the price from the GDAX WebSocket BTC/USD price feed.
-* `dai_btc` - inverse of the `btc_dai` price feed.
-* `ws://...` or `wss://...` - uses a price feed advertised over a WebSocket connection \(custom protocol\).
+- `fixed:200` - uses a fixed price, \(`1.56` in this example\). See below for a more in-depth example. When on mainnet, you typically won't use a fixed amount but it is an ideal example for this walkthrough as there aren't price feeds for Kovan.
+- `eth_dai` - uses the price from the GDAX WebSocket ETH/USD price feed.
+- `eth_dai-setzer` - uses the average of Kraken and Gemini ETH/USD prices.
+- `eth_dai-tub` - uses the price feed from `Tub` \(only works for keepers being able to access an Ethereum node\).
+- `dai_eth` - inverse of the `eth_dai` price feed.
+- `dai_eth-setzer` - inverse of the `eth_dai-setzer` price feed.
+- `dai_eth-tub` - inverse of the `eth_dai-tub` price feed.
+- `btc_dai` - uses the price from the GDAX WebSocket BTC/USD price feed.
+- `dai_btc` - inverse of the `btc_dai` price feed.
+- `ws://...` or `wss://...` - uses a price feed advertised over a WebSocket connection \(custom protocol\).
 
 Additionally, we have a Uniswap price feed that can be used by Market Maker Keepers: [https://github.com/makerdao/uniswap-price-feed ](https://github.com/makerdao/uniswap-price-feed).
 
@@ -432,14 +439,14 @@ bin/oasis-market-maker-keeper \
 
 ```
 
-* Make sure that you retrieve and paste the correct contract addresses when using the above snippet.
-* `--eth-key ${ACCOUNT_KEY}` - includes both the `.json` file \(account.json\) of your account and a `.pass` file \(ex: account.pass\) that contains your password in plaintext.
-* If you do not have an account, you can use [MyEtherWallet](https://www.myetherwallet.com/) on Kovan and export the account details \(by means of the Keystore file method\). Make sure that you download the .json file to your local machine as this is what you will need to set up the account.
+- Make sure that you retrieve and paste the correct contract addresses when using the above snippet.
+- `--eth-key ${ACCOUNT_KEY}` - includes both the `.json` file \(account.json\) of your account and a `.pass` file \(ex: account.pass\) that contains your password in plaintext.
+- If you do not have an account, you can use [MyEtherWallet](https://www.myetherwallet.com/) on Kovan and export the account details \(by means of the Keystore file method\). Make sure that you download the .json file to your local machine as this is what you will need to set up the account.
 
 **List of required Kovan Addresses for the above :**
 
 ```text
-V2_OASIS_SERVER1_ADDRESS= 
+V2_OASIS_SERVER1_ADDRESS=
 V2_OASIS_SERVER1_KEY="key_file=/home/ed/Projects/member-account.json,pass_file=/home/ed/Projects/member-account.pass"
 TUB_ADDRESS=0xa71937147b55deb8a530c7229c442fd3f31b7db2 # tub-address
 SAI_ADDRESS=0xc4375b7de8af5a38a93548eb8453a498222c4ff2 # buy-token-address
@@ -450,10 +457,10 @@ OASIS_ADDRESS_NEW=0x4a6bc4e803c62081ffebcc8d227b5a87a58f1f8f # oasis-address
 
 **General Notes:**
 
-* The `OASIS_SERVER1_KEY` is simply your Kovan account private key \(point this to your ETH accounts key file\) and password file. If you do not have this, please set up a file with your password \(in plain text\).
-* ETH From is the address location where the market-maker-keeper is going to get the tokens that it uses to participate and place orders.
-  * **Example:** Since Oasis is a decentralized exchange \(dex\), it is on-chain, so you need to provide all of the relevant addresses to the dex. Most DEX's are like this because when you are configuring with a dex you need to pass many addresses in, whereas, with a centralized exchange you are generally giving an API key, and username and password \(see below for an example of how the process differs for centralized exchanges differ versus decentralized exchanges\).
-* This Oasis example is currently for **Single Collateral DAI** \(SCD\), where we configure the TUB\_ADDRESS. However, as we move over to **Multi-Collateral DAI \(MCD\)** the **TUB\_ADDRESS** will be changed to the **PIP\_ADDRESS** for MCD.
+- The `OASIS_SERVER1_KEY` is simply your Kovan account private key \(point this to your ETH accounts key file\) and password file. If you do not have this, please set up a file with your password \(in plain text\).
+- ETH From is the address location where the market-maker-keeper is going to get the tokens that it uses to participate and place orders.
+  - **Example:** Since Oasis is a decentralized exchange \(dex\), it is on-chain, so you need to provide all of the relevant addresses to the dex. Most DEX's are like this because when you are configuring with a dex you need to pass many addresses in, whereas, with a centralized exchange you are generally giving an API key, and username and password \(see below for an example of how the process differs for centralized exchanges differ versus decentralized exchanges\).
+- This Oasis example is currently for **Single Collateral DAI** \(SCD\), where we configure the TUB_ADDRESS. However, as we move over to **Multi-Collateral DAI \(MCD\)** the **TUB_ADDRESS** will be changed to the **PIP_ADDRESS** for MCD.
 
 #### **Once completed, you can now run your Market Maker Keeper! Follow the next steps to get it running:**
 
@@ -474,4 +481,3 @@ In the situation where you want to use a centralized exchange vs. a decentralize
 ## 10. Support
 
 **We are here to help!** We welcome any questions about market making in the [\#keeper](https://chat.makerdao.com/channel/keeper) channel in the Maker Chat.
-

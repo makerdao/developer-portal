@@ -1,4 +1,14 @@
-# The Emergency Shutdown Process for Multi-Collateral Dai \(MCD\)
+---
+title: The Emergency Shutdown Process for Multi-Collateral Dai (MCD)
+description: To be be triggered as a last resort to protect the system and its users against a serious threat or to facilitate a Protocol upgrade
+parent: governance
+tags:
+  - governance
+slug: the-emergency-shutdown-process-for-multi-collateral-dai-mcd
+contentType: documentation
+---
+
+# The Emergency Shutdown Process for Multi-Collateral Dai (MCD)
 
 ## **Introduction to the Emergency Shutdown Process**
 
@@ -20,12 +30,12 @@ The process of initiating ES is decentralized and controlled by MKR voters, who 
 
 ### **The Implementation Properties of Emergency Shutdown**
 
-* **Dai no-race condition**: Every Dai holder will be able to redeem the same relative quantity of collateral proportional to their Dai holdings, regardless of when they interact with the contract.
-* **Vault Parity**: Vault Owners are prioritized, allowing them to withdraw their excess Collateral before Dai holders are able to access Collateral.
-  * At the time of ES, individual Vaults, entire collateral types, or the Maker Protocol can be undercollateralized, which is when the value of debt exceeds the value of the Collateral \("negative equity"\). Thus, the value of Collateral that Dai holders can redeem may vary, depending on the system surplus or deficit at the time of ES. It is, therefore, possible that Dai holders will receive less or more than 1 USD worth of Collateral for 1 Dai.
-* **Immediate Vault redemption**: After ES is initiated, Vault owners are allowed to free their Collateral immediately, provided that they execute all contract calls atomically.
-* **No off-chain calculations**: The system does not require the cage authority to supply any off-chain calculated values \(i.e., it can rely entirely on the last OSM feed prices\).
-* **Vow Buffer Assistance**: After ES is initiated, any surplus or bad debt in the buffer acts as a reward or penalty distributed pro-rata to all Dai holders. For example, if 10% of total system debt is in the form of net surplus in the Vow, then Dai holders receive 10% more Collateral.
+- **Dai no-race condition**: Every Dai holder will be able to redeem the same relative quantity of collateral proportional to their Dai holdings, regardless of when they interact with the contract.
+- **Vault Parity**: Vault Owners are prioritized, allowing them to withdraw their excess Collateral before Dai holders are able to access Collateral.
+  - At the time of ES, individual Vaults, entire collateral types, or the Maker Protocol can be undercollateralized, which is when the value of debt exceeds the value of the Collateral \("negative equity"\). Thus, the value of Collateral that Dai holders can redeem may vary, depending on the system surplus or deficit at the time of ES. It is, therefore, possible that Dai holders will receive less or more than 1 USD worth of Collateral for 1 Dai.
+- **Immediate Vault redemption**: After ES is initiated, Vault owners are allowed to free their Collateral immediately, provided that they execute all contract calls atomically.
+- **No off-chain calculations**: The system does not require the cage authority to supply any off-chain calculated values \(i.e., it can rely entirely on the last OSM feed prices\).
+- **Vow Buffer Assistance**: After ES is initiated, any surplus or bad debt in the buffer acts as a reward or penalty distributed pro-rata to all Dai holders. For example, if 10% of total system debt is in the form of net surplus in the Vow, then Dai holders receive 10% more Collateral.
 
 ## **Dai and Collateral Redemption During Emergency Shutdown**
 
@@ -39,10 +49,10 @@ Dai holders can, after a waiting period \(for processing\) determined by MKR vot
 
 ### **Why Emergency Shutdown Prioritizes Vault Owners Over Dai Holders**
 
-_The prioritization of Vault Owners over Dai Holders during ES can be broken down into three main points:_ 
+_The prioritization of Vault Owners over Dai Holders during ES can be broken down into three main points:_
 
 1. Overcollateralized Vaults do not subsidize the Maker Protocol for undercollateralized Vaults during the current operation of the system, so it's consistent for ES to have the same behavior. The main difference is that a potential haircut is transferred from MKR holders to DAI holders, as no assumptions can be made about the value of MKR after a shutdown.
-2.  Giving priority to Vault owners to recover their excess Collateral \(if their Vault is not undercollateralized\) incentivizes them to maintain overcollateralization. This is important because the incentive remains even if an ES seems likely, which ultimately makes the Protocol more resilient.
+2. Giving priority to Vault owners to recover their excess Collateral \(if their Vault is not undercollateralized\) incentivizes them to maintain overcollateralization. This is important because the incentive remains even if an ES seems likely, which ultimately makes the Protocol more resilient.
 3. Stability fees accrued pre-ES are not waived by ES. Vault owners may accept higher fees if they know they are protected from the collateralization levels of others, potentially resulting in a higher surplus during ES scenarios as well as allowing for a higher DSR during normal operation.
 
 ## **Auction Settlement During Emergency Shutdown**
@@ -51,15 +61,15 @@ There is a time delay in the Emergency Shutdown that is determined by governance
 
 Note also that auction cancellation is not an immediate process, as ecosystem participants must cancel all ongoing collateral auctions to appropriate the Collateral and return it to the collateral pool. This allows for faster processing of the auctions at the expense of more processing calls. As for the surplus and debt auctions, they must also be called. If no one calls these functions, the auctions will not be canceled.
 
-## **Emergency Shutdown Intentions** 
+## **Emergency Shutdown Intentions**
 
 **Emergency Shutdown may take two** main forms. For one, ES may be triggered, and the system is terminated without a future plan for redeployment. This allows users to claim excess Collateral or claim Collateral from their Dai.
 
-**On the other hand, Emergency Shutdown may be initiated with a Redeployment Scenario.** This ****situation may arise when the system has been triggered into a shutdown event. Still, MKR token holders, or a third party, have decided to redeploy the system with necessary changes to rerun the system. This will allow users to open new Vaults and have a new Dai token while claiming Collateral from the old system.
+**On the other hand, Emergency Shutdown may be initiated with a Redeployment Scenario.** This \*\*\*\*situation may arise when the system has been triggered into a shutdown event. Still, MKR token holders, or a third party, have decided to redeploy the system with necessary changes to rerun the system. This will allow users to open new Vaults and have a new Dai token while claiming Collateral from the old system.
 
-## **How Emergency Shutdown Affects Users** 
+## **How Emergency Shutdown Affects Users**
 
-During an Emergency Shutdown, each of the various Maker Ecosystem Stakeholders should act accordingly:  
+During an Emergency Shutdown, each of the various Maker Ecosystem Stakeholders should act accordingly:
 
 ### **Dai Holders**
 
@@ -81,25 +91,25 @@ In the case of Emergency Shutdown, service providers may follow the actions reco
 
 **Recommended Procedure**
 
-* Alert users to the current situation and provide guidance on the right action\(s\) to take. Depending on the ES scenario, Shutdown, or redeployment, advise them to act accordingly.
-* Give users options to withdraw their Dai/MKR from the exchange, or inform them that the exchange/wallet will handle the Emergency Shutdown process on their behalf.
+- Alert users to the current situation and provide guidance on the right action\(s\) to take. Depending on the ES scenario, Shutdown, or redeployment, advise them to act accordingly.
+- Give users options to withdraw their Dai/MKR from the exchange, or inform them that the exchange/wallet will handle the Emergency Shutdown process on their behalf.
 
 **Scenario: Shutdown**
 
-* Choose one of the following options:
-  * **Option 1:** Let users withdraw Dai and MKR from the platform, and then guide them to the [migration portal](https://migrate.makerdao.com/) for the redemption process.
-  * **Option 2:** Claim Dai equivalent in Collateral on behalf of users using the [migration portal](https://migrate.makerdao.com/).
-  * Choose one of the following:
-    * Distribute Collateral to users.
-    * Get withdrawal address from users for collateral types not supported on the exchange.
-    * Keep the Collateral \(to sell off, for example\) and update user internal fiat balances to reflect their entitled amount.
+- Choose one of the following options:
+  - **Option 1:** Let users withdraw Dai and MKR from the platform, and then guide them to the [migration portal](https://migrate.makerdao.com/) for the redemption process.
+  - **Option 2:** Claim Dai equivalent in Collateral on behalf of users using the [migration portal](https://migrate.makerdao.com/).
+  - Choose one of the following:
+    - Distribute Collateral to users.
+    - Get withdrawal address from users for collateral types not supported on the exchange.
+    - Keep the Collateral \(to sell off, for example\) and update user internal fiat balances to reflect their entitled amount.
 
 **Scenario: Redeployment**
 
-* Migrate Dai holdings to new Dai token on behalf of users using the [migration portal](https://migrate.makerdao.com/).
-* Alternatively, carry out-migration by interacting directly with the migration contracts using CLI tools. See [this guide](https://github.com/makerdao/developerguides/blob/master/governance/Collateral%20Redemption%20during%20Emergency%20Shutdown.md).
-* If applicable, migrate MKR token holdings on behalf of users using the [migration portal](https://migrate.makerdao.com/)
-* Update token address\(es\) in your system.
+- Migrate Dai holdings to new Dai token on behalf of users using the [migration portal](https://migrate.makerdao.com/).
+- Alternatively, carry out-migration by interacting directly with the migration contracts using CLI tools. See [this guide](https://github.com/makerdao/developerguides/blob/master/governance/Collateral%20Redemption%20during%20Emergency%20Shutdown.md).
+- If applicable, migrate MKR token holdings on behalf of users using the [migration portal](https://migrate.makerdao.com/)
+- Update token address\(es\) in your system.
 
 ### **Non-Custodial Wallet**
 
@@ -107,26 +117,26 @@ In case of Emergency Shutdown, non-custodial wallet providers should alert your 
 
 #### **Recommended Procedure**
 
-* **Scenario: Shutdown**
-  * Redirect users to the [migration portal](https://migrate.makerdao.com/) to claim their Dai equivalent in Collateral, or create an interface to handle the process locally.
-* **Scenario: Redeployment**
-  * Inform users to migrate their Dai on the [migration portal](https://migrate.makerdao.com/), or create an internal interface to handle the process locally.
-  * Add featured support for new token\(s\).
+- **Scenario: Shutdown**
+  - Redirect users to the [migration portal](https://migrate.makerdao.com/) to claim their Dai equivalent in Collateral, or create an interface to handle the process locally.
+- **Scenario: Redeployment**
+  - Inform users to migrate their Dai on the [migration portal](https://migrate.makerdao.com/), or create an internal interface to handle the process locally.
+  - Add featured support for new token\(s\).
 
 ### **Decentralized Exchanges \(DEXs\)**
 
 As a decentralized exchange, you can inform users with a banner about the current status of the Maker Protocol and direct them toward relevant communication channels to find out more. **You may choose one of the two following options to allow your users to carry out the ES redemption process:**
 
-* Direct them to the [migration portal](https://migrate.makerdao.com/), where they can start the claiming process for their Dai.
-* Build an interface to handle the ES process on your platform, inform your users, and have them act accordingly.
+- Direct them to the [migration portal](https://migrate.makerdao.com/), where they can start the claiming process for their Dai.
+- Build an interface to handle the ES process on your platform, inform your users, and have them act accordingly.
 
 #### **Recommended Procedure:**
 
-* **Scenario: Shutdown**
-  * Inform users to claim equivalent value of Dai in Collateral on the [migration portal](https://migrate.makerdao.com/) or create an interface to handle the process locally.
-* **Scenario: Redeployment**
-  * Inform users to migrate their Dai to the new Dai \(and MKR if applicable\) on the [migration portal](https://migrate.makerdao.com/), or create an interface to handle the process on your platform.
-  * Add new token\(s\) to the exchange.
+- **Scenario: Shutdown**
+  - Inform users to claim equivalent value of Dai in Collateral on the [migration portal](https://migrate.makerdao.com/) or create an interface to handle the process locally.
+- **Scenario: Redeployment**
+  - Inform users to migrate their Dai to the new Dai \(and MKR if applicable\) on the [migration portal](https://migrate.makerdao.com/), or create an interface to handle the process on your platform.
+  - Add new token\(s\) to the exchange.
 
 ### **Dapp Browsers**
 
@@ -138,10 +148,10 @@ As a Vault integrator, it is very important that you integrate with Maker Protoc
 
 **Recommended Procedure**
 
-* **Scenario: Shutdown**
-  * Claim users’ funds through the [migration portal](https://migrate.makerdao.com/) or by direct interaction with the migration contracts, and make them available in their accounts.
-* **Scenario: Redeployment**
-  * Migrate users’ funds to a new redeployed system using the [migration portal](https://migrate.makerdao.com/) or by interacting directly with the migration contracts.
+- **Scenario: Shutdown**
+  - Claim users’ funds through the [migration portal](https://migrate.makerdao.com/) or by direct interaction with the migration contracts, and make them available in their accounts.
+- **Scenario: Redeployment**
+  - Migrate users’ funds to a new redeployed system using the [migration portal](https://migrate.makerdao.com/) or by interacting directly with the migration contracts.
 
 As a **non-custodial Vault integrator**, please make sure to integrate with the Maker Protocol contracts \(end.sol\). This allows you to be notified at the exact moment the Shutdown has been triggered. Otherwise, it is suggested that you inform your users on how they can free Collateral in Vaults. This can either be done in the non-custodial Vault integrator’s UI or you can direct them to [Oasis.app/borrow](https://oasis.app/borrow) if the users need to migrate their Vault. If you do decide to use your own services, you will need a UI that allows users to withdraw their Vaults from a proxy contract so it shows up on the [migration portal](https://migrate.makerdao.com/). Direct your users there. Alternatively, you may create an interface that will help users migrate their Dai in case of a new redeployment, or allow users to claim their Collateral in case of an only shutdown scenario.
 
@@ -149,9 +159,9 @@ As a **non-custodial Vault integrator**, please make sure to integrate with the 
 
 Dapps are suggested to integrate with Maker Protocol contracts \(end.sol\), which effectively provides a notification system that shows if Emergency Shutdown has been triggered. In terms of preparation, when ES has been triggered, have the following ready for your users:
 
-* A UI interface that alerts and informs users about the event.
-* If your Dapp uses a proxy, you will need to enable users to exit from the proxy in order to use the migration app/portal. 
-* Provide official communication channels for more information as well as a link to the [migration portal](https://migrate.makerdao.com/) for Dai and Vault redemption.
+- A UI interface that alerts and informs users about the event.
+- If your Dapp uses a proxy, you will need to enable users to exit from the proxy in order to use the migration app/portal.
+- Provide official communication channels for more information as well as a link to the [migration portal](https://migrate.makerdao.com/) for Dai and Vault redemption.
 
 #### **Custodial Services**
 
@@ -173,15 +183,15 @@ _This is an involved and stateful process that involves the following 9 steps._
 
 Locking the prices down for each collateral type is done by freezing the following user entry points:
 
-* Vault creation
-* Surplus/Debt Auctions
-* Dai Savings Rate \(DSR\)
-* Governance entry points
+- Vault creation
+- Surplus/Debt Auctions
+- Dai Savings Rate \(DSR\)
+- Governance entry points
 
 Next, the system will stop all of the current debt/surplus auctions, allowing individual auctions to be canceled by calling a function that moves the first phase of a collateral auction to the **End.** This process is completed by retrieving the Collateral and repaying Dai to the highest bidder of the respective auction contract. One reason these auctions are frozen and canceled is that the Emergency Shutdown process is designed to pass along the system surplus or system debt to Dai holders. In general, there are no guarantees regarding the value of MKR during a Shutdown and the mechanisms that typically rely on MKR's market value cannot be relied upon, ultimately resulting in there being no reason to keep running the auctions that impact MKR supply. More specifically, the reasons debt and surplus auctions get canceled are as follows:
 
-* Surplus auctions no longer serve their purpose. This is because, after a shutdown, the surplus is designed to be allocated to Dai holders. Thus, canceling surplus auctions during Shutdown allows the system to return the surplus Dai back to the Settlement engines balance and ultimately back to Dai holders.
-* Debt auctions also stop serving their purpose. This is because the bad debt is passed as a haircut \(lower-than-market-value placed on an asset being used as Collateral in a Vault\) back to Dai holders if there is no other system surplus available.
+- Surplus auctions no longer serve their purpose. This is because, after a shutdown, the surplus is designed to be allocated to Dai holders. Thus, canceling surplus auctions during Shutdown allows the system to return the surplus Dai back to the Settlement engines balance and ultimately back to Dai holders.
+- Debt auctions also stop serving their purpose. This is because the bad debt is passed as a haircut \(lower-than-market-value placed on an asset being used as Collateral in a Vault\) back to Dai holders if there is no other system surplus available.
 
 As for collateral auctions, they are not immediately canceled \(but can be canceled by any user\) because they are still tied to the valuable Collateral in the system. Collateral auctions continue to run, and Keepers can continue to bid on them. If there are no bidders, the live auctions can also be canceled.
 
@@ -193,13 +203,13 @@ Overall, this results in collateral auctions being able to continue during Shutd
 
 **Notes regarding collateral auctions:**
 
-* End moves the first phase of collateral auctions to the End by retrieving the Collateral and repaying Dai to the highest bidder.
-* The second phase of auctions allows bids to be made, while decreasing the quantity up for auction. During this phase, completed auctions are settled as they have already raised the necessary Dai and are already in the process of returning the Collateral to the original Vault holder.
+- End moves the first phase of collateral auctions to the End by retrieving the Collateral and repaying Dai to the highest bidder.
+- The second phase of auctions allows bids to be made, while decreasing the quantity up for auction. During this phase, completed auctions are settled as they have already raised the necessary Dai and are already in the process of returning the Collateral to the original Vault holder.
 
 **Other Notes:**
 
-* MKR could still have value if the current MKR token is tied to another deployment of the system. Note that the system makes no assumptions about the economic value of MKR post-Shutdown.
-* It is important to note that on-auction debt and surplus are canceled, and balances are transferred to the End contract. The last step in this process is to begin the cooldown period.
+- MKR could still have value if the current MKR token is tied to another deployment of the system. Note that the system makes no assumptions about the economic value of MKR post-Shutdown.
+- It is important to note that on-auction debt and surplus are canceled, and balances are transferred to the End contract. The last step in this process is to begin the cooldown period.
 
 ### **2. Setting the Final Prices for the Collateral Types in the Maker Protocol**
 
@@ -255,29 +265,28 @@ This step is when Collateral is dispensed to the Dai holders who have already lo
 
 Lastly, the system will allow the exchange of some of the Dai that has been locked for specific collateral types. Note that the number of collateral tokens will be limited by how much locked Dai users have.
 
-## **Getting Support** 
+## **Getting Support**
 
 ### **Rocket Chat Channels**
 
-* [Chat.makerdao.com](http://chat.makerdao.com/). Support channels include but are not limited to:
-  * **\#general** 
-  * **\#dev**
-  * **\#governance-and-risk**
-  * **\#help**
+- [Chat.makerdao.com](http://chat.makerdao.com/). Support channels include but are not limited to:
+  - **\#general**
+  - **\#dev**
+  - **\#governance-and-risk**
+  - **\#help**
 
-[**Forum.Makerdao.com** ](https://forum.makerdao.com/) ****
+[**Forum.Makerdao.com** ](https://forum.makerdao.com/) \*\*\*\*
 
-* [Governance](https://forum.makerdao.com/c/governance/5) 
-* [Risk](https://forum.makerdao.com/c/risk/6)
+- [Governance](https://forum.makerdao.com/c/governance/5)
+- [Risk](https://forum.makerdao.com/c/risk/6)
 
-### **Other Resources and Documentation** 
+### **Other Resources and Documentation**
 
-* [Introduction to Emergency Shutdown Blog post](https://blog.makerdao.com/introduction-to-emergency-shutdown-in-multi-collateral-dai/)
-* [End Documentation ](https://docs.makerdao.com/smart-contract-modules/shutdown/end-detailed-documentation)
-* [Emergency Shutdown Module Documentation ](https://docs.makerdao.com/smart-contract-modules/emergency-shutdown-module)
-* [Emergency Shutdown Guide - MCD](https://github.com/makerdao/developerguides/blob/master/mcd/emergency-shutdown/emergency-shutdown-guide.md)
-* [Emergency Shutdown CLI ](https://docs.makerdao.com/clis/emergency-shutdown-es-cli)
-* [Dai and Collateral Redemption during Emergency Shutdown CLI](https://docs.makerdao.com/clis/dai-and-collateral-redemption-during-emergency-shutdown)
-* [Cage Keeper](https://docs.makerdao.com/keepers/cage-keeper#introduction)
-* [Emergency Shutdown FAQ](https://github.com/makerdao/community/blob/master/faqs/emergency-shutdown.md)
-
+- [Introduction to Emergency Shutdown Blog post](https://blog.makerdao.com/introduction-to-emergency-shutdown-in-multi-collateral-dai/)
+- [End Documentation ](https://docs.makerdao.com/smart-contract-modules/shutdown/end-detailed-documentation)
+- [Emergency Shutdown Module Documentation ](https://docs.makerdao.com/smart-contract-modules/emergency-shutdown-module)
+- [Emergency Shutdown Guide - MCD](https://github.com/makerdao/developerguides/blob/master/mcd/emergency-shutdown/emergency-shutdown-guide.md)
+- [Emergency Shutdown CLI ](https://docs.makerdao.com/clis/emergency-shutdown-es-cli)
+- [Dai and Collateral Redemption during Emergency Shutdown CLI](https://docs.makerdao.com/clis/dai-and-collateral-redemption-during-emergency-shutdown)
+- [Cage Keeper](https://docs.makerdao.com/keepers/cage-keeper#introduction)
+- [Emergency Shutdown FAQ](https://github.com/makerdao/community/blob/master/faqs/emergency-shutdown.md)

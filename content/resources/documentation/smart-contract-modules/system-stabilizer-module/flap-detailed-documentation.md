@@ -1,14 +1,20 @@
 ---
+title: Flapper - Detailed Documentation
 description: The Maker Protocol's Surplus Auction House
+parent: auctions
+tags:
+  - auctions
+slug: flapper-detailed-documentation
+contentType: documentation
 ---
 
 # Flapper - Detailed Documentation
 
-* **Contract Name:** flap.sol
-* **Type/Category:** DSS —&gt; System Stabilizer Module
-* \*\*\*\*[**Associated MCD System Diagram**](https://github.com/makerdao/dss/wiki)
-* \*\*\*\*[**Contract Source**](https://github.com/makerdao/dss/blob/master/src/flap.sol)
-* \*\*\*\*[**Etherscan**](https://etherscan.io/address/0xc4269cc7acdedc3794b221aa4d9205f564e27f0d#code)
+- **Contract Name:** flap.sol
+- **Type/Category:** DSS —&gt; System Stabilizer Module
+- \*\*\*\*[**Associated MCD System Diagram**](https://github.com/makerdao/dss/wiki)
+- \*\*\*\*[**Contract Source**](https://github.com/makerdao/dss/blob/master/src/flap.sol)
+- \*\*\*\*[**Etherscan**](https://etherscan.io/address/0xc4269cc7acdedc3794b221aa4d9205f564e27f0d#code)
 
 ## 1. Introduction \(Summary\)
 
@@ -20,38 +26,38 @@ description: The Maker Protocol's Surplus Auction House
 
 ### Flapper \(Glossary\)
 
-* `Flap` - surplus auction \(selling stablecoins for MKR\) \[contract\]
-* `wards [usr: address]` - `rely`/`deny`/`auth` Auth Mechanisms \[uint\]
-* `Bid` - State of a specific Auction\[Bid\]
-  * `bid` - quantity being offered for the `lot` \(MKR\) \[uint\]
-  * `lot` - lot amount \(DAI\) \[uint\]
-  * `guy` - high bidder \[address\]
-  * `tic` - Bid expiry \[uint48\]
-  * `end` - when the auction will finish \[uint48\]
-* `bids (id: uint)` - storage of all `Bid`s by `id` \[mapping\]
-* `vat` - storage of the Vat's address \[address\]
-* `ttl` - bid lifetime / max bid duration \(default: 3 hours\) \[uint48\]
-* `lot` - lot amount \(DAI\) \[uint\]
-* `beg` - minimum bid increase \(default: 5%\) \[uint\]
-* `tau` - maximum auction duration \(default: 2 days\) \[uint48\]
-* `kick` - start an auction / put up a new DAI `lot` for auction \[function\]
-* `tend` - make a bid, thus increasing the bid size / submit an MKR bid \(increasing `bid`\) \[function\]
-* `deal` - claim a winning bid / settling a completed auction \[function\]
-* `gem` - MKR Token \[address\]
-* `kicks` - total auction count \[uint\]
-* `live` - cage flag \[uint\]
-* `file` - used by governance to set `beg`, `ttl`, and `tau` \[function\]
-* `yank` - is used during Global Settlement to move `tend` phase auctions to the `End` by retrieving the collateral and repaying DAI to the highest bidder. \[function\]
-* `tick()` **-** resets the `end` value if there has been 0 bids and the original `end` has passed.
+- `Flap` - surplus auction \(selling stablecoins for MKR\) \[contract\]
+- `wards [usr: address]` - `rely`/`deny`/`auth` Auth Mechanisms \[uint\]
+- `Bid` - State of a specific Auction\[Bid\]
+  - `bid` - quantity being offered for the `lot` \(MKR\) \[uint\]
+  - `lot` - lot amount \(DAI\) \[uint\]
+  - `guy` - high bidder \[address\]
+  - `tic` - Bid expiry \[uint48\]
+  - `end` - when the auction will finish \[uint48\]
+- `bids (id: uint)` - storage of all `Bid`s by `id` \[mapping\]
+- `vat` - storage of the Vat's address \[address\]
+- `ttl` - bid lifetime / max bid duration \(default: 3 hours\) \[uint48\]
+- `lot` - lot amount \(DAI\) \[uint\]
+- `beg` - minimum bid increase \(default: 5%\) \[uint\]
+- `tau` - maximum auction duration \(default: 2 days\) \[uint48\]
+- `kick` - start an auction / put up a new DAI `lot` for auction \[function\]
+- `tend` - make a bid, thus increasing the bid size / submit an MKR bid \(increasing `bid`\) \[function\]
+- `deal` - claim a winning bid / settling a completed auction \[function\]
+- `gem` - MKR Token \[address\]
+- `kicks` - total auction count \[uint\]
+- `live` - cage flag \[uint\]
+- `file` - used by governance to set `beg`, `ttl`, and `tau` \[function\]
+- `yank` - is used during Global Settlement to move `tend` phase auctions to the `End` by retrieving the collateral and repaying DAI to the highest bidder. \[function\]
+- `tick()` **-** resets the `end` value if there has been 0 bids and the original `end` has passed.
 
 ### **Parameters Set By Governance**
 
 The Maker Governance voters determine the surplus limit. The surplus auction is triggered when the system has an amount of Dai above that set limit.
 
-* **Parameters Set through `file`:**
-  * `beg`
-  * `ttl`
-  * `tau`
+- **Parameters Set through `file`:**
+  - `beg`
+  - `ttl`
+  - `tau`
 
 **Note:** MKR governance also determines the `Vow.bump` which sets the `Bid.lot` for each Flap auction and the `Vow.hump` which determines the surplus buffer.
 
@@ -59,8 +65,8 @@ The Maker Governance voters determine the surplus limit. The surplus auction is 
 
 `auth` - check whether an address can call this method \[modifier function\]
 
-* `rely` - allow an address to call auth'ed methods \[function\]
-* `deny` - disallow an address from calling auth'ed methods \[function\]
+- `rely` - allow an address to call auth'ed methods \[function\]
+- `deny` - disallow an address from calling auth'ed methods \[function\]
 
 ## 3. Key Mechanisms & Concepts
 
@@ -80,8 +86,8 @@ The surplus auction officially ends when the bid duration ends \(`ttl`\) without
 
 In the context of running a keeper \(more info [here](https://github.com/makerdao/developerguides/tree/master/keepers)\) in order to perform bids within an auction, a primary failure mode could occur when a keeper specifies an unprofitable price for MKR.
 
-* This failure mode is due to the fact that there is nothing the system can do to stop a user from paying significantly more than the fair market value for the token in an auction \(this goes for all auction types, `flip`, `flop`, and `flap`\).
-* Keepers that are performing badly in a `flap` auction run the risk of overpaying MKR for the DAI as there is no upper limit to the `bid` size other than their MKR balance.
+- This failure mode is due to the fact that there is nothing the system can do to stop a user from paying significantly more than the fair market value for the token in an auction \(this goes for all auction types, `flip`, `flop`, and `flap`\).
+- Keepers that are performing badly in a `flap` auction run the risk of overpaying MKR for the DAI as there is no upper limit to the `bid` size other than their MKR balance.
 
 #### **Bid Increments During an Auction**
 
@@ -111,8 +117,7 @@ Bidders send MKR tokens from their addresses to the system/specific auction. If 
 
 #### 2. Other Failure Modes
 
-* **Resulting from when MKR is burned**
-  * There is the possibility where a situation arises where the MKR token makes the transaction revert \(e.g. gets stopped or the Vow's permission to call burn\(\) is revoked\). In a case like this, deal can't succeed until someone fixes the issue with the MKR token. In the case of stoppage, this could include the deploying of a new MKR token. This new deployment could be completed by any individual using the MCD System but governance would need to add it to the system. Next, it would need to replace the old surplus and debt auctions with the new ones using the new MKR token. Lastly, it is crucial to enable the possibility to vote with the new version as well.
-* **When there is massive surplus**
-  * This would result in many Flap auctions occurring as the surplus over `bump` + `hump` is always auctioned off in `bump` increments. However, auctions run concurrently, so this would "flood the keeper market" and possibly result in too few bids being placed on any auction. This could happen through keepers not bidding on multiple auctions at once, which would result in network congestion because all keepers are trying to bid on all of the auctions. This could also lead to possible keeper collusion \(if the capital pool is large enough, they may be more willing to work together to split it evenly at the system's expense\).
-
+- **Resulting from when MKR is burned**
+  - There is the possibility where a situation arises where the MKR token makes the transaction revert \(e.g. gets stopped or the Vow's permission to call burn\(\) is revoked\). In a case like this, deal can't succeed until someone fixes the issue with the MKR token. In the case of stoppage, this could include the deploying of a new MKR token. This new deployment could be completed by any individual using the MCD System but governance would need to add it to the system. Next, it would need to replace the old surplus and debt auctions with the new ones using the new MKR token. Lastly, it is crucial to enable the possibility to vote with the new version as well.
+- **When there is massive surplus**
+  - This would result in many Flap auctions occurring as the surplus over `bump` + `hump` is always auctioned off in `bump` increments. However, auctions run concurrently, so this would "flood the keeper market" and possibly result in too few bids being placed on any auction. This could happen through keepers not bidding on multiple auctions at once, which would result in network congestion because all keepers are trying to bid on all of the auctions. This could also lead to possible keeper collusion \(if the capital pool is large enough, they may be more willing to work together to split it evenly at the system's expense\).

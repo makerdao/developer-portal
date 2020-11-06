@@ -1,15 +1,19 @@
 ---
-description: >-
-  Allowing MKR users to vote with a hot or cold wallet using a proxy voting
-  identity
+title: Vote Proxy - Detailed Documentation
+description: Allowing MKR users to vote with a hot or cold wallet using a proxy voting identity
+parent: governance
+tags:
+  - governance
+slug: vote-proxy-detailed-documentation
+contentType: documentation
 ---
 
 # Vote Proxy - Detailed Documentation
 
-* **Contract Name:** VoteProxy.sol
-* **Type/Category:** Proxy Module
-* \*\*\*\*[**Associated MCD System Diagram**](https://github.com/makerdao/dss/wiki#system-architecture)
-* \*\*\*\*[**Contract Source**](https://github.com/makerdao/vote-proxy/blob/master/src/VoteProxy.sol)
+- **Contract Name:** VoteProxy.sol
+- **Type/Category:** Proxy Module
+- \*\*\*\*[**Associated MCD System Diagram**](https://github.com/makerdao/dss/wiki#system-architecture)
+- \*\*\*\*[**Contract Source**](https://github.com/makerdao/vote-proxy/blob/master/src/VoteProxy.sol)
 
 ## 1. Introduction \(Summary\)
 
@@ -21,11 +25,11 @@ The `VoteProxy` contract allows for MKR users to vote with a hot or cold wallet 
 
 ### Vote Proxy \(Glossary\)
 
-* `approvals`: A mapping of candidate addresses to their `uint` weight.
-* `slate` - A mapping of `bytes32` to `address` arrays. Represents sets of candidates. Weighted votes are given to slates.
-* `votes`: A mapping of voter addresses to the slate they have voted for.
-* `GOV`: `DSToken` used for voting.
-* `IOU`: `DSToken` issued in exchange for locking `GOV` tokens.
+- `approvals`: A mapping of candidate addresses to their `uint` weight.
+- `slate` - A mapping of `bytes32` to `address` arrays. Represents sets of candidates. Weighted votes are given to slates.
+- `votes`: A mapping of voter addresses to the slate they have voted for.
+- `GOV`: `DSToken` used for voting.
+- `IOU`: `DSToken` issued in exchange for locking `GOV` tokens.
 
 ## 3. Key Mechanisms & Concepts
 
@@ -45,12 +49,11 @@ The `VoteProxy` contract enables MKR owners to vote with the full weight of the 
 
 ## 4. Gotchas \(Potential source of user error\)
 
-* **One-time proxy setup cost**
-  * As a new proxy contract user, you will need to set it up before you can use it for future voting. The price of the setup will depend on the current Ethereum gas price but will ultimately make voting easier and safer for users.
-* Any MKR moved/transferred from a user's vote proxy during a Polling vote, will be subtracted/removed from any existing poll that a user has voted on. For your vote to count, you must ensure the MKR is in your wallet when the poll ends.
-* **Note:** For the users who don't want to use the `VoteProxy`, they can now vote directly with a single wallet, by depositing directly into Chief and then voting with their wallet.
+- **One-time proxy setup cost**
+  - As a new proxy contract user, you will need to set it up before you can use it for future voting. The price of the setup will depend on the current Ethereum gas price but will ultimately make voting easier and safer for users.
+- Any MKR moved/transferred from a user's vote proxy during a Polling vote, will be subtracted/removed from any existing poll that a user has voted on. For your vote to count, you must ensure the MKR is in your wallet when the poll ends.
+- **Note:** For the users who don't want to use the `VoteProxy`, they can now vote directly with a single wallet, by depositing directly into Chief and then voting with their wallet.
 
 ## 5. Failure Modes \(Bounds on Operating Conditions & External Risk Factors\)
 
-* The loss of private keys for both the hot and cold wallet will prevent you from voting.
-
+- The loss of private keys for both the hot and cold wallet will prevent you from voting.

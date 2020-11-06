@@ -1,3 +1,13 @@
+---
+title: Exchange Service
+description: The exchange service allows to buy and sell DAI, MKR, and other tokens
+parent: dai-js
+tags:
+	- dai-js
+slug: dai-js-exchange-service
+contentType: documentation
+---
+
 # Exchange Service
 
 ## Summary
@@ -14,11 +24,11 @@ const exchange = maker.service('exchange');
 
 Sell a set amount of DAI and receive another token in return.
 
-* **Parameters**
-  * `daiAmount` - Amount of DAI to sell.
-  * `tokenSymbol` - Token to receive in return.
-  * `minFillAmount` - Minimum amount to receive in return.
-* **Returns:** promise \(resolves to [OasisOrder](https://makerdao.com/documentation/#oasisorder) once mined\)
+- **Parameters**
+  - `daiAmount` - Amount of DAI to sell.
+  - `tokenSymbol` - Token to receive in return.
+  - `minFillAmount` - Minimum amount to receive in return.
+- **Returns:** promise \(resolves to [OasisOrder](https://makerdao.com/documentation/#oasisorder) once mined\)
 
 ```javascript
 // Sell 100.00 DAI for 0.30 WETH or more.
@@ -29,11 +39,11 @@ const sellOrder = await exchange.sellDai('100.0', 'WETH', '0.30');
 
 Buy a set amount of DAI and give another token in return.
 
-* **Parameters**
-  * `daiAmount` - Amount of DAI to buy.
-  * `tokenSymbol` - Token to give in return.
-  * `minFillAmount` - Maximum amount to give in return.
-* **Returns:** promise \(resolves to [OasisOrder](https://makerdao.com/documentation/#oasisorder) once mined\)
+- **Parameters**
+  - `daiAmount` - Amount of DAI to buy.
+  - `tokenSymbol` - Token to give in return.
+  - `minFillAmount` - Maximum amount to give in return.
+- **Returns:** promise \(resolves to [OasisOrder](https://makerdao.com/documentation/#oasisorder) once mined\)
 
 ```javascript
 // Buy 100.00 DAI for 0.30 WETH or less.
@@ -50,4 +60,3 @@ const fillAmount = buyOrder.fillAmount();
 const gasPaid = buyOrder.fees();
 const created = buyOrder.created();
 ```
-

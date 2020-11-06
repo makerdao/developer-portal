@@ -1,14 +1,20 @@
 ---
+title: ESM - Detailed Documentation
 description: The ESM is the trigger system for the shutdown of the Maker Protocol
+parent: governance
+tags:
+  - governance
+slug: esm-proxy-detailed-documentation
+contentType: documentation
 ---
 
 # ESM - Detailed Documentation
 
-* **Contract Name:** esm.sol
-* **Type/Category:** Emergency Shutdown Module
-* \*\*\*\*[**Associated MCD System Diagram**](https://github.com/makerdao/dss/wiki)
-* \*\*\*\*[**Contract Source**](https://github.com/makerdao/esm/blob/master/src/ESM.sol)
-* \*\*\*\*[**Etherscan**](https://etherscan.io/address/0x0581a0abe32aae9b5f0f68defab77c6759100085)
+- **Contract Name:** esm.sol
+- **Type/Category:** Emergency Shutdown Module
+- \*\*\*\*[**Associated MCD System Diagram**](https://github.com/makerdao/dss/wiki)
+- \*\*\*\*[**Contract Source**](https://github.com/makerdao/esm/blob/master/src/ESM.sol)
+- \*\*\*\*[**Etherscan**](https://etherscan.io/address/0x0581a0abe32aae9b5f0f68defab77c6759100085)
 
 ## 1. Introduction \(Summary\)
 
@@ -48,8 +54,8 @@ MKR holders that wish to trigger Shutdown must `join` MKR into the ESM, which is
 
 **The ESM is intended to be used in a few potential scenarios:**
 
-* To mitigate malicious governance
-* To prevent the exploitation of a critical bug \(for example one that allows collateral to be stolen\)
+- To mitigate malicious governance
+- To prevent the exploitation of a critical bug \(for example one that allows collateral to be stolen\)
 
 In the case of a malicious governance attack, the joiners will have no expectation of recovering their funds \(as that would require a malicious majority to pass the required vote\), and their only option is to set up an alternative fork in which the majority's funds are slashed and their funds are restored.
 
@@ -80,4 +86,3 @@ If an entity thinks others will join in before governance can react \(e.g. if th
 ### Authorization Misconfigurations
 
 The ESM itself does not have an isolated failure mode, but if the other parts of the system do not have proper authorization configurations \(e.g. the End contract does not authorize the ESM to call `cage()`\), then the ESM's `fire()` method may be unable to trigger the Shutdown process even if sufficient MKR has been committed to the contract.
-

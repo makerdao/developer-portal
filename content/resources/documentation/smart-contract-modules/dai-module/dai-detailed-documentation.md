@@ -1,14 +1,20 @@
 ---
+title: Dai - Detailed Documentation
 description: The Dai Token Contract
+parent: dai
+tags:
+  - dai
+slug: dai-detailed-documentation
+contentType: documentation
 ---
 
 # Dai - Detailed Documentation
 
-* **Contract Name:** dai.sol
-* **Type/Category:** DSS —&gt; Dai Module
-* \*\*\*\*[**Associated MCD System Diagram**](https://github.com/makerdao/dss/wiki)
-* \*\*\*\*[**Contract Source**](https://github.com/makerdao/dss/blob/master/src/dai.sol)
-* \*\*\*\*[**Etherscan**](https://etherscan.io/address/0x6b175474e89094c44da98b954eedeac495271d0f)
+- **Contract Name:** dai.sol
+- **Type/Category:** DSS —&gt; Dai Module
+- \*\*\*\*[**Associated MCD System Diagram**](https://github.com/makerdao/dss/wiki)
+- \*\*\*\*[**Contract Source**](https://github.com/makerdao/dss/blob/master/src/dai.sol)
+- \*\*\*\*[**Etherscan**](https://etherscan.io/address/0x6b175474e89094c44da98b954eedeac495271d0f)
 
 ## 1. Introduction \(Summary\)
 
@@ -56,7 +62,7 @@ The `Dai` contract is the user-facing ERC20 token contract maintaining the accou
 
 #### **Units**
 
-* `wad` - fixed point decimal with 18 decimals \(for basic quantities, e.g. balances\).
+- `wad` - fixed point decimal with 18 decimals \(for basic quantities, e.g. balances\).
 
 ## 3. Key Mechanisms & Concepts
 
@@ -67,7 +73,7 @@ For the most part, `dai.sol` functions as a typical ERC20 token. These tokens ha
 1. `transferFrom` in the DAI contract works in a slightly different form than the generic `transferFrom` function. The DAI contract allows for "unlimited approval". Should the user approve an address for the maximum uint256 value, then that address will have unlimited approval until told otherwise.
 2. `push`, `pull` & `move` are aliases for `transferFrom` calls in the form of `transferFrom(msg.sender, usr, amount)` , `transferFrom(usr, msg.sender, amount)` & `transferFrom(src, dst, amount)` .
 3. `permit` is a signature-based approval function. This allows for an end-user to sign a message which can then be relayed by another party to submit their approval. This can be useful for applications in which the end-user does not need to hold `ETH`.
-   * In order to use this functionality, a user's address must sign a message with the `holder`, `spender`, `nonce`, `expiry` and the `allowed` amount. This can then be submitted to `Permit()` to update the user's approval.
+   - In order to use this functionality, a user's address must sign a message with the `holder`, `spender`, `nonce`, `expiry` and the `allowed` amount. This can then be submitted to `Permit()` to update the user's approval.
 
 ## 4. Gotchas \(Potential Source of User Error\)
 
@@ -83,5 +89,4 @@ The Dai token provides offchain approval, which means that as an owner of an ETH
 
 ## 5. Failure Modes \(Bounds on Operating Conditions & External Risk Factors\)
 
-* N/a
-
+- N/a

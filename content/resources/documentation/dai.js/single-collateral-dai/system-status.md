@@ -1,3 +1,13 @@
+---
+title: System Status
+description: Access system status information with the ETH CDP Service
+parent: dai-js
+tags:
+	- dai-js
+slug: dai-js-system-status
+contentType: documentation
+---
+
 # System Status
 
 ## Summary
@@ -10,8 +20,8 @@ const service = maker.service('cdp');
 
 ## getSystemCollateralization
 
-* **Params:** none
-* **Returns:** promise \(resolves to system collateralization ratio\)
+- **Params:** none
+- **Returns:** promise \(resolves to system collateralization ratio\)
 
 `getSystemCollateralization()` returns the collateralization ratio for the entire system, e.g. 2.75
 
@@ -21,12 +31,11 @@ const systemRatio = await service.getSystemCollateralization();
 
 ## getTargetPrice
 
-* **Params:** none
-* **Returns:** promise \(resolves to target price\)
+- **Params:** none
+- **Returns:** promise \(resolves to target price\)
 
 `getTargetPrice()` returns the target price of Sai in USD, that is, the value to which Sai is soft-pegged, which historically has been 1. It returns a `USD_SAI` [price unit](system-status.md#units).
 
 ```javascript
 const targetPrice = await service.getTargetPrice();
 ```
-

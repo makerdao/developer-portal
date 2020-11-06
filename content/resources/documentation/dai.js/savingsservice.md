@@ -1,3 +1,13 @@
+---
+title: Dai Savings Rate
+description: Dai.js service to work with the Dai Savings Rate system
+parent: dai-js
+tags:
+	- dai-js
+slug: dai-js-dai-savings-rate
+contentType: documentation
+---
+
 # Dai Savings Rate
 
 Use the `'mcd:savings'` service to work with the Dai Savings Rate system. In the code, this is called [SavingsService](https://github.com/makerdao/dai.js/blob/dev/packages/dai-plugin-mcd/src/SavingsService.js).
@@ -41,4 +51,3 @@ Get the total amount of Dai in the DSR contract for all users.
 ### getYearlyRate\(\)
 
 Get the current annual savings rate.
-

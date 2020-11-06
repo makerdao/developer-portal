@@ -1,5 +1,12 @@
 ---
+title: Governance Module
 description: The Maker Protocol's Governance Contracts
+parent: governance
+tags:
+  - governance
+slug: introduction-to-governance-module
+contentType: documentation
+root: true
 ---
 
 # Governance Module

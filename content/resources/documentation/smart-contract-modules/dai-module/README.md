@@ -1,5 +1,12 @@
 ---
+title: Dai Module
 description: The DAI token contract and all of the adapters DaiJoin adapters.
+parent: dai
+tags:
+   - dai
+slug: introduction-to-dai-module
+contentType: documentation
+root: true
 ---
 
 # Dai Module

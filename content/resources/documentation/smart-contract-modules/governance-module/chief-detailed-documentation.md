@@ -1,13 +1,19 @@
 ---
+title: Chief - Detailed Documentation
 description: Electing a Chief contract via an approval voting system
+parent: governance
+tags:
+  - governance
+slug: chief-detailed-documentation
+contentType: documentation
 ---
 
 # Chief - Detailed Documentation
 
-* **Contract Name:** chief.sol
-* **Type/Category:** Governance Module
-* \*\*\*\*[**Associated MCD System Diagram**](https://github.com/makerdao/dss/wiki#system-architecture)
-* \*\*\*\*[**Contract Source**](https://github.com/dapphub/ds-chief/blob/master/src/chief.sol)
+- **Contract Name:** chief.sol
+- **Type/Category:** Governance Module
+- \*\*\*\*[**Associated MCD System Diagram**](https://github.com/makerdao/dss/wiki#system-architecture)
+- \*\*\*\*[**Contract Source**](https://github.com/dapphub/ds-chief/blob/master/src/chief.sol)
 
 ## 1. Introduction \(Summary\)
 
@@ -23,18 +29,18 @@ In short, voters will lock up their voting tokens in order to give their votes s
 
 `**DSChiefApprovals` provides the following public properties:\*\*
 
-* `slates`: A mapping of `bytes32` to `address` arrays. Represents sets of candidates. Weighted votes are given to slates.
-* `votes`: A mapping of voter addresses to the slate they have voted for.
-* `approvals`: A mapping of candidate addresses to their `uint` weight.
-* `deposits`: A mapping of voter addresses to `uint` number of tokens locked.
-* `GOV`: `DSToken` used for voting.
-* `IOU`: `DSToken` issued in exchange for locking `GOV` tokens.
-* `hat`: Contains the address of the current "chief."
-* `MAX_YAYS`: Maximum number of candidates a slate can hold.
+- `slates`: A mapping of `bytes32` to `address` arrays. Represents sets of candidates. Weighted votes are given to slates.
+- `votes`: A mapping of voter addresses to the slate they have voted for.
+- `approvals`: A mapping of candidate addresses to their `uint` weight.
+- `deposits`: A mapping of voter addresses to `uint` number of tokens locked.
+- `GOV`: `DSToken` used for voting.
+- `IOU`: `DSToken` issued in exchange for locking `GOV` tokens.
+- `hat`: Contains the address of the current "chief."
+- `MAX_YAYS`: Maximum number of candidates a slate can hold.
 
 Most of the functions are decorated with the the `note` modifier from [ds-note](https://dapp.tools/dappsys/ds-note.html), meaning that they fire a standardized event when called. Additionally, one custom event is also provided:
 
-* `Etch(bytes32 indexed slate)`: Fired when a slate is created.
+- `Etch(bytes32 indexed slate)`: Fired when a slate is created.
 
 ## 3. Key Mechanisms & Concepts
 
@@ -49,31 +55,31 @@ Most of the functions are decorated with the the `note` modifier from [ds-note](
 
 #### **`DSChiefApprovals(DSToken GOV_, DSToken IOU_, uint MAX_YAYS_)`**
 
-* The constructor. Sets `GOV`, `IOU`, and `MAX_YAYS`.
+- The constructor. Sets `GOV`, `IOU`, and `MAX_YAYS`.
 
 #### **`lock(uint wad)`**
 
-* Charges the user `wad` `GOV` tokens, issues an equal amount of `IOU` tokens to the user, and adds `wad` weight to the candidates on the user's selected slate. Fires a `LogLock` event.
+- Charges the user `wad` `GOV` tokens, issues an equal amount of `IOU` tokens to the user, and adds `wad` weight to the candidates on the user's selected slate. Fires a `LogLock` event.
 
 #### **`free(uint wad)`**
 
-* Charges the user `wad` `IOU` tokens, issues an equal amount of `GOV` tokens to the user, and subtracts `wad` weight from the candidates on the user's selected slate. Fires a `LogFree` event.
+- Charges the user `wad` `IOU` tokens, issues an equal amount of `GOV` tokens to the user, and subtracts `wad` weight from the candidates on the user's selected slate. Fires a `LogFree` event.
 
 #### **`etch(address[] yays) returns (bytes32 slate)`**
 
-* Save a set of ordered addresses as a `slate` and return a unique identifier for it.
+- Save a set of ordered addresses as a `slate` and return a unique identifier for it.
 
 #### **`vote(address[] yays) returns (bytes32 slate)`**
 
-* Save a set of ordered addresses as a `slate`, moves the voter's weight from their current slate to the new slate, and returns the slate's identifier.
+- Save a set of ordered addresses as a `slate`, moves the voter's weight from their current slate to the new slate, and returns the slate's identifier.
 
 #### **`vote(bytes32 slate)`**
 
-* Removes voter's weight from their current slate and adds it to the specified slate.
+- Removes voter's weight from their current slate and adds it to the specified slate.
 
 #### **`lift(address whom)`**
 
-* Checks the given address and promotes it to `s/chief/hat` if it has more weight than the current `s/chief/hat`.
+- Checks the given address and promotes it to `s/chief/hat` if it has more weight than the current `s/chief/hat`.
 
 #### DSChief
 
@@ -83,23 +89,23 @@ Most of the functions are decorated with the the `note` modifier from [ds-note](
 
 #### **`DSChief(DSToken GOV_, DSToken IOU_, uint MAX_YAYS_)`**
 
-* The constructor. Sets `GOV`, `IOU`, and `MAX_YAYS`.
+- The constructor. Sets `GOV`, `IOU`, and `MAX_YAYS`.
 
 #### **`setOwner(address owner_)`**
 
-* Reverts the transaction. Overridden from `DSAuth`.
+- Reverts the transaction. Overridden from `DSAuth`.
 
 #### **`setAuthority(DSAuthority authority_)`**
 
-* Reverts the transaction. Overridden from `DSAuth`.
+- Reverts the transaction. Overridden from `DSAuth`.
 
 #### **`isUserRoot(address who) constant returns (bool)`**
 
-* Returns `true` if the given address is the chief.
+- Returns `true` if the given address is the chief.
 
 #### **`setRootUser(address who, bool enabled)`**
 
-* Reverts the transaction. Overridden from `DSRoles`.
+- Reverts the transaction. Overridden from `DSRoles`.
 
 #### **`DSRoles`**
 
@@ -137,12 +143,11 @@ Using `[0x0, 0x1, 0x2, ...]` is valid but using `[0x1, 0x0, ...]` and `[0x0, 0x0
 
 ## 5. Failure Modes \(Bounds on Operating Conditions & External Risk Factors\)
 
-* **MKR users moving their votes from one spell to another**
-  * One of the biggest potential failure modes occurs when people are moving their votes from one spell to another. This opens up a gap/period of time when only a small amount of MKR is needed to lift a random hat.
-* **Lift is not called on spells that have more MKR than the current hat**
-  * The only way a spell can get the hat is if `lift` is called on it. So, even if a spell gains much more MKR on it than the hat, if `lift` is never called on it, the hat will remain on a spell that no longer has the most MKR. This could lower the bar for the amount of MKR needed to pass something, potentially making the system less safe.
-* **Stray spells without expiration**
-  * Due to the continuous nature of voting, a spell will remain live in the system even if it was not approved to be the governing proposal. This means that MKR holders can continue to vote on the candidate and in times of lower voter participation there is potential for them to introduce a failure mode by voting for an unexpected and/or older candidate. This illustrates why increased voter participation is important and that a higher amount of MKR on the current governing proposal adds to the stability of the system.
-* **Unsafe states when migrating to a new chief contract**
-  * When migrating to a new chief, authority must be transferred to the new contract and revoked from the old. This poses a small coordination problem as the new contract must already have enough MKR on its `hat` to be safe against governance attacks while the voters enacting the change itself must have enough MKR in the old chief to pass the proposal.
-
+- **MKR users moving their votes from one spell to another**
+  - One of the biggest potential failure modes occurs when people are moving their votes from one spell to another. This opens up a gap/period of time when only a small amount of MKR is needed to lift a random hat.
+- **Lift is not called on spells that have more MKR than the current hat**
+  - The only way a spell can get the hat is if `lift` is called on it. So, even if a spell gains much more MKR on it than the hat, if `lift` is never called on it, the hat will remain on a spell that no longer has the most MKR. This could lower the bar for the amount of MKR needed to pass something, potentially making the system less safe.
+- **Stray spells without expiration**
+  - Due to the continuous nature of voting, a spell will remain live in the system even if it was not approved to be the governing proposal. This means that MKR holders can continue to vote on the candidate and in times of lower voter participation there is potential for them to introduce a failure mode by voting for an unexpected and/or older candidate. This illustrates why increased voter participation is important and that a higher amount of MKR on the current governing proposal adds to the stability of the system.
+- **Unsafe states when migrating to a new chief contract**
+  - When migrating to a new chief, authority must be transferred to the new contract and revoked from the old. This poses a small coordination problem as the new contract must already have enough MKR on its `hat` to be safe against governance attacks while the voters enacting the change itself must have enough MKR in the old chief to pass the proposal.

@@ -1,5 +1,13 @@
 ---
+title: Introduction to Rates Module
 description: The Maker Protocol's Rate Accumulation Mechanism
+parent: dsr
+tags:
+  - dsr
+  - vaults
+slug: introduction-to-rates-module
+contentType: documentation
+root: true
 ---
 
 # Rates Module

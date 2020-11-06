@@ -1,9 +1,19 @@
+---
+title: Spell - Detailed Documentation
+description: An un-owned object that performs one action or series of atomic actions one time only.
+parent: governance
+tags:
+  - governance
+slug: spell-detailed-documentation
+contentType: documentation
+---
+
 # Spell - Detailed Documentation
 
-* **Contract Name:** spell.sol
-* **Type/Category:** Governance Module
-* \*\*\*\*[**Associated MCD System Diagram**](https://github.com/makerdao/dss/wiki#system-architecture)
-* \*\*\*\*[**Contract Source**](https://github.com/dapphub/ds-spell/blob/master/src/spell.sol)
+- **Contract Name:** spell.sol
+- **Type/Category:** Governance Module
+- \*\*\*\*[**Associated MCD System Diagram**](https://github.com/makerdao/dss/wiki#system-architecture)
+- \*\*\*\*[**Contract Source**](https://github.com/dapphub/ds-spell/blob/master/src/spell.sol)
 
 ## 1. Introduction \(Summary\)
 
@@ -19,16 +29,16 @@ The `spell.sol` contract contains two main contracts: DSSPELL and DSSpellBook. D
 
 ### Glossary \(Spell\)
 
-* `whom` - is the address the spell is targeting, usually SAI\_MOM in SCD.
-* `mana` - is the amount of ETH you are sending, which in spells it is usually 0.
-* `data` - bytes memory calldata.
-* `done` - indicates that the spell has been called successfully.
+- `whom` - is the address the spell is targeting, usually SAI_MOM in SCD.
+- `mana` - is the amount of ETH you are sending, which in spells it is usually 0.
+- `data` - bytes memory calldata.
+- `done` - indicates that the spell has been called successfully.
 
 ## 3. Key Mechanisms & Concepts
 
-* `hat` - A spell comes into effect as the hat when someone calls the lift function. This is only possible when the spell in question has more MKR voted towards it than the current hat.
-* `cast` - Once a spell has become the hat, it can be cast and its new variables will go into effect as part of the live Maker system. It is worth noting that a spell can only be cast once.
-* `lift` - The process whereby a new spell replaces the old proposal.
+- `hat` - A spell comes into effect as the hat when someone calls the lift function. This is only possible when the spell in question has more MKR voted towards it than the current hat.
+- `cast` - Once a spell has become the hat, it can be cast and its new variables will go into effect as part of the live Maker system. It is worth noting that a spell can only be cast once.
+- `lift` - The process whereby a new spell replaces the old proposal.
 
 **Note:** the `hat` and `lift` have more to do with `ds-chief` than `ds-spell` but are important to mention here for context.
 
@@ -42,7 +52,6 @@ Note that the spell is only marked as "done" if the CALL it makes succeeds, mean
 
 ## 5. Failure Modes \(Bounds on Operating Conditions & External Risk Factors\)
 
-* `spell` - A spell may remain uncast if it did not reach the required amount of MKR in order to pass. If this occurs, the spell may remain available as a later target if enough MKR is voted towards it.
-* `lift` - Although spells cannot be cast a second time, they can be lifted to become the hat more than once if enough MKR votes remain on that proposal. The proposals parameters will not go into effect, however any additional spell will need to have more than that amount of MKR voted towards it in order to become the new hat. See [forum post](https://forum.makerdao.com/t/an-explanation-of-continuous-voting-and-the-peculiarities-of-the-7-26-executive-stability-fee-vote/193) for a description of this having once occurred.
-* `cast` - If, when `cast` is called, the spell's one-time action fails, `done` does not get flipped and the spell remains castable.
-
+- `spell` - A spell may remain uncast if it did not reach the required amount of MKR in order to pass. If this occurs, the spell may remain available as a later target if enough MKR is voted towards it.
+- `lift` - Although spells cannot be cast a second time, they can be lifted to become the hat more than once if enough MKR votes remain on that proposal. The proposals parameters will not go into effect, however any additional spell will need to have more than that amount of MKR voted towards it in order to become the new hat. See [forum post](https://forum.makerdao.com/t/an-explanation-of-continuous-voting-and-the-peculiarities-of-the-7-26-executive-stability-fee-vote/193) for a description of this having once occurred.
+- `cast` - If, when `cast` is called, the spell's one-time action fails, `done` does not get flipped and the spell remains castable.

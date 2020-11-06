@@ -7,7 +7,7 @@
       "id": "1"
     },
     {
-      "url": "/auctions",
+      "url": "/documentation/the-auctions-of-the-maker-protocol",
       "name": "Auctions",
       "slug": "auctions",
       "id": "2"
@@ -21,7 +21,7 @@
     {
       "url": "/documentation/introduction-to-dai-js",
       "name": "Dai.js",
-      "slug": "daijs",
+      "slug": "dai-js",
       "id": "4"
     },
     {
@@ -31,13 +31,13 @@
       "id": "5"
     },
     {
-      "url": "/documentation",
+      "url": "/documentation/introduction-to-auction-keepers",
       "name": "Keepers",
       "slug": "keepers",
       "id": "6"
     },
     {
-      "url": "/documentation",
+      "url": "/documentation/introduction-to-oracle-module",
       "name": "Oracles",
       "slug": "oracles",
       "id": "7"
@@ -46,6 +46,12 @@
       "url": "/documentation",
       "name": "Dai UI",
       "slug": "dai-ui",
+      "id": "8"
+    },
+    {
+      "url": "/documentation/introduction-to-dai-module",
+      "name": "Dai",
+      "slug": "dai",
       "id": "8"
     }
   ]

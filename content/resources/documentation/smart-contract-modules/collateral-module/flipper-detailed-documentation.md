@@ -1,16 +1,22 @@
 ---
+title: Flipper - Detailed Documentation
 description: The Maker Protocol's Collateral Auction House
+parent: auctions
+tags:
+  - auctions
+slug: flipper-detailed-documentation
+contentType: documentation
 ---
 
 # Flipper - Detailed Documentation
 
-* **Contract Name:** flip.sol
-* **Type/Category:** DSS —&gt; Collateral Auction Module
-* \*\*\*\*[**Associated MCD System Diagram**](https://github.com/makerdao/dss/wiki)
-* \*\*\*\*[**Contract Source**](https://github.com/makerdao/dss/blob/master/src/flip.sol)
-* **Etherscan**
-  * \*\*\*\*[**Flip ETH-A**](https://etherscan.io/address/0xF32836B9E1f47a0515c6Ec431592D5EbC276407f)
-  * \*\*\*\*[**Flip BAT-A**](https://etherscan.io/address/0xf7c569b2b271354179aacc9ff1e42390983110ba#code)
+- **Contract Name:** flip.sol
+- **Type/Category:** DSS —&gt; Collateral Auction Module
+- \*\*\*\*[**Associated MCD System Diagram**](https://github.com/makerdao/dss/wiki)
+- \*\*\*\*[**Contract Source**](https://github.com/makerdao/dss/blob/master/src/flip.sol)
+- **Etherscan**
+  - \*\*\*\*[**Flip ETH-A**](https://etherscan.io/address/0xF32836B9E1f47a0515c6Ec431592D5EbC276407f)
+  - \*\*\*\*[**Flip BAT-A**](https://etherscan.io/address/0xf7c569b2b271354179aacc9ff1e42390983110ba#code)
 
 ## 1. Introduction \(Summary\)
 
@@ -22,44 +28,44 @@ description: The Maker Protocol's Collateral Auction House
 
 #### Flipper \(Glossary\)
 
-* `wards [usr: address]`, `rely`/`deny`/`auth` - Auth mechanisms
-* `Bid` - State of a specific Auction {`bid`, `lot`, `guy`, `tic`, `end`, `usr`, `gal`, `tab`}
-  * `bid` - Bid amount \(DAI\)/ DAI paid
-  * `lot` - quantity up for auction / collateral gems for sale
-  * `guy` - high bidder \(address\)
-  * `tic` - Bid expiry
-  * `end` - when the auction will finish / max auction duration
-  * `usr` - address of the Vault being auctioned. Receives gems during the `dent` phase
-  * `gal` - recipient of auction income / receives dai income \(this is the Vow contract\)
-  * `tab` - total dai wanted from the auction / total dai to be raised \(in flip auction\)
-* `bids[id: uint]` - storage of all bids
-* `vat` - storage of the Vat's address
-* `ilk` - id of the Ilk for which the Flipper is responsible
-* `beg` - minimum bid increase \(default: 5%\)
-* `ttl` - bid duration \(default: 3 hours\)
-* `tau` - auction length \(default: 2 days\)
-* `kicks` - Total auction count, used to track auction `id`s
-* `kick` - function used by `Cat` to start an auction / Put collateral up for auction
-* `tick` - restart an auction if there have been 0 bids and the `end` has passed
-* `tend` - first phase of an auction. Increasing Dai `bid`s for a set `lot` of Gems
-* `dent` - second phase of an auction. Set Dai `bid` for a decreasing `lot` of Gems
-* `file` - function used by governance to set `beg`, `ttl`, and `tau`
-* `deal` - claim a winning bid / settles a completed auction
-* `yank` - used during Global Settlement to move `tend` phase auctions to the `End` by retrieving the collateral and repaying dai to the highest bidder.
-* `claw`: reduces the amount of litter in the Cat's box
+- `wards [usr: address]`, `rely`/`deny`/`auth` - Auth mechanisms
+- `Bid` - State of a specific Auction {`bid`, `lot`, `guy`, `tic`, `end`, `usr`, `gal`, `tab`}
+  - `bid` - Bid amount \(DAI\)/ DAI paid
+  - `lot` - quantity up for auction / collateral gems for sale
+  - `guy` - high bidder \(address\)
+  - `tic` - Bid expiry
+  - `end` - when the auction will finish / max auction duration
+  - `usr` - address of the Vault being auctioned. Receives gems during the `dent` phase
+  - `gal` - recipient of auction income / receives dai income \(this is the Vow contract\)
+  - `tab` - total dai wanted from the auction / total dai to be raised \(in flip auction\)
+- `bids[id: uint]` - storage of all bids
+- `vat` - storage of the Vat's address
+- `ilk` - id of the Ilk for which the Flipper is responsible
+- `beg` - minimum bid increase \(default: 5%\)
+- `ttl` - bid duration \(default: 3 hours\)
+- `tau` - auction length \(default: 2 days\)
+- `kicks` - Total auction count, used to track auction `id`s
+- `kick` - function used by `Cat` to start an auction / Put collateral up for auction
+- `tick` - restart an auction if there have been 0 bids and the `end` has passed
+- `tend` - first phase of an auction. Increasing Dai `bid`s for a set `lot` of Gems
+- `dent` - second phase of an auction. Set Dai `bid` for a decreasing `lot` of Gems
+- `file` - function used by governance to set `beg`, `ttl`, and `tau`
+- `deal` - claim a winning bid / settles a completed auction
+- `yank` - used during Global Settlement to move `tend` phase auctions to the `End` by retrieving the collateral and repaying dai to the highest bidder.
+- `claw`: reduces the amount of litter in the Cat's box
 
 ### **Parameters Set By Governance \(through `file`\)**
 
-* `beg`
-* `ttl`
-* `tau`
+- `beg`
+- `ttl`
+- `tau`
 
 Also, `Cat`'s `dunk` and `chop` also inform how `Flip` works as the `dunk` becomes the `Bid.lot` and influences, along with the `chop`, the `Bid.tab`.
 
 ### Parameters Not Set By Governance
 
-* `vat`
-* `ilk`
+- `vat`
+- `ilk`
 
 Both of these are set in the constructor and cannot be changed. If the Vat address is changed and each time a new collateral is added to the system, a new Flip will need to be deployed.
 
@@ -91,8 +97,8 @@ Once the auction's last bid has expired or the auction itself has reached the `e
 
 In the context of running a keeper \(more info [here](https://github.com/makerdao/developerguides/tree/master/keepers)\) to perform bids within an auction, a primary failure mode would occur when a keeper specifies an unprofitable price for the collateral.
 
-* This failure mode is due to the fact that there is nothing the system can do to stop a user from paying significantly more than the fair market value for the token in an auction \(this goes for all auction types, `flip, flop, and flap`\).
-* Keepers that are performing badly are primarily at risk during the `dent` phase since they could return too much collateral to the original Vault and end up overpaying \(i.e. pay too much Dai \(`bid`\) for too few gems \(`lot`\)\).
+- This failure mode is due to the fact that there is nothing the system can do to stop a user from paying significantly more than the fair market value for the token in an auction \(this goes for all auction types, `flip, flop, and flap`\).
+- Keepers that are performing badly are primarily at risk during the `dent` phase since they could return too much collateral to the original Vault and end up overpaying \(i.e. pay too much Dai \(`bid`\) for too few gems \(`lot`\)\).
 
 #### **Bidding Requirements during an auction**
 
@@ -142,4 +148,3 @@ Because `Flip.tend` compares the bidder's `bid` with the previous `bid * beg`, i
 Auction grinding allows an attacker to generate debt, allow their Vault to be bitten, win their own auction to get their collateral back at a discount. This type of failure is most possible when the liquidation penalty is set too low.
 
 For the full details about this risk, reference @livnev's Paper [here](https://github.com/livnev/auction-grinding/blob/master/grinding.pdf).
-

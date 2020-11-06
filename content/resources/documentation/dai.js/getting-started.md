@@ -1,3 +1,13 @@
+---
+title: Getting Started
+description: Getting started with Dai.js
+parent: dai-js
+tags:
+	- dai-js
+slug: dai-js-getting-started
+contentType: documentation
+---
+
 # Getting started
 
 ## **Installation**
@@ -70,7 +80,7 @@ console.log([
 
 ### Create a vault
 
-The code below opens a Vault, locks ETH into it, and draws out Dai. 
+The code below opens a Vault, locks ETH into it, and draws out Dai.
 
 Since this code sends transactions, it requires an account that can sign transactions. The simplest way to do this is to provide a `privateKey` configuration option as shown below, but you can also connect to Metamask or other browser-based providers, or connect to hardware wallets.
 
@@ -85,28 +95,24 @@ const myPrivateKey = 'your-private-key';
 const maker = await Maker.create('http', {
   plugins: [McdPlugin],
   url: `https://mainnet.infura.io/v3/${infuraKey}`,
-  privateKey: myPrivateKey
+  privateKey: myPrivateKey,
 });
 
 // verify that the private key was read correctly
 console.log(maker.currentAddress());
 
 // make sure the current account owns a proxy contract;
-// create it if needed. the proxy contract is used to 
+// create it if needed. the proxy contract is used to
 // perform multiple operations in a single transaction
 await maker.service('proxy').ensureProxy();
 
 // use the "vault manager" service to work with vaults
 const manager = maker.service('mcd:cdpManager');
-  
+
 // ETH-A is the name of the collateral type; in the future,
 // there could be multiple collateral types for a token with
 // different risk parameters
-const vault = await manager.openLockAndDraw(
-  'ETH-A', 
-  ETH(50), 
-  DAI(1000)
-);
+const vault = await manager.openLockAndDraw('ETH-A', ETH(50), DAI(1000));
 
 console.log(vault.id);
 console.log(vault.debtValue); // '1000.00 DAI'
@@ -117,6 +123,3 @@ In the next section, learn more about how to configure the Maker instance with `
 ## Integration Examples
 
 For larger examples of integrating this library, check out this [repo](https://github.com/makerdao/integration-examples) and the [Dai react template](https://github.com/ethanbennett/dai-react-template).
-
-
-

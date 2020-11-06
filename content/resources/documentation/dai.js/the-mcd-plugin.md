@@ -1,3 +1,13 @@
+---
+title: Vault Manager
+description: This intermediary contract allows the use of incrementing integer IDs for vaults, familiar to users of Single-Collateral Sai, as well as other conveniences
+parent: dai-js
+tags:
+	- dai-js
+slug: dai-js-vault-manager
+contentType: documentation
+---
+
 # Vault manager
 
 The vault manager works with vaults that are owned by the [CdpManager](https://github.com/makerdao/dss-cdp-manager/) contract, which is also used by Oasis Borrow. This intermediary contract allows the use of incrementing integer IDs for vaults, familiar to users of Single-Collateral Sai, as well as other conveniences.
@@ -39,7 +49,7 @@ Open a new vault with the specified [collateral type](cdptypeservice.md). Will c
 const txMgr = maker.service('transactionManager');
 const open = await mgr.open('ETH-A');
 txMgr.listen(open, {
-  pending: tx => console.log('tx pending: ' + tx.hash)
+  pending: (tx) => console.log('tx pending: ' + tx.hash),
 });
 const vault = await open;
 ```
@@ -49,11 +59,7 @@ const vault = await open;
 Open a new vault, then lock and/or draw in a single transaction. Will create a [proxy](advanced-configuration/using-ds-proxy.md) if one does not already exist. Returns a [Vault instance](the-mcd-plugin.md#vault-instances).
 
 ```javascript
-const vault = await mgr.openLockAndDraw(
-  'BAT-A', 
-  BAT(1000),
-  DAI(100)
-);
+const vault = await mgr.openLockAndDraw('BAT-A', BAT(1000), DAI(100));
 ```
 
 ## Vault instances
@@ -71,7 +77,7 @@ await vault.prefetch();
 
 #### collateralAmount
 
-The amount of collateral tokens locked, as a [currency unit](currency-units.md). 
+The amount of collateral tokens locked, as a [currency unit](currency-units.md).
 
 #### collateralValue
 
@@ -138,8 +144,3 @@ Transfer ownership of this vault to `address`. Note that if the new owner plans 
 #### giveToProxy\(address\)
 
 Look up the proxy contract owned by `address` and transfer ownership of this vault to that proxy.
-
-
-
-
-

@@ -1,13 +1,19 @@
 ---
+title: Pause - Detailed Documentation
 description: A delegatecall based proxy with an enforced delay
+parent: governance
+tags:
+  - governance
+slug: pause-detailed-documentation
+contentType: documentation
 ---
 
 # Pause - Detailed Documentation
 
-* **Contract Name:** pause.sol
-* **Type/Category:** Governance Module
-* \*\*\*\*[**Associated MCD System Diagram**](https://github.com/makerdao/dss/wiki#system-architecture)
-* \*\*\*\*[**Contract Source**](https://github.com/dapphub/ds-pause/blob/master/src/pause.sol)
+- **Contract Name:** pause.sol
+- **Type/Category:** Governance Module
+- \*\*\*\*[**Associated MCD System Diagram**](https://github.com/makerdao/dss/wiki#system-architecture)
+- \*\*\*\*[**Contract Source**](https://github.com/dapphub/ds-pause/blob/master/src/pause.sol)
 
 ## 1. Introduction \(Summary\)
 
@@ -23,10 +29,10 @@ The `ds-pause` is a _delegatecall_ based proxy with an enforced delay. This allo
 
 **A plan consists of:**
 
-* `usr`: address to delegatecall into
-* `tag`: the expected codehash of usr
-* `fax`: calldata to use
-* `eta`: first possible time of execution \(as seconds since unix epoch\)
+- `usr`: address to delegatecall into
+- `tag`: the expected codehash of usr
+- `fax`: calldata to use
+- `eta`: first possible time of execution \(as seconds since unix epoch\)
 
 It is important to note that each plan has a unique id, defined as a keccack256\(abi.encode\(usr, tag, fax, eta\)\).
 
@@ -34,9 +40,9 @@ It is important to note that each plan has a unique id, defined as a keccack256\
 
 Plans can be manipulated in the following ways:
 
-* `plot`: schedule a plan
-* `exec`: execute a scheduled plan
-* `drop`: cancel a scheduled plan
+- `plot`: schedule a plan
+- `exec`: execute a scheduled plan
+- `drop`: cancel a scheduled plan
 
 The `pause` contract contains the `DSPauseProxy` contract in order to allow plan to be executed in an isolated storage context to protect the pause from malicious storage modification during plan execution.
 
@@ -58,34 +64,33 @@ This means that plans are executed with the identity of the `proxy`. Thus when i
 
 **High level**
 
-* There is no way to bypass the delay
-* The code executed by the delegatecall cannot directly modify storage on the pause
-* The pause will always retain ownership of it's proxy
+- There is no way to bypass the delay
+- The code executed by the delegatecall cannot directly modify storage on the pause
+- The pause will always retain ownership of it's proxy
 
 **Administrative**
 
-* authority, owner, and delay can only be changed if an authorized user plots a plan to do so
+- authority, owner, and delay can only be changed if an authorized user plots a plan to do so
 
 **Plot**
 
-* A plan can only be plotted if its eta is after block.timestamp + delay
-* A plan can only be plotted by authorized users
+- A plan can only be plotted if its eta is after block.timestamp + delay
+- A plan can only be plotted by authorized users
 
 **Exec**
 
-* A plan can only be executed if it has previously been plotted
-* A plan can only be executed once it's eta has passed
-* A plan can only be executed if its tag matches extcodehash\(usr\)
-* A plan can only be executed once
-* A plan can be executed by anyone
+- A plan can only be executed if it has previously been plotted
+- A plan can only be executed once it's eta has passed
+- A plan can only be executed if its tag matches extcodehash\(usr\)
+- A plan can only be executed once
+- A plan can be executed by anyone
 
 **Drop**
 
-* A plan can only be dropped by authorized users
+- A plan can only be dropped by authorized users
 
 #### Other Failure Modes
 
 `DSPause.delay` - when the pause delay is set to the maximum, governance can no longer modify the system.
 
 `DSPause.delay` - when the pause delay is set to the minimum, it is easier to pass malicious governance actions.
-

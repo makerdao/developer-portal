@@ -1,6 +1,16 @@
 ---
-description: A Python API for the Maker Smart Contracts
+title: Pymaker
+description: A Python library to automate certain operations around the Ethereum blockchain
+parent: keepers
+tags:
+  - keepers
+slug: pymaker
+contentType: documentation
 ---
+
+---
+
+## description: A Python API for the Maker Smart Contracts
 
 # Pymaker
 
@@ -45,32 +55,32 @@ brew install openssl libtool pkg-config automake
 and set the `LDFLAGS` environment variable before you run `pip3 install -r requirements.txt`:
 
 ```text
-export LDFLAGS="-L$(brew --prefix openssl)/lib" CFLAGS="-I$(brew --prefix openssl)/include" 
+export LDFLAGS="-L$(brew --prefix openssl)/lib" CFLAGS="-I$(brew --prefix openssl)/include"
 ```
 
 ## Available APIs
 
 **The current version provides APIs around:**
 
-* `ERC20Token`,
-* `Tub`, `Tap`,`Top` and `Vox` \([https://github.com/makerdao/sai](https://github.com/makerdao/sai)\),
-* `Vat`, `Cat`, `Vow`, `Jug`, `Flipper`, `Flapper`, `Flopper` \([https://github.com/makerdao/dss](https://github.com/makerdao/dss)\)
-* `SimpleMarket`, `ExpiringMarket` and `MatchingMarket` \([https://github.com/makerdao/maker-otc](https://github.com/makerdao/maker-otc)\),
-* `TxManager` \([https://github.com/makerdao/tx-manager](https://github.com/makerdao/tx-manager)\),
-* `DSGuard` \([https://github.com/dapphub/ds-guard](https://github.com/dapphub/ds-guard)\),
-* `DSToken` \([https://github.com/dapphub/ds-token](https://github.com/dapphub/ds-token)\),
-* `DSEthToken` \([https://github.com/dapphub/ds-eth-token](https://github.com/dapphub/ds-eth-token)\),
-* `DSValue` \([https://github.com/dapphub/ds-value](https://github.com/dapphub/ds-value)\),
-* `DSVault` \([https://github.com/dapphub/ds-vault](https://github.com/dapphub/ds-vault)\),
-* `EtherDelta` \([https://github.com/etherdelta/etherdelta.github.io](https://github.com/etherdelta/etherdelta.github.io)\),
-* `0x v1` \([https://etherscan.io/address/0x12459c951127e0c374ff9105dda097662a027093\#code](https://etherscan.io/address/0x12459c951127e0c374ff9105dda097662a027093#code), [https://github.com/0xProject/standard-relayer-api](https://github.com/0xProject/standard-relayer-api)\),
-* `0x v2`
-* `Dai Savings Rate (Pot)`\([https://github.com/makerdao/pymaker/blob/master/tests/manual\_test\_dsr.py\#L29](https://github.com/makerdao/pymaker/blob/master/tests/manual_test_dsr.py#L29)\)
+- `ERC20Token`,
+- `Tub`, `Tap`,`Top` and `Vox` \([https://github.com/makerdao/sai](https://github.com/makerdao/sai)\),
+- `Vat`, `Cat`, `Vow`, `Jug`, `Flipper`, `Flapper`, `Flopper` \([https://github.com/makerdao/dss](https://github.com/makerdao/dss)\)
+- `SimpleMarket`, `ExpiringMarket` and `MatchingMarket` \([https://github.com/makerdao/maker-otc](https://github.com/makerdao/maker-otc)\),
+- `TxManager` \([https://github.com/makerdao/tx-manager](https://github.com/makerdao/tx-manager)\),
+- `DSGuard` \([https://github.com/dapphub/ds-guard](https://github.com/dapphub/ds-guard)\),
+- `DSToken` \([https://github.com/dapphub/ds-token](https://github.com/dapphub/ds-token)\),
+- `DSEthToken` \([https://github.com/dapphub/ds-eth-token](https://github.com/dapphub/ds-eth-token)\),
+- `DSValue` \([https://github.com/dapphub/ds-value](https://github.com/dapphub/ds-value)\),
+- `DSVault` \([https://github.com/dapphub/ds-vault](https://github.com/dapphub/ds-vault)\),
+- `EtherDelta` \([https://github.com/etherdelta/etherdelta.github.io](https://github.com/etherdelta/etherdelta.github.io)\),
+- `0x v1` \([https://etherscan.io/address/0x12459c951127e0c374ff9105dda097662a027093\#code](https://etherscan.io/address/0x12459c951127e0c374ff9105dda097662a027093#code), [https://github.com/0xProject/standard-relayer-api](https://github.com/0xProject/standard-relayer-api)\),
+- `0x v2`
+- `Dai Savings Rate (Pot)`\([https://github.com/makerdao/pymaker/blob/master/tests/manual_test_dsr.py\#L29](https://github.com/makerdao/pymaker/blob/master/tests/manual_test_dsr.py#L29)\)
 
 **APIs around the following functionality have not been implemented:**
 
-* `Global Settlement (End)`
-* `Governance (DSAuth, DSChief, DSGuard, DSSpell, Mom)`
+- `Global Settlement (End)`
+- `Governance (DSAuth, DSChief, DSGuard, DSSpell, Mom)`
 
 Contributions from the community are much appreciated!
 
@@ -331,8 +341,8 @@ print(bump_result.transaction_hash)
 
 Prerequisites:
 
-* [docker and docker-compose](https://www.docker.com/get-started)
-* [ganache-cli](https://github.com/trufflesuite/ganache-cli) 6.2.5 \(using npm, `sudo npm install -g ganache-cli@6.2.5`\)
+- [docker and docker-compose](https://www.docker.com/get-started)
+- [ganache-cli](https://github.com/trufflesuite/ganache-cli) 6.2.5 \(using npm, `sudo npm install -g ganache-cli@6.2.5`\)
 
 This project uses [pytest](https://docs.pytest.org/en/latest/) for unit testing. Testing of Multi-collateral Dai is performed on a Dockerized local testchain included in `tests\config`.
 
@@ -349,4 +359,3 @@ You can then run all tests with:
 ```
 
 If you have questions regarding Pymaker, please reach out to us on the [\#keeper](https://chat.makerdao.com/channel/keeper) channel on [**chat.makerdao.com**](http://chat.makerdao.com/).
-

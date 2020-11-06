@@ -1,3 +1,13 @@
+---
+title: System data
+description: Dai.js service to look up system-wide parameters
+parent: dai-js
+tags:
+	- dai-js
+slug: dai-js-system-data
+contentType: documentation
+---
+
 # System data
 
 Use the `mcd:systemData` service to look up system-wide parameters. In the code, this is called [SystemDataService](https://github.com/makerdao/dai.js/blob/dev/packages/dai-plugin-mcd/src/SystemDataService.js).
@@ -31,4 +41,3 @@ Returns a boolean that is true if emergency shutdown has been triggered.
 ```javascript
 const dead = await service.isGlobalSettlementInvoked();
 ```
-

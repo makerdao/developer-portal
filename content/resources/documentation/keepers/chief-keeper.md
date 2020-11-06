@@ -1,10 +1,17 @@
 ---
+title: Chief Keeper
 description: Keeper that lifts the hat and streamlines executive actions
+parent: keepers
+tags:
+	- keepers
+    - auctions
+slug: chief-keeper
+contentType: documentation
 ---
 
 # Chief Keeper
 
-## Introduction 
+## Introduction
 
 The `chief-keeper` monitors and interacts with [DSChief](https://github.com/dapphub/ds-chief) and DSSSpells, which is the executive voting contract and a type of proposal object of the [Maker Protocol](https://github.com/makerdao/dss).
 
@@ -14,10 +21,10 @@ To `lift` a spell, that spell must have more approvals than the current `hat`. T
 
 While in operation, the `chief-keeper`:
 
-* Monitors each new block for a change in the state of executive votes
-* `lift`s the hat for the spell \(`yay`\) most favored \(`approvals[yay]`\)
-* Schedules spells in the GSM by calling `DSSSpell.schedule()`
-* Executes spells after their `eta` has elapsed in the GSM by calling `DSSSpell.cast()`
+- Monitors each new block for a change in the state of executive votes
+- `lift`s the hat for the spell \(`yay`\) most favored \(`approvals[yay]`\)
+- Schedules spells in the GSM by calling `DSSSpell.schedule()`
+- Executes spells after their `eta` has elapsed in the GSM by calling `DSSSpell.cast()`
 
 #### Review
 
@@ -37,9 +44,9 @@ This keeper is run continuously, and saves a local database of `yays` \(spell ad
 
 Prerequisites:
 
-* [Python v3.6.6](https://www.python.org/downloads/release/python-366/)
-* [virtualenv](https://virtualenv.pypa.io/en/latest/)
-  * This project requires _virtualenv_ to be installed if you want to use Maker's python tools. This helps with making sure that you are running the right version of python and checks that all of the pip packages that are installed in the **install.sh** are in the right place and have the right versions.
+- [Python v3.6.6](https://www.python.org/downloads/release/python-366/)
+- [virtualenv](https://virtualenv.pypa.io/en/latest/)
+  - This project requires _virtualenv_ to be installed if you want to use Maker's python tools. This helps with making sure that you are running the right version of python and checks that all of the pip packages that are installed in the **install.sh** are in the right place and have the right versions.
 
 In order to clone the project and install required third-party packages please execute:
 
@@ -70,7 +77,7 @@ Make a run-chief-keeper.sh to easily spin up the chief-keeper.
 
 ## Testing
 
-* Download [docker and docker-compose](https://www.docker.com/get-started)
+- Download [docker and docker-compose](https://www.docker.com/get-started)
 
 This project uses [pytest](https://docs.pytest.org/en/latest/) for unit testing. Testing of Multi-collateral Dai is performed on a Dockerized local testchain included in `tests\config`.
 
@@ -88,7 +95,7 @@ You can then run all tests with:
 
 ## Roadmap
 
-* [ ]  [Dynamic gas pricing strategy](https://github.com/makerdao/market-maker-keeper/blob/master/market_maker_keeper/gas.py)
+- [ ] [Dynamic gas pricing strategy](https://github.com/makerdao/market-maker-keeper/blob/master/market_maker_keeper/gas.py)
 
 ### License
 
@@ -97,4 +104,3 @@ See [COPYING](https://github.com/makerdao/chief-keeper/blob/master/COPYING) file
 ## Support
 
 If you have questions regarding Cage Keepers, please reach out to us on the [\#keeper](https://chat.makerdao.com/channel/keeper) channel on [**chat.makerdao.com**](http://chat.makerdao.com/).
-

@@ -1,16 +1,26 @@
+---
+title: Currency Units
+description: These are useful for managing precision, keeping track of units, and passing in wei values
+parent: dai-js
+tags:
+	- dai-js
+slug: dai-js-currency-units
+contentType: documentation
+---
+
 # Currency units
 
 Methods that take numerical values as input can also take instances of token classes that the library provides. These are useful for managing precision, keeping track of units, and passing in wei values. Most methods that return numerical values return them wrapped in one of these classes. There are two types:
 
-* **currency units**, which represent an amount of a type of currency
-* **price units**, aka currency ratios, which represent an exchange rate between two currencies.
+- **currency units**, which represent an amount of a type of currency
+- **price units**, aka currency ratios, which represent an exchange rate between two currencies.
 
 The classes that begin with `USD` are price units; e.g. `USD_ETH` represents the price of ETH in USD. Useful instance methods:
 
-* **toNumber**: return the raw JavaScript value. This may fail for very large numbers.
-* **toBigNumber**: return the raw value as a [BigNumber](https://github.com/MikeMcl/bignumber.js).
-* **isEqual**: compare the values and symbols of two different instances.
-* **toString**: show the value in human-readable form, e.g. "500 USD/ETH".
+- **toNumber**: return the raw JavaScript value. This may fail for very large numbers.
+- **toBigNumber**: return the raw value as a [BigNumber](https://github.com/MikeMcl/bignumber.js).
+- **isEqual**: compare the values and symbols of two different instances.
+- **toString**: show the value in human-readable form, e.g. "500 USD/ETH".
 
 ```javascript
 import Maker from '@makerdao/dai';
@@ -70,4 +80,3 @@ eth2.isEqual(eth);
 ```
 
 If you would like to use these helper classes outside of Dai.js, check out [@makerdao/currency](https://github.com/makerdao/currency).
-

@@ -1,3 +1,13 @@
+---
+title: Collateral Types
+description: Look up parameters for different collateral types in the system
+parent: dai-js
+tags:
+	- dai-js
+slug: dai-js-collateral-types
+contentType: documentation
+---
+
 # Collateral types
 
 Use the `'mcd:cdpType'` service to look up parameters for different collateral types in the system. In the code, this is called [CdpTypeService](https://github.com/makerdao/dai.js/tree/dev/packages/dai-plugin-mcd/src/CdpTypeService.js).
@@ -13,7 +23,7 @@ const service = maker.service('mcd:cdpType');
 This is a list of [collateral type instances](cdptypeservice.md#collateral-type-instances), initialized during `Maker.create`.
 
 ```javascript
-service.cdpTypes.forEach(type => console.log(type.ilk));
+service.cdpTypes.forEach((type) => console.log(type.ilk));
 // ETH-A
 // BAT-A
 // USDC-A
@@ -55,7 +65,7 @@ The debt ceiling for this collateral type.
 
 #### liquidationRatio
 
-Vaults of this type become unsafe \(subject to liquidation\) when their ratio between USD value of collateral and Dai drawn is less than or equal to this amount. 
+Vaults of this type become unsafe \(subject to liquidation\) when their ratio between USD value of collateral and Dai drawn is less than or equal to this amount.
 
 #### price
 
@@ -88,4 +98,3 @@ To refresh the data for all collateral type instances at once:
 service.resetAllCdpTypes();
 await service.prefetchAllCdpTypes();
 ```
-

@@ -1,3 +1,13 @@
+---
+title: DS Proxy
+description: Learn the functionality for interacting with both profile proxies and forwarding proxies
+parent: dai-js
+tags:
+	- dai-js
+slug: using-ds-proxy
+contentType: documentation
+---
+
 # DSProxy
 
 ```javascript
@@ -29,15 +39,10 @@ The first time an account is used to interact with any Maker application, the us
 function lockAndDraw(tubContractAddress, cdpId, daiAmount, ethAmount) {
   const saiProxy = maker.service('smartContract').getContractByName('SAI_PROXY');
 
-  return saiProxy.lockAndDraw(
-    tubContractAddress,
-    cdpId,
-    daiAmount,
-    {
-      value: ethAmount,
-      dsProxy: true
-    }
-  );
+  return saiProxy.lockAndDraw(tubContractAddress, cdpId, daiAmount, {
+    value: ethAmount,
+    dsProxy: true,
+  });
 }
 ```
 
@@ -45,8 +50,8 @@ This makes it possible for users' token allowances to persist from one Maker app
 
 ## currentProxy\(\)
 
-* **Params:** None
-* **Returns:** promise \(resolves to address **or** `null`\)
+- **Params:** None
+- **Returns:** promise \(resolves to address **or** `null`\)
 
 If the `currentAccount` \(according the `Web3Service`\) has already deployed a DSProxy, `currentProxy()` returns its address. If not, it returns `null`. It will update automatically in the event that the active account is changed. This function should be used to check whether a user has a proxy before attempting to build one.
 
@@ -58,8 +63,8 @@ async function getProxy() {
 
 ## build\(\)
 
-* **Params:** None
-* **Returns:** `TransactionObject`
+- **Params:** None
+- **Returns:** `TransactionObject`
 
 `build` will deploy a copy of DSProxy owned by the current account. **This transaction will revert if the current account already owns a profile proxy.** By default, `build()` returns after the transaction is mined.
 
@@ -82,8 +87,8 @@ const proxyAddress = await maker.service('proxy').ensureProxy();
 
 ## getProxyAddress\(\)
 
-* **Params:** Address \(optional\)
-* **Returns:** promise \(resolves to contract address\)
+- **Params:** Address \(optional\)
+- **Returns:** promise \(resolves to contract address\)
 
 `getProxyAddress` will query the proxy registry for the profile proxy address associated with a given account. If no address is provided as a parameter, the function will return the address of the proxy owned by the `currentAccount`.
 
@@ -93,8 +98,8 @@ const proxy = await maker.service('proxy').getProxyAddress('0x...');
 
 ## getOwner\(\)
 
-* **Params:** Address
-* **Returns:** promise \(resolves to address\)
+- **Params:** Address
+- **Returns:** promise \(resolves to address\)
 
 `getOwner` will query the proxy registry for the owner of a provided instance of DSProxy.
 
@@ -104,12 +109,11 @@ const owner = await maker.service('proxy').getOwner('0x...');
 
 ## setOwner\(\)
 
-* **Params:** Address of new owner, DSProxy address \(optional\)
-* **Returns:** `TransactionObject`
+- **Params:** Address of new owner, DSProxy address \(optional\)
+- **Returns:** `TransactionObject`
 
 `setOwner` can be used to give a profile proxy to a new owner. The address of the recipient account must be specified, but the DSProxy address will default to `currentProxy` if the second parameter is excluded.
 
 ```javascript
 await maker.service('proxy').setOwner(newOwner, proxyAddress);
 ```
-

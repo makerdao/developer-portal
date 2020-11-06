@@ -1,9 +1,19 @@
-# Oracle Security Module \(OSM\) - Detailed Documentation
+---
+title: Oracle Security Module - Detailed Documentation
+description: Ensures that new price values propagated from the Oracles are not taken up by the system until a specified delay has passed
+parent: oracles
+tags:
+  - oracles
+slug: osm-detailed-documentation
+contentType: documentation
+---
 
-* **Contract Name:** OSM
-* **Type/Category:** Oracles - Price Feed Module
-* \*\*\*\*[**Associated MCD System Diagram**](https://github.com/makerdao/dss/wiki#system-architecture)
-* \*\*\*\*[**Contract Source**](https://github.com/makerdao/osm/blob/master/src/osm.sol)
+# Oracle Security Module (OSM) - Detailed Documentation
+
+- **Contract Name:** OSM
+- **Type/Category:** Oracles - Price Feed Module
+- \*\*\*\*[**Associated MCD System Diagram**](https://github.com/makerdao/dss/wiki#system-architecture)
+- \*\*\*\*[**Contract Source**](https://github.com/makerdao/osm/blob/master/src/osm.sol)
 
 ## 1. Introduction
 
@@ -17,14 +27,14 @@ The OSM \(named via acronym from "Oracle Security Module"\) ensures that new pri
 
 ### Storage Layout
 
-* `stopped` : flag \(`uint256`\) that disables price feed updates if non-zero
-* `src` : `address` of DSValue that the OSM will read from
-* `ONE_HOUR` : 3600 seconds \(`uint16(3600)`\)
-* `hop` : time delay between `poke` calls \(`uint16`\); defaults to `ONE_HOUR`
-* `zzz` : time of last update \(rounded down to nearest multiple of `hop`\)
-* `cur` : `Feed` struct that holds the current price value
-* `nxt` : `Feed` struct that holds the next price value
-* `bud` : mapping from `address` to `uint256`; whitelists feed readers
+- `stopped` : flag \(`uint256`\) that disables price feed updates if non-zero
+- `src` : `address` of DSValue that the OSM will read from
+- `ONE_HOUR` : 3600 seconds \(`uint16(3600)`\)
+- `hop` : time delay between `poke` calls \(`uint16`\); defaults to `ONE_HOUR`
+- `zzz` : time of last update \(rounded down to nearest multiple of `hop`\)
+- `cur` : `Feed` struct that holds the current price value
+- `nxt` : `Feed` struct that holds the next price value
+- `bud` : mapping from `address` to `uint256`; whitelists feed readers
 
 ### Public Methods
 
@@ -32,24 +42,24 @@ The OSM \(named via acronym from "Oracle Security Module"\) ensures that new pri
 
 These functions can only be called by authorized addresses \(i.e. addresses `usr` such that `wards[usr] == 1`\).
 
-* `rely`/`deny` : add or remove authorized users \(via modifications to the `wards` mapping\)
-* `stop()`/`start()` : toggle whether price feed can be updated \(by changing the value of `stopped`\)
-* `change(address)` : change data source for prices \(by setting `src`\)
-* `step(uint16)` : change interval between price updates \(by setting `hop`\)
-* `void()` : similar to `stop`, except it also sets `cur` and `nxt` to a `Feed` struct with zero values
-* `kiss(address)`/`diss(address)` : add/remove authorized feed consumers \(via modifications to the `buds` mapping\)
+- `rely`/`deny` : add or remove authorized users \(via modifications to the `wards` mapping\)
+- `stop()`/`start()` : toggle whether price feed can be updated \(by changing the value of `stopped`\)
+- `change(address)` : change data source for prices \(by setting `src`\)
+- `step(uint16)` : change interval between price updates \(by setting `hop`\)
+- `void()` : similar to `stop`, except it also sets `cur` and `nxt` to a `Feed` struct with zero values
+- `kiss(address)`/`diss(address)` : add/remove authorized feed consumers \(via modifications to the `buds` mapping\)
 
 #### Feed Reading Methods
 
 These can only be called by whitelisted addresses \(i.e. addresses `usr` such that `buds[usr] == 1`\):
 
-* `peek()` : returns the current feed value and a boolean indicating whether it is valid
-* `peep()` : returns the next feed value \(i.e. the one that will become the current value upon the next `poke()` call\), and a boolean indicating whether it is valid
-* `read()` : returns the current feed value; reverts if it was not set by some valid mechanism
+- `peek()` : returns the current feed value and a boolean indicating whether it is valid
+- `peep()` : returns the next feed value \(i.e. the one that will become the current value upon the next `poke()` call\), and a boolean indicating whether it is valid
+- `read()` : returns the current feed value; reverts if it was not set by some valid mechanism
 
 #### Feed Updating Methods
 
-* `poke()` : updates the current feed value and reads the next one
+- `poke()` : updates the current feed value and reads the next one
 
 `Feed` struct: a struct with two `uint128` members, `val` and `has`. Used to store price feed data.
 
@@ -75,8 +85,8 @@ For several reasons, `poke()` is always callable as soon as `block.timestamp / h
 
 **This was a deliberate design decision. The arguments that favoured it, roughly speaking, are:**
 
-* Providing a predictable time at which MKR holders should check for evidence of oracle attacks \(in practice, `hop` is 1 hour, so checks must be performed at the top of the hour\)
-* Allowing all OSMs to be reliably poked at the same time in a single transaction
+- Providing a predictable time at which MKR holders should check for evidence of oracle attacks \(in practice, `hop` is 1 hour, so checks must be performed at the top of the hour\)
+- Allowing all OSMs to be reliably poked at the same time in a single transaction
 
 The fact that `poke` is public, and thus callable by anyone, helps mitigate concerns, though it does not eliminate them. For example, network congestion could prevent anyone from successfully calling `poke()` for a period of time. If an MKR holder observes that `poke` has not been promptly called, **the actions they can take include:**
 
@@ -90,10 +100,9 @@ In the future, the contract's logic may be tweaked to further mitigate this \(e.
 
 Various damaging actions can be taken by authorized individuals or contracts, either maliciously or accidentally:
 
-* Revoking access of core contracts to the methods that read values, causing mayhem as prices fail to update
-* Completely revoking all access to the contract
-* Changing `src` to either a malicious contract or to something that lacks a `peek()` interface, causing transactions that `poke()` the affected OSM to revert
-* Calling disruptive functions like `stop` and `void` inappropriately
+- Revoking access of core contracts to the methods that read values, causing mayhem as prices fail to update
+- Completely revoking all access to the contract
+- Changing `src` to either a malicious contract or to something that lacks a `peek()` interface, causing transactions that `poke()` the affected OSM to revert
+- Calling disruptive functions like `stop` and `void` inappropriately
 
 The only solution to these issues is diligence and care regarding the `wards` of the OSM.
-

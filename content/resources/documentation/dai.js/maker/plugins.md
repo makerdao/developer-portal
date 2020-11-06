@@ -1,3 +1,13 @@
+---
+title: Plugins
+description: Plugins allow a developer to add functionality for specific needs without increasing the size of the core library.
+parent: dai-js
+tags:
+	- dai-js
+slug: dai-js-plugins
+contentType: documentation
+---
+
 # Plugins
 
 Dai.js supports plugins, which allow a developer to add functionality \(hardware wallet support, exchange support, etc.\) for specific needs without increasing the size and dependency list of the core library.
@@ -15,4 +25,3 @@ Dai.js supports plugins, which allow a developer to add functionality \(hardware
 ### Building your own plugin
 
 Check out the [Dai Plugin Template](https://github.com/makerdao/dai-plugin-template).
-

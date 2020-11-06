@@ -1,3 +1,13 @@
+---
+title: Transactions
+description: Managing transactions with Dai.js
+parent: dai-js
+tags:
+	- dai-js
+slug: dai-js-transactions
+contentType: documentation
+---
+
 # Transaction manager
 
 The `transactionManager` service is used to track a transaction's status as it propagates through the blockchain.
@@ -15,21 +25,21 @@ Pass the promise to `transactionManager.listen` with callbacks, as shown below.
 
 ```javascript
 txMgr.listen(open, {
-  pending: tx => {
+  pending: (tx) => {
     // do something when tx is pending
   },
-  mined: tx => {
+  mined: (tx) => {
     // do something when tx is mined
   },
-  confirmed: tx => {
-    // do something when tx is confirmed       
+  confirmed: (tx) => {
+    // do something when tx is confirmed
   },
-  error: tx => {
+  error: (tx) => {
     // do someting when tx fails
-  }
+  },
 });
 
-await txMgr.confirm(open); 
+await txMgr.confirm(open);
 // 'confirmed' callback will fire after 5 blocks
 ```
 
@@ -47,20 +57,19 @@ There are functions such as `lockEth()` which are composed of several internal t
 
 A `TransactionObject` also has a few methods to provide further details on the transaction:
 
-* `hash` : transaction hash
-* `fees()` : amount of ether spent on gas
-* `timeStamp()` : timestamp of when transaction was mined
-* `timeStampSubmitted()` : timestamp of when transaction was submitted to the network
+- `hash` : transaction hash
+- `fees()` : amount of ether spent on gas
+- `timeStamp()` : timestamp of when transaction was mined
+- `timeStampSubmitted()` : timestamp of when transaction was submitted to the network
 
 ```javascript
 const lock = cdp.lockEth(1);
 txMgr.listen(lock, {
-  pending: tx => {
-    const {contract, method} = tx.metadata;
-    if(contract === 'WETH' && method === 'deposit') {
+  pending: (tx) => {
+    const { contract, method } = tx.metadata;
+    if (contract === 'WETH' && method === 'deposit') {
       console.log(tx.hash); // print hash for WETH.deposit
     }
-  }
-})
+  },
+});
 ```
-

@@ -1,3 +1,13 @@
+---
+title: Maker Object Introduction
+description: Initializing and configuring Dai.js
+parent: dai-js
+tags:
+	- dai-js
+slug: maker-object-introduction
+contentType: documentation
+---
+
 # Configuration
 
 ## Maker.create

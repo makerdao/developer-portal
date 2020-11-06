@@ -1,19 +1,32 @@
+---
+title: Join - Detailed Documentation
+description: The Maker Protocol's Collateral Adapter
+parent: vaults
+tags:
+  - vaults
+  - vat
+  - dai
+  - adapters
+slug: join-detailed-documentation
+contentType: documentation
+---
+
 # Join - Detailed Documentation
 
-* **Contract Name:** join.sol
-* **Type/Category:** DSS —&gt; Token Adapter Module
-* \*\*\*\*[**Associated MCD System Diagram**](https://github.com/makerdao/dss/wiki)
-* \*\*\*\*[**Contract Source**](https://github.com/makerdao/dss/blob/master/src/join.sol)
-* **Etherscan**
-  * \*\*\*\*[**Join Dai** ](https://etherscan.io/address/0x9759a6ac90977b93b58547b4a71c78317f391a28)
-  * \*\*\*\*[**Join Eth**](https://etherscan.io/address/0x2f0b23f53734252bda2277357e97e1517d6b042a)
-  * \*\*\*\*[**Join Bat**](https://etherscan.io/address/0x3d0b1912b66114d4096f48a8cee3a56c231772ca)
+- **Contract Name:** join.sol
+- **Type/Category:** DSS —&gt; Token Adapter Module
+- \*\*\*\*[**Associated MCD System Diagram**](https://github.com/makerdao/dss/wiki)
+- \*\*\*\*[**Contract Source**](https://github.com/makerdao/dss/blob/master/src/join.sol)
+- **Etherscan**
+  - \*\*\*\*[**Join Dai** ](https://etherscan.io/address/0x9759a6ac90977b93b58547b4a71c78317f391a28)
+  - \*\*\*\*[**Join Eth**](https://etherscan.io/address/0x2f0b23f53734252bda2277357e97e1517d6b042a)
+  - \*\*\*\*[**Join Bat**](https://etherscan.io/address/0x3d0b1912b66114d4096f48a8cee3a56c231772ca)
 
 ## 1. Introduction \(Summary\)
 
-Join consists of three smart contracts: `GemJoin`, `ETHJoin`, and `DaiJoin:`   
-  
-`GemJoin` - allows standard ERC20 tokens to be deposited for use with the system. `ETHJoin` - allows native Ether to be used with the system.   
+Join consists of three smart contracts: `GemJoin`, `ETHJoin`, and `DaiJoin:`
+
+`GemJoin` - allows standard ERC20 tokens to be deposited for use with the system. `ETHJoin` - allows native Ether to be used with the system.  
 `DaiJoin` - allows users to withdraw their Dai from the system into a standard ERC20 token.
 
 Each `join` contract is created specifically to allow the given token type to be `join`'ed to the `vat`. Because of this, each `join` contract has slightly different logic to account for the different types of tokens within the system.
@@ -24,13 +37,13 @@ Each `join` contract is created specifically to allow the given token type to be
 
 ### Glossary \(Join\)
 
-* `vat` - storage of the `Vat`’s address.
-* `ilk` - id of the Ilk for which a `GemJoin` is created for.
-* `gem` - the address of the `ilk` for transferring.
-* `dai` - the address of the `dai` token.
-* `one` - a 10^27 uint used for math in `DaiJoin`.
-* `live` - an access flag for the `join` adapter.
-* `dec` - decimals for the Gem.
+- `vat` - storage of the `Vat`’s address.
+- `ilk` - id of the Ilk for which a `GemJoin` is created for.
+- `gem` - the address of the `ilk` for transferring.
+- `dai` - the address of the `dai` token.
+- `one` - a 10^27 uint used for math in `DaiJoin`.
+- `live` - an access flag for the `join` adapter.
+- `dec` - decimals for the Gem.
 
 Every `join` contract has 4 public functions: a constructor, `join`, `exit`, and `cage`. The constructor is used on contract initialization and sets the core variables of that `join` contract. `Join` and `exit` are both true to their names. `Join` provides a mechanism for users to add the given token type to the `vat`. It has slightly different logic in each variation, but generally resolves down to a `transfer` and a function call in the `vat`. `Exit` is very similar, but instead allows the the user to remove their desired token from the `vat`. `Cage` allows the adapter to be drained \(allows tokens to move out but not in\).
 
@@ -55,4 +68,3 @@ The main issue to be aware of here would be a well-executed phishing attack. As 
 **There could potentially be a `vat` upgrade that would require new `join` contracts to be created.**
 
 If a `gem` contract were to go through a token upgrade or have the tokens frozen while a user's collateral was in the system, there could potentially be a scenario in which the users were unable to redeem their collateral after the freeze or upgrade was finished. This scenario likely presents little risk though because the token going through this upgrade would more than likely want to work alongside the Maker community to be sure this was not an issue.
-

@@ -1,14 +1,20 @@
 ---
+title: Jug - Detailed Documentation
 description: Accumulation of Stability Fees for Collateral Types
+parent: vaults
+tags:
+  - vaults
+slug: jug-proxy-detailed-documentation
+contentType: documentation
 ---
 
 # Jug - Detailed Documentation
 
-* **Contract Name:** Jug
-* **Type/Category:** DSS —&gt; Rates Module
-* [**Associated MCD System Diagram**](https://github.com/makerdao/dss/wiki)
-* \*\*\*\*[**Contract Source**](https://github.com/makerdao/dss/blob/master/src/jug.sol)
-* \*\*\*\*[**Etherscan**](https://etherscan.io/address/0x19c0976f590d67707e62397c87829d896dc0f1f1)
+- **Contract Name:** Jug
+- **Type/Category:** DSS —&gt; Rates Module
+- [**Associated MCD System Diagram**](https://github.com/makerdao/dss/wiki)
+- \*\*\*\*[**Contract Source**](https://github.com/makerdao/dss/blob/master/src/jug.sol)
+- \*\*\*\*[**Etherscan**](https://etherscan.io/address/0x19c0976f590d67707e62397c87829d896dc0f1f1)
 
 ## 1. Introduction
 
@@ -92,7 +98,7 @@ Jug stores some sensitive parameters, particularly the base rate and collateral-
 
 ### `base + Ilk.duty` imbalance in `drip()`
 
-A call to `drip(bytes32 ilk)`will add the `base` rate to the `Ilk.duty` rate. The rate is a calculated compounded rate, so `rate(base + duty) != rate(base) + rate(duty)`. This means that if base is set, the duty will need to be set factoring the existing compounding factor in base, otherwise the result will be outside of the rate tolerance. Updates to the `base` value will require all of the `ilks` to be updated as well. 
+A call to `drip(bytes32 ilk)`will add the `base` rate to the `Ilk.duty` rate. The rate is a calculated compounded rate, so `rate(base + duty) != rate(base) + rate(duty)`. This means that if base is set, the duty will need to be set factoring the existing compounding factor in base, otherwise the result will be outside of the rate tolerance. Updates to the `base` value will require all of the `ilks` to be updated as well.
 
 ## 5. Failure Modes \(Bounds on Operating Conditions & External Risk Factors\)
 
@@ -103,4 +109,3 @@ If `drip()` is called very infrequently for some collateral types \(due, for exa
 ### Malicious or Careless Parameter Setting
 
 Various parameters of Jug may be set to values that damage the system. While this can occur by accident, the greatest concern is malicious attacks, especially by an entity that somehow becomes authorized to make calls directly to Jug's administrative methods, bypassing governance. Setting `duty` \(for at least one ilk\) or `base` too low can lead to Dai oversupply; setting either one too high can trigger excess liquidations and therefore unjust loss of collateral. Setting a value for `vow` other than the true Vow's address can cause surplus to be lost or stolen.
-

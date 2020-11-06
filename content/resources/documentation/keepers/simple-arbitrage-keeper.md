@@ -1,3 +1,14 @@
+---
+title: Simple Arbitrage Keeper
+description: Keeper that can be used out of the box to participate in wildly volatile markets
+parent: keepers
+tags:
+	- keepers
+    - auctions
+slug: simple-arbitrage-keeper
+contentType: documentation
+---
+
 # Simple Arbitrage Keeper
 
 ## Overview
@@ -8,15 +19,15 @@ Typically in the form of an automated bot, Keepers are external actors that part
 
 By reading this guide, you’ll gain:
 
-* Better understanding of Arbitrage, how it is achieved and the role it plays in financial markets
-* An overview of the simple arbitrage keeper and common structure across the Maker Keeper framework
-* Insight into the operation of the simple arbitrage keeper and ways to improve its code
+- Better understanding of Arbitrage, how it is achieved and the role it plays in financial markets
+- An overview of the simple arbitrage keeper and common structure across the Maker Keeper framework
+- Insight into the operation of the simple arbitrage keeper and ways to improve its code
 
 ### Pre-requisites
 
-* At least Python 3.6.2 and some python experience
-* Linux, macOS, or Cygwin \(on Windows\)
-* Some general experience with Ethereum Development \(account management, contract interaction, node hosting\)
+- At least Python 3.6.2 and some python experience
+- Linux, macOS, or Cygwin \(on Windows\)
+- Some general experience with Ethereum Development \(account management, contract interaction, node hosting\)
 
 ### Guide
 
@@ -163,8 +174,7 @@ Kentons-Macbook:scripts kentonprescott$ ./run-simple-arbitrage-keeper-mainnet-XY
 
 **Nominal Operation**
 
-After the initial approval phase the Keeper's startup will look something like the below output and will continue to print "Best Trade ... " messages with every new block witnessed. When the keeper publishes a transaction, all relevant info will be logged and printed to the console. Finally, when you’d like to shut down the keeper, simply click CTRL-C, and it will gracefully shutdown.  
-
+After the initial approval phase the Keeper's startup will look something like the below output and will continue to print "Best Trade ... " messages with every new block witnessed. When the keeper publishes a transaction, all relevant info will be logged and printed to the console. Finally, when you’d like to shut down the keeper, simply click CTRL-C, and it will gracefully shutdown.
 
 ### Troubleshooting
 
@@ -180,28 +190,27 @@ ValueError: {'code': -32010, 'message': 'Transaction with the same hash was alre
 
 Here are some suggestions to improve the usability, versatility, and profitability of this keeper. We hope that everyone tinkers with the parameters, runs the keeper for their own benefit, and eventually upgrades the bot to meet their risk tolerance and profit appetite.
 
-* Develop unit tests for each method
-* Use the Uniswap Factory contract to query the _uniswap-entry-exchange_ and _uniswap-arb-exchange_ addresses rather than requiring it as an argument
-* Rather than the default gas price implement a [dynamic gas price strategy](https://github.com/makerdao/market-maker-keeper/blob/master/market_maker_keeper/gas.py#L24)
-* Increase scope
-  * Monitor more than one pair
-  * Monitor more than two decentralized exchanges
-  * Implement support for centralized exchanges
-  * Increase number of intermediary arb tokens
-    * \(e.x. DAI → WETH → BAT → DAI\)
-    * [https://math.stackexchange.com/a/94420](https://math.stackexchange.com/a/94420)
-    * [https://www.dailycodingproblem.com/blog/how-to-find-arbitrage-opportunities-in-python/](https://www.dailycodingproblem.com/blog/how-to-find-arbitrage-opportunities-in-python/)
-* Improve efficiency of TxManager
-  * Do we really need to send all of our token balance to the contract during every atomic transaction?
-* Read the state of the MatchingMarket \(OasisDex\) contract rather than using the Oasis REST API
-  * To save gas, [get all active orders](https://github.com/makerdao/pymaker/blob/master/pymaker/oasis.py#L613) and [take specific orders](https://github.com/makerdao/pymaker/blob/master/pymaker/oasis.py#L428) by ID rather than use `MatchingMarket.offer(...)` and the on-chain matching engine
-* Send trade updates through a text/email Python API
+- Develop unit tests for each method
+- Use the Uniswap Factory contract to query the _uniswap-entry-exchange_ and _uniswap-arb-exchange_ addresses rather than requiring it as an argument
+- Rather than the default gas price implement a [dynamic gas price strategy](https://github.com/makerdao/market-maker-keeper/blob/master/market_maker_keeper/gas.py#L24)
+- Increase scope
+  - Monitor more than one pair
+  - Monitor more than two decentralized exchanges
+  - Implement support for centralized exchanges
+  - Increase number of intermediary arb tokens
+    - \(e.x. DAI → WETH → BAT → DAI\)
+    - [https://math.stackexchange.com/a/94420](https://math.stackexchange.com/a/94420)
+    - [https://www.dailycodingproblem.com/blog/how-to-find-arbitrage-opportunities-in-python/](https://www.dailycodingproblem.com/blog/how-to-find-arbitrage-opportunities-in-python/)
+- Improve efficiency of TxManager
+  - Do we really need to send all of our token balance to the contract during every atomic transaction?
+- Read the state of the MatchingMarket \(OasisDex\) contract rather than using the Oasis REST API
+  - To save gas, [get all active orders](https://github.com/makerdao/pymaker/blob/master/pymaker/oasis.py#L613) and [take specific orders](https://github.com/makerdao/pymaker/blob/master/pymaker/oasis.py#L428) by ID rather than use `MatchingMarket.offer(...)` and the on-chain matching engine
+- Send trade updates through a text/email Python API
 
 ### Resources
 
-* [https://github.com/makerdao/market-maker-keeper](https://github.com/makerdao/market-maker-keeper)
-* [https://github.com/makerdao/arbitrage-keeper](https://github.com/makerdao/arbitrage-keeper)
-* [https://github.com/makerdao/tx-manager](https://github.com/makerdao/tx-manager)
-* [https://github.com/makerdao/pymaker](https://github.com/makerdao/pymaker)
-* [https://github.com/makerdao/pyexchange](https://github.com/makerdao/pyexchange)
-
+- [https://github.com/makerdao/market-maker-keeper](https://github.com/makerdao/market-maker-keeper)
+- [https://github.com/makerdao/arbitrage-keeper](https://github.com/makerdao/arbitrage-keeper)
+- [https://github.com/makerdao/tx-manager](https://github.com/makerdao/tx-manager)
+- [https://github.com/makerdao/pymaker](https://github.com/makerdao/pymaker)
+- [https://github.com/makerdao/pyexchange](https://github.com/makerdao/pyexchange)
