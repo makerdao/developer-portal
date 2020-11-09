@@ -83,7 +83,7 @@ Some examples of portals that have built custom Vault integrations,
 - [Keydonix](https://liquid-long.keydonix.com/) packages Vaults with their internal ETH liquidity along with the OasisDEX to create ETH margin long positions in a single iteration.
 - [Centrifuge](https://centrifuge.io/)'s Tinlake allows users to borrow Dai by locking NFTs on their lending platform which packages Vaults on their backend.
 
-![Package](../../../images/guides/../../resources/guides/vault-integration-guide/img/cdpguide-package.png)
+![Package](../../../images/guides/vault-integration-guide/../../../../images/guides/vault-integration-guide/cdpguide-package.png)
 
 *Illustration of a Vault packaged with various components:*
 
@@ -128,7 +128,7 @@ CDP Manager is our public facing interface contract that allows anyone to easily
 
 If you want to abstract many individual contract calls into one, then you can use our [proxy contract](https://github.com/makerdao/dss-proxy-actions) that uses the CDP Manager to interact with the system. In the proxy contract, the owner of the Vault is the proxy address and not the user's address. Clearly, the user's address is the owner of the proxy, so there's a link between the two addresses. Please refer to the [Working with DSProxy](https://github.com/makerdao/developerguides/blob/master/devtools/working-with-dsproxy/working-with-dsproxy.md) guide to understand how proxy contracts are used to interact with the core system. Here's an example of a Single Vault User Flow when using the DSProxy design pattern:
 
-![Package](../../../images/guides/../../resources/guides/vault-integration-guide/img/SingleETHVaultUserFlow.png)
+![Package](../../../images/guides/vault-integration-guide/../../../../images/guides/vault-integration-guide/SingleETHVaultUserFlow.png)
 
 *Illustration of a Single Vault User Flow:*
 

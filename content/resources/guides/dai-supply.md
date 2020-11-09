@@ -58,7 +58,7 @@ Contrary to most tokens available on Ethereum, Dai can take different forms. To 
 account for the Dai supply, it is important to know the difference so we can
 track the applicable supply number for our needs.
 
-![dai supply Venn](../images/guides/../../guides/dai-supply/images/dai_venn.png)
+![dai supply Venn](../../../images/guides/dai_venn.png)
 
 #### Maker Protocol Dai, or internal-Dai
 

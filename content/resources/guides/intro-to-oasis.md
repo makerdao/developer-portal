@@ -133,7 +133,7 @@ seth send $WETH 'approve(address,uint256)' $OASIS $ALLOWANCE
 
 In order to make an order on the market, you need to inform yourself of the current market prices. There are 2 ways to do this. One is to go to the [oasis.app/trade](https://oasis.app/trade) interface, make sure you're on Kovan, and see the order book. Or, call the OASISDEX contract functions to read the order book.
 
-<img align="right" alt='order book' width='300px' src="../../images/guides/intro-to-oasis/../../../resources/guides/intro-to-oasis/assets/order-book-1.png"/>
+<img align="right" alt='order book' width='300px' src="../../images/guides/intro-to-oasis/../../../../images/guides/intro-to-oasis/order-book-1.png"/>
 
 If reading from the interface, you can see the order book and the available orders in it. So, you can see that this order book has 3 bids and plenty of asks.
 

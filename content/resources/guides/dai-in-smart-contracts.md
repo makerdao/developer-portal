@@ -198,7 +198,7 @@ To deploy this faucet on the Kovan network you need to change the network to Kov
 
 Choose **DaiFaucet** from list of contracts to deploy. Make sure you are connected to Kovan and have a wallet with enough ETH. Deploy contract. You will be asked to confirm the transaction with Metamask.
 
-![Deploy](../../images/../resources/guides/dai-in-smart-contracts/images/Deploy.png)
+![Deploy](../../images/guides/../../../images/guides/dai-in-smart-contracts/Deploy.png)
 
 You can check the transaction on Etherscan. If everything went well, you will see your new contract address.
 
