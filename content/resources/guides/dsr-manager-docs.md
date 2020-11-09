@@ -4,7 +4,7 @@ description: Learn about DsrManager and integrate with DSR
 parent: dai
 tags:
   - dai
-	- DSR
+  - DSR
   - dsrManager contract
   - integrate with DSR
 slug: dsr-manager-guide
