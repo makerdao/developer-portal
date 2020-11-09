@@ -133,7 +133,7 @@ seth send $WETH 'approve(address,uint256)' $OASIS $ALLOWANCE
 
 In order to make an order on the market, you need to inform yourself of the current market prices. There are 2 ways to do this. One is to go to the [oasis.app/trade](https://oasis.app/trade) interface, make sure you're on Kovan, and see the order book. Or, call the OASISDEX contract functions to read the order book.
 
-<img align="right" alt='order book' width='300px' src="./assets/order-book-1.png"/>
+<img align="right" alt='order book' width='300px' src="../../images/guides/intro-to-oasis/../../../resources/guides/intro-to-oasis/assets/order-book-1.png"/>
 
 If reading from the interface, you can see the order book and the available orders in it. So, you can see that this order book has 3 bids and plenty of asks.
 
@@ -204,11 +204,11 @@ seth send $OASIS 'offer(uint,address,uint,address,uint)' $pay $DAI $buy $WETH $p
 
 We can see the order appear on the oasis.app interface:
 
-<img align="center" alt='order display' src='./assets/order.png'/>
+<img align="center" alt='order display' src='../../../images/guides/intro-to-oasis/order.png'/>
 
 However, as you can see, more than half of my order has been filled by the matching engine of Oasis. Now if we look at [etherscan's](https://kovan.etherscan.io/tx/0x21b7267d966f5cf64e684b18aed553d98c946250756a77841ce4232ab9d6f389) transaction overview:
 
-<img alt='transaction on etherscan' src='./assets/transaction.png' align="center"/>
+<img alt='transaction on etherscan' src='../../../images/guides/intro-to-oasis/transaction.png' align="center"/>
 
 (this example uses addresses from a previous deployment)
 
@@ -232,7 +232,7 @@ Execute the below command to set a sell limit order:
 seth send $OASIS 'offer(uint,address,uint,address,uint)' $pay $WETH $buy $DAI $pos
 ```
 
-<img alt='sell order' src='./assets/sell-order.png' />
+<img alt='sell order' src='../../../images/guides/intro-to-oasis/sell-order.png' />
 
 We can see that our order has appeared on the order book.  
 
@@ -261,8 +261,8 @@ After setting the parameters, now we can invoke the buy() function.
 seth send $OASIS 'buy(uint,uint)' 3423 $buy
 ```
 
-<img alt='transaction' src='./assets/cherry-transaction.png' />
-<img alt='order' src='./assets/cherry-order.png' />
+<img alt='transaction' src='../../../images/guides/intro-to-oasis/cherry-transaction.png' />
+<img alt='order' src='../../../images/guides/intro-to-oasis/cherry-order.png' />
 
 We can see from the above figures that we paid 0.0501 WETH for 8.885 DAI. As well, the order in the order book has decreased its offer accordingly.
 

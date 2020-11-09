@@ -2,40 +2,40 @@
 
 ## Setup DSProxy
 
-![Package](../img/SetupDSProxy.png)
+![Package](../../../../images/guides/../../../images/guides/vault-integration-guide/SetupDSProxy.png)
 
 ---
 
 ## Open Vault and Generate Dai
 
-![Package](../img/OpenVaultGenerateDai.png)
+![Package](../../../../images/guides/../../../images/guides/vault-integration-guide/OpenVaultGenerateDai.png)
 
 ---
 
 ## Deposit ETH
 
-![Package](../img/DepositETH.png)
+![Package](../../../../images/guides/../../../images/guides/vault-integration-guide/DepositETH.png)
 
 ---
 
 ## Withdraw ETH
 
-![Package](../img/WithdrawETH.png)
+![Package](../../../../images/guides/../../../images/guides/vault-integration-guide/WithdrawETH.png)
 
 ---
 
 ## Generate DAI
 
-![Package](../img/GenerateDAI.png)
+![Package](../../../../images/guides/../../../images/guides/vault-integration-guide/GenerateDAI.png)
 
 ---
 
 ## Pay back DAI
 
-![Package](../img/PayBackDai.png)
+![Package](../../../../images/guides/../../../images/guides/vault-integration-guide/PayBackDai.png)
 
 ---
 
 ## Pay back all DAI and Withdraw ETH
 
-![Package](../img/PayBackAllDAIAndWithdrawETH.png)
+![Package](../../../../images/guides/../../../images/guides/vault-integration-guide/PayBackAllDAIAndWithdrawETH.png)
