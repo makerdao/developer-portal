@@ -83,9 +83,9 @@ Some examples of portals that have built custom Vault integrations,
 - [Keydonix](https://liquid-long.keydonix.com/) packages Vaults with their internal ETH liquidity along with the OasisDEX to create ETH margin long positions in a single iteration.
 - [Centrifuge](https://centrifuge.io/)'s Tinlake allows users to borrow Dai by locking NFTs on their lending platform which packages Vaults on their backend.
 
-![Package](../../../images/guides/vault-integration-guide/../../../../images/guides/vault-integration-guide/cdpguide-package.png)
+![Package](/images/guides/vault-integration-guide/cdpguide-package.png)
 
-*Illustration of a Vault packaged with various components:*
+_Illustration of a Vault packaged with various components:_
 
 The possibilities to both differentiate and serve users are endless, and we will outline some general principles to help you architect and develop your custom Vault integration in the following sections of this guide,
 
@@ -128,9 +128,9 @@ CDP Manager is our public facing interface contract that allows anyone to easily
 
 If you want to abstract many individual contract calls into one, then you can use our [proxy contract](https://github.com/makerdao/dss-proxy-actions) that uses the CDP Manager to interact with the system. In the proxy contract, the owner of the Vault is the proxy address and not the user's address. Clearly, the user's address is the owner of the proxy, so there's a link between the two addresses. Please refer to the [Working with DSProxy](https://github.com/makerdao/developerguides/blob/master/devtools/working-with-dsproxy/working-with-dsproxy.md) guide to understand how proxy contracts are used to interact with the core system. Here's an example of a Single Vault User Flow when using the DSProxy design pattern:
 
-![Package](../../../images/guides/vault-integration-guide/../../../../images/guides/vault-integration-guide/SingleETHVaultUserFlow.png)
+![Package](/images/guides/vault-integration-guide/SingleETHVaultUserFlow.png)
 
-*Illustration of a Single Vault User Flow:*
+_Illustration of a Single Vault User Flow:_
 
 Referenced sequenced diagrams of each transaction operation with DSProxy can be [found here](/vault/vault-integration-guide/sequence-diagrams/README.md).
 
@@ -149,7 +149,7 @@ Nonetheless, you will have to depend on the Dai.js maintainers to build new feat
 Currently, Dai.js has a plugin that enables interaction with the MCD deployment, the [dai-plugin-mcd](https://github.com/makerdao/dai.js/tree/dev/packages/dai-plugin-mcd). This plugin uses the DS-Proxy via the [CDP Manager](https://docs.makerdao.com/smart-contract-modules/proxy-module/cdp-manager-detailed-documentation). It can be used with the [Kovan 0.2.17](https://changelog.makerdao.com/releases/kovan/0.2.17/contracts.json) deployment or with the [mainnet deployment](https://changelog.makerdao.com/releases/mainnet/1.0.0/contracts.json).
 
 A quick example of opening a Vault with Dai.js would look like this:
-Make sure to run [node 11.10](https://nodejs.org/download/release/v11.10.0/) and follow install [instructions](https://github.com/makerdao/dai.js).  
+Make sure to run [node 11.10](https://nodejs.org/download/release/v11.10.0/) and follow install [instructions](https://github.com/makerdao/dai.js).
 
 ```javascript
 // Importing the necessary dependencies
@@ -158,20 +158,20 @@ import Maker from '@makerdao/dai';
 
 //Defining the maker object with necessary configurations
 const maker = await Maker.create('http', {
-privateKey: YOUR_PRIVATE_KEY,
-    url: 'https://kovan.infura.io/v3/YOUR_INFURA_PROJECT_ID',
-    plugins: [
-        [
-            McdPlugin,
-            {
-                network: 'kovan',
-                cdpTypes: [
-                    { currency: ETH, ilk: 'ETH-A' },
-                    { currency: REP, ilk: 'REP-A' },
-                ]
-            }
-        ]
-    ]
+  privateKey: YOUR_PRIVATE_KEY,
+  url: 'https://kovan.infura.io/v3/YOUR_INFURA_PROJECT_ID',
+  plugins: [
+    [
+      McdPlugin,
+      {
+        network: 'kovan',
+        cdpTypes: [
+          { currency: ETH, ilk: 'ETH-A' },
+          { currency: REP, ilk: 'REP-A' },
+        ],
+      },
+    ],
+  ],
 });
 await maker.authenticate();
 await maker.service('proxy').ensureProxy();
@@ -189,7 +189,7 @@ function
 */
 let proxy = await maker.currentProxy();
 let cdps = await cdpManager.getCdpIds(proxy);
-await cdpManager.wipendFree(cdps[0].id, 'REP-A', MDAI(70), REP(50))
+await cdpManager.wipendFree(cdps[0].id, 'REP-A', MDAI(70), REP(50));
 ```
 
 We have some example projects that can show you how to use Dai.js:
@@ -230,7 +230,7 @@ Custodial portals can leverage the difference between authorization models for s
 
 #### Accounting
 
-Vault accounting is handled by the core Vault database contract - `Vat`. Users can also maintain a separate unlocked collateral balance `gem` for each collateral type `ilk` in the system by transferring assets into token adapters to gain a corresponding internal balance on `Vat`. Every Vault accounts for two key values- locked collateral `ink`  and debt units `art`.
+Vault accounting is handled by the core Vault database contract - `Vat`. Users can also maintain a separate unlocked collateral balance `gem` for each collateral type `ilk` in the system by transferring assets into token adapters to gain a corresponding internal balance on `Vat`. Every Vault accounts for two key values- locked collateral `ink` and debt units `art`.
 
 Both `ink` and `art` use the number type `wad` which is an 18 decimal fixed-point number. You can read more details about the number types and their math form the DSMath library [documentation](https://dapp.tools/dappsys/ds-math.html).
 
@@ -299,19 +299,19 @@ All Maker Protocol contract addresses can be found at [changelog.makerdao.com](h
 
 Below is a list of included tokens in Maker Protocol and the details of their `mainnet` deployments:
 
-| Tokens       | Token Address  | Adapter Address | Decimals | ILK (collateral type) in bytes32 |
-| :---         |     :---:      |     :---:     |     :---:     | :--- |
-| WETH-A    |  [`0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2`](https://etherscan.io/address/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2)    | [`0x2F0b23f53734252Bda2277357e97e1517d6B042A`](https://etherscan.io/address/0x2F0b23f53734252Bda2277357e97e1517d6B042A)  |  `18`  |   `ETH-A` - `0x4554482d41000000000000000000000000000000000000000000000000000000`    |
-| BAT-A    |    [`0x0D8775F648430679A709E98d2b0Cb6250d2887EF`](https://etherscan.io/address/0x0D8775F648430679A709E98d2b0Cb6250d2887EF)   | [`0x3D0B1912B66114d4096F48A8CEe3A56C231772cA`](https://etherscan.io/address/0x3D0B1912B66114d4096F48A8CEe3A56C231772cA)   |   `18`    | `BAT-A` - `0x4241542d41000000000000000000000000000000000000000000000000000000`      |
-| USDC-A   | [`0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48`](https://etherscan.io/address/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48) | [`0xA191e578a6736167326d05c119CE0c90849E84B7`](https://etherscan.io/address/0xA191e578a6736167326d05c119CE0c90849E84B7)  | `6`| `USDC-A` -   `0x555344432d410000000000000000000000000000000000000000000000000000` |
-|  USDC-B | [`0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48`](https://etherscan.io/address/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48) | [`0x2600004fd1585f7270756DDc88aD9cfA10dD0428`](https://etherscan.io/address/0x2600004fd1585f7270756DDc88aD9cfA10dD0428)  | `6`  | `USDC-B` - `0x555344432d420000000000000000000000000000000000000000000000000000` |
-|  WBTC-A | [`0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599`](https://etherscan.io/address/0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599) | [`0xBF72Da2Bd84c5170618Fbe5914B0ECA9638d5eb5`](https://etherscan.io/address/0xBF72Da2Bd84c5170618Fbe5914B0ECA9638d5eb5)  | `8`  | `WBTC-A` - `0x574254432d410000000000000000000000000000000000000000000000000000` |
-|  TUSD-A | [`0x0000000000085d4780B73119b644AE5ecd22b376`](https://etherscan.io/address/0x0000000000085d4780B73119b644AE5ecd22b376) | [`0x4454aF7C8bb9463203b66C816220D41ED7837f44`](https://etherscan.io/address/0x4454aF7C8bb9463203b66C816220D41ED7837f44)  | `18`  | `TUSD-A` - `0x545553442d410000000000000000000000000000000000000000000000000000` |
-|  ZRX-A | [`0xE41d2489571d322189246DaFA5ebDe1F4699F498`](https://etherscan.io/address/0xE41d2489571d322189246DaFA5ebDe1F4699F498) | [`0xc7e8Cd72BDEe38865b4F5615956eF47ce1a7e5D0`](https://etherscan.io/address/0xc7e8Cd72BDEe38865b4F5615956eF47ce1a7e5D0)  | `18` | `ZRX-A` - `0x5a52582d41000000000000000000000000000000000000000000000000000000` |
-|  KNC-A | [`0xdd974D5C2e2928deA5F71b9825b8b646686BD200`](https://etherscan.io/address/0xdd974D5C2e2928deA5F71b9825b8b646686BD200) | [`0x475F1a89C1ED844A08E8f6C50A00228b5E59E4A9`](https://etherscan.io/address/0x475F1a89C1ED844A08E8f6C50A00228b5E59E4A9)  | `18` | `KNC-A` - `0x4b4e432d41000000000000000000000000000000000000000000000000000000` |
-|  MANA-A | [`0x0F5D2fB29fb7d3CFeE444a200298f468908cC942`](https://etherscan.io/address/0x0f5d2fb29fb7d3cfee444a200298f468908cc942) | [`0xA6EA3b9C04b8a38Ff5e224E7c3D6937ca44C0ef9`](https://etherscan.io/address/0xA6EA3b9C04b8a38Ff5e224E7c3D6937ca44C0ef9)  | `18` | `MANA-A` - `0x4d414e412d410000000000000000000000000000000000000000000000000000` |
-|  USDT-A | [`0xdAC17F958D2ee523a2206206994597C13D831ec7`](https://etherscan.io/address/0xdAC17F958D2ee523a2206206994597C13D831ec7) | [`0x0Ac6A1D74E84C2dF9063bDDc31699FF2a2BB22A2`](https://etherscan.io/address/0x0Ac6A1D74E84C2dF9063bDDc31699FF2a2BB22A2)  | `6` | `USDT-A` - `0x555344542d410000000000000000000000000000000000000000000000000000` |
-|  PAXUSD-A | [`0x8E870D67F660D95d5be530380D0eC0bd388289E1`](https://etherscan.io/address/0x8E870D67F660D95d5be530380D0eC0bd388289E1) | [`0x7e62B7E279DFC78DEB656E34D6a435cC08a44666`](https://etherscan.io/address/0x7e62B7E279DFC78DEB656E34D6a435cC08a44666)  | `18` | `PAXUSD-A` - `0x5041585553442d41000000000000000000000000000000000000000000000000` |
+| Tokens   |                                                      Token Address                                                      |                                                     Adapter Address                                                     | Decimals | ILK (collateral type) in bytes32                                                  |
+| :------- | :---------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------: | :------: | :-------------------------------------------------------------------------------- |
+| WETH-A   | [`0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2`](https://etherscan.io/address/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2) | [`0x2F0b23f53734252Bda2277357e97e1517d6B042A`](https://etherscan.io/address/0x2F0b23f53734252Bda2277357e97e1517d6B042A) |   `18`   | `ETH-A` - `0x4554482d41000000000000000000000000000000000000000000000000000000`    |
+| BAT-A    | [`0x0D8775F648430679A709E98d2b0Cb6250d2887EF`](https://etherscan.io/address/0x0D8775F648430679A709E98d2b0Cb6250d2887EF) | [`0x3D0B1912B66114d4096F48A8CEe3A56C231772cA`](https://etherscan.io/address/0x3D0B1912B66114d4096F48A8CEe3A56C231772cA) |   `18`   | `BAT-A` - `0x4241542d41000000000000000000000000000000000000000000000000000000`    |
+| USDC-A   | [`0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48`](https://etherscan.io/address/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48) | [`0xA191e578a6736167326d05c119CE0c90849E84B7`](https://etherscan.io/address/0xA191e578a6736167326d05c119CE0c90849E84B7) |   `6`    | `USDC-A` - `0x555344432d410000000000000000000000000000000000000000000000000000`   |
+| USDC-B   | [`0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48`](https://etherscan.io/address/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48) | [`0x2600004fd1585f7270756DDc88aD9cfA10dD0428`](https://etherscan.io/address/0x2600004fd1585f7270756DDc88aD9cfA10dD0428) |   `6`    | `USDC-B` - `0x555344432d420000000000000000000000000000000000000000000000000000`   |
+| WBTC-A   | [`0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599`](https://etherscan.io/address/0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599) | [`0xBF72Da2Bd84c5170618Fbe5914B0ECA9638d5eb5`](https://etherscan.io/address/0xBF72Da2Bd84c5170618Fbe5914B0ECA9638d5eb5) |   `8`    | `WBTC-A` - `0x574254432d410000000000000000000000000000000000000000000000000000`   |
+| TUSD-A   | [`0x0000000000085d4780B73119b644AE5ecd22b376`](https://etherscan.io/address/0x0000000000085d4780B73119b644AE5ecd22b376) | [`0x4454aF7C8bb9463203b66C816220D41ED7837f44`](https://etherscan.io/address/0x4454aF7C8bb9463203b66C816220D41ED7837f44) |   `18`   | `TUSD-A` - `0x545553442d410000000000000000000000000000000000000000000000000000`   |
+| ZRX-A    | [`0xE41d2489571d322189246DaFA5ebDe1F4699F498`](https://etherscan.io/address/0xE41d2489571d322189246DaFA5ebDe1F4699F498) | [`0xc7e8Cd72BDEe38865b4F5615956eF47ce1a7e5D0`](https://etherscan.io/address/0xc7e8Cd72BDEe38865b4F5615956eF47ce1a7e5D0) |   `18`   | `ZRX-A` - `0x5a52582d41000000000000000000000000000000000000000000000000000000`    |
+| KNC-A    | [`0xdd974D5C2e2928deA5F71b9825b8b646686BD200`](https://etherscan.io/address/0xdd974D5C2e2928deA5F71b9825b8b646686BD200) | [`0x475F1a89C1ED844A08E8f6C50A00228b5E59E4A9`](https://etherscan.io/address/0x475F1a89C1ED844A08E8f6C50A00228b5E59E4A9) |   `18`   | `KNC-A` - `0x4b4e432d41000000000000000000000000000000000000000000000000000000`    |
+| MANA-A   | [`0x0F5D2fB29fb7d3CFeE444a200298f468908cC942`](https://etherscan.io/address/0x0f5d2fb29fb7d3cfee444a200298f468908cc942) | [`0xA6EA3b9C04b8a38Ff5e224E7c3D6937ca44C0ef9`](https://etherscan.io/address/0xA6EA3b9C04b8a38Ff5e224E7c3D6937ca44C0ef9) |   `18`   | `MANA-A` - `0x4d414e412d410000000000000000000000000000000000000000000000000000`   |
+| USDT-A   | [`0xdAC17F958D2ee523a2206206994597C13D831ec7`](https://etherscan.io/address/0xdAC17F958D2ee523a2206206994597C13D831ec7) | [`0x0Ac6A1D74E84C2dF9063bDDc31699FF2a2BB22A2`](https://etherscan.io/address/0x0Ac6A1D74E84C2dF9063bDDc31699FF2a2BB22A2) |   `6`    | `USDT-A` - `0x555344542d410000000000000000000000000000000000000000000000000000`   |
+| PAXUSD-A | [`0x8E870D67F660D95d5be530380D0eC0bd388289E1`](https://etherscan.io/address/0x8E870D67F660D95d5be530380D0eC0bd388289E1) | [`0x7e62B7E279DFC78DEB656E34D6a435cC08a44666`](https://etherscan.io/address/0x7e62B7E279DFC78DEB656E34D6a435cC08a44666) |   `18`   | `PAXUSD-A` - `0x5041585553442d41000000000000000000000000000000000000000000000000` |
 
 ## Integration Stories
 
@@ -354,7 +354,7 @@ One potential integration worth considering is incorporating Vaults as a method 
    - If you use another tech stack, then the Smart Contracts can be accessed through other libraries (such as [Nethereum](https://github.com/Nethereum/Nethereum), etc)
 9. Read every section within Vault Management
    - [Vault Management](https://github.com/makerdao/developerguides/blob/master/vault/vault-integration-guide/vault-integration-guide.md#vault-management)
-10. Incorporate design patterns to handle Emergency Shutdown. Under extreme circumstances, such as prolonged market irrationality, governance attacks, or severe vulnerabilities, the Maker Protocol will go through Emergency Shutdown. It’s of paramount importance to ensure your systems can handle Vault positions after Emergency shutdown has been triggered.  
+10. Incorporate design patterns to handle Emergency Shutdown. Under extreme circumstances, such as prolonged market irrationality, governance attacks, or severe vulnerabilities, the Maker Protocol will go through Emergency Shutdown. It’s of paramount importance to ensure your systems can handle Vault positions after Emergency shutdown has been triggered.
 
     - [Emergency Shutdown Design Guide](https://github.com/makerdao/developerguides/blob/master/mcd/emergency-shutdown-design-patterns/emergency-shutdown-design-patterns.md)
 
