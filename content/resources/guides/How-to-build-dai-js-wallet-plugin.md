@@ -1,9 +1,9 @@
 ---
 title: How to build a Dai.js wallet plugin
 description: Learn how to integrate your wallet into the Dai.js library
-parent: dai.js
+parent: dai-js
 tags:
-  - dai.js
+  - dai-js
   - wallet
   - integrate
   - wallet plugin
