@@ -6,7 +6,7 @@ tags:
   - dai
   - total supply
   - ERC20 token
-  - mcd 
+  - mcd
 slug: tracking-dai-supply
 contentType: guides
 root: false
@@ -58,7 +58,7 @@ Contrary to most tokens available on Ethereum, Dai can take different forms. To 
 account for the Dai supply, it is important to know the difference so we can
 track the applicable supply number for our needs.
 
-![dai supply Venn](../../../images/guides/dai_venn.png)
+![dai supply Venn](/images/guides/dai_venn.png)
 
 #### Maker Protocol Dai, or internal-Dai
 
@@ -92,7 +92,7 @@ When a user activates DSR on its Dai:
 
 #### Other Dai
 
-Other projects in the ecosystem have created other variations of Dai  (zkDai, Chai, cDAI, aDai, etc.), which usually derive from either the Dai in DSR or the ERC 20 Dai. Since the supply of these tokens are already included in the total "Maker Protocol Dai" it is not necessary to add their supply to the total.
+Other projects in the ecosystem have created other variations of Dai (zkDai, Chai, cDAI, aDai, etc.), which usually derive from either the Dai in DSR or the ERC 20 Dai. Since the supply of these tokens are already included in the total "Maker Protocol Dai" it is not necessary to add their supply to the total.
 
 Also, Dai can be purely internal: anyone can hold its Dai in Internal form, and burn and mint ERC20 Dai when necessary. The Maker Protocol itself keeps internal-Dai balances for its System Surplus and System Debt.
 
@@ -107,17 +107,20 @@ const Web3 = require('web3');
 const web3 = new Web3('https://mainnet.infura.io/v3/<INFURA_ID>');
 
 const vatAddr = '0x35D1b3F3D7966A1DFe207aa4514C12a259A0492B';
-const abi = [{
-  "inputs": [],
-  "name": "debt",
-  "outputs": [{"internalType": "uint256", "name": "", "type": "uint256"}],
-  "type": "function"
-}];
+const abi = [
+  {
+    inputs: [],
+    name: 'debt',
+    outputs: [{ internalType: 'uint256', name: '', type: 'uint256' }],
+    type: 'function',
+  },
+];
 
 const vat = new web3.eth.Contract(abi, vatAddr);
-vat.methods.debt().call().then(
-  supply => console.log(supply/Math.pow(10,45))
-);
+vat.methods
+  .debt()
+  .call()
+  .then((supply) => console.log(supply / Math.pow(10, 45)));
 ```
 
 Alternatively, the following API will provide up-to-date information:
@@ -140,17 +143,20 @@ const Web3 = require('web3');
 const web3 = new Web3('https://mainnet.infura.io/v3/<INFURA_ID>');
 
 const erc20daiAddr = '0x6B175474E89094C44Da98b954EedeAC495271d0F';
-const abi = [{
-  "inputs": [],
-  "name": "totalSupply",
-  "outputs": [{"name": "", "type": "uint256"}],
-  "type": "function"
-}];
+const abi = [
+  {
+    inputs: [],
+    name: 'totalSupply',
+    outputs: [{ name: '', type: 'uint256' }],
+    type: 'function',
+  },
+];
 
 const erc20dai = new web3.eth.Contract(abi, erc20daiAddr);
-erc20dai.methods.totalSupply().call().then(
-  supply => console.log(supply/Math.pow(10,18))
-);
+erc20dai.methods
+  .totalSupply()
+  .call()
+  .then((supply) => console.log(supply / Math.pow(10, 18)));
 ```
 
 #### Dai in DSR
@@ -163,10 +169,8 @@ const McdPlugin = require('@makerdao/dai-plugin-mcd').default;
 
 (async function () {
   const maker = await Maker.create('http', {
-    url: "https://mainnet.infura.io/v3/<INFURA_ID>",
-    plugins: [
-      [McdPlugin, {}]
-    ]
+    url: 'https://mainnet.infura.io/v3/<INFURA_ID>',
+    plugins: [[McdPlugin, {}]],
   });
   console.log((await maker.service('mcd:savings').getTotalDai()).toNumber());
 })();

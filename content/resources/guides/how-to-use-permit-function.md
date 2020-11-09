@@ -5,8 +5,8 @@ parent: dai
 tags:
   - dai
   - permit funciton
-  - gassless dai  
-slug: how-to-use-permit-function-and-relayers-to-pay-gas-for-dai transactions-in-dai
+  - gassless dai
+slug: how-to-use-permit-function-and-relayers-to-pay-gas-for-dai-transactions-in-dai
 contentType: guides
 root: false
 ---
@@ -121,10 +121,10 @@ Make sure you have:
 Define permit function parameters
 
 ```javascript
-const fromAddress = "0x9EE5e175D09895b8E1E28c22b961345e1dF4B5aE";
+const fromAddress = '0x9EE5e175D09895b8E1E28c22b961345e1dF4B5aE';
 const expiry = Date.now() + 120;
 const nonce = 1;
-const spender = "0xE1B48CddD97Fa4b2F960Ca52A66CeF8f1f8A58A5";
+const spender = '0xE1B48CddD97Fa4b2F960Ca52A66CeF8f1f8A58A5';
 ```
 
 Define helper function to stringify the message data
@@ -143,51 +143,51 @@ const createPermitMessageData = function () {
     types: {
       EIP712Domain: [
         {
-          name: "name",
-          type: "string",
+          name: 'name',
+          type: 'string',
         },
         {
-          name: "version",
-          type: "string",
+          name: 'version',
+          type: 'string',
         },
         {
-          name: "chainId",
-          type: "uint256",
+          name: 'chainId',
+          type: 'uint256',
         },
         {
-          name: "verifyingContract",
-          type: "address",
+          name: 'verifyingContract',
+          type: 'address',
         },
       ],
       Permit: [
         {
-          name: "holder",
-          type: "address",
+          name: 'holder',
+          type: 'address',
         },
         {
-          name: "spender",
-          type: "address",
+          name: 'spender',
+          type: 'address',
         },
         {
-          name: "nonce",
-          type: "uint256",
+          name: 'nonce',
+          type: 'uint256',
         },
         {
-          name: "expiry",
-          type: "uint256",
+          name: 'expiry',
+          type: 'uint256',
         },
         {
-          name: "allowed",
-          type: "bool",
+          name: 'allowed',
+          type: 'bool',
         },
       ],
     },
-    primaryType: "Permit",
+    primaryType: 'Permit',
     domain: {
-      name: "Dai Stablecoin",
-      version: "1",
+      name: 'Dai Stablecoin',
+      version: '1',
       chainId: 42,
-      verifyingContract: "0x4F96Fe3b7A6Cf9725f59d353F723c1bDb64CA6Aa",
+      verifyingContract: '0x4F96Fe3b7A6Cf9725f59d353F723c1bDb64CA6Aa',
     },
     message: message,
   });
@@ -207,7 +207,7 @@ const signData = async function (web3, fromAddress, typeData) {
     web3.currentProvider.sendAsync(
       {
         id: 1,
-        method: "eth_signTypedData_v3",
+        method: 'eth_signTypedData_v3',
         params: [fromAddress, typeData],
         from: fromAddress,
       },
@@ -216,8 +216,8 @@ const signData = async function (web3, fromAddress, typeData) {
           reject(err); //TODO
         } else {
           const r = result.result.slice(0, 66);
-          const s = "0x" + result.result.slice(66, 130);
-          const v = Number("0x" + result.result.slice(130, 132));
+          const s = '0x' + result.result.slice(66, 130);
+          const v = Number('0x' + result.result.slice(130, 132));
           resolve({
             v,
             r,
@@ -247,11 +247,11 @@ You can get this data by doing a console.log of the function
 ```javascript
 allowed: true;
 expiry: 1589205127399;
-holder: "0x9EE5e175D09895b8E1E28c22b961345e1dF4B5aE";
+holder: '0x9EE5e175D09895b8E1E28c22b961345e1dF4B5aE';
 nonce: 1;
-r: "0xc225220de6c6f5a829c07bf07444435619c98ac95fb5ce82205bc9be1def858b";
-s: "0x5924bfb22181c58e4ec4bc26d42ae5b4edb53ffebf9045cad2e275baab4915ba";
-spender: "0xE1B48CddD97Fa4b2F960Ca52A66CeF8f1f8A58A5";
+r: '0xc225220de6c6f5a829c07bf07444435619c98ac95fb5ce82205bc9be1def858b';
+s: '0x5924bfb22181c58e4ec4bc26d42ae5b4edb53ffebf9045cad2e275baab4915ba';
+spender: '0xE1B48CddD97Fa4b2F960Ca52A66CeF8f1f8A58A5';
 v: 27;
 ```
 

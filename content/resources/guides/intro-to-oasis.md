@@ -5,7 +5,7 @@ parent: oasisdex
 tags:
   - oasisdex
   - trade
-  - decentralized  
+  - decentralized
 slug: intro-to-the-oasisdex-protocol
 contentType: guides
 root: false
@@ -64,7 +64,7 @@ You'll need to know these concepts in order to continue with this guide:
 
 ## OasisDEX Protocol
 
-*Before starting this guide please install [dapptools](https://dapp.tools/) and [setup seth](https://github.com/makerdao/developerguides/blob/master/devtools/seth/seth-guide-01/seth-guide-01.md) for use with the Kovan testnet.*
+_Before starting this guide please install [dapptools](https://dapp.tools/) and [setup seth](https://github.com/makerdao/developerguides/blob/master/devtools/seth/seth-guide-01/seth-guide-01.md) for use with the Kovan testnet._
 
 ### **High Level Overview**
 
@@ -133,7 +133,7 @@ seth send $WETH 'approve(address,uint256)' $OASIS $ALLOWANCE
 
 In order to make an order on the market, you need to inform yourself of the current market prices. There are 2 ways to do this. One is to go to the [oasis.app/trade](https://oasis.app/trade) interface, make sure you're on Kovan, and see the order book. Or, call the OASISDEX contract functions to read the order book.
 
-<img align="right" alt='order book' width='300px' src="../../images/guides/intro-to-oasis/../../../../images/guides/intro-to-oasis/order-book-1.png"/>
+![order book](/images/guides/intro-to-oasis/order-book-1.png)
 
 If reading from the interface, you can see the order book and the available orders in it. So, you can see that this order book has 3 bids and plenty of asks.
 
@@ -176,7 +176,7 @@ seth --from-wei $(seth --to-dec 16345785d8a0000)
 
 Reading from the above output, we can see that the best order offer is 10 DAI per 0.1 WETH. Meaning that you can buy 1 WETH at a price of 100 DAI (10/0.1 = 100) in this offer.
 
-If you'd like to know the best offer for the WETH/DAI market, follow the above instructions but change the parameters in the getBestOffer() function. Instead of `getBestOffer(address,address) $DAI $WETH`,  enter `getBestOffer(address,address) $WETH $DAI`.
+If you'd like to know the best offer for the WETH/DAI market, follow the above instructions but change the parameters in the getBestOffer() function. Instead of `getBestOffer(address,address) $DAI $WETH`, enter `getBestOffer(address,address) $WETH $DAI`.
 
 #### **Making a limit buy order**
 
@@ -188,7 +188,7 @@ Let's set the necessary parameters for the offer() function. Besides the pay and
 
 In our case, we can set pos parameter to 3411. This way, the engine will know exactly where to place the offer. In addition, you can also set the pos parameter to 0. This will make the engine search the complete order book to find a position for your order. This leads to higher gas usage for your transaction, which could lead to a failed transaction. So, it is recommended to set a position yourself.
 
-With seth, we need to convert our 15 Dai units to eth denomination, i.e. setting the number to 18 decimal points. Hence, you’ll see $(seth --to-wei 15 eth).
+With seth, we need to convert our 15 Dai units to eth denomination, i.e. setting the number to 18 decimal points. Hence, you’ll see \$(seth --to-wei 15 eth).
 
 ```bash
 export pay=$(seth --to-uint256 $(seth --to-wei 15 eth))
@@ -204,11 +204,11 @@ seth send $OASIS 'offer(uint,address,uint,address,uint)' $pay $DAI $buy $WETH $p
 
 We can see the order appear on the oasis.app interface:
 
-<img align="center" alt='order display' src='../../../images/guides/intro-to-oasis/order.png'/>
+![order display](/images/guides/intro-to-oasis/order.png)
 
 However, as you can see, more than half of my order has been filled by the matching engine of Oasis. Now if we look at [etherscan's](https://kovan.etherscan.io/tx/0x21b7267d966f5cf64e684b18aed553d98c946250756a77841ce4232ab9d6f389) transaction overview:
 
-<img alt='transaction on etherscan' src='../../../images/guides/intro-to-oasis/transaction.png' align="center"/>
+![transaction on etherscan](/images/guides/intro-to-oasis/transaction.png)
 
 (this example uses addresses from a previous deployment)
 
@@ -216,7 +216,7 @@ I can see that I've paid 8.83 DAI for 0.05 ETH, which means a price of 176.6 DAI
 
 ### **Making a limit sell order**
 
-The limit sell order consists of selling WETH for DAI. We can do a sell order with the same offer() function as we did with buy order. Now, we just need to change the pay_amount and buy_amount parameters. Pay_amount is 0.05 WETH and buy_amount is 8.885 DAI, this leads to a price of 177.7 DAI/WETH (8.885/0.05 = 177.7).  
+The limit sell order consists of selling WETH for DAI. We can do a sell order with the same offer() function as we did with buy order. Now, we just need to change the pay_amount and buy_amount parameters. Pay_amount is 0.05 WETH and buy_amount is 8.885 DAI, this leads to a price of 177.7 DAI/WETH (8.885/0.05 = 177.7).
 
 Update the env variables:
 
@@ -232,13 +232,13 @@ Execute the below command to set a sell limit order:
 seth send $OASIS 'offer(uint,address,uint,address,uint)' $pay $WETH $buy $DAI $pos
 ```
 
-<img alt='sell order' src='../../../images/guides/intro-to-oasis/sell-order.png' />
+![sell order](/images/guides/intro-to-oasis/sell-order.png)
 
-We can see that our order has appeared on the order book.  
+We can see that our order has appeared on the order book.
 
 ### **Cherry-picking an offer from the order book**
 
-Making a limit order and letting the contract match you with existing orders as described above is the recommended way of trading on the OasisDEX contract. However, sometimes, you might find a specific offer in the order book that you would like to trade on. A good example is if you want to build a trading bot. When this is the case, you could use the buy(uint id, uint amount) function. The first parameter is the id of the offer, which you can get with getBestOffer() function, and the second parameter is the amount you'd like to buy.  
+Making a limit order and letting the contract match you with existing orders as described above is the recommended way of trading on the OasisDEX contract. However, sometimes, you might find a specific offer in the order book that you would like to trade on. A good example is if you want to build a trading bot. When this is the case, you could use the buy(uint id, uint amount) function. The first parameter is the id of the offer, which you can get with getBestOffer() function, and the second parameter is the amount you'd like to buy.
 
 Let's buy some DAI that is being sold at 177 DAI/WETH.
 First, let's get the order id of this offer:
@@ -261,8 +261,9 @@ After setting the parameters, now we can invoke the buy() function.
 seth send $OASIS 'buy(uint,uint)' 3423 $buy
 ```
 
-<img alt='transaction' src='../../../images/guides/intro-to-oasis/cherry-transaction.png' />
-<img alt='order' src='../../../images/guides/intro-to-oasis/cherry-order.png' />
+![transaction](/images/guides/intro-to-oasis/cherry-transaction.png)
+
+![order](/images/guides/intro-to-oasis/cherry-order.png)
 
 We can see from the above figures that we paid 0.0501 WETH for 8.885 DAI. As well, the order in the order book has decreased its offer accordingly.
 

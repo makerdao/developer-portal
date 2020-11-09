@@ -76,7 +76,7 @@ We will build a faucet contract that you will be able to control and terminate i
 In your [Remix IDE](https://remix.ethereum.org/) browser tab, create a new file named **DaiFaucet.sol**.  
 It should look like this:
 
-![Dai Faucet](../../images/guides/../../../images/guides/dai-in-smart-contracts/DaiFaucet.png)
+![Dai Faucet](/images/guides/dai-in-smart-contracts/DaiFaucet.png)
 
 Now we will add our necessary blocks of code that will form our DaiFaucet contract.
 
@@ -180,7 +180,7 @@ contract DaiFaucet is mortal {
 
 This is how it should look like when all the code blocks are put together:
 
-![Full Contract](../../images/guides/../../../images/guides/dai-in-smart-contracts/FullContract.png)
+![Full Contract](/images/guides/dai-in-smart-contracts/FullContract.png)
 
 ### Deploy Smart Contract
 
@@ -188,17 +188,17 @@ To deploy this faucet on the Kovan network you need to change the network to Kov
 
 #### Make sure you have chosen the right compiler
 
-![Compile Version](../../images/guides/../../../images/guides/dai-in-smart-contracts/CompileVersion.png)
+![Compile Version](/images/guides/dai-in-smart-contracts/CompileVersion.png)
 
 #### Check if there are no errors
 
-![Compiled](../../images/guides/../../../images/guides/dai-in-smart-contracts/compiled.png)
+![Compiled](/images/guides/dai-in-smart-contracts/compiled.png)
 
 #### Deploy
 
 Choose **DaiFaucet** from list of contracts to deploy. Make sure you are connected to Kovan and have a wallet with enough ETH. Deploy contract. You will be asked to confirm the transaction with Metamask.
 
-![Deploy](../../images/guides/../../../images/guides/dai-in-smart-contracts/Deploy.png)
+![Deploy](/images/guides/dai-in-smart-contracts/Deploy.png)
 
 You can check the transaction on Etherscan. If everything went well, you will see your new contract address.
 
@@ -210,20 +210,20 @@ Now that we have successfully deployed our smart contract on the Kovan network, 
 
 To verify your contract and publish your source code, navigate to your contract address on Etherscan and click on the **Verify and Publish** link.
 
-![Verify](../../images/guides/../../../images/guides/dai-in-smart-contracts/verify.png)
+![Verify](/images/guides/dai-in-smart-contracts/verify.png)
 
 Select compiler type to be **Single File**, since all your code is in one file.
 Make sure to select the right compiler version that your contract has been compiled against and then press continue.
 
-![Verify and Publish](../../images/guides/../../../images/guides/dai-in-smart-contracts/verifyAndPublish.png)
+![Verify and Publish](/images/guides/dai-in-smart-contracts/verifyAndPublish.png)
 
 Paste the Solidity code below, and then press **Verify and Publish**.
 
-![Paste Code](../../images/guides/../../../images/guides/dai-in-smart-contracts/pasteCode.png)
+![Paste Code](/images/guides/dai-in-smart-contracts/pasteCode.png)
 
 If everything went according to plan, you should see something like this:
 
-![Successfull](../../images/guides/../../../images/guides/dai-in-smart-contracts/Successfull.png)
+![Successfull](/images/guides/dai-in-smart-contracts/Successfull.png)
 
 Congratulations! Your contract is verified, now you can interact with it from Etherscan with Metamask.
 
@@ -231,7 +231,7 @@ As you can see, you have two functions that you can interact with, **withdraw** 
 
 When you think you have had enough with this contract, you can easily call the **destroy** function.
 
-![Interact](../../images/gudies/../../../images/guides/dai-in-smart-contracts/Interact.png)
+![Interact](/images/guides/dai-in-smart-contracts/Interact.png)
 
 This concludes how you can integrate the Dai token into a Solidity smart contract.
 
