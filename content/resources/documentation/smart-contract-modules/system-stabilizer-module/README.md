@@ -1,5 +1,12 @@
 ---
+title: System Stabilizer Module
 description: Keeping the Maker Protocol Stable
+parent: auctions
+tags:
+  - auctions
+  - stability
+slug: introduction-to-system-stabilizer-module
+contentType: documentation
 ---
 
 # System Stabilizer Module

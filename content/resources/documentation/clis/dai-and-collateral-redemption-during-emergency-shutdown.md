@@ -1,3 +1,14 @@
+---
+title: Dai and Collateral Redemption during Emergency Shutdown
+description: This guide describes how users can interact with the Maker protocol through proxy contracts to redeem Dai and any excess collateral if the Maker system has entered into emergency shutdown
+tags:
+  - dai
+  - emergency shutdown
+  - cli
+slug: dai-and-collateral-redemption-during-emergency-shutdown
+contentType: documentation
+---
+
 # Dai and Collateral Redemption during Emergency Shutdown
 
 **Level**: Intermediate
@@ -58,24 +69,24 @@ In order to interface with the Ethereum blockchain, the user needs to install se
 
 #### **2. Contract Address Setup**
 
-The user will require the following contract addresses, shown below as mainnet addresses. Rest of mainnet or testnet addresses are accessible at [changelog.makerdao.com](https://changelog.makerdao.com/) which can be verified on [Etherscan](https://etherscan.io/token/0x9f8f72aa9304c8b593d555f12ef6589cc3a579a2). Similarly, additional information on the commands described below can be found in the [End contract](https://github.com/makerdao/dss/blob/master/src/end.sol) and the [Proxy\_Actions\_End contract](https://github.com/makerdao/dss-proxy-actions/blob/master/src/DssProxyActions.sol#L793). These should be setup in the following manner and pasted into the terminal line by line:
+The user will require the following contract addresses, shown below as mainnet addresses. Rest of mainnet or testnet addresses are accessible at [changelog.makerdao.com](https://changelog.makerdao.com/) which can be verified on [Etherscan](https://etherscan.io/token/0x9f8f72aa9304c8b593d555f12ef6589cc3a579a2). Similarly, additional information on the commands described below can be found in the [End contract](https://github.com/makerdao/dss/blob/master/src/end.sol) and the [Proxy_Actions_End contract](https://github.com/makerdao/dss-proxy-actions/blob/master/src/DssProxyActions.sol#L793). These should be setup in the following manner and pasted into the terminal line by line:
 
 ```text
 export DAI=0x6B175474E89094C44Da98b954EedeAC495271d0F
 export PROXY_ACTIONS_END=0x069B2fb501b6F16D1F5fE245B16F6993808f1008
 export MCD_END=0xaB14d3CE3F733CACB76eC2AbE7d2fcb00c99F3d5
-export CDP_MANAGER=0x5ef30b9986345249bc32d8928B7ee64DE9435E39 
+export CDP_MANAGER=0x5ef30b9986345249bc32d8928B7ee64DE9435E39
 export PROXY_REGISTRY=0x4678f0a6958e4D2Bc4F1BAF7Bc52E8F3564f3fE4
 export MCD_JOIN_ETH=0x2F0b23f53734252Bda2277357e97e1517d6B042A
 export MCD_JOIN_BAT=0x3D0B1912B66114d4096F48A8CEe3A56C231772cA
 export MCD_JOIN_DAI=0x9759A6Ac90977b93B58547b4A71c78317f391A28
 
-export MYPROXY=$(seth call $PROXY_REGISTRY 'proxies(address)(address)' $ETH_FROM) 
+export MYPROXY=$(seth call $PROXY_REGISTRY 'proxies(address)(address)' $ETH_FROM)
 # This creates a unique proxy address by calling the proxy registry using the users Ethereum address.
 
 export ilk=$(seth --to-bytes32 $(seth --from-ascii ETH-A))
 export ilkBAT=$(seth --to-bytes32 $(seth --from-ascii BAT-A))
-# Here we have defined two ilk (collateral types) ETH and BAT. 
+# Here we have defined two ilk (collateral types) ETH and BAT.
 # The number of ilk types needed will depend on the types of collateral vaults that the user had open.
 
 export ETH_GAS=4000000
@@ -83,7 +94,7 @@ export ETH_GAS_PRICE=2500000000
 # Typically gas costs are slightly increased when dealing with proxy contracts to prevent failed transactions.
 
 export cdpId=$(seth --to-dec $(seth call $CDP_MANAGER 'last(address)' $MYPROXY))
-# This is a call to the CDP Manager responsible for making the users CDP ID. 
+# This is a call to the CDP Manager responsible for making the users CDP ID.
 # Note, if user created multiple vaults they will have multiple CDP IDs, all of which must be referenced to retrieve collateral.
 ```
 
@@ -307,4 +318,3 @@ The above outlines how to redeem Dai and excess Vault collateral using the comma
 In summary, we showed how to check your Dai holdings, how to approve a proxy to withdraw Dai from your wallet and then to use `cashETH/GEM` functions to withdraw collateral into the user’s ETH wallet using the `MYPROXY` contract . For Vault owners, we showed how to redeem collateral by using the `MYPROXY` contract and the `freeGEM` function.
 
 In the event of emergency shutdown we envision that it will still be possible to sell Dai on the open market as well as by making use of economically incentivized redemption keepers to meet market needs for both Dai owners and Vaults holders.
-

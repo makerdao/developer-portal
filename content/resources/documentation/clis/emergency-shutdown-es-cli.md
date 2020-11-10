@@ -1,4 +1,15 @@
-# Emergency Shutdown \(ES\) CLI
+---
+title: Emergency Shutdown (ES) CLI
+description: This guide outlines the steps and procedures necessary to check, interact with and trigger the ESM
+tags:
+  - dai
+  - emergency shutdown
+  - cli
+slug: emergency-shutdown-es-cli
+contentType: documentation
+---
+
+# Emergency Shutdown (ES) CLI
 
 **Level**: Intermediate
 
@@ -15,15 +26,15 @@ Emergency Shutdown \(ES\) is the last resort to protect the Maker Protocol again
 1. Installation
 2. Contract Address Setup
 3. Commands and Explanations
-   * Checking your MKR balance
-   * Checking and setting your MKR approval
-   * Checking the live\(\) flag
-   * Checking the ESM threshold
-   * Deposit a trial amount of MKR into the ESM
-   * Depositing MKR into the ESM
-   * Checking how much MKR is in the ESM
-   * Checking whether the ESM has been triggered
-   * Triggering the ESM
+   - Checking your MKR balance
+   - Checking and setting your MKR approval
+   - Checking the live\(\) flag
+   - Checking the ESM threshold
+   - Deposit a trial amount of MKR into the ESM
+   - Depositing MKR into the ESM
+   - Checking how much MKR is in the ESM
+   - Checking whether the ESM has been triggered
+   - Triggering the ESM
 
 ## 1. Installation
 
@@ -41,7 +52,7 @@ export MCD_END= 0xab14d3ce3f733cacb76ec2abe7d2fcb00c99f3d5
 export MCD_ESM= 0x0581a0abe32aae9b5f0f68defab77c6759100085
 export MKR_ADR= <MKR ADDRESS from Etherscan.io>
 export MY_ADR= <USER ADDRESS>
-    
+
 #example values for depositing into the ESM
 export TRIAL_AMOUNT=$(seth --to-uint256 $(seth --to-wei 0.1 eth))
 export REMAINING_AMOUNT=$(seth --to-uint256 $(seth --to-wei 50000 eth))
@@ -55,7 +66,7 @@ Before depositing your MKR into the ESM contract, first check your address MKR b
 
 ```text
 seth --from-wei $(seth call $MKR_ADR "balanceOf(address)" $MY_ADR | seth --to-dec)
-# 100000.000000000000000000 
+# 100000.000000000000000000
 ```
 
 #### Checking and setting your MKR approval
@@ -105,7 +116,7 @@ seth --from-wei $(seth call $MCD_ESM "min()" | seth --to-dec)
 To deposit a small amount of MKR into the esm contract to test correct deposit function, we use the `join` function and specify a small amount.
 
 ```text
-seth send $MCD_ESM "join(uint256)" $TRIAL_AMOUNT 
+seth send $MCD_ESM "join(uint256)" $TRIAL_AMOUNT
 ```
 
 #### Checking how much MKR is in the ESM
@@ -131,7 +142,7 @@ seth --from-wei $(seth call $MCD_ESM "sum(address)" $MY_ADR | seth --to-dec)
 To deposit MKR into the esm contract we use the `join` function and specify the amount.
 
 ```text
-seth send $MCD_ESM "join(uint256)" $REMAINING_AMOUNT 
+seth send $MCD_ESM "join(uint256)" $REMAINING_AMOUNT
 ```
 
 Please specify the amount of MKR that you intend to deposit into the ESM.
@@ -159,7 +170,6 @@ seth send $MCD_ESM "fire()"
 
 #### Links
 
-* [ESM.sol](https://github.com/makerdao/esm/blob/master/src/ESM.sol)
-* [Further Documentation](https://www.notion.so/makerdao/Emergency-Shutdown-Module-3073acf244404f7f98b5e47d2efc7ba9)
-* [End Documentation](https://www.notion.so/makerdao/End-Detailed-Documentation-1874a49064644c51aa34fb9c303eda90)
-
+- [ESM.sol](https://github.com/makerdao/esm/blob/master/src/ESM.sol)
+- [Further Documentation](https://www.notion.so/makerdao/Emergency-Shutdown-Module-3073acf244404f7f98b5e47d2efc7ba9)
+- [End Documentation](https://www.notion.so/makerdao/End-Detailed-Documentation-1874a49064644c51aa34fb9c303eda90)

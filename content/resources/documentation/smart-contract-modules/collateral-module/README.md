@@ -1,5 +1,13 @@
 ---
+title: Collateral Module
 description: Adapters and Auction contracts for each specific collateral type
+parent: vaults
+tags:
+  - collateral
+  - vat
+  - vaults
+slug: introduction-to-collateral-module
+contentType: documentation
 ---
 
 # Collateral Module

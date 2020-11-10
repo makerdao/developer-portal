@@ -1,6 +1,17 @@
+---
+title: Upgrading to Multi-Collateral Dai Guide
+description: This guide will focus on the Dai and CDP migration with a high level overview of the upgrade process for different actors in the Maker ecosystem.
+tags:
+  - scd
+  - mcd
+  - migration
+slug: upgrading-to-multi-collateral-dai-guide
+contentType: documentation
+---
+
 # Upgrading to Multi-Collateral Dai Guide
 
-### **Summary** 
+### **Summary**
 
 **Level:** Intermediate
 
@@ -24,34 +35,34 @@ In this guide we refer to the Single Collateral Dai system as **SCD**, and the M
 
 ### Learning Objective
 
-* Knowledge on how migration to MCD will work
-* Best practices for migration for different users and partners
-* Where to find guides on specific migration scenarios
+- Knowledge on how migration to MCD will work
+- Best practices for migration for different users and partners
+- Where to find guides on specific migration scenarios
 
 ### Pre-requisites
 
-* Basic knowledge of the MakerDAO: Dai and/or Vault system. [See the MCD 101 guide, especially sections 1 and 2.](https://github.com/makerdao/developerguides/tree/master/mcd/mcd-101)
+- Basic knowledge of the MakerDAO: Dai and/or Vault system. [See the MCD 101 guide, especially sections 1 and 2.](https://github.com/makerdao/developerguides/tree/master/mcd/mcd-101)
 
 ### Sections
 
-* [User and Partner Migration Scenarios](https://github.com/makerdao/developerguides/blob/master/mcd/upgrading-to-multi-collateral-dai/upgrading-to-multi-collateral-dai.md#user-and-partner-migration-scenarios)
-  * [As a Sai Holder](https://github.com/makerdao/developerguides/blob/master/mcd/upgrading-to-multi-collateral-dai/upgrading-to-multi-collateral-dai.md#as-a-sai-holder)
-  * [As a SCD CDP Owner](https://github.com/makerdao/developerguides/blob/master/mcd/upgrading-to-multi-collateral-dai/upgrading-to-multi-collateral-dai.md#as-a-scd-cdp-owner)
-  * [As a Centralized Exchange or Custodial Wallet](https://github.com/makerdao/developerguides/blob/master/mcd/upgrading-to-multi-collateral-dai/upgrading-to-multi-collateral-dai.md#as-a-centralized-exchange-or-custodial-wallet)
-  * [As a Decentralized Exchange](https://github.com/makerdao/developerguides/blob/master/mcd/upgrading-to-multi-collateral-dai/upgrading-to-multi-collateral-dai.md#as-a-decentralized-exchange)
-  * [As a Non-Custodial Wallet](https://github.com/makerdao/developerguides/blob/master/mcd/upgrading-to-multi-collateral-dai/upgrading-to-multi-collateral-dai.md#as-a-non-custodial-wallet)
-  * [As a Keeper](https://github.com/makerdao/developerguides/blob/master/mcd/upgrading-to-multi-collateral-dai/upgrading-to-multi-collateral-dai.md#as-a-keeper)
-  * [As a Market Maker](https://github.com/makerdao/developerguides/blob/master/mcd/upgrading-to-multi-collateral-dai/upgrading-to-multi-collateral-dai.md#as-a-market-maker)
-  * [As a CDP Integrator](https://github.com/makerdao/developerguides/blob/master/mcd/upgrading-to-multi-collateral-dai/upgrading-to-multi-collateral-dai.md#as-a-cdp-integrator)
-  * [As a Lending Protocol](https://github.com/makerdao/developerguides/blob/master/mcd/upgrading-to-multi-collateral-dai/upgrading-to-multi-collateral-dai.md#as-a-lending-protocol)
-  * [As a Dapp](https://github.com/makerdao/developerguides/blob/master/mcd/upgrading-to-multi-collateral-dai/upgrading-to-multi-collateral-dai.md#as-a-dapp)
-  * [As another partner type not mentioned above](https://github.com/makerdao/developerguides/blob/master/mcd/upgrading-to-multi-collateral-dai/upgrading-to-multi-collateral-dai.md#as-another-partner-type-not-mentioned-above)
-* [Migration App](https://github.com/makerdao/developerguides/blob/master/mcd/upgrading-to-multi-collateral-dai/upgrading-to-multi-collateral-dai.md#migration-app)
-* [Migration Contract](https://github.com/makerdao/developerguides/blob/master/mcd/upgrading-to-multi-collateral-dai/upgrading-to-multi-collateral-dai.md#migration-contract)
-  * [Functionality](https://github.com/makerdao/developerguides/blob/master/mcd/upgrading-to-multi-collateral-dai/upgrading-to-multi-collateral-dai.md#functionality)
-  * [Upgrading Sai to Dai](https://github.com/makerdao/developerguides/blob/master/mcd/upgrading-to-multi-collateral-dai/upgrading-to-multi-collateral-dai.md#upgrading-dai)
-  * [Swapping Dai for Sai](https://github.com/makerdao/developerguides/blob/master/mcd/upgrading-to-multi-collateral-dai/upgrading-to-multi-collateral-dai.md#swapping-back-to-sai)
-  * [Migrating CDPs](https://github.com/makerdao/developerguides/blob/master/mcd/upgrading-to-multi-collateral-dai/upgrading-to-multi-collateral-dai.md#migration-of-cdp)
+- [User and Partner Migration Scenarios](https://github.com/makerdao/developerguides/blob/master/mcd/upgrading-to-multi-collateral-dai/upgrading-to-multi-collateral-dai.md#user-and-partner-migration-scenarios)
+  - [As a Sai Holder](https://github.com/makerdao/developerguides/blob/master/mcd/upgrading-to-multi-collateral-dai/upgrading-to-multi-collateral-dai.md#as-a-sai-holder)
+  - [As a SCD CDP Owner](https://github.com/makerdao/developerguides/blob/master/mcd/upgrading-to-multi-collateral-dai/upgrading-to-multi-collateral-dai.md#as-a-scd-cdp-owner)
+  - [As a Centralized Exchange or Custodial Wallet](https://github.com/makerdao/developerguides/blob/master/mcd/upgrading-to-multi-collateral-dai/upgrading-to-multi-collateral-dai.md#as-a-centralized-exchange-or-custodial-wallet)
+  - [As a Decentralized Exchange](https://github.com/makerdao/developerguides/blob/master/mcd/upgrading-to-multi-collateral-dai/upgrading-to-multi-collateral-dai.md#as-a-decentralized-exchange)
+  - [As a Non-Custodial Wallet](https://github.com/makerdao/developerguides/blob/master/mcd/upgrading-to-multi-collateral-dai/upgrading-to-multi-collateral-dai.md#as-a-non-custodial-wallet)
+  - [As a Keeper](https://github.com/makerdao/developerguides/blob/master/mcd/upgrading-to-multi-collateral-dai/upgrading-to-multi-collateral-dai.md#as-a-keeper)
+  - [As a Market Maker](https://github.com/makerdao/developerguides/blob/master/mcd/upgrading-to-multi-collateral-dai/upgrading-to-multi-collateral-dai.md#as-a-market-maker)
+  - [As a CDP Integrator](https://github.com/makerdao/developerguides/blob/master/mcd/upgrading-to-multi-collateral-dai/upgrading-to-multi-collateral-dai.md#as-a-cdp-integrator)
+  - [As a Lending Protocol](https://github.com/makerdao/developerguides/blob/master/mcd/upgrading-to-multi-collateral-dai/upgrading-to-multi-collateral-dai.md#as-a-lending-protocol)
+  - [As a Dapp](https://github.com/makerdao/developerguides/blob/master/mcd/upgrading-to-multi-collateral-dai/upgrading-to-multi-collateral-dai.md#as-a-dapp)
+  - [As another partner type not mentioned above](https://github.com/makerdao/developerguides/blob/master/mcd/upgrading-to-multi-collateral-dai/upgrading-to-multi-collateral-dai.md#as-another-partner-type-not-mentioned-above)
+- [Migration App](https://github.com/makerdao/developerguides/blob/master/mcd/upgrading-to-multi-collateral-dai/upgrading-to-multi-collateral-dai.md#migration-app)
+- [Migration Contract](https://github.com/makerdao/developerguides/blob/master/mcd/upgrading-to-multi-collateral-dai/upgrading-to-multi-collateral-dai.md#migration-contract)
+  - [Functionality](https://github.com/makerdao/developerguides/blob/master/mcd/upgrading-to-multi-collateral-dai/upgrading-to-multi-collateral-dai.md#functionality)
+  - [Upgrading Sai to Dai](https://github.com/makerdao/developerguides/blob/master/mcd/upgrading-to-multi-collateral-dai/upgrading-to-multi-collateral-dai.md#upgrading-dai)
+  - [Swapping Dai for Sai](https://github.com/makerdao/developerguides/blob/master/mcd/upgrading-to-multi-collateral-dai/upgrading-to-multi-collateral-dai.md#swapping-back-to-sai)
+  - [Migrating CDPs](https://github.com/makerdao/developerguides/blob/master/mcd/upgrading-to-multi-collateral-dai/upgrading-to-multi-collateral-dai.md#migration-of-cdp)
 
 ## User and Partner Migration Scenarios
 
@@ -97,19 +108,19 @@ Once upgraded, you can start using Dai Savings Rate by locking your Dai into the
 
 We recommend you take the following steps for upgrading to MCD:
 
-* On November 18: Rename Single-Collateral Dai to “Sai”. This is being coordinated with all Maker partners and serves to avoid users depositing the wrong token into your system.
-* On December 2: Perform upgrade of user balances.
-* Inform your users as soon as possible about the dates. For users wanting to delay their upgrade, this allows them to opt-out by withdrawing Sai from your exchange before the date.
-* Proposed process for the December 2 upgrade:
-  * Freeze Sai deposits/withdrawals
-  * Use the Migration App/contract to upgrade all user holdings of Sai to Dai. \(See more details in the [Migration App](https://github.com/makerdao/developerguides/blob/master/mcd/upgrading-to-multi-collateral-dai/upgrading-to-multi-collateral-dai.md#migration-app)/[contract](https://github.com/makerdao/developerguides/blob/master/mcd/upgrading-to-multi-collateral-dai/upgrading-to-multi-collateral-dai.md#migration-contract) sections below.\)
-  * Point codebase to new Dai token contract address. The new token is deployed at [0x6b175474e89094c44da98b954eedeac495271d0f](https://etherscan.io/token/0x6b175474e89094c44da98b954eedeac495271d0f) - use the [updated logos found here](https://www.notion.so/makerdao/Maker-Brand-ac517c82ff9a43089d0db5bb2ee045a4) for the new Dai token.
-  * Rename listing/token to "Dai"
-  * Unfreeze Dai deposits/withdrawals.
-* Inform users about [Dai Savings Rate](https://blog.makerdao.com/an-update-on-the-dai-savings-rate-in-multi-collateral-dai/), which allows Dai holders to earn savings.
-  * Optional: Choose one of the following:
-    * Integrate Dai Savings Rate and distribute revenue to your users.
-    * Integrate Dai Savings Rate in your exchange and keep accrued savings in your own balance sheet.
+- On November 18: Rename Single-Collateral Dai to “Sai”. This is being coordinated with all Maker partners and serves to avoid users depositing the wrong token into your system.
+- On December 2: Perform upgrade of user balances.
+- Inform your users as soon as possible about the dates. For users wanting to delay their upgrade, this allows them to opt-out by withdrawing Sai from your exchange before the date.
+- Proposed process for the December 2 upgrade:
+  - Freeze Sai deposits/withdrawals
+  - Use the Migration App/contract to upgrade all user holdings of Sai to Dai. \(See more details in the [Migration App](https://github.com/makerdao/developerguides/blob/master/mcd/upgrading-to-multi-collateral-dai/upgrading-to-multi-collateral-dai.md#migration-app)/[contract](https://github.com/makerdao/developerguides/blob/master/mcd/upgrading-to-multi-collateral-dai/upgrading-to-multi-collateral-dai.md#migration-contract) sections below.\)
+  - Point codebase to new Dai token contract address. The new token is deployed at [0x6b175474e89094c44da98b954eedeac495271d0f](https://etherscan.io/token/0x6b175474e89094c44da98b954eedeac495271d0f) - use the [updated logos found here](https://www.notion.so/makerdao/Maker-Brand-ac517c82ff9a43089d0db5bb2ee045a4) for the new Dai token.
+  - Rename listing/token to "Dai"
+  - Unfreeze Dai deposits/withdrawals.
+- Inform users about [Dai Savings Rate](https://blog.makerdao.com/an-update-on-the-dai-savings-rate-in-multi-collateral-dai/), which allows Dai holders to earn savings.
+  - Optional: Choose one of the following:
+    - Integrate Dai Savings Rate and distribute revenue to your users.
+    - Integrate Dai Savings Rate in your exchange and keep accrued savings in your own balance sheet.
 
 ![](https://camo.githubusercontent.com/4bd8e6d1f3408f8f2401b02f1023a875b1765a42/68747470733a2f2f6c68332e676f6f676c6575736572636f6e74656e742e636f6d2f725458636d355f42434b4b44565859566336765830356f61744256484c73596a53696d383447666c6847706754595453574b714e704a3042754d44642d4b56364f53736e424335467661366b364c4874644a516f66664b6d34575139326e37705a455030754c792d496a6a44446b68393241697769305558546a726c67642d37766f56684156536b)
 
@@ -121,146 +132,146 @@ This approach will result in the following user journey for the exchange/wallet 
 
 We recommend you take the following steps for upgrading to MCD:
 
-* On November 18: Rename Single-Collateral Dai to “Sai” and ticker "SAI". This is being coordinated with all Maker partners and serves to avoid users attempting to deposit the wrong token into your system.
-* Select a date between November 18-25 to list Multi-Collateral Dai. The new token is deployed at [0x6b175474e89094c44da98b954eedeac495271d0f](https://etherscan.io/token/0x6b175474e89094c44da98b954eedeac495271d0f) - use the [updated logos found here](https://www.notion.so/makerdao/Maker-Brand-ac517c82ff9a43089d0db5bb2ee045a4) for the new Dai token. Logo for Sai should remain the yellow diamond.
-* On the date of your own Dai listing: Add support for the new Dai token on your platform. The new Dai token should be named Dai and have the ticker "DAI". Deactivate Sai trading in your frontend UI, but allow users to cancel orders and withdraw balances.
-* Inform users that they can redeem Sai for Dai at migrate.makerdao.com
-  * Optional: Provide a UI in your own interface for token migration through the migration contract.
-* Inform users about Dai Savings Rate, which allows Dai holders to earn savings.
-  * Optional: Build a UI that facilitates the usage of the Dai Savings Rate service for your users in your exchange, where users will keep the accrued savings themselves.
-  * Optional: Link users to [oasis.app](https://oasis.app/) to activate Dai Savings Rate.
+- On November 18: Rename Single-Collateral Dai to “Sai” and ticker "SAI". This is being coordinated with all Maker partners and serves to avoid users attempting to deposit the wrong token into your system.
+- Select a date between November 18-25 to list Multi-Collateral Dai. The new token is deployed at [0x6b175474e89094c44da98b954eedeac495271d0f](https://etherscan.io/token/0x6b175474e89094c44da98b954eedeac495271d0f) - use the [updated logos found here](https://www.notion.so/makerdao/Maker-Brand-ac517c82ff9a43089d0db5bb2ee045a4) for the new Dai token. Logo for Sai should remain the yellow diamond.
+- On the date of your own Dai listing: Add support for the new Dai token on your platform. The new Dai token should be named Dai and have the ticker "DAI". Deactivate Sai trading in your frontend UI, but allow users to cancel orders and withdraw balances.
+- Inform users that they can redeem Sai for Dai at migrate.makerdao.com
+  - Optional: Provide a UI in your own interface for token migration through the migration contract.
+- Inform users about Dai Savings Rate, which allows Dai holders to earn savings.
+  - Optional: Build a UI that facilitates the usage of the Dai Savings Rate service for your users in your exchange, where users will keep the accrued savings themselves.
+  - Optional: Link users to [oasis.app](https://oasis.app/) to activate Dai Savings Rate.
 
 ### As a Non-Custodial Wallet
 
 If you are a creator of a wallet that allows users to be in control of their private keys we recommend you do the following:
 
-* On November 18: Rename Single-Collateral Dai to “Sai”
-* Select a future date between November 18-25 to execute the upgrade to support Multi-Collateral Dai, which should be listed as "Dai". The new token is deployed at [0x6b175474e89094c44da98b954eedeac495271d0f](https://etherscan.io/token/0x6b175474e89094c44da98b954eedeac495271d0f) - use the [updated logos found here](https://www.notion.so/makerdao/Maker-Brand-ac517c82ff9a43089d0db5bb2ee045a4) for the new Dai token. Logo for Sai should remain the yellow diamond.
-* Inform your users as soon as possible about the timeline for your own upgrade to MCD.
-* Support balances of both Sai and Dai for a period until Sai demand diminishes.
-* Inform your users that they will be able to swap Sai for Dai at [migrate.makerdao.com](https://migrate.makerdao.com/).
-  * Optional: Provide a UI in your own interface for token migration through the migration contract.
-* Inform users about Dai Savings Rate, which allows Dai holders to earn savings.
-  * Optional: Create a UI where users can activate Dai Savings Rate.
-  * Optional: Link users to [oasis.app](https://oasis.app/) to activate Dai Savings Rate.
-* Optional: Implement paying the gas cost of Dai transactions on behalf of your users.
+- On November 18: Rename Single-Collateral Dai to “Sai”
+- Select a future date between November 18-25 to execute the upgrade to support Multi-Collateral Dai, which should be listed as "Dai". The new token is deployed at [0x6b175474e89094c44da98b954eedeac495271d0f](https://etherscan.io/token/0x6b175474e89094c44da98b954eedeac495271d0f) - use the [updated logos found here](https://www.notion.so/makerdao/Maker-Brand-ac517c82ff9a43089d0db5bb2ee045a4) for the new Dai token. Logo for Sai should remain the yellow diamond.
+- Inform your users as soon as possible about the timeline for your own upgrade to MCD.
+- Support balances of both Sai and Dai for a period until Sai demand diminishes.
+- Inform your users that they will be able to swap Sai for Dai at [migrate.makerdao.com](https://migrate.makerdao.com/).
+  - Optional: Provide a UI in your own interface for token migration through the migration contract.
+- Inform users about Dai Savings Rate, which allows Dai holders to earn savings.
+  - Optional: Create a UI where users can activate Dai Savings Rate.
+  - Optional: Link users to [oasis.app](https://oasis.app/) to activate Dai Savings Rate.
+- Optional: Implement paying the gas cost of Dai transactions on behalf of your users.
 
 ### As a Keeper
 
-* Get acquainted with the updates to Keepers and Auctions in MCD with [this guide](https://github.com/makerdao/developerguides/blob/master/keepers/auctions/auctions-101.md).
-* Upgrading
-* We expect to release a Python library for working with Auctions before MCD launch. This will be the recommended way to bid in Auctions.
+- Get acquainted with the updates to Keepers and Auctions in MCD with [this guide](https://github.com/makerdao/developerguides/blob/master/keepers/auctions/auctions-101.md).
+- Upgrading
+- We expect to release a Python library for working with Auctions before MCD launch. This will be the recommended way to bid in Auctions.
 
 Alternatively, if you’re willing to do some additional work and work with a lower level interface, you can interact with Auction contracts directly \([flip](https://github.com/makerdao/dss/blob/master/src/flip.sol), [flap](https://github.com/makerdao/dss/blob/master/src/flap.sol), [flop](https://github.com/makerdao/dss/blob/master/src/flop.sol)\). Note that future collateral types may come with custom auction formats. More documentation will be available before launch.
 
 ### As a Market Maker
 
-* We encourage you to market make on Multi-Collateral Dai as soon as your exchange partners add support for it.
-* If your exchange partners keep their Sai listing concurrently with their Dai listing, we encourage you to market make on both tokens for the remaining lifetime of Sai.
-* If your exchange partners will use a different ticker for Dai than Sai, you should update your tools accordingly.
+- We encourage you to market make on Multi-Collateral Dai as soon as your exchange partners add support for it.
+- If your exchange partners keep their Sai listing concurrently with their Dai listing, we encourage you to market make on both tokens for the remaining lifetime of Sai.
+- If your exchange partners will use a different ticker for Dai than Sai, you should update your tools accordingly.
 
 ### As a CDP Integrator
 
 **Custodial CDP service**
 
-* On November 18: Rename Single-Collateral Dai to “Sai”
-* Select a future date between November 18-25 to execute the upgrade to MCD.
-* Inform your users as soon as possible about the date.
-* On the chosen date:
-  * Freeze access to CDP service for your users
-  * Launch upgrade to your service that supports the new CDP core. [The smart contract addresses and ABIs can be found here.](https://changelog.makerdao.com/releases/mainnet/1.0.0/)
-    * If you are using Dai.js for your CDP integration, see “[Using Dai.js](https://github.com/makerdao/developerguides/blob/master/mcd/upgrading-to-multi-collateral-dai/upgrading-to-multi-collateral-dai.md#using-dai.js)” below for how to upgrade your implementation to MCD.
-    * If you have integrated directly with the CDP smart contracts, see “[Direct integration with smart contracts](https://github.com/makerdao/developerguides/blob/master/mcd/upgrading-to-multi-collateral-dai/upgrading-to-multi-collateral-dai.md#direct-integration-with-smart-contracts)” below for how to upgrade your implementation to MCD.
-  * Migrate all CDPs to MCD. See “Migration App” section below.
-  * List the Multi-Collateral Dai token as "Dai"
-  * Unfreeze access to CDP service
-* Optional: Implement support for added collateral types in MCD
-* If it is relevant to your service, inform users about Dai Savings Rate
-  * Optional: Implement UI for locking Dai in the Dai Savings Rate smart contract.
+- On November 18: Rename Single-Collateral Dai to “Sai”
+- Select a future date between November 18-25 to execute the upgrade to MCD.
+- Inform your users as soon as possible about the date.
+- On the chosen date:
+  - Freeze access to CDP service for your users
+  - Launch upgrade to your service that supports the new CDP core. [The smart contract addresses and ABIs can be found here.](https://changelog.makerdao.com/releases/mainnet/1.0.0/)
+    - If you are using Dai.js for your CDP integration, see “[Using Dai.js](https://github.com/makerdao/developerguides/blob/master/mcd/upgrading-to-multi-collateral-dai/upgrading-to-multi-collateral-dai.md#using-dai.js)” below for how to upgrade your implementation to MCD.
+    - If you have integrated directly with the CDP smart contracts, see “[Direct integration with smart contracts](https://github.com/makerdao/developerguides/blob/master/mcd/upgrading-to-multi-collateral-dai/upgrading-to-multi-collateral-dai.md#direct-integration-with-smart-contracts)” below for how to upgrade your implementation to MCD.
+  - Migrate all CDPs to MCD. See “Migration App” section below.
+  - List the Multi-Collateral Dai token as "Dai"
+  - Unfreeze access to CDP service
+- Optional: Implement support for added collateral types in MCD
+- If it is relevant to your service, inform users about Dai Savings Rate
+  - Optional: Implement UI for locking Dai in the Dai Savings Rate smart contract.
 
 **Non-Custodial CDP service**
 
-* On November 18: Rename Single-Collateral Dai to “Sai”
-* Select a future date between November 18-25 to execute the upgrade to MCD.
-* Inform your users as soon as possible about the timeline for your own upgrade to MCD.
-* Inform your users about MCD and the migration process of CDPs.
-* On the selected launch date:
-  * Launch upgrade to your service that supports the new CDP core.
-    * If you are using Dai.js for your CDP integration, see “[Using Dai.js](https://github.com/makerdao/developerguides/blob/master/mcd/upgrading-to-multi-collateral-dai/upgrading-to-multi-collateral-dai.md#using-dai.js)” below for how to upgrade your implementation to MCD.
-    * If you have integrated directly with the CDP smart contracts, see “[Direct integration with smart contracts](https://github.com/makerdao/developerguides/blob/master/mcd/upgrading-to-multi-collateral-dai/upgrading-to-multi-collateral-dai.md#direct-integration-with-smart-contracts)” below for how to upgrade your implementation to MCD.
-  * List the Multi-Collateral Dai token as "Dai"
-* Choose one of the following:
-  * Option A: Point your users to [migrate.makerdao.com](https://migrate.makerdao.com/) at MCD launch date for CDP migration on their CDP dashboard. See also the Migration App section below.
-  * Option B: Create your own UI for migration, by creating a frontend to interact with the migration contract \(see section below on Migration Contract\).
+- On November 18: Rename Single-Collateral Dai to “Sai”
+- Select a future date between November 18-25 to execute the upgrade to MCD.
+- Inform your users as soon as possible about the timeline for your own upgrade to MCD.
+- Inform your users about MCD and the migration process of CDPs.
+- On the selected launch date:
+  - Launch upgrade to your service that supports the new CDP core.
+    - If you are using Dai.js for your CDP integration, see “[Using Dai.js](https://github.com/makerdao/developerguides/blob/master/mcd/upgrading-to-multi-collateral-dai/upgrading-to-multi-collateral-dai.md#using-dai.js)” below for how to upgrade your implementation to MCD.
+    - If you have integrated directly with the CDP smart contracts, see “[Direct integration with smart contracts](https://github.com/makerdao/developerguides/blob/master/mcd/upgrading-to-multi-collateral-dai/upgrading-to-multi-collateral-dai.md#direct-integration-with-smart-contracts)” below for how to upgrade your implementation to MCD.
+  - List the Multi-Collateral Dai token as "Dai"
+- Choose one of the following:
+  - Option A: Point your users to [migrate.makerdao.com](https://migrate.makerdao.com/) at MCD launch date for CDP migration on their CDP dashboard. See also the Migration App section below.
+  - Option B: Create your own UI for migration, by creating a frontend to interact with the migration contract \(see section below on Migration Contract\).
 
 ### **Upgrading your CDP integration implementation**
 
 #### **Using Dai.js**
 
-* If you have integrated CDPs using the [Dai.js library](https://github.com/makerdao/dai.js), ensure you have updated the library to the latest version.
-* Update your codebase to support the functionality of the [MCD plugin](https://github.com/makerdao/dai.js/tree/dev/packages/dai-plugin-mcd). At launch this plugin will be bundled into the Dai.js library as default.
-* Optional: Help your users migrate their CDP to MCD
-  * Option A: Point users to [migrate.makerdao.com](https://migrate.makerdao.com/) if your app is Web3 compatible.
-  * Option B: Implement your own migration UI in your app, connecting to the migration contract described in a section below.
-  * Option C: If your app is not compatible with migrate.makerdao.com, you can guide your users in how to export their CDP from your app to a compatible wallet.
-* Optional: Implement support for new MCD functionality
-  * Add support for new collateral types.
-  * Add support for Dai Savings Rate.
+- If you have integrated CDPs using the [Dai.js library](https://github.com/makerdao/dai.js), ensure you have updated the library to the latest version.
+- Update your codebase to support the functionality of the [MCD plugin](https://github.com/makerdao/dai.js/tree/dev/packages/dai-plugin-mcd). At launch this plugin will be bundled into the Dai.js library as default.
+- Optional: Help your users migrate their CDP to MCD
+  - Option A: Point users to [migrate.makerdao.com](https://migrate.makerdao.com/) if your app is Web3 compatible.
+  - Option B: Implement your own migration UI in your app, connecting to the migration contract described in a section below.
+  - Option C: If your app is not compatible with migrate.makerdao.com, you can guide your users in how to export their CDP from your app to a compatible wallet.
+- Optional: Implement support for new MCD functionality
+  - Add support for new collateral types.
+  - Add support for Dai Savings Rate.
 
 ### **Direct integration with smart contracts**
 
-* If you have integrated directly with the smart contracts, you must add support for the new Maker core smart contracts. Since the smart contracts have been completely rewritten, most function calls have been changed.
-* Get acquainted with the [new implementation of MCD](https://github.com/makerdao/dss)
-  * [You can find an introduction to the system here](https://github.com/makerdao/developerguides/blob/master/mcd/mcd-101/mcd-101.md)
-* Implement support for the MCD smart contracts
-  * [Checkout this guide on how to interact with the CDP manager.](https://github.com/makerdao/developerguides/blob/master/mcd/mcd-seth/mcd-seth-01.md)
-* Point codebase to the new [MCD smart contracts](https://changelog.makerdao.com/)
+- If you have integrated directly with the smart contracts, you must add support for the new Maker core smart contracts. Since the smart contracts have been completely rewritten, most function calls have been changed.
+- Get acquainted with the [new implementation of MCD](https://github.com/makerdao/dss)
+  - [You can find an introduction to the system here](https://github.com/makerdao/developerguides/blob/master/mcd/mcd-101/mcd-101.md)
+- Implement support for the MCD smart contracts
+  - [Checkout this guide on how to interact with the CDP manager.](https://github.com/makerdao/developerguides/blob/master/mcd/mcd-seth/mcd-seth-01.md)
+- Point codebase to the new [MCD smart contracts](https://changelog.makerdao.com/)
 
 ### As a Lending Protocol
 
 **Custodial Service**
 
-* On November 18: Rename Single-Collateral Dai to “Sai”
-* Select a future date between November 18-25 to execute the upgrade to MCD.
-* Inform your users as soon as possible about the date.
-* On the chosen date:
-  * Stop lending \(deposits\) and borrowing \(withdrawals\) of Sai
-  * List the Multi-Collateral Dai token as "Dai". The new token is deployed at [0x6b175474e89094c44da98b954eedeac495271d0f](https://etherscan.io/token/0x6b175474e89094c44da98b954eedeac495271d0f) - use the [updated logos found here](https://www.notion.so/makerdao/Maker-Brand-ac517c82ff9a43089d0db5bb2ee045a4) for the new Dai token.
-  * Open for lending \(deposits\) and borrowing \(withdrawals\) of Dai
-  * For outstanding loans in Sai, choose one of the following:
-    * Accept payback of loans in Sai.
-    * Continuously migrate paybacks of old positions of Sai to Dai yourself.
-    * Inform your users that you can no longer pay back Sai, but that they should migrate their Sai to Dai through migrate.makerdao.com before paying back a loan.
+- On November 18: Rename Single-Collateral Dai to “Sai”
+- Select a future date between November 18-25 to execute the upgrade to MCD.
+- Inform your users as soon as possible about the date.
+- On the chosen date:
+  - Stop lending \(deposits\) and borrowing \(withdrawals\) of Sai
+  - List the Multi-Collateral Dai token as "Dai". The new token is deployed at [0x6b175474e89094c44da98b954eedeac495271d0f](https://etherscan.io/token/0x6b175474e89094c44da98b954eedeac495271d0f) - use the [updated logos found here](https://www.notion.so/makerdao/Maker-Brand-ac517c82ff9a43089d0db5bb2ee045a4) for the new Dai token.
+  - Open for lending \(deposits\) and borrowing \(withdrawals\) of Dai
+  - For outstanding loans in Sai, choose one of the following:
+    - Accept payback of loans in Sai.
+    - Continuously migrate paybacks of old positions of Sai to Dai yourself.
+    - Inform your users that you can no longer pay back Sai, but that they should migrate their Sai to Dai through migrate.makerdao.com before paying back a loan.
 
 **Non-Custodial Service**
 
-* On November 18: Rename Single-Collateral Dai to “Sai”
-* Select a future date between November 18-25 to execute the upgrade to MCD.
-* Inform your users as soon as possible about the timeline for your own upgrade to MCD.
-* Inform users about potential cutoff dates for shutdown of SCD.
-* At launch:
-  * List the Multi-Collateral Dai token as "Dai". The new token is deployed at [0x6b175474e89094c44da98b954eedeac495271d0f](https://etherscan.io/token/0x6b175474e89094c44da98b954eedeac495271d0f) - use the [updated logos found here](https://www.notion.so/makerdao/Maker-Brand-ac517c82ff9a43089d0db5bb2ee045a4) for the new Dai token.
-  * Launch support for Dai loans.
-  * Stop creation of loans in Sai
-  * Point users to [migrate.makerdao.com](https://migrate.makerdao.com/) for Sai migration
-  * Let existing loans in Sai run until they expire or are paid back
-* Optional:
-  * Create a UI for users to migrate their balances from Sai to Dai.
+- On November 18: Rename Single-Collateral Dai to “Sai”
+- Select a future date between November 18-25 to execute the upgrade to MCD.
+- Inform your users as soon as possible about the timeline for your own upgrade to MCD.
+- Inform users about potential cutoff dates for shutdown of SCD.
+- At launch:
+  - List the Multi-Collateral Dai token as "Dai". The new token is deployed at [0x6b175474e89094c44da98b954eedeac495271d0f](https://etherscan.io/token/0x6b175474e89094c44da98b954eedeac495271d0f) - use the [updated logos found here](https://www.notion.so/makerdao/Maker-Brand-ac517c82ff9a43089d0db5bb2ee045a4) for the new Dai token.
+  - Launch support for Dai loans.
+  - Stop creation of loans in Sai
+  - Point users to [migrate.makerdao.com](https://migrate.makerdao.com/) for Sai migration
+  - Let existing loans in Sai run until they expire or are paid back
+- Optional:
+  - Create a UI for users to migrate their balances from Sai to Dai.
 
 ### As a Dapp
 
-* On November 18: Rename Single-Collateral Dai to “Sai”
-* Select a future date between November 18-25 to execute the upgrade to MCD.
-* Inform your users as soon as possible about the timeline for your own upgrade to MCD.
-* On the chosen date:
-  * List the Multi-Collateral Dai token as "Dai". The new token is deployed at [0x6b175474e89094c44da98b954eedeac495271d0f](https://etherscan.io/token/0x6b175474e89094c44da98b954eedeac495271d0f) - use the [updated logos found here](https://www.notion.so/makerdao/Maker-Brand-ac517c82ff9a43089d0db5bb2ee045a4) for the new Dai token.
-  * Update code base to support the use of the new Dai token at launch.
-  * Optional: Implement paying gas cost of Dai transactions in Dai.
-* If you have a product using Sai:
-  * Shutdown functionality of Sai at a cut-off date, communicated well in advance to your users.
-* Inform your users about potential confusion regarding Sai and Dai.
-* Inform your users that they can migrate Sai to Dai at [migrate.makerdao.com](https://migrate.makerdao.com/)
-  * Optional: Create a UI for carrying out the migration from Sai to Dai.
+- On November 18: Rename Single-Collateral Dai to “Sai”
+- Select a future date between November 18-25 to execute the upgrade to MCD.
+- Inform your users as soon as possible about the timeline for your own upgrade to MCD.
+- On the chosen date:
+  - List the Multi-Collateral Dai token as "Dai". The new token is deployed at [0x6b175474e89094c44da98b954eedeac495271d0f](https://etherscan.io/token/0x6b175474e89094c44da98b954eedeac495271d0f) - use the [updated logos found here](https://www.notion.so/makerdao/Maker-Brand-ac517c82ff9a43089d0db5bb2ee045a4) for the new Dai token.
+  - Update code base to support the use of the new Dai token at launch.
+  - Optional: Implement paying gas cost of Dai transactions in Dai.
+- If you have a product using Sai:
+  - Shutdown functionality of Sai at a cut-off date, communicated well in advance to your users.
+- Inform your users about potential confusion regarding Sai and Dai.
+- Inform your users that they can migrate Sai to Dai at [migrate.makerdao.com](https://migrate.makerdao.com/)
+  - Optional: Create a UI for carrying out the migration from Sai to Dai.
 
 ### As another partner type not mentioned above
 
@@ -298,9 +309,9 @@ In the `src` folder, the smart contract source code can be found. The main contr
 
 It contains three main functions:
 
-* `swapSaiToDai` - a function that upgrades Sai to Dai
-* `swapDaiToSai` - a function that allows you to exchange your Dai back to Sai
-* `migrate` - a function that allows you to migrate your SCD CDP to MCD.
+- `swapSaiToDai` - a function that upgrades Sai to Dai
+- `swapDaiToSai` - a function that allows you to exchange your Dai back to Sai
+- `migrate` - a function that allows you to migrate your SCD CDP to MCD.
 
 The following sections will go deeper into these function calls. The Migration App will present this functionality in an easy to use UI, so a regular user will not have to deal with these function calls directly. We will however dive into them in the following sections to dissect how migration works, and outline the process for power users or partners, who want to carry out migration themselves.
 
@@ -348,30 +359,29 @@ In this guide, we introduced you to the steps of how to upgrade to Multi-Collate
 
 If you encounter any issues with your upgrade process, don’t hesitate to contact us.
 
-* Contact integrations team - [integrate@makerdao.com](mailto:integrate@makerdao.com)
-* Rocket chat - \#dev channel
+- Contact integrations team - [integrate@makerdao.com](mailto:integrate@makerdao.com)
+- Rocket chat - \#dev channel
 
 #### Next Steps
 
 After finishing this guide we think you’ll enjoy these next guides:
 
-* Learn about our progress towards the launch of [MCD](https://blog.makerdao.com/multi-collateral-dai-milestones-roadmap/).
+- Learn about our progress towards the launch of [MCD](https://blog.makerdao.com/multi-collateral-dai-milestones-roadmap/).
 
 #### Resources
 
 **Information:**
 
-* [Blog post: The Road To Mainnet Release](https://blog.makerdao.com/the-road-to-mainnet-release/)
+- [Blog post: The Road To Mainnet Release](https://blog.makerdao.com/the-road-to-mainnet-release/)
 
 **Other Guides:**
 
-* [Introduction and Overview of Multi-Collateral Dai: MCD101](https://github.com/makerdao/developerguides/blob/master/mcd/mcd-101/mcd-101.md)
-* [Using MCD-CLI to create and close a MCD CDP on Kovan](https://github.com/makerdao/developerguides/blob/master/mcd/mcd-cli/mcd-cli-guide-01/mcd-cli-guide-01.md)
-* [Using Seth to create and close an MCD CDP on Kovan](https://github.com/makerdao/developerguides/blob/master/mcd/mcd-seth/mcd-seth-01.md)
-* [Using Seth for MCD migration](https://github.com/makerdao/developerguides/blob/master/mcd/upgrading-to-multi-collateral-dai/cli-mcd-migration.md)
-* [Add a new collateral type to DCS - Kovan](https://github.com/makerdao/developerguides/blob/master/mcd/add-collateral-type-testnet/add-collateral-type-testnet.md)
+- [Introduction and Overview of Multi-Collateral Dai: MCD101](https://github.com/makerdao/developerguides/blob/master/mcd/mcd-101/mcd-101.md)
+- [Using MCD-CLI to create and close a MCD CDP on Kovan](https://github.com/makerdao/developerguides/blob/master/mcd/mcd-cli/mcd-cli-guide-01/mcd-cli-guide-01.md)
+- [Using Seth to create and close an MCD CDP on Kovan](https://github.com/makerdao/developerguides/blob/master/mcd/mcd-seth/mcd-seth-01.md)
+- [Using Seth for MCD migration](https://github.com/makerdao/developerguides/blob/master/mcd/upgrading-to-multi-collateral-dai/cli-mcd-migration.md)
+- [Add a new collateral type to DCS - Kovan](https://github.com/makerdao/developerguides/blob/master/mcd/add-collateral-type-testnet/add-collateral-type-testnet.md)
 
 **Source code/wiki:**
 
-* [Multi Collateral Dai code + wiki](https://github.com/makerdao/dss) 
-
+- [Multi Collateral Dai code + wiki](https://github.com/makerdao/dss)

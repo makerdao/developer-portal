@@ -1,5 +1,10 @@
 ---
+title: Seth
 description: A powerful command line tool created to interface with the Ethereum blockchain
+tags:
+  - cli
+slug: mcd-cli
+contentType: documentation
 ---
 
 # Seth
@@ -31,9 +36,9 @@ If you have issues using the script above, you can try the manual installation o
 ```text
 $ curl https://nixos.org/nix/install | sh
 $ . "$HOME/.nix-profile/etc/profile.d/nix.sh"
-$ nix-env -if https://github.com/cachix/cachix/tarball/master --substituters https://cachix.cachix.org --trusted-public-keys cachix.cachix.org-1:eWNHQldwUO7G2VkjpnjDbWwy4KQ/HNxht7H4SSoMckM=  
-$ cachix use dapp  
-$ git clone --recursive [https://github.com/dapphub/dapptools](https://github.com/dapphub/dapptools) $HOME/.dapp/dapptools  
+$ nix-env -if https://github.com/cachix/cachix/tarball/master --substituters https://cachix.cachix.org --trusted-public-keys cachix.cachix.org-1:eWNHQldwUO7G2VkjpnjDbWwy4KQ/HNxht7H4SSoMckM=
+$ cachix use dapp
+$ git clone --recursive [https://github.com/dapphub/dapptools](https://github.com/dapphub/dapptools) $HOME/.dapp/dapptools
 $ nix-env -f $HOME/.dapp/dapptools -iA dapp seth solc hevm ethsign
 ```
 
@@ -72,8 +77,8 @@ Then in a separate terminal let’s create an empty password file:
 And let’s create our environment variables:
 
 ```text
-$ export ETH_PASSWORD=$PWD/pass   
-$ export ETH_KEYSTORE=~/.dapp/testnet/8545/keystore   
+$ export ETH_PASSWORD=$PWD/pass
+$ export ETH_KEYSTORE=~/.dapp/testnet/8545/keystore
 $ export ETH_FROM=<your ethereum account address>
 ```
 
@@ -90,7 +95,7 @@ Then you have to set up the same variables:
 ```text
 $ export ETH_KEYSTORE=<path to your keystore folder>
 $ export ETH_PASSWORD=<path and filename to the text file containing the password for your account e.g: /home/one1up/MakerDAO/415pass >
-$ export ETH_FROM=<your ethereum account address> 
+$ export ETH_FROM=<your ethereum account address>
 $ export SETH_CHAIN=kovan
 ```
 
@@ -179,7 +184,7 @@ The output is:
 With seth block, we are capable of querying any information about an Ethereum block. Here is the usage from the help option `$ seth block --help`:
 
 ```text
-Usage: seth block [-j|--json] <block> [<field>] 
+Usage: seth block [-j|--json] <block> [<field>]
 Print a table of information about <block>.
 If <field> is given, print only the value of that field.
 ```
@@ -248,5 +253,4 @@ This guide was written based on the official documentation in the Github reposit
 
 ### Known Issues
 
-* Issues with MacOS Mojave
-
+- Issues with MacOS Mojave

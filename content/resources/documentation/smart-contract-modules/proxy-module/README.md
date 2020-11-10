@@ -1,5 +1,10 @@
 ---
+title: Proxy Module
 description: Allowing Users to interact with the Maker Protocol more easily
+tags:
+  - proxy
+slug: introduction-to-mkr-module
+contentType: documentation
 ---
 
 # Proxy Module

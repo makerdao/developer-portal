@@ -1,22 +1,27 @@
 ---
+title: SCD to MCD Migration
 description: The Maker Protocol Upgrade Contract
+tags:
+  - scd
+  - mcd
+  - migration
+slug: scd-to-mcd-migration
+contentType: documentation
 ---
 
-# SCD &lt;&gt; MCD Migration
+# SCD to MCD Migration
 
-* **Contract Name:** scd-mcd-migration.sol
-* **Type/Category:**  Migration
-* \*\*\*\*[**Associated MCD System Diagram**](https://github.com/makerdao/dss/wiki#system-architecture)
-* \*\*\*\*[**Contract Source**](https://github.com/makerdao/scd-mcd-migration/blob/master/src/ScdMcdMigration.sol)
-* \*\*\*\*[**Etherscan**](https://etherscan.io/address/0xc73e0383f3aff3215e6f04b0331d58cecf0ab849)
+- **Contract Name:** scd-mcd-migration.sol
+- **Type/Category:** Migration
+- \*\*\*\*[**Associated MCD System Diagram**](https://github.com/makerdao/dss/wiki#system-architecture)
+- \*\*\*\*[**Contract Source**](https://github.com/makerdao/scd-mcd-migration/blob/master/src/ScdMcdMigration.sol)
+- \*\*\*\*[**Etherscan**](https://etherscan.io/address/0xc73e0383f3aff3215e6f04b0331d58cecf0ab849)
 
 ## 1. Introduction \(Summary\)
 
 The Migration contract's purpose is to allow moving SAI and CDPs from the SCD system to the MCD system, thus becoming DAI and Vaults. It also allows users to move SAI/DAI in both directions should they want to exit MCD and go back to SCD.
 
 ![](../.gitbook/assets/scd-mcd.png)
-
-
 
 ![](../.gitbook/assets/scd-mcd2%20%281%29.png)
 
@@ -73,9 +78,9 @@ Lastly, the migration contract gives the MCD-Vault to the `msg.sender`.
 
 ## 4. Gotchas \(Potential source of user error\)
 
-* Any special/unique information about the specific contract
-* Anything that it may rely on, especially if it is not obvious
-* Sources of user error if not explicitly defined
+- Any special/unique information about the specific contract
+- Anything that it may rely on, especially if it is not obvious
+- Sources of user error if not explicitly defined
 
 #### `swapSaiToDai`
 
@@ -100,15 +105,14 @@ Before SCD shutdown: Users who took out a Vault in SCD and then used the DAI to 
 
 ## 5. Failure Modes \(Bounds on Operating Conditions & External Risk Factors\)
 
-* **Potential for error:** Governance parameters around SAI collateral
-  * Collateralization ratio has to be set to a very low number
-  * Both `ilks["sai"].duty` and `Jug.base` have to be set to `0` during the migration period
-* **Auth errors on Sai Join**
-* Excess Sai in MCD \(i.e. more `cup`s are lost/not migrated than lost/not migrated Sai\): results in an auction and possibly MKR auction to cover bad debt.
+- **Potential for error:** Governance parameters around SAI collateral
+  - Collateralization ratio has to be set to a very low number
+  - Both `ilks["sai"].duty` and `Jug.base` have to be set to `0` during the migration period
+- **Auth errors on Sai Join**
+- Excess Sai in MCD \(i.e. more `cup`s are lost/not migrated than lost/not migrated Sai\): results in an auction and possibly MKR auction to cover bad debt.
 
 **Migration**
 
-* Sai debt ceiling to 0
-* MCD.ilks\[sai\] debt ceiling to SCD.totalDai
-* DSR value competitive with Compound to encourage migration
-
+- Sai debt ceiling to 0
+- MCD.ilks\[sai\] debt ceiling to SCD.totalDai
+- DSR value competitive with Compound to encourage migration

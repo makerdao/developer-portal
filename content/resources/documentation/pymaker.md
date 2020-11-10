@@ -8,8 +8,6 @@ slug: pymaker
 contentType: documentation
 ---
 
----
-
 ## description: A Python API for the Maker Smart Contracts
 
 # Pymaker

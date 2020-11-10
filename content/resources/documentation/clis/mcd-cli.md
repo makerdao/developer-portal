@@ -1,8 +1,14 @@
 ---
+title: Multi Collateral Dai (MCD) CLI
 description: Welcome to the MCD CLI
+tags:
+  - mcd
+  - cli
+slug: mcd-cli
+contentType: documentation
 ---
 
-# Multi Collateral Dai \(MCD\) CLI
+# Multi Collateral Dai (MCD) CLI
 
 ## Installation
 
@@ -18,7 +24,7 @@ Then install the `mcd` package:
 $ dapp pkg install mcd
 ```
 
-####  The following list details all of the commands available when interacting with the command-line interface: 
+#### The following list details all of the commands available when interacting with the command-line interface:
 
 ```text
 MCD - Multi-collateral Dai
@@ -321,4 +327,3 @@ tab  50.000000000000000000000000000             Outstanding debt (Dai)
 rap  0.000494560886729822000020743              Accumulated stability fee (Dai)
 -->  16.66                                      Collateralization ratio
 ```
-

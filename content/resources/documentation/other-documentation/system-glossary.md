@@ -1,7 +1,12 @@
 ---
-description: >-
-  A list of words, terms, variables, functions and more relating to the Maker
-  Protocol
+title: MCD Glossaries
+description: A list of words, terms, variables, functions and more relating to the Maker Protocol
+tags:
+  - annotations
+  - glossary
+  - mcd
+slug: mcd-glossaries
+contentType: documentation
 ---
 
 # MCD Glossaries
@@ -12,85 +17,85 @@ description: >-
 
 ### **General**
 
-* `guy`, `usr`: some address
-* `wad`: some quantity of tokens, usually as a fixed point integer with 18 decimal places.
-* `ray`: a fixed point integer, with 27 decimal places.
-* `rad`: a fixed point integer, with 45 decimal places.
-* `file`: administer some configuration value
+- `guy`, `usr`: some address
+- `wad`: some quantity of tokens, usually as a fixed point integer with 18 decimal places.
+- `ray`: a fixed point integer, with 27 decimal places.
+- `rad`: a fixed point integer, with 45 decimal places.
+- `file`: administer some configuration value
 
 ### **Auth**
 
-* `auth`: check whether an address can call this method
-* `ward`: an address that is allowed to call auth'ed methods
-* `rely`: allow an address to call auth'ed methods
-* `deny`: disallow an address from calling auth'ed methods
-* `Authority` - checks whether an address can call this method
-* `Kiss` - cancels out surplus and on-auction debt
+- `auth`: check whether an address can call this method
+- `ward`: an address that is allowed to call auth'ed methods
+- `rely`: allow an address to call auth'ed methods
+- `deny`: disallow an address from calling auth'ed methods
+- `Authority` - checks whether an address can call this method
+- `Kiss` - cancels out surplus and on-auction debt
 
 ### **Vat \(Vault Engine\)**
 
-* `gem`: collateral tokens.
-* `dai`: stablecoin tokens.
-* `sin`: unbacked stablecoin \(system debt, not belonging to any `urn`\).
-* `ilk`: a collateral type.
-  * `rate`: stablecoin debt multiplier \(accumulated stability fees\).
-  * `take`: collateral balance multiplier.
-  * `Ink`: total collateral balance.
-  * `Art`: total normalized stablecoin debt.
-* `init`: create a new collateral type.
-* `urn`: a specific Vault.
-  * `ink`: collateral balance.
-  * `art`: normalized outstanding stablecoin debt.
-* `slip`: modify a user's collateral balance.
-* `flux`: transfer collateral between users.
-* `move`: transfer stablecoin between users.
-* `grab`: liquidate a Vault.
-* `heal`: create / destroy equal quantities of stablecoin and system debt \(`vice`\).
-* `fold`: modify the debt multiplier, creating / destroying corresponding debt.
-* `toll`: modify the collateral multiplier, creating / destroying corresponding collateral.
-* `suck`: mint unbacked stablecoin \(accounted for with `vice`\).
-* `spot`: collateral price with safety margin, i.e. the maximum stablecoin allowed per unit of collateral.
-* `line`: the debt ceiling for a specific collateral type.
-* `Line`: the total debt ceiling for all collateral types.
-* `dust`: the minimum possible debt of a Vault.
-* `frob`: modify a Vault.
-  * `lock`: transfer collateral into a Vault.
-  * `free`: transfer collateral from a Vault.
-  * `draw`: increase Vault debt, creating Dai.
-  * `wipe`: decrease Vault debt, destroying Dai.
-  * `dink`: change in collateral.
-  * `dart`: change in debt.
-  * `calm`: true when the Vault remains under both collateral and total debt ceilings.
-  * `cool`: true when the stablecoin debt does not increase.
-  * `firm`: true when the collateral balance does not decrease.
-  * `safe`: true when the Vault's ratio of collateral to debt is above the collateral's liquidation ratio.
-* `fork`: to split a Vault - binary approval or splitting/merging Vaults.
-  * `dink`: amount of collateral to exchange.
-  * `dart`: amount of stablecoin debt to exchange.
-* `wish`: check whether an address is allowed to modify another address's gem or dai balance.
-  * `hope`: enable `wish` for a pair of addresses.
-  * `nope`: disable `wish` for a pair of addresses.
+- `gem`: collateral tokens.
+- `dai`: stablecoin tokens.
+- `sin`: unbacked stablecoin \(system debt, not belonging to any `urn`\).
+- `ilk`: a collateral type.
+  - `rate`: stablecoin debt multiplier \(accumulated stability fees\).
+  - `take`: collateral balance multiplier.
+  - `Ink`: total collateral balance.
+  - `Art`: total normalized stablecoin debt.
+- `init`: create a new collateral type.
+- `urn`: a specific Vault.
+  - `ink`: collateral balance.
+  - `art`: normalized outstanding stablecoin debt.
+- `slip`: modify a user's collateral balance.
+- `flux`: transfer collateral between users.
+- `move`: transfer stablecoin between users.
+- `grab`: liquidate a Vault.
+- `heal`: create / destroy equal quantities of stablecoin and system debt \(`vice`\).
+- `fold`: modify the debt multiplier, creating / destroying corresponding debt.
+- `toll`: modify the collateral multiplier, creating / destroying corresponding collateral.
+- `suck`: mint unbacked stablecoin \(accounted for with `vice`\).
+- `spot`: collateral price with safety margin, i.e. the maximum stablecoin allowed per unit of collateral.
+- `line`: the debt ceiling for a specific collateral type.
+- `Line`: the total debt ceiling for all collateral types.
+- `dust`: the minimum possible debt of a Vault.
+- `frob`: modify a Vault.
+  - `lock`: transfer collateral into a Vault.
+  - `free`: transfer collateral from a Vault.
+  - `draw`: increase Vault debt, creating Dai.
+  - `wipe`: decrease Vault debt, destroying Dai.
+  - `dink`: change in collateral.
+  - `dart`: change in debt.
+  - `calm`: true when the Vault remains under both collateral and total debt ceilings.
+  - `cool`: true when the stablecoin debt does not increase.
+  - `firm`: true when the collateral balance does not decrease.
+  - `safe`: true when the Vault's ratio of collateral to debt is above the collateral's liquidation ratio.
+- `fork`: to split a Vault - binary approval or splitting/merging Vaults.
+  - `dink`: amount of collateral to exchange.
+  - `dart`: amount of stablecoin debt to exchange.
+- `wish`: check whether an address is allowed to modify another address's gem or dai balance.
+  - `hope`: enable `wish` for a pair of addresses.
+  - `nope`: disable `wish` for a pair of addresses.
 
 **Note:** `art` and `Art` represent normalized debt, i.e. a value that when multiplied by the correct rate gives the up-to-date, current stablecoin debt.
 
 #### **Accounting**
 
-* `debt`: the sum of all `dai` \(the total quantity of dai issued\).
-* `vice`: the sum of all `sin` \(the total quantity of system debt\).
-* `ilk.Art`: the sum of all `art` in the `urn`s for that `ilk`.
-* `debt`: is `vice` plus the sum of `ilk.Art * ilk.rate` across all `ilk`'s.
+- `debt`: the sum of all `dai` \(the total quantity of dai issued\).
+- `vice`: the sum of all `sin` \(the total quantity of system debt\).
+- `ilk.Art`: the sum of all `art` in the `urn`s for that `ilk`.
+- `debt`: is `vice` plus the sum of `ilk.Art * ilk.rate` across all `ilk`'s.
 
 #### **Collateral**
 
-* `gem`: can always be transferred to any address by it's owner.
+- `gem`: can always be transferred to any address by it's owner.
 
 #### **Dai**
 
-* `dai`: can only move with the consent of it's owner / can always be transferred to any address by it's owner.
+- `dai`: can only move with the consent of it's owner / can always be transferred to any address by it's owner.
 
 **Other**
 
-* `LogNote`: a general purpose log that can be added to any function from a contract.
+- `LogNote`: a general purpose log that can be added to any function from a contract.
 
 ### **Jug \(Stability Fees\)**
 
@@ -132,105 +137,105 @@ These methods require `wards[msg.sender] == 1` \(i.e. only authorized users may 
 
 ### **Cat \(Liquidations\)**
 
-* `mat`: the liquidation ratio
-* `chop`: the liquidation penalty
-* `lump`: the liquidation quantity, i.e. the fixed debt quantity to be covered by any one liquidation event
-* `bite`: initiate liquidation of a Vault 
-* `flip`: liquidate collateral from a Vault to cover a fixed quantity of debt
+- `mat`: the liquidation ratio
+- `chop`: the liquidation penalty
+- `lump`: the liquidation quantity, i.e. the fixed debt quantity to be covered by any one liquidation event
+- `bite`: initiate liquidation of a Vault
+- `flip`: liquidate collateral from a Vault to cover a fixed quantity of debt
 
 ### **Vow \(Settlement\)**
 
-* `sin`: the system debt queue.
-* `Sin`: the total amount of debt in the queue.
-* `Ash`: the total amount of on-auction debt.
-* `wait`: length of the debt queue
-* `sump`: debt auction bid size, i.e. the fixed debt quantity to be covered by any one debt auction
-* `dump`: debt auction lot size, i.e. the starting amount of MKR offered to cover the `lot`/`sump`
-* `bump`: surplus auction lot size, i.e. the fixed surplus quantity to be sold by any one surplus auction
-* `hump`: surplus buffer, must be exceeded before surplus auctions are possible
+- `sin`: the system debt queue.
+- `Sin`: the total amount of debt in the queue.
+- `Ash`: the total amount of on-auction debt.
+- `wait`: length of the debt queue
+- `sump`: debt auction bid size, i.e. the fixed debt quantity to be covered by any one debt auction
+- `dump`: debt auction lot size, i.e. the starting amount of MKR offered to cover the `lot`/`sump`
+- `bump`: surplus auction lot size, i.e. the fixed surplus quantity to be sold by any one surplus auction
+- `hump`: surplus buffer, must be exceeded before surplus auctions are possible
 
 **Other terms included in Vow documentation:**
 
-* `move`: transfers stablecoin between users.
-* `kick`: starts an auction.
-* `woe`: indicates specifically bad debt, or be used as a variable name for any amount of debt.
+- `move`: transfers stablecoin between users.
+- `kick`: starts an auction.
+- `woe`: indicates specifically bad debt, or be used as a variable name for any amount of debt.
 
 ### Flipper \(Collateral Auctions\)
 
-* `wards [usr: address]`, `rely`/`deny`/`auth`: Auth mechanisms
-* `Bid`: State of a specific Auction {`bid`, `lot`, `guy`, `tic`, `end`, `usr`, `gal`, `tab`}
-  * `bid`: Bid amount \(DAI\)/ DAI paid
-  * `lot`: quantity up for auction / collateral gems for sale
-  * `guy`: high bidder \(address\)
-  * `tic`: Bid expiry
-  * `end`: when the auction will finish / max auction duration
-  * `usr`: address of the Vault being auctioned. Receives gems during the `dent` phase
-  * `gal`: recipient of auction income / receives dai income \(this is the Vow contract\)
-  * `tab`: total dai wanted from the auction / total dai to be raised \(in flip auction\)
-* `bids[id: uint]`: storage of all bids
-* `vat`: storage of the Vat's address
-* `ilk`: id of the Ilk for which the Flipper is responsible
-* `beg`: minimum bid increase \(default: 5%\)
-* `ttl`: bid duration \(default: 3 hours\)
-* `tau`: auction length \(default: 2 days\)
-* `kicks`: Total auction count, used to track auction `id`s
-* `kick`: function used by `Cat` to start an auction / Put collateral up for auction
-* `tick`: restart an auction if there have been 0 bids and the `end` has passed
-* `tend`: first phase of an auction. Increasing Dai `bid`s for a set `lot` of Gems
-* `dent`: second phase of an auction. Set Dai `bid` for a decreasing `lot` of Gems
-* `file`: function used by governance to set `beg`, `ttl`, and `tau`
-* `deal`: claim a winning bid / settles a completed auction
-* `yank`: used during Global Settlement to move `tend` phase auctions to the `End` by retrieving the collateral and repaying dai to the highest bidder.
+- `wards [usr: address]`, `rely`/`deny`/`auth`: Auth mechanisms
+- `Bid`: State of a specific Auction {`bid`, `lot`, `guy`, `tic`, `end`, `usr`, `gal`, `tab`}
+  - `bid`: Bid amount \(DAI\)/ DAI paid
+  - `lot`: quantity up for auction / collateral gems for sale
+  - `guy`: high bidder \(address\)
+  - `tic`: Bid expiry
+  - `end`: when the auction will finish / max auction duration
+  - `usr`: address of the Vault being auctioned. Receives gems during the `dent` phase
+  - `gal`: recipient of auction income / receives dai income \(this is the Vow contract\)
+  - `tab`: total dai wanted from the auction / total dai to be raised \(in flip auction\)
+- `bids[id: uint]`: storage of all bids
+- `vat`: storage of the Vat's address
+- `ilk`: id of the Ilk for which the Flipper is responsible
+- `beg`: minimum bid increase \(default: 5%\)
+- `ttl`: bid duration \(default: 3 hours\)
+- `tau`: auction length \(default: 2 days\)
+- `kicks`: Total auction count, used to track auction `id`s
+- `kick`: function used by `Cat` to start an auction / Put collateral up for auction
+- `tick`: restart an auction if there have been 0 bids and the `end` has passed
+- `tend`: first phase of an auction. Increasing Dai `bid`s for a set `lot` of Gems
+- `dent`: second phase of an auction. Set Dai `bid` for a decreasing `lot` of Gems
+- `file`: function used by governance to set `beg`, `ttl`, and `tau`
+- `deal`: claim a winning bid / settles a completed auction
+- `yank`: used during Global Settlement to move `tend` phase auctions to the `End` by retrieving the collateral and repaying dai to the highest bidder.
 
 ### Flapper \(Surplus Auctions\)
 
-* `Flap`: surplus auction \(selling stablecoins for MKR\) \[contract\]
-* `wards [usr: address]`: `rely`/`deny`/`auth` Auth Mechanisms \[uint\]
-* `Bid`: State of a specific Auction\[Bid\]
-  * `bid`: quantity being offered for the `lot` \(MKR\) \[uint\]
-  * `lot`: lot amount \(DAI\) \[uint\]
-  * `guy`: high bidder \[address\]
-  * `tic`: Bid expiry \[uint48\]
-  * `end`: when the auction will finish \[uint48\]
-* `bids (id: uint)`: storage of all `Bid`s by `id` \[mapping\]
-* `vat`: storage of the Vat's address \[address\]
-* `ttl`: bid lifetime / max bid duration \(default: 3 hours\) \[uint48\]
-* `lot`: lot amount \(DAI\) \[uint\]
-* `beg`: minimum bid increase \(default: 5%\) \[uint\]
-* `tau`: maximum auction duration \(default: 2 days\) \[uint48\]
-* `kick`: start an auction / put up a new DAI `lot` for auction \[function\]
-* `tend`: make a bid, thus increasing the bid size / submit an MKR bid \(increasing `bid`\) \[function\]
-* `deal`: claim a winning bid / settling a completed auction \[function\]
-* `gem`: MKR Token \[address\]
-* `kicks`: total auction count \[uint\]
-* `live`: cage flag \[uint\]
-* `file`: used by governance to set `beg`, `ttl`, and `tau` \[function\]
-* `yank`: is used during Global Settlement to move `tend` phase auctions to the `End` by retrieving the collateral and repaying DAI to the highest bidder. \[function\]
-* `tick()`: resets the `end` value if there has been 0 bids and the original `end` has passed.
+- `Flap`: surplus auction \(selling stablecoins for MKR\) \[contract\]
+- `wards [usr: address]`: `rely`/`deny`/`auth` Auth Mechanisms \[uint\]
+- `Bid`: State of a specific Auction\[Bid\]
+  - `bid`: quantity being offered for the `lot` \(MKR\) \[uint\]
+  - `lot`: lot amount \(DAI\) \[uint\]
+  - `guy`: high bidder \[address\]
+  - `tic`: Bid expiry \[uint48\]
+  - `end`: when the auction will finish \[uint48\]
+- `bids (id: uint)`: storage of all `Bid`s by `id` \[mapping\]
+- `vat`: storage of the Vat's address \[address\]
+- `ttl`: bid lifetime / max bid duration \(default: 3 hours\) \[uint48\]
+- `lot`: lot amount \(DAI\) \[uint\]
+- `beg`: minimum bid increase \(default: 5%\) \[uint\]
+- `tau`: maximum auction duration \(default: 2 days\) \[uint48\]
+- `kick`: start an auction / put up a new DAI `lot` for auction \[function\]
+- `tend`: make a bid, thus increasing the bid size / submit an MKR bid \(increasing `bid`\) \[function\]
+- `deal`: claim a winning bid / settling a completed auction \[function\]
+- `gem`: MKR Token \[address\]
+- `kicks`: total auction count \[uint\]
+- `live`: cage flag \[uint\]
+- `file`: used by governance to set `beg`, `ttl`, and `tau` \[function\]
+- `yank`: is used during Global Settlement to move `tend` phase auctions to the `End` by retrieving the collateral and repaying DAI to the highest bidder. \[function\]
+- `tick()`: resets the `end` value if there has been 0 bids and the original `end` has passed.
 
 ### Flopper \(Debt Auctions\)
 
-* `flop`: debt auction \(covering debt by inflating MKR and selling for stablecoins\)
-* `lot`: quantity up for auction / gems for sale \(MKR\)
-* `guy`: high bidder \(address\)
-* `gal`: recipient of auction income / receives dai income \(this is the Vow contract\)
-* `ttl`: bid lifetime \(Max bid duration / single bid lifetime\)
-* `beg`: minimum bid decrease
-* `pad`: Increase for `lot` size during `tick` \(default to 50%\)
-* `tau`: maximum auction duration
-* `end`: when the auction will finish / max auction duration
-* `kick`: start an auction / Put up a new MKR `bid` for auction
-* `dent`: make a bid, decreasing the lot size \(Submit a fixed DAI `bid` with decreasing `lot` size\)
-* `deal`: claim a winning bid / settles a completed auction
-* `vat`: the Vat's address
-* `gem`: MKR Token \(address\)
-* `kicks`: Total auction count, used to track auction `id`s
-* `live`: Cage flag
-* `wards [usr: address]`, `rely`/`deny`/`auth`: Auth mechanisms
-* `Bid`: State of a specific Auction {`bid`, `lot`, `guy`, `tic`, `end`}
-* `bid`: Bid amount inDAI / DAI paid
-* `tic`: Bid expiry
-* `tick`: restarts an auction
+- `flop`: debt auction \(covering debt by inflating MKR and selling for stablecoins\)
+- `lot`: quantity up for auction / gems for sale \(MKR\)
+- `guy`: high bidder \(address\)
+- `gal`: recipient of auction income / receives dai income \(this is the Vow contract\)
+- `ttl`: bid lifetime \(Max bid duration / single bid lifetime\)
+- `beg`: minimum bid decrease
+- `pad`: Increase for `lot` size during `tick` \(default to 50%\)
+- `tau`: maximum auction duration
+- `end`: when the auction will finish / max auction duration
+- `kick`: start an auction / Put up a new MKR `bid` for auction
+- `dent`: make a bid, decreasing the lot size \(Submit a fixed DAI `bid` with decreasing `lot` size\)
+- `deal`: claim a winning bid / settles a completed auction
+- `vat`: the Vat's address
+- `gem`: MKR Token \(address\)
+- `kicks`: Total auction count, used to track auction `id`s
+- `live`: Cage flag
+- `wards [usr: address]`, `rely`/`deny`/`auth`: Auth mechanisms
+- `Bid`: State of a specific Auction {`bid`, `lot`, `guy`, `tic`, `end`}
+- `bid`: Bid amount inDAI / DAI paid
+- `tic`: Bid expiry
+- `tick`: restarts an auction
 
 ### **End \(Global Settlement / Shutdown\)**
 
@@ -268,7 +273,7 @@ These methods require `wards[msg.sender] == 1` \(i.e. only authorized users may 
 
 `live`: Cage flag
 
-* "Live" contracts have `live` = 1, indicating the system is running normally. Thus, when `cage()` is invoked, it sets the flag to 0. This includes the `End` contract, which means that `cage()` can only be invoked once and the subsequent functions cannot be invoked until we are "dead" and in the End process
+- "Live" contracts have `live` = 1, indicating the system is running normally. Thus, when `cage()` is invoked, it sets the flag to 0. This includes the `End` contract, which means that `cage()` can only be invoked once and the subsequent functions cannot be invoked until we are "dead" and in the End process
 
 `ilk`: A collateral type
 
@@ -306,69 +311,69 @@ These methods require `wards[msg.sender] == 1` \(i.e. only authorized users may 
 
 ### Join \(Token Adapters\)
 
-* `vat`: storage of the `Vat`’s address.
-* `ilk`: id of the Ilk for which a `GemJoin` is created for.
-* `gem`: the address of the `ilk` for transferring.
-* `dai`: the address of the `dai` token.
-* `one`: a 10^27 uint used for math in `DaiJoin`.
-* `live`: an access flag for the `join` adapter.
-* `dec`: decimals for the Gem.
+- `vat`: storage of the `Vat`’s address.
+- `ilk`: id of the Ilk for which a `GemJoin` is created for.
+- `gem`: the address of the `ilk` for transferring.
+- `dai`: the address of the `dai` token.
+- `one`: a 10^27 uint used for math in `DaiJoin`.
+- `live`: an access flag for the `join` adapter.
+- `dec`: decimals for the Gem.
 
 ### Cat \(Liquidations\)
 
-* `mul(uint, uint)`/`rmul(uint, uint)`: will revert on overflow or underflow
-* `bite(bytes32, address)`: will revert if `lot` or `art` are larger than or equal to 2^255.
-* `bite`:  will not leave a Vault with debt and no collateral.
-* `wards`:  are allowed to call protected functions \(Administration and `cage()`\)
-* `ilks`:  stores `Ilk` structs
-  * `Ilk` is the struct with the address of the collateral auction contract \(`flip`\), the penalty for that collateral to be liquidated \(`chop`\) and the maximum size of collateral that can be auctioned at once \(`lump`\).
-* `live`:  must be `1` for the `Cat` to `bite` \(see `cage` in mechanisms\)
-* `vat`:  address that conforms to a `VatLike` interface \(see `vat` documentation \[TODO - Link\] for more info\). It is set during the constructor and **cannot be changed**.
-* `vow`:  address that conforms to a `VowLike` interface \(see `vow` documentation \[TODO - Link\] for more info\).
+- `mul(uint, uint)`/`rmul(uint, uint)`: will revert on overflow or underflow
+- `bite(bytes32, address)`: will revert if `lot` or `art` are larger than or equal to 2^255.
+- `bite`: will not leave a Vault with debt and no collateral.
+- `wards`: are allowed to call protected functions \(Administration and `cage()`\)
+- `ilks`: stores `Ilk` structs
+  - `Ilk` is the struct with the address of the collateral auction contract \(`flip`\), the penalty for that collateral to be liquidated \(`chop`\) and the maximum size of collateral that can be auctioned at once \(`lump`\).
+- `live`: must be `1` for the `Cat` to `bite` \(see `cage` in mechanisms\)
+- `vat`: address that conforms to a `VatLike` interface \(see `vat` documentation \[TODO - Link\] for more info\). It is set during the constructor and **cannot be changed**.
+- `vow`: address that conforms to a `VowLike` interface \(see `vow` documentation \[TODO - Link\] for more info\).
 
 **Events**
 
-* `Bite`: emitted when a `bite(bytes32, address)` is successfully executed. Contains:
-  * `ilk`: Collateral
-  * `urn`: Vault address
-  * `ink`: see `lot` in `bite`
-  * `art`: see `art` in `bite`
-  * `tab`: see `tab` in `bite`
-  * `flip`: address of the auction contract
-  * `id`: ID of the auction in the `Flipper`
+- `Bite`: emitted when a `bite(bytes32, address)` is successfully executed. Contains:
+  - `ilk`: Collateral
+  - `urn`: Vault address
+  - `ink`: see `lot` in `bite`
+  - `art`: see `art` in `bite`
+  - `tab`: see `tab` in `bite`
+  - `flip`: address of the auction contract
+  - `id`: ID of the auction in the `Flipper`
 
 ### Spot \(Oracles and Contracts Liaison\)
 
-* `ilk`: a given collateral type
-* `ilk.pip`: the contract which holds the current price of a given `ilk`
-* `ilk.mat`: the liquidation ratio for a given `ilk`
-* `vat`: the core of the mcd system
-* `par`: the relationship between DAI and 1 unit of value in the price. \(Similar to TRFM\)
+- `ilk`: a given collateral type
+- `ilk.pip`: the contract which holds the current price of a given `ilk`
+- `ilk.mat`: the liquidation ratio for a given `ilk`
+- `vat`: the core of the mcd system
+- `par`: the relationship between DAI and 1 unit of value in the price. \(Similar to TRFM\)
 
 **Collateral**
 
-* Only authorized users can update any variables in contract
+- Only authorized users can update any variables in contract
 
 ### Pot \(Savings Dai\)
 
 **Math**
 
-* `mul(uint, uint)`, `rmul(uint, uint)`, `add(uint, uint)`& `sub(uint, uint)`: will revert on overflow or underflow
-* `rpow(uint x, uint n, uint base)`: used for exponentiation in `drip`, is a fixed-point arithmetic function that raises `x` to the power `n`.
+- `mul(uint, uint)`, `rmul(uint, uint)`, `add(uint, uint)`& `sub(uint, uint)`: will revert on overflow or underflow
+- `rpow(uint x, uint n, uint base)`: used for exponentiation in `drip`, is a fixed-point arithmetic function that raises `x` to the power `n`.
 
 **Auth**
 
-* `wards`: are allowed to call protected functions \(Administration\)
+- `wards`: are allowed to call protected functions \(Administration\)
 
 **Storage**
 
-* `pie`: stores the address' `Pot` balance.
-* `Pie`: stores the total balance in the `Pot`.
-* `dsr`: the `dai savings rate`. It starts as `1` \(`ONE = 10^27`\), but can be updated by governance.
-* `chi`: the rate accumulator. This is the always increasing value which decides how much `dai`: given when `drip()` is called.
-* `vat`: an address that conforms to a `VatLike` interface. It is set during the constructor and **cannot be changed**.
-* `vow`: an address that conforms to a `VowLike` interface. Not set in constructor. Must be set by governance.
-* `rho`: the last time that drip is called.
+- `pie`: stores the address' `Pot` balance.
+- `Pie`: stores the total balance in the `Pot`.
+- `dsr`: the `dai savings rate`. It starts as `1` \(`ONE = 10^27`\), but can be updated by governance.
+- `chi`: the rate accumulator. This is the always increasing value which decides how much `dai`: given when `drip()` is called.
+- `vat`: an address that conforms to a `VatLike` interface. It is set during the constructor and **cannot be changed**.
+- `vow`: an address that conforms to a `VowLike` interface. Not set in constructor. Must be set by governance.
+- `rho`: the last time that drip is called.
 
 ### Dai \(Stablecoin\)
 
@@ -388,6 +393,4 @@ These methods require `wards[msg.sender] == 1` \(i.e. only authorized users may 
 
 `allowance(src: address, dst: address)`: Approvals
 
-`nonces(usr: address)`: Permit nonce  
-
-
+`nonces(usr: address)`: Permit nonce
