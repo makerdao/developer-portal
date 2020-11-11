@@ -3,7 +3,7 @@ title: Seth
 description: A powerful command line tool created to interface with the Ethereum blockchain
 tags:
   - cli
-slug: mcd-cli
+slug: seth
 contentType: documentation
 ---
 

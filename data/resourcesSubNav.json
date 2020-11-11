@@ -53,6 +53,12 @@
       "name": "Dai",
       "slug": "dai",
       "id": "8"
+    },
+    {
+      "url": "/documentation/vat-detailed-documentation",
+      "name": "Vaults",
+      "slug": "vaults",
+      "id": "8"
     }
   ]
 }
