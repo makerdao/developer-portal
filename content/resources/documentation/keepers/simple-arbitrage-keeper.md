@@ -39,7 +39,7 @@ With advancement in technology, this trading strategy is typically automated and
 
 #### System Process Structure
 
-![](../.gitbook/assets/arb.jpeg)
+![](/images/documentation/arb.jpeg)
 
 **Operation of the Simple Arbitrage Keeper**
 

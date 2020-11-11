@@ -32,7 +32,7 @@ The following section assumes familiarity with Emergency Shutdown. Good places t
 
 ## Architecture
 
-![](../.gitbook/assets/cage2.png)
+![](/images/documentation/cage2.png)
 
 The `cage-keeper` directly interacts with the `End`, `Flopper` and `Flapper` contracts.
 

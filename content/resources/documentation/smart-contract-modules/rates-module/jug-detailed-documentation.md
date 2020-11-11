@@ -22,7 +22,7 @@ contentType: documentation
 
 The primary function of the Jug smart contract is to accumulate stability fees for a particular collateral type whenever its `drip()` method is called. This effectively updates the accumulated debt for all Vaults of that collateral type as well as the total accumulated debt as tracked by the Vat \(global\) and the amount of Dai surplus \(represented as the amount of Dai owned by the [Vow](https://www.notion.so/makerdao/Vow-Detailed-Documentation-7f3074dd92514db59efb6f128919b2c5)\).
 
-![](../../.gitbook/assets/jug.png)
+![](/images/documentation/jug.png)
 
 ## 2. Contract Details
 

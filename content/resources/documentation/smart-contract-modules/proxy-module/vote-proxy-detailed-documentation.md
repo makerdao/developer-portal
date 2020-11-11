@@ -19,7 +19,7 @@ contentType: documentation
 
 The `VoteProxy` contract allows for MKR users to vote with a hot or cold wallet using a proxy voting identity instead of interacting directly with the chief. In addition to supporting two different voting mechanisms, the vote proxy also minimizes the time that MKR owners need to have their wallet\(s\) online.
 
-![](../../.gitbook/assets/pause.png)
+![](/images/documentation/pause.png)
 
 ## 2. Contract Details
 

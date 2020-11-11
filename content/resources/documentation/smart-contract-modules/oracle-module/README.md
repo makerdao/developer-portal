@@ -33,7 +33,7 @@ The Oracle Module has 2 core components consisting of the `Median` and `OSM` con
 
 ## 3. Key Mechanism and Concepts
 
-![Interaction Diagram \(Credit: MCD-101 Presentation, by Kenton Prescott\)](../../.gitbook/assets/oracles2.png)
+![Interaction Diagram \(Credit: MCD-101 Presentation, by Kenton Prescott\)](/images/documentation/oracles2.png)
 
 #### Summary of the Oracle **Module Components**
 

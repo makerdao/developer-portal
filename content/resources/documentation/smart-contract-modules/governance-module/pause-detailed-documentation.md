@@ -19,7 +19,7 @@ contentType: documentation
 
 The `ds-pause` is a _delegatecall_ based proxy with an enforced delay. This allows authorized users to schedule function calls that can only be executed once a predetermined waiting period has elapsed. The configurable delay attribute sets the minimum wait time that will be used during the governance of the system.
 
-![](../../.gitbook/assets/pause.png)
+![](/images/documentation/pause.png)
 
 ## 2. Contract Details:
 

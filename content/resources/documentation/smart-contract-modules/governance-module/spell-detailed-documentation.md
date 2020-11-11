@@ -21,7 +21,7 @@ A `DSSpell` is an un-owned object that performs one action or series of atomic a
 
 This primitive is useful to express objects that do actions which shouldn't depend on "sender", like an upgrade to a contract system that needs to be given root permission. By convention, it is usually what is used to change SCD or MCD system parameters \(where it is given auth via voting in [ds-chief](https://github.com/dapphub/ds-chief/blob/master/src/chief.sol)\).
 
-![](../../.gitbook/assets/pause.png)
+![](/images/documentation/pause.png)
 
 ## 2. Contract Details
 

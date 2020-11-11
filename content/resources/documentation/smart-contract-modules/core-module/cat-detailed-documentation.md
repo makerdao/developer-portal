@@ -21,7 +21,7 @@ contentType: documentation
 
 The `Cat` is the system's liquidation agent, it enables keepers to mark positions as unsafe and sends them to auction.
 
-![](../../.gitbook/assets/screen-shot-2019-11-17-at-2.22.55-pm.png)
+![](/images/documentation/screen-shot-2019-11-17-at-2.22.55-pm.png)
 
 ## 2. Contract Details
 

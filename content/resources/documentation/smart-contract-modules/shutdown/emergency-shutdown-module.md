@@ -20,7 +20,7 @@ contentType: documentation
 
 The Emergency Shutdown Module \(ESM\) is a contract with the ability to call `End.cage()` to trigger the Shutdown of the Maker Protocol.
 
-![](../../.gitbook/assets/mcd-system-2.0%20%282%29.png)
+![](/images/documentation/mcd-system-2.0%20%282%29.png)
 
 ## 2. Contract Details
 

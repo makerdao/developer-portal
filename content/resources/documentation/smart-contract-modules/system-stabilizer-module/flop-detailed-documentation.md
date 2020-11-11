@@ -20,7 +20,7 @@ contentType: documentation
 
 **Summary:** Debt Auctions are used to recapitalize the system by auctioning off MKR for a fixed amount of DAI. In this process, bidders compete by offering to accept decreasing amounts of MKR for the DAI they will end up paying.
 
-![Flop Interactions with the Maker Protocol](../../.gitbook/assets/screen-shot-2019-11-17-at-2.15.41-pm.png)
+![Flop Interactions with the Maker Protocol](/images/documentation/screen-shot-2019-11-17-at-2.15.41-pm.png)
 
 ## 2. Contract Details
 
@@ -69,7 +69,7 @@ If the auction expires without receiving any bids, anyone can restart the auctio
 1. It resets `bids[id].end` to `now + tau`
 2. It resets `bids[id].lot` to `bids[id].lot * pad / ONE`
 
-![A diagram detailing the interactions a user has with Flopper and the Vow](../../.gitbook/assets/flop_auction_interaction_diagram.png)
+![A diagram detailing the interactions a user has with Flopper and the Vow](/images/documentation/flop_auction_interaction_diagram.png)
 
 #### **Bidding Requirements during an auction**
 

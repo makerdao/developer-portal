@@ -20,7 +20,7 @@ contentType: documentation
 
 The `Spot` liaison between the `oracles` and the core contracts. It functions as an interface contract and only stores the current `ilk` list.
 
-![](../../.gitbook/assets/screen-shot-2019-11-17-at-2.26.39-pm.png)
+![](/images/documentation/screen-shot-2019-11-17-at-2.26.39-pm.png)
 
 ## 2. Contract Details
 

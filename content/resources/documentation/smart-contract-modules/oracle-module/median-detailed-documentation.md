@@ -21,7 +21,7 @@ The median provides Maker's trusted reference price. In short, it works by maint
 
 **A High-level overview diagram of the components that involve and interact with the median:**
 
-![](../../.gitbook/assets/oracles%20%281%29.png)
+![](/images/documentation/oracles%20%281%29.png)
 
 **Note:** All arrows without labels are governance calls.
 

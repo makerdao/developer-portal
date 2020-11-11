@@ -23,7 +23,7 @@ contentType: documentation
 - Multi Vault ownership and numerical identification \(users can own N number of Vaults\)
 - Vault transferability
 
-![MCD System Diagram: Vault User and Vault Manager interaction diagram](../../.gitbook/assets/cdp-manager.png)
+![MCD System Diagram: Vault User and Vault Manager interaction diagram](/images/documentation/cdp-manager.png)
 
 **Note:** The MCD system diagram above shows that the Vault user goes through the proxy in order to interact with the CDP Manager but it is also possible to directly use the CDP Manager contract.
 

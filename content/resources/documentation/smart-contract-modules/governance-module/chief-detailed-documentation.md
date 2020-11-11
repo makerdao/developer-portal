@@ -21,7 +21,7 @@ The `Ds-Chief` smart contract provides a method to elect a "chief" contract via 
 
 In short, voters will lock up their voting tokens in order to give their votes some weight in the system. The voting is then done by continuous [approval voting](https://en.wikipedia.org/wiki/Approval_voting), where users receive IOU tokens when they lock their voting tokens up, which is useful for secondary governance mechanisms. The IOU tokens may not be exchanged for the locked tokens except by individuals who have actually locked funds in the contract itself, and only up to the amount they have locked.
 
-![Governance contract interactions with the system](../../.gitbook/assets/pause.png)
+![Governance contract interactions with the system](/images/documentation/pause.png)
 
 ## 2. Contract Details
 

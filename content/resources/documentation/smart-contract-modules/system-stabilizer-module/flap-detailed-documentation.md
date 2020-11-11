@@ -20,7 +20,7 @@ contentType: documentation
 
 **Summary:** Flapper is a Surplus Auction. These auctions are used to auction off a fixed amount of the surplus Dai in the system for MKR. This surplus Dai will come from the **Stability Fees** that are accumulated from Vaults. In this auction type, bidders compete with increasing amounts of MKR. Once the auction has ended, the Dai auctioned off is sent to the winning bidder. The system then burns the MKR received from the winning bid.
 
-![Flap Interactions with the Maker Protocol](../../.gitbook/assets/screen-shot-2019-11-17-at-2.14.34-pm.png)
+![Flap Interactions with the Maker Protocol](/images/documentation/screen-shot-2019-11-17-at-2.14.34-pm.png)
 
 ## 2. Contract Details
 
@@ -78,7 +78,7 @@ Once the auction has begun, a fixed amount \(`lot`\) of DAI is put up for sale. 
 
 The surplus auction officially ends when the bid duration ends \(`ttl`\) without another bid getting placed **OR** when auction duration \(`tau`\) has been reached. At auction end, the MKR received for the surplus DAI is then sent to be burnt thereby contracting the overall MKR supply.
 
-![A diagram detailing the interactions a user has with Flapper and the Vow.](../../.gitbook/assets/flap_auction_interaction_.png)
+![A diagram detailing the interactions a user has with Flapper and the Vow.](/images/documentation/flap_auction_interaction_.png)
 
 ## 4. Gotchas \(Potential source of user error\)
 

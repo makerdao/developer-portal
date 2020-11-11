@@ -23,7 +23,7 @@ contentType: documentation
 
 The MKR Module contains the MKR token, which is a deployed [Ds-Token](https://github.com/dapphub/ds-token) contract. It is an ERC20 token that provides a standard ERC20 token interface. It also contains logic for burning and authorized minting of MKR.
 
-![MKR Interactions with the Maker Protocol](../.gitbook/assets/screen-shot-2019-11-17-at-2.10.06-pm.png)
+![MKR Interactions with the Maker Protocol](/images/documentation/screen-shot-2019-11-17-at-2.10.06-pm.png)
 
 ## 2. Contract Details:
 

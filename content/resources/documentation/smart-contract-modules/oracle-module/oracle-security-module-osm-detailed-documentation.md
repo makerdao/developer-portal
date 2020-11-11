@@ -21,7 +21,7 @@ contentType: documentation
 
 The OSM \(named via acronym from "Oracle Security Module"\) ensures that new price values propagated from the Oracles are not taken up by the system until a specified delay has passed. Values are read from a designated [DSValue](https://github.com/dapphub/ds-value) contract \(or any contract that has the `read()` and `peek()` interfaces\) via the `poke()` method; the `read()` and `peek()` methods will give the current value of the price feed, and other contracts must be whitelisted in order to call these. An OSM contract can only read from a single price feed, so in practice one OSM contract must be deployed per collateral type.
 
-![](../../.gitbook/assets/osm.png)
+![](/images/documentation/osm.png)
 
 ## 2. Contract Details - Glossary \(OSM\)
 

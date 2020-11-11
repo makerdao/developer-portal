@@ -21,9 +21,9 @@ contentType: documentation
 
 The Migration contract's purpose is to allow moving SAI and CDPs from the SCD system to the MCD system, thus becoming DAI and Vaults. It also allows users to move SAI/DAI in both directions should they want to exit MCD and go back to SCD.
 
-![](../.gitbook/assets/scd-mcd.png)
+![](/images/documentation/scd-mcd.png)
 
-![](../.gitbook/assets/scd-mcd2%20%281%29.png)
+![](/images/documentation/scd-mcd2%20%281%29.png)
 
 ## 2. Contract Details
 

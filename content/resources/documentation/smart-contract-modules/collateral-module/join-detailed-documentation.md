@@ -31,7 +31,7 @@ Join consists of three smart contracts: `GemJoin`, `ETHJoin`, and `DaiJoin:`
 
 Each `join` contract is created specifically to allow the given token type to be `join`'ed to the `vat`. Because of this, each `join` contract has slightly different logic to account for the different types of tokens within the system.
 
-![Join Interactions with the Maker Protocol](../../.gitbook/assets/screen-shot-2019-11-17-at-2.05.06-pm.png)
+![Join Interactions with the Maker Protocol](/images/documentation/screen-shot-2019-11-17-at-2.05.06-pm.png)
 
 ## 2. Contract Details:
 
