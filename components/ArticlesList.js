@@ -4,8 +4,7 @@ import Link from 'next/link';
 import { Icon } from '@makerdao/dai-ui-icons';
 import { useBreakpointIndex } from '@theme-ui/match-media';
 
-const ListItem = ({ title, type, link, linkText, description }) => {
-  const isMobile = useBreakpointIndex() === 0;
+const ListItem = ({ title, type, link, linkText, description, isMobile }) => {
   return (
     <Card px={4}>
       <Link href={link} passHref>
@@ -36,6 +35,7 @@ const ListItem = ({ title, type, link, linkText, description }) => {
 };
 
 const ArticlesList = ({ resources, title, path }) => {
+  const bpi = useBreakpointIndex({ defaultIndex: 2 });
   return (
     <Container>
       <Flex
@@ -66,6 +66,7 @@ const ArticlesList = ({ resources, title, path }) => {
                   description={description}
                   link={`/${path}/${slug}/`}
                   linkText={'Read'}
+                  isMobile={bpi === 0}
                 />
               );
             }
