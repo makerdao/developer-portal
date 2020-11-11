@@ -14,17 +14,16 @@ import {
 import { Icon } from '@makerdao/dai-ui-icons';
 import EmailSignup from './EmailSignup';
 
-const NewsletterSignup = () => {
-  const placeholder = 'We saved a slot for your email';
+const NewsletterSignup = ({ text, placeholder }) => {
   return (
     <Grid
-      columns={2}
+      columns={[1, 2]}
       sx={{
-        px: 6,
+        px: [0, 6],
       }}
     >
       <Box>
-        <Heading variant="microHeading">Want Maker dev updates dripping into your mailbox?</Heading>
+        <Heading variant="microHeading">{text}</Heading>
       </Box>
       <Flex sx={{ justifyContent: 'center', alignItems: 'center' }}>
         <Box sx={{ width: '100%' }}>
@@ -62,7 +61,7 @@ const CommunitySection = () => {
             <Heading variant="mediumHeading">Join the Developer Community</Heading>
           </Flex>
 
-          <Grid columns={3}>
+          <Grid columns={[1, 3]}>
             {ctaContent.map(({ title, link, text }) => (
               <Card sx={{ p: 4, bg: 'onBackground' }} key={title}>
                 <Grid>
@@ -80,7 +79,10 @@ const CommunitySection = () => {
             ))}
           </Grid>
 
-          <NewsletterSignup />
+          <NewsletterSignup
+            text={'Want Maker dev updates dripping into your mailbox?'}
+            placeholder={'We saved a slot for your email'}
+          />
         </Grid>
       </Card>
     </Container>

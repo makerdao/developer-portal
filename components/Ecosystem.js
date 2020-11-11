@@ -92,7 +92,7 @@ const Ecosystem = ({ title, items }) => {
           ))}
         </Flex>
 
-        <Grid columns={2} sx={{ width: '100%' }}>
+        <Grid columns={[1, 2]} sx={{ width: '100%' }}>
           {items
             .filter(({ categories }) => categories.includes(activeTab))
             .map(({ title, link, description }) => {

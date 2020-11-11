@@ -10,8 +10,11 @@ export const CodeBox = ({ cta, sections }) => {
 
   return (
     <Container>
+      <Heading sx={{ pb: [3, 4] }} variant="mediumHeading">
+        {cta}
+      </Heading>
       <Grid
-        columns={'1fr auto'}
+        columns={[1, '1fr auto']}
         sx={{
           columnGap: 4,
         }}
@@ -30,10 +33,7 @@ export const CodeBox = ({ cta, sections }) => {
             />
           </Card>
         </Box>
-        <Box sx={{}}>
-          <Heading pb={4} variant="mediumHeading">
-            {cta}
-          </Heading>
+        <Box>
           <Grid
             sx={{
               rowGap: 4,

@@ -2,32 +2,38 @@
 import { jsx, Card, Heading, Text, Container, Flex, Grid } from 'theme-ui';
 import Link from 'next/link';
 import { Icon } from '@makerdao/dai-ui-icons';
+import { useBreakpointIndex } from '@theme-ui/match-media';
 
-const ListItem = ({ title, type, link, linkText, description }) => (
-  <Card px={4}>
-    <Link href={link} passHref>
-      <Grid columns={'1fr 1fr auto'}>
-        <Flex sx={{ flexDirection: 'column' }}>
-          <Heading sx={{ cursor: 'pointer' }} variant="microHeading">
-            {title}
-          </Heading>
-          <Text sx={{ cursor: 'pointer' }}>{description}</Text>
-        </Flex>
+const ListItem = ({ title, type, link, linkText, description }) => {
+  const isMobile = useBreakpointIndex() === 0;
+  return (
+    <Card px={4}>
+      <Link href={link} passHref>
+        <Grid columns={['1fr auto', '1fr 1fr auto']}>
+          <Flex sx={{ flexDirection: 'column' }}>
+            <Heading sx={{ cursor: 'pointer' }} variant="microHeading">
+              {title}
+            </Heading>
+            <Text sx={{ cursor: 'pointer' }}>{description}</Text>
+          </Flex>
 
-        <Flex sx={{ alignItems: 'center' }}>
-          <Text>{type}</Text>
-        </Flex>
+          {!isMobile && (
+            <Flex sx={{ alignItems: 'center' }}>
+              <Text>{type}</Text>
+            </Flex>
+          )}
 
-        <Flex sx={{ alignItems: 'center', justifyContent: 'flex-end' }}>
-          <Text sx={{ variant: 'smallText', cursor: 'pointer' }} pr={2}>
-            {linkText}
-          </Text>
-          <Icon name="increase" />
-        </Flex>
-      </Grid>
-    </Link>
-  </Card>
-);
+          <Flex sx={{ alignItems: 'center', justifyContent: 'flex-end' }}>
+            <Text sx={{ variant: 'smallText', cursor: 'pointer' }} pr={2}>
+              {linkText}
+            </Text>
+            <Icon name="increase" />
+          </Flex>
+        </Grid>
+      </Link>
+    </Card>
+  );
+};
 
 const ArticlesList = ({ resources, title, path }) => {
   return (

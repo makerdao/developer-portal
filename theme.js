@@ -34,7 +34,7 @@ const theme = {
     ...makerTheme.text,
     megaHeading: {
       variant: 'text.heading',
-      fontSize: [9, 10],
+      fontSize: [8, 10],
     },
   },
 

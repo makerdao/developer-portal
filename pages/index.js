@@ -20,14 +20,10 @@ import { navItems as docLinks } from '../data/resourcesSubNav.json';
 const PageLead = () => {
   return (
     <Container>
-      <Flex sx={{ py: 6, flexDirection: 'column' }}>
-        <Heading variant="megaHeading" sx={{ fontSize: 9 }}>
-          Maker Protocol
-        </Heading>
-        <Heading variant="megaHeading" sx={{ fontSize: 9 }}>
-          For Developers
-        </Heading>
-        <Flex sx={{ flexDirection: 'column', pl: 7, mt: 3 }}>
+      <Flex sx={{ py: [4, 6], flexDirection: 'column' }}>
+        <Heading variant="megaHeading">Maker Protocol</Heading>
+        <Heading variant="megaHeading">For Developers</Heading>
+        <Flex sx={{ flexDirection: 'column', pl: [5, 7], mt: 3 }}>
           <Text
             className="subtext"
             sx={{
@@ -103,7 +99,7 @@ const ModulesList = () => {
   return (
     <Container>
       <Grid
-        columns={'1fr 1fr 1fr 1fr'}
+        columns={['1fr 1fr', '1fr 1fr 1fr 1fr']}
         sx={{
           columnGap: 3,
           rowGap: 3,
