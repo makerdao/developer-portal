@@ -1,7 +1,7 @@
 ---
 title: Vat - Detailed Documentation
 description: The Maker Protocol's Core Accounting System
-parent: vaults
+component: vaults
 tags:
   - vaults
   - vat

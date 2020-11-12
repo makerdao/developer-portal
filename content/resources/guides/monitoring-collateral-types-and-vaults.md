@@ -1,7 +1,7 @@
 ---
 title: Monitoring Collateral Types and Vaults
 description: Learn how to monitor Maker Protocol State
-parent: vaults
+component: vaults
 tags:
   - vaults
   - protocol state

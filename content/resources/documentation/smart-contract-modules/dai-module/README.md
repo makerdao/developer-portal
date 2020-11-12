@@ -1,7 +1,7 @@
 ---
 title: Dai Module
 description: The DAI token contract and all of the adapters DaiJoin adapters.
-parent: dai
+component: dai
 tags:
    - dai
 slug: introduction-to-dai-module

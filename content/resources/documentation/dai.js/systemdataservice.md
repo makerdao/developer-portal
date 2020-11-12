@@ -1,7 +1,7 @@
 ---
 title: System data
 description: Dai.js service to look up system-wide parameters
-parent: dai-js
+component: dai-js
 tags:
 	- dai-js
 slug: dai-js-system-data

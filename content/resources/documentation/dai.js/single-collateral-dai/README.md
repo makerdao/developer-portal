@@ -1,7 +1,7 @@
 ---
 title: Introduction to Single Collateral Sai Plugin
 description: Plugins allow a developer to add functionality for specific needs without increasing the size of the core library.
-parent: dai-js
+component: dai-js
 tags:
 	- dai-js
 slug: dai-js-scd-plugin

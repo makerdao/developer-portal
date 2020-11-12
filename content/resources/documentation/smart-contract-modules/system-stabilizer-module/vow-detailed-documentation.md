@@ -1,7 +1,7 @@
 ---
 title: Vow - Detailed Documentation
 description: The Maker Protocol's Balance Sheet
-parent: auctions
+component: auctions
 tags:
   - auctions
 slug: vow-detailed-documentation

@@ -1,7 +1,7 @@
 ---
 title: DSR Manager - Detailed Documentation
 description: The simplest way to integrate DSR in smart contracts
-parent: dsr
+component: dsr
 tags:
   - dsr
 slug: dsr-manager-detailed-documentation

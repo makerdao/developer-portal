@@ -1,7 +1,7 @@
 ---
 title: Using multiple accounts
 description: Dai.js supports the use of multiple accounts with a single Maker instance
-parent: dai-js
+component: dai-js
 tags:
 	- dai-js
 slug: using-multiple-accounts

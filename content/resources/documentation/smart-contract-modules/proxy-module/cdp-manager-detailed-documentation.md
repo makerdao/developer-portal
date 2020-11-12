@@ -1,7 +1,7 @@
 ---
 title: CDP Manager - Detailed Documentation
 description: Managing Vaults to be transferred between users
-parent: vaults
+component: vaults
 tags:
   - vaults
 slug: cdp-manager-detailed-documentation

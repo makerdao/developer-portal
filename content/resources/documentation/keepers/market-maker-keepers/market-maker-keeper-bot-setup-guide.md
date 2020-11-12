@@ -1,7 +1,7 @@
 ---
 title: Market Maker Keeper Bot Setup Guide
 description: A Marketing Making Bot Set up Guide
-parent: keepers
+component: keepers
 tags:
 	- keepers
   - auctions

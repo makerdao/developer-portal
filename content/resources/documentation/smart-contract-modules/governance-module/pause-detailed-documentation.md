@@ -1,7 +1,7 @@
 ---
 title: Pause - Detailed Documentation
 description: A delegatecall based proxy with an enforced delay
-parent: governance
+component: governance
 tags:
   - governance
 slug: pause-detailed-documentation

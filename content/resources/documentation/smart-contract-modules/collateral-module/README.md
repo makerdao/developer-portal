@@ -1,7 +1,7 @@
 ---
 title: Collateral Module
 description: Adapters and Auction contracts for each specific collateral type
-parent: vaults
+component: vaults
 tags:
   - collateral
   - vat

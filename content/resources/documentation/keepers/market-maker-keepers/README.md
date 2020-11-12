@@ -1,7 +1,7 @@
 ---
 title: Market Maker Keepers
 description: Introduction to market maker keepers
-parent: keepers
+component: keepers
 tags:
 	- keepers
     - auctions

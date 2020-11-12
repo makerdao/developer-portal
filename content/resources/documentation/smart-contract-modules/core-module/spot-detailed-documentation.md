@@ -1,7 +1,7 @@
 ---
 title: Spot - Detailed Documentation
 description: The Maker Protocol's liaison between the Oracles and Core Contracts
-parent: oracles
+component: oracles
 tags:
   - oracles
 slug: spot-detailed-documentation

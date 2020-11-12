@@ -1,7 +1,7 @@
 ---
 title: Median - Detailed Documentation
 description: The Maker Protocol's trusted reference price
-parent: oracles
+component: oracles
 tags:
   - oracles
 slug: median-detailed-documentation

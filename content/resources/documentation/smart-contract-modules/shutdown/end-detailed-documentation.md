@@ -1,7 +1,7 @@
 ---
 title: End - Detailed Documentation
 description: Shutdown
-parent: governance
+component: governance
 tags:
   - governance
 slug: end-proxy-detailed-documentation

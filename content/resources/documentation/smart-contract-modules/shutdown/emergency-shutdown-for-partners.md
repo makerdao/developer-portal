@@ -1,7 +1,7 @@
 ---
 title: Emergency Shutdown for Partners
 description: How to prepare for ES as a partner
-parent: governance
+component: governance
 tags:
   - governance
 slug: emergency-shutdown-for-partners

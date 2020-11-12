@@ -1,7 +1,7 @@
 ---
 title: Simple Arbitrage Keeper
 description: Keeper that can be used out of the box to participate in wildly volatile markets
-parent: keepers
+component: keepers
 tags:
 	- keepers
     - auctions

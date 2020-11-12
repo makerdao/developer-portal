@@ -1,7 +1,7 @@
 ---
 title: Advanced Features
 description: Advanced features for Dai.js
-parent: dai-js
+component: dai-js
 tags:
 	- dai-js
 slug: dai-js-advanced

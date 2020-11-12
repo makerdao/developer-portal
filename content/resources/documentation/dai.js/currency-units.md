@@ -1,7 +1,7 @@
 ---
 title: Currency Units
 description: These are useful for managing precision, keeping track of units, and passing in wei values
-parent: dai-js
+component: dai-js
 tags:
 	- dai-js
 slug: dai-js-currency-units

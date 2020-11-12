@@ -1,7 +1,7 @@
 ---
 title: Pot - Detailed Documentation
 description: The Dai Savings Rate
-parent: dsr
+component: dsr
 tags:
   - dsr
 slug: pot-proxy-detailed-documentation

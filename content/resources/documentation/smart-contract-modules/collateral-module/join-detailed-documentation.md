@@ -1,7 +1,7 @@
 ---
 title: Join - Detailed Documentation
 description: The Maker Protocol's Collateral Adapter
-parent: vaults
+component: vaults
 tags:
   - vaults
   - vat

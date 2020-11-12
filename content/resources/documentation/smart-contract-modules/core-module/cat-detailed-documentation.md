@@ -1,7 +1,7 @@
 ---
 title: Cat - Detailed Documentation
 description: The Maker Protocol's Liquidation Agent
-parent: auctions
+component: auctions
 tags:
   - auctions
   - liquidations

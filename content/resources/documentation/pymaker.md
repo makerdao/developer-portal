@@ -1,7 +1,7 @@
 ---
 title: Pymaker
 description: A Python library to automate certain operations around the Ethereum blockchain
-parent: keepers
+component: keepers
 tags:
   - keepers
 slug: pymaker

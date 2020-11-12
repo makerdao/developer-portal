@@ -1,7 +1,7 @@
 ---
 title: Dai in Smart Contracts
 description: Integrate Dai into your own smart contracts
-parent: dai
+component: dai
 tags:
   - dai
   - smart contract

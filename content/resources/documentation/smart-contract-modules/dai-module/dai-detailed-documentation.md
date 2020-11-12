@@ -1,7 +1,7 @@
 ---
 title: Dai - Detailed Documentation
 description: The Dai Token Contract
-parent: dai
+component: dai
 tags:
   - dai
 slug: dai-detailed-documentation

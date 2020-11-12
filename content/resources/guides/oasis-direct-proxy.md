@@ -1,12 +1,12 @@
 ---
 title: How to use Oasis Direct Proxy on OasisDEX Protocol
 description: Learn about Oasis Direct Proxy and how it is used in OasisDEX Protocol
-parent: oasisdex
+component: oasisdex
 tags:
   - oasisdex
   - proxy contract
   - trade
-  - decentralized  
+  - decentralized
 slug: how-to-use-oasis-direct-proxy-on-oasisdex-protocol
 contentType: guides
 root: false
@@ -31,7 +31,7 @@ root: false
   - [Summary](#summary)
   - [Additional Resources](#additional-resources)
   - [Help](#help)
-  
+
 ## Overview
 
 Trading on decentralized marketplaces involves signing multiple transactions with your wallet. This leads to having higher chances of having failed transactions. Using a proxy simplifies this process by combining many transactions into one.
@@ -102,7 +102,7 @@ First you need to set up a DSProxy contract for your wallet. Or retrieve the add
 Execute the command below to verify if you have a proxy contract:
 
 `seth call $PROXY_REGISTRY 'proxies(address)(address)' $ETH_FROM`
-  
+
 If the output is an address (for instance `3704fa2f6234ad5f2da063121496003e999c5312`), then this address is your proxy contract. If you get an output like this: `0000000000000000000000000000000000000000` then you don’t have one.
 
 In case you don’t have the proxy contract, you can set it up through the below command:
@@ -153,7 +153,7 @@ Let’s assume we want to buy exactly 3 Dai on the Oasis protocol. In order to p
 
 **buyAllAmountPayEth** function parameters are these:
 
-- OasisDEX address (OTC)  
+- OasisDEX address (OTC)
 - DAI token address (DAI)
 - buyAmt (uint256) - the amount that will be purchased
 - wethToken (address) - address of WETH token

@@ -1,7 +1,7 @@
 ---
 title: How to use permit function and relayers to pay gas for Dai transactions in Dai
 description: Learn about Dai permit function
-parent: dai
+component: dai
 tags:
   - dai
   - permit funciton

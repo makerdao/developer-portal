@@ -1,7 +1,7 @@
 ---
 title: Oracle Module
 description: The Maker Protocol's Oracles
-parent: oracles
+component: oracles
 tags:
   - oracles
 slug: introduction-to-oracle-module

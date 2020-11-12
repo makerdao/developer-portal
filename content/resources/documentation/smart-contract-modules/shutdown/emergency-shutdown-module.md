@@ -1,7 +1,7 @@
 ---
 title: ESM - Detailed Documentation
 description: The ESM is the trigger system for the shutdown of the Maker Protocol
-parent: governance
+component: governance
 tags:
   - governance
 slug: esm-proxy-detailed-documentation

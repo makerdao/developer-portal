@@ -1,7 +1,7 @@
 ---
 title: Chief - Detailed Documentation
 description: Electing a Chief contract via an approval voting system
-parent: governance
+component: governance
 tags:
   - governance
 slug: chief-detailed-documentation

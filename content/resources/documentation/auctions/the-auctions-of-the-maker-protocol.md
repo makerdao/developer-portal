@@ -1,7 +1,7 @@
 ---
 title: The Auctions of the Maker Protocol
 description: The auction mechanisms within the system explained
-parent: auctions
+component: auctions
 tags:
   - auctions
   - keepers

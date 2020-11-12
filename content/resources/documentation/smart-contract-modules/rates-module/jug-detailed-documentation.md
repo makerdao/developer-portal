@@ -1,7 +1,7 @@
 ---
 title: Jug - Detailed Documentation
 description: Accumulation of Stability Fees for Collateral Types
-parent: vaults
+component: vaults
 tags:
   - vaults
 slug: jug-proxy-detailed-documentation

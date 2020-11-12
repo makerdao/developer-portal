@@ -1,7 +1,7 @@
 ---
 title: Auction Keepers
 description: External actors that are incentivized by profit opportunities to contribute to decentralized systems
-parent: keepers
+component: keepers
 tags:
 	- keepers
     - auctions

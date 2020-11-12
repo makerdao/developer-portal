@@ -1,7 +1,7 @@
 ---
 title: Maker Vault Integration Guide
 description: Learn how to integrate Maker Vaults into your own application
-parent: vaults
+component: vaults
 tags:
   - vaults
   - vault integration tools

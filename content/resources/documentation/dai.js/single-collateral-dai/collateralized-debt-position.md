@@ -1,7 +1,7 @@
 ---
 title: Collateralized Debt Position
 description: The CDP object API
-parent: dai-js
+component: dai-js
 tags:
 	- dai-js
 slug: dai-js-collateralized-debt-position

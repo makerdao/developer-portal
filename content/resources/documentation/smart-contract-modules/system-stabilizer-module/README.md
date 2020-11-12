@@ -1,7 +1,7 @@
 ---
 title: System Stabilizer Module
 description: Keeping the Maker Protocol Stable
-parent: auctions
+component: auctions
 tags:
   - auctions
   - stability

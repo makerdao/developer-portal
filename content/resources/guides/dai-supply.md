@@ -1,7 +1,7 @@
 ---
 title: Tracking Dai Supply
 description: Learn about how to count the Dai supply
-parent: dai
+component: dai
 tags:
   - dai
   - total supply

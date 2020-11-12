@@ -1,7 +1,7 @@
 ---
 title: System Status
 description: Access system status information with the ETH CDP Service
-parent: dai-js
+component: dai-js
 tags:
 	- dai-js
 slug: dai-js-system-status

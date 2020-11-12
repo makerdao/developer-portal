@@ -1,7 +1,7 @@
 ---
 title: Vault Integration Guide - DSProxy Sequence Diagrams
 description: See DSProxy Sequence Diagrams
-parent: vaults
+component: vaults
 tags:
   - vaults
   - vault integration diagrams

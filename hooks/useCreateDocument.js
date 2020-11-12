@@ -79,7 +79,7 @@ const useCreateDocument = (resources, module) => {
 
         form.slug = slug;
         form.date = form.date || new Date().toString();
-        form.parent = module;
+        form.component = module;
         form.author = await github.getUser();
         delete form.body;
 

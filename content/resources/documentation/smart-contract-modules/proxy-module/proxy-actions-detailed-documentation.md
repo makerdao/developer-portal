@@ -1,7 +1,7 @@
 ---
 title: Proxy Actions - Detailed Documentation
 description: A generalized wrapper for the Maker Protocol
-parent: vaults
+component: vaults
 tags:
   - vaults
 slug: proxy-actions-detailed-documentation

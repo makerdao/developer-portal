@@ -1,7 +1,7 @@
 ---
 title: MKR Module
 description: The MKR Governance Token Implementation
-parent: governance
+component: governance
 tags:
   - goverance
   - mcd

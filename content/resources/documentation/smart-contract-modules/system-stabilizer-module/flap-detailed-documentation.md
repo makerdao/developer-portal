@@ -1,7 +1,7 @@
 ---
 title: Flapper - Detailed Documentation
 description: The Maker Protocol's Surplus Auction House
-parent: auctions
+component: auctions
 tags:
   - auctions
 slug: flapper-detailed-documentation

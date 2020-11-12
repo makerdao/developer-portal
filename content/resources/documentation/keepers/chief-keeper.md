@@ -1,7 +1,7 @@
 ---
 title: Chief Keeper
 description: Keeper that lifts the hat and streamlines executive actions
-parent: keepers
+component: keepers
 tags:
 	- keepers
     - auctions

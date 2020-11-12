@@ -1,7 +1,7 @@
 ---
 title: Cage Keeper
 description: A Keeper to facilitate Emergency Shutdown
-parent: keepers
+component: keepers
 tags:
 	- keepers
     - auctions

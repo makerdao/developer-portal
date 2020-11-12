@@ -1,7 +1,7 @@
 ---
 title: Introduction
 description: A JavaScript library that makes it easy to build applications on top of MakerDAO's platform of smart contracts
-parent: dai-js
+component: dai-js
 tags:
 	- dai-js
 slug: introduction-to-dai-js

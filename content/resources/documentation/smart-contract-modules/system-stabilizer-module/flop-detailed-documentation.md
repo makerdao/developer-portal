@@ -1,7 +1,7 @@
 ---
 title: Flopper - Detailed Documentation
 description: The Maker Protocol's Debt Auction House
-parent: auctions
+component: auctions
 tags:
   - auctions
 slug: flopper-detailed-documentation

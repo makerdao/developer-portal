@@ -1,7 +1,7 @@
 ---
 title: Collateral Types
 description: Look up parameters for different collateral types in the system
-parent: dai-js
+component: dai-js
 tags:
 	- dai-js
 slug: dai-js-collateral-types
