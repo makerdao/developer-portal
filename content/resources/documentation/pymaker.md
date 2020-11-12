@@ -1,14 +1,12 @@
 ---
 title: Pymaker
-description: A Python library to automate certain operations around the Ethereum blockchain
+description: A Python API for the Maker Smart Contracts
 component: keepers
 tags:
   - keepers
 slug: pymaker
 contentType: documentation
 ---
-
-## description: A Python API for the Maker Smart Contracts
 
 # Pymaker
 
