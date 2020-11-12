@@ -1,63 +1,51 @@
 {
   "navItems": [
     {
-      "url": "/documentation/introduction-to-rates-module",
-      "name": "DSR",
-      "slug": "dsr",
+      "url": "/documentation/maker-protocol-101",
+      "name": "Maker Protocol 101",
+      "slug": "maker-protocol-101",
       "id": "1"
+    },
+    {
+      "url": "/documentation/introduction-to-the-maker-protocol",
+      "name": "Smart Contracts",
+      "slug": "smart-contracts",
+      "id": "2"
     },
     {
       "url": "/documentation/the-auctions-of-the-maker-protocol",
       "name": "Auctions",
       "slug": "auctions",
-      "id": "2"
-    },
-    {
-      "url": "/documentation/introduction-to-governance-module",
-      "name": "Governance",
-      "slug": "governance",
       "id": "3"
-    },
-    {
-      "url": "/documentation/introduction-to-dai-js",
-      "name": "Dai.js",
-      "slug": "dai-js",
-      "id": "4"
-    },
-    {
-      "url": "/documentation",
-      "name": "Maker Data API",
-      "slug": "data-api",
-      "id": "5"
     },
     {
       "url": "/documentation/introduction-to-auction-keepers",
       "name": "Keepers",
       "slug": "keepers",
+      "id": "4"
+    },
+    {
+      "url": "/documentation/introduction-to-dai-js",
+      "name": "SDKs",
+      "slug": "sdks",
+      "id": "5"
+    },
+    {
+      "url": "/documentation/mcd-cli",
+      "name": "CLIs",
+      "slug": "clis",
       "id": "6"
     },
     {
-      "url": "/documentation/introduction-to-oracle-module",
-      "name": "Oracles",
-      "slug": "oracles",
+      "url": "/documentation/mcd-glossaries",
+      "name": "Glossary",
+      "slug": "glossary",
       "id": "7"
     },
     {
-      "url": "/documentation",
-      "name": "Dai UI",
-      "slug": "dai-ui",
-      "id": "8"
-    },
-    {
-      "url": "/documentation/introduction-to-dai-module",
-      "name": "Dai",
-      "slug": "dai",
-      "id": "8"
-    },
-    {
-      "url": "/documentation/vat-detailed-documentation",
-      "name": "Vaults",
-      "slug": "vaults",
+      "url": "/documentation/security-for-the-maker-protocol",
+      "name": "Security",
+      "slug": "security",
       "id": "8"
     }
   ]
