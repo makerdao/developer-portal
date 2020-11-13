@@ -195,7 +195,7 @@ const Page = ({ file, guides }) => {
           }}
         >
           <PageLead content={data} />
-          <ModulesList />
+          {/* <ModulesList /> */}
           <IntroText />
           <CodeBox cta="Dive in the code" sections={codeSections} />
           <GuideList title="Guides" path="guides" guides={guides} />
