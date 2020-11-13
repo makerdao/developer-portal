@@ -6,6 +6,7 @@ tags:
 	- dai-js
 slug: dai-js-getting-started
 contentType: documentation
+parent: introduction-to-dai-js
 ---
 
 # Getting started

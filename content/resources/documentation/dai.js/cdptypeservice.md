@@ -6,6 +6,7 @@ tags:
 	- dai-js
 slug: dai-js-collateral-types
 contentType: documentation
+parent: introduction-to-dai-js
 ---
 
 # Collateral types

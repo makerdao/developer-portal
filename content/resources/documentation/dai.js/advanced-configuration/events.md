@@ -6,6 +6,7 @@ tags:
 	- dai-js
 slug: dai-js-events
 contentType: documentation
+parent: dai-js-advanced
 ---
 
 # Events

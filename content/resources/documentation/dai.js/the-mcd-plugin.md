@@ -6,6 +6,7 @@ tags:
 	- dai-js
 slug: dai-js-vault-manager
 contentType: documentation
+parent: introduction-to-dai-js
 ---
 
 # Vault manager

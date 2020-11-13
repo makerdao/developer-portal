@@ -5,6 +5,7 @@ tags:
   - proxy
 slug: introduction-to-mkr-module
 contentType: documentation
+root: true
 ---
 
 # Proxy Module

@@ -6,6 +6,7 @@ tags:
 	- dai-js
 slug: dai-js-system-status
 contentType: documentation
+parent: dai-js-scd-plugin
 ---
 
 # System Status

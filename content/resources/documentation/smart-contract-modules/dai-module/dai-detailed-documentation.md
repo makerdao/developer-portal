@@ -1,11 +1,12 @@
 ---
 title: Dai - Detailed Documentation
 description: The Dai Token Contract
-component: dai
+component: smart-contracts
 tags:
   - dai
 slug: dai-detailed-documentation
 contentType: documentation
+parent: introduction-to-dai-module
 ---
 
 # Dai - Detailed Documentation

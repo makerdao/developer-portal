@@ -6,6 +6,7 @@ tags:
 	- dai-js
 slug: dai-js-exchange-service
 contentType: documentation
+parent: dai-js-scd-plugin
 ---
 
 # Exchange Service

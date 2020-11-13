@@ -6,6 +6,7 @@ tags:
 	- dai-js
 slug: dai-js-cdp-service
 contentType: documentation
+parent: dai-js-scd-plugin
 ---
 
 # CDP Service

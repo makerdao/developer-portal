@@ -6,6 +6,7 @@ tags:
 	- dai-js
 slug: dai-js-system-data
 contentType: documentation
+parent: introduction-to-dai-js
 ---
 
 # System data

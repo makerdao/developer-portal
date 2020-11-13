@@ -6,6 +6,7 @@ tags:
 	- dai-js
 slug: dai-js-plugins
 contentType: documentation
+parent: maker-object-introduction
 ---
 
 # Plugins

@@ -6,6 +6,7 @@ tags:
 	- dai-js
 slug: dai-js-collateralized-debt-position
 contentType: documentation
+parent: dai-js-scd-plugin
 ---
 
 # Collateralized Debt Position

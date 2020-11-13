@@ -1,12 +1,13 @@
 ---
 title: Cat - Detailed Documentation
 description: The Maker Protocol's Liquidation Agent
-component: auctions
+component: smart-contracts
 tags:
   - auctions
   - liquidations
 slug: cat-detailed-documentation
 contentType: documentation
+parent: introduction-to-core-module
 ---
 
 # Cat - Detailed Documentation

@@ -6,6 +6,7 @@ tags:
 	- dai-js
 slug: using-multiple-accounts
 contentType: documentation
+parent: dai-js-advanced
 ---
 
 # Using multiple accounts

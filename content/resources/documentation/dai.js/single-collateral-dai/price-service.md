@@ -6,6 +6,7 @@ tags:
 	- dai-js
 slug: dai-js-price-service
 contentType: documentation
+parent: dai-js-scd-plugin
 ---
 
 # Price Service

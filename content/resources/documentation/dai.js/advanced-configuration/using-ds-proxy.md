@@ -6,6 +6,7 @@ tags:
 	- dai-js
 slug: using-ds-proxy
 contentType: documentation
+parent: dai-js-advanced
 ---
 
 # DSProxy

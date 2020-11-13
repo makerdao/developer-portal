@@ -6,6 +6,7 @@ tags:
 	- dai-js
 slug: adding-a-new-service
 contentType: documentation
+parent: dai-js-advanced
 ---
 
 # Adding a new service

@@ -6,6 +6,7 @@ tags:
 	- dai-js
 slug: dai-js-currency-units
 contentType: documentation
+parent: introduction-to-dai-js
 ---
 
 # Currency units

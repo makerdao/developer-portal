@@ -6,6 +6,8 @@ tags:
 	- dai-js
 slug: dai-js-advanced
 contentType: documentation
+root: true
+parent: introduction-to-dai-js
 ---
 
 # Advanced

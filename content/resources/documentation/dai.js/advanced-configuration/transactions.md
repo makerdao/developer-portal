@@ -6,6 +6,7 @@ tags:
 	- dai-js
 slug: dai-js-transactions
 contentType: documentation
+parent: dai-js-advanced
 ---
 
 # Transaction manager

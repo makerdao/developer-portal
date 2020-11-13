@@ -6,6 +6,7 @@ tags:
 	- dai-js
 slug: dai-js-dai-savings-rate
 contentType: documentation
+parent: introduction-to-dai-js
 ---
 
 # Dai Savings Rate

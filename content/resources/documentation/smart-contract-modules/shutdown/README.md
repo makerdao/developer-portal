@@ -6,6 +6,7 @@ tags:
   - emergency shutdown
 slug: introduction-to-es-module
 contentType: documentation
+root: true
 ---
 
 # Maker Protocol Emergency Shutdown

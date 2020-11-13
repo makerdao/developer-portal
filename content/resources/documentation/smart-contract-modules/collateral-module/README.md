@@ -1,13 +1,14 @@
 ---
 title: Collateral Module
 description: Adapters and Auction contracts for each specific collateral type
-component: vaults
+component: smart-contracts
 tags:
   - collateral
   - vat
   - vaults
 slug: introduction-to-collateral-module
 contentType: documentation
+root: true
 ---
 
 # Collateral Module

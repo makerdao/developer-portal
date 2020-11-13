@@ -6,6 +6,7 @@ tags:
 	- dai-js
 slug: dai-js-tokens
 contentType: documentation
+parent: dai-js-scd-plugin
 ---
 
 # Tokens

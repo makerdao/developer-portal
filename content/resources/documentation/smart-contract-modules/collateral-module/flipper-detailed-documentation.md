@@ -1,11 +1,12 @@
 ---
 title: Flipper - Detailed Documentation
 description: The Maker Protocol's Collateral Auction House
-component: auctions
+component: smart-contracts
 tags:
   - auctions
 slug: flipper-detailed-documentation
 contentType: documentation
+parent: introduction-to-collateral-module
 ---
 
 # Flipper - Detailed Documentation

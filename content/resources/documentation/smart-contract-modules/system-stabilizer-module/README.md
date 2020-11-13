@@ -7,6 +7,7 @@ tags:
   - stability
 slug: introduction-to-system-stabilizer-module
 contentType: documentation
+root: true
 ---
 
 # System Stabilizer Module

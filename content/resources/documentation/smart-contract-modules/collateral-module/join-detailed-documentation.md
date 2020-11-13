@@ -1,7 +1,7 @@
 ---
 title: Join - Detailed Documentation
 description: The Maker Protocol's Collateral Adapter
-component: vaults
+component: smart-contracts
 tags:
   - vaults
   - vat
@@ -9,6 +9,7 @@ tags:
   - adapters
 slug: join-detailed-documentation
 contentType: documentation
+parent: introduction-to-collateral-module
 ---
 
 # Join - Detailed Documentation
