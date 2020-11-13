@@ -1,11 +1,16 @@
 ---
 title: Flapper - Detailed Documentation
 description: The Maker Protocol's Surplus Auction House
-component: auctions
+group: smart-contracts
+components:
+  - auctions
+  - system stabilizer
+  - flapper
 tags:
   - auctions
 slug: flapper-detailed-documentation
 contentType: documentation
+parent: introduction-to-system-stabilizer-module
 ---
 
 # Flapper - Detailed Documentation

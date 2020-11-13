@@ -1,7 +1,7 @@
 ---
 title: Price Service
 description: PriceService exposes the collateral and governance tokens' price information
-component: sdks
+group: sdks
 tags:
 	- dai-js
 slug: dai-js-price-service

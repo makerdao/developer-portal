@@ -1,7 +1,10 @@
 ---
 title: System Stabilizer Module
 description: Keeping the Maker Protocol Stable
-component: auctions
+group: smart-contracts
+components:
+  - auctions
+  - system stabilizer
 tags:
   - auctions
   - stability

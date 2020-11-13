@@ -1,11 +1,16 @@
 ---
 title: ESM - Detailed Documentation
 description: The ESM is the trigger system for the shutdown of the Maker Protocol
-component: governance
+group: smart-contracts
+components:
+  - esm
+  - emergency shutdown
+  - governance
 tags:
   - governance
 slug: esm-proxy-detailed-documentation
 contentType: documentation
+parent: introduction-to-es-module
 ---
 
 # ESM - Detailed Documentation

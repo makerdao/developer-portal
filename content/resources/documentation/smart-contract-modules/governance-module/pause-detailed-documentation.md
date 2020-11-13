@@ -1,11 +1,14 @@
 ---
 title: Pause - Detailed Documentation
 description: A delegatecall based proxy with an enforced delay
-component: governance
+group: smart-contracts
+component:
+  - governance
 tags:
   - governance
 slug: pause-detailed-documentation
 contentType: documentation
+parent: introduction-to-governance-module
 ---
 
 # Pause - Detailed Documentation

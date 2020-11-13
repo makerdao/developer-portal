@@ -1,11 +1,15 @@
 ---
 title: The Emergency Shutdown Process for Multi-Collateral Dai (MCD)
 description: To be be triggered as a last resort to protect the system and its users against a serious threat or to facilitate a Protocol upgrade
-component: governance
+group: smart-contracts
+components:
+  - emergency shutdown
+  - governance
 tags:
   - governance
 slug: the-emergency-shutdown-process-for-multi-collateral-dai-mcd
 contentType: documentation
+parent: introduction-to-es-module
 ---
 
 # The Emergency Shutdown Process for Multi-Collateral Dai (MCD)

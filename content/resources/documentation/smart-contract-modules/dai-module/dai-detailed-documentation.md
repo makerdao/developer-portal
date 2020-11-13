@@ -1,7 +1,7 @@
 ---
 title: Dai - Detailed Documentation
 description: The Dai Token Contract
-component: smart-contracts
+group: smart-contracts
 tags:
   - dai
 slug: dai-detailed-documentation

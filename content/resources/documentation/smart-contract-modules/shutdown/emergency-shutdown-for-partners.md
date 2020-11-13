@@ -1,11 +1,16 @@
 ---
 title: Emergency Shutdown for Partners
 description: How to prepare for ES as a partner
-component: governance
+group: smart-contracts
+components:
+  - esm
+  - emergency shutdown
+  - governance
 tags:
   - governance
 slug: emergency-shutdown-for-partners
 contentType: documentation
+parent: introduction-to-es-module
 ---
 
 # Emergency Shutdown for Partners

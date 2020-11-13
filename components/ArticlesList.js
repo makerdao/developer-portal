@@ -55,14 +55,14 @@ const ArticlesList = ({ resources, title, path }) => {
           {resources.map(
             ({
               data: {
-                frontmatter: { component, title, slug, description },
+                frontmatter: { group, title, slug, description },
               },
             }) => {
               return (
                 <ListItem
                   key={title}
                   title={title}
-                  type={component}
+                  type={group}
                   description={description}
                   link={`/${path}/${slug}/`}
                   linkText={'Read'}

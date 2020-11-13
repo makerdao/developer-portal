@@ -1,7 +1,7 @@
 ---
 title: Join - Detailed Documentation
 description: The Maker Protocol's Collateral Adapter
-component: smart-contracts
+group: smart-contracts
 tags:
   - vaults
   - vat

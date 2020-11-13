@@ -1,7 +1,7 @@
 ---
 title: Maker Object Introduction
 description: Initializing and configuring Dai.js
-component: sdks
+group: sdks
 tags:
 	- dai-js
 slug: maker-object-introduction

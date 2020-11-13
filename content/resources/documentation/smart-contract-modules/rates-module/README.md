@@ -1,7 +1,10 @@
 ---
-title: Introduction to Rates Module
+title: Rates Module
 description: The Maker Protocol's Rate Accumulation Mechanism
-component: dsr
+group: smart-contracts
+components:
+  - dsr
+  - vaults
 tags:
   - dsr
   - vaults

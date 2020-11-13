@@ -19,8 +19,8 @@ const ResourceEditor = ({ file, navFile, contentType, preview, resources, slug, 
   const setActiveModule = useStore((state) => state.setActiveModule);
 
   useEffect(() => {
-    setActiveModule(file.data.frontmatter.component);
-  }, [setActiveModule, file.data.frontmatter.component]);
+    setActiveModule(file.data.frontmatter.group);
+  }, [setActiveModule, file.data.frontmatter.group]);
 
   const [navData, navForm] = useSubNavForm(navFile, preview);
   useFormScreenPlugin(navForm);
@@ -43,7 +43,7 @@ const ResourceEditor = ({ file, navFile, contentType, preview, resources, slug, 
   const moduleResources = resources
     ?.filter(
       (r) =>
-        r.data.frontmatter.component === file.data.frontmatter.component &&
+        r.data.frontmatter.group === file.data.frontmatter.group &&
         r.data.frontmatter.contentType === contentType
     )
     .reduce((acc, val, i, array) => {

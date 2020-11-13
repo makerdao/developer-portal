@@ -1,7 +1,7 @@
 ---
 title: Dai Savings Rate
 description: Dai.js service to work with the Dai Savings Rate system
-component: sdks
+group: sdks
 tags:
 	- dai-js
 slug: dai-js-dai-savings-rate

@@ -1,10 +1,8 @@
 /** @jsx jsx */
 import { Fragment } from 'react';
-import { jsx, Flex, NavLink, Grid, Text } from 'theme-ui';
+import { jsx, Flex, NavLink, Grid } from 'theme-ui';
 import { Icon } from '@makerdao/dai-ui-icons';
 import Link from 'next/link';
-import useStore from '../stores/store';
-import { navItems } from '../data/resourcesSubNav.json';
 
 const ListItem = ({ title, root, active, resourcePath, slug }) => {
   return (
@@ -56,13 +54,9 @@ const List = ({ items, resourcePath, activeSlug }) => {
 };
 
 const Sidebar = ({ resources, resourcePath, activeSlug }) => {
-  const activeModule = useStore((state) => state.activeModule);
   return (
     <Flex sx={{ p: 4, flexDirection: 'column' }}>
       <Grid gap={0} columns={'20px auto'}>
-        <Text sx={{ pl: 2, gridColumnStart: 2 }}>{`${
-          navItems.find(({ slug }) => slug === activeModule)?.name
-        } Module`}</Text>
         {resources.map((resource) => {
           return (
             <List

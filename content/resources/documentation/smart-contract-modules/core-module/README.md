@@ -8,7 +8,7 @@ tags:
   - mcd
 slug: introduction-to-core-module
 contentType: documentation
-component: smart-contracts
+group: smart-contracts
 root: true
 ---
 

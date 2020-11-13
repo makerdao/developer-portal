@@ -1,11 +1,15 @@
 ---
 title: CDP Manager - Detailed Documentation
 description: Managing Vaults to be transferred between users
-component: vaults
+group: smart-contracts
+component:
+  - vaults
+  - proxy
 tags:
   - vaults
 slug: cdp-manager-detailed-documentation
 contentType: documentation
+parent: introduction-to-proxy-module
 ---
 
 # CDP Manager - Detailed Documentation

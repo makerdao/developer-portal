@@ -1,7 +1,7 @@
 ---
 title: DS Proxy
 description: Learn the functionality for interacting with both profile proxies and forwarding proxies
-component: sdks
+group: sdks
 tags:
 	- dai-js
 slug: using-ds-proxy

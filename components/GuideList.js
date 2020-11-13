@@ -24,14 +24,14 @@ const GuideList = ({ guides, title, columns = [2, 4], path }) => {
             {guides.map(
               ({
                 data: {
-                  frontmatter: { title, description, slug, component },
+                  frontmatter: { title, description, slug, group },
                 },
               }) => {
                 return (
                   <Flex key={slug} sx={{ flexDirection: 'column' }}>
                     <Flex sx={{ flexDirection: 'column', mb: 2 }}>
                       <Text variant="caps" sx={{ color: 'primary' }}>
-                        {component}
+                        {group}
                       </Text>
                     </Flex>
 

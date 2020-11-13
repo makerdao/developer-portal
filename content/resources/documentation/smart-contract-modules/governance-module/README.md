@@ -1,7 +1,9 @@
 ---
 title: Governance Module
 description: The Maker Protocol's Governance Contracts
-component: governance
+group: smart-contracts
+component:
+  - governance
 tags:
   - governance
 slug: introduction-to-governance-module

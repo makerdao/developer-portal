@@ -1,7 +1,7 @@
 ---
 title: Auction Keeper Bot Setup Guide
 description: Walkthrough how to set up your own Auction Keeper
-component: keepers
+group: keepers
 tags:
 	- keepers
    - auctions
