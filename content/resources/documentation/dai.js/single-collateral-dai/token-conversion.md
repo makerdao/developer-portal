@@ -1,7 +1,7 @@
 ---
 title: Token Conversion
 description: The token conversion service offers functions to convert between Eth, Weth and Peth, handling allowances when necessary
-component: dai-js
+component: sdks
 tags:
 	- dai-js
 slug: dai-js-token-conversion

@@ -1,7 +1,7 @@
 ---
 title: Getting Started
 description: Getting started with Dai.js
-component: dai-js
+component: sdks
 tags:
 	- dai-js
 slug: dai-js-getting-started

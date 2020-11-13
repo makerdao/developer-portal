@@ -6,29 +6,53 @@ import Link from 'next/link';
 import useStore from '../stores/store';
 import { navItems } from '../data/resourcesSubNav.json';
 
+const ListItem = ({ title, root, active, resourcePath, slug }) => {
+  return (
+    <Fragment>
+      <Icon
+        name="arrow_right"
+        sx={{
+          m: 'auto',
+          visibility: active ? undefined : 'hidden',
+          color: active ? 'primary' : undefined,
+        }}
+      ></Icon>
+      <Link href={`/${resourcePath}/[slug]`} as={`/${resourcePath}/${slug}`} passHref>
+        <NavLink
+          sx={root ? { textTransform: 'uppercase', color: 'text' } : { color: 'textMuted', ml: 2 }}
+          variant="sidebar"
+        >
+          {title}
+        </NavLink>
+      </Link>
+    </Fragment>
+  );
+};
+
 const List = ({ items, resourcePath, activeSlug }) => {
   if (!Array.isArray(items)) return null;
 
-  return items?.map((item) => {
-    const title = item?.data?.frontmatter?.title;
-    const root = item?.data?.frontmatter?.root;
-    const slug = item?.data?.frontmatter?.slug;
-    const active = slug === activeSlug;
-    return (
-      <Fragment key={slug}>
-        <Icon
-          name="arrow_right"
-          sx={{ m: 'auto', visibility: active ? undefined : 'hidden' }}
-        ></Icon>
-        <Link href={`/${resourcePath}/[slug]`} as={`/${resourcePath}/${slug}`} passHref>
-          <NavLink sx={{ color: root ? 'blue' : undefined }} variant="sidebar">
-            {title}
-          </NavLink>
-        </Link>
-        <List items={item.children} resourcePath={resourcePath} activeSlug={activeSlug} />
-      </Fragment>
-    );
-  });
+  return items?.map(
+    ({
+      data: {
+        frontmatter: { title, root, slug },
+      },
+      children,
+    }) => {
+      return (
+        <Fragment key={slug}>
+          <ListItem
+            title={title}
+            root={root}
+            active={slug === activeSlug}
+            resourcePath={resourcePath}
+            slug={slug}
+          />
+          <List items={children} resourcePath={resourcePath} activeSlug={activeSlug} />
+        </Fragment>
+      );
+    }
+  );
 };
 
 const Sidebar = ({ resources, resourcePath, activeSlug }) => {
@@ -42,7 +66,7 @@ const Sidebar = ({ resources, resourcePath, activeSlug }) => {
         {resources.map((resource) => {
           return (
             <List
-              key={resource.toString()}
+              key={resource[0].fileName}
               items={resource}
               resourcePath={resourcePath}
               activeSlug={activeSlug}

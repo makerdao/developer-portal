@@ -13,6 +13,7 @@ const theme = {
     background: '#212',
     surface: '#ffffff08',
     text: '#fffff0',
+    textMuted: '#907B90',
     onBackground: '#eaebf0',
     primary: '#F012BE',
 

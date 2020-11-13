@@ -1,7 +1,7 @@
 ---
 title: Transactions
 description: Managing transactions with Dai.js
-component: dai-js
+component: sdks
 tags:
 	- dai-js
 slug: dai-js-transactions

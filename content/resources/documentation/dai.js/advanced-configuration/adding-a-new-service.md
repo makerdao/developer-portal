@@ -1,7 +1,7 @@
 ---
 title: Adding a new service
 description: Take advantage of the pluggable architecture of this library by choosing different implementations for services
-component: dai-js
+component: sdks
 tags:
 	- dai-js
 slug: adding-a-new-service
