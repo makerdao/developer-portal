@@ -7,6 +7,7 @@ tags:
     - auctions
 slug: chief-keeper
 contentType: documentation
+root: true
 ---
 
 # Chief Keeper

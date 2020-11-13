@@ -1,12 +1,18 @@
 ---
 title: Dai and Collateral Redemption during Emergency Shutdown
 description: This guide describes how users can interact with the Maker protocol through proxy contracts to redeem Dai and any excess collateral if the Maker system has entered into emergency shutdown
+group: clis
+component:
+  - dai
+  - emergency shutdown
+  - cli
 tags:
   - dai
   - emergency shutdown
   - cli
 slug: dai-and-collateral-redemption-during-emergency-shutdown
 contentType: documentation
+root: true
 ---
 
 # Dai and Collateral Redemption during Emergency Shutdown

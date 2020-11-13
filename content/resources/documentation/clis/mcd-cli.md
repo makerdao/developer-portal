@@ -1,11 +1,16 @@
 ---
 title: Multi Collateral Dai (MCD) CLI
 description: Welcome to the MCD CLI
+group: clis
+component:
+  - mcd
+  - cli
 tags:
   - mcd
   - cli
 slug: mcd-cli
 contentType: documentation
+root: true
 ---
 
 # Multi Collateral Dai (MCD) CLI

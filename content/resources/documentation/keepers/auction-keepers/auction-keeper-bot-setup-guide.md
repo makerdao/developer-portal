@@ -7,6 +7,7 @@ tags:
    - auctions
 slug: auction-keeper-bot-setup-guide
 contentType: documentation
+parent: introduction-to-auction-keepers
 ---
 
 # Auction Keeper Bot Setup Guide

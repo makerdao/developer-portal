@@ -7,6 +7,7 @@ tags:
     - auctions
 slug: introduction-to-market-maker-keepers
 contentType: documentation
+root: true
 ---
 
 # Market Maker Keepers

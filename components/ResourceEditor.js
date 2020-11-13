@@ -83,7 +83,7 @@ const ResourceEditor = ({ file, navFile, contentType, preview, resources, slug, 
         </InlineWysiwyg>
       </InlineForm>
       <Flex sx={{ my: 4, flexDirection: 'column', alignItems: 'flex-start' }}>
-        <EditLink />
+        <EditLink enterText="Edit This Page With TinaCMS" />
         <ThemeLink href={`${GITHUB_EDIT_LINK}${file.fileRelativePath}`} target="_blank">
           <Flex sx={{ alignItems: 'center', mt: 2 }}>
             <Text sx={{ color: 'text', cursor: 'pointer' }}>Edit on Github</Text>

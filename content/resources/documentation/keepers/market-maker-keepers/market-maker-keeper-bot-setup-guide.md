@@ -7,6 +7,7 @@ tags:
   - auctions
 slug: market-maker-keeper-bot-setup-guide
 contentType: documentation
+parent: introduction-to-market-maker-keepers
 ---
 
 # Market Maker Keeper Bot Setup Guide

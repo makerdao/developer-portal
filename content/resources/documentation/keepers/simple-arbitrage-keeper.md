@@ -7,6 +7,7 @@ tags:
     - auctions
 slug: simple-arbitrage-keeper
 contentType: documentation
+root: true
 ---
 
 # Simple Arbitrage Keeper

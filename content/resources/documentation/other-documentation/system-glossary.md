@@ -1,12 +1,14 @@
 ---
 title: MCD Glossaries
 description: A list of words, terms, variables, functions and more relating to the Maker Protocol
+group: glossary
 tags:
   - annotations
   - glossary
   - mcd
 slug: mcd-glossaries
 contentType: documentation
+root: true
 ---
 
 # MCD Glossaries

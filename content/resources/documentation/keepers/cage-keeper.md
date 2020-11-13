@@ -7,6 +7,7 @@ tags:
     - auctions
 slug: cage-keeper
 contentType: documentation
+root: true
 ---
 
 # Cage Keeper
