@@ -4,7 +4,8 @@ import { jsx, Flex, NavLink, Grid } from 'theme-ui';
 import { Icon } from '@makerdao/dai-ui-icons';
 import Link from 'next/link';
 
-const ListItem = ({ title, root, active, resourcePath, slug }) => {
+const ListItem = ({ title, root, activeSlug, resourcePath, slug, parent }) => {
+  const active = slug === activeSlug;
   return (
     <Fragment>
       <Icon
@@ -17,7 +18,13 @@ const ListItem = ({ title, root, active, resourcePath, slug }) => {
       ></Icon>
       <Link href={`/${resourcePath}/[slug]`} as={`/${resourcePath}/${slug}`} passHref>
         <NavLink
-          sx={root ? { textTransform: 'uppercase', color: 'text' } : { color: 'textMuted', ml: 2 }}
+          sx={
+            root
+              ? { textTransform: 'uppercase', color: 'text' }
+              : parent
+              ? { color: 'textMuted', ml: 2 }
+              : undefined
+          }
           variant="sidebar"
         >
           {title}
@@ -28,28 +35,42 @@ const ListItem = ({ title, root, active, resourcePath, slug }) => {
 };
 
 const List = ({ items, resourcePath, activeSlug }) => {
-  if (!Array.isArray(items)) return null;
-
-  return items?.map(
-    ({
-      data: {
-        frontmatter: { title, root, slug },
-      },
-      children,
-    }) => {
-      return (
-        <Fragment key={slug}>
-          <ListItem
-            title={title}
-            root={root}
-            active={slug === activeSlug}
-            resourcePath={resourcePath}
-            slug={slug}
-          />
-          <List items={children} resourcePath={resourcePath} activeSlug={activeSlug} />
-        </Fragment>
-      );
-    }
+  return Array.isArray(items) ? (
+    items.map(
+      ({
+        data: {
+          frontmatter: { title, root, slug, parent },
+        },
+        children,
+      }) => {
+        return (
+          <Fragment key={slug}>
+            <ListItem
+              title={title}
+              root={root}
+              activeSlug={activeSlug}
+              resourcePath={resourcePath}
+              slug={slug}
+              parent={parent}
+            />
+            {children && (
+              <List items={children} resourcePath={resourcePath} activeSlug={activeSlug} />
+            )}
+          </Fragment>
+        );
+      }
+    )
+  ) : (
+    <Fragment>
+      <ListItem
+        title={items.data.frontmatter.title}
+        root={items.data.frontmatter.root}
+        activeSlug={activeSlug}
+        resourcePath={resourcePath}
+        slug={items.data.frontmatter.slug}
+        parent={items.data.frontmatter.parent}
+      />
+    </Fragment>
   );
 };
 
@@ -57,16 +78,9 @@ const Sidebar = ({ resources, resourcePath, activeSlug }) => {
   return (
     <Flex sx={{ p: 4, flexDirection: 'column' }}>
       <Grid gap={0} columns={'20px auto'}>
-        {resources.map((resource) => {
-          return (
-            <List
-              key={resource[0].fileName}
-              items={resource}
-              resourcePath={resourcePath}
-              activeSlug={activeSlug}
-            />
-          );
-        })}
+        {resources.map((resource, i) => (
+          <List key={i} items={resource} resourcePath={resourcePath} activeSlug={activeSlug} />
+        ))}
       </Grid>
     </Flex>
   );

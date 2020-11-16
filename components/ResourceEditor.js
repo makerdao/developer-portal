@@ -28,39 +28,9 @@ const ResourceEditor = ({ file, navFile, contentType, preview, resources, slug, 
   const [data, form] = useGithubMarkdownForm(file);
   usePlugin(form);
 
-  const walk = (resources, array) => {
-    array.forEach((item) => {
-      const children = resources.filter(
-        (resource) => resource.data.frontmatter.parent === item.data.frontmatter.slug
-      );
-      if (children.length > 0) {
-        item.children = children;
-        walk(resources, item.children);
-      }
-    });
-  };
-
-  const moduleResources = resources
-    ?.filter(
-      (r) =>
-        r.data.frontmatter.group === file.data.frontmatter.group &&
-        r.data.frontmatter.contentType === contentType
-    )
-    .reduce((acc, val, i, array) => {
-      const isTopLevel = val.data.frontmatter.root && !val.data.frontmatter.parent;
-
-      if (isTopLevel) {
-        const dataObj = [val];
-        walk(array, dataObj);
-        acc.push(dataObj);
-      }
-      return acc;
-    }, [])
-    .sort();
-
   return (
     <GuidesLayout
-      resources={moduleResources}
+      resources={resources}
       slug={slug}
       toc={toc}
       resourcePath={contentType}
