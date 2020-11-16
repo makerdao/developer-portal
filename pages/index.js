@@ -137,6 +137,10 @@ const ModulesList = () => {
 const IntroText = () => {
   return (
     <Container>
+      <Heading variant="largeHeading" pb="4">
+        About Maker Protocol
+      </Heading>
+
       <Heading
         sx={{
           pb: 4,
@@ -195,13 +199,15 @@ const Page = ({ file, guides }) => {
           }}
         >
           <PageLead content={data} />
+          <GuideList title="Guides" path="guides" guides={guides} />
+
           {/* <ModulesList /> */}
           <IntroText />
           <CodeBox cta="Dive in the code" sections={codeSections} />
-          <GuideList title="Guides" path="guides" guides={guides} />
-          <ArticlesList title="Articles" path="guides" resources={guides} />
-          <CommunityCta />
+          {/* <ArticlesList title="Articles" path="guides" resources={guides} /> */}
           <Ecosystem title={'Developer Ecosystem'} items={ecosystem} />
+
+          <CommunityCta />
         </Grid>
       </InlineForm>
       <Container>
