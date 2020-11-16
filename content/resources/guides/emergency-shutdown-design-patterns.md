@@ -1,7 +1,9 @@
 ---
 title: Emergency Shutdown Design Patterns for Integrations
 description: Learn about design processes for the emergency shutdown process
-component: mcd
+components:
+  - mcd
+  - esm
 tags:
   - emergency shutdown
   - mcd

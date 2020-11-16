@@ -1,7 +1,8 @@
 ---
 title: How to use Oasis Direct Proxy on OasisDEX Protocol
 description: Learn about Oasis Direct Proxy and how it is used in OasisDEX Protocol
-component: oasisdex
+components:
+  - oasisdex
 tags:
   - oasisdex
   - proxy contract

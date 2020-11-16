@@ -1,7 +1,8 @@
 ---
 title: Intro to the OasisDEX Protocol
 description: Learn about OasisDEX protocol and start trading
-component: oasisdex
+components:
+  - oasisdex
 tags:
   - oasisdex
   - trade

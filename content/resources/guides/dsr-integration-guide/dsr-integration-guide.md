@@ -1,7 +1,8 @@
 ---
 title: DSR Integration Guide
 description: Learm about DSR amd integrate it into your platform
-component: dai
+components:
+  - dai
 tags:
   - dai
   - DSR

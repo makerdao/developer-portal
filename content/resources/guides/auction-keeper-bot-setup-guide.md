@@ -1,10 +1,10 @@
 ---
 title: Auction Keeper Bot Setup Guide
 description: Learn how to setup an auciton keeper bot
-component: keepers
-tags:
+components:
   - keepers
   - auction
+tags:
   - bot
   - setup guide
 slug: auction-keeper-bot-setup-guide

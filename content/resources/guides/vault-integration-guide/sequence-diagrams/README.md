@@ -1,12 +1,13 @@
 ---
 title: Vault Integration Guide - DSProxy Sequence Diagrams
 description: See DSProxy Sequence Diagrams
-component: vaults
+components: 
+  - vaults
 tags:
   - vaults
   - vault integration diagrams
   - sequence diagram
-slug: maker-vault-integration-guide-ds-proxy
+slug: maker-vault-integration-sequence-diagrams
 contentType: guides
 root: false
 ---

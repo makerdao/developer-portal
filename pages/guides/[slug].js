@@ -11,7 +11,7 @@ const GuidesPage = ({ file, resources, ...props }) => {
 
   const moduleResources = resources?.filter(
     (r) =>
-      r.data.frontmatter.component === file.data.frontmatter.component &&
+      r.data.frontmatter.components.some((c) => file.data.frontmatter.components.includes(c)) &&
       r.data.frontmatter.contentType === ContentTypes.GUIDES
   );
 

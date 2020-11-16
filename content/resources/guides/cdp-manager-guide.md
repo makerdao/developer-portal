@@ -1,9 +1,9 @@
 ---
 title: CDP Manager Guide
 description: Learn about CDP Manager and use it to integrate with Maker Protocol
-component: vaults
-tags:
+components:
   - vaults
+tags:
   - CDP Manager
 slug: cdp-manager-guide
 contentType: guides

@@ -1,7 +1,9 @@
 ---
 title: DsrManager
 description: Learn about DsrManager and integrate with DSR
-component: dai
+components:
+  - dai
+  - DSR
 tags:
   - dai
   - DSR

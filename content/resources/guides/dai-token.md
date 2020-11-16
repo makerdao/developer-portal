@@ -1,7 +1,8 @@
 ---
 title: Dai Token
 description: Learm about Dai and integrate it into applications
-component: dai
+components:
+  - dai
 tags:
   - dai
   - ERC20 contract

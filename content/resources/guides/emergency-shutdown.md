@@ -1,7 +1,9 @@
 ---
 title: Emergency Shutdown Guide - MCD
 description: Learm about the Emergency Shutdown Process of the Maker Protocol
-component: mcd
+components:
+  - mcd
+  - esm
 tags:
   - emergency shutdown
   - mcd
