@@ -2,7 +2,7 @@
 title: Proxy Actions - Detailed Documentation
 description: A generalized wrapper for the Maker Protocol
 group: smart-contracts
-component:
+components:
   - vaults
   - dsr
   - proxy

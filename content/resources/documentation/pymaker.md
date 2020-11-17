@@ -2,8 +2,11 @@
 title: Pymaker
 description: A Python API for the Maker Smart Contracts
 group: sdks
-tags:
+components:
   - keepers
+tags:
+  - pymaker
+  - python
 slug: pymaker
 contentType: documentation
 root: true

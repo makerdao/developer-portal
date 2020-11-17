@@ -2,8 +2,9 @@
 title: Cat - Detailed Documentation
 description: The Maker Protocol's Liquidation Agent
 group: smart-contracts
-tags:
+components:
   - auctions
+tags:
   - liquidations
 slug: cat-detailed-documentation
 contentType: documentation
@@ -94,35 +95,35 @@ function bite(bytes32 ilk, address urn) public returns (uint id) {
   // require the Vault to be unsafe (see definition above).
   require(spot > 0 && mul(ink, spot) < mul(art, rate), "Cat/not-unsafe");
 
-	// Loads the `ilk` data into memory as an optimization.
+    // Loads the `ilk` data into memory as an optimization.
   Ilk memory milk = ilks[ilk];
   // Declares a variable that will be assigned in the following scope.
   uint256 dart;
 
-	// Defines a new scope, this prevents a stack too deep error in solidity
+    // Defines a new scope, this prevents a stack too deep error in solidity
   {
-		// Calculate the available space in the box
+        // Calculate the available space in the box
     uint256 room = sub(box, litter);
 
     // test whether the remaining space in the litterbox is dusty
     require(litter < box && room >= dust, "Cat/liquidation-limit-hit");
 
-		// Sets the amount of debt to be covered by the auction.
+        // Sets the amount of debt to be covered by the auction.
     // (smaller of either the amount of normalized debt, maximum debt chunk size, or space in the box)
     // divided by the rate, divided by the penalty fee.
     dart = min(art, mul(min(milk.dunk, room), WAD) / rate / milk.chop);
   }
 
-	// Takes the minimum of the collateral balance or the
+    // Takes the minimum of the collateral balance or the
   // amount of collateral represented by the debt to be covered
   uint256 dink = min(ink, mul(ink, dart) / art);
 
-	// Prevents no-collateral auctions
+    // Prevents no-collateral auctions
   require(dart >  0      && dink >  0     , "Cat/null-auction");
   // Protects against int overflow when converting from uint to int
   require(dart <= 2**255 && dink <= 2**255, "Cat/overflow"    );
 
-	// Called in this way, vat.grab will:
+    // Called in this way, vat.grab will:
   // - Remove the dink and the dart from the bitten Vault (urn)
   // - Adds the collateral (dink) to the Cat's gem
   // - Adds the debt (dart) to the Vow's debt (vat.sin[vow])
@@ -143,7 +144,7 @@ function bite(bytes32 ilk, address urn) public returns (uint id) {
     // Updates the amount of litter in the box
     litter = add(litter, tab);
 
-		// Calls kick on the collateral's Flipper contract.
+        // Calls kick on the collateral's Flipper contract.
     // tab is the total debt to be sent to auction
     // gal: address(vow) sets up the Vow as the recipient of the Dai income for this auction
     // bid: 0 indicates that this is the opening bid

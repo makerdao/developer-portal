@@ -2,7 +2,7 @@
 title: Proxy Module
 description: Allowing Users to interact with the Maker Protocol more easily
 group: smart-contracts
-component:
+components:
   - proxy
 tags:
   - proxy

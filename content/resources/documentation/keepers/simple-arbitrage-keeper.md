@@ -2,9 +2,12 @@
 title: Simple Arbitrage Keeper
 description: Keeper that can be used out of the box to participate in wildly volatile markets
 group: keepers
+components:
+  - keepers
+  - auctions
 tags:
-	- keepers
-    - auctions
+  - arbitrage
+  - bot
 slug: simple-arbitrage-keeper
 contentType: documentation
 root: true
@@ -137,19 +140,19 @@ In your run-simple-keeper-kovan.sh file:
 ```text
 #!/bin/bash
 /full/path/to/githubClone/simple-arbitrage-keeper/bin/simple-arbitrage-keeper \
-	--rpc-host 'kovan.sampleparitynode.com' \
-	--eth-from '0xABC' \
-	--eth-key 'key_file=/path/to/keystore.file,pass_file=/path/to/passphrase.txt' \
-	--uniswap-entry-exchange '0x47D4Af3BBaEC0dE4dba5F44ae8Ed2761977D32d6' \
-	--uniswap-arb-exchange '0x1D79BcC198281C5F9B52bf24F671437BaDd3a688' \
-	--oasis-address '0x4A6bC4e803c62081ffEbCc8d227B5a87a58f1F8F' \
-	--oasis-api-endpoint 'https://kovan-api.oasisdex.com' \
-	--tx-manager '0xABC' \
-	--entry-token '0xC4375B7De8af5a38a93548eb8453a498222C4fF2' \
-	--arb-token '0xd0A1E359811322d97991E03f863a0C30C2cF029C' \
-	--arb-token-name 'WETH' \
-	--min-profit 1 \
-	--max-engagement 10 \
+    --rpc-host 'kovan.sampleparitynode.com' \
+    --eth-from '0xABC' \
+    --eth-key 'key_file=/path/to/keystore.file,pass_file=/path/to/passphrase.txt' \
+    --uniswap-entry-exchange '0x47D4Af3BBaEC0dE4dba5F44ae8Ed2761977D32d6' \
+    --uniswap-arb-exchange '0x1D79BcC198281C5F9B52bf24F671437BaDd3a688' \
+    --oasis-address '0x4A6bC4e803c62081ffEbCc8d227B5a87a58f1F8F' \
+    --oasis-api-endpoint 'https://kovan-api.oasisdex.com' \
+    --tx-manager '0xABC' \
+    --entry-token '0xC4375B7De8af5a38a93548eb8453a498222C4fF2' \
+    --arb-token '0xd0A1E359811322d97991E03f863a0C30C2cF029C' \
+    --arb-token-name 'WETH' \
+    --min-profit 1 \
+    --max-engagement 10 \
 ```
 
 Make your Keeper executable, and run it!

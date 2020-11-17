@@ -2,8 +2,10 @@
 title: Exchange Service
 description: The exchange service allows to buy and sell DAI, MKR, and other tokens
 group: sdks
+components:
+  - dai-js
 tags:
-	- dai-js
+  - javascript
 slug: dai-js-exchange-service
 contentType: documentation
 parent: dai-js-scd-plugin

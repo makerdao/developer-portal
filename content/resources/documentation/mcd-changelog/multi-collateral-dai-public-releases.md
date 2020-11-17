@@ -1,9 +1,11 @@
 ---
 title: Multi-Collateral DAI Public Releases
 description: The MCD Changelog provides valuable information for developers interacting with MCD deployments
-tags:
-	- changelog
+components:
   - mcd
+tags:
+  - changelog
+  - testnet
 slug: multi-collateral-dai-public-releases
 contentType: documentation
 ---

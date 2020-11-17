@@ -2,8 +2,10 @@
 title: Getting Started
 description: Getting started with Dai.js
 group: sdks
+components:
+  - dai-js
 tags:
-	- dai-js
+  - javascript
 slug: dai-js-getting-started
 contentType: documentation
 parent: introduction-to-dai-js

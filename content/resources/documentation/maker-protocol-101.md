@@ -2,8 +2,9 @@
 title: Maker Protocol 101
 description: Getting Started with Maker Protocol
 group: maker-protocol-101
-tags:
+components:
   - mcd
+tags:
   - slides
   - pdf
 slug: maker-protocol-101

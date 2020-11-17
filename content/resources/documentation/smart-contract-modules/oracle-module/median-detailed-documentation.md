@@ -2,7 +2,7 @@
 title: Median - Detailed Documentation
 description: The Maker Protocol's trusted reference price
 group: smart-contracts
-component:
+components:
   - oracles
 tags:
   - oracles

@@ -2,9 +2,11 @@
 title: Auction Keeper Bot Setup Guide
 description: Walkthrough how to set up your own Auction Keeper
 group: keepers
+components:
+  - keepers
+  - auctions
 tags:
-	- keepers
-   - auctions
+  - bot
 slug: auction-keeper-bot-setup-guide
 contentType: documentation
 parent: introduction-to-auction-keepers

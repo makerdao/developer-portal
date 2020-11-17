@@ -2,8 +2,10 @@
 title: Advanced Features
 description: Advanced features for Dai.js
 group: sdks
+components:
+    - dai-js
 tags:
-	- dai-js
+    - javascript
 slug: dai-js-advanced
 contentType: documentation
 root: true

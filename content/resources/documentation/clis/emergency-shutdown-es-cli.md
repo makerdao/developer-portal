@@ -2,7 +2,7 @@
 title: Emergency Shutdown (ES) CLI
 description: This guide outlines the steps and procedures necessary to check, interact with and trigger the ESM
 group: clis
-component:
+components:
   - dai
   - emergency shutdown
   - cli

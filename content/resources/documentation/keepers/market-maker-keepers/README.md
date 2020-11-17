@@ -2,9 +2,11 @@
 title: Market Maker Keepers
 description: Introduction to market maker keepers
 group: keepers
-tags:
-	- keepers
+components:
+    - keepers
     - auctions
+tags:
+    - bot
 slug: introduction-to-market-maker-keepers
 contentType: documentation
 root: true

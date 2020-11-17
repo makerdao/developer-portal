@@ -2,7 +2,7 @@
 title: Seth
 description: A powerful command line tool created to interface with the Ethereum blockchain
 group: clis
-component:
+components:
   - cli
 tags:
   - cli

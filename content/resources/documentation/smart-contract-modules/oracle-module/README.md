@@ -2,7 +2,7 @@
 title: Oracle Module
 description: The Maker Protocol's Oracles
 group: smart-contracts
-component:
+components:
   - oracles
 tags:
   - oracles

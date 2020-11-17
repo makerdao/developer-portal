@@ -2,7 +2,7 @@
 title: DSR Manager - Detailed Documentation
 description: The simplest way to integrate DSR in smart contracts
 group: smart-contracts
-component:
+components:
   - vaults
   - dsr
   - proxy

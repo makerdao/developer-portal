@@ -2,7 +2,7 @@
 title: Oracle Security Module - Detailed Documentation
 description: Ensures that new price values propagated from the Oracles are not taken up by the system until a specified delay has passed
 group: smart-contracts
-component:
+components:
   - oracles
 tags:
   - oracles

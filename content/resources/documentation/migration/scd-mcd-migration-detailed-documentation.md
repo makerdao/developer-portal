@@ -1,9 +1,10 @@
 ---
 title: SCD to MCD Migration
 description: The Maker Protocol Upgrade Contract
-tags:
+components:
   - scd
   - mcd
+tags:
   - migration
 slug: scd-to-mcd-migration
 contentType: documentation

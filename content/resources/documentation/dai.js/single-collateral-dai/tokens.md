@@ -2,8 +2,10 @@
 title: Tokens
 description: Get a token object from the tokenService.
 group: sdks
+components:
+  - dai-js
 tags:
-	- dai-js
+  - javascript
 slug: dai-js-tokens
 contentType: documentation
 parent: dai-js-scd-plugin

@@ -2,9 +2,11 @@
 title: Market Maker Keeper Bot Setup Guide
 description: A Marketing Making Bot Set up Guide
 group: keepers
-tags:
-	- keepers
+components:
+  - keepers
   - auctions
+tags:
+  - bot
 slug: market-maker-keeper-bot-setup-guide
 contentType: documentation
 parent: introduction-to-market-maker-keepers
@@ -427,7 +429,7 @@ bin/oasis-market-maker-keeper \
     --rpc-port  \
     --rpc-timeout 10 \
     --eth-from [address of your generated Ethereum account] \
-		--eth-key ${ACCOUNT_KEY} \
+        --eth-key ${ACCOUNT_KEY} \
     --tub-address  0x448a5065aebb8e423f0896e6c5d525c040f59af3 \
     --oasis-address  0x14fbca95be7e99c15cc2996c6c9d841e54b79425 \
     --price-feed fixed:200 \

@@ -2,8 +2,10 @@
 title: CDP Service
 description: SCD Service for managing CDPs
 group: sdks
+components:
+  - dai-js
 tags:
-	- dai-js
+  - javascript
 slug: dai-js-cdp-service
 contentType: documentation
 parent: dai-js-scd-plugin

@@ -2,7 +2,7 @@
 title: Spell - Detailed Documentation
 description: An un-owned object that performs one action or series of atomic actions one time only.
 group: smart-contracts
-component:
+components:
   - governance
 tags:
   - governance

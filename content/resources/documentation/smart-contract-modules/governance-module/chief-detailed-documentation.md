@@ -2,7 +2,7 @@
 title: Chief - Detailed Documentation
 description: Electing a Chief contract via an approval voting system
 group: smart-contracts
-component:
+components:
   - governance
 tags:
   - governance
