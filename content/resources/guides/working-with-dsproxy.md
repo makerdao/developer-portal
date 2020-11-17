@@ -1,7 +1,8 @@
 ---
 title: Working with DSProxy
 description: Learn how DSProxy is used in Maker and apply it in your applications
-parent: devtools
+components:
+  - devtools
 tags:
   - proxy conntracts
   - dsproxy

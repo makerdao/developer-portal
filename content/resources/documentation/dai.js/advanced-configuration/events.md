@@ -1,11 +1,14 @@
 ---
 title: Events
 description: The event pipeline allows developers to easily create real-time applications by letting them listen for important state changes and lifecycle events.
-parent: dai-js
+group: sdks
+components:
+  - dai-js
 tags:
-	- dai-js
+  - javascript
 slug: dai-js-events
 contentType: documentation
+parent: dai-js-advanced
 ---
 
 # Events

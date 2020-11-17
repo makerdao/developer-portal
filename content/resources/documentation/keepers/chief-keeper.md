@@ -1,12 +1,17 @@
 ---
 title: Chief Keeper
 description: Keeper that lifts the hat and streamlines executive actions
-parent: keepers
+group: keepers
+components:
+  - keepers
+  - auctions
+  - chief
+  - governance
 tags:
-	- keepers
-    - auctions
+  - bot
 slug: chief-keeper
 contentType: documentation
+root: true
 ---
 
 # Chief Keeper
@@ -68,11 +73,11 @@ Make a run-chief-keeper.sh to easily spin up the chief-keeper.
 ```text
 #!/bin/bash
 /full/path/to/chief-keeper/bin/chief-keeper \
-	--rpc-host 'sample.ParityNode.com' \
-	--network 'kovan' \
-	--eth-from '0xABCAddress' \
-	--eth-key 'key_file=/full/path/to/keystoreFile.json,pass_file=/full/path/to/passphrase/file.txt' \
-	--chief-deployment-block 14374534
+    --rpc-host 'sample.ParityNode.com' \
+    --network 'kovan' \
+    --eth-from '0xABCAddress' \
+    --eth-key 'key_file=/full/path/to/keystoreFile.json,pass_file=/full/path/to/passphrase/file.txt' \
+    --chief-deployment-block 14374534
 ```
 
 ## Testing

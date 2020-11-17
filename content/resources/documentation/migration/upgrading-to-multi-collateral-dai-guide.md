@@ -1,9 +1,10 @@
 ---
 title: Upgrading to Multi-Collateral Dai Guide
 description: This guide will focus on the Dai and CDP migration with a high level overview of the upgrade process for different actors in the Maker ecosystem.
-tags:
+components:
   - scd
   - mcd
+tags:
   - migration
 slug: upgrading-to-multi-collateral-dai-guide
 contentType: documentation

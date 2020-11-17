@@ -27,7 +27,7 @@ const GuideList = ({ guides, title, columns = [2, 3], path }) => {
             gridAutoFlow: 'column',
             gridTemplateRows: 'auto auto',
             overflowX: 'auto',
-            pl: `calc(50% - 1140px / 2)`,
+            pl: 'calc(50% - 1140px / 2)',
             // left: '-500px',
           }}
         >
@@ -35,7 +35,7 @@ const GuideList = ({ guides, title, columns = [2, 3], path }) => {
             (
               {
                 data: {
-                  frontmatter: { title, description, slug, parent },
+                  frontmatter: { title, description, slug, group },
                 },
               },
               i
@@ -59,7 +59,7 @@ const GuideList = ({ guides, title, columns = [2, 3], path }) => {
                 >
                   <Flex sx={{ flexDirection: 'column', mb: 2 }}>
                     <Text variant="caps" sx={{ color: 'primary' }}>
-                      {parent}
+                      {group}
                     </Text>
                   </Flex>
 

@@ -1,7 +1,9 @@
 ---
 title: Emergency Shutdown Guide - MCD
 description: Learm about the Emergency Shutdown Process of the Maker Protocol
-parent: mcd
+components:
+  - mcd
+  - esm
 tags:
   - emergency shutdown
   - mcd
@@ -99,7 +101,7 @@ Emergency Shutdown Process - visualized
 
 ## Emergency Shutdown Scenarios
 
-There are generally two scenarios in case of an Emergency Shutdown event.  
+There are generally two scenarios in case of an Emergency Shutdown event.
 
 **The Shutdown Scenario** is when the Emergency Shutdown has been triggered and the system is being terminated without a future plan of system redeployment. This will allow users to claim excess collateral or claim collateral from their Dai.
 
@@ -108,11 +110,11 @@ There are generally two scenarios in case of an Emergency Shutdown event.
 ## Emergency Shutdown Preparedness
 
 In case of an emergency shutdown event, different MakerDAO communication channels will be alerted. Your first step is to go to these channels and update yourself with the current status.
-  
+
 ## Dai Holders
 
 - If your wallet has the interface to claim collateral or migrate your Dai or has a Dapp browser built into it, feel free to use it and/or head towards the [migration portal](https://migrate.makerdao.com/) for the claiming/migration process.
-- If your wallet does not support claiming of collateral or migration of Dai, withdraw your Dai to a wallet you control and head towards the [migration portal](https://migrate.makerdao.com/) for the claiming/migration process.  
+- If your wallet does not support claiming of collateral or migration of Dai, withdraw your Dai to a wallet you control and head towards the [migration portal](https://migrate.makerdao.com/) for the claiming/migration process.
 
 - Follow communication for latest development updates
   - [Blog](https://blog.makerdao.com/)
@@ -156,7 +158,8 @@ As a service provider you have to be up to date with the latest status from Make
 - Alert users on the current situation and provide them guidance on the right action to take. Depending on the ES scenario, shutdown or redeployment, advise them to act accordingly.
 - Give users options to withdraw their Dai/MKR from exchange or inform them that the exchange/wallet will do the emergency shutdown process for them.
 
-- **Scenario: Shutdown:**  
+- **Scenario: Shutdown:**
+
   - Choose one of the following options:
     - Option 1: Let users withdraw DAI and MKR from the platform, and guide them to the [migration portal](https://migrate.makerdao.com/) to do the redemption process.
     - Option 2: Claim Dai equivalent in collateral on behalf of users using the [migration portal](https://migrate.makerdao.com/)
@@ -178,7 +181,7 @@ As a decentralized exchange you can inform users with a banner about the current
 - Follow communication for latest development updates
   - [Blog](https://blog.makerdao.com/)
   - [Forum](https://forum.makerdao.com/)
-  - [Reddit](https://www.reddit.com/r/makerDAO/)  
+  - [Reddit](https://www.reddit.com/r/makerDAO/)
   - [Social media](https://twitter.com/MakerDAO)
 
 Choose one of the two following options to allow your users to carry out the ES redemption process:
@@ -189,6 +192,7 @@ Choose one of the two following options to allow your users to carry out the ES 
 ### Procedure
 
 - **Scenario: Shutdown**
+
   - Inform users to claim equivalent value of Dai in collateral on the [migration portal](https://migrate.makerdao.com/) or create an interface to do the process locally.
 
 - **Scenario: Redeployment**
@@ -218,6 +222,7 @@ As a non-custodial wallet make sure to follow the latest updates from MakerDAO�
 As a Dapp browser make sure to follow the latest updates from MakerDAO’s communication channels and update your users accordingly.
 
 - Follow communication for latest development updates
+
   - [Blog](https://blog.makerdao.com/)
   - [Forum](https://forum.makerdao.com/)
   - [Reddit](https://www.reddit.com/r/makerDAO/)
@@ -276,6 +281,7 @@ As a Dapp creator you should integrate the Emergency Shutdown Service which can 
 
   - Have an UI interface that alerts and informs users about the event.
   - Direct them towards the official communication channels for more information (see list below) and the [migration portal](https://migrate.makerdao.com/) for Dai and Vault redemption.
+
 - Communication channels:
   - [Blog](https://blog.makerdao.com/)
   - [Forum](https://forum.makerdao.com/)
@@ -303,12 +309,11 @@ If you don’t control the smart contracts backing your Dapp directly, then
 - Or create an interface that allows your users to:
   - Claim Dai equivalent in collateral or claim excess collateral from Vaults in case of a system shutdown.
   - If there's a redeployment of the system, migrate Dai to the new redeployed system and/or claim excess collateral from Vaults.
-  
 - Follow communication for latest development updates
   - [Blog](https://blog.makerdao.com/)
   - [Forum](https://forum.makerdao.com/)
   - [Reddit](https://www.reddit.com/r/makerDAO/)
-  - [Social media](https://twitter.com/MakerDAO)  
+  - [Social media](https://twitter.com/MakerDAO)
 
 ## Keepers
 
@@ -341,7 +346,7 @@ When the system is running normally, the parameter [live is equal to one](https:
 ## CLI guide on how to redeem your Dai or excess collateral after ES
 
 Head over to [this guide](https://github.com/makerdao/developerguides/blob/master/governance/Collateral%20Redemption%20during%20Emergency%20Shutdown.md) to learn how to redeem your Dai or excess collateral in case of an ES event.
-  
+
 ## Summary
 
 In this guide you have learned how to act in case of an Emergency Shutdown event in the Maker Protocol. You have received an introduction in the Emergency Shutdown module and have received information to make you an educated actor in the MakerDAO ecosystem.

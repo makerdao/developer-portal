@@ -1,11 +1,16 @@
 ---
 title: Emergency Shutdown Module
 description: Introducing the Shutdown Mechanism of the Maker Protocol
+group: smart-contracts
+components:
+  - esm
+  - emergency shutdown
 tags:
   - esm
   - emergency shutdown
 slug: introduction-to-es-module
 contentType: documentation
+root: true
 ---
 
 # Maker Protocol Emergency Shutdown

@@ -169,9 +169,9 @@ const Page = ({ file, guides }) => {
               >
                 <Heading>Keepers</Heading>
                 <Text>
-                  Keepers are external actors that are incentivized by profit opportunities  to
-                  contribute to decentralized systems.  In the context of the Maker Protocol,  these
-                  external agents are incentivized  to automate certain operations around  the
+                  Keepers are external actors that are incentivized by profit opportunities to
+                  contribute to decentralized systems. In the context of the Maker Protocol, these
+                  external agents are incentivized to automate certain operations around the
                   Ethereum blockchain.
                 </Text>
                 <Link href="/technology">

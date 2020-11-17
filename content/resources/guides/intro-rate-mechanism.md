@@ -1,7 +1,8 @@
 ---
 title: Intro to the Rate Mechanism
 description: Understand how the Maker Protocol Rate Mechanism works
-parent: mcd
+components:
+  - mcd
 tags:
   - mcd
   - Rate Mechanism
@@ -101,7 +102,7 @@ You also have to be careful when using external safe math libraries whose functi
 
 #### Exponentiation
 
-Exponentiation operation is used to calculate the compound interest accrued over a number of time periods. The [rpow](<https://github.com/makerdao/dss/blob/effdda3657f71fd6efc3465dc661b375d1bacc3e/src/jug.sol#L40>) function implements exponentiation in Solidity and is used to raise a `ray` to the n^th power and return a new `ray` with the correct precision.
+Exponentiation operation is used to calculate the compound interest accrued over a number of time periods. The [rpow](https://github.com/makerdao/dss/blob/effdda3657f71fd6efc3465dc661b375d1bacc3e/src/jug.sol#L40) function implements exponentiation in Solidity and is used to raise a `ray` to the n^th power and return a new `ray` with the correct precision.
 
 ### Rate Value
 
@@ -183,7 +184,7 @@ PETH holders receive their compensation through liquidation penalties levied on 
 
 ## Troubleshooting
 
-*Exponentiation calculation taking too long?*
+_Exponentiation calculation taking too long?_
 Check for a missing decimal point in rate if your python script takes too long to perform the exponentiation calculation.
 
 ## Summary

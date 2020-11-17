@@ -1,11 +1,14 @@
 ---
 title: System Status
 description: Access system status information with the ETH CDP Service
-parent: dai-js
+group: sdks
+components:
+  - dai-js
 tags:
-	- dai-js
+  - javascript
 slug: dai-js-system-status
 contentType: documentation
+parent: dai-js-scd-plugin
 ---
 
 # System Status

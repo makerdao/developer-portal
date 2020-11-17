@@ -1,11 +1,17 @@
 ---
 title: End - Detailed Documentation
 description: Shutdown
-parent: governance
+group: smart-contracts
+components:
+  - esm
+  - end
+  - emergency shutdown
+  - governance
 tags:
   - governance
 slug: end-proxy-detailed-documentation
 contentType: documentation
+parent: introduction-to-es-module
 ---
 
 # End - Detailed Documentation

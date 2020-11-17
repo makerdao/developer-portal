@@ -1,7 +1,9 @@
 ---
 title: DsrManager
 description: Learn about DsrManager and integrate with DSR
-parent: dai
+components:
+  - dai
+  - DSR
 tags:
   - dai
   - DSR
@@ -29,7 +31,7 @@ root: false
     - [exitAll(address dst)](#exitalladdress-dst)
   - [Gotchas / Integration Concerns](#gotchas--integration-concerns)
 
-The `DsrManager` provides an easy to use smart contract that allows service providers to deposit/withdraw dai into the DSR contract  [pot](https://docs.makerdao.com/smart-contract-modules/rates-module/pot-detailed-documentation), and activate/deactivate the Dai Savings Rate to start earning savings on a pool of dai in a single function call. To understand the DsrManager, it is necessary to have an understanding of the  [pot](https://docs.makerdao.com/smart-contract-modules/rates-module/pot-detailed-documentation) first. The DSR is set by Maker Governance, and the purpose of DSR is to offer another incentive for holding Dai.
+The `DsrManager` provides an easy to use smart contract that allows service providers to deposit/withdraw dai into the DSR contract [pot](https://docs.makerdao.com/smart-contract-modules/rates-module/pot-detailed-documentation), and activate/deactivate the Dai Savings Rate to start earning savings on a pool of dai in a single function call. To understand the DsrManager, it is necessary to have an understanding of the [pot](https://docs.makerdao.com/smart-contract-modules/rates-module/pot-detailed-documentation) first. The DSR is set by Maker Governance, and the purpose of DSR is to offer another incentive for holding Dai.
 
 ## Deployment Details
 
@@ -41,7 +43,7 @@ The `DsrManager` provides an easy to use smart contract that allows service prov
 
 ### Math
 
-- `wad`  - some quantity of tokens, as a fixed point integer with 18 decimal places.
+- `wad` - some quantity of tokens, as a fixed point integer with 18 decimal places.
 - `ray` - a fixed point integer, with 27 decimal places.
 - `rad` - a fixed point integer, with 45 decimal places.
 - `mul(uint, uint)`, `rmul(uint, uint)`, `add(uint, uint)` & `sub(uint, uint)` - will revert on overflow or underflow
@@ -52,12 +54,12 @@ The `DsrManager` provides an easy to use smart contract that allows service prov
 
 - `pot` - stores the contract address of the main Dai Savings Rate contract `pot`.
 - `dai` - stores the contract address of dai.
-- `daiJoin`  - stores the contract address of the Dai token adapter.
+- `daiJoin` - stores the contract address of the Dai token adapter.
 - `supply` - the supply of Dai in the DsrManager.
 - `pieOf` - `mapping (addresses=>uint256)` mapping of user addresses and normalized Dai balances (`amount of dai / chi`) deposited into `pot`.
 - `pie` - stores the address' `pot` balance.
 - `chi` - the rate accumulator. This is the always increasing value which decides how much dai is given when `drip()` is called.
-- `vat`  - an address that conforms to a `VatLike` interface.
+- `vat` - an address that conforms to a `VatLike` interface.
 - `rho` - the last time that `drip` is called.
 
 ## Functions and mechanics
@@ -74,7 +76,7 @@ The `DsrManager` provides an easy to use smart contract that allows service prov
 - the `dst`'s `pieOf` amount is updated to include the `pie`.
 - The total supply amount is also updated by adding the `pie`.
 - `wad` amount of dai is transferred to the DsrManager contract
-- The DsrManager contract  joins `wad` amount of dai into the MCD system through the dai token adapter `daiJoin`.
+- The DsrManager contract joins `wad` amount of dai into the MCD system through the dai token adapter `daiJoin`.
 - The DsrManager contract `join`s `pie` amount of dai to the `pot`.
 
 ### exit(address dst, uint wad)

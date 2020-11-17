@@ -1,12 +1,15 @@
 ---
 title: Vat - Detailed Documentation
 description: The Maker Protocol's Core Accounting System
-parent: vaults
-tags:
+group: smart-contracts
+components:
   - vaults
   - vat
+tags:
+  - balances
 slug: vat-detailed-documentation
 contentType: documentation
+parent: introduction-to-core-module
 ---
 
 # Vat - Detailed Documentation
