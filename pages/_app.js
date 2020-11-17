@@ -92,8 +92,9 @@ class MyApp extends App {
   }
 }
 
-const enterEditMode = () => {
+const enterEditMode = async () => {
   const token = localStorage.getItem('tinacms-github-token') || null;
+  console.log('entered edit mode', token);
 
   const headers = new Headers();
 
@@ -101,9 +102,11 @@ const enterEditMode = () => {
     headers.append('Authorization', 'Bearer ' + token);
   }
 
-  return fetch('/api/preview', { headers: headers }).then(() => {
-    window.location.href = window.location.pathname;
-  });
+  const resp = await fetch('/api/preview', { headers: headers });
+  const data = await resp.json();
+
+  if (resp.status == 200) window.location.href = window.location.pathname;
+  else throw new Error(data.message);
 };
 
 const exitEditMode = () => {

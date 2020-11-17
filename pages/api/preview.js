@@ -1,3 +1,3 @@
-import { previewHandler } from "next-tinacms-github"
+import { previewHandler } from 'next-tinacms-github';
 
-export default previewHandler(process.env.SIGNING_KEY || "")
+export default previewHandler(process.env.SIGNING_KEY);

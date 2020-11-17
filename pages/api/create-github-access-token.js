@@ -1,7 +1,7 @@
-import { createAuthHandler } from "next-tinacms-github"
+import { createAuthHandler } from 'next-tinacms-github';
 
 export default createAuthHandler(
-  process.env.GITHUB_CLIENT_ID || "",
-  process.env.GITHUB_CLIENT_SECRET || "",
-  process.env.SIGNING_KEY || ""
-)
+  process.env.GITHUB_CLIENT_ID || '',
+  process.env.GITHUB_CLIENT_SECRET || '',
+  process.env.SIGNING_KEY || ''
+);
