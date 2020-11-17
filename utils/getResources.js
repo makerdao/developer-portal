@@ -7,13 +7,15 @@ const getResources = async (preview, previewData, contentDir) => {
     ? await getGithubFiles(contentDir, previewData)
     : await getLocalFiles(contentDir);
 
+  console.log('preview mode?', preview, 'files:', files);
+
   const resources = await Promise.all(
     files
-      .filter((file) => {
-        const content = fs.readFileSync(`${file}`, 'utf8');
-        const { data } = matter(content);
-        return data.slug;
-      })
+      // .filter((file) => {
+      //   const content = fs.readFileSync(`${file}`, 'utf8');
+      //   const { data } = matter(content);
+      //   return data.slug;
+      // })
       .map(async (file) => {
         if (preview) {
           const previewProps = await getGithubPreviewProps({

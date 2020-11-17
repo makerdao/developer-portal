@@ -14,7 +14,7 @@ import Ecosystem from '../components/Ecosystem';
 import EditLink from '../components/EditLink';
 import CodeBox from '@components/CodeBox';
 import { getResources } from '@utils';
-import { EcosystemCategories } from '../utils/constants';
+// import { EcosystemCategories } from '../utils/constants';
 import useStore from '../stores/store';
 
 const codeSections = [
@@ -165,7 +165,8 @@ const Dsr = ({ file, resources, dsrDocs, ecosystemFile, preview }) => {
 };
 
 export const getStaticProps = async function ({ preview, previewData }) {
-  const resources = await getResources(preview, previewData, 'content/resources');
+  // const resources = await getResources(preview, previewData, 'content/resources');
+  const resources = [];
   const dsrDocs = resources.filter(
     (g) => g.data.frontmatter.component === 'dsr' || g.data.frontmatter.tags.includes('dsr')
   );
