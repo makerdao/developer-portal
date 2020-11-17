@@ -1,12 +1,12 @@
 ---
 title: Auction Keeper Bot Setup Guide
 description: Learn how to setup an auciton keeper bot
-parent: keepers
-tags:
+components:
   - keepers
   - auction
+tags:
   - bot
-  - setup guide  
+  - setup guide
 slug: auction-keeper-bot-setup-guide
 contentType: guides
 root: false
@@ -27,7 +27,7 @@ root: false
   - [The Purpose of Auction Keepers](#the-purpose-of-auction-keepers)
   - [2. Bidding Models](#2-bidding-models)
   - [Starting and Stopping Bidding Models](#starting-and-stopping-bidding-models)
-  - [**Communicating with *bidding models***](#communicating-with-bidding-models)
+  - [**Communicating with _bidding models_**](#communicating-with-bidding-models)
   - [Glossary (Bidding Models)](#glossary-bidding-models)
   - [3. Setting up the Auction Keeper Bot (Installation)](#3-setting-up-the-auction-keeper-bot-installation)
     - [Prerequisite](#prerequisite)
@@ -78,17 +78,17 @@ This guide will show how to use the auction-keeper to interact with the Kovan de
 
 1. Introduction
 2. Bidding Models
-    - Starting and stopping bidding models
-    - Communicating with bidding models
+   - Starting and stopping bidding models
+   - Communicating with bidding models
 3. Setting up the Keeper Bot (Flip Auction Keeper)
-    - Prerequisites
-    - Installation
+   - Prerequisites
+   - Installation
 4. Running your Keeper Bot (Usage)
-    - Keeper Limitations
+   - Keeper Limitations
 5. Accounting
-    - Getting MCD K-DAI
-    - Getting MCD K-MKR
-    - Getting MCD Collateral Tokens
+   - Getting MCD K-DAI
+   - Getting MCD K-MKR
+   - Getting MCD Collateral Tokens
 6. Testing
 7. Support
 
@@ -102,7 +102,7 @@ Auction Keepers participate in auctions as a result of liquidation events and th
 2. [Surplus Auction (`flap`)](https://github.com/makerdao/dss/blob/master/src/flap.sol)
 3. [Debt Auction (`flop`)](https://github.com/makerdao/dss/blob/master/src/flop.sol)
 
-Auction Keepers have the unique ability to plug in external *bidding models*, which communicate information to the Keeper on when and how high to bid (these types of Keepers can be left safely running in the background). Shortly after an Auction Keeper notices or starts a new auction, it will spawn a new instance of a *bidding model* and act according to its specified instructions. Bidding models will be automatically terminated by the Auction Keeper the moment the auction expires.
+Auction Keepers have the unique ability to plug in external _bidding models_, which communicate information to the Keeper on when and how high to bid (these types of Keepers can be left safely running in the background). Shortly after an Auction Keeper notices or starts a new auction, it will spawn a new instance of a _bidding model_ and act according to its specified instructions. Bidding models will be automatically terminated by the Auction Keeper the moment the auction expires.
 
 **Note:**
 
@@ -110,7 +110,7 @@ Auction Keepers will automatically call `deal` (claiming a winning bid / settlin
 
 ## Auction Keeper Architecture
 
-As mentioned above, Auction Keepers directly interact with `Flipper`, `Flapper` and `Flopper` auction contracts deployed to the Ethereum mainnet. All decisions which involve pricing details are delegated to the *bidding models*. The Bidding models are simply executable strategies, external to the main `auction-keeper` process. This means that the bidding models themselves do not have to know anything about the Ethereum blockchain and its smart contracts, as they can be implemented in basically any programming language. However, they do need to have the ability to read and write JSON documents, as this is how they communicate/exchange with `auction-keeper`. It's important to note that as a developer running an Auction Keeper, it is required that you have basic knowledge on how to properly start and configure the auction-keeper. For example, providing startup parameters as keystore / password are required to setup and run a Keeper. Additionally, you should be familiar with the MCD system, as the model will receive auction details from auction-keeper in the form of a JSON message containing keys such as lot, beg, guy, etc.
+As mentioned above, Auction Keepers directly interact with `Flipper`, `Flapper` and `Flopper` auction contracts deployed to the Ethereum mainnet. All decisions which involve pricing details are delegated to the _bidding models_. The Bidding models are simply executable strategies, external to the main `auction-keeper` process. This means that the bidding models themselves do not have to know anything about the Ethereum blockchain and its smart contracts, as they can be implemented in basically any programming language. However, they do need to have the ability to read and write JSON documents, as this is how they communicate/exchange with `auction-keeper`. It's important to note that as a developer running an Auction Keeper, it is required that you have basic knowledge on how to properly start and configure the auction-keeper. For example, providing startup parameters as keystore / password are required to setup and run a Keeper. Additionally, you should be familiar with the MCD system, as the model will receive auction details from auction-keeper in the form of a JSON message containing keys such as lot, beg, guy, etc.
 
 **Simple Bidding Model Example:**
 
@@ -124,23 +124,23 @@ A simple bidding model could be a shell script which echoes a fixed price (furth
 - To constantly monitor all ongoing auctions.
 - To detect auctions started by other participants.
 - To Bid on auctions by converting token prices into bids.
-- To ensure that instances of *bidding model* are running for each auction type as well as making sure the instances match the current status of their auctions. This ensure that Keepers are bidding according to decisions outlined by the bidding model.
+- To ensure that instances of _bidding model_ are running for each auction type as well as making sure the instances match the current status of their auctions. This ensure that Keepers are bidding according to decisions outlined by the bidding model.
 
-The auction discovery and monitoring mechanisms work by operating as a loop, which initiates on every new block and enumerates all auctions from `1` to `kicks`. When this occurs, even when the *bidding model* decides to send a bid, it will not be processed by the Keeper until the next iteration of that loop. It's important to note that the `auction-keeper` not only monitors existing auctions and discovers new ones, but it also identifies and takes opportunities to create new auctions.
+The auction discovery and monitoring mechanisms work by operating as a loop, which initiates on every new block and enumerates all auctions from `1` to `kicks`. When this occurs, even when the _bidding model_ decides to send a bid, it will not be processed by the Keeper until the next iteration of that loop. It's important to note that the `auction-keeper` not only monitors existing auctions and discovers new ones, but it also identifies and takes opportunities to create new auctions.
 
 ## 2. Bidding Models
 
 ## Starting and Stopping Bidding Models
 
-Auction Keeper maintains a collection of child processes, as each *bidding model* is its own dedicated process. New processes (new *bidding model* instances) are spawned by executing a command according to the `--model` command-line parameter. These processes are automatically terminated (via `SIGKILL`) by the keeper shortly after their associated auction expires. Whenever the *bidding model* process dies, it gets automatically re-spawned by the Keeper.
+Auction Keeper maintains a collection of child processes, as each _bidding model_ is its own dedicated process. New processes (new _bidding model_ instances) are spawned by executing a command according to the `--model` command-line parameter. These processes are automatically terminated (via `SIGKILL`) by the keeper shortly after their associated auction expires. Whenever the _bidding model_ process dies, it gets automatically re-spawned by the Keeper.
 
 **Example:**
 
 `bin/auction-keeper --model '../my-bidding-model.sh' [...]`
 
-## **Communicating with *bidding models***
+## **Communicating with _bidding models_**
 
-Auction Keepers communicate with *bidding models* via their standard input/standard output. Once the process has started and every time the auction state changes, the Keeper sends a one-line JSON document to the **standard input** of the *bidding model.*
+Auction Keepers communicate with _bidding models_ via their standard input/standard output. Once the process has started and every time the auction state changes, the Keeper sends a one-line JSON document to the **standard input** of the _bidding model._
 
 A sample JSON message sent from the keeper to the model looks like the:
 
@@ -177,9 +177,9 @@ A sample JSON message sent from the keeper to the model looks like the:
 
 ---
 
-*Bidding models* should never make an assumption that messages will be sent only when auction state changes. It is perfectly fine for the `auction-keeper` to periodically send the same message(s) to *bidding models*.
+_Bidding models_ should never make an assumption that messages will be sent only when auction state changes. It is perfectly fine for the `auction-keeper` to periodically send the same message(s) to _bidding models_.
 
-At the same time, the `auction-keeper` reads one-line messages from the **standard output** of the *bidding model* process and tries to parse them as JSON documents. It will then extract the two following fields from that document:
+At the same time, the `auction-keeper` reads one-line messages from the **standard output** of the _bidding model_ process and tries to parse them as JSON documents. It will then extract the two following fields from that document:
 
 - `price` - the maximum (for `flip` and `flop` auctions) or the minimum (for `flap` auctions) price the model is willing to bid.
 - `gasPrice` (optional) - gas price in Wei to use when sending a bid.
@@ -204,7 +204,7 @@ Any messages written by a Bidding Model to **stderr** (standard error) will be p
 - Git
 - [Python v3.6.6](https://www.python.org/downloads/release/python-366/)
 - [virtualenv](https://virtualenv.pypa.io/en/latest/)
-  - This project requires *virtualenv* to be installed if you want to use Maker's python tools. This helps to ensure that you are running the right version of python as well as check that all of the pip packages that are installed in the [install.sh](http://install.sh) are in the right place and have the correct versions.
+  - This project requires _virtualenv_ to be installed if you want to use Maker's python tools. This helps to ensure that you are running the right version of python as well as check that all of the pip packages that are installed in the [install.sh](http://install.sh) are in the right place and have the correct versions.
 - [X-code](https://apps.apple.com/ca/app/xcode/id497799835?mt=12) (for Macs)
 - [Docker-Compose](https://docs.docker.com/compose/install/)
 
@@ -260,7 +260,7 @@ To change to your chosen version of the kovan release, copy/paste your preferred
 
 The stdout (standard output) provides a price for the collateral (for `flip` auctions) or MKR (for `flap` and `flop` auctions). The `sleep` locks the price in place for a minute, after which the keeper will restart the price model and read a new price (consider this your price update interval).
 
-The simplest possible *bidding model* you can set up is when you use a fixed price for each auction. For example:
+The simplest possible _bidding model_ you can set up is when you use a fixed price for each auction. For example:
 
 ```bash
 #!/usr/bin/env bash
@@ -288,7 +288,7 @@ ACCOUNT_KEY="key_file=/Users/username/Documents/Keeper/accounts/keystore,pass_fi
 ```
 
 `SERVER_ETH_RPC_HOST` - Should not be an infura node, as it doesn't provide all the functionality that the python script needs
-`ACCOUNT_KEY` - Should have the absolute path to the keystore and password file. Define the path as shown above, as the python script will parse through both the keystore and password files.  
+`ACCOUNT_KEY` - Should have the absolute path to the keystore and password file. Define the path as shown above, as the python script will parse through both the keystore and password files.
 
 ```bash
 #!/bin/bash
@@ -359,10 +359,10 @@ Now the keeper is actively listening for any action. If it sees an undercollater
 To participate in all auctions, a separate keeper must be configured for `flip` of each collateral type, as well as one for `flap` and another for `flop`.
 
 1. `--type` - the type of auction the keeper is used for. In this particular scenario, it will be set to `flip`.
-2. `--ilk` - the type of collateral.  
+2. `--ilk` - the type of collateral.
 3. `--addresses` - .json of all of the addresses of the MCD contracts as well as the collateral types allowed/used in the system.
 4. `--vat-dai-target` - the amount of DAI which the keeper will attempt to maintain in the Vat, to use for bidding. It will rebalance it upon keeper startup and upon `deal`ing an auction.
-5. `--model` - the bidding model that will be used for bidding.  
+5. `--model` - the bidding model that will be used for bidding.
 6. `--from-block` to the block where the first urn was created to instruct the keeper to use logs published by the vat contract to bulid a list of urns, and then check the status of each urn.
 
 Call `bin/auction-keeper --help` for a complete list of arguments.
@@ -400,9 +400,11 @@ MKR used to bid on `flap` auctions is directly withdrawn from your token balance
 **Contract address**: `0xb64964e9c0b658aa7b448cdbddfcdccab26cc584`
 
 1. Log into your MetaMask account from the browser extension. Add or confirm that the custom MCD K-DAI token is added to your list of tokens.
-    - This done by selecting "Add Token" and then by adding in the details under the "Custom token" option.
+
+   - This done by selecting "Add Token" and then by adding in the details under the "Custom token" option.
 
 2. Head to Oasis Borrow [here](https://oasis.app/borrow/?network=kovan).
+
    - Confirm that you are in fact on the Kovan Network before proceeding.
 
 3. Connect your MetaMask account.
@@ -414,6 +416,7 @@ MKR used to bid on `flap` auctions is directly withdrawn from your token balance
 6. Select the collateral type you want to proceed with and click "Continue".
    - e.g. ETH-A
 7. Deposit your K-ETH and generate K-DAI by selecting and inputing an amount of K-ETH and the amount of K-DAI you would like to generate. To proceed, click "Continue".
+
    - e.g. Deposit 0.5 K-ETH and generate 100 DAI.
 
 8. Click on the checkbox to confirm that you have read and accepted the **Terms of Service** then click the "Create CDP" button.
@@ -422,7 +425,7 @@ MKR used to bid on `flap` auctions is directly withdrawn from your token balance
 
 10. Click the "Exit" button and wait for your CDP to be created.
 
-After all of these steps have been completed, you will have the generated MCD K-DAI  and it will be present within your wallet. You can easily payback your DAI or generate more.
+After all of these steps have been completed, you will have the generated MCD K-DAI and it will be present within your wallet. You can easily payback your DAI or generate more.
 
 ### 2. Getting MCD K-MKR (K-MCD 1.0.2 Release)
 

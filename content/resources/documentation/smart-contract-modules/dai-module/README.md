@@ -1,9 +1,11 @@
 ---
 title: Dai Module
 description: The DAI token contract and all of the adapters DaiJoin adapters.
-parent: dai
-tags:
+group: smart-contracts
+components:
    - dai
+tags:
+   - token
 slug: introduction-to-dai-module
 contentType: documentation
 root: true

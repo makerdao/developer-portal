@@ -1,10 +1,14 @@
 ---
 title: Proxy Module
 description: Allowing Users to interact with the Maker Protocol more easily
+group: smart-contracts
+components:
+  - proxy
 tags:
   - proxy
-slug: introduction-to-mkr-module
+slug: introduction-to-proxy-module
 contentType: documentation
+root: true
 ---
 
 # Proxy Module

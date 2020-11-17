@@ -9,13 +9,30 @@ import {
   Text,
   Card,
   Grid,
+  useColorMode,
   Button,
+  IconButton,
   Input,
   Box,
 } from 'theme-ui';
 import Link from 'next/link';
 import { Icon } from '@makerdao/dai-ui-icons';
 import { Fragment } from 'react';
+
+const ColorModeToggle = (props) => {
+  const [mode, setMode] = useColorMode();
+  return (
+    <Icon
+      name={'moon'}
+      color="text"
+      size={3}
+      onClick={(e) => {
+        const next = mode === 'dark' ? 'light' : 'dark';
+        setMode(next);
+      }}
+    />
+  );
+};
 
 const LINKS = [
   { url: '/technology', name: 'Technology' },
@@ -115,23 +132,25 @@ const Header = ({ query, subnav }) => {
             <Flex
               as="nav"
               sx={{
-                display: [mobileOpened ? 'flex' : 'none', 'flex'],
-                ...(mobileOpened && {
-                  position: ['fixed', 'initial'],
-                  top: ['0', 'initial'],
-                  bottom: ['0', 'initial'],
-                  left: ['0', 'initial'],
-                  right: ['0', 'initial'],
-                  bg: ['surface', 'initial'],
-                  alignItems: ['center', 'initial'],
-                  justifyContent: ['flex-start', 'initial'],
-                  flexDirection: ['column', 'initial'],
-                  pt: [6, 'initial'],
-                }),
+                alignItems: 'center',
+                // display: [mobileOpened ? 'flex' : 'none', 'flex'],
+                // ...(mobileOpened && {
+                //   position: ['fixed', 'initial'],
+                //   top: ['0', 'initial'],
+                //   bottom: ['0', 'initial'],
+                //   left: ['0', 'initial'],
+                //   right: ['0', 'initial'],
+                //   bg: ['surface', 'initial'],
+                //   alignItems: ['center', 'initial'],
+                //   justifyContent: ['flex-start', 'initial'],
+                //   flexDirection: ['column', 'initial'],
+                //   pt: [6, 'initial'],
+                // }),
               }}
             >
               <NavLinks {...{ mobileOpened, setMobileOpened, setPopupState, query }} />
               {/* <MenuPopup setState={setPopupState} show={show} left={left} top={top} name={name} /> */}
+              <ColorModeToggle />
             </Flex>
             <Icon
               name={mobileOpened ? 'close' : 'menu'}

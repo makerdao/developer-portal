@@ -1,7 +1,9 @@
 ---
 title: Emergency Shutdown Design Patterns for Integrations
 description: Learn about design processes for the emergency shutdown process
-parent: mcd
+components:
+  - mcd
+  - esm
 tags:
   - emergency shutdown
   - mcd
@@ -57,13 +59,13 @@ root: false
 
 # Overview
 
-Dai is a stablecoin softly pegged to the U.S. Dollar and backed by Vault owners' debt. The Vault owners’ incentive to pay back the debt in order to retrieve locked collateral allows Dai to trade in a tight band around its 1 USD peg. Even in the permissionless environment created by the Maker Protocol, Dai trades around its internal reference price because of well-crafted incentives for both Dai and Vault owners. These constituencies can only achieve their goals if they are able to consistently buy and sell Dai at or near its peg. If one constituency consistently pays a premium over a long term, it affects the entire ecosystem, which depends on the market price being reasonable.  
+Dai is a stablecoin softly pegged to the U.S. Dollar and backed by Vault owners' debt. The Vault owners’ incentive to pay back the debt in order to retrieve locked collateral allows Dai to trade in a tight band around its 1 USD peg. Even in the permissionless environment created by the Maker Protocol, Dai trades around its internal reference price because of well-crafted incentives for both Dai and Vault owners. These constituencies can only achieve their goals if they are able to consistently buy and sell Dai at or near its peg. If one constituency consistently pays a premium over a long term, it affects the entire ecosystem, which depends on the market price being reasonable.
 
 Maker governance can impact various incentives through adjustments to mechanisms like the Dai Savings Rate, Stability fees, and Debt ceilings of collateral types. These adjustments may correct short term drifts of the market price away from the peg, but they cannot force Dai holders or Vault owners to behave a certain way since the assets themselves are permissionless. The only meaningful (dis)incentive available to protect the ecosystem from long term irrationality is the threat to trigger an emergency shutdown and settle all Dai holders and Vault owners by giving back their future fair value of 1 USD/DAI.
 
 While this is an action of last resort, all products that integrate with both Dai and Vaults must appropriately prepare to address the changes Maker Protocol will undergo when Emergency Shutdown is triggered:
 
-- Dai will no longer be softly pegged to 1 USD and the market price of Dai will transition  to the value of the basket of collateral locked in the system and backing Dai.
+- Dai will no longer be softly pegged to 1 USD and the market price of Dai will transition to the value of the basket of collateral locked in the system and backing Dai.
 
 - Existing Vaults will be frozen and owners can only retrieve excess collateral if their debt is settled.
 
@@ -71,7 +73,7 @@ While this is an action of last resort, all products that integrate with both Da
 
 # Learning Objectives
 
-In this guide, we will help you understand the impact  Emergency Shutdown will have on your system's integration with components in the Maker Protocol and highlight design patterns you can implement to ensure your users are protected and know the path forward after emergency shutdown is triggered.
+In this guide, we will help you understand the impact Emergency Shutdown will have on your system's integration with components in the Maker Protocol and highlight design patterns you can implement to ensure your users are protected and know the path forward after emergency shutdown is triggered.
 
 # Pre-requisites
 
@@ -198,7 +200,7 @@ There is a decentralized mechanism available to MKR holders to trigger emergency
 
 # Design Patterns
 
-We believe each system that integrates with the Maker Protocol is unique and must design and implement a tailored  Emergency Shutdown plan. Our goal with this guide is to highlight a few design patterns we have observed so far that permit components to modify their behavior after Emergency Shutdown is triggered. As you analyze the impact Emergency Shutdown could have on various aspects of your system, you can use these design patterns as a starting point to mitigate adverse affects Emergency Shutdown could cause for your users.
+We believe each system that integrates with the Maker Protocol is unique and must design and implement a tailored Emergency Shutdown plan. Our goal with this guide is to highlight a few design patterns we have observed so far that permit components to modify their behavior after Emergency Shutdown is triggered. As you analyze the impact Emergency Shutdown could have on various aspects of your system, you can use these design patterns as a starting point to mitigate adverse affects Emergency Shutdown could cause for your users.
 
 For each pattern, we go over at least one example function scenario where the pattern could be applied and why it is most suitable. We also discuss how each pattern applies to Dai held or debt carried by users within your system, common pitfalls you can avoid during implementation, ideal values you need to monitor both before and after Emergency Shutdown is triggered, and any infrastructure you may need to set up.
 
@@ -230,7 +232,7 @@ Implementing freeze on the parts of your system that interact with Vault debt is
 
 ## Oracle price feeds
 
-Dai is an ideal choice for collateral in systems like lending protocols because it is decentralized. Its value is not lost but becomes pegged to a basket of collateral, instead of 1 USD. Sometimes, there is no need to freeze the usage of Dai completely. Dai will continue to hold value, and  you can operate normally if your system is already set up to deal with unstable assets along with Dai. Taking this approach to manage Emergency Shutdown could minimize disruption to both your protocol and your users.
+Dai is an ideal choice for collateral in systems like lending protocols because it is decentralized. Its value is not lost but becomes pegged to a basket of collateral, instead of 1 USD. Sometimes, there is no need to freeze the usage of Dai completely. Dai will continue to hold value, and you can operate normally if your system is already set up to deal with unstable assets along with Dai. Taking this approach to manage Emergency Shutdown could minimize disruption to both your protocol and your users.
 
 Although common, you should not rely on a hardcoded 1 USD value as a proxy for Dai due to complications it could create when Emergency Shutdown is triggered. A real-time, actual DAI-USD price feed oracle is needed to ensure that Dai is accurately valued both before and after Emergency Shutdown. Please note that the Maker price feed oracles currently do not provide a Dai price feed, and other price feeds, like ETH-USD, do not take the market value of Dai into account.
 
@@ -256,7 +258,7 @@ You can monitor the `live` flag in End to be notified when the Emergency Shutdow
 
 ## Debt Substitution
 
-Collateral operators who oversee the management of digital tokens representing real world assets might find Emergency Shutdown particularly disruptive to their operations because Emergency Shutdown will instantly disperse ownership of the asset from a small group of people to a large group of Dai holders, each now owning a very small portion. While we do envision the majority of Dai holders trading Dai back to keepers for other assets instead of participating in collateral redemption themselves, this may still be a significant impediment  for integration of your collateral type in the Maker Protocol.
+Collateral operators who oversee the management of digital tokens representing real world assets might find Emergency Shutdown particularly disruptive to their operations because Emergency Shutdown will instantly disperse ownership of the asset from a small group of people to a large group of Dai holders, each now owning a very small portion. While we do envision the majority of Dai holders trading Dai back to keepers for other assets instead of participating in collateral redemption themselves, this may still be a significant impediment for integration of your collateral type in the Maker Protocol.
 
 Using a debt substitution mechanism, you could create an intermediate layer of debt tokens, which are used to back the Vault's debt while the digital tokens representing the ownership claims on your collateral stay locked in a smart contract. Instead of directly transferring collateral ownership, the Vault owners or the collateral operator is allowed within a predefined time period after Emergency Shutdown to substitute the value of the collateral locked with a stablecoin and redeem their entire collateral locked in one piece. If debt is not substituted within a time window, collateral will continue to be settled and Dai owners can access it in redemption.
 

@@ -1,11 +1,16 @@
 ---
 title: DSR Manager - Detailed Documentation
 description: The simplest way to integrate DSR in smart contracts
-parent: dsr
+group: smart-contracts
+components:
+  - vaults
+  - dsr
+  - proxy
 tags:
   - dsr
 slug: dsr-manager-detailed-documentation
 contentType: documentation
+parent: introduction-to-proxy-module
 ---
 
 # DSR Manager - Detailed Documentation

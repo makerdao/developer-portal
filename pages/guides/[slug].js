@@ -6,15 +6,26 @@ import ResourceEditor from '@components/ResourceEditor';
 import { createToc, getResources } from '@utils';
 import { ContentTypes } from '../../utils/constants';
 
-const GuidesPage = ({ file, ...props }) => {
+const GuidesPage = ({ file, resources, ...props }) => {
   const router = useRouter();
+
+  const moduleResources = resources?.filter(
+    (r) =>
+      r.data.frontmatter.components.some((c) => file.data.frontmatter.components.includes(c)) &&
+      r.data.frontmatter.contentType === ContentTypes.GUIDES
+  );
 
   return !file ? (
     <Error statusCode={404} />
   ) : router.isFallback ? (
     <div>Loading...</div>
   ) : (
-    <ResourceEditor file={file} contentType={ContentTypes.GUIDES} {...props} />
+    <ResourceEditor
+      resources={moduleResources}
+      file={file}
+      contentType={ContentTypes.GUIDES}
+      {...props}
+    />
   );
 };
 

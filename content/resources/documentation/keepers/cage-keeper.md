@@ -1,12 +1,17 @@
 ---
 title: Cage Keeper
 description: A Keeper to facilitate Emergency Shutdown
-parent: keepers
+group: keepers
+components:
+  - keepers
+  - auctions
+  - esm
+  - governance
 tags:
-	- keepers
-    - auctions
+  - bot
 slug: cage-keeper
 contentType: documentation
+root: true
 ---
 
 # Cage Keeper
@@ -68,11 +73,11 @@ Make a run-cage-keeper.sh to easily spin up the cage-keeper.
 ```text
 #!/bin/bash
 /full/path/to/cage-keeper/bin/cage-keeper \
-	--rpc-host 'sample.ParityNode.com' \
-	--network 'kovan' \
-	--eth-from '0xABCAddress' \
-	--eth-key 'key_file=/full/path/to/keystoreFile.json,pass_file=/full/path/to/passphrase/file.txt' \
-	--vat-deployment-block 14374534
+    --rpc-host 'sample.ParityNode.com' \
+    --network 'kovan' \
+    --eth-from '0xABCAddress' \
+    --eth-key 'key_file=/full/path/to/keystoreFile.json,pass_file=/full/path/to/passphrase/file.txt' \
+    --vat-deployment-block 14374534
 ```
 
 ## Testing

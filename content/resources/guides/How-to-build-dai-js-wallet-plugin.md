@@ -1,7 +1,8 @@
 ---
 title: How to build a Dai.js wallet plugin
 description: Learn how to integrate your wallet into the Dai.js library
-parent: dai-js
+components:
+  - dai-js
 tags:
   - dai-js
   - wallet
@@ -61,66 +62,59 @@ There are a few types of plugins the Dai.js SDK can accept or parse through. One
 To start with, below you’ll see an example of how you can structure your **index.js** file in your plugin repository. This is the core function that needs to be in your index.js file. In addition, you’ll have to add extra logic from your own wallet provider to fill the below function’s requirements.
 
 ```javascript
-export  default  function(maker) {
-
-    const  MYWALLETNAME = 'mywalletname';
-    maker
-    .service('accounts', true)
-    .addAccountType(MYWALLETNAME, settings => {
+export default function (maker) {
+  const MYWALLETNAME = 'mywalletname';
+  maker.service('accounts', true).addAccountType(MYWALLETNAME, (settings) => {
     // YOUR WALLET PROVIDER LOGIC
     // Invoke the web3 provider from the wallet - subprovider
     // Get user's wallet address
-    return {subprovider, address}
-    })
-
+    return { subprovider, address };
+  });
 }
 ```
 
 The above example is a function that takes a callback function as its parameter that will invoke the logic for providing the subprovider and address to the Dai.js SDK.
 
-When this function is invoked in the SDK, it can access different kinds of services the SDK provides. Invoking a service in Dai.js is done by calling the [service()](https://github.com/makerdao/dai.js/blob/dev/packages/dai/src/Maker.js#L67) function with the desired service name you require. In this example, the callback function will use the accounts service to add a new account type by using the [addAccountType()](https://github.com/makerdao/dai.js/blob/dev/packages/dai/src/eth/AccountsService.js#L51) function.  
-  
-In this **addAccountType** function, you add two parameters. First one is the name of the account type (**MYWALLETNAME**) and the second is a callback function that will be used as a factory in the SDK.  
-  
+When this function is invoked in the SDK, it can access different kinds of services the SDK provides. Invoking a service in Dai.js is done by calling the [service()](https://github.com/makerdao/dai.js/blob/dev/packages/dai/src/Maker.js#L67) function with the desired service name you require. In this example, the callback function will use the accounts service to add a new account type by using the [addAccountType()](https://github.com/makerdao/dai.js/blob/dev/packages/dai/src/eth/AccountsService.js#L51) function.
+
+In this **addAccountType** function, you add two parameters. First one is the name of the account type (**MYWALLETNAME**) and the second is a callback function that will be used as a factory in the SDK.
+
 Anytime the user will choose your account type to initialise the wallet from the frontend application, the SDK will call the function to invoke the logic for connecting the third party wallet.
 
 This is the main pattern for how to integrate a third party wallet into the Dai.js SDK. Next, you will see some examples of how different partners have integrated.
 
 ## Examples of partners integrating with the plugin
 
-There are different levels of complexity with which a third wallet provider could integrate with the Dai.js SDK. The level of complexity depends on the compatibility of this third party wallet provider with the SDK. The more compatible the easier it is to integrate.  
-  
+There are different levels of complexity with which a third wallet provider could integrate with the Dai.js SDK. The level of complexity depends on the compatibility of this third party wallet provider with the SDK. The more compatible the easier it is to integrate.
+
 The compatibility depends on the web3 provider engine. Dai.js mostly works with the [Hooked Wallet Provider](https://github.com/MetaMask/web3-provider-engine/blob/master/subproviders/hooked-wallet.js) engine from Metamask. Below, you’ll see three examples of web3 engine providers that are and aren’t compatible with the SDK and how they have been integrated. Tier 1 is the easiest example, while tier 2 and 3 grow in complexity.
 
 ### Tier 1
 
-[WalletConnect](https://walletconnect.org/)  is an open protocol for connecting wallets to Dapps. [The Dai Plugin WalletConnect repo](https://github.com/makerdao/dai-plugin-walletconnect) contains the code logic for connecting the wallet to Dai.js.
+[WalletConnect](https://walletconnect.org/) is an open protocol for connecting wallets to Dapps. [The Dai Plugin WalletConnect repo](https://github.com/makerdao/dai-plugin-walletconnect) contains the code logic for connecting the wallet to Dai.js.
 
-Below you can see the code from the [index.js](https://github.com/makerdao/dai-plugin-walletconnect/blob/master/src/index.js) file:  
-  
+Below you can see the code from the [index.js](https://github.com/makerdao/dai-plugin-walletconnect/blob/master/src/index.js) file:
+
 ```javascript
-import  WalletConnectSubprovider  from  '@walletconnect/web3-subprovider';
+import WalletConnectSubprovider from '@walletconnect/web3-subprovider';
 
-export  default  function(maker) {
-
-    const  WALLETCONNECT  =  'walletconnect';
-    maker
-    .service('accounts', true)
-    .addAccountType(WALLETCONNECT, async  settings  => {
-    const  subprovider  =  new  WalletConnectSubprovider({
-        bridge:  'https://bridge.walletconnect.org'
+export default function (maker) {
+  const WALLETCONNECT = 'walletconnect';
+  maker.service('accounts', true).addAccountType(WALLETCONNECT, async (settings) => {
+    const subprovider = new WalletConnectSubprovider({
+      bridge: 'https://bridge.walletconnect.org',
     });
-    const { accounts } =  await subprovider.getWalletConnector();
-    const [address] =  accounts;
+    const { accounts } = await subprovider.getWalletConnector();
+    const [address] = accounts;
     return { subprovider, address };
-    });
+  });
 }
 ```
-  
+
 As can be seen in the code example, this looks to be a straightforward solution. WalletConnect has its own web3-subprovider package that is compatible with the Dai.js SDK, which can be seen in the import:
 
 ```javascript
-import  WalletConnectSubprovider  from  '@walletconnect/web3-subprovider';
+import WalletConnectSubprovider from '@walletconnect/web3-subprovider';
 ```
 
 This subprovider is then used in the main export function to invoke the connection to the user’s wallet to obtain the address and provide it in the return function.
@@ -140,50 +134,41 @@ import Transport from '@ledgerhq/hw-transport-u2f';
 const legacyDerivationPath = "44'/60'/0'/0/0";
 const defaultDerivationPath = "44'/60'/0'";
 
-export default function(maker) {
-  maker.service('accounts', true).addAccountType('ledger', async settings => {
+export default function (maker) {
+  maker.service('accounts', true).addAccountType('ledger', async (settings) => {
     const subprovider = LedgerSubProvider(() => Transport.create(), {
       // options: networkId, path, accountsLength, accountsOffset
       accountsOffset: settings.accountsOffset || 0,
       accountsLength: settings.accountsLength || 1,
       networkId: maker.service('web3').networkId(),
-      path:
-        settings.path ||
-        (settings.legacy ? legacyDerivationPath : defaultDerivationPath)
+      path: settings.path || (settings.legacy ? legacyDerivationPath : defaultDerivationPath),
     });
 
     let address;
 
     if (settings.accountsLength && settings.accountsLength > 1) {
       if (!settings.choose) {
-        throw new Error(
-          'If accountsLength > 1, "choose" must be defined in account options.'
-        );
+        throw new Error('If accountsLength > 1, "choose" must be defined in account options.');
       }
 
       const addresses = await new Promise((resolve, reject) =>
-        subprovider.getAccounts((err, addresses) =>
-          err ? reject(err) : resolve(addresses)
-        )
+        subprovider.getAccounts((err, addresses) => (err ? reject(err) : resolve(addresses)))
       );
 
       address = await new Promise((resolve, reject) => {
-        const callback = (err, address) =>
-          err ? reject(err) : resolve(address);
+        const callback = (err, address) => (err ? reject(err) : resolve(address));
 
         // this chooser function allows the app using the plugin to display the
         // list of addresses to a human user and let them make a choice.
         settings.choose(
-          Object.keys(addresses).map(k => addresses[k]),
+          Object.keys(addresses).map((k) => addresses[k]),
           callback
         );
       });
       setChosenAddress(address);
     } else {
       address = await new Promise((resolve, reject) =>
-        subprovider.getAccounts((err, addresses) =>
-          err ? reject(err) : resolve(addresses[0])
-        )
+        subprovider.getAccounts((err, addresses) => (err ? reject(err) : resolve(addresses[0])))
       );
     }
 
@@ -191,7 +176,7 @@ export default function(maker) {
   });
 }
 ```
-  
+
 In this example, the ledger subprovider is also compatible with the Dai.js SDK. Here, the code logic seems larger but it does the same function as compared to the WalletConnect. All the extra code is for setting up the Ledger provider to extract the user’s address and pass it down in the return object.
 
 ### Tier 3
@@ -205,20 +190,17 @@ Below you can see the code from the index.js file.
 ```javascript
 import WalletLink from 'walletlink';
 
-export default function(maker) {
+export default function (maker) {
   const WALLETLINK = 'walletlink';
 
-  maker.service('accounts', true).addAccountType(WALLETLINK, async settings => {
+  maker.service('accounts', true).addAccountType(WALLETLINK, async (settings) => {
     const web3Service = maker.service('web3');
     const CHAIN_ID = web3Service.networkId();
     const ETH_JSONRPC_URL = web3Service.rpcUrl;
 
     const appName = 'MCD Portal';
     const walletLink = new WalletLink({ appName });
-    const walletLinkProvider = walletLink.makeWeb3Provider(
-      ETH_JSONRPC_URL,
-      CHAIN_ID
-    );
+    const walletLinkProvider = walletLink.makeWeb3Provider(ETH_JSONRPC_URL, CHAIN_ID);
 
     const accounts = await walletLinkProvider.enable();
     const address = accounts[0];
@@ -231,15 +213,15 @@ export default function(maker) {
       const self = this;
       if (self.engine) return;
       self.engine = engine;
-      engine.on('block', function(block) {
+      engine.on('block', function (block) {
         self.currentBlock = block;
       });
 
-      engine.on('start', function() {
+      engine.on('start', function () {
         self.start();
       });
 
-      engine.on('stop', function() {
+      engine.on('stop', function () {
         self.stop();
       });
     }
@@ -260,7 +242,7 @@ export default function(maker) {
   });
 }
 ```
-  
+
 In this example, walletLink’s web3 provider is not compatible with Dai.js, so there were added two extra functions in the callback to wrap walletLink’s provider. These functions are **setEngine()** and **handleRequest()**. Both these functions are added as an extra property to the **walletLinkProvider** object so it can become compatible with the Dai.js SDK. These functions are used to sign transactions from the SDK.
 
 The **setEngine()** function sets the **walletLinkProvider** as the current web3 provider in the SDK.
@@ -277,7 +259,7 @@ Next, you’ll see how to invoke the plugin in your front-end application.
 
 To see the live implementation of these plugins, head to [oasis.app](https://oasis.app/).
 
-Oasis.app is a good example of how Dai.js works in handling all the plugins that it supports. The [oasis.app/borrow](https://oasis.app/borrow) feature is stored in this [repo](https://github.com/makerdao/mcd-cdp-portal) that you can clone on your machine. In the cloned repo, you can see how the plugins are instantiated and used throughout the application.  
+Oasis.app is a good example of how Dai.js works in handling all the plugins that it supports. The [oasis.app/borrow](https://oasis.app/borrow) feature is stored in this [repo](https://github.com/makerdao/mcd-cdp-portal) that you can clone on your machine. In the cloned repo, you can see how the plugins are instantiated and used throughout the application.
 
 In the [/src/maker.js](https://github.com/makerdao/mcd-cdp-portal/blob/develop/src/maker.js) file you can see how the plugins are instantiated into the Dai.js SDK into a maker object that can be used everywhere across the application.
 

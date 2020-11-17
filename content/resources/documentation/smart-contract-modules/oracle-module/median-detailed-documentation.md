@@ -1,11 +1,14 @@
 ---
 title: Median - Detailed Documentation
 description: The Maker Protocol's trusted reference price
-parent: oracles
+group: smart-contracts
+components:
+  - oracles
 tags:
   - oracles
 slug: median-detailed-documentation
 contentType: documentation
+parent: introduction-to-oracle-module
 ---
 
 # Median - Detailed Documentation

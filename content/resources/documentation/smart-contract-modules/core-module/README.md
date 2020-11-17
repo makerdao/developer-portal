@@ -1,13 +1,16 @@
 ---
 title: Core Module
 description: The State of the Maker Protocol
-tags:
-  - collateral
+components:
   - vat
   - vaults
   - mcd
+tags:
+  - collateral
 slug: introduction-to-core-module
 contentType: documentation
+group: smart-contracts
+root: true
 ---
 
 # Core Module

@@ -1,11 +1,14 @@
 ---
 title: Smart Contract Annotations
 description: In-line comments on the Maker Protocol's Core Smart Contracts
+group: glossary
+components:
+  - mcd
 tags:
   - annotations
-  - mcd
 slug: smart-contract-annotations
 contentType: documentation
+root: true
 ---
 
 # Smart Contract Annotations

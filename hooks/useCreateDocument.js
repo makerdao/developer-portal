@@ -6,7 +6,7 @@ import { MarkdownFieldPlugin } from 'react-tinacms-editor';
 import { toMarkdownString } from '@utils';
 import { removeInvalidChars } from '../utils/removeInvalidChars';
 
-const useCreateDocument = (resources, module) => {
+const useCreateDocument = (resources) => {
   const cms = useCMS();
   cms.plugins.add(MarkdownFieldPlugin);
 
@@ -52,6 +52,18 @@ const useCreateDocument = (resources, module) => {
           },
         },
         {
+          name: 'components',
+          component: 'tags',
+          label: 'Components',
+          required: true,
+          description: 'Add keywords for which parts of the Maker Protocoll this file relates to',
+          validate(value, allValues, meta, field) {
+            if (!value) {
+              return 'Components are required';
+            }
+          },
+        },
+        {
           component: 'select',
           name: 'contentType',
           label: 'Content Type',
@@ -79,8 +91,7 @@ const useCreateDocument = (resources, module) => {
 
         form.slug = slug;
         form.date = form.date || new Date().toString();
-        form.parent = module;
-        form.author = await github.getUser();
+        // form.author = await github.getUser();
         delete form.body;
 
         return await github

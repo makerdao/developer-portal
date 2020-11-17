@@ -1,11 +1,16 @@
 ---
 title: Vow - Detailed Documentation
 description: The Maker Protocol's Balance Sheet
-parent: auctions
+group: smart-contracts
+components:
+  - auctions
+  - system stabilizer
+  - vow
 tags:
   - auctions
 slug: vow-detailed-documentation
 contentType: documentation
+parent: introduction-to-system-stabilizer-module
 ---
 
 # Vow - Detailed Documentation

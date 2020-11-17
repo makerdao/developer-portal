@@ -1,7 +1,10 @@
 ---
 title: MKR Module
 description: The MKR Governance Token Implementation
-parent: governance
+group: smart-contracts
+components:
+  - mkr
+  - governance
 tags:
   - goverance
   - mcd
@@ -9,6 +12,7 @@ tags:
   - erc20
 slug: introduction-to-mkr-module
 contentType: documentation
+root: true
 ---
 
 # MKR Module

@@ -153,7 +153,7 @@ const Dsr = ({ file, resources, dsrDocs, ecosystemFile, preview }) => {
           <ArticlesList title="Resources" path="documentation" resources={dsrDocs} />
           <Ecosystem
             title={'Developer Ecosystem'}
-            items={ecosystem.filter(({ parent }) => parent === 'dsr')}
+            items={ecosystem.filter(({ component }) => component === 'dsr')}
           />
         </Grid>
       </InlineForm>
@@ -167,7 +167,7 @@ const Dsr = ({ file, resources, dsrDocs, ecosystemFile, preview }) => {
 export const getStaticProps = async function ({ preview, previewData }) {
   const resources = await getResources(preview, previewData, 'content/resources');
   const dsrDocs = resources.filter(
-    (g) => g.data.frontmatter.parent === 'dsr' || g.data.frontmatter.tags.includes('dsr')
+    (g) => g.data.frontmatter.component === 'dsr' || g.data.frontmatter.tags.includes('dsr')
   );
 
   if (preview) {

@@ -1,11 +1,14 @@
 ---
 title: Pot - Detailed Documentation
 description: The Dai Savings Rate
-parent: dsr
+group: smart-contracts
+components:
+  - dsr
 tags:
   - dsr
 slug: pot-proxy-detailed-documentation
 contentType: documentation
+parent: introduction-to-rates-module
 ---
 
 # Pot - Detailed Documentation

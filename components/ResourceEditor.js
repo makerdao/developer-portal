@@ -19,8 +19,8 @@ const ResourceEditor = ({ file, navFile, contentType, preview, resources, slug, 
   const setActiveModule = useStore((state) => state.setActiveModule);
 
   useEffect(() => {
-    setActiveModule(file.data.frontmatter.parent);
-  }, [setActiveModule, file.data.frontmatter.parent]);
+    setActiveModule(file.data.frontmatter.group);
+  }, [setActiveModule, file.data.frontmatter.group]);
 
   const [navData, navForm] = useSubNavForm(navFile, preview);
   useFormScreenPlugin(navForm);
@@ -28,25 +28,9 @@ const ResourceEditor = ({ file, navFile, contentType, preview, resources, slug, 
   const [data, form] = useGithubMarkdownForm(file);
   usePlugin(form);
 
-  const moduleResources = resources
-    ?.filter(
-      (r) =>
-        r.data.frontmatter.parent === file.data.frontmatter.parent &&
-        r.data.frontmatter.contentType === contentType
-    )
-    .reduce((acc, val) => {
-      acc.push({
-        title: val.data.frontmatter.title,
-        slug: val.data.frontmatter.slug,
-        root: val.data.frontmatter.root,
-      });
-      return acc;
-    }, [])
-    .sort((a, b) => (a.root ? -1 : b.root ? 1 : 0));
-
   return (
     <GuidesLayout
-      resources={moduleResources}
+      resources={resources}
       slug={slug}
       toc={toc}
       resourcePath={contentType}
@@ -69,7 +53,7 @@ const ResourceEditor = ({ file, navFile, contentType, preview, resources, slug, 
         </InlineWysiwyg>
       </InlineForm>
       <Flex sx={{ my: 4, flexDirection: 'column', alignItems: 'flex-start' }}>
-        <EditLink />
+        <EditLink enterText="Edit This Page With TinaCMS" />
         <ThemeLink href={`${GITHUB_EDIT_LINK}${file.fileRelativePath}`} target="_blank">
           <Flex sx={{ alignItems: 'center', mt: 2 }}>
             <Text sx={{ color: 'text', cursor: 'pointer' }}>Edit on Github</Text>

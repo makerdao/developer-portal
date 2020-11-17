@@ -1,11 +1,15 @@
 ---
 title: Vault Manager
 description: This intermediary contract allows the use of incrementing integer IDs for vaults, familiar to users of Single-Collateral Sai, as well as other conveniences
-parent: dai-js
+group: sdks
+components:
+  - dai-js
+  - vaults
 tags:
-	- dai-js
+  - javascript
 slug: dai-js-vault-manager
 contentType: documentation
+parent: introduction-to-dai-js
 ---
 
 # Vault manager

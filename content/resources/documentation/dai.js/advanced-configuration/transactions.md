@@ -1,11 +1,14 @@
 ---
 title: Transactions
 description: Managing transactions with Dai.js
-parent: dai-js
+group: sdks
+components:
+  - dai-js
 tags:
-	- dai-js
+  - javascript
 slug: dai-js-transactions
 contentType: documentation
+parent: dai-js-advanced
 ---
 
 # Transaction manager

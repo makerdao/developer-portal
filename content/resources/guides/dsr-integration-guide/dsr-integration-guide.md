@@ -1,7 +1,8 @@
 ---
 title: DSR Integration Guide
 description: Learm about DSR amd integrate it into your platform
-parent: dai
+components:
+  - dai
 tags:
   - dai
   - DSR
@@ -129,16 +130,16 @@ The savings activation flow can be split into the following steps:
 
 1. Earn savings on Dai
 
-    a.  `join(address dst, uint wad)`
+   a. `join(address dst, uint wad)`
 
 2. Monitor savings of an address
 
-    a.  `daiBalance(address usr) returns (uint wad)` to return the entire balance (principle + savings)
+   a. `daiBalance(address usr) returns (uint wad)` to return the entire balance (principle + savings)
 
 3. Retrieve earned savings
 
-    a.  For a specific amount `exit(address dst, uint wad)`  
-    b.  For entire balance `exitAll(address dst)`
+   a. For a specific amount `exit(address dst, uint wad)`  
+   b. For entire balance `exitAll(address dst)`
 
 For more details on the DsrManager, read the [DsrManager documentation](../dsr-manager-docs/README.md).
 
@@ -350,7 +351,7 @@ The normalized balance is a balance that does not change, but resembles a fracti
 
 Therefore, when an amount of Dai of a user is added to the DSR contract, you simply need to store how much Dai they are supplying, and calculate and store what the normalized balance is at that time. So if Alice adds 10 Dai to your pool of Dai in DSR, you would record the following:
 
-`Deposit 2020-01-08:    User: Alice,   Dai: 10,   Chi: 1.0002345,   Normalized Balance (Dai/Chi): 9.9976555`
+`Deposit 2020-01-08: User: Alice, Dai: 10, Chi: 1.0002345, Normalized Balance (Dai/Chi): 9.9976555`
 
 In this case, at the time of deposit, `chi` is 1.0002345, which evaluates to a normalized balance of 9.9976555. In reality `chi` has 27 decimals, and in a production scenario it is beneficial to use all the decimals in order to achieve maximum precision, since `chi` accumulates the savings rate every second, and thus the number only grows a tiny bit every block.
 
@@ -361,7 +362,7 @@ In this case, at the time of deposit, `chi` is 1.0002345, which evaluates to a n
 
 Alice has thus earned 0.0044 Dai in 3 days, and can withdraw this amount + her original 10 Dai from the Dai pool in DSR. However Alice decides to add 10 Dai extra to the pool. Again, you simply need to record the amount she deposits, and the current `chi` value to calculate the normalized balance.
 
-`Deposit 2020-01-11:    User: Alice,   Dai: 10,   Chi: 1.0006789,   Normalized Balance (Dai/Chi): 9.9932156`
+`Deposit 2020-01-11: User: Alice, Dai: 10, Chi: 1.0006789, Normalized Balance (Dai/Chi): 9.9932156`
 
 Notice that since `chi` has gone up since the first deposit, this time Alice’s normalized balance is lower. This is how the system keeps track on how much Dai deposits on different days have earned from the DSR.
 

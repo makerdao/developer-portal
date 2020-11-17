@@ -1,11 +1,14 @@
 ---
 title: Plugins
 description: Plugins allow a developer to add functionality for specific needs without increasing the size of the core library.
-parent: dai-js
+group: sdks
+components:
+  - dai-js
 tags:
-	- dai-js
+  - javascript
 slug: dai-js-plugins
 contentType: documentation
+parent: maker-object-introduction
 ---
 
 # Plugins

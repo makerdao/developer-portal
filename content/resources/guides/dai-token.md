@@ -1,7 +1,8 @@
 ---
 title: Dai Token
 description: Learm about Dai and integrate it into applications
-parent: dai
+components:
+  - dai
 tags:
   - dai
   - ERC20 contract
@@ -77,11 +78,11 @@ Other deployments are listed on [changelog.makerdao.com](https://changelog.maker
 
 #### Details
 
-The *symbol* field is set to ‘DAI’ and the *name* field is currently set to ‘Dai Stablecoin’.
+The _symbol_ field is set to ‘DAI’ and the _name_ field is currently set to ‘Dai Stablecoin’.
 
-Token precision field *decimals* is set to 18 like most other ERC20 tokens.
+Token precision field _decimals_ is set to 18 like most other ERC20 tokens.
 
-In addition, the contract has the `version` field set to 1. This field is a constant, so once the contract is deployed, this field cannot be changed. This field is added for use in the `permit()` function in the contract. And this variable is part of the [EIP-712]([https://eips.ethereum.org/EIPS/eip-712](https://eips.ethereum.org/EIPS/eip-712)) signing standard. Read more on the `permit()` function below.
+In addition, the contract has the `version` field set to 1. This field is a constant, so once the contract is deployed, this field cannot be changed. This field is added for use in the `permit()` function in the contract. And this variable is part of the [EIP-712](<[https://eips.ethereum.org/EIPS/eip-712](https://eips.ethereum.org/EIPS/eip-712)>) signing standard. Read more on the `permit()` function below.
 
 #### Token stats
 
@@ -101,9 +102,9 @@ You can also generate Dai by opening a Vault with [https://oasis.app/](https://o
 
 #### Testnet
 
-There are no Dai faucet on testnets, but you can generate your own Dai on the major Ethereum testnets: Goerli, Kovan, Rinkeby and Ropsten. After having obtained testnet-ETH, you can head over to [Oasis](%5B%3Chttps://oasis.app/?network=kovan%3E%5D(%3Chttps://oasis.app/?network=kovan%3E)) and open a Vault. Make sure to change the `?network=<networkName>` parameter to your preferred network
+There are no Dai faucet on testnets, but you can generate your own Dai on the major Ethereum testnets: Goerli, Kovan, Rinkeby and Ropsten. After having obtained testnet-ETH, you can head over to [Oasis](<%5B%3Chttps://oasis.app/?network=kovan%3E%5D(%3Chttps://oasis.app/?network=kovan%3E)>) and open a Vault. Make sure to change the `?network=<networkName>` parameter to your preferred network
 
-Alternatively, if you're more comfortable with cli-tools, then you can the [seth guide](%5B%3Chttps://github.com/makerdao/developerguides/blob/master/mcd/mcd-seth/mcd-seth-01.md%3E%5D(%3Chttps://github.com/makerdao/developerguides/blob/master/mcd/mcd-seth/mcd-seth-01.md%3E)).
+Alternatively, if you're more comfortable with cli-tools, then you can the [seth guide](<%5B%3Chttps://github.com/makerdao/developerguides/blob/master/mcd/mcd-seth/mcd-seth-01.md%3E%5D(%3Chttps://github.com/makerdao/developerguides/blob/master/mcd/mcd-seth/mcd-seth-01.md%3E)>).
 
 Another option is to buy Kovan Dai with Kovan ETH on [Oasis Trade](https://oasis.app/trade) if there is sufficient liquidity available.
 
@@ -111,9 +112,9 @@ Another option is to buy Kovan Dai with Kovan ETH on [Oasis Trade](https://oasis
 
 The codebase at commit [6fa5581](https://github.com/makerdao/dss/blob/6fa55812a5fcfcfa325ad4d9a4d0ca4033c38cab/src/dai.sol) was used for deployments on mainnet.
 
-The Dai token contract, follows the [ERC-20 standard](%5B%3Chttps://eips.ethereum.org/EIPS/eip-20%3E%5D(%3Chttps://eips.ethereum.org/EIPS/eip-20%3E)) with some additional features. The added features are
+The Dai token contract, follows the [ERC-20 standard](<%5B%3Chttps://eips.ethereum.org/EIPS/eip-20%3E%5D(%3Chttps://eips.ethereum.org/EIPS/eip-20%3E)>) with some additional features. The added features are
 
-- The `permit()` function that uses the [EIP-712 signing standard](%5B%3Chttps://eips.ethereum.org/EIPS/eip-712%3E%5D(%3Chttps://eips.ethereum.org/EIPS/eip-712%3E)) as defined by [EIP-2612 (draft](https://github.com/ethereum/EIPs/blob/8a34d644aacf0f9f8f00815307fd7dd5da07655f/EIPS/eip-2612.md)).
+- The `permit()` function that uses the [EIP-712 signing standard](<%5B%3Chttps://eips.ethereum.org/EIPS/eip-712%3E%5D(%3Chttps://eips.ethereum.org/EIPS/eip-712%3E)>) as defined by [EIP-2612 (draft](https://github.com/ethereum/EIPs/blob/8a34d644aacf0f9f8f00815307fd7dd5da07655f/EIPS/eip-2612.md)).
 - The `mint()` and `burn()` functions that the Maker Protocol is authorised to use.
 
 #### Permit
@@ -128,7 +129,7 @@ Check [https://stablecoin.services/](https://stablecoin.services/) and [https://
 
 #### Mint and Burn
 
-Tokens are created when a user adds collateral to their Vault and generates new Dai from it. Tokens are burned, when the same user pays back the same amount of Dai they’ve previously issued for the system to remove them from the supply to free  their locked collateral back. Also `mint` and `burn` functions are used when user deposits and withdraws Dai from the Dai Savings Rate contract.
+Tokens are created when a user adds collateral to their Vault and generates new Dai from it. Tokens are burned, when the same user pays back the same amount of Dai they’ve previously issued for the system to remove them from the supply to free their locked collateral back. Also `mint` and `burn` functions are used when user deposits and withdraws Dai from the Dai Savings Rate contract.
 
 The [MCD_DAI_JOIN](https://etherscan.io/address/0x9759a6ac90977b93b58547b4a71c78317f391a28#code) adapter contract in the Maker Protocol is authorized to calls the mint and burn functions of Dai token which to increase or decrease the total supply.
 
@@ -141,7 +142,7 @@ The `transferFrom()` function has a few aliases available: `push`, `pull`, and `
 
 #### Authority
 
-Some functions in the Dai contract can only be called by an authorized address. This address can be an externally owned account (EOA) or a contract address. In the Dai contract, the only authorized address is the [DaiJoin Adapter](%5B%3Chttps://etherscan.io/address/0x9759A6Ac90977b93B58547b4A71c78317f391A28#code%3E%5D(%3Chttps://etherscan.io/address/0x9759A6Ac90977b93B58547b4A71c78317f391A28#code%3E)) that is part of the Maker Protocol. As such, only the DaiJoin Adapter is able to call the `mint` function.
+Some functions in the Dai contract can only be called by an authorized address. This address can be an externally owned account (EOA) or a contract address. In the Dai contract, the only authorized address is the [DaiJoin Adapter](<%5B%3Chttps://etherscan.io/address/0x9759A6Ac90977b93B58547b4A71c78317f391A28#code%3E%5D(%3Chttps://etherscan.io/address/0x9759A6Ac90977b93B58547b4A71c78317f391A28#code%3E)>) that is part of the Maker Protocol. As such, only the DaiJoin Adapter is able to call the `mint` function.
 
 The Dai contract uses a simplified authority for its functions, where only addresses known as `wards` are authorized by the `rely` function, and deauthorized by `deny`. Because `rely` and `deny` can be called only by members of `wards`, and the only address in wards is the DaiJoin adapter, which does not contain instructions to call `rely` or `deny`, the `wards` list is effectively frozen and cannot be modified on the mainnet deployment. The only occasion where rely and deny is expected to be used is during deployment.
 
@@ -171,11 +172,11 @@ Dai and the associated MCD contracts are deployed on [various testnets](https://
 3. `dapp update`
 4. `dapp build`
 5. `export SETH_CHAIN=kovan` :
-Change kovan for your prefered chain
+   Change kovan for your prefered chain
 6. `export ETH_KEYSTORE=~/keys` : Define where your keys are store
 7. `export ETH_FROM=<address>` : Set your test account
 8. `export ETH_RPC_URL=<RPC URL>` : Set the URL for a testnet RPC node (Infura or other)
-9. `export chainid= $(seth --to-uint256 42)`:  Deploying the contract requires passing the chain id, for use with the permit function. For Kovan, the id is 42.
+9. `export chainid= $(seth --to-uint256 42)`: Deploying the contract requires passing the chain id, for use with the permit function. For Kovan, the id is 42.
 10. `dapp create Dai $chainid` : To deploy the contract. If successful, this will return the address of your new contract.
 
 If you want to verify your contract on Etherscan, use the output of
@@ -187,7 +188,7 @@ and specify the content of `$chainid` as the ABI formatted constructor.
 Once deployed, you may test your contract
 
 1. `export DAIK=<deployed contract address>`
-2. `seth call $DAIK 'wards(address)' $ETH_FROM`:  Should return 1 because the adress that deployed the contract is part of wards by default.
+2. `seth call $DAIK 'wards(address)' $ETH_FROM`: Should return 1 because the adress that deployed the contract is part of wards by default.
 3. `seth send $DAIK 'mint(address,uint256)' $ETH_FROM $(seth --to-uint256 $(seth --to-wei 100000000 eth))`: Will mint yourself 100,000,000 test-DAI
 4. `seth --from-wei $(seth --to-dec $(seth call $DAIK 'balanceOf(address)' $ETH_FROM))`: To see your test-Dai balance
 

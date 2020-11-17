@@ -1,11 +1,16 @@
 ---
 title: Proxy Actions - Detailed Documentation
 description: A generalized wrapper for the Maker Protocol
-parent: vaults
+group: smart-contracts
+components:
+  - vaults
+  - dsr
+  - proxy
 tags:
   - vaults
 slug: proxy-actions-detailed-documentation
 contentType: documentation
+parent: introduction-to-proxy-module
 ---
 
 # Proxy Actions - Detailed Documentation

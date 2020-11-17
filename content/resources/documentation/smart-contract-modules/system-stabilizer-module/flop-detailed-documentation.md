@@ -1,11 +1,16 @@
 ---
 title: Flopper - Detailed Documentation
 description: The Maker Protocol's Debt Auction House
-parent: auctions
+group: smart-contracts
+components:
+  - auctions
+  - system stabilizer
+  - flopper
 tags:
   - auctions
 slug: flopper-detailed-documentation
 contentType: documentation
+parent: introduction-to-system-stabilizer-module
 ---
 
 # Flopper - Detailed Documentation

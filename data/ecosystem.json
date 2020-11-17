@@ -5,7 +5,7 @@
       "link": "https://www.makerdao.com",
       "categories": ["tools", "libraries"],
       "tags": ["dsr"],
-      "parent": "dsr",
+      "component": "dsr",
       "contentType": "ecosystem",
       "id": 1
     },
@@ -15,7 +15,7 @@
       "link": "https://www.makerdao.com",
       "categories": ["libraries"],
       "tags": ["dsr"],
-      "parent": "dsr",
+      "component": "dsr",
       "contentType": "ecosystem",
       "id": 2
     },
@@ -25,7 +25,7 @@
       "link": "https://www.makerdao.com",
       "categories": ["libraries"],
       "tags": ["dsr"],
-      "parent": "dsr",
+      "component": "dsr",
       "contentType": "ecosystem",
       "id": 3
     },
@@ -35,7 +35,7 @@
       "link": "https://www.makerdao.com",
       "categories": ["libraries", "plugins"],
       "tags": ["dsr"],
-      "parent": "governance",
+      "component": "governance",
       "contentType": "ecosystem",
       "id": 4
     },
@@ -45,7 +45,7 @@
       "link": "https://www.makerdao.com",
       "categories": ["boilerPlates"],
       "tags": ["dsr"],
-      "parent": "dsr",
+      "component": "dsr",
       "contentType": "ecosystem",
       "id": 5
     }

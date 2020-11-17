@@ -1,10 +1,14 @@
 ---
 title: Security for the Maker Protocol
 description: Ensuring the Security of the Maker Protocol and Multi Collateral Dai
+group: security
+components:
+  - mcd
 tags:
   - security
 slug: security-for-the-maker-protocol
 contentType: documentation
+root: true
 ---
 
 # Security for the Maker Protocol
