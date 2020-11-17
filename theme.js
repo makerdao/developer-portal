@@ -68,78 +68,6 @@ const icons = {
       </g>
     ),
   },
-  // sun: {
-  //   viewBox: '0 0 24 25',
-  //   path: (
-  //     <g>
-  //       <path
-  //         fill-rule="evenodd"
-  //         clip-rule="evenodd"
-  //         d="M12 17.6826C14.7614 17.6826 17 15.444 17 12.6826C17 9.92119 14.7614 7.68262 12 7.68262C9.23858 7.68262 7 9.92119 7 12.6826C7 15.444 9.23858 17.6826 12 17.6826Z"
-  //         stroke="inherit"
-  //         stroke-width="2"
-  //         stroke-linecap="round"
-  //         stroke-linejoin="round"
-  //       />
-  //       <path
-  //         d="M12 1.68262V3.68262"
-  //         stroke="inherit"
-  //         stroke-width="2"
-  //         stroke-linecap="round"
-  //         stroke-linejoin="round"
-  //       />
-  //       <path
-  //         d="M12 21.6826V23.6826"
-  //         stroke="inherit"
-  //         stroke-width="2"
-  //         stroke-linecap="round"
-  //         stroke-linejoin="round"
-  //       />
-  //       <path
-  //         d="M4.21997 4.90283L5.63997 6.32283"
-  //         stroke="inherit"
-  //         stroke-width="2"
-  //         stroke-linecap="round"
-  //         stroke-linejoin="round"
-  //       />
-  //       <path
-  //         d="M18.3601 19.0425L19.7801 20.4625"
-  //         stroke="inherit"
-  //         stroke-width="2"
-  //         stroke-linecap="round"
-  //         stroke-linejoin="round"
-  //       />
-  //       <path
-  //         d="M1 12.6826H3"
-  //         stroke="inherit"
-  //         stroke-width="2"
-  //         stroke-linecap="round"
-  //         stroke-linejoin="round"
-  //       />
-  //       <path
-  //         d="M21 12.6826H23"
-  //         stroke="inherit"
-  //         stroke-width="2"
-  //         stroke-linecap="round"
-  //         stroke-linejoin="round"
-  //       />
-  //       <path
-  //         d="M4.21997 20.4625L5.63997 19.0425"
-  //         stroke="inherit"
-  //         stroke-width="2"
-  //         stroke-linecap="round"
-  //         stroke-linejoin="round"
-  //       />
-  //       <path
-  //         d="M18.3601 6.32283L19.7801 4.90283"
-  //         stroke="inherit"
-  //         stroke-width="2"
-  //         stroke-linecap="round"
-  //         stroke-linejoin="round"
-  //       />
-  //     </g>
-  //   ),
-  // },
 };
 
 const theme = {
@@ -153,16 +81,24 @@ const theme = {
 
     modes: {
       dark: {
-        background: '#212',
-        surface: '#ffffff08',
-        text: '#fffff0',
-        onBackground: '#eaebf0',
-        primary: '#F012BE',
+        background: '#3E113F',
+        surface: '#340F35',
+        // surface: '#ffffff08',
+        text: '#EAEBF0',
+        // text: '#fffff0',
+        onBackground: '#EAEBF0',
+        primary: '#F34181',
+        primaryEmphasis: '#F34181F2',
+        primaryMuted: '#F34181E6',
+        primaryAlt: '#F34181D9',
 
-        muted: '#ffffff08',
+        // primary: '#F012BE',
+        muted: '#694769',
+        // muted: '#ffffff08',
         mutedAlt: '#5a495c',
-        onBackgroundAlt: '#e1dfec',
-        onBackgroundMuted: '#ffffff99',
+        onBackgroundAlt: '#EAEBF0',
+        // onBackgroundAlt: '#e1dfec',
+        onBackgroundMuted: '#CFC3CF',
         onSurface: '#ABA8bc',
       },
     },
@@ -192,6 +128,12 @@ const theme = {
     sidebar: {
       variant: 'links.nav',
       fontSize: 1,
+    },
+  },
+  cards: {
+    primary: {
+      ...makerTheme.cards.primary,
+      border: '',
     },
   },
   buttons: {
