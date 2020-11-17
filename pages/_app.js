@@ -92,7 +92,6 @@ class MyApp extends App {
 
 const enterEditMode = async () => {
   const token = localStorage.getItem('tinacms-github-token') || null;
-  console.log('entered edit mode', token);
 
   const headers = new Headers();
 
