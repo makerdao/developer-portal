@@ -104,7 +104,7 @@ Auction Keeper maintains a collection of child processes, as each _bidding model
 
 **Example:**
 
-```text
+```bash
 bin/auction-keeper --model '../my-bidding-model.sh' [...]
 ```
 
@@ -114,7 +114,7 @@ Auction Keepers communicate with _bidding models_ via their standard input/stand
 
 **A sample JSON message sent from the keeper to the model looks like the:**
 
-```text
+```bash
 {"id": "6", "flapper": " 0xf0afc3108bb8f196cf8d076c8c4877a4c53d4e7c ", "bid": "7.142857142857142857", "lot": "10000.000000000000000000", "beg": "1.050000000000000000", "guy": " 0x00531a10c4fbd906313768d277585292aa7c923a ", "era": 1530530620, "tic": 1530541420, "end": 1531135256, "price": "1400.000000000000000028"}
 ```
 
@@ -143,7 +143,7 @@ At the same time, the `auction-keeper` reads one-line messages from the **standa
 
 **An example of a message sent from the Bidding Model to the Auction Keeper may look like:**
 
-```text
+```JSON
     {"price": "150.0", "gasPrice": 7000000000}
 ```
 
@@ -168,32 +168,32 @@ Any messages written by a Bidding Model to **stderr** \(standard error\) will be
 
 1. **Clone the `auction-keeper` repository:**
 
-```text
+```bash
 git clone https://github.com/makerdao/auction-keeper.git
 ```
 
 1. **Switch into the `auction-keeper` directory:**
 
-```text
+```bash
 cd auction-keeper
 ```
 
 1. **Install required third-party packages:**
 
-```text
+```bash
 git submodule update --init --recursive
 ```
 
 1. **Set up the virtual env and activate it:**
 
-```text
+```bash
 python3 -m venv _virtualenv
 source _virtualenv/bin/activate
 ```
 
 **5. Install requirements:**
 
-```text
+```bash
 pip3 install -r requirements.txt
 ```
 
@@ -234,7 +234,7 @@ Collateral Auctions will be the most common type of auction that the community w
 
 An example on how to set up your environment: as `my_environment.sh`
 
-```text
+```bash
 SERVER_ETH_RPC_HOST=https://your-ethereum-node
 SERVER_ETH_RPC_PORT=8545
 ACCOUNT_ADDRESS=0x16Fb96a5f-your-eth-address-70231c8154saf
@@ -244,7 +244,7 @@ ACCOUNT_KEY="key_file=/Users/username/Documents/Keeper/accounts/keystore,pass_fi
 `SERVER_ETH_RPC_HOST` - Should not be an infura node, as it doesn't provide all the functionality that the python script needs  
 `ACCOUNT_KEY` - Should have the absolute path to the keystore and password file. Define the path as shown above, as the python script will parse through both the keystore and password files.
 
-```text
+```bash
 #!/bin/bash
 dir="$(dirname "$0")"
 
@@ -288,7 +288,7 @@ Once finalized, you should save your script to run your Auction Keeper as `flip-
 Example of a working keeper:  
 After running the `./flip-eth-a.sh model-eth.sh` command you will see an output like this:
 
-```text
+```bash
 019-10-31 13:33:08,703 INFO     Keeper connected to RPC connection https://parity0.kovan.makerfoundation.com:8545
 2019-10-31 13:33:08,703 INFO     Keeper operating as 0x16Fb96a5fa0427Af0C8F7cF1eB4870231c8154B6
 2019-10-31 13:33:09,044 INFO     Executing keeper startup logic
@@ -374,7 +374,7 @@ This requires familiarity with Seth as well as having the tool set up on your lo
 
 **Run the following command in Seth:**
 
-```text
+```bash
 seth send 0xcbd3e165ce589657fefd2d38ad6b6596a1f734f6 'gulp(address)' 0xaaf64bfcc32d0f15873a02163e7e500671a4ffcd
 ```
 

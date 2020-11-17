@@ -73,7 +73,7 @@ To operate the keeper, call the `/bin/simple-arbitrage-keeper` script with the r
 
 This project uses Python 3.6.2. In order to clone the project and install required third-party packages please execute:
 
-```text
+```bash
 $ git clone https://github.com/makerdao/simple-arbitrage-keeper.git
 $ cd simple-arbitrage-keeper
 $ git submodule update --init --recursive
@@ -86,7 +86,7 @@ For some known Ubuntu and macOS issues see the [pymaker README](https://github.c
 
 If you are running Linux or macOS you can take advantage of our all in one installer.
 
-```text
+```bash
 $ curl https://dapp.tools/install | sh
 ```
 
@@ -102,7 +102,7 @@ If you'd like to start from scratch, [install geth](https://github.com/ethereum/
 
 A [TxManager](https://github.com/makerdao/tx-manager) must be deployed and linked with the Keeper ethereum address in order to bundle multiple contract calls in a single ethereum transaction; this is what we call an atomic transaction, where the entire call set is successful, or the state remains unaffected. Once the DappHub Toolkit is installed, execute the following commands to deploy TxManager:
 
-```text
+```bash
 $ git clone https://github.com/makerdao/tx-manager.git
 $ cd tx-manager
 $ dapp update
@@ -131,13 +131,13 @@ As was mentioned before, let's make a shell script so that it's easy to run this
 
 Create a file called like below, insert the arguments relevant to your environment, make it executable, then run it!
 
-```text
+```bash
 $ vim run-simple-keeper-kovan.sh
 ```
 
 In your run-simple-keeper-kovan.sh file:
 
-```text
+```bash
 #!/bin/bash
 /full/path/to/githubClone/simple-arbitrage-keeper/bin/simple-arbitrage-keeper \
     --rpc-host 'kovan.sampleparitynode.com' \
@@ -157,7 +157,7 @@ In your run-simple-keeper-kovan.sh file:
 
 Make your Keeper executable, and run it!
 
-```text
+```bash
 $ chmod +x run-simple-keeper-kovan.sh
 $ ./run-simple-keeper-kovan.sh
 
@@ -167,7 +167,7 @@ $ ./run-simple-keeper-kovan.sh
 
 During the initial startup, several approval transactions will be sent to the tx-manager, and relevant exchanges. When complete, you'll see a “Watching for new blocks” message that indicates that the bot is now looping through the `lifecycle.process_block()` method; following that message and with every new block is a "Best Trade regardless of profit" message that acts as a "heartbeat" to the Keeper.
 
-```text
+```bash
 Kentons-Macbook:scripts kentonprescott$ ./run-simple-arbitrage-keeper-mainnet-XYZ-XYZ.sh
 2019-10-19 17:21:57,463 INFO     Keeper connected to RPC connection https://...
 2019-10-19 17:21:57,463 INFO     Keeper operating as 0xABCD
@@ -184,7 +184,7 @@ After the initial approval phase the Keeper's startup will look something like t
 
 During keeper operation, if the following error is shown, just CTRL-C and rerun:
 
-```text
+```bash
 ValueError: {'code': -32010, 'message': 'Transaction with the same hash was already imported.'}
 ```
 

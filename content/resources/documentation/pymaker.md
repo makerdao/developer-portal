@@ -28,7 +28,7 @@ This project uses _Python 3.6.6_.
 
 In order to clone the project and install required third-party packages please execute:
 
-```text
+```bash
 git clone https://github.com/makerdao/pymaker.git
 cd pymaker
 pip3 install -r requirements.txt
@@ -38,7 +38,7 @@ pip3 install -r requirements.txt
 
 In order for the `secp256k` Python dependency to compile properly, following packages will need to be installed:
 
-```text
+```bash
 sudo apt-get install build-essential automake libtool pkg-config libffi-dev python-dev python-pip libsecp256k1-dev
 ```
 
@@ -48,13 +48,13 @@ sudo apt-get install build-essential automake libtool pkg-config libffi-dev pyth
 
 In order for the Python requirements to install correctly on _macOS_, please install `openssl`, `libtool`, `pkg-config` and `automake` using [Homebrew](https://brew.sh/):
 
-```text
+```bash
 brew install openssl libtool pkg-config automake
 ```
 
 and set the `LDFLAGS` environment variable before you run `pip3 install -r requirements.txt`:
 
-```text
+```bash
 export LDFLAGS="-L$(brew --prefix openssl)/lib" CFLAGS="-I$(brew --prefix openssl)/include"
 ```
 
@@ -92,7 +92,7 @@ Below you can find some code snippets demonstrating how the API can be used both
 
 This snippet demonstrates how to transfer some SAI from our default address. The SAI token address is discovered by querying the `Tub`, so all we need as a `Tub` address:
 
-```text
+```python
 from web3 import HTTPProvider, Web3
 
 from pymaker import Address
@@ -114,7 +114,7 @@ sai.transfer(address=Address(' 0x0000000000111111111100000000001111111111'),
 
 This snippet demonstrates how to update a `DSValue` with the ETH/USD rate pulled from _CryptoCompare_:
 
-```text
+```python
 import json
 import urllib.request
 
@@ -141,7 +141,7 @@ dsvalue.poke_with_int(cryptocompare_rate().value).transact()
 
 This snippet demonstrates how to fetch data from `Tub` and `Tap` contracts:
 
-```text
+```python
 from web3 import HTTPProvider, Web3
 
 from pymaker import Address
@@ -201,7 +201,7 @@ for cup_id in range(1, tub.cupi()+1):
 
 This snippet demonstrates how to create a CDP and draw Dai.
 
-```text
+```python
 import sys
 from web3 import Web3, HTTPProvider
 
@@ -251,7 +251,7 @@ print(f"CDP Dai balance w/o collateral:    {mcd.vat.dai(our_address)}")
 
 This snippet demonstrates how multiple token transfers can be executed asynchronously:
 
-```text
+```python
 from web3 import HTTPProvider
 from web3 import Web3
 
@@ -275,7 +275,7 @@ synchronize([sai.transfer(Address(' 0x0101010101020202020203030303030404040404')
 
 This snippet demonstrates how multiple token transfers can be executed in one Ethereum transaction. A `TxManager` instance has to be deployed and owned by the caller.
 
-```text
+```python
 from web3 import HTTPProvider
 from web3 import Web3
 
@@ -303,7 +303,7 @@ tx.execute([sai.address, skr.address],
 
 #### Ad-hoc increasing of gas price for asynchronous transactions
 
-```text
+```python
 import asyncio
 from random import randint
 
@@ -348,13 +348,13 @@ This project uses [pytest](https://docs.pytest.org/en/latest/) for unit testing.
 
 In order to be able to run tests, please install development dependencies first by executing:
 
-```text
+```bash
 pip3 install -r requirements-dev.txt
 ```
 
 You can then run all tests with:
 
-```text
+```bash
 ./test.sh
 ```
 

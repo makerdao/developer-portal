@@ -36,5 +36,3 @@ contentType: documentation
 ### Latest Kovan release <a id="latest-kovan-release"></a>
 
 - [Permanent link to the latest Kovan release](https://changelog.makerdao.com/releases/latest)
-
-##

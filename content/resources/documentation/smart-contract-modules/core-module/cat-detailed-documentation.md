@@ -83,7 +83,7 @@ The values of all parameters here \(except `vat`\) are changeable by an address 
 
 The following is a line-by-line explanation of what `bite` does.
 
-```text
+```solidity
 function bite(bytes32 ilk, address urn) public returns (uint id) {
   // Get the rate, spot, and dust from the ilk in the vat.
   (,uint256 rate,uint256 spot,,uint256 dust) = vat.ilks(ilk);

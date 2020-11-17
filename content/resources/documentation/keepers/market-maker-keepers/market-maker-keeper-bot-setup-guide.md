@@ -64,33 +64,33 @@ This guide is dedicated to showing you how to create your very own Market Maker 
 
 **1. Clone the `market-maker-keeper` repository and switch into its directory:**
 
-```text
+```bash
  git clone git@github.com:makerdao/market-maker-keeper.git
  cd market-maker-keeper
 ```
 
 **2. Initializing the git submodules that will bring in both the pymaker and the pyexchange library:**
 
-```text
+```bash
 git submodule update --init --recursive
 ```
 
 **3. Set up the virtual env and activate it:**
 
-```text
+```bash
  python3 -m venv _virtualenv
  source _virtualenv/bin/activate
 ```
 
 **4. Check to make sure you have the correct version \(Python 3.6.6\) of Python by running:**
 
-```text
+```bash
  python3 -V
 ```
 
 **5. Install Requirements:**
 
-```text
+```bash
 pip3 install $(cat requirements.txt $(find lib -name requirements.txt | sort) | sort | uniq | sed 's/ *== */==/g')
 ```
 
@@ -119,21 +119,21 @@ There is quite a lot of value in running all the unit tests to make sure `market
 
 **Firstly, the following command will install the libraries required to run unit tests:**
 
-```text
+```bash
 pip3 install -r requirements-dev.txt
 
 ```
 
 **To run the unit tests \(py.test, etc..\), use the following script:**
 
-```text
+```bash
 ./test.sh
 
 ```
 
 **Example output:**
 
-```text
+```bash
 ===================================== test session starts =====================================
 platform darwin -- Python 3.6.6, pytest-3.3.0, py-1.8.0, pluggy-0.6.0
 rootdir: /Users/charlesst.louis/market-maker-keeper, inifile:
@@ -236,7 +236,7 @@ To start, take the sample configuration file below and copy-paste it to a `.json
 
 This example shows bands for the ETH-DAI pair, where ETH represents the base currency and DAI as the quote currency:
 
-```text
+```JSON
 {
     "_buyToken": "DAI",
     "buyBands": [
@@ -332,7 +332,7 @@ There are two \(optional\) limit sections \(_`buyLimits`_ and _`sendLimits`_\) t
 
 **Example of order rate limits:**
 
-```text
+```JSON
 "buyLimits": [
     {
         "period": "1h",
@@ -356,7 +356,7 @@ _The_ [_Jsonnet_](https://github.com/google/jsonnet) _data templating language t
 
 In the case of the data templating language, think of this like a pre-processing language for parsing the file. The whole purpose of the jsonnet is to set up a configuration file such that you can have it increment based on a price. Therefore, in addition to the price feed, you can also base percentages away from the market price. As you can see below, there is a hardcoded amount/price and then the amounts below it which are dependent on the price.
 
-```text
+```JSON
 {
   "_price": 10,
 
@@ -421,7 +421,7 @@ In order to run `oasis-market-maker-keeper`, you will need to go through the fol
 
 The below file should be copy and pasted into a new file within the root directory of the repository \(`market-maker-keeper`\). This should be placed within the same folder where you put the `bands.json` file.
 
-```text
+```bash
 #!/bin/bash
 
 bin/oasis-market-maker-keeper \
@@ -448,7 +448,7 @@ bin/oasis-market-maker-keeper \
 
 **List of required Kovan Addresses for the above :**
 
-```text
+```bash
 V2_OASIS_SERVER1_ADDRESS=
 V2_OASIS_SERVER1_KEY="key_file=/home/ed/Projects/member-account.json,pass_file=/home/ed/Projects/member-account.pass"
 TUB_ADDRESS=0xa71937147b55deb8a530c7229c442fd3f31b7db2 # tub-address

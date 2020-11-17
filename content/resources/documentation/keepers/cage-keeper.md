@@ -57,7 +57,7 @@ This project uses _Python 3.6.2_.
 
 In order to clone the project and install required third-party packages please execute:
 
-```text
+```bash
 git clone https://github.com/makerdao/cage-keeper.git
 cd cage-keeper
 git submodule update --init --recursive
@@ -70,7 +70,7 @@ For some known Ubuntu and macOS issues see the [pymaker](https://github.com/make
 
 Make a run-cage-keeper.sh to easily spin up the cage-keeper.
 
-```text
+```bash
 #!/bin/bash
 /full/path/to/cage-keeper/bin/cage-keeper \
     --rpc-host 'sample.ParityNode.com' \
@@ -90,13 +90,13 @@ This project uses [pytest](https://docs.pytest.org/en/latest/) for unit testing.
 
 **In order to be able to run tests, please install development dependencies first by executing:**
 
-```text
+```bash
 pip3 install -r requirements-dev.txt
 ```
 
 **You can then run all tests with**:
 
-```text
+```bash
 ./test.sh
 ```
 
