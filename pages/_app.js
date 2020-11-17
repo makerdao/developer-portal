@@ -2,8 +2,9 @@ import React from 'react';
 import App from 'next/app';
 import { ThemeProvider } from 'theme-ui';
 import { TinaProvider, TinaCMS } from 'tinacms';
-import { TinacmsGithubProvider, GithubMediaStore } from 'react-tinacms-github';
+import { TinacmsGithubProvider } from 'react-tinacms-github';
 import { AlpacaGitHubClient } from '../utils/githubClient';
+import { NextGithubMediaStore } from 'next-tinacms-github';
 import theme from '../theme';
 import MakerProvider from '../providers/MakerProvider';
 
@@ -21,18 +22,12 @@ class MyApp extends App {
       baseBranch: process.env.BASE_BRANCH,
       // authScope: 'repo', // for private repos
     });
-    const store = new GithubMediaStore(client);
     this.cms = new TinaCMS({
       enabled: props.pageProps.preview,
-      media: {
-        store: store,
-      },
       apis: {
-        /**
-         * 2. Register the GithubClient
-         */
         github: client,
       },
+      media: new NextGithubMediaStore(client),
       // sidebar: props.pageProps.preview,
       toolbar: props.pageProps.preview,
     });
@@ -91,6 +86,9 @@ class MyApp extends App {
     );
   }
 }
+
+('Deprecation Notice: You are using an old authentication flow, please migrate to the new one (see https://tinacms.org/blog/upgrade-notice-improved-github-security)');
+('Deprecation Notice: You are using an old authentication flow, please migrate to the new one (see https://tinacms.org/blog/upgrade-notice-improved-github-security)');
 
 const enterEditMode = async () => {
   const token = localStorage.getItem('tinacms-github-token') || null;

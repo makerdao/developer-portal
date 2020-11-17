@@ -25,10 +25,12 @@ module.exports = withSvgr({
   },
   env: {
     GITHUB_CLIENT_ID: process.env.GITHUB_CLIENT_ID,
+    GITHUB_CLIENT_SECRET: process.env.GITHUB_CLIENT_SECRET,
     REPO_FULL_NAME: process.env.REPO_FULL_NAME,
     BASE_BRANCH: process.env.BASE_BRANCH,
-    ALGOLIA_APP_ID: process.env.ALGOLIA_APP_ID,
-    ALGOLIA_API_KEY: process.env.ALGOLIA_API_KEY,
-    FEEDBACK_ENDPOINT: process.env.FEEDBACK_ENDPOINT,
+    SIGNING_KEY: process.env.SIGNING_KEY,
+    // ALGOLIA_APP_ID: process.env.ALGOLIA_APP_ID,
+    // ALGOLIA_API_KEY: process.env.ALGOLIA_API_KEY,
+    // FEEDBACK_ENDPOINT: process.env.FEEDBACK_ENDPOINT,
   },
 });
