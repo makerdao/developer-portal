@@ -20,7 +20,7 @@ The `DSProxyService` includes all the functionality necessary for interacting wi
 
 Forwarding proxies are simple contracts that aggregate function calls in the body of a single method. These are used in the [CDP Portal](https://github.com/makerdao/sai-proxy) and [Oasis Direct](https://github.com/makerdao/oasis-direct-proxy) in order to allow users to execute multiple transactions atomically, which is both safer and more user-friendly than implementing several steps as discrete transactions.
 
-```text
+```solidity
 // Forwarding proxy
 
 function lockAndDraw(address tub_, bytes32 cup, uint wad) public payable {

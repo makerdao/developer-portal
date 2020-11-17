@@ -33,7 +33,7 @@ This script downloads the Nix package manager, setups binary cache with Cachix a
 
 If you have issues using the script above, you can try the manual installation on the aforementioned website. A this point in time you can do a manual installation by running the following scripts:
 
-```text
+```bash
 $ curl https://nixos.org/nix/install | sh
 $ . "$HOME/.nix-profile/etc/profile.d/nix.sh"
 $ nix-env -if https://github.com/cachix/cachix/tarball/master --substituters https://cachix.cachix.org --trusted-public-keys cachix.cachix.org-1:eWNHQldwUO7G2VkjpnjDbWwy4KQ/HNxht7H4SSoMckM=
@@ -76,7 +76,7 @@ Then in a separate terminal let’s create an empty password file:
 
 And let’s create our environment variables:
 
-```text
+```bash
 $ export ETH_PASSWORD=$PWD/pass
 $ export ETH_KEYSTORE=~/.dapp/testnet/8545/keystore
 $ export ETH_FROM=<your ethereum account address>
@@ -119,7 +119,7 @@ Let’s send Kovan or private net ETH to an address. You can choose any valid ad
 
 Upon execution you should see something like the following:
 
-```text
+```bash
 seth-send: warning: `ETH_GAS' not set; using default gas amount
 seth-send: Published transaction with 0 bytes of calldata.
 seth-send: 0x000000…
@@ -227,7 +227,7 @@ You can try them for example by first executing a transaction to have a transact
 
 Output:
 
-```text
+```bash
 seth-send: Published transaction with 68 bytes of calldata.
 seth-send: 0x58ba3980775741aecaf8435646a003bff3395d7d4e00c8f7a32ad1fa0ce64e01
 seth-send: Waiting for transaction receipt....
