@@ -165,10 +165,10 @@ const Dsr = ({ file, resources, dsrDocs, ecosystemFile, preview }) => {
 };
 
 export const getStaticProps = async function ({ preview, previewData }) {
-  // const resources = await getResources(preview, previewData, 'content/resources');
-  const resources = [];
+  const resources = await getResources(preview, previewData, 'content/resources');
   const dsrDocs = resources.filter(
-    (g) => g.data.frontmatter.component === 'dsr' || g.data.frontmatter.tags.includes('dsr')
+    (g) =>
+      g.data.frontmatter.components?.includes('dsr') || g.data.frontmatter.tags?.includes('dsr')
   );
 
   if (preview) {

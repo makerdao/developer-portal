@@ -7,42 +7,45 @@ const getResources = async (preview, previewData, contentDir) => {
     ? await getGithubFiles(contentDir, previewData)
     : await getLocalFiles(contentDir);
 
-  console.log('preview mode?', preview, 'files:', files);
+  try {
+    const resources = await Promise.all(
+      files
+        .filter((file) => {
+          const content = fs.readFileSync(`${file}`, 'utf8');
+          const { data } = matter(content);
+          return data.slug;
+        })
+        .map(async (file) => {
+          if (preview) {
+            const previewProps = await getGithubPreviewProps({
+              ...previewData,
+              fileRelativePath: file,
+              parse: parseMarkdown,
+            });
+            return {
+              fileName: file.substring(contentDir.length + 1, file.length - 3),
+              fileRelativePath: file,
+              data: previewProps.props.file?.data,
+            };
+          }
+          const content = fs.readFileSync(`${file}`, 'utf8');
+          const data = matter(content);
 
-  const resources = await Promise.all(
-    files
-      // .filter((file) => {
-      //   const content = fs.readFileSync(`${file}`, 'utf8');
-      //   const { data } = matter(content);
-      //   return data.slug;
-      // })
-      .map(async (file) => {
-        if (preview) {
-          const previewProps = await getGithubPreviewProps({
-            ...previewData,
-            fileRelativePath: file,
-            parse: parseMarkdown,
-          });
           return {
             fileName: file.substring(contentDir.length + 1, file.length - 3),
             fileRelativePath: file,
-            data: previewProps.props.file?.data,
+            data: {
+              frontmatter: data.data,
+              markdownBody: data.content,
+            },
           };
-        }
-        const content = fs.readFileSync(`${file}`, 'utf8');
-        const data = matter(content);
-
-        return {
-          fileName: file.substring(contentDir.length + 1, file.length - 3),
-          fileRelativePath: file,
-          data: {
-            frontmatter: data.data,
-            markdownBody: data.content,
-          },
-        };
-      })
-  );
-  return resources;
+        })
+    );
+    return resources;
+  } catch (e) {
+    const source = preview ? 'Github' : 'filesystem';
+    throw new Error(`Error fetching resources from ${source}: ${e}`);
+  }
 };
 
 const getLocalFiles = async (filePath) => {
