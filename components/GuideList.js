@@ -9,12 +9,11 @@ const GuideList = ({ guides, title, columns = [2, 3], path }) => {
     <Flex>
       <Box>
         <Container>
-          <Flex sx={{ mb: 4 }}>
-            <Flex>
-              <Heading sx={{ textAlign: 'center', variant: 'text.largeHeading' }}>{title}</Heading>
-            </Flex>
+          <Flex sx={{ mb: 4, alignItems: 'center' }}>
+            <Heading sx={{ textAlign: 'center', variant: 'text.largeHeading' }}>{title}</Heading>
+
             <Link href={'/guides'} passHref>
-              <Flex sx={{ ml: 3, mb: 0, alignItems: 'center' }}>
+              <Flex sx={{ ml: 3, alignItems: 'center' }}>
                 <Icon sx={{ mr: 2 }} color="primary" name={'arrow_right'}></Icon>
                 <ThemeLink sx={{ color: 'text', cursor: 'pointer' }}>View All</ThemeLink>
               </Flex>
@@ -28,7 +27,8 @@ const GuideList = ({ guides, title, columns = [2, 3], path }) => {
             gridAutoFlow: 'column',
             gridTemplateRows: 'auto auto',
             overflowX: 'auto',
-            pl: 7,
+            pl: `calc(50% - 1140px / 2)`,
+            // left: '-500px',
           }}
         >
           {guides.map(
