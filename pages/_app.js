@@ -87,9 +87,6 @@ class MyApp extends App {
   }
 }
 
-('Deprecation Notice: You are using an old authentication flow, please migrate to the new one (see https://tinacms.org/blog/upgrade-notice-improved-github-security)');
-('Deprecation Notice: You are using an old authentication flow, please migrate to the new one (see https://tinacms.org/blog/upgrade-notice-improved-github-security)');
-
 const enterEditMode = async () => {
   const token = localStorage.getItem('tinacms-github-token') || null;
 
