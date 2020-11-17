@@ -59,7 +59,7 @@ const GuideList = ({ guides, title, columns = [2, 3], path }) => {
                 >
                   <Flex sx={{ flexDirection: 'column', mb: 2 }}>
                     <Text variant="caps" sx={{ color: 'primary' }}>
-                      {parent}
+                      {group}
                     </Text>
                   </Flex>
 
