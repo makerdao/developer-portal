@@ -29,7 +29,7 @@ The system protects against debt creation by overcollateralization. Under ideal 
 
 Further, if, for example, the collateral price drops sharply or no one wants to buy the collateral, there may be debt in the liquidated Vault that cannot be repaid through a collateral auction and must be addressed by the system. The first course of action is to cover this debt using surplus from stability fees, if there is any surplus to cover it. If there is not, then the system initiates a **Debt Auction**, whereby the winning bidder pays Dai to cover the outstanding debt and in return receives an amount of newly minted MKR, increasing the amount of MKR in circulation.
 
-### To **summarize**, we have three types of Auctions:
+### To summarize, we have three types of Auctions:
 
 - **Surplus Auction**: The winning bidder pays MKR for surplus Dai from stability fees. The MKR received is burnt, thereby reducing the amount of MKR in circulation.
 - **Collateral Auction**: The winning bidder pays Dai for collateral from a liquidated Vault. The Dai received is used to cover the outstanding debt in the liquidated Vault
