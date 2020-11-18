@@ -40,6 +40,11 @@ module.exports = withSvgr({
         destination: '/security/multi-collateral-dai-security',
         permanent: false,
       },
+      {
+        source: '/documentation',
+        destination: '/documentation/introduction-to-the-maker-protocol',
+        permanent: false,
+      },
     ];
   },
 });
