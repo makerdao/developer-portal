@@ -30,8 +30,8 @@ By reading this guide, you’ll gain:
 ### Pre-requisites
 
 - At least Python 3.6.2 and some python experience
-- Linux, macOS, or Cygwin \(on Windows\)
-- Some general experience with Ethereum Development \(account management, contract interaction, node hosting\)
+- Linux, macOS, or Cygwin on Windows
+- Some general experience with Ethereum Development account management, contract interaction, node hosting
 
 ### Guide
 
@@ -119,7 +119,7 @@ The output of `dapp create` is the address to your TxManager
 
 **Deploy/Find a parity node**
 
-You need access to a JSON-RPC host that’s connected to a parity node. Unfortunately, Infura APIs are not connected to parity nodes, so you will need to find access to a remote endpoint \(one example is [https://rivet.cloud/](https://rivet.cloud/)\) or run a node on your local machine. An example of a remote node could be [https://kovan.sampleparitynode.com:8545](https://kovan.sampleparitynode.com:8545/)
+You need access to a JSON-RPC host that’s connected to a parity node. Unfortunately, Infura APIs are not connected to parity nodes, so you will need to find access to a remote endpoint one example is [https://rivet.cloud/](https://rivet.cloud/) or run a node on your local machine. An example of a remote node could be [https://kovan.sampleparitynode.com:8545](https://kovan.sampleparitynode.com:8545/)
 
 **Uniswap Exchange Addresses**
 
@@ -127,7 +127,7 @@ You'll need to find the address to the Uniswap exchange corresponding to the ent
 
 **Shell Script**
 
-As was mentioned before, let's make a shell script so that it's easy to run this Bot. For example, we're using _Kovan Sai_ for the entry-token since we won't be exposed to the arb token's price exposure in between trades. Moreover, for kovan testing, we will be using the WETH/DAI pair, since liquidity is thin across the Kovan versions of MatchingMarket and Uniswap exchanges. Any `NoneType` errors are likely due to a lack of liquidity on either exchange and can be resolved once liquidity is added. As mentioned earlier, the min-profit and max-engagement arguments define how the keeper will operate. Maximum engagement refers to the amount of entry-tokens you would like to sell within the first leg of the trade, whereas minimum profit refers to the amount of profit gained from executing the arbitrage; both arguments are denominated in entry-tokens and in _units of ether_ \(in the below script, 1 SAI of min-profit would be 1 SAI\). For example, the below script will trade with a max-engagement of 10 SAI, but only if the returned value from the trade results in at least 11 SAI.
+As was mentioned before, let's make a shell script so that it's easy to run this Bot. For example, we're using _Kovan Sai_ for the entry-token since we won't be exposed to the arb token's price exposure in between trades. Moreover, for kovan testing, we will be using the WETH/DAI pair, since liquidity is thin across the Kovan versions of MatchingMarket and Uniswap exchanges. Any `NoneType` errors are likely due to a lack of liquidity on either exchange and can be resolved once liquidity is added. As mentioned earlier, the min-profit and max-engagement arguments define how the keeper will operate. Maximum engagement refers to the amount of entry-tokens you would like to sell within the first leg of the trade, whereas minimum profit refers to the amount of profit gained from executing the arbitrage; both arguments are denominated in entry-tokens and in _units of ether_ in the below script, 1 SAI of min-profit would be 1 SAI. For example, the below script will trade with a max-engagement of 10 SAI, but only if the returned value from the trade results in at least 11 SAI.
 
 Create a file called like below, insert the arguments relevant to your environment, make it executable, then run it!
 
@@ -202,12 +202,12 @@ Here are some suggestions to improve the usability, versatility, and profitabili
   - Monitor more than two decentralized exchanges
   - Implement support for centralized exchanges
   - Increase number of intermediary arb tokens
-    - \(e.x. DAI → WETH → BAT → DAI\)
+    - e.x. DAI → WETH → BAT → DAI
     - [https://math.stackexchange.com/a/94420](https://math.stackexchange.com/a/94420)
     - [https://www.dailycodingproblem.com/blog/how-to-find-arbitrage-opportunities-in-python/](https://www.dailycodingproblem.com/blog/how-to-find-arbitrage-opportunities-in-python/)
 - Improve efficiency of TxManager
   - Do we really need to send all of our token balance to the contract during every atomic transaction?
-- Read the state of the MatchingMarket \(OasisDex\) contract rather than using the Oasis REST API
+- Read the state of the MatchingMarket OasisDex contract rather than using the Oasis REST API
   - To save gas, [get all active orders](https://github.com/makerdao/pymaker/blob/master/pymaker/oasis.py#L613) and [take specific orders](https://github.com/makerdao/pymaker/blob/master/pymaker/oasis.py#L428) by ID rather than use `MatchingMarket.offer(...)` and the on-chain matching engine
 - Send trade updates through a text/email Python API
 

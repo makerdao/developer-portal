@@ -25,7 +25,7 @@ You can configure the behavior of Dai.js by passing different arguments to `Make
 * `'http'`
   * Connect to a JSON-RPC node. Requires `url` to be set in the options.
 * `'test'`
-  * Use a local node \(e.g. Ganache\) running at `http://127.0.0.1:2000`, and sign transactions using node-managed keys.
+  * Use a local node e.g. Ganache running at `http://127.0.0.1:2000`, and sign transactions using node-managed keys.
 
 ```javascript
 const makerBrowser = await Maker.create('browser');
@@ -95,7 +95,7 @@ const accountsService = maker.service('accounts');
 The MCD plugin defines several services for working with Multi-Collateral Dai. Review [Getting started](../getting-started.md) to see how to add the plugin.
 
 * [`'mcd:cdpManager'`](../the-mcd-plugin.md): for working with Vaults.
-* [`'mcd:cdpType'`](../cdptypeservice.md): for reading parameters and live data \(totals and prices\) for collateral types.
+* [`'mcd:cdpType'`](../cdptypeservice.md): for reading parameters and live data totals and prices for collateral types.
 * [`'mcd:savings'`](../savingsservice.md): for working with the Dai Savings Rate.
 * [`'mcd:systemData'`](../systemdataservice.md): for reading system-wide parameters.
 

@@ -22,18 +22,18 @@ The `chief-keeper` monitors and interacts with [DSChief](https://github.com/dapp
 
 Its purpose is to lift the `hat` in DSChief as well as streamline executive actions.
 
-To `lift` a spell, that spell must have more approvals than the current `hat`. The approvals of this spell can fluctuate and be surpassed by other spells, some of which could be malicious. This keeper "guards" the `hat` by ensuring the spell with the most approval is always the `hat`. The `chief-keeper` does this in order to maximize the barrier of entry \(approval\) to `lift` a spell to the hat, thus acting as a "guard" against malicious governance actions.
+To `lift` a spell, that spell must have more approvals than the current `hat`. The approvals of this spell can fluctuate and be surpassed by other spells, some of which could be malicious. This keeper "guards" the `hat` by ensuring the spell with the most approval is always the `hat`. The `chief-keeper` does this in order to maximize the barrier of entry approval to `lift` a spell to the hat, thus acting as a "guard" against malicious governance actions.
 
 While in operation, the `chief-keeper`:
 
 - Monitors each new block for a change in the state of executive votes
-- `lift`s the hat for the spell \(`yay`\) most favored \(`approvals[yay]`\)
+- `lift`s the hat for the spell `yay` most favored `approvals[yay]`
 - Schedules spells in the GSM by calling `DSSSpell.schedule()`
 - Executes spells after their `eta` has elapsed in the GSM by calling `DSSSpell.cast()`
 
 #### Review
 
-The following section assumes familiarity with the [DSChief](https://github.com/dapphub/ds-chief), DSSSpells, and [DSPause](https://github.com/dapphub/ds-pause) \(Governance Security Module\), as well as the processes within [MakerDAO Governance](https://community-development.makerdao.com/governance).
+The following section assumes familiarity with the [DSChief](https://github.com/dapphub/ds-chief), DSSSpells, and [DSPause](https://github.com/dapphub/ds-pause) Governance Security Module, as well as the processes within [MakerDAO Governance](https://community-development.makerdao.com/governance).
 
 ## Architecture
 
@@ -43,7 +43,7 @@ The following section assumes familiarity with the [DSChief](https://github.com/
 
 ## Operation
 
-This keeper is run continuously, and saves a local database of `yays` \(spell addresses\) and an `yay:eta` dictionary to reduce chain state reads. If you'd like to create your own database from scratch, first delete `src/database/db_mainnet.json` before running `bin/chief-keeper`; the initial query could take up to 15 minutes.
+This keeper is run continuously, and saves a local database of `yays` spell addresses and an `yay:eta` dictionary to reduce chain state reads. If you'd like to create your own database from scratch, first delete `src/database/db_mainnet.json` before running `bin/chief-keeper`; the initial query could take up to 15 minutes.
 
 #### Installation
 
@@ -55,7 +55,7 @@ Prerequisites:
 
 In order to clone the project and install required third-party packages please execute:
 
-```text
+```bash
 git clone https://github.com/makerdao/chief-keeper.git
 cd chief-keeper
 git submodule update --init --recursive
@@ -70,7 +70,7 @@ For some known Ubuntu and macOS issues see the [pymaker](https://github.com/make
 
 Make a run-chief-keeper.sh to easily spin up the chief-keeper.
 
-```text
+```bash
 #!/bin/bash
 /full/path/to/chief-keeper/bin/chief-keeper \
     --rpc-host 'sample.ParityNode.com' \
@@ -88,13 +88,13 @@ This project uses [pytest](https://docs.pytest.org/en/latest/) for unit testing.
 
 In order to be able to run tests, please install development dependencies first by executing:
 
-```text
+```bash
 pip3 install -r requirements-dev.txt
 ```
 
 You can then run all tests with:
 
-```text
+```bash
 ./test.sh
 ```
 

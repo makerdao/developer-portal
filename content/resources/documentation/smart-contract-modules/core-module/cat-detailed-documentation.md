@@ -15,9 +15,9 @@ parent: introduction-to-core-module
 
 - **Contract Name:** cat.sol
 - **Type/Category:** DSS
-- \*\*\*\*[**Associated MCD System Diagram**](https://github.com/makerdao/dss/wiki)
-- \*\*\*\*[**Contract Source**](https://github.com/makerdao/dss/blob/master/src/cat.sol)
-- \*\*\*\*[**Etherscan**](https://etherscan.io/address/0x78f2c2af65126834c51822f56be0d7469d7a523e)
+- [**Associated MCD System Diagram**](https://github.com/makerdao/dss/wiki)
+- [**Contract Source**](https://github.com/makerdao/dss/blob/master/src/cat.sol)
+- [**Etherscan**](https://etherscan.io/address/0x78f2c2af65126834c51822f56be0d7469d7a523e)
 
 ## 1. Introduction \(Summary\)
 
@@ -37,23 +37,23 @@ The `Cat` is the system's liquidation agent, it enables keepers to mark position
 
 #### **Auth**
 
-- `wards` are allowed to call protected functions \(Administration and `cage()`\)
+- `wards` are allowed to call protected functions (Administration and `cage()`)
 
 #### **Storage**
 
 - `ilks` stores `Ilk` structs
-  - `Ilk` is the struct with the address of the collateral auction contract \(`flip`\), the penalty for that collateral to be liquidated \(`chop`\) and the maximum size of collateral that can be auctioned at once \(`dunk`\).
-- `live` must be `1` for the `Cat` to `bite`. \(see `cage` in mechanisms\)
-- `box` the limit on the debt and penalty fees available for auction. \[RAD\]
-- `dunk` \("debt chunk"\) amount of debt plus penalty fee per auction, in Dai. \[RAD\]
-- `vat` address that conforms to a `VatLike` interface \(see [`vat` documentation](https://docs.makerdao.com/smart-contract-modules/core-module/vat-detailed-documentation) for more info\). It is set during the constructor and **cannot be changed**.
-- `vow` address that conforms to a `VowLike` interface \(see [`vow` documentation](https://docs.makerdao.com/smart-contract-modules/system-stabilizer-module/vow-detailed-documentation) for more info\).
+  - `Ilk` is the struct with the address of the collateral auction contract (`flip`), the penalty for that collateral to be liquidated (`chop`) and the maximum size of collateral that can be auctioned at once (`dunk`).
+- `live` must be `1` for the `Cat` to `bite`. (see `cage` in mechanisms)
+- `box` the limit on the debt and penalty fees available for auction. [RAD]
+- `dunk` ("debt chunk") amount of debt plus penalty fee per auction, in Dai. [RAD]
+- `vat` address that conforms to a `VatLike` interface (see [`vat` documentation](https://docs.makerdao.com/smart-contract-modules/core-module/vat-detailed-documentation) for more info). It is set during the constructor and **cannot be changed**.
+- `vow` address that conforms to a `VowLike` interface (see [`vow` documentation](https://docs.makerdao.com/smart-contract-modules/system-stabilizer-module/vow-detailed-documentation) for more info).
 
-The values of all parameters here \(except `vat`\) are changeable by an address that is `rely`ed on. For instance, the `End` module should be `auth`ed to allow for it to call `cage()` and update `live` from 1 to 0. Governance \(through an `auth`ed address\) should be able to add collateral types to `Cat`, update their parameters, and change the `vow`.
+The values of all parameters here (except `vat`) are changeable by an address that is `rely`ed on. For instance, the `End` module should be `auth`ed to allow for it to call `cage()` and update `live` from 1 to 0. Governance (through an `auth`ed address) should be able to add collateral types to `Cat`, update their parameters, and change the `vow`.
 
 #### **Unsafe**
 
-`bite` can be called at anytime but will only succeed if the Vault is unsafe. A Vault is unsafe when its locked collateral \(`ink`\) times its collateral's liquidation price \(`spot`\) is less than its debt \(`art` times the fee for the collateral `rate`\). Liquidation price is the oracle-reported price scaled by the collateral's liquidation ratio.
+`bite` can be called at anytime but will only succeed if the Vault is unsafe. A Vault is unsafe when its locked collateral (`ink`) times its collateral's liquidation price (`spot`) is less than its debt (`art` times the fee for the collateral `rate`). Liquidation price is the oracle-reported price scaled by the collateral's liquidation ratio.
 
 #### **Events**
 
@@ -68,10 +68,10 @@ The values of all parameters here \(except `vat`\) are changeable by an address 
 
 ## 3. Key Mechanisms & Concepts
 
-#### **cage\(\)**
+#### **cage()**
 
 - `auth`
-- sets `live` to 0 \(prevents `bite`\). See [`End` documentation ](https://docs.makerdao.com/smart-contract-modules/shutdown/end-detailed-documentation)for further description.
+- sets `live` to 0 (prevents `bite`). See [`End` documentation ](https://docs.makerdao.com/smart-contract-modules/shutdown/end-detailed-documentation)for further description.
 - Once `live=0` it cannot be set back to 1.
 
 #### **bite\(bytes32 ilk, address urn\)**
@@ -167,9 +167,9 @@ function bite(bytes32 ilk, address urn) public returns (uint id) {
 
 Various file function signatures for administering `Cat`:
 
-- Setting new vow \(`file(bytes32, address)`\)
-- Setting new collateral \(`file(bytes32, bytes32, address)`\)
-- Setting penalty or dunk size for collateral \(`file(bytes32, bytes32, uint)`\)
+- Setting new vow (`file(bytes32, address)`)
+- Setting new collateral (`file(bytes32, bytes32, address)`)
+- Setting penalty or dunk size for collateral (`file(bytes32, bytes32, uint)`)
 
 ### **Usage**
 
@@ -177,26 +177,26 @@ The primary usage will be for keepers to call `bite` on a Vault they believe to 
 
 ## 4. Gotchas \(Potential source of user error\)
 
-- When the `Cat` is upgraded, there are multiple references to it that must be updated at the same time \(`End`, `Vat.rely`, `Vow.rely`\). It must also rely on the `End`, the system's `pause.proxy()`
+- When the `Cat` is upgraded, there are multiple references to it that must be updated at the same time (`End`, `Vat.rely`, `Vow.rely`). It must also rely on the `End`, the system's `pause.proxy()`
 - A `Vat` upgrade will require a new `Cat`
 - The Cat stores each `Ilk`'s liquidation penalty and maximum auction size.
 - Each ilk will be initiated with the `file` for their `Flipper`; however, auctions cannot start until `file` is also called to set the `chop` and the `dunk`. Without these auctions for either 0 gems or 0 dai would be created by calling `bite` on an unsafe Vault.
-- `bite` needs to be called `n` times where `n = urn.ink / ilks[ilk].dunk` if `n > 1`. This allows for the possibility that the Vault becomes safe between `bite` calls either through increased collateral \(in value or quantity\), or decreased debt.
+- `bite` needs to be called `n` times where `n = urn.ink / ilks[ilk].dunk` if `n > 1`. This allows for the possibility that the Vault becomes safe between `bite` calls either through increased collateral (in value or quantity), or decreased debt.
 - Calling `bite` returns the auction `id` and emits and event with the `id`. This is required to bid in the `Flipper` on the auction.
 
 ## 5. Failure Modes \(Bounds on Operating Conditions & External Risk Factors\)
 
 #### **Coding Error**
 
-A bug in the `Cat` could lead to loss \(or locking\) of Dai and Collateral by assigning it to an address that cannot recover it \(i.e. a bad Vow address or an incorrectly programmed Flipper\). The main coding failure mode of `Cat` is if it has a bug that causes auctions to cease to function. This would require upgrading the system to a corrected `Cat` contract. If there is a bug in `Cat` that reverts on `cage` then it would cause Shutdown could fail \(until a correct `Cat` is launched\).
+A bug in the `Cat` could lead to loss (or locking) of Dai and Collateral by assigning it to an address that cannot recover it (i.e. a bad Vow address or an incorrectly programmed Flipper). The main coding failure mode of `Cat` is if it has a bug that causes auctions to cease to function. This would require upgrading the system to a corrected `Cat` contract. If there is a bug in `Cat` that reverts on `cage` then it would cause Shutdown could fail (until a correct `Cat` is launched).
 
 #### **Feeds**
 
-The `Cat` relies indirectly on the price Feeds as it looks to the `Vat`'s tracking of the collateral prices \(`spot`\) to determine Vault safety. If this system breaks down, it could lead to theft of collateral \(too low `spot`\) or unbacked Dai \(incorrectly high `spot`\).
+The `Cat` relies indirectly on the price Feeds as it looks to the `Vat`'s tracking of the collateral prices (`spot`) to determine Vault safety. If this system breaks down, it could lead to theft of collateral (too low `spot`) or unbacked Dai (incorrectly high `spot`).
 
 #### **Governance**
 
-Governance can authorize and configure new collaterals for `Cat`. This could lead to misconfiguration or inefficiencies in the system. Misconfiguration could cause `Cat` not to operate properly or at all. For instance, if an `Ilk.dunk` is set to be greater than 2\*\*255 could allow for very, very large Vaults to be un-`bite`-able.
+Governance can authorize and configure new collaterals for `Cat`. This could lead to misconfiguration or inefficiencies in the system. Misconfiguration could cause `Cat` not to operate properly or at all. For instance, if an `Ilk.dunk` is set to be greater than 2 255 could allow for very, very large Vaults to be un-`bite`-able.
 
 Inefficiencies in the `dunk` or `chop` could affect auctions. For instance, a `dunk` that is too large or too small could lead to disincentives for keepers to participate in auctions. A `chop` that is too small would not sufficiently dis-incentivize risky Vaults and too large could lead to it being converted to bad debt. Further discussion of how the parameters could lead to system attacks is described in this [Auction Grinding paper](https://github.com/livnev/auction-grinding/blob/master/grinding.pdf).
 

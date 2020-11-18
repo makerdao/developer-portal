@@ -32,7 +32,7 @@ function lockAndDraw(address tub_, bytes32 cup, uint wad) public payable {
 }
 ```
 
-Forwarding proxies are meant to be as simple as possible, so they lack some features that could be important if they are to be used as interfaces for more complex smart contract logic. This problem can be solved by using profile proxies \(i.e. copies of [DSProxy](https://github.com/dapphub/ds-proxy)\) to execute the functionality defined in the forwarding proxies.
+Forwarding proxies are meant to be as simple as possible, so they lack some features that could be important if they are to be used as interfaces for more complex smart contract logic. This problem can be solved by using profile proxies i.e. copies of [DSProxy](https://github.com/dapphub/ds-proxy) to execute the functionality defined in the forwarding proxies.
 
 The first time an account is used to interact with any Maker application, the user will be prompted to deploy a profile proxy. This copy of DSProxy can be used in any product, including dai.js, by way of a universal [proxy registry](https://github.com/makerdao/proxy-registry/tree/master). Then, the calldata from any function in the forwarding proxy can be passed to DSProxy's `execute()`method, which runs the provided code in the context of the profile proxy.
 
@@ -54,9 +54,9 @@ This makes it possible for users' token allowances to persist from one Maker app
 ## currentProxy\(\)
 
 - **Params:** None
-- **Returns:** promise \(resolves to address **or** `null`\)
+- **Returns:** promise resolves to address **or** `null`
 
-If the `currentAccount` \(according the `Web3Service`\) has already deployed a DSProxy, `currentProxy()` returns its address. If not, it returns `null`. It will update automatically in the event that the active account is changed. This function should be used to check whether a user has a proxy before attempting to build one.
+If the `currentAccount` according the `Web3Service` has already deployed a DSProxy, `currentProxy()` returns its address. If not, it returns `null`. It will update automatically in the event that the active account is changed. This function should be used to check whether a user has a proxy before attempting to build one.
 
 ```javascript
 async function getProxy() {
@@ -90,8 +90,8 @@ const proxyAddress = await maker.service('proxy').ensureProxy();
 
 ## getProxyAddress\(\)
 
-- **Params:** Address \(optional\)
-- **Returns:** promise \(resolves to contract address\)
+- **Params:** Address optional
+- **Returns:** promise resolves to contract address
 
 `getProxyAddress` will query the proxy registry for the profile proxy address associated with a given account. If no address is provided as a parameter, the function will return the address of the proxy owned by the `currentAccount`.
 
@@ -102,7 +102,7 @@ const proxy = await maker.service('proxy').getProxyAddress('0x...');
 ## getOwner\(\)
 
 - **Params:** Address
-- **Returns:** promise \(resolves to address\)
+- **Returns:** promise resolves to address
 
 `getOwner` will query the proxy registry for the owner of a provided instance of DSProxy.
 
@@ -112,7 +112,7 @@ const owner = await maker.service('proxy').getOwner('0x...');
 
 ## setOwner\(\)
 
-- **Params:** Address of new owner, DSProxy address \(optional\)
+- **Params:** Address of new owner, DSProxy address optional
 - **Returns:** `TransactionObject`
 
 `setOwner` can be used to give a profile proxy to a new owner. The address of the recipient account must be specified, but the DSProxy address will default to `currentProxy` if the second parameter is excluded.

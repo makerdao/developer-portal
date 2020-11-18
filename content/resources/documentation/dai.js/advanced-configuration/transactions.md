@@ -46,7 +46,7 @@ await txMgr.confirm(open);
 // 'confirmed' callback will fire after 5 blocks
 ```
 
-Note that the `confirmed` event will not fire unless `transactionManager.confirm` is called. This async function waits a number of blocks \(default 5\) after the transaction has been mined to resolve. To change this globally, set the `confirmedBlockCount` attribute in Maker [options](../maker/#options). To change it for just one call, pass the number of blocks to wait as the second argument:
+Note that the `confirmed` event will not fire unless `transactionManager.confirm` is called. This async function waits a number of blocks default 5 after the transaction has been mined to resolve. To change this globally, set the `confirmedBlockCount` attribute in Maker [options](../maker/#options). To change it for just one call, pass the number of blocks to wait as the second argument:
 
 ```javascript
 await txMgr.confirm(open, 3);

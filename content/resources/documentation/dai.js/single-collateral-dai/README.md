@@ -64,7 +64,7 @@ The services and objects below are used to work with Single-Collateral Sai.
 
 ## openCdp\(\)
 
-* **Returns:** promise \(resolves to new CDP object once mined\)
+* **Returns:** promise resolves to new CDP object once mined
 
 `openCdp()` will create a new CDP, and then return the CDP object, which can be used to access other CDP functionality. The promise will resolve when the transaction is mined.
 
@@ -75,7 +75,7 @@ const newCdp = await cdpService.openCdp();
 
 ## getCdp\(int id\)
 
-* **Returns:** promise \(resolves to CDP object\)
+* **Returns:** promise resolves to CDP object
 
 `getCdp(id)` creates a CDP object for an existing CDP. The CDP object can then be used to interact with your CDP.
 

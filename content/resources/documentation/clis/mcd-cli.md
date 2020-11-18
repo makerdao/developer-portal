@@ -201,7 +201,7 @@ By default, `ETH_FROM` is used to determine which Urn to query. Use the `U, --ur
 
 **Urn management**
 
-Urn state \(`urn.ink` and `urn.art`\) is managed via the `frob <dink> <dart>` command, where `dink` and `dart` are delta amounts by which `ink` \(Locked collateral\) and `art` \(Outstanding debt\) should be changed. For example, to lock 100 WETH and draw 400 Dai on the ETH-A Ilk:
+Urn state `urn.ink` and `urn.art` is managed via the `frob <dink> <dart>` command, where `dink` and `dart` are delta amounts by which `ink` Locked collateral and `art` Outstanding debt should be changed. For example, to lock 100 WETH and draw 400 Dai on the ETH-A Ilk:
 
 ```bash
 mcd --ilk=ETH-A frob 100 400
@@ -225,7 +225,7 @@ dai exit <wad> Exchange Vat Dai for DSToken Dai
 
 Once Dai has been drawn on an Urn, it can be withdrawn for use outside the system using `dai exit`. Dai can be returned to repay Urn debt via `dai join`.
 
-The `dai balance` command displays the internal system \(vat\) balance and the external \(ext\) token balance:
+The `dai balance` command displays the internal system vat balance and the external ext token balance:
 
 ```bash
 mcd dai balance

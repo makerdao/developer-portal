@@ -19,9 +19,9 @@ root: true
 
 - **Contract Name:** token.sol
 - **Type/Category:** MKR Module
-- \*\*\*\*[**Associated MCD System Diagram**](https://github.com/makerdao/dss/wiki#system-architecture)
-- \*\*\*\*[**Contract Source**](https://github.com/dapphub/ds-token/blob/master/src/token.sol)
-- \*\*\*\*[**Etherscan**](https://etherscan.io/address/0x9f8f72aa9304c8b593d555f12ef6589cc3a579a2)
+- [**Associated MCD System Diagram**](https://github.com/makerdao/dss/wiki#system-architecture)
+- [**Contract Source**](https://github.com/dapphub/ds-token/blob/master/src/token.sol)
+- [**Etherscan**](https://etherscan.io/address/0x9f8f72aa9304c8b593d555f12ef6589cc3a579a2)
 
 ## 1. Introduction \(Summary\)
 
@@ -39,17 +39,17 @@ The MKR Module contains the MKR token, which is a deployed [Ds-Token](https://gi
 
 ### Key Functionalities \(as defined in the smart contract\)
 
-`mint` - credit tokens at an address whilst simultaneously increasing totalSupply \(requires auth\).
+`mint` - credit tokens at an address whilst simultaneously increasing totalSupply (requires auth).
 
-`burn` - debit tokens at an address whilst simultaneously decreasing totalSupply \(requires auth\).
+`burn` - debit tokens at an address whilst simultaneously decreasing totalSupply (requires auth).
 
 #### **Aliases**
 
 `push` - transfer an amount from msg.sender to a given address.
 
-`pull` - transfer an amount from a given address to msg.sender \(requires trust or approval\).
+`pull` - transfer an amount from a given address to msg.sender (requires trust or approval).
 
-`move` - transfer an amount from a given src address to a given dst address \(requires trust or approval\).
+`move` - transfer an amount from a given src address to a given dst address (requires trust or approval).
 
 **Standard ERC-20**
 
@@ -79,7 +79,7 @@ Further information about the ERC20 Token standard can be found [here](https://e
 
 Along with MKR having a standard ERC20 token interface, it also has the addition of DSAuth-protected mint and burn functions; binary approval via MAX_UINT; as well as a push, pull and move aliases for transferFrom operations.
 
-**The MKR token has 3 methods of use within the Maker Protocol \(reference** [**Maker Protocol 101 Presentation**](https://docs.makerdao.com/maker-protocol-101)**\):**
+**The MKR token has 3 methods of use within the Maker Protocol (reference** [**Maker Protocol 101 Presentation**](https://docs.makerdao.com/maker-protocol-101)**):**
 
 - **As a utility token:** As Dai stability fees earned on Vaults accrue within the Maker Protocol, MKR holders can use MKR to vote to enable the Flapper auction house to sell Dai surplus for MKR. Once the auction is complete the Maker protocol burns the MKR.
 - **As a governance token:** MKR is used by MKR holders to vote for the risk management and business logic of the Maker Protocol. Tokens are a simple representation of voting power.

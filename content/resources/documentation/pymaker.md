@@ -18,7 +18,7 @@ root: true
 
 The Maker Protocol incentivizes external agents, called _keepers_, to automate certain operations around the Ethereum blockchain. In order to ease their development, an API around most of the Maker contracts has been created. It can be used not only by keepers, but may also be found useful by authors of some other, unrelated utilities aiming to interact with these contracts.
 
-Based on the [Pymaker API](https://github.com/makerdao/pymaker), a set of reference Maker keepers is being developed. They all used to reside in this repository, but now each of them has an individual one: [bite-keeper](https://github.com/makerdao/bite-keeper) \(SCD only\), [arbitrage-keeper](https://github.com/makerdao/arbitrage-keeper), [auction-keeper](https://github.com/makerdao/auction-keeper) \(MCD only\), [cdp-keeper](https://github.com/makerdao/cdp-keeper) \(SCD only\), [market-maker-keeper](https://github.com/makerdao/market-maker-keeper).
+Based on the [Pymaker API](https://github.com/makerdao/pymaker), a set of reference Maker keepers is being developed. They all used to reside in this repository, but now each of them has an individual one: [bite-keeper](https://github.com/makerdao/bite-keeper) (SCD only), [arbitrage-keeper](https://github.com/makerdao/arbitrage-keeper), [auction-keeper](https://github.com/makerdao/auction-keeper) (MCD only), [cdp-keeper](https://github.com/makerdao/cdp-keeper) (SCD only), [market-maker-keeper](https://github.com/makerdao/market-maker-keeper).
 
 You only need to install this project directly if you want to build your own keepers, or if you want to play with this API library itself. If you just want to install one of reference keepers, go to one of the repositories linked above and start from there. Each of these keepers references some version of `pymaker` via a Git submodule.
 
@@ -42,7 +42,7 @@ In order for the `secp256k` Python dependency to compile properly, following pac
 sudo apt-get install build-essential automake libtool pkg-config libffi-dev python-dev python-pip libsecp256k1-dev
 ```
 
-\(for Ubuntu 18.04 Server\)
+(for Ubuntu 18.04 Server)
 
 #### Known macOS issues
 
@@ -63,19 +63,19 @@ export LDFLAGS="-L$(brew --prefix openssl)/lib" CFLAGS="-I$(brew --prefix openss
 **The current version provides APIs around:**
 
 - `ERC20Token`,
-- `Tub`, `Tap`,`Top` and `Vox` \([https://github.com/makerdao/sai](https://github.com/makerdao/sai)\),
-- `Vat`, `Cat`, `Vow`, `Jug`, `Flipper`, `Flapper`, `Flopper` \([https://github.com/makerdao/dss](https://github.com/makerdao/dss)\)
-- `SimpleMarket`, `ExpiringMarket` and `MatchingMarket` \([https://github.com/makerdao/maker-otc](https://github.com/makerdao/maker-otc)\),
-- `TxManager` \([https://github.com/makerdao/tx-manager](https://github.com/makerdao/tx-manager)\),
-- `DSGuard` \([https://github.com/dapphub/ds-guard](https://github.com/dapphub/ds-guard)\),
-- `DSToken` \([https://github.com/dapphub/ds-token](https://github.com/dapphub/ds-token)\),
-- `DSEthToken` \([https://github.com/dapphub/ds-eth-token](https://github.com/dapphub/ds-eth-token)\),
-- `DSValue` \([https://github.com/dapphub/ds-value](https://github.com/dapphub/ds-value)\),
-- `DSVault` \([https://github.com/dapphub/ds-vault](https://github.com/dapphub/ds-vault)\),
-- `EtherDelta` \([https://github.com/etherdelta/etherdelta.github.io](https://github.com/etherdelta/etherdelta.github.io)\),
-- `0x v1` \([https://etherscan.io/address/0x12459c951127e0c374ff9105dda097662a027093\#code](https://etherscan.io/address/0x12459c951127e0c374ff9105dda097662a027093#code), [https://github.com/0xProject/standard-relayer-api](https://github.com/0xProject/standard-relayer-api)\),
+- `Tub`, `Tap`,`Top` and `Vox` ([https://github.com/makerdao/sai](https://github.com/makerdao/sai)),
+- `Vat`, `Cat`, `Vow`, `Jug`, `Flipper`, `Flapper`, `Flopper` ([https://github.com/makerdao/dss](https://github.com/makerdao/dss))
+- `SimpleMarket`, `ExpiringMarket` and `MatchingMarket` ([https://github.com/makerdao/maker-otc](https://github.com/makerdao/maker-otc)),
+- `TxManager` ([https://github.com/makerdao/tx-manager](https://github.com/makerdao/tx-manager)),
+- `DSGuard` ([https://github.com/dapphub/ds-guard](https://github.com/dapphub/ds-guard)),
+- `DSToken` ([https://github.com/dapphub/ds-token](https://github.com/dapphub/ds-token)),
+- `DSEthToken` ([https://github.com/dapphub/ds-eth-token](https://github.com/dapphub/ds-eth-token)),
+- `DSValue` ([https://github.com/dapphub/ds-value](https://github.com/dapphub/ds-value)),
+- `DSVault` ([https://github.com/dapphub/ds-vault](https://github.com/dapphub/ds-vault)),
+- `EtherDelta` ([https://github.com/etherdelta/etherdelta.github.io](https://github.com/etherdelta/etherdelta.github.io)\),
+- `0x v1` ([https://etherscan.io/address/0x12459c951127e0c374ff9105dda097662a027093\#code](https://etherscan.io/address/0x12459c951127e0c374ff9105dda097662a027093#code), [https://github.com/0xProject/standard-relayer-api](https://github.com/0xProject/standard-relayer-api)),
 - `0x v2`
-- `Dai Savings Rate (Pot)`\([https://github.com/makerdao/pymaker/blob/master/tests/manual_test_dsr.py\#L29](https://github.com/makerdao/pymaker/blob/master/tests/manual_test_dsr.py#L29)\)
+- `Dai Savings Rate (Pot)`([https://github.com/makerdao/pymaker/blob/master/tests/manual_test_dsr.py\#L29](https://github.com/makerdao/pymaker/blob/master/tests/manual_test_dsr.py#L29))
 
 **APIs around the following functionality have not been implemented:**
 
@@ -342,7 +342,7 @@ print(bump_result.transaction_hash)
 Prerequisites:
 
 - [docker and docker-compose](https://www.docker.com/get-started)
-- [ganache-cli](https://github.com/trufflesuite/ganache-cli) 6.2.5 \(using npm, `sudo npm install -g ganache-cli@6.2.5`\)
+- [ganache-cli](https://github.com/trufflesuite/ganache-cli) 6.2.5 (using npm, `sudo npm install -g ganache-cli@6.2.5`)
 
 This project uses [pytest](https://docs.pytest.org/en/latest/) for unit testing. Testing of Multi-collateral Dai is performed on a Dockerized local testchain included in `tests\config`.
 

@@ -15,11 +15,11 @@ root: true
 
 ## Introduction to Seth
 
-Seth is a simple, but powerful command line tool created to interface with the Ethereum blockchain. It is part of the [Dapp.Tools](https://dapp.tools/) toolset along with other tools for Ethereum. Its two main functionalities among others are performing calls \(queries of the Ethereum blockchain - a “read” operation\) and sending transactions \(writing into the blockchain, changing its state\). It also provides conversion between data of Ethereum’s own specific formats and the more widespread, usual data formats.
+Seth is a simple, but powerful command line tool created to interface with the Ethereum blockchain. It is part of the [Dapp.Tools](https://dapp.tools/) toolset along with other tools for Ethereum. Its two main functionalities among others are performing calls queries of the Ethereum blockchain - a “read” operation and sending transactions writing into the blockchain, changing its state. It also provides conversion between data of Ethereum’s own specific formats and the more widespread, usual data formats.
 
 ### Getting started
 
-In the following section we will go through the installation and setup of Seth. These steps only work on Unix-based systems \(i.e. Linux and macOS\), however on Windows, you can try with an emulator, like [cmder](http://cmder.net/) or [cygwin](https://www.cygwin.com/), the [linux subsystem](https://docs.microsoft.com/en-us/windows/wsl/install-win10) in Windows 10, a virtual machine or a container.
+In the following section we will go through the installation and setup of Seth. These steps only work on Unix-based systems i.e. Linux and macOS, however on Windows, you can try with an emulator, like [cmder](http://cmder.net/) or [cygwin](https://www.cygwin.com/), the [linux subsystem](https://docs.microsoft.com/en-us/windows/wsl/install-win10) in Windows 10, a virtual machine or a container.
 
 ### Installation
 
@@ -58,7 +58,7 @@ At the time of writing, seth 0.7.0 is thus the latest version, however in the fu
 
 #### Errors and a note on macOSX Mojave
 
-If the above command does not work, or you had trouble installing it may be due to Mac OSX Mojave, as we have experienced various issues with the tools nix and cachix not working correctly on this OS, specifically due to a multi-user bug. If you happen to have more user accounts on your Mac, and experience errors running this guide, [this document](https://github.com/makerdao/developerguides/blob/master/devtools/seth/seth-guide-01/seth-guide-01.md#) might help you resolve the issue. If this does not resolve the issue, you are more than welcome to ask for help on [chat.makerdao.com](https://chat.makerdao.com/) in the \#help channel.
+If the above command does not work, or you had trouble installing it may be due to Mac OSX Mojave, as we have experienced various issues with the tools nix and cachix not working correctly on this OS, specifically due to a multi-user bug. If you happen to have more user accounts on your Mac, and experience errors running this guide, [this document](https://github.com/makerdao/developerguides/blob/master/devtools/seth/seth-guide-01/seth-guide-01.md#) might help you resolve the issue. If this does not resolve the issue, you are more than welcome to ask for help on [chat.makerdao.com](https://chat.makerdao.com/) in the help channel.
 
 ### Set up and configuring variables
 
@@ -92,7 +92,7 @@ Seth can connect to the Kovan Ethereum testnet through a default remote node pro
 
 `$ export SETH_CHAIN=kovan`
 
-If you decide to create a new account, an easy method is using the "create new wallet" option in MEW: [https://www.myetherwallet.com/](https://www.myetherwallet.com/). It is also possible to use Parity or Geth to create a new account or you can use an existing keystore file for a Parity or Geth account. You are also going to need to save the password of your keystore file in a plain text file \(Never use this keystore file for real ETH - saving the password for your keystore file in plain text would be very unsafe for a real account! This also goes for the testnet account!\).
+If you decide to create a new account, an easy method is using the "create new wallet" option in MEW: [https://www.myetherwallet.com/](https://www.myetherwallet.com/). It is also possible to use Parity or Geth to create a new account or you can use an existing keystore file for a Parity or Geth account. You are also going to need to save the password of your keystore file in a plain text file Never use this keystore file for real ETH - saving the password for your keystore file in plain text would be very unsafe for a real account! This also goes for the testnet account!.
 
 Then you have to set up the same variables:
 
@@ -119,7 +119,8 @@ Checking ETH balances is pretty straight forward. It can be done with the balanc
 
 Let’s send Kovan or private net ETH to an address. You can choose any valid address - in this example I am going to use [Ethereum Foundation's donation address](https://www.ethereum.org/donate):
 
-`$ seth send --value 0.1` [ `0xfB6916095ca1df60bB79Ce92cE3Ea74c37c5d359`](https://etherscan.io/address/0xfB6916095ca1df60bB79Ce92cE3Ea74c37c5d359)
+`$ seth send --value 0.1` 
+[`0xfB6916095ca1df60bB79Ce92cE3Ea74c37c5d359`](https://etherscan.io/address/0xfB6916095ca1df60bB79Ce92cE3Ea74c37c5d359)
 
 Upon execution you should see something like the following:
 
@@ -135,7 +136,7 @@ This indicates that the transaction was successful.
 
 #### seth call - Reading contract storage
 
-Since we don't have any contracts deployed to our private network, **let's use Kovan from now on**. Let’s use one of the simplest contracts possible: an ERC-20 token contract. In this example, we are going to use a test collateral token \(COL1\). You can save its address in a variable with the following command:
+Since we don't have any contracts deployed to our private network, **let's use Kovan from now on**. Let’s use one of the simplest contracts possible: an ERC-20 token contract. In this example, we are going to use a test collateral token COL1. You can save its address in a variable with the following command:
 
 `$ export COL1=0x911eb92e02477a4e0698790f4d858e09dc39468a`
 
@@ -175,7 +176,7 @@ The output is:
 
 `500000000000000000000`
 
-Now, that's a rather large value we got. The reason for this is that the contract stores the balances in wei unit \(10^-18\), which is why we have to convert it to get the actual number of COL1 we own:
+Now, that's a rather large value we got. The reason for this is that the contract stores the balances in wei unit 10^-18, which is why we have to convert it to get the actual number of COL1 we own:
 
 `$ seth --from-wei $(seth --to-dec $(seth call $COL1 'balanceOf(address)' $ETH_FROM)) eth`
 
@@ -187,15 +188,15 @@ The output is:
 
 With seth block, we are capable of querying any information about an Ethereum block. Here is the usage from the help option `$ seth block --help`:
 
-```text
+```bash
 Usage: seth block [-j|--json] <block> [<field>]
 Print a table of information about <block>.
 If <field> is given, print only the value of that field.
 ```
 
-Like any other Seth command, this command depends on Ethereum JSON RPC calls, which are part of the interface of any Ethereum client. You can dive into the corresponding documentation \([https://github.com/ethereum/wiki/wiki/JSON-RPC](https://github.com/ethereum/wiki/wiki/JSON-RPC)\) to learn more about it.
+Like any other Seth command, this command depends on Ethereum JSON RPC calls, which are part of the interface of any Ethereum client. You can dive into the corresponding documentation [https://github.com/ethereum/wiki/wiki/JSON-RPC](https://github.com/ethereum/wiki/wiki/JSON-RPC) to learn more about it.
 
-What can come in handy is the fact that in place of a block number, we can also use earliest, latest or pending. So if we would like to query the current block gas limit \(I have tried this with seth configured for the kovan testnet\) we can do the following:
+What can come in handy is the fact that in place of a block number, we can also use earliest, latest or pending. So if we would like to query the current block gas limit I have tried this with seth configured for the kovan testnet we can do the following:
 
 `$ seth block latest gasLimit`
 
@@ -211,7 +212,7 @@ When you want to send a transaction to a contract function with Seth, you have t
 
 `transfer(address _to, uint256 _value) public returns (bool success)`
 
-The signature part that Seth needs from this is 'transfer\(address, uint\)' and the parameters are the recipient address and the amount. The contract needs to receive the amount in hexadecimal representation of the number in wei unit, which is why we need those conversions.
+The signature part that Seth needs from this is 'transfer(address, uint)' and the parameters are the recipient address and the amount. The contract needs to receive the amount in hexadecimal representation of the number in wei unit, which is why we need those conversions.
 
 Now, to estimate the gas usage of an ERC-20 token transfer let’s execute the following:
 
@@ -223,7 +224,7 @@ Output:
 
 #### seth receipt and seth tx
 
-With seth receipt and seth tx, we can query every single detail imaginable about a transaction. They both take a transaction \(tx\) hash as an input parameter. The main difference between the two, is that the receipt, which contains the results of the transaction, is only constructed after the transaction gets mined, while the output of seth tx only contains the basic parameters of the transaction before it takes effect.
+With seth receipt and seth tx, we can query every single detail imaginable about a transaction. They both take a transaction tx hash as an input parameter. The main difference between the two, is that the receipt, which contains the results of the transaction, is only constructed after the transaction gets mined, while the output of seth tx only contains the basic parameters of the transaction before it takes effect.
 
 You can try them for example by first executing a transaction to have a transaction hash:
 
@@ -238,13 +239,13 @@ seth-send: Waiting for transaction receipt....
 seth-send: Transaction included in block 9704345.
 ```
 
-Now you can try the discussed commands \(use your own tx hash from the previous tx\):
+Now you can try the discussed commands use your own tx hash from the previous tx:
 
 `$ seth receipt 0x58ba3980775741aecaf8435646a003bff3395d7d4e00c8f7a32ad1fa0ce64e01`
 
 `$ seth tx 0x58ba3980775741aecaf8435646a003bff3395d7d4e00c8f7a32ad1fa0ce64e01`
 
-These both generate a pretty long output, but we can filter each query with an optional extra parameter. For example let's see, how accurate was our previous estimation for the gas consumption \(it was perfectly accurate\):
+These both generate a pretty long output, but we can filter each query with an optional extra parameter. For example let's see, how accurate was our previous estimation for the gas consumption it was perfectly accurate:
 
 `$ seth receipt 0x58ba3980775741aecaf8435646a003bff3395d7d4e00c8f7a32ad1fa0ce64e01 gasUsed`
 

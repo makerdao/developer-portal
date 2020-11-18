@@ -25,7 +25,7 @@ All the methods below are asynchronous. `join`, `exit`, and `exitAll` use a [pro
 
 ### join\(amount\)
 
-Deposit the specified amount of Dai into the Dai Savings Rate \(DSR\) contract.
+Deposit the specified amount of Dai into the Dai Savings Rate (DSR) contract.
 
 ```javascript
 await service.join(DAI(1000));

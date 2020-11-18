@@ -46,7 +46,7 @@ To redeem Dai and/or excess collateral in the event of Emergency Shutdown
 6. Using cashETH
 7. Define calldata for our function
 8. Execute cashETHcalldata
-9. Alternative from step \(6\), Using cashGEM
+9. Alternative from step 6, Using cashGEM
 10. Define calldata for our function
 11. Call execute in MYPROXY
 
@@ -130,7 +130,7 @@ function pack(
 
 The user can check their Dai Token balance and subsequently save it in the `wad` variable so that it can be later used in the proxy function.
 
-```text
+```bash
 export balance=$(seth --from-wei $(seth --to-dec $(seth call $DAI 'balanceOf(address)' $ETH_FROM)))
 export wad=$(seth --to-uint256 $(seth --to-wei 13400 eth))
 # in the above, 13400 is an example Dai balance
@@ -140,7 +140,7 @@ export wad=$(seth --to-uint256 $(seth --to-wei 13400 eth))
 
 The user needs to approve `MYPROXY` in order to withdraw Dai from their wallet by using the following function.
 
-```text
+```bash
 seth send $DAI 'approve(address,uint)' $MYPROXY $(seth --to-uint256 $(mcd --to-hex -1))
 ```
 
@@ -167,7 +167,7 @@ seth send $MYPROXY 'execute(address,bytes memory)' $PROXY_ACTIONS_END $calldata
 
 #### 5. Call `cashETH` or `cashGEM` functions
 
-Users will be able to withdraw collateral depending on the collateral that is in the VAT at the time of shutdown. For example 1 Dai will be able to claim a portion of ETH and BAT \(and any other accepted collateral\) which when combined will be approximately worth 1 USD. This process is completed by calling `cashETH` or `cashGEM`.
+Users will be able to withdraw collateral depending on the collateral that is in the VAT at the time of shutdown. For example 1 Dai will be able to claim a portion of ETH and BAT and any other accepted collateral which when combined will be approximately worth 1 USD. This process is completed by calling `cashETH` or `cashGEM`.
 
 #### 6. **Using `cashETH`**
 
@@ -227,7 +227,7 @@ function cashGem(
 
 #### 10. Define calldata for our function
 
-Similarly, as done in step \(7\), the user needs to define the calldata to interact with `cashGEM`
+Similarly, as done in step 7, the user needs to define the calldata to interact with `cashGEM`
 
 ```bash
 export cashBATcalldata=$(seth calldata 'cashETH(address,address,bytes32,uint)' $MCD_JOIN_BAT $MCD_END $ilkBAT $wad)
@@ -311,7 +311,7 @@ export freeBATcalldata=$(seth calldata 'freeETH(address,address,address,uint)' $
 
 #### 3.2. Execute this calldata
 
-Executing the `MYPROXY` contract will redeem BAT \(or other collateral types\) and place them into the users address.
+Executing the `MYPROXY` contract will redeem BAT or other collateral types and place them into the users address.
 
 ```bash
 seth send $MYPROXY 'execute(address,bytes memory)' $PROXY_ACTIONS_END $freeBATcalldata

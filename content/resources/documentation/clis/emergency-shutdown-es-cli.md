@@ -23,7 +23,7 @@ root: true
 
 ## Description
 
-Emergency Shutdown \(ES\) is the last resort to protect the Maker Protocol against a serious threat, such as but not limited to governance attacks, long-term market irrationality, hacks and security breaches. The Emergency Shutdown Module \(ESM\) is responsible for coordinating emergency shutdown, the process used to gracefully shutdown the Maker Protocol and properly allocate collateral to both Vault users and Dai holders. This guide outlines the steps and procedures necessary to check, interact with and trigger the ESM.
+Emergency Shutdown ES is the last resort to protect the Maker Protocol against a serious threat, such as but not limited to governance attacks, long-term market irrationality, hacks and security breaches. The Emergency Shutdown Module ESM is responsible for coordinating emergency shutdown, the process used to gracefully shutdown the Maker Protocol and properly allocate collateral to both Vault users and Dai holders. This guide outlines the steps and procedures necessary to check, interact with and trigger the ESM.
 
 #### **Learning Objectives:** To be able to Check, Deposit and Trigger Emergency Shutdown.
 
@@ -34,7 +34,7 @@ Emergency Shutdown \(ES\) is the last resort to protect the Maker Protocol again
 3. Commands and Explanations
    - Checking your MKR balance
    - Checking and setting your MKR approval
-   - Checking the live\(\) flag
+   - Checking the live flag
    - Checking the ESM threshold
    - Deposit a trial amount of MKR into the ESM
    - Depositing MKR into the ESM

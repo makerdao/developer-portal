@@ -68,11 +68,11 @@ The debt ceiling for this collateral type.
 
 #### liquidationRatio
 
-Vaults of this type become unsafe \(subject to liquidation\) when their ratio between USD value of collateral and Dai drawn is less than or equal to this amount.
+Vaults of this type become unsafe subject to liquidation when their ratio between USD value of collateral and Dai drawn is less than or equal to this amount.
 
 #### price
 
-The USD price of this collateral type's token, using recent price feed data, as a [currency ratio](currency-units.md). \(See "A note on caching" above\).
+The USD price of this collateral type's token, using recent price feed data, as a [currency ratio](currency-units.md). See "A note on caching" above.
 
 ```javascript
 console.log(type.price.toString()); // "9000.01 ETH/USD"
@@ -84,7 +84,7 @@ The penalty added to the Dai amount to be raised at auction when a vault is liqu
 
 #### annualStabilityFee
 
-The annual stability fee \(risk premium\) of the collateral type, not including the [base rate](systemdataservice.md#getannualbaserate), as a BigNumber. e.g. if the rate is 5%, this value will be `BigNumber(0.05)`.
+The annual stability fee risk premium of the collateral type, not including the [base rate](systemdataservice.md#getannualbaserate), as a BigNumber. e.g. if the rate is 5%, this value will be `BigNumber(0.05)`.
 
 ### Caching
 

@@ -15,9 +15,9 @@ parent: introduction-to-dai-module
 
 - **Contract Name:** dai.sol
 - **Type/Category:** DSS —&gt; Dai Module
-- \*\*\*\*[**Associated MCD System Diagram**](https://github.com/makerdao/dss/wiki)
-- \*\*\*\*[**Contract Source**](https://github.com/makerdao/dss/blob/master/src/dai.sol)
-- \*\*\*\*[**Etherscan**](https://etherscan.io/address/0x6b175474e89094c44da98b954eedeac495271d0f)
+- [**Associated MCD System Diagram**](https://github.com/makerdao/dss/wiki)
+- [**Contract Source**](https://github.com/makerdao/dss/blob/master/src/dai.sol)
+- [**Etherscan**](https://etherscan.io/address/0x6b175474e89094c44da98b954eedeac495271d0f)
 
 ## 1. Introduction \(Summary\)
 
@@ -29,7 +29,7 @@ The `Dai` contract is the user-facing ERC20 token contract maintaining the accou
 
 ### DAI \(Glossary\)
 
-**Key Functionalities \(as defined in the smart contract\)**
+**Key Functionalities (as defined in the smart contract)**
 
 `Mint` - Mint to an address
 
@@ -65,7 +65,7 @@ The `Dai` contract is the user-facing ERC20 token contract maintaining the accou
 
 #### **Units**
 
-- `wad` - fixed point decimal with 18 decimals \(for basic quantities, e.g. balances\).
+- `wad` - fixed point decimal with 18 decimals (for basic quantities, e.g. balances).
 
 ## 3. Key Mechanisms & Concepts
 
@@ -80,7 +80,7 @@ For the most part, `dai.sol` functions as a typical ERC20 token. These tokens ha
 
 ## 4. Gotchas \(Potential Source of User Error\)
 
-Unlimited allowance is a relatively uncommon practice \(though becoming more common\). This could be something used to trick a user by a malicious contract into giving access to all their DAI. This is concerning in upgradeable contracts where the contract may appear innocent until upgraded to a malicious contract.
+Unlimited allowance is a relatively uncommon practice (though becoming more common). This could be something used to trick a user by a malicious contract into giving access to all their DAI. This is concerning in upgradeable contracts where the contract may appear innocent until upgraded to a malicious contract.
 
 DAI is also susceptible to the known [ERC20 race condition](https://github.com/0xProject/0x-monorepo/issues/850), but should not normally be an issue with unlimited approval. We recommend any users using the `approval` for a specific amount be aware of this particular issue and use caution when authorizing other contracts to perform transfers on their behalf.
 
@@ -88,7 +88,7 @@ There is a slight deviation in `transferFrom` functionality: If the `src == msg.
 
 #### Built-in meta-transaction functionality of Dai
 
-The Dai token provides offchain approval, which means that as an owner of an ETH address, you can sign a permission \(using the permit\(\) function\) which basically grants allowance to another ETH address. The ETH address that you provide permission to can then take care of the execution of the transfer but has an allowance.
+The Dai token provides offchain approval, which means that as an owner of an ETH address, you can sign a permission (using the permit() function) which basically grants allowance to another ETH address. The ETH address that you provide permission to can then take care of the execution of the transfer but has an allowance.
 
 ## 5. Failure Modes \(Bounds on Operating Conditions & External Risk Factors\)
 
