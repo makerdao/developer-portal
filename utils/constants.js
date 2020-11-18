@@ -2,6 +2,7 @@ export const ContentTypes = {
   DOCUMENTATION: 'documentation',
   GUIDES: 'guides',
   ECOSYSTEM: 'ecosystem',
+  SECURITY: 'security',
 };
 
 export const EcosystemCategories = {
