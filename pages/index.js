@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { getGithubPreviewProps, parseJson } from 'next-tinacms-github';
-import { useGithubJsonForm } from 'react-tinacms-github';
+import { useGithubToolbarPlugins, useGithubJsonForm } from 'react-tinacms-github';
 import { InlineForm, InlineText, InlineTextarea } from 'react-tinacms-inline';
 import SingleLayout from '../layouts/SingleLayout.js';
 import GuideList from '../components/GuideList';
@@ -30,7 +30,9 @@ import AboutThisSite from '../components/AboutThisSite';
 import PageLead from '../components/PageLead';
 import IntroText from '../components/IntroText';
 import ModulesList from '../components/ModulesList';
-const Page = ({ file, guides }) => {
+import useCreateDocument from '../hooks/useCreateDocument';
+
+const Page = ({ file, guides, documentation }) => {
   const formOptions = {
     label: 'home page',
     fields: [
@@ -42,6 +44,8 @@ const Page = ({ file, guides }) => {
   };
   const [data, form] = useGithubJsonForm(file, formOptions);
   usePlugin(form);
+  useGithubToolbarPlugins();
+  useCreateDocument([...guides, ...documentation]);
 
   return (
     <SingleLayout>
