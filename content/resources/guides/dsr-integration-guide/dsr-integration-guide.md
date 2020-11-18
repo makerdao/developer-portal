@@ -3,9 +3,8 @@ title: DSR Integration Guide
 description: Learm about DSR amd integrate it into your platform
 components:
   - dai
+  - dsr
 tags:
-  - dai
-  - DSR
   - dai savings rate
   - earn savings in dai
 slug: dsr-integration-guide

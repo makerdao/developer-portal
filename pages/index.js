@@ -55,7 +55,11 @@ const Page = ({ file, guides, documentation }) => {
             rowGap: 6,
           }}
         >
-          <PageLead content={data} />
+          <PageLead
+            primary="Maker Protocol"
+            secondary="For Developers"
+            cta="Learn more about the technology."
+          />
           <GuideList title="Guides" path="guides" guides={guides} />
 
           <IntroText />

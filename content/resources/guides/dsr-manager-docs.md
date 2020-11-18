@@ -3,10 +3,8 @@ title: DsrManager
 description: Learn about DsrManager and integrate with DSR
 components:
   - dai
-  - DSR
+  - dsr
 tags:
-  - dai
-  - DSR
   - dsrManager contract
   - integrate with DSR
 slug: dsr-manager-guide

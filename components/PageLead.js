@@ -14,12 +14,12 @@ import { InlineForm, InlineText, InlineTextarea } from 'react-tinacms-inline';
 import Link from 'next/link';
 import { Icon } from '@makerdao/dai-ui-icons';
 
-const PageLead = () => {
+const PageLead = ({ primary, secondary, cta }) => {
   return (
     <Container>
       <Flex sx={{ py: [4, 6], flexDirection: 'column' }}>
-        <Heading variant="megaHeading">Maker Protocol</Heading>
-        <Heading variant="megaHeading">For Developers</Heading>
+        <Heading variant="megaHeading">{primary}</Heading>
+        <Heading variant="megaHeading">{secondary}</Heading>
         <Flex sx={{ flexDirection: 'column', pl: [5, 7], mt: 3 }}>
           <Text
             className="subtext"
@@ -33,7 +33,7 @@ const PageLead = () => {
           <Link href="/technology">
             <Flex sx={{ alignItems: 'center' }}>
               <Icon sx={{ mr: 2 }} color="primary" name={'arrow_right'}></Icon>
-              <Text sx={{ cursor: 'pointer' }}>Learn more about the technology.</Text>
+              <Text sx={{ cursor: 'pointer' }}>{cta}</Text>
             </Flex>
           </Link>
         </Flex>
