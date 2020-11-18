@@ -33,4 +33,13 @@ module.exports = withSvgr({
     // ALGOLIA_API_KEY: process.env.ALGOLIA_API_KEY,
     // FEEDBACK_ENDPOINT: process.env.FEEDBACK_ENDPOINT,
   },
+  redirects: async () => {
+    return [
+      {
+        source: '/security',
+        destination: '/security/multi-collateral-dai-security',
+        permanent: false,
+      },
+    ];
+  },
 });

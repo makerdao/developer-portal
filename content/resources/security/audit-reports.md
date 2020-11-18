@@ -33,7 +33,7 @@ While this engagement has been focused more on designing and building the specif
 The random tester can generate arbitrary sequences of transactions for testing and test them against the known properties of the system. These properties document the intended behavior of the system and act as checks against the traces that the random tester generates.
 Future governance updates to system parameters and changes to the MCD system itself can be tested against the high-level model and random tester before deploying to mainnet to ensure they do not unintentionally violate the desired system properties. If it is desirable to change the properties, the model and testing can be used to show how the proposed change alters the overall behavior of the system.
 
-### [Trail of Bits Final Audit Report](https://github.com/makerdao/mcd-security/blob/master/Audit%20Reports/TOB_MakerDAO_Final_Report.pdf)
+### [Trail of Bits Final Audit Report](https://github.com/makerdao/developer-portal/blob/master/public/images/security/audit-reports/TOB_MakerDAO_Final_Report.pdf)
 
 Trail of Bits (ToB), a world leader in security, has audited our MCD smart contracts. ToB reviews a broad variety of software, creates security tooling, and consults on the modifications necessary for secure system deployment. Its audit consisted of manual review, automated analysis, and bespoke tool development.
 
@@ -42,10 +42,10 @@ Trail of Bits (ToB), a world leader in security, has audited our MCD smart contr
 - The Trail of Bits team identified two medium-severity issues, four low-severity issues, and eight informational security issues.
 - In its audit report, the ToB team noted that our use of formal verification eliminated much of the “low-hanging fruit” in terms of vulnerabilities, and recommended continued use.
 - The ToB team also developed several security analysis tools specialized to the MCD codebase. These tools were used throughout the course of the audit to discover bugs, and then delivered to the MCD team once the audit was completed.
-- ToB had one specific finding concerning the DSR that we want to address here ([source](https://github.com/makerdao/mcd-security/blob/master/Audit%20Reports/TOB_MakerDAO_Final_Report.pdf), pp. 22). We understand the perceived issue and are exploring the possibilities of how we could apply the DSR to Dai throughout the system. In the meantime, we agree with the risks of users' non-standard ERC-20 proxies for the DSR and have begun R&D on a proof-of-concept implementation. As always, we recommend users practice caution when using third-party smart contracts to interact with the MCD system.
-- [Final Audit Report](https://github.com/makerdao/mcd-security/blob/master/Audit%20Reports/TOB_MakerDAO_Final_Report.pdf)
+- ToB had one specific finding concerning the DSR that we want to address here ([source](https://github.com/makerdao/developer-portal/blob/master/public/images/security/audit-reports/TOB_MakerDAO_Final_Report.pdf), pp. 22). We understand the perceived issue and are exploring the possibilities of how we could apply the DSR to Dai throughout the system. In the meantime, we agree with the risks of users' non-standard ERC-20 proxies for the DSR and have begun R&D on a proof-of-concept implementation. As always, we recommend users practice caution when using third-party smart contracts to interact with the MCD system.
+- [Final Audit Report](https://github.com/makerdao/developer-portal/blob/master/public/images/security/audit-reports/TOB_MakerDAO_Final_Report.pdf)
 
-### [PeckShield Final Audit Report](https://github.com/makerdao/mcd-security/blob/master/Audit%20Reports/PeckShield_Final_Audit_Report.pdf)
+### [PeckShield Final Audit Report](https://github.com/makerdao/developer-portal/blob/master/public/images/security/audit-reports/PeckShield_Final_Audit_Report.pdf)
 
 PeckShield, a security services organization based in China, had previously and independently verified the Maker DSChief vulnerability that was patched in May. Therefore, we contracted them to do a formal audit.
 
@@ -54,7 +54,7 @@ PeckShield, a security services organization based in China, had previously and 
 - The PeckShield team identified one high-severity issue (previously discovered through the bug bounty program), one medium-severity issue, four low-severity issues, and 10 informational security issues.
 - In its audit report, the team recognized our independent security efforts: “We always recommend proceeding with several independent audits and a public bug bounty program to ensure the security of smart contract(s).”
 - Zero bugs noted in PeckShield’s “17 Typical Smart Contract Coding Bugs” list were found.
-- [Final Audit Report](https://github.com/makerdao/mcd-security/blob/master/Audit%20Reports/PeckShield_Final_Audit_Report.pdf)
+- [Final Audit Report](https://github.com/makerdao/developer-portal/blob/master/public/images/security/audit-reports/PeckShield_Final_Audit_Report.pdf)
 
 ### Third-Party Audit Results
 

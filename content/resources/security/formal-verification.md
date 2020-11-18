@@ -4,7 +4,6 @@ description: A key component of our strategy to maximize security testing by app
 group: security
 components:
   - mcd
-  - security
 tags:
   - audits
   - formal verification
