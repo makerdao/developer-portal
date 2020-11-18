@@ -37,8 +37,8 @@ const ColorModeToggle = (props) => {
 const LINKS = [
   { url: '/technology', name: 'Technology' },
   { url: '/governance', name: 'Modules' },
-  { url: '/resources', name: 'Resources', type: 'menu', popup: true },
-  { url: '/', name: 'Community' },
+  { url: '/guides', name: 'Guides' },
+  { url: '/security', name: 'Security' },
 ];
 
 const NavLinks = ({ mobileOpened, setMobileOpened, setPopupState, query }) =>

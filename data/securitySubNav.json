@@ -1,0 +1,22 @@
+{
+  "navItems": [
+    {
+      "url": "/security/audit-reports",
+      "name": "Audit Reports",
+      "slug": "audit-reports",
+      "id": "1"
+    },
+    {
+      "url": "/security/bug-bounty-program",
+      "name": "Bug Bounty Program",
+      "slug": "bug-bounty-program",
+      "id": "2"
+    },
+    {
+      "url": "/security/formal-verification",
+      "name": "Formal Verification",
+      "slug": "formal-verification",
+      "id": "3"
+    }
+  ]
+}

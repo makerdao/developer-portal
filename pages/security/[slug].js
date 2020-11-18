@@ -40,7 +40,7 @@ export const getStaticProps = async function ({ preview, previewData, params }) 
   if (preview) {
     const navFile = await getGithubPreviewProps({
       ...previewData,
-      fileRelativePath: 'data/resourcesSubNav.json',
+      fileRelativePath: 'data/securitySubNav.json',
       parse: parseJson,
     });
 
@@ -71,8 +71,8 @@ export const getStaticProps = async function ({ preview, previewData, params }) 
   return {
     props: {
       navFile: {
-        fileRelativePath: 'data/resourcesSubNav.json',
-        data: (await import('../../data/resourcesSubNav.json')).default,
+        fileRelativePath: 'data/securitySubNav.json',
+        data: (await import('../../data/securitySubNav.json')).default,
       },
       slug,
       resources,
