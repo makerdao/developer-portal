@@ -68,10 +68,12 @@ export const getStaticProps = async function ({ preview, previewData }) {
       preview: false,
       file: {
         fileRelativePath: 'data/guidesPage.json',
-        data: (await import('../data/guidesPage.json')).default,
+        data: (await import('../../data/guidesPage.json')).default,
       },
       guides,
       // documentation,
     },
   };
 };
+
+export default Page;
