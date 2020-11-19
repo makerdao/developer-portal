@@ -19,7 +19,7 @@ The event pipeline allows developers to easily create real-time applications by 
 
 ## Wildcards
 
-- An event name passed to any event emitter method can contain a wildcard \(the `*`character\). A wildcard may appear as `foo/*`, `foo/bar/*`, or simply `*`.
+- An event name passed to any event emitter method can contain a wildcard the `*`character. A wildcard may appear as `foo/*`, `foo/bar/*`, or simply `*`.
 - `*` matches one sub-level.
 
 e.g. `price/*` will trigger on both `price/USD_ETH` and `price/MKR_USD` but not `price/MKR_USD/foo`.

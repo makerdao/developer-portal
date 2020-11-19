@@ -18,7 +18,7 @@ root: true
 
 The Maker Protocol incentivizes external agents, called _keepers_, to automate certain operations around the Ethereum blockchain. In order to ease their development, an API around most of the Maker contracts has been created. It can be used not only by keepers, but may also be found useful by authors of some other, unrelated utilities aiming to interact with these contracts.
 
-Based on the [Pymaker API](https://github.com/makerdao/pymaker), a set of reference Maker keepers is being developed. They all used to reside in this repository, but now each of them has an individual one: [bite-keeper](https://github.com/makerdao/bite-keeper) \(SCD only\), [arbitrage-keeper](https://github.com/makerdao/arbitrage-keeper), [auction-keeper](https://github.com/makerdao/auction-keeper) \(MCD only\), [cdp-keeper](https://github.com/makerdao/cdp-keeper) \(SCD only\), [market-maker-keeper](https://github.com/makerdao/market-maker-keeper).
+Based on the [Pymaker API](https://github.com/makerdao/pymaker), a set of reference Maker keepers is being developed. They all used to reside in this repository, but now each of them has an individual one: [bite-keeper](https://github.com/makerdao/bite-keeper) (SCD only), [arbitrage-keeper](https://github.com/makerdao/arbitrage-keeper), [auction-keeper](https://github.com/makerdao/auction-keeper) (MCD only), [cdp-keeper](https://github.com/makerdao/cdp-keeper) (SCD only), [market-maker-keeper](https://github.com/makerdao/market-maker-keeper).
 
 You only need to install this project directly if you want to build your own keepers, or if you want to play with this API library itself. If you just want to install one of reference keepers, go to one of the repositories linked above and start from there. Each of these keepers references some version of `pymaker` via a Git submodule.
 
@@ -28,7 +28,7 @@ This project uses _Python 3.6.6_.
 
 In order to clone the project and install required third-party packages please execute:
 
-```text
+```bash
 git clone https://github.com/makerdao/pymaker.git
 cd pymaker
 pip3 install -r requirements.txt
@@ -38,23 +38,23 @@ pip3 install -r requirements.txt
 
 In order for the `secp256k` Python dependency to compile properly, following packages will need to be installed:
 
-```text
+```bash
 sudo apt-get install build-essential automake libtool pkg-config libffi-dev python-dev python-pip libsecp256k1-dev
 ```
 
-\(for Ubuntu 18.04 Server\)
+(for Ubuntu 18.04 Server)
 
 #### Known macOS issues
 
 In order for the Python requirements to install correctly on _macOS_, please install `openssl`, `libtool`, `pkg-config` and `automake` using [Homebrew](https://brew.sh/):
 
-```text
+```bash
 brew install openssl libtool pkg-config automake
 ```
 
 and set the `LDFLAGS` environment variable before you run `pip3 install -r requirements.txt`:
 
-```text
+```bash
 export LDFLAGS="-L$(brew --prefix openssl)/lib" CFLAGS="-I$(brew --prefix openssl)/include"
 ```
 
@@ -63,19 +63,19 @@ export LDFLAGS="-L$(brew --prefix openssl)/lib" CFLAGS="-I$(brew --prefix openss
 **The current version provides APIs around:**
 
 - `ERC20Token`,
-- `Tub`, `Tap`,`Top` and `Vox` \([https://github.com/makerdao/sai](https://github.com/makerdao/sai)\),
-- `Vat`, `Cat`, `Vow`, `Jug`, `Flipper`, `Flapper`, `Flopper` \([https://github.com/makerdao/dss](https://github.com/makerdao/dss)\)
-- `SimpleMarket`, `ExpiringMarket` and `MatchingMarket` \([https://github.com/makerdao/maker-otc](https://github.com/makerdao/maker-otc)\),
-- `TxManager` \([https://github.com/makerdao/tx-manager](https://github.com/makerdao/tx-manager)\),
-- `DSGuard` \([https://github.com/dapphub/ds-guard](https://github.com/dapphub/ds-guard)\),
-- `DSToken` \([https://github.com/dapphub/ds-token](https://github.com/dapphub/ds-token)\),
-- `DSEthToken` \([https://github.com/dapphub/ds-eth-token](https://github.com/dapphub/ds-eth-token)\),
-- `DSValue` \([https://github.com/dapphub/ds-value](https://github.com/dapphub/ds-value)\),
-- `DSVault` \([https://github.com/dapphub/ds-vault](https://github.com/dapphub/ds-vault)\),
-- `EtherDelta` \([https://github.com/etherdelta/etherdelta.github.io](https://github.com/etherdelta/etherdelta.github.io)\),
-- `0x v1` \([https://etherscan.io/address/0x12459c951127e0c374ff9105dda097662a027093\#code](https://etherscan.io/address/0x12459c951127e0c374ff9105dda097662a027093#code), [https://github.com/0xProject/standard-relayer-api](https://github.com/0xProject/standard-relayer-api)\),
+- `Tub`, `Tap`,`Top` and `Vox` ([https://github.com/makerdao/sai](https://github.com/makerdao/sai)),
+- `Vat`, `Cat`, `Vow`, `Jug`, `Flipper`, `Flapper`, `Flopper` ([https://github.com/makerdao/dss](https://github.com/makerdao/dss))
+- `SimpleMarket`, `ExpiringMarket` and `MatchingMarket` ([https://github.com/makerdao/maker-otc](https://github.com/makerdao/maker-otc)),
+- `TxManager` ([https://github.com/makerdao/tx-manager](https://github.com/makerdao/tx-manager)),
+- `DSGuard` ([https://github.com/dapphub/ds-guard](https://github.com/dapphub/ds-guard)),
+- `DSToken` ([https://github.com/dapphub/ds-token](https://github.com/dapphub/ds-token)),
+- `DSEthToken` ([https://github.com/dapphub/ds-eth-token](https://github.com/dapphub/ds-eth-token)),
+- `DSValue` ([https://github.com/dapphub/ds-value](https://github.com/dapphub/ds-value)),
+- `DSVault` ([https://github.com/dapphub/ds-vault](https://github.com/dapphub/ds-vault)),
+- `EtherDelta` ([https://github.com/etherdelta/etherdelta.github.io](https://github.com/etherdelta/etherdelta.github.io)\),
+- `0x v1` ([https://etherscan.io/address/0x12459c951127e0c374ff9105dda097662a027093\#code](https://etherscan.io/address/0x12459c951127e0c374ff9105dda097662a027093#code), [https://github.com/0xProject/standard-relayer-api](https://github.com/0xProject/standard-relayer-api)),
 - `0x v2`
-- `Dai Savings Rate (Pot)`\([https://github.com/makerdao/pymaker/blob/master/tests/manual_test_dsr.py\#L29](https://github.com/makerdao/pymaker/blob/master/tests/manual_test_dsr.py#L29)\)
+- `Dai Savings Rate (Pot)`([https://github.com/makerdao/pymaker/blob/master/tests/manual_test_dsr.py\#L29](https://github.com/makerdao/pymaker/blob/master/tests/manual_test_dsr.py#L29))
 
 **APIs around the following functionality have not been implemented:**
 
@@ -92,7 +92,7 @@ Below you can find some code snippets demonstrating how the API can be used both
 
 This snippet demonstrates how to transfer some SAI from our default address. The SAI token address is discovered by querying the `Tub`, so all we need as a `Tub` address:
 
-```text
+```python
 from web3 import HTTPProvider, Web3
 
 from pymaker import Address
@@ -114,7 +114,7 @@ sai.transfer(address=Address(' 0x0000000000111111111100000000001111111111'),
 
 This snippet demonstrates how to update a `DSValue` with the ETH/USD rate pulled from _CryptoCompare_:
 
-```text
+```python
 import json
 import urllib.request
 
@@ -141,7 +141,7 @@ dsvalue.poke_with_int(cryptocompare_rate().value).transact()
 
 This snippet demonstrates how to fetch data from `Tub` and `Tap` contracts:
 
-```text
+```python
 from web3 import HTTPProvider, Web3
 
 from pymaker import Address
@@ -201,7 +201,7 @@ for cup_id in range(1, tub.cupi()+1):
 
 This snippet demonstrates how to create a CDP and draw Dai.
 
-```text
+```python
 import sys
 from web3 import Web3, HTTPProvider
 
@@ -251,7 +251,7 @@ print(f"CDP Dai balance w/o collateral:    {mcd.vat.dai(our_address)}")
 
 This snippet demonstrates how multiple token transfers can be executed asynchronously:
 
-```text
+```python
 from web3 import HTTPProvider
 from web3 import Web3
 
@@ -275,7 +275,7 @@ synchronize([sai.transfer(Address(' 0x0101010101020202020203030303030404040404')
 
 This snippet demonstrates how multiple token transfers can be executed in one Ethereum transaction. A `TxManager` instance has to be deployed and owned by the caller.
 
-```text
+```python
 from web3 import HTTPProvider
 from web3 import Web3
 
@@ -303,7 +303,7 @@ tx.execute([sai.address, skr.address],
 
 #### Ad-hoc increasing of gas price for asynchronous transactions
 
-```text
+```python
 import asyncio
 from random import randint
 
@@ -342,19 +342,19 @@ print(bump_result.transaction_hash)
 Prerequisites:
 
 - [docker and docker-compose](https://www.docker.com/get-started)
-- [ganache-cli](https://github.com/trufflesuite/ganache-cli) 6.2.5 \(using npm, `sudo npm install -g ganache-cli@6.2.5`\)
+- [ganache-cli](https://github.com/trufflesuite/ganache-cli) 6.2.5 (using npm, `sudo npm install -g ganache-cli@6.2.5`)
 
 This project uses [pytest](https://docs.pytest.org/en/latest/) for unit testing. Testing of Multi-collateral Dai is performed on a Dockerized local testchain included in `tests\config`.
 
 In order to be able to run tests, please install development dependencies first by executing:
 
-```text
+```bash
 pip3 install -r requirements-dev.txt
 ```
 
 You can then run all tests with:
 
-```text
+```bash
 ./test.sh
 ```
 

@@ -31,7 +31,7 @@ In short, it allows Dai holders to directly redeem Dai for collateral after an E
 * Vault owners can retrieve excess collateral from their Vaults immediately after initialization of Emergency Shutdown. They can do this via Vault frontends, such as Oasis Borrow, that have Emergency Shutdown support implemented, as well as via command-line tools.
 * Dai holders can, after a waiting period determined by MKR voters, swap their Dai for a relative share of all types of collateral in the system. The Maker Foundation will initially offer a web page for this purpose.
 * Dai holders always receive the same relative amount of collateral from the system, whether they are among the first or last people to process their claims.
-* Dai holders may also sell their Dai to Keepers \(if available\) to avoid self-management of the different collateral types in the system.
+* Dai holders may also sell their Dai to Keepers (if available) to avoid self-management of the different collateral types in the system.
 
 For more information about the Shutdown of the Maker Protocol, read the below **End - Detailed Documentation** as well as the [**Emergency Shutdown Module Documentation.**](https://docs.makerdao.com/smart-contract-modules/emergency-shutdown-module) 
 

@@ -37,7 +37,7 @@ import { McdPlugin } from '@makerdao/dai-plugin-mcd';
 const { McdPlugin } = require('@makerdao/dai-plugin-mcd');
 ```
 
-\(Note the `.default` at the end of the line when using `require`.\)
+Note the `.default` at the end of the line when using `require`.
 
 **UMD**
 

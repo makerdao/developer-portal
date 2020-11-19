@@ -16,14 +16,14 @@ root: true
 
 * **Module Name:** Collateral Module
 * **Type/Category:** DSS —&gt; Join.sol & Flip.sol
-* \*\*\*\*[**Associated MCD System Diagram**](https://github.com/makerdao/dss/wiki)
+* [**Associated MCD System Diagram**](https://github.com/makerdao/dss/wiki)
 * **Contract Sources:** 
-  * \*\*\*\*[**Join**](https://github.com/makerdao/dss/blob/master/src/join.sol)\*\*\*\*
-  * \*\*\*\*[**Flipper**](https://github.com/makerdao/dss/blob/master/src/flip.sol)
+  * [**Join**](https://github.com/makerdao/dss/blob/master/src/join.sol)
+  * [**Flipper**](https://github.com/makerdao/dss/blob/master/src/flip.sol)
 
 ## 1. Introduction \(Summary\)
 
-The collateral module is deployed for every new `ilk` \(collateral type\) added to `Vat`. It contains all the adapters and auction contracts for one specific collateral type.
+The collateral module is deployed for every new `ilk` (collateral type) added to `Vat`. It contains all the adapters and auction contracts for one specific collateral type.
 
 For other information related to the collateral module, read the following resources:
 
@@ -36,8 +36,8 @@ The Collateral Module has 2 core components consisting of the `Join` and `Flip` 
 
 ### The Collateral Module is built up of two components:
 
-1. \*\*\*\*[**Join Documentation**](https://docs.makerdao.com/smart-contract-modules/collateral-module/join-detailed-documentation)
-2. \*\*\*\*[**Flip Documentation**](https://docs.makerdao.com/smart-contract-modules/collateral-module/flipper-detailed-documentation)
+1. [**Join Documentation**](https://docs.makerdao.com/smart-contract-modules/collateral-module/join-detailed-documentation)
+2. [**Flip Documentation**](https://docs.makerdao.com/smart-contract-modules/collateral-module/flipper-detailed-documentation)
 
 ## 3. Key Mechanism and Concepts
 
@@ -57,7 +57,7 @@ The Collateral Module has 2 core components consisting of the `Join` and `Flip` 
 
 * `Join` - the purpose of join adapters is to retain the security of the system, allowing only trusted smart contracts to add/remove value to/from the `Vat`. The location of collateral deposited/locked in Vaults is in the respective Join adapter.
 * `Flipper` - the purpose of collateral auctions is to decrease the market risk of collateral that is backing Dai. The main priorities of the Flipper are:
-  * To cover the amount of total debt \(minted Dai + accrued fees\) of the Vault.
+  * To cover the amount of total debt (minted Dai + accrued fees) of the Vault.
   * To return as much collateral back to the Vault owner as possible.
 
 ## 4. Gotchas \(Potential sources of user error\)
@@ -74,4 +74,3 @@ If a `gem` contract were to go through a token upgrade or have the tokens frozen
 **Potential Phishing Attacks**
 
 As the MCD system evolves, we will see many more `join` contracts, user interfaces, etc. This surfaces the potential for a user to have their funds stolen by a malicious `join` contract which would send tokens to an external contract or wallet, instead of the `vat`.
-

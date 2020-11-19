@@ -19,19 +19,19 @@ root: true
 
 First install [dapp tools](https://dapp.tools/):
 
-```text
-$ curl https://dapp.tools/install | sh
+```bash
+curl https://dapp.tools/install | sh
 ```
 
 Then install the `mcd` package:
 
-```text
-$ dapp pkg install mcd
+```bash
+dapp pkg install mcd
 ```
 
 #### The following list details all of the commands available when interacting with the command-line interface:
 
-```text
+```bash
 MCD - Multi-collateral Dai
 
 Usage: mcd [<options>] <command> [<args>]
@@ -74,7 +74,7 @@ Since `mcd` will always be used against a known deployment of the system, defaul
 
 Example `~/.sethrc`:
 
-```text
+```bash
 #!/usr/bin/env bash
 export ETH_FROM=0x4Ffa8667Fe2db498DCb95A322b448eA688Ce430c
 export MCD_CHAIN=kovan
@@ -84,24 +84,24 @@ export MCD_CHAIN=kovan
 
 Run against the latest Kovan deployment by setting the `-C, --chain` option to `kovan`. Specify a sender account when sending transactions using the `-F, --from` option, or via the `ETH_FROM` env variable.
 
-```text
-$ export ETH_FROM=0x4Ffa8667Fe2db498DCb95A322b448eA688Ce430c
-$ mcd --chain=kovan dai join 100
+```bash
+export ETH_FROM=0x4Ffa8667Fe2db498DCb95A322b448eA688Ce430c
+mcd --chain=kovan dai join 100
 ```
 
 **Remote testchain**
 
 Run agaist remote testchain deployments by setting the `-C, --chain` option to the remote testchain Id. Mcd will auto-configure account settings via the testchain api so that no further configuration is required. To view a list of available testchains run:
 
-```text
-$ mcd testnet chains`
+```bash
+mcd testnet chains`
 ```
 
 Then set the chain option, or the chain env variable to the appropriate testchain Id.
 
-```text
-$ export MCD_CHAIN=12899149080555595289
-$ mcd dai join 100
+```bash
+export MCD_CHAIN=12899149080555595289
+mcd dai join 100
 ```
 
 **Local testnet**
@@ -110,17 +110,17 @@ Run against a locally running instance of [Dapp testnet](https://github.com/dapp
 
 By default, Mcd assumes that the output of the testchain deployment script is available at `~/.dapp/testnet/8545/config/addresses.json`. Configuration addresses can be loaded from a different location by setting the `--config` \(`MCD_CONFIG`\) option.
 
-```text
-$ export MCD_CONFIG=~/testchain-deployment-scripts/out/addresses.json
-$ mcd -C testnet dai join 100
+```bash
+export MCD_CONFIG=~/testchain-deployment-scripts/out/addresses.json
+mcd -C testnet dai join 100
 ```
 
 ### Ilk
 
 Ilks are collateral types with corresponding risk parameters which have been approved by system governance. Use the `ilks` command to view the list off available Ilks.
 
-```text
-$ mcd ilks
+```bash
+mcd ilks
 ILK      GEM    DESC
 
 ETH-A    WETH   Ethereum
@@ -130,8 +130,8 @@ REP-A    REP    Augur
 
 Each Ilk has its own set of configuration parameters which can be viewed via the `ilk` command. The `I, --ilk=<id>` option is used to scope commands to a particular Ilk:
 
-```text
-$ mcd --ilk=ETH-A ilk
+```bash
+mcd --ilk=ETH-A ilk
 Art  40.000000000000000000                      Total debt (DAI)
 rate 1.000080370887129123082627939              WETH DAI exchange rate
 spot 99.333333333333333333333333333             WETH price with safety mat (USD)
@@ -148,8 +148,8 @@ mat  1.500000000000000000000000000              Liquidation ratio
 
 Individial ilk values can be retrieved by adding the parameter name as an argument to the `ilk` command:
 
-```text
-$ mcd --ilk=ETH-A ilk spot
+```bash
+mcd --ilk=ETH-A ilk spot
 99.333333333333333333333333333
 ```
 
@@ -157,7 +157,7 @@ $ mcd --ilk=ETH-A ilk spot
 
 Gems are collateral tokens. Collateral is added and removed from the via adapters, which abstract away the differences between various token behaviours. Use `gem [<subcommand>]` to manage collateral balances for any given Ilk.
 
-```text
+```bash
 gem --ilk=<id> symbol             Gem symbol e.g. WETH
 gem --ilk=<id> balance            Print balances for a given urn (default: ETH_FROM)
 gem --ilk=<id> join <wad>         Add collateral to a given Urn (default: ETH_FROM)
@@ -168,14 +168,14 @@ The `join` command can add collateral from the sender account to any specified U
 
 By default, `ETH_FROM` is used to determine which Urn should be credited with collateral. Use `U, --urn=<address>` to optionally credit an Urn other than the default.
 
-```text
-$ mcd --ilk=ETH-A --urn=0x123456789abcdef0123456789abcdef012345678 join 100
+```bash
+mcd --ilk=ETH-A --urn=0x123456789abcdef0123456789abcdef012345678 join 100
 ```
 
 The `exit` command can remove collateral from a specified Urn, provided that the sender controls the private key associated with that Urn. The `exit` command can also withdraw collateral to an account other than `ETH_FROM` buy passing the destination address as an additional argument:
 
-```text
-$ mcd --ilk=ETH-A exit 100 0xDecaf00000000000000000000000000000000000
+```bash
+mcd --ilk=ETH-A exit 100 0xDecaf00000000000000000000000000000000000
 ```
 
 ### Urn
@@ -184,7 +184,7 @@ Urns represent Cdp state for any given Urn address.
 
 Use the `urn` command to view Urn state for any given Ilk:
 
-```text
+```bash
 ilk  ETH-A                                      Collateral type
 urn  0xC93C178EC17B06bddBa0CC798546161aF9D25e8A Urn handler
 ink  45.000000000000000000                      Locked collateral (WETH)
@@ -201,23 +201,23 @@ By default, `ETH_FROM` is used to determine which Urn to query. Use the `U, --ur
 
 **Urn management**
 
-Urn state \(`urn.ink` and `urn.art`\) is managed via the `frob <dink> <dart>` command, where `dink` and `dart` are delta amounts by which `ink` \(Locked collateral\) and `art` \(Outstanding debt\) should be changed. For example, to lock 100 WETH and draw 400 Dai on the ETH-A Ilk:
+Urn state `urn.ink` and `urn.art` is managed via the `frob <dink> <dart>` command, where `dink` and `dart` are delta amounts by which `ink` Locked collateral and `art` Outstanding debt should be changed. For example, to lock 100 WETH and draw 400 Dai on the ETH-A Ilk:
 
-```text
-$ mcd --ilk=ETH-A frob 100 400
+```bash
+mcd --ilk=ETH-A frob 100 400
 ```
 
 To reduce outstanding debt by 200 Dai whilst keeping the amount of locked collateral constant:
 
-```text
-$ mcd --ilk=ETH-A frob -- 0 -200
+```bash
+mcd --ilk=ETH-A frob -- 0 -200
 ```
 
 ### Dai
 
 Similar to Gem adapters, a Dai adapter is used to exchange Vat Dai for ERC20 token Dai which can then be used outside the system. Use `dai [<subcommand>]` to manage dai balances.
 
-```text
+```bash
 dai balance    Print balances for a given urn (default: ETH_FROM)
 dai join <wad> Exchange DSToken Dai for Vat Dai
 dai exit <wad> Exchange Vat Dai for DSToken Dai
@@ -225,18 +225,18 @@ dai exit <wad> Exchange Vat Dai for DSToken Dai
 
 Once Dai has been drawn on an Urn, it can be withdrawn for use outside the system using `dai exit`. Dai can be returned to repay Urn debt via `dai join`.
 
-The `dai balance` command displays the internal system \(vat\) balance and the external \(ext\) token balance:
+The `dai balance` command displays the internal system vat balance and the external ext token balance:
 
-```text
-$ mcd dai balance
+```bash
+mcd dai balance
 vat 1030.003120998308631176024235912000000000000000000 Vat balance
 ext 0.000000000000000000 ERC20 balance
 ```
 
 Individial balance values can be retrieved by adding `vat` or `ext` as an argument to the `balance` command:
 
-```text
-$ mcd dai balance vat
+```bash
+mcd dai balance vat
 1030.003120998308631176024235912000000000000000000
 ```
 
@@ -244,7 +244,7 @@ $ mcd dai balance vat
 
 The `cdp` command provides compatability with CDPs managed via the CDP Portal and uses the same proxy contract and [Cdp Manager](https://github.com/makerdao/dss-cdp-manager) font-end. This allows CDPs to be managed via a unique integer identifier rather than the `I, --ilk` and `U, --urn` options.
 
-```text
+```bash
 Usage: mcd cdp [<id>] [<command>]
 
 Commands: ls [<owner>]     List Cdps
@@ -265,7 +265,7 @@ Note: examples assume that `ETH_FROM` is set to an address controlled by the use
 
 Note: The system doesn't handle ETH directly but instead uses WETH to represent ETH collateral. For convenience, the `wrap` and `unwrap` commands are provided for exchanging ETH to WETH and visa versa.
 
-```text
+```bash
 # i) Wrap
 $ mcd wrap 100
 eth  900.000000000000000000
@@ -297,7 +297,7 @@ ext 500.000000000000000000 ERC20 balance
 
 #### 2. Managed Cdp - lock 100 REP & draw 50 Dai
 
-```text
+```bash
 # i) Open
 $ mcd --ilk=REP-A cdp open
 mcd-cdp-open: Waiting for transaction receipt...

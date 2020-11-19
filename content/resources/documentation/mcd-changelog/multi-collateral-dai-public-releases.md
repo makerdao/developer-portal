@@ -26,7 +26,7 @@ contentType: documentation
 - Link to corresponding main network or test network release
 - Contract addresses
 - ABIs
-- Links to GitHub repositories \(with changelogs\)
+- Links to GitHub repositories with changelogs
   - MCD CDP Portal
   - Dai.js
   - Governance Dashboard
@@ -36,5 +36,3 @@ contentType: documentation
 ### Latest Kovan release <a id="latest-kovan-release"></a>
 
 - [Permanent link to the latest Kovan release](https://changelog.makerdao.com/releases/latest)
-
-##

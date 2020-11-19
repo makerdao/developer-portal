@@ -15,14 +15,14 @@ parent: introduction-to-governance-module
 
 - **Contract Name:** spell.sol
 - **Type/Category:** Governance Module
-- \*\*\*\*[**Associated MCD System Diagram**](https://github.com/makerdao/dss/wiki#system-architecture)
-- \*\*\*\*[**Contract Source**](https://github.com/dapphub/ds-spell/blob/master/src/spell.sol)
+- [**Associated MCD System Diagram**](https://github.com/makerdao/dss/wiki#system-architecture)
+- [**Contract Source**](https://github.com/dapphub/ds-spell/blob/master/src/spell.sol)
 
 ## 1. Introduction \(Summary\)
 
-A `DSSpell` is an un-owned object that performs one action or series of atomic actions \(multiple transactions\) one time only. This can be thought of as a one-off DSProxy with no owner \(no DSAuth mix-in, it is not a DSThing\).
+A `DSSpell` is an un-owned object that performs one action or series of atomic actions (multiple transactions) one time only. This can be thought of as a one-off DSProxy with no owner (no DSAuth mix-in, it is not a DSThing).
 
-This primitive is useful to express objects that do actions which shouldn't depend on "sender", like an upgrade to a contract system that needs to be given root permission. By convention, it is usually what is used to change SCD or MCD system parameters \(where it is given auth via voting in [ds-chief](https://github.com/dapphub/ds-chief/blob/master/src/chief.sol)\).
+This primitive is useful to express objects that do actions which shouldn't depend on "sender", like an upgrade to a contract system that needs to be given root permission. By convention, it is usually what is used to change SCD or MCD system parameters (where it is given auth via voting in [ds-chief](https://github.com/dapphub/ds-chief/blob/master/src/chief.sol)).
 
 ![](/images/documentation/pause.png)
 

@@ -15,8 +15,8 @@ parent: introduction-to-governance-module
 
 - **Contract Name:** pause.sol
 - **Type/Category:** Governance Module
-- \*\*\*\*[**Associated MCD System Diagram**](https://github.com/makerdao/dss/wiki#system-architecture)
-- \*\*\*\*[**Contract Source**](https://github.com/dapphub/ds-pause/blob/master/src/pause.sol)
+- [**Associated MCD System Diagram**](https://github.com/makerdao/dss/wiki#system-architecture)
+- [**Contract Source**](https://github.com/dapphub/ds-pause/blob/master/src/pause.sol)
 
 ## 1. Introduction \(Summary\)
 
@@ -35,9 +35,9 @@ The `ds-pause` is a _delegatecall_ based proxy with an enforced delay. This allo
 - `usr`: address to delegatecall into
 - `tag`: the expected codehash of usr
 - `fax`: calldata to use
-- `eta`: first possible time of execution \(as seconds since unix epoch\)
+- `eta`: first possible time of execution (as seconds since unix epoch)
 
-It is important to note that each plan has a unique id, defined as a keccack256\(abi.encode\(usr, tag, fax, eta\)\).
+It is important to note that each plan has a unique id, defined as a keccack256(abi.encode(usr, tag, fax, eta)).
 
 #### **Operations**
 
@@ -57,7 +57,7 @@ The `ds-pause` was designed to be used as a component in the Maker Protocol’s 
 
 #### **Identity & Trust**
 
-In order to protect the internal storage of the pause from malicious writes during plan execution, we perform the `delegatecall` operation in a separate contract with an isolated storage context \(DSPauseProxy\), where each pause has its own individual proxy.
+In order to protect the internal storage of the pause from malicious writes during plan execution, we perform the `delegatecall` operation in a separate contract with an isolated storage context (DSPauseProxy), where each pause has its own individual proxy.
 
 This means that plans are executed with the identity of the `proxy`. Thus when integrating the pause into some auth scheme, you will want to trust the pause's proxy and not the pause itself.
 
@@ -84,7 +84,7 @@ This means that plans are executed with the identity of the `proxy`. Thus when i
 
 - A plan can only be executed if it has previously been plotted
 - A plan can only be executed once it's eta has passed
-- A plan can only be executed if its tag matches extcodehash\(usr\)
+- A plan can only be executed if its tag matches extcodehash(usr)
 - A plan can only be executed once
 - A plan can be executed by anyone
 

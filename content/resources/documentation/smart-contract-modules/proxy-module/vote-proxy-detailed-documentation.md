@@ -16,12 +16,12 @@ parent: introduction-to-proxy-module
 
 - **Contract Name:** VoteProxy.sol
 - **Type/Category:** Proxy Module
-- \*\*\*\*[**Associated MCD System Diagram**](https://github.com/makerdao/dss/wiki#system-architecture)
-- \*\*\*\*[**Contract Source**](https://github.com/makerdao/vote-proxy/blob/master/src/VoteProxy.sol)
+- [**Associated MCD System Diagram**](https://github.com/makerdao/dss/wiki#system-architecture)
+- [**Contract Source**](https://github.com/makerdao/vote-proxy/blob/master/src/VoteProxy.sol)
 
 ## 1. Introduction \(Summary\)
 
-The `VoteProxy` contract allows for MKR users to vote with a hot or cold wallet using a proxy voting identity instead of interacting directly with the chief. In addition to supporting two different voting mechanisms, the vote proxy also minimizes the time that MKR owners need to have their wallet\(s\) online.
+The `VoteProxy` contract allows for MKR users to vote with a hot or cold wallet using a proxy voting identity instead of interacting directly with the chief. In addition to supporting two different voting mechanisms, the vote proxy also minimizes the time that MKR owners need to have their wallet(s) online.
 
 ![](/images/documentation/pause.png)
 

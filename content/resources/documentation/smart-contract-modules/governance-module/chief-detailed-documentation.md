@@ -15,8 +15,8 @@ parent: introduction-to-governance-module
 
 - **Contract Name:** chief.sol
 - **Type/Category:** Governance Module
-- \*\*\*\*[**Associated MCD System Diagram**](https://github.com/makerdao/dss/wiki#system-architecture)
-- \*\*\*\*[**Contract Source**](https://github.com/dapphub/ds-chief/blob/master/src/chief.sol)
+- [**Associated MCD System Diagram**](https://github.com/makerdao/dss/wiki#system-architecture)
+- [**Contract Source**](https://github.com/dapphub/ds-chief/blob/master/src/chief.sol)
 
 ## 1. Introduction \(Summary\)
 
@@ -30,7 +30,7 @@ In short, voters will lock up their voting tokens in order to give their votes s
 
 ### Glossary \(Chief\)
 
-`**DSChiefApprovals` provides the following public properties:\*\*
+`**DSChiefApprovals` provides the following public properties:
 
 - `slates`: A mapping of `bytes32` to `address` arrays. Represents sets of candidates. Weighted votes are given to slates.
 - `votes`: A mapping of voter addresses to the slate they have voted for.
@@ -52,7 +52,7 @@ Most of the functions are decorated with the the `note` modifier from [ds-note](
 1. DSChiefApprovals
 2. DSChief, which inherits from DSChiefApprovals.
 
-#### Key Functionalities \(as defined in the smart contract\)
+#### Key Functionalities (as defined in the smart contract)
 
 #### DSChiefApprovals
 
@@ -86,7 +86,7 @@ Most of the functions are decorated with the the `note` modifier from [ds-note](
 
 #### DSChief
 
-`DSChief` is a combination of `DSRoles` from the `ds-roles` package and `DSChiefApprovals`. It can be used in conjunction with `ds-auth` \(as an authority object\) to govern smart contract systems.
+`DSChief` is a combination of `DSRoles` from the `ds-roles` package and `DSChiefApprovals`. It can be used in conjunction with `ds-auth` (as an authority object) to govern smart contract systems.
 
 #### Public Functions
 
@@ -128,7 +128,7 @@ The purpose of the IOU token is to allow for the chaining of governance contract
 
 **Example:**
 
-Let’s say there are three `DSChief` contracts \(chiefA, chiefB, and chiefC\) and a `chiefA.GOV` that is the MKR token. If we set `chiefB.GOV` to `chiefA.IOU` and `chiefC.GOV` to `chiefB.IOU`, this allows all three contracts to run using a common group of MKR.
+Let’s say there are three `DSChief` contracts (chiefA, chiefB, and chiefC) and a `chiefA.GOV` that is the MKR token. If we set `chiefB.GOV` to `chiefA.IOU` and `chiefC.GOV` to `chiefB.IOU`, this allows all three contracts to run using a common group of MKR.
 
 #### **Approval Voting**
 
@@ -138,7 +138,7 @@ In addition, the `ds-chief` weighs votes according to the quantity of a voting t
 
 #### Implementations
 
-If you are writing a front-end UI for this smart contract, please note that the address\[\] parameters that are passed to the `etch` and `vote` functions must be byte-ordered sets.
+If you are writing a front-end UI for this smart contract, please note that the address[] parameters that are passed to the `etch` and `vote` functions must be byte-ordered sets.
 
 **Example:**
 
