@@ -28,7 +28,7 @@ const PageLead = () => {
               mb: 2,
             }}
           >
-            <InlineTextarea name="subtext" />
+            <InlineText name="subtext" />
           </Text>
           <Link href="/technology">
             <Flex sx={{ alignItems: 'center' }}>

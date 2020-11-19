@@ -40,6 +40,10 @@ const Page = ({ file, guides, documentation }) => {
         name: 'subtext',
         component: 'text',
       },
+      {
+        name: 'aboutSubheading',
+        component: 'text',
+      },
     ],
   };
   const [data, form] = useGithubJsonForm(file, formOptions);
@@ -55,7 +59,7 @@ const Page = ({ file, guides, documentation }) => {
             rowGap: 6,
           }}
         >
-          <PageLead content={data} />
+          <PageLead />
           <GuideList title="Guides" path="guides" guides={guides} />
 
           <IntroText />
