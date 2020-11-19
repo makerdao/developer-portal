@@ -42,7 +42,7 @@ const Page = ({ file, guides, documentation }) => {
       },
       {
         name: 'aboutSubheading',
-        component: 'text',
+        component: 'textarea',
       },
     ],
   };

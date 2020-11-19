@@ -10,7 +10,7 @@ import {
   Flex,
   Link as ThemeLink,
 } from 'theme-ui';
-import { InlineForm, InlineText, InlineTextarea } from 'react-tinacms-inline';
+import { InlineText, InlineTextarea } from 'react-tinacms-inline';
 import Link from 'next/link';
 import { Icon } from '@makerdao/dai-ui-icons';
 

@@ -38,7 +38,7 @@ const IntroText = () => {
             pb: 4,
           }}
         >
-          <InlineText name="aboutSubheading" />
+          <InlineTextarea name="aboutSubheading" />
         </Heading>
       </Flex>
       <Text
