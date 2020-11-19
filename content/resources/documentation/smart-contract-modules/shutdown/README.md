@@ -4,9 +4,7 @@ description: Introducing the Shutdown Mechanism of the Maker Protocol
 group: smart-contracts
 components:
   - esm
-  - emergency shutdown
 tags:
-  - esm
   - emergency shutdown
 slug: introduction-to-es-module
 contentType: documentation

@@ -5,10 +5,9 @@ group: smart-contracts
 components:
   - esm
   - end
-  - emergency shutdown
   - governance
 tags:
-  - governance
+  - emergency shutdown
 slug: end-proxy-detailed-documentation
 contentType: documentation
 parent: introduction-to-es-module

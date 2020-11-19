@@ -4,14 +4,14 @@ description: This guide outlines the steps and procedures necessary to check, in
 group: clis
 components:
   - dai
-  - emergency shutdown
+  - esm
   - cli
 tags:
   - dai
   - emergency shutdown
   - cli
 slug: emergency-shutdown-es-cli
-contentType: documentation
+contentType: guides
 root: true
 ---
 

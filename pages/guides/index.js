@@ -1,39 +1,32 @@
 import { useState } from 'react';
-import ArticlesList from '@components/ArticlesList';
-import SingleLayout from '@layouts/SingleLayout';
-import { getResources } from '@utils';
 import { getGithubPreviewProps, parseJson } from 'next-tinacms-github';
 import { useGithubToolbarPlugins, useGithubJsonForm } from 'react-tinacms-github';
 import { InlineForm, InlineText, InlineTextarea } from 'react-tinacms-inline';
-import {
-  Container,
-  jsx,
-  Card,
-  Box,
-  Button,
-  Heading,
-  Text,
-  Grid,
-  Flex,
-  Label,
-  Select,
-  Link as ThemeLink,
-} from 'theme-ui';
-import { Icon } from '@makerdao/dai-ui-icons';
+import { Container, Heading, Flex, Select } from 'theme-ui';
+import ArticlesList from '@components/ArticlesList';
+import SingleLayout from '@layouts/SingleLayout';
+import { getResources } from '@utils';
+import { ContentTypes } from '@utils/constants';
 
-const PageLead = ({ primary, secondary, options, activeModule, onChange }) => {
+const PageLead = ({ options, activeModule, onChange }) => {
   return (
     <Container>
       <Flex sx={{ py: [4, 6], flexDirection: 'column' }}>
-        <Heading variant="megaHeading">{primary}</Heading>
+        <Heading variant="megaHeading">Show me guides</Heading>
         <Flex sx={{ alignItems: 'center' }}>
-          <Heading variant="megaHeading">{secondary}</Heading>
+          <Heading sx={{ pr: 4 }} variant="megaHeading">
+            about
+          </Heading>
           <Select
             sx={{
-              width: 8,
+              width: 'auto',
               variant: 'text.megaHeading',
               color: 'primary',
               borderColor: (theme) => `transparent transparent ${theme.colors.text} transparent`,
+              '&:focus': {
+                color: 'primary',
+                borderColor: (theme) => `transparent transparent ${theme.colors.text} transparent`,
+              },
             }}
             defaultValue={activeModule}
             onChange={(e) => onChange(e.target.value)}
@@ -50,26 +43,23 @@ const PageLead = ({ primary, secondary, options, activeModule, onChange }) => {
 
 const Page = ({ guides }) => {
   const [active, setActive] = useState('vaults');
-  const options = ['oracles', 'dsr', 'dai', 'keepers', 'auctions', 'vaults'];
-
   const resources = guides.filter((guide) => guide.data.frontmatter.components.includes(active));
+  const options = guides.reduce((acc, guide) => {
+    acc.push(...guide.data.frontmatter.components);
+    return [...new Set(acc)];
+  }, []);
+
   return (
     <SingleLayout>
-      <PageLead
-        primary="Show me guides"
-        secondary="about"
-        activeModule={active}
-        onChange={setActive}
-        options={options}
-      />
+      <PageLead activeModule={active} onChange={setActive} options={options} />
       <ArticlesList title="Guides" path="guides" resources={resources} />
     </SingleLayout>
   );
 };
 
 export const getStaticProps = async function ({ preview, previewData }) {
-  const resources = await getResources(preview, previewData, 'content/resources');
-  const guides = resources.filter((g) => g.data.frontmatter.contentType === 'guides');
+  const resources = await getResources(preview, previewData, 'content/resources/guides');
+  const guides = resources.filter((g) => g.data.frontmatter.contentType === ContentTypes.GUIDES);
 
   if (preview) {
     const file = (
@@ -84,7 +74,6 @@ export const getStaticProps = async function ({ preview, previewData }) {
       props: {
         ...file,
         guides,
-        // documentation,
       },
     };
   }
@@ -98,7 +87,6 @@ export const getStaticProps = async function ({ preview, previewData }) {
         data: (await import('../../data/guidesPage.json')).default,
       },
       guides,
-      // documentation,
     },
   };
 };

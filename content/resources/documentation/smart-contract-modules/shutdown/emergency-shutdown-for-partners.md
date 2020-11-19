@@ -4,10 +4,10 @@ description: How to prepare for ES as a partner
 group: smart-contracts
 components:
   - esm
-  - emergency shutdown
   - governance
 tags:
   - governance
+  - emergency shutdown
 slug: emergency-shutdown-for-partners
 contentType: documentation
 parent: introduction-to-es-module

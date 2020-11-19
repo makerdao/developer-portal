@@ -7,7 +7,7 @@ components:
 tags:
   - migration
 slug: upgrading-to-multi-collateral-dai-guide
-contentType: documentation
+contentType: guides
 ---
 
 # Upgrading to Multi-Collateral Dai Guide

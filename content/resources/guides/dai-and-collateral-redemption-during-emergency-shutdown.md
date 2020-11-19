@@ -4,14 +4,14 @@ description: This guide describes how users can interact with the Maker protocol
 group: clis
 components:
   - dai
-  - emergency shutdown
+  - esm
   - cli
 tags:
   - dai
   - emergency shutdown
   - cli
 slug: dai-and-collateral-redemption-during-emergency-shutdown
-contentType: documentation
+contentType: guides
 root: true
 ---
 

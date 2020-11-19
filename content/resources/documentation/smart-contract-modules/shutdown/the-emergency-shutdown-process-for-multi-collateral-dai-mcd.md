@@ -3,9 +3,9 @@ title: The Emergency Shutdown Process for Multi-Collateral Dai (MCD)
 description: To be be triggered as a last resort to protect the system and its users against a serious threat or to facilitate a Protocol upgrade
 group: smart-contracts
 components:
-  - emergency shutdown
-  - governance
+  - esm
 tags:
+  - emergency shutdown
   - governance
 slug: the-emergency-shutdown-process-for-multi-collateral-dai-mcd
 contentType: documentation
@@ -279,7 +279,7 @@ Lastly, the system will allow the exchange of some of the Dai that has been lock
   - **#governance-and-risk**
   - **#help**
 
-[**Forum.Makerdao.com** ](https://forum.makerdao.com/) 
+[**Forum.Makerdao.com** ](https://forum.makerdao.com/)
 
 - [Governance](https://forum.makerdao.com/c/governance/5)
 - [Risk](https://forum.makerdao.com/c/risk/6)
