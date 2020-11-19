@@ -40,7 +40,7 @@ The `DsrManager` provides an easy to use smart contract that allows service prov
 - `dai` - stores the contract address of dai.
 - `daiJoin` - stores the contract address of the Dai token adapter.
 - `supply` - the supply of Dai in the DsrManager.
-- `pieOf` - `mapping (addresses=>uint256)` mapping of user addresses and normalized Dai balances \(`amount of dai / chi`\) deposited into `pot`.
+- `pieOf` - `mapping (addresses=>uint256)` mapping of user addresses and normalized Dai balances (`amount of dai / chi`) deposited into `pot`.
 - `pie` - stores the address' `pot` balance.
 - `chi` - the rate accumulator. This is the always increasing value which decides how much dai is given when `drip()` is called.
 - `vat` - an address that conforms to a `VatLike` interface.
@@ -48,14 +48,14 @@ The `DsrManager` provides an easy to use smart contract that allows service prov
 
 ## Functions and mechanics
 
-### daiBalance\(address usr\) returns \(uint wad\)
+### daiBalance(address usr) returns (uint wad)
 
-- Calculates and returns the Dai balance of the specified address usr in the DsrManager contract. \(Existing Dai balance + accrued dsr\)
+- Calculates and returns the Dai balance of the specified address usr in the DsrManager contract. (Existing Dai balance + accrued dsr)
 
-### join\(address dst, uint wad\)
+### join(address dst, uint wad)
 
 - `uint wad` this parameter specifies the amount of Dai that you want to join to the pot. The `wad` amount of Dai must be present in the account of `msg.sender`.
-- address `dst` specifies a destination address for the deposited dai in the pot. Allows a hot wallet address \(`msg.sender`\) to deposit dai into the pot and transfer ownership of that dai to a cold wallet \(or any other address for that matter\)
+- address `dst` specifies a destination address for the deposited dai in the pot. Allows a hot wallet address (`msg.sender`) to deposit dai into the pot and transfer ownership of that dai to a cold wallet (or any other address for that matter)
 - The normalized balance `pie` is calculated by dividing wad with the rate acumulator `chi`.
 - the `dst`'s `pieOf` amount is updated to include the `pie`.
 - The total supply amount is also updated by adding the `pie`.
@@ -63,11 +63,11 @@ The `DsrManager` provides an easy to use smart contract that allows service prov
 - The DsrManager contract joins `wad` amount of dai into the MCD system through the dai token adapter `daiJoin`.
 - The DsrManager contract `join`s `pie` amount of dai to the `pot`.
 
-### exit\(address dst, uint wad\)
+### exit(address dst, uint wad)
 
 - `exit()` essentially functions as the exact opposite of `join()`.
 - `uint wad` this parameter is based on the amount of dai that you want to `exit` the `pot`.
-- address `dst` specifies a destination address for the retrieved dai from the `pot`. Allows a cold wallet address \(`msg.sender`\) to retrieve dai from the `pot` and transfer ownership of that dai to a hot wallet \(or any other address for that matter\)
+- address `dst` specifies a destination address for the retrieved dai from the `pot`. Allows a cold wallet address (`msg.sender`) to retrieve dai from the `pot` and transfer ownership of that dai to a hot wallet (or any other address for that matter)
 - The normalized balance `pie` is calculated by dividing wad with the rate acumulator `chi`.
 - The `msg.sender`’s `pieOf` amount is updated by subtracting the `pie`.
 - The total supply amount is also updated by subtracting the `pie`.
@@ -75,10 +75,10 @@ The `DsrManager` provides an easy to use smart contract that allows service prov
 - It calculates the amount of dai to retrieve by multiplying `pie` with `chi`.
 - Then exits the dai from the dai token adapter `daiJoin` to the destination address `dst`.
 
-### exitAll\(address dst\)
+### exitAll(address dst)
 
 - `exitAll()` functions like the `exit` function, except it simply looks into the mapping `pieOf`, to determine how much dai the `msg.sender` has, and `exit`s the entire amount of dai, instead of a specified amount.
 
 ## Gotchas / Integration Concerns
 
-- In order to use the `join` function, you need to `approve` the contract to transfer Dai from your wallet. You need to call `approve` on the Dai token, specifying the `DsrManager` contract and the amount that the contract should be able to pull \(can be set to `-1`, if you want to set an unlimited approval\)
+- In order to use the `join` function, you need to `approve` the contract to transfer Dai from your wallet. You need to call `approve` on the Dai token, specifying the `DsrManager` contract and the amount that the contract should be able to pull (can be set to `-1`, if you want to set an unlimited approval)

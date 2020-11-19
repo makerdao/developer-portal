@@ -40,6 +40,10 @@ const Page = ({ file, guides, documentation }) => {
         name: 'subtext',
         component: 'text',
       },
+      {
+        name: 'aboutSubheading',
+        component: 'textarea',
+      },
     ],
   };
   const [data, form] = useGithubJsonForm(file, formOptions);

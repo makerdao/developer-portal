@@ -22,9 +22,9 @@ The `cage-keeper` is used to help facilitate [Emergency Shutdown](https://blog.m
 
 1. **System Caged** - The Emergency Security Module [\(ESM\)](https://github.com/makerdao/esm) calls `End.cage()` function, which freezes the USD price for each collateral type as well as many parts of the system.
 2. **Processing Period** - Next, Vault owners interact with End to settle their Vault and withdraw excess collateral. Auctions are left to conclude or are yanked before Dai redemption.
-3. **Dai Redemption** - After the processing period duration `End.wait` has elapsed, Vault settlement and all Dai generating processes \(auctions\) are assumed to have concluded. At this point, Dai holders can begin to claim a proportional amount of each collateral type at a fixed rate.
+3. **Dai Redemption** - After the processing period duration `End.wait` has elapsed, Vault settlement and all Dai generating processes auctions are assumed to have concluded. At this point, Dai holders can begin to claim a proportional amount of each collateral type at a fixed rate.
 
-To prevent a race-condition for Dai holders during Step 3, it's imperative that any Vaults having a collateralization ratio of less than 100% at Step 1 must be processed during Step 2. The owner of an underwater Vault would not receive excess collateral, so they lack an incentive to `skim` their position in the `End` contract. Thus, it is the responsibility of a MakerDAO Stakeholder \(MKR holders, large Dai holders, etc\) to ensure the system facilitates a Dai redemption phase without a time variable. The `cage-keeper` is a tool to help stakeholders carry out this responsibility.
+To prevent a race-condition for Dai holders during Step 3, it's imperative that any Vaults having a collateralization ratio of less than 100% at Step 1 must be processed during Step 2. The owner of an underwater Vault would not receive excess collateral, so they lack an incentive to `skim` their position in the `End` contract. Thus, it is the responsibility of a MakerDAO Stakeholder MKR holders, large Dai holders, etc to ensure the system facilitates a Dai redemption phase without a time variable. The `cage-keeper` is a tool to help stakeholders carry out this responsibility.
 
 ### Prerequisites
 
@@ -47,7 +47,7 @@ As can be seen in the above flowchart, the keeper checks if the system has been 
 
 ## Operation
 
-This keeper can either run continuously on a local/virtual machine or be run when the operator becomes aware of Emergency Shutdown. A sample startup script is shown below. The keeper's Ethereum address should have enough ETH to cover gas costs and is a function of the protocol's state at the time of shutdown \(i.e. more urns to `skim` means more required ETH to cover gas costs\). When new collateral types are added to the protocol, the operator should pull the latest version of the keeper, which would include contracts associated with the aforementioned collateral types.
+This keeper can either run continuously on a local/virtual machine or be run when the operator becomes aware of Emergency Shutdown. A sample startup script is shown below. The keeper's Ethereum address should have enough ETH to cover gas costs and is a function of the protocol's state at the time of shutdown i.e. more urns to `skim` means more required ETH to cover gas costs. When new collateral types are added to the protocol, the operator should pull the latest version of the keeper, which would include contracts associated with the aforementioned collateral types.
 
 After the `cage-keeper` facilitates the processing period, it can be turned off until `End.wait` is nearly reached. Then, at that point, the operator would pass in the `--previous-cage` argument during keeper start in order to bypass the feature that supports the processing period.
 
@@ -57,7 +57,7 @@ This project uses _Python 3.6.2_.
 
 In order to clone the project and install required third-party packages please execute:
 
-```text
+```bash
 git clone https://github.com/makerdao/cage-keeper.git
 cd cage-keeper
 git submodule update --init --recursive
@@ -70,7 +70,7 @@ For some known Ubuntu and macOS issues see the [pymaker](https://github.com/make
 
 Make a run-cage-keeper.sh to easily spin up the cage-keeper.
 
-```text
+```bash
 #!/bin/bash
 /full/path/to/cage-keeper/bin/cage-keeper \
     --rpc-host 'sample.ParityNode.com' \
@@ -90,13 +90,13 @@ This project uses [pytest](https://docs.pytest.org/en/latest/) for unit testing.
 
 **In order to be able to run tests, please install development dependencies first by executing:**
 
-```text
+```bash
 pip3 install -r requirements-dev.txt
 ```
 
 **You can then run all tests with**:
 
-```text
+```bash
 ./test.sh
 ```
 

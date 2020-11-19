@@ -36,7 +36,7 @@ const ColorModeToggle = (props) => {
 
 const LINKS = [
   { url: '/technology', name: 'Technology' },
-  { url: '/governance', name: 'Modules' },
+  { url: '/documentation', name: 'Documentation' },
   { url: '/guides', name: 'Guides' },
   { url: '/security', name: 'Security' },
 ];

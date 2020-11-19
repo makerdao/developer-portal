@@ -30,9 +30,9 @@ The Migration contract's purpose is to allow moving SAI and CDPs from the SCD sy
 
 #### Key Functionalities
 
-`swapSaiToDai` - Takes Sai \(ERC-20 DAI from Single Collateral System\) returns DAI \(ERC-20 DAI from MultiCollateral System\).
+`swapSaiToDai` - Takes Sai ERC-20 DAI from Single Collateral System returns DAI ERC-20 DAI from MultiCollateral System.
 
-`swapDaiToSai` - Takes DAI \(ERC-20 DAI from MultiCollateral System\) returns Sai \(ERC-20 DAI from Single Collateral System\)
+`swapDaiToSai` - Takes DAI ERC-20 DAI from MultiCollateral System returns Sai ERC-20 DAI from Single Collateral System
 
 `migrate` - Moves a Vault from SCD to MCD by closing the SCD one and opening a corresponding MCD one.
 
@@ -69,11 +69,11 @@ In case a user wants to go back to SAI, this function allows them to turn in the
 
 #### 4. `migrate`
 
-This function is meant to be used in combination with the `MigrationProxyActions` as it requires the migration contract owns the SCD-Vault \(`cup`\) already and that the migration contract has enough MKR to pay the stability fees. The `MigrationProxyActions` `migrate` function `transferFrom`s the `msg.sender` to the migration contract so that the migration contract has enough MKR to pay the stability fee and close the `cup`.
+This function is meant to be used in combination with the `MigrationProxyActions` as it requires the migration contract owns the SCD-Vault `cup` already and that the migration contract has enough MKR to pay the stability fees. The `MigrationProxyActions` `migrate` function `transferFrom`s the `msg.sender` to the migration contract so that the migration contract has enough MKR to pay the stability fee and close the `cup`.
 
-The migration contract first draws its own SAI out of its MCD contract and uses that to pay back the debt for the `cup` \(along with the MKR it has from the proxy action to pay the fee\). Then it withdraws the PETH as WETH.
+The migration contract first draws its own SAI out of its MCD contract and uses that to pay back the debt for the `cup` along with the MKR it has from the proxy action to pay the fee. Then it withdraws the PETH as WETH.
 
-Next the migration contract opens a Vault using the MCD CDP manager and `join`s its WETH into its new Vault and withdraws enough DAI from the new Vault \(and pays back its Vault\) to compensate for the SAI it drew earlier in this step.
+Next the migration contract opens a Vault using the MCD CDP manager and `join`s its WETH into its new Vault and withdraws enough DAI from the new Vault and pays back its Vault to compensate for the SAI it drew earlier in this step.
 
 Lastly, the migration contract gives the MCD-Vault to the `msg.sender`.
 
@@ -97,10 +97,10 @@ Because the migration contract will have to first draw SAI from its MCD collater
 
 If a user holds both a `cup` and SAI, they should decide whether it makes sense to:
 
-1. Pay back the `cup` in SCD, then `migrate` their `cup` to MCD \(essentially just transfer the collateral to a new MCD Vault\).
+1. Pay back the `cup` in SCD, then `migrate` their `cup` to MCD essentially just transfer the collateral to a new MCD Vault.
 2. `migrate` their `cup` with the debt in place, then use `swapSaiToDai` to get DAI which they can then use as an ERC-20 or payback their MCD debt.
 
-One additional consideration, to close or migrate a `cup`, a user will have to purchase MKR in order to pay the stability fee and be able to `exit` the SCD system. However, once in MCD, new fees will be accrued \(and have to be paid\) in DAI. If a user's converted SAI does not cover their MCD debt + stability fee, they may have to purchase DAI on the open market.
+One additional consideration, to close or migrate a `cup`, a user will have to purchase MKR in order to pay the stability fee and be able to `exit` the SCD system. However, once in MCD, new fees will be accrued and have to be paid in DAI. If a user's converted SAI does not cover their MCD debt + stability fee, they may have to purchase DAI on the open market.
 
 Before SCD shutdown: Users who took out a Vault in SCD and then used the DAI to purchase something will either have to buy SAI on the open market to pay back their SCD debt or they will have to migrate their collateral to MCD.
 
@@ -110,10 +110,10 @@ Before SCD shutdown: Users who took out a Vault in SCD and then used the DAI to 
   - Collateralization ratio has to be set to a very low number
   - Both `ilks["sai"].duty` and `Jug.base` have to be set to `0` during the migration period
 - **Auth errors on Sai Join**
-- Excess Sai in MCD \(i.e. more `cup`s are lost/not migrated than lost/not migrated Sai\): results in an auction and possibly MKR auction to cover bad debt.
+- Excess Sai in MCD i.e. more `cup`s are lost/not migrated than lost/not migrated Sai: results in an auction and possibly MKR auction to cover bad debt.
 
 **Migration**
 
 - Sai debt ceiling to 0
-- MCD.ilks\[sai\] debt ceiling to SCD.totalDai
+- MCD.ilks sai debt ceiling to SCD.totalDai
 - DSR value competitive with Compound to encourage migration

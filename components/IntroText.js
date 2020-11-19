@@ -11,6 +11,7 @@ import {
   Link as ThemeLink,
 } from 'theme-ui';
 import Link from 'next/link';
+import { InlineForm, InlineText, InlineTextarea } from 'react-tinacms-inline';
 import { Icon } from '@makerdao/dai-ui-icons';
 
 const IntroText = () => {
@@ -37,8 +38,7 @@ const IntroText = () => {
             pb: 4,
           }}
         >
-          The Maker Protocol, built on the Ethereum blockchain, enables users to create currency.
-          holders.
+          <InlineTextarea name="aboutSubheading" />
         </Heading>
       </Flex>
       <Text

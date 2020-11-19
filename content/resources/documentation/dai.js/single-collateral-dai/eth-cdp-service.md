@@ -17,7 +17,7 @@ parent: dai-js-scd-plugin
 
 This page applies only to Single-Collateral Dai.
 
-Retrieve the ETH CDP Service through Maker.service\('cdp'\). The ETH CDP Service exposes risk parameter information for the Ether CDP type \(in single-collateral Dai, this is the only CDP Type\).
+Retrieve the ETH CDP Service through Maker.service 'cdp'. The ETH CDP Service exposes risk parameter information for the Ether CDP type in single-collateral Dai, this is the only CDP Type.
 
 ```javascript
 const service = maker.service('cdp');
@@ -26,7 +26,7 @@ const service = maker.service('cdp');
 ## getLiquidationRatio
 
 - **Params:** none
-- **Returns:** promise \(resolves to liquidation ratio\)
+- **Returns:** promise resolves to liquidation ratio
 
 `getLiquidationRatio()` returns a decimal representation of the liquidation ratio, e.g. 1.5
 
@@ -37,7 +37,7 @@ const ratio = await service.getLiquidationRatio();
 ## getLiquidationPenalty
 
 - **Params:** none
-- **Returns:** promise \(resolves to liquidation penalty\)
+- **Returns:** promise resolves to liquidation penalty
 
 `getLiquidationPenalty()` returns a decimal representation of the liquidation penalty, e.g. 0.13
 
@@ -48,7 +48,7 @@ const penalty = await service.getLiquidationPenalty();
 ## getAnnualGovernanceFee
 
 - **Params:** none
-- **Returns:** promise \(resolves to yearly governance fee\)
+- **Returns:** promise resolves to yearly governance fee
 
 `getAnnualGovernanceFee()` returns a decimal representation of the annual governance fee, e.g. 0.005.
 

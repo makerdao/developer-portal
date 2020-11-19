@@ -23,7 +23,7 @@ root: true
 
 ## Description
 
-Emergency Shutdown \(ES\) is the last resort to protect the Maker Protocol against a serious threat, such as but not limited to governance attacks, long-term market irrationality, hacks and security breaches. The Emergency Shutdown Module \(ESM\) is responsible for coordinating emergency shutdown, the process used to gracefully shutdown the Maker Protocol and properly allocate collateral to both Vault users and Dai holders. This guide outlines the steps and procedures necessary to check, interact with and trigger the ESM.
+Emergency Shutdown ES is the last resort to protect the Maker Protocol against a serious threat, such as but not limited to governance attacks, long-term market irrationality, hacks and security breaches. The Emergency Shutdown Module ESM is responsible for coordinating emergency shutdown, the process used to gracefully shutdown the Maker Protocol and properly allocate collateral to both Vault users and Dai holders. This guide outlines the steps and procedures necessary to check, interact with and trigger the ESM.
 
 #### **Learning Objectives:** To be able to Check, Deposit and Trigger Emergency Shutdown.
 
@@ -34,7 +34,7 @@ Emergency Shutdown \(ES\) is the last resort to protect the Maker Protocol again
 3. Commands and Explanations
    - Checking your MKR balance
    - Checking and setting your MKR approval
-   - Checking the live\(\) flag
+   - Checking the live flag
    - Checking the ESM threshold
    - Deposit a trial amount of MKR into the ESM
    - Depositing MKR into the ESM
@@ -48,12 +48,10 @@ In order to interface with the Ethereum blockchain, the user needs to install se
 
 ## 2. Contract Address Setup
 
-```text
-* The user will require the following contract addresses; MCD_END and MCD_ESM accessible at [Changelog.makerdao.com](https://changelog.makerdao.com) as well as the Maker contract address, to be added in place of MKR_ADR below, which can be verified on [Etherscan](https://etherscan.io/token/0x9f8f72aa9304c8b593d555f12ef6589cc3a579a2).
-* These should be setup in the following manner:
-```
+- The user will require the following contract addresses; MCD_END and MCD_ESM accessible at [Changelog.makerdao.com](https://changelog.makerdao.com) as well as the Maker contract address, to be added in place of MKR_ADR below, which can be verified on [Etherscan](https://etherscan.io/token/0x9f8f72aa9304c8b593d555f12ef6589cc3a579a2).
+- These should be setup in the following manner:
 
-```text
+```bash
 export MCD_END= 0xab14d3ce3f733cacb76ec2abe7d2fcb00c99f3d5
 export MCD_ESM= 0x0581a0abe32aae9b5f0f68defab77c6759100085
 export MKR_ADR= <MKR ADDRESS from Etherscan.io>
@@ -70,7 +68,7 @@ export REMAINING_AMOUNT=$(seth --to-uint256 $(seth --to-wei 50000 eth))
 
 Before depositing your MKR into the ESM contract, first check your address MKR balance:
 
-```text
+```bash
 seth --from-wei $(seth call $MKR_ADR "balanceOf(address)" $MY_ADR | seth --to-dec)
 # 100000.000000000000000000
 ```
@@ -79,20 +77,20 @@ seth --from-wei $(seth call $MKR_ADR "balanceOf(address)" $MY_ADR | seth --to-de
 
 In order to execute the contract functions of the MKR token it is required that approvals be set on the token. The first step is to check if the ESM contract is allowed to withdraw from your address:
 
-```text
+```bash
 seth call $MKR_ADR "allowance(address,address)" $MY_ADR $MCD_ESM
 # 0x0000000000000000000000000000000000000000000000000000000000000000 -> not allowed
 ```
 
 If the ESM contract is not allowed to withdraw from your address, the following can be used to set the allowance on the MKR token. This will approve the ESM to withdraw from the user's wallet:
 
-```text
+```bash
 seth send $MKR_ADR "approve(address)" $MCD_ESM
 ```
 
 Following which we again check to confirm that the ESM is allowed to withdraw from the user's account. This action will return uint256 to confirm the allowance to withdraw.
 
-```text
+```bash
 seth call $MKR_ADR "allowance(address,address)" $MY_ADR $MCD_ESM
 # 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff -> allowed
 ```
@@ -103,7 +101,7 @@ seth call $MKR_ADR "allowance(address,address)" $MY_ADR $MCD_ESM
 
 Live contracts have `live` = 1, indicating that the system is running normally. Thus when `cage()` is invoked, it sets the flag to 0.
 
-```text
+```bash
 seth call $MCD_END "live()" | seth --to-dec
 # 1 -> system is running normally
 ```
@@ -112,7 +110,7 @@ seth call $MCD_END "live()" | seth --to-dec
 
 In order to check the `min` value, you can call:
 
-```text
+```bash
 seth --from-wei $(seth call $MCD_ESM "min()" | seth --to-dec)
 # 50000.000000000000000000
 ```
@@ -121,7 +119,7 @@ seth --from-wei $(seth call $MCD_ESM "min()" | seth --to-dec)
 
 To deposit a small amount of MKR into the esm contract to test correct deposit function, we use the `join` function and specify a small amount.
 
-```text
+```bash
 seth send $MCD_ESM "join(uint256)" $TRIAL_AMOUNT
 ```
 
@@ -129,7 +127,7 @@ seth send $MCD_ESM "join(uint256)" $TRIAL_AMOUNT
 
 To check for the total amount of MKR that has been added to the ESM we call the `Sum()` function
 
-```text
+```bash
 seth --from-wei $(seth call $MCD_ESM "Sum()" | seth --to-dec)
 # 50050.000000000000000000
 ```
@@ -138,7 +136,7 @@ seth --from-wei $(seth call $MCD_ESM "Sum()" | seth --to-dec)
 
 To check how much MKR you have included in the ESM we can call lowercase `sum()` with the user address as an argument:
 
-```text
+```bash
 seth --from-wei $(seth call $MCD_ESM "sum(address)" $MY_ADR | seth --to-dec)
 # 50.000000000000000000
 ```
@@ -147,7 +145,7 @@ seth --from-wei $(seth call $MCD_ESM "sum(address)" $MY_ADR | seth --to-dec)
 
 To deposit MKR into the esm contract we use the `join` function and specify the amount.
 
-```text
+```bash
 seth send $MCD_ESM "join(uint256)" $REMAINING_AMOUNT
 ```
 
@@ -157,7 +155,7 @@ Please specify the amount of MKR that you intend to deposit into the ESM.
 
 To validate that the Emergency Shutdown has been triggered, the `fired()` function can be called which will return a boolean.
 
-```text
+```bash
 seth call $MCD_ESM "fired()" | seth --to-dec
 # 0 -> ES has not been triggered
 ```
@@ -166,7 +164,7 @@ seth call $MCD_ESM "fired()" | seth --to-dec
 
 In order for the emergency shutdown to trigger, it is required that the `Sum()` is greater than the `min()` . Only then can the `fire()` function be executed successfully.
 
-```text
+```bash
 seth send $MCD_ESM "fire()"
 ```
 

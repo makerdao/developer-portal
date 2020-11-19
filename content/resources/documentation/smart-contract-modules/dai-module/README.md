@@ -15,10 +15,10 @@ root: true
 
 * **Module Name:** DAI Module
 * **Type/Category: Proxy —&gt;** Dai.sol and DaiJoin.sol
-* \*\*\*\*[**Associated MCD System Diagram**](https://github.com/makerdao/dss/wiki)
+* [**Associated MCD System Diagram**](https://github.com/makerdao/dss/wiki)
 * **Contract Sources:**
-  * \*\*\*\*[**dai**](https://github.com/makerdao/dss/blob/master/src/dai.sol)\*\*\*\*
-  * \*\*\*\*[**daiJoin**](https://github.com/makerdao/dss/blob/2318555e87b1798e322feaab36265a6e20d637be/src/join.sol#L100)\*\*\*\*
+  * [**dai**](https://github.com/makerdao/dss/blob/master/src/dai.sol)
+  * [**daiJoin**](https://github.com/makerdao/dss/blob/2318555e87b1798e322feaab36265a6e20d637be/src/join.sol#L100)
 
 ## 1. Introduction \(Summary\)
 
@@ -28,7 +28,7 @@ The origin of DAI was designed to represent any token that the core system consi
 
 ### Glossary \(DAI\)
 
-**Key Functionalities \(as defined in the smart contract\)**
+**Key Functionalities (as defined in the smart contract)**
 
 `Mint` - Mint to an address
 
@@ -72,12 +72,12 @@ The origin of DAI was designed to represent any token that the core system consi
 
 ### Core Module Components Documentation
 
-1. \*\*\*\*[**Dai - Detailed Documentation**](https://docs.makerdao.com/smart-contract-modules/dai-module/dai-detailed-documentation)\*\*\*\*
-2. [**DaiJoin Documentation** ](https://docs.makerdao.com/smart-contract-modules/collateral-module/join-detailed-documentation#3-key-mechanisms-and-concepts)\(referenced in Join - Detailed Documentation\)
+1. [**Dai - Detailed Documentation**](https://docs.makerdao.com/smart-contract-modules/dai-module/dai-detailed-documentation)
+2. [**DaiJoin Documentation** ](https://docs.makerdao.com/smart-contract-modules/collateral-module/join-detailed-documentation#3-key-mechanisms-and-concepts)(referenced in Join - Detailed Documentation)
 
 ## 3. Key Mechanism and Concepts
 
-#### Why are these components important to the Multi-Collateral Dai \(MCD\) System?
+#### Why are these components important to the Multi-Collateral Dai (MCD) System?
 
 The `Dai` contract is the user facing ERC20 contract maintaining the accounting for external Dai balances. Most functions are standard for a token with changing supply, but it also notably features the ability to issue approvals for transfers based on signed messages.
 
@@ -93,4 +93,3 @@ The `Dai` contract is the user facing ERC20 contract maintaining the accounting 
 **There could potentially be a `vat` upgrade that would require new `join` contracts to be created.**
 
 If a `gem` contract were to go through a token upgrade or have the tokens frozen while a user's collateral was in the system, there could potentially be a scenario in which the users were unable to redeem their collateral after the freeze or upgrade was finished. This seems to be a small risk though because it would seem likely that the token going through this upgrade would want to work alongside the maker community to be sure this was not an issue.
-

@@ -88,7 +88,7 @@ All these numbers are stored as a `uint256` type within smart contracts and it's
 
 This issue is illustrated very clearly in the documentation of the [DSMath](http://github.com/dapphub/ds-math) library which implements math functions for wad and ray numbers.
 
-```text
+```solidity
 1.1 * 2.2 == 2.42
 
 //Regular integer arithmetic adds orders of magnitude:

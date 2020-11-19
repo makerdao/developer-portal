@@ -10,7 +10,7 @@ import {
   Flex,
   Link as ThemeLink,
 } from 'theme-ui';
-import { InlineForm, InlineText, InlineTextarea } from 'react-tinacms-inline';
+import { InlineText, InlineTextarea } from 'react-tinacms-inline';
 import Link from 'next/link';
 import { Icon } from '@makerdao/dai-ui-icons';
 
@@ -28,7 +28,7 @@ const PageLead = ({ primary, secondary, cta }) => {
               mb: 2,
             }}
           >
-            <InlineTextarea name="subtext" />
+            <InlineText name="subtext" />
           </Text>
           <Link href="/technology">
             <Flex sx={{ alignItems: 'center' }}>
