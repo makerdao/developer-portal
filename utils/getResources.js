@@ -28,7 +28,7 @@ const getResources = async (preview, previewData, contentDir) => {
         const { data, content } = matter(fileContent);
 
         // If there's no author in the frontmatter, fetch the first commit author
-        if (!data.author) data.author = await getFileAuthor(file);
+        // if (!data.author) data.author = await getFileAuthor(file);
 
         return {
           fileName: file.substring(contentDir.length + 1, file.length - 3),
@@ -41,7 +41,18 @@ const getResources = async (preview, previewData, contentDir) => {
       })
     );
     const filtered = resources.filter((file) => file.data.frontmatter.slug);
-    return filtered;
+    const withAuthor = await Promise.all(
+      filtered.map(async (file, i) => {
+        if (!file.data.frontmatter.author) {
+          const author = await getFileAuthor(file.fileRelativePath);
+          console.log(`fetched ${i} times`);
+
+          file.data.frontmatter.author = author;
+        }
+        return file;
+      })
+    );
+    return withAuthor;
   } catch (e) {
     const source = preview ? 'Github' : 'filesystem';
     throw new Error(`Error fetching files from ${source}: ${e}`);
