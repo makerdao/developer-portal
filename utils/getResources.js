@@ -89,6 +89,8 @@ const getFileAuthor = async (path) => {
   });
 
   const json = await response.json();
+  if (!response.ok)
+    throw new Error(`${response.statusText}: ${json.error?.message || JSON.stringify(json)}`);
   return json.pop().commit.author.name;
 };
 
