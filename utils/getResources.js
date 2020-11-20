@@ -27,9 +27,6 @@ const getResources = async (preview, previewData, contentDir) => {
         const fileContent = fs.readFileSync(`${file}`, 'utf8');
         const { data, content } = matter(fileContent);
 
-        // If there's no author in the frontmatter, fetch the first commit author
-        // if (!data.author) data.author = await getFileAuthor(file);
-
         return {
           fileName: file.substring(contentDir.length + 1, file.length - 3),
           fileRelativePath: file,
@@ -41,18 +38,26 @@ const getResources = async (preview, previewData, contentDir) => {
       })
     );
     const filtered = resources.filter((file) => file.data.frontmatter.slug);
-    const withAuthor = await Promise.all(
-      filtered.map(async (file, i) => {
-        if (!file.data.frontmatter.author) {
-          const author = await getFileAuthor(file.fileRelativePath);
-          console.log(`fetched ${i} times`);
 
-          file.data.frontmatter.author = author;
+    const metadataCallbacks = {
+      author: (commits) => commits.pop().commit.author.name,
+      dateCreated: (commits) => commits.pop().commit.author.date,
+    };
+
+    const withGithubMetadata = await Promise.all(
+      filtered.map(async (file) => {
+        const commits = await getFileCommits(file.fileRelativePath);
+
+        for (let cb in metadataCallbacks) {
+          // if file frontmatter doesn't have cb property, add it
+          if (!file.data.frontmatter[cb]) {
+            file.data.frontmatter[cb] = metadataCallbacks[cb](commits);
+          }
         }
         return file;
       })
     );
-    return withAuthor;
+    return withGithubMetadata;
   } catch (e) {
     const source = preview ? 'Github' : 'filesystem';
     throw new Error(`Error fetching files from ${source}: ${e}`);
@@ -86,7 +91,7 @@ const getGithubFiles = async (contentDir, previewData) => {
   return files;
 };
 
-const getFileAuthor = async (path) => {
+const getFileCommits = async (path) => {
   const { USERNAME_ISSUES, GH_TOKEN_ISSUES, REPO_ISSUES } = process.env;
   const token = Buffer.from(`${USERNAME_ISSUES}:${GH_TOKEN_ISSUES}`, 'utf8').toString('base64');
   const url = `${GH_REPOS_ENDPOINT}/${REPO_ISSUES}/commits?path=${path}`;
@@ -102,7 +107,8 @@ const getFileAuthor = async (path) => {
   const json = await response.json();
   if (!response.ok)
     throw new Error(`${response.statusText}: ${json.error?.message || JSON.stringify(json)}`);
-  return json.pop().commit.author.name;
+
+  return json;
 };
 
 export default getResources;
