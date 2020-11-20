@@ -1,5 +1,6 @@
 import matter from 'gray-matter';
 import { getContent, getGithubPreviewProps, parseMarkdown } from 'next-tinacms-github';
+import { GH_REPOS_ENDPOINT } from './constants';
 
 const getResources = async (preview, previewData, contentDir) => {
   const fs = require('fs');
@@ -22,15 +23,19 @@ const getResources = async (preview, previewData, contentDir) => {
             data: previewProps.props.file?.data,
           };
         }
-        const content = fs.readFileSync(`${file}`, 'utf8');
-        const data = matter(content);
+
+        const fileContent = fs.readFileSync(`${file}`, 'utf8');
+        const { data, content } = matter(fileContent);
+
+        // If there's no author in the frontmatter, fetch the first commit author
+        if (!data.author) data.author = await getFileAuthor(file);
 
         return {
           fileName: file.substring(contentDir.length + 1, file.length - 3),
           fileRelativePath: file,
           data: {
-            frontmatter: data.data,
-            markdownBody: data.content,
+            frontmatter: data,
+            markdownBody: content,
           },
         };
       })
@@ -68,6 +73,23 @@ const getGithubFiles = async (contentDir, previewData) => {
 
   await getNestedGithubFiles(contentDir);
   return files;
+};
+
+const getFileAuthor = async (path) => {
+  const { USERNAME_ISSUES, GH_TOKEN_ISSUES, REPO_ISSUES } = process.env;
+  const token = Buffer.from(`${USERNAME_ISSUES}:${GH_TOKEN_ISSUES}`, 'utf8').toString('base64');
+  const url = `${GH_REPOS_ENDPOINT}/${REPO_ISSUES}/commits?path=${path}`;
+  const response = await fetch(url, {
+    headers: {
+      Authorization: `Basic ${token}`,
+      'Content-Type': 'application/json',
+    },
+    accept: 'application/vnd.github.v3+json',
+    method: 'GET',
+  });
+
+  const json = await response.json();
+  return json.pop().commit.author.name;
 };
 
 export default getResources;

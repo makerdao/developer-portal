@@ -17,3 +17,5 @@ export const GITHUB_EDIT_LINK = 'https://github.com/makerdao/developer-portal/ed
 export const SUBSCRIBERS_ENDPOINT = 'https://api.buttondown.email/v1/subscribers';
 
 export const FEEDBACK_ENDPOINT = 'https://api.github.com/repos';
+
+export const GH_REPOS_ENDPOINT = 'https://api.github.com/repos';
