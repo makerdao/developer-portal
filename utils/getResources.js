@@ -2,6 +2,16 @@ import matter from 'gray-matter';
 import { getContent, getGithubPreviewProps, parseMarkdown } from 'next-tinacms-github';
 import { GH_REPOS_ENDPOINT } from './constants';
 
+let _commitsCache = {};
+
+const metadataCallbacks = {
+  author: (commits) => commits.pop().commit.author.name,
+  dateCreated: (commits) => commits.pop().commit.author.date,
+  lastModified: (commits) => commits.shift().commit.author.date,
+};
+
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
 const getResources = async (preview, previewData, contentDir) => {
   const fs = require('fs');
   const files = preview
@@ -37,27 +47,34 @@ const getResources = async (preview, previewData, contentDir) => {
         };
       })
     );
+
     const filtered = resources.filter((file) => file.data.frontmatter.slug);
 
-    const metadataCallbacks = {
-      author: (commits) => commits.pop().commit.author.name,
-      dateCreated: (commits) => commits.pop().commit.author.date,
-    };
+    for (let file of filtered) {
+      // Check if the file is missing the additional frontmatter properties we need
+      if (
+        !Object.keys(file.data.frontmatter).every((property) =>
+          Object.keys(metadataCallbacks).includes(property)
+        )
+      ) {
+        // If not, fetch the commits and cache them
+        if (!_commitsCache[file.fileRelativePath]) {
+          _commitsCache[file.fileRelativePath] = await getFileCommits(file.fileRelativePath);
 
-    const withGithubMetadata = await Promise.all(
-      filtered.map(async (file) => {
-        const commits = await getFileCommits(file.fileRelativePath);
+          // Must sleep to avoid Github API abuse detection mechanism
+          await sleep(500);
+        }
 
         for (let cb in metadataCallbacks) {
-          // if file frontmatter doesn't have cb property, add it
+          // If the file frontmatter doesn't have the property, add it
           if (!file.data.frontmatter[cb]) {
-            file.data.frontmatter[cb] = metadataCallbacks[cb](commits);
+            file.data.frontmatter[cb] = metadataCallbacks[cb](_commitsCache[file.fileRelativePath]);
           }
         }
-        return file;
-      })
-    );
-    return withGithubMetadata;
+      }
+    }
+
+    return filtered;
   } catch (e) {
     const source = preview ? 'Github' : 'filesystem';
     throw new Error(`Error fetching files from ${source}: ${e}`);
