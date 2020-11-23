@@ -5,9 +5,9 @@ import { GH_REPOS_ENDPOINT } from './constants';
 let _commitsCache = {};
 
 const metadataCallbacks = {
-  author: (commits) => commits.pop().commit.author.name,
-  dateCreated: (commits) => commits.pop().commit.author.date,
-  lastModified: (commits) => commits.shift().commit.author.date,
+  author: (commits) => commits[commits.length - 1].commit.author.name,
+  dateCreated: (commits) => commits[commits.length - 1].commit.author.date,
+  lastModified: (commits) => commits[0].commit.author.date,
 };
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
@@ -62,7 +62,7 @@ const getResources = async (preview, previewData, contentDir) => {
           _commitsCache[file.fileRelativePath] = await getFileCommits(file.fileRelativePath);
 
           // Must sleep to avoid Github API abuse detection mechanism
-          await sleep(500);
+          await sleep(1000);
         }
 
         for (let cb in metadataCallbacks) {
