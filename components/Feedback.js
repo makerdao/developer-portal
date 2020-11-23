@@ -3,9 +3,11 @@ import { useState, useRef, useEffect, useCallback } from 'react';
 import { Button, jsx, Card, Heading, Text, Textarea, Grid, Flex } from 'theme-ui';
 import { useCMS } from 'tinacms';
 import { Icon } from '@makerdao/dai-ui-icons';
+import { useRouter } from 'next/router';
 
 const Feedback = () => {
   const cms = useCMS();
+  const router = useRouter();
   const ref = useRef(null);
   const [reaction, setReaction] = useState(null);
 
@@ -50,6 +52,10 @@ const Feedback = () => {
   useEffect(() => {
     if (isPositive) sendFeedback();
   }, [isPositive, sendFeedback]);
+
+  useEffect(() => {
+    router.events.on('routeChangeStart', () => setReaction(null));
+  }, [router.events]);
 
   return (
     <Card sx={{ bg: 'onBackground' }}>
