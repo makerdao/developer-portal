@@ -48,6 +48,14 @@ const Page = ({ file, guides, documentation }) => {
         name: 'aboutMakerProtocol',
         component: 'textarea',
       },
+      {
+        name: 'sdksAndToolsHeading',
+        component: 'textarea',
+      },
+      {
+        name: 'sdksAndToolsText',
+        component: 'textarea',
+      },
     ],
   };
   const [data, form] = useGithubJsonForm(file, formOptions);
@@ -114,8 +122,7 @@ const Page = ({ file, guides, documentation }) => {
                 }}
               >
                 <Heading variant="smallHeading">
-                  Dai.js is a JavaScript library that makes it easy to build applications on top of
-                  MakerDAO's platform of smart contracts.
+                  <InlineTextarea name="sdksAndToolsHeading" />
                 </Heading>
                 <Text
                   sx={{
@@ -123,10 +130,7 @@ const Page = ({ file, guides, documentation }) => {
                     columns: '2 200px',
                   }}
                 >
-                  You can use Maker's contracts to open Vaults (formerly known as CDPs), deposit
-                  collateral and generate Dai, trade tokens on decentralized exchanges, and more.
-                  The library features a pluggable, service-based architecture, which allows users
-                  to easily integrate Maker functionality into their own apps.
+                  <InlineTextarea name="sdksAndToolsText" />
                 </Text>
                 <Link href="/technology">
                   <Flex sx={{ alignItems: 'center' }}>
