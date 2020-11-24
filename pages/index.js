@@ -143,7 +143,7 @@ const Page = ({ file, guides, documentation }) => {
                   <Box>
                     <Text>pyMaker</Text>
                     <Text>
-                      Based on the Pymaker API, a set of reference Maker keepers is being developed.{' '}
+                      <InlineText name="pyMakerSubtext" />
                     </Text>
                     <Link href="/technology">
                       <Flex sx={{ alignItems: 'center' }}>
