@@ -44,6 +44,10 @@ const Page = ({ file, guides, documentation }) => {
         name: 'aboutSubheading',
         component: 'textarea',
       },
+      {
+        name: 'aboutMakerProtocol',
+        component: 'textarea',
+      },
     ],
   };
   const [data, form] = useGithubJsonForm(file, formOptions);
