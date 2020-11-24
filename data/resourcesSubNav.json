@@ -1,9 +1,9 @@
 {
   "navItems": [
     {
-      "url": "/documentation/maker-protocol-101",
-      "name": "Maker Protocol 101",
-      "slug": "maker-protocol-101",
+      "url": "/documentation/introduction-to-the-maker-protocol",
+      "name": "Introduction",
+      "slug": "maker-protocol-introduction",
       "id": "1"
     },
     {
