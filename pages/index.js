@@ -64,6 +64,10 @@ const Page = ({ file, guides, documentation }) => {
         name: 'keepersSubtext',
         component: 'textarea',
       },
+      {
+        name: 'CLIsSubtext',
+        component: 'textarea',
+      },
     ],
   };
   const [data, form] = useGithubJsonForm(file, formOptions);
@@ -213,8 +217,7 @@ const Page = ({ file, guides, documentation }) => {
               >
                 <Heading>CLIs</Heading>
                 <Text>
-                  The command-line interface mcd-cli will enable you to easily interact with the
-                  Multi-Collateral Dai contracts.
+                  <InlineTextarea name="CLIsSubtext" />
                 </Text>
                 <Link href="/technology">
                   <Flex sx={{ alignItems: 'center' }}>
