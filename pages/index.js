@@ -76,6 +76,14 @@ const Page = ({ file, guides, documentation }) => {
         name: 'aboutThisSiteSubtext',
         component: 'textarea',
       },
+      {
+        name: 'primaryNavHeader',
+        component: 'text',
+      },
+      {
+        name: 'secondaryNavHeader',
+        component: 'text',
+      },
     ],
   };
   const [data, form] = useGithubJsonForm(file, formOptions);
