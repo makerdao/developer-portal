@@ -56,6 +56,14 @@ const Page = ({ file, guides, documentation }) => {
         name: 'sdksAndToolsText',
         component: 'textarea',
       },
+      {
+        name: 'pyMakerSubtext',
+        component: 'textarea',
+      },
+      {
+        name: 'keepersSubtext',
+        component: 'textarea',
+      },
     ],
   };
   const [data, form] = useGithubJsonForm(file, formOptions);
@@ -143,7 +151,7 @@ const Page = ({ file, guides, documentation }) => {
                   <Box>
                     <Text>pyMaker</Text>
                     <Text>
-                      <InlineText name="pyMakerSubtext" />
+                      <InlineTextarea name="pyMakerSubtext" />
                     </Text>
                     <Link href="/technology">
                       <Flex sx={{ alignItems: 'center' }}>
@@ -189,10 +197,7 @@ const Page = ({ file, guides, documentation }) => {
               >
                 <Heading>Keepers</Heading>
                 <Text>
-                  Keepers are external actors that are incentivized by profit opportunities to
-                  contribute to decentralized systems. In the context of the Maker Protocol, these
-                  external agents are incentivized to automate certain operations around the
-                  Ethereum blockchain.
+                  <InlineTextarea name="keepersSubtext" />
                 </Text>
                 <Link href="/technology">
                   <Flex sx={{ alignItems: 'center' }}>
