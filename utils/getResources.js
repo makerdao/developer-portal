@@ -61,8 +61,8 @@ const getResources = async (preview, previewData, contentDir) => {
         if (!_commitsCache[file.fileRelativePath]) {
           _commitsCache[file.fileRelativePath] = await getFileCommits(file.fileRelativePath);
 
-          // Must sleep to avoid Github API abuse detection mechanism
-          await sleep(500);
+          // Must sleep to avoid Github API abuse detection mechanism when building
+          if (process.env.GH_THROTTLE) await sleep(500);
         }
 
         for (let cb in metadataCallbacks) {
