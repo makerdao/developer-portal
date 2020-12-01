@@ -26,6 +26,7 @@ import { getResources } from '@utils';
 import { usePlugin } from 'tinacms';
 import { Icon } from '@makerdao/dai-ui-icons';
 import { ecosystem } from '../data/ecosystem.json';
+import { landingPageFormOptions } from '../data/formOptions';
 import AboutThisSite from '../components/AboutThisSite';
 import PageLead from '../components/PageLead';
 import IntroText from '../components/IntroText';
@@ -33,60 +34,7 @@ import ModulesList from '../components/ModulesList';
 import useCreateDocument from '../hooks/useCreateDocument';
 
 const Page = ({ file, guides, documentation }) => {
-  const formOptions = {
-    label: 'home page',
-    fields: [
-      {
-        name: 'subtext',
-        component: 'text',
-      },
-      {
-        name: 'aboutSubheading',
-        component: 'textarea',
-      },
-      {
-        name: 'aboutMakerProtocol',
-        component: 'textarea',
-      },
-      {
-        name: 'sdksAndToolsHeading',
-        component: 'textarea',
-      },
-      {
-        name: 'sdksAndToolsText',
-        component: 'textarea',
-      },
-      {
-        name: 'pyMakerSubtext',
-        component: 'textarea',
-      },
-      {
-        name: 'keepersSubtext',
-        component: 'textarea',
-      },
-      {
-        name: 'CLIsSubtext',
-        component: 'textarea',
-      },
-      {
-        name: 'aboutThisSiteSubheading',
-        component: 'textarea',
-      },
-      {
-        name: 'aboutThisSiteSubtext',
-        component: 'textarea',
-      },
-      {
-        name: 'primaryNavHeader',
-        component: 'text',
-      },
-      {
-        name: 'secondaryNavHeader',
-        component: 'text',
-      },
-    ],
-  };
-  const [data, form] = useGithubJsonForm(file, formOptions);
+  const [data, form] = useGithubJsonForm(file, landingPageFormOptions);
   usePlugin(form);
   useGithubToolbarPlugins();
   useCreateDocument([...guides, ...documentation]);
