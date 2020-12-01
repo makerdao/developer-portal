@@ -14,12 +14,16 @@ import { InlineText, InlineTextarea } from 'react-tinacms-inline';
 import Link from 'next/link';
 import { Icon } from '@makerdao/dai-ui-icons';
 
-const PageLead = ({ primary, secondary, cta }) => {
+const PageLead = ({ cta }) => {
   return (
     <Container>
       <Flex sx={{ py: [4, 6], flexDirection: 'column' }}>
-        <Heading variant="megaHeading">{primary}</Heading>
-        <Heading variant="megaHeading">{secondary}</Heading>
+        <Heading variant="megaHeading">
+          <InlineText name="primaryNavHeader" />
+        </Heading>
+        <Heading variant="megaHeading">
+          <InlineText name="secondaryNavHeader" />
+        </Heading>
         <Flex sx={{ flexDirection: 'column', pl: [5, 7], mt: 3 }}>
           <Text
             className="subtext"

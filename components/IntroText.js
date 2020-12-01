@@ -48,13 +48,7 @@ const IntroText = () => {
           columns: '2 200px',
         }}
       >
-        The Maker Foundation and the MakerDAO community believe that a decentralized stablecoin is
-        required to have any business or individual realize the advantages of digital money. Second,
-        there is MKR, a governance token that is used by stakeholders to maintain the system and
-        manage Dai. MKR token holders are the decision-makers of the Maker Protocol, supported by
-        the larger public community and various other external parties. Maker is unlocking the power
-        of decentralized finance for everyone by creating an inclusive platform for economic
-        empowerment; enabling everyone with equal access to the global financial marketplace.
+        <InlineTextarea name="aboutMakerProtocol" />
       </Text>
 
       <Link href="/technology">
