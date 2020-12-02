@@ -11,8 +11,14 @@ const GuidesPage = ({ file, resources, ...props }) => {
 
   const moduleResources = resources?.filter(
     (r) =>
-      r.data.frontmatter.components.some((c) => file.data.frontmatter.components.includes(c)) &&
+      r.data.frontmatter.components?.some((c) => file.data.frontmatter.components.includes(c)) &&
       r.data.frontmatter.contentType === ContentTypes.GUIDES
+  );
+
+  const relatedDocs = resources?.filter(
+    (r) =>
+      r.data.frontmatter.components?.some((c) => file.data.frontmatter.components.includes(c)) &&
+      r.data.frontmatter.contentType === ContentTypes.DOCUMENTATION
   );
 
   return !file ? (
@@ -24,6 +30,7 @@ const GuidesPage = ({ file, resources, ...props }) => {
       resources={moduleResources}
       file={file}
       contentType={ContentTypes.GUIDES}
+      relatedResources={relatedDocs}
       {...props}
     />
   );
@@ -33,7 +40,7 @@ export const getStaticProps = async function ({ preview, previewData, params }) 
   const { slug } = params;
   let toc = '';
 
-  const resources = await getResources(preview, previewData, 'content/resources/guides');
+  const resources = await getResources(preview, previewData, 'content/resources');
   const resource = resources.find((r) => r.data.frontmatter.slug === slug);
   const fileRelativePath = resource.fileRelativePath;
 

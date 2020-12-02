@@ -38,6 +38,12 @@ const DocsPage = ({ file, resources, ...props }) => {
       return acc;
     }, []);
 
+  const relatedDocs = resources?.filter(
+    (r) =>
+      r.data.frontmatter.components?.some((c) => file.data.frontmatter.components.includes(c)) &&
+      r.data.frontmatter.contentType === ContentTypes.GUIDES
+  );
+
   return !file ? (
     <Error statusCode={404} />
   ) : router.isFallback ? (
@@ -47,6 +53,7 @@ const DocsPage = ({ file, resources, ...props }) => {
       file={file}
       contentType={ContentTypes.DOCUMENTATION}
       resources={moduleResources}
+      relatedResources={relatedDocs}
       {...props}
     />
   );
