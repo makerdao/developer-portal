@@ -63,7 +63,7 @@ export const getStaticProps = async function ({ preview, previewData, params }) 
   const { slug } = params;
   let toc = '';
 
-  const resources = await getResources(preview, previewData, 'content/resources/documentation');
+  const resources = await getResources(preview, previewData, 'content/resources');
   const resource = resources.find((r) => r.data.frontmatter.slug === slug);
   const fileRelativePath = resource.fileRelativePath;
 
