@@ -25,7 +25,7 @@ const LineItem = ({ date, author }) => {
 
 const Contributors = ({ contributors }) => {
   const [open, setOpen] = useState(false);
-  const [first, ...rest] = contributors;
+  const [newest, ...rest] = contributors;
 
   return (
     <Flex
@@ -40,7 +40,7 @@ const Contributors = ({ contributors }) => {
       }}
     >
       <Flex sx={{ justifyContent: 'space-between', alignItems: 'flex-start' }}>
-        <LineItem author={first.name} date={first.date} />
+        <LineItem author={newest.username} date={newest.date} />
         <Flex sx={{ alignItems: 'center' }} onClick={() => setOpen(!open)}>
           <Icon
             sx={{ ml: 'auto' }}
@@ -51,7 +51,7 @@ const Contributors = ({ contributors }) => {
         </Flex>
       </Flex>
       {open &&
-        rest.map(({ date, name }) => <LineItem key={name + date} date={date} author={name} />)}
+        rest.map(({ date, username }) => <LineItem key={username} date={date} author={username} />)}
     </Flex>
   );
 };

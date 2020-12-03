@@ -8,6 +8,23 @@ export const metadataCallbacks = {
   author: (commits) => commits[commits.length - 1].commit.author.name,
   dateCreated: (commits) => commits[commits.length - 1].commit.author.date,
   lastModified: (commits) => commits[0].commit.author.date,
+  contributors: (commits) => {
+    // Get the unique contributors and date of their last commit
+    const contributors = [
+      ...new Map(
+        commits.reverse().map((c) => [
+          c.commit.author.name,
+          {
+            author: c.commit.author.name,
+            date: c.commit.author.date,
+            avatar: c.author.avatar_url,
+            username: c.author.login,
+          },
+        ])
+      ).values(),
+    ];
+    return contributors;
+  },
 };
 
 const fetchCommits = async (path) => {

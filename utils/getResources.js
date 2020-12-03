@@ -87,24 +87,4 @@ const getGithubFiles = async (contentDir, previewData) => {
   return files;
 };
 
-// const getFileCommits = async (path) => {
-//   const { USERNAME_ISSUES, GH_TOKEN_ISSUES, REPO_ISSUES } = process.env;
-//   const token = Buffer.from(`${USERNAME_ISSUES}:${GH_TOKEN_ISSUES}`, 'utf8').toString('base64');
-//   const url = `${GH_REPOS_ENDPOINT}/${REPO_ISSUES}/commits?path=${path}`;
-//   const response = await fetch(url, {
-//     headers: {
-//       Authorization: `Basic ${token}`,
-//       'Content-Type': 'application/json',
-//     },
-//     accept: 'application/vnd.github.v3+json',
-//     method: 'GET',
-//   });
-
-//   const json = await response.json();
-//   if (!response.ok)
-//     throw new Error(`${response.statusText}: ${json.error?.message || JSON.stringify(json)}`);
-
-//   return json;
-// };
-
 export default getResources;

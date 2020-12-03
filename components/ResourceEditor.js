@@ -91,7 +91,7 @@ const ResourceEditor = ({
       </Flex>
       <Grid gap={4}>
         <Feedback />
-        <Contributors contributors={contributors} />
+        <Contributors contributors={file.data.frontmatter.contributors} />
       </Grid>
     </GuidesLayout>
   );

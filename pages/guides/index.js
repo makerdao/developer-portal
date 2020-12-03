@@ -44,14 +44,14 @@ const PageLead = ({ options, activeModule, onChange }) => {
 const Page = ({ guides }) => {
   const [active, setActive] = useState('vaults');
   const resources = guides.filter((guide) => guide.data.frontmatter.components.includes(active));
-  const options = guides.reduce((acc, guide) => {
+  const componentNames = guides.reduce((acc, guide) => {
     acc.push(...guide.data.frontmatter.components);
     return [...new Set(acc)];
   }, []);
 
   return (
     <SingleLayout>
-      <PageLead activeModule={active} onChange={setActive} options={options} />
+      <PageLead activeModule={active} onChange={setActive} options={componentNames} />
       <ArticlesList title="Guides" path="guides" resources={resources} />
     </SingleLayout>
   );
