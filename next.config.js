@@ -3,11 +3,8 @@ const withSvgr = require('next-svgr');
 require('dotenv').config();
 
 module.exports = withSvgr({
-  webpack: (config, { dev, isServer }) => {
-    if (!dev && isServer) {
-      // we're in build mode so enable shared caching for the GitHub API
-      process.env.USE_CACHE = 'true';
-    }
+  webpack: (config, { isServer }) => {
+    if (isServer) process.env.USE_CACHE = 'true';
     config.node = {
       fs: 'empty',
     };
