@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { Icon } from '@makerdao/dai-ui-icons';
 import { ContentTypes } from '../utils/constants';
 
-const RelatedResources = ({ resources, contentType, show = 3 }) => {
+const RelatedResources = ({ resources = [], contentType, show = 3 }) => {
   const nextType =
     contentType === ContentTypes.GUIDES ? ContentTypes.DOCUMENTATION : ContentTypes.GUIDES;
   return (
