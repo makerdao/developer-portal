@@ -4,17 +4,44 @@ import { InlineForm } from 'react-tinacms-inline';
 import { useGithubMarkdownForm } from 'react-tinacms-github';
 import { InlineWysiwyg } from 'react-tinacms-editor';
 import { usePlugin, useCMS, useFormScreenPlugin } from 'tinacms';
-import { jsx, Text, Flex, Link as ThemeLink } from 'theme-ui';
+import { jsx, Text, Flex, Link as ThemeLink, Grid } from 'theme-ui';
 import { Icon } from '@makerdao/dai-ui-icons';
 import MarkdownWrapper from '@components/MarkdownWrapper';
 import EditLink from '@components/EditLink';
 import SubNav from '@components/SubNav';
+import RelatedResources from '@components/RelatedResources';
+import Contributors from '@components/Contributors';
+import Feedback from '@components/Feedback';
 import useSubNavForm from '../hooks/useSubNavForm';
 import GuidesLayout from '@layouts/GuidesLayout';
 import useStore from '../stores/store';
 import { GITHUB_EDIT_LINK } from '../utils/constants';
 
-const ResourceEditor = ({ file, navFile, contentType, preview, resources, slug, toc }) => {
+const contributors = [
+  {
+    date: 'Nov, 24 2020',
+    name: '@philip',
+  },
+  {
+    date: 'Nov, 14 2020',
+    name: '@petrucatana',
+  },
+  {
+    date: 'Nov, 07 2020',
+    name: '@tiago',
+  },
+];
+
+const ResourceEditor = ({
+  file,
+  navFile,
+  contentType,
+  preview,
+  resources,
+  relatedResources,
+  slug,
+  toc,
+}) => {
   const cms = useCMS();
   const setActiveModule = useStore((state) => state.setActiveModule);
 
@@ -52,6 +79,7 @@ const ResourceEditor = ({ file, navFile, contentType, preview, resources, slug, 
           <MarkdownWrapper source={data.markdownBody} />
         </InlineWysiwyg>
       </InlineForm>
+      <RelatedResources resources={relatedResources} contentType={contentType} />
       <Flex sx={{ my: 4, flexDirection: 'column', alignItems: 'flex-start' }}>
         <EditLink enterText="Edit This Page With TinaCMS" />
         <ThemeLink href={`${GITHUB_EDIT_LINK}${file.fileRelativePath}`} target="_blank">
@@ -61,6 +89,10 @@ const ResourceEditor = ({ file, navFile, contentType, preview, resources, slug, 
           </Flex>
         </ThemeLink>
       </Flex>
+      <Grid gap={4}>
+        <Feedback />
+        <Contributors contributors={contributors} />
+      </Grid>
     </GuidesLayout>
   );
 };

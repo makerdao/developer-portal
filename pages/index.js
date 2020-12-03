@@ -26,6 +26,7 @@ import { getResources } from '@utils';
 import { usePlugin } from 'tinacms';
 import { Icon } from '@makerdao/dai-ui-icons';
 import { ecosystem } from '../data/ecosystem.json';
+import { landingPageFormOptions } from '../data/formOptions';
 import AboutThisSite from '../components/AboutThisSite';
 import PageLead from '../components/PageLead';
 import IntroText from '../components/IntroText';
@@ -33,20 +34,7 @@ import ModulesList from '../components/ModulesList';
 import useCreateDocument from '../hooks/useCreateDocument';
 
 const Page = ({ file, guides, documentation }) => {
-  const formOptions = {
-    label: 'home page',
-    fields: [
-      {
-        name: 'subtext',
-        component: 'text',
-      },
-      {
-        name: 'aboutSubheading',
-        component: 'textarea',
-      },
-    ],
-  };
-  const [data, form] = useGithubJsonForm(file, formOptions);
+  const [data, form] = useGithubJsonForm(file, landingPageFormOptions);
   usePlugin(form);
   useGithubToolbarPlugins();
   useCreateDocument([...guides, ...documentation]);
@@ -110,8 +98,7 @@ const Page = ({ file, guides, documentation }) => {
                 }}
               >
                 <Heading variant="smallHeading">
-                  Dai.js is a JavaScript library that makes it easy to build applications on top of
-                  MakerDAO's platform of smart contracts.
+                  <InlineTextarea name="sdksAndToolsHeading" />
                 </Heading>
                 <Text
                   sx={{
@@ -119,10 +106,7 @@ const Page = ({ file, guides, documentation }) => {
                     columns: '2 200px',
                   }}
                 >
-                  You can use Maker's contracts to open Vaults (formerly known as CDPs), deposit
-                  collateral and generate Dai, trade tokens on decentralized exchanges, and more.
-                  The library features a pluggable, service-based architecture, which allows users
-                  to easily integrate Maker functionality into their own apps.
+                  <InlineTextarea name="sdksAndToolsText" />
                 </Text>
                 <Link href="/technology">
                   <Flex sx={{ alignItems: 'center' }}>
@@ -135,7 +119,7 @@ const Page = ({ file, guides, documentation }) => {
                   <Box>
                     <Text>pyMaker</Text>
                     <Text>
-                      Based on the Pymaker API, a set of reference Maker keepers is being developed.{' '}
+                      <InlineTextarea name="pyMakerSubtext" />
                     </Text>
                     <Link href="/technology">
                       <Flex sx={{ alignItems: 'center' }}>
@@ -181,10 +165,7 @@ const Page = ({ file, guides, documentation }) => {
               >
                 <Heading>Keepers</Heading>
                 <Text>
-                  Keepers are external actors that are incentivized by profit opportunities to
-                  contribute to decentralized systems. In the context of the Maker Protocol, these
-                  external agents are incentivized to automate certain operations around the
-                  Ethereum blockchain.
+                  <InlineTextarea name="keepersSubtext" />
                 </Text>
                 <Link href="/technology">
                   <Flex sx={{ alignItems: 'center' }}>
@@ -200,8 +181,7 @@ const Page = ({ file, guides, documentation }) => {
               >
                 <Heading>CLIs</Heading>
                 <Text>
-                  The command-line interface mcd-cli will enable you to easily interact with the
-                  Multi-Collateral Dai contracts.
+                  <InlineTextarea name="CLIsSubtext" />
                 </Text>
                 <Link href="/technology">
                   <Flex sx={{ alignItems: 'center' }}>

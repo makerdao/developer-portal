@@ -1,4 +1,14 @@
 {
-  "subtext": "Find all you need to build on top of the Maker Protocol\nor integrate Dai, the decentralized stablecoin.",
-  "aboutSubheading": "The Maker Protocol, built on the Ethereum blockchain, enables users to create currency."
+  "subtext": "Find all you need to build on top of the Maker Protocol integrate Dai, the decentralized stablecoin.",
+  "aboutSubheading": "The Maker Protocol, built on the Ethereum blockchain, enables users to create currency.",
+  "aboutMakerProtocol": "The Maker Foundation and the MakerDAO community believe that a decentralized stablecoin is required to have any business or individual realize the advantages of digital money. Second, there is MKR, a governance token that is used by stakeholders to maintain the system and manage Dai. MKR token holders are the decision-makers of the Maker Protocol, supported by the larger public community and various other external parties. Maker is unlocking the power of decentralized finance for everyone by creating an inclusive platform for economic empowerment and enabling everyone with equal access to the global financial marketplace.",
+  "sdksAndToolsHeading": "Dai.js is a JavaScript library that makes it easy to build applications on top of MakerDAO's platform of smart contracts.",
+  "sdksAndToolsText": "You can use Maker's contracts to open Vaults (formerly known as CDPs), deposit collateral and generate Dai, trade tokens on decentralized exchanges, and more. The library features a pluggable, service-based architecture, which allows users to easily integrate Maker functionality into their own apps.",
+  "pyMakerSubtext": "Based on the Pymaker API, a set of reference Maker keepers is being developed.",
+  "keepersSubtext": "Keepers are external actors that are incentivized by profit opportunities to contribute to decentralized systems. In the context of the Maker Protocol, these external agents are incentivized to automate certain operations around the Ethereum blockchain.",
+  "CLIsSubtext": "The command-line interface mcd-cli will enable you to easily interact with the Multi-Collateral Dai contracts.",
+  "aboutThisSiteSubheading": "To support the self-sustaining maker vision we want this site to be maintainable long-term by the community, so facilitating easy maintenance and upkeep is a priority.",
+  "aboutThisSiteSubtext": "We want to encourage contributors and reduce the friction of making contributions. One of the exciting features we built into the site is using a tool called TinaCMS for content management. TinaCMS is a an open source content management framework that provides us with flexible features to help ensure ease of maintainability in the future. Using this system, we enable the superpower of allowing contributors to create and edit content simply by pressing a button on the site. This feature, called 'visual open authoring' provides an inline editor to make changes on the site itself. Because the site content is fetched from Github it requires no additional backend.",
+  "primaryNavHeader": "Maker Protocol",
+  "secondaryNavHeader": "For Developers"
 }
