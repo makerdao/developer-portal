@@ -1,11 +1,13 @@
 import matter from 'gray-matter';
 import { getContent, getGithubPreviewProps, parseMarkdown } from 'next-tinacms-github';
 import { GH_REPOS_ENDPOINT } from './constants';
+import getFileCommits from './commitCache';
 
-let _commitsCache = {};
+const _commitsCache = {};
+let count = 0;
 
 const metadataCallbacks = {
-  author: (commits) => commits[commits.length - 1].commit.author.name,
+  author: (commits) => commits[commits.length - 1].commit.author,
   dateCreated: (commits) => commits[commits.length - 1].commit.author.date,
   lastModified: (commits) => commits[0].commit.author.date,
 };
@@ -58,21 +60,27 @@ const getResources = async (preview, previewData, contentDir) => {
         )
       ) {
         // If not, fetch the commits and cache them
-        if (!_commitsCache[file.fileRelativePath]) {
-          _commitsCache[file.fileRelativePath] = await getFileCommits(file.fileRelativePath);
+        // if (!_commitsCache[file.fileRelativePath]) {
+        count++;
+        // console.log('fetched count:', count);
+        // console.log('commits cache', _commitsCache);
+        const commit = await getFileCommits(file.fileRelativePath);
+        // _commitsCache[file.fileRelativePath] = await getFileCommits(file.fileRelativePath);
 
-          // Must sleep to avoid Github API abuse detection mechanism when building
-          if (process.env.GH_THROTTLE) await sleep(500);
-        }
+        // Must sleep to avoid Github API abuse detection mechanism when building
+        if (process.env.GH_THROTTLE) await sleep(500);
+        // }
 
-        for (let cb in metadataCallbacks) {
-          // If the file frontmatter doesn't have the property, add it
-          if (!file.data.frontmatter[cb]) {
-            file.data.frontmatter[cb] = metadataCallbacks[cb](_commitsCache[file.fileRelativePath]);
-          }
-        }
+        // for (let cb in metadataCallbacks) {
+        //   // If the file frontmatter doesn't have the property, add it
+        //   if (!file.data.frontmatter[cb]) {
+        //     file.data.frontmatter[cb] = metadataCallbacks[cb](commit || []);
+        //   }
+        // }
       }
     }
+
+    // console.log('commits cache', _commitsCache);
 
     return filtered;
   } catch (e) {
@@ -108,24 +116,24 @@ const getGithubFiles = async (contentDir, previewData) => {
   return files;
 };
 
-const getFileCommits = async (path) => {
-  const { USERNAME_ISSUES, GH_TOKEN_ISSUES, REPO_ISSUES } = process.env;
-  const token = Buffer.from(`${USERNAME_ISSUES}:${GH_TOKEN_ISSUES}`, 'utf8').toString('base64');
-  const url = `${GH_REPOS_ENDPOINT}/${REPO_ISSUES}/commits?path=${path}`;
-  const response = await fetch(url, {
-    headers: {
-      Authorization: `Basic ${token}`,
-      'Content-Type': 'application/json',
-    },
-    accept: 'application/vnd.github.v3+json',
-    method: 'GET',
-  });
+// const getFileCommits = async (path) => {
+//   const { USERNAME_ISSUES, GH_TOKEN_ISSUES, REPO_ISSUES } = process.env;
+//   const token = Buffer.from(`${USERNAME_ISSUES}:${GH_TOKEN_ISSUES}`, 'utf8').toString('base64');
+//   const url = `${GH_REPOS_ENDPOINT}/${REPO_ISSUES}/commits?path=${path}`;
+//   const response = await fetch(url, {
+//     headers: {
+//       Authorization: `Basic ${token}`,
+//       'Content-Type': 'application/json',
+//     },
+//     accept: 'application/vnd.github.v3+json',
+//     method: 'GET',
+//   });
 
-  const json = await response.json();
-  if (!response.ok)
-    throw new Error(`${response.statusText}: ${json.error?.message || JSON.stringify(json)}`);
+//   const json = await response.json();
+//   if (!response.ok)
+//     throw new Error(`${response.statusText}: ${json.error?.message || JSON.stringify(json)}`);
 
-  return json;
-};
+//   return json;
+// };
 
 export default getResources;
