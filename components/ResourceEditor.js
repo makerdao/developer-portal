@@ -4,16 +4,33 @@ import { InlineForm } from 'react-tinacms-inline';
 import { useGithubMarkdownForm } from 'react-tinacms-github';
 import { InlineWysiwyg } from 'react-tinacms-editor';
 import { usePlugin, useCMS, useFormScreenPlugin } from 'tinacms';
-import { jsx, Text, Flex, Link as ThemeLink } from 'theme-ui';
+import { jsx, Text, Flex, Link as ThemeLink, Grid } from 'theme-ui';
 import { Icon } from '@makerdao/dai-ui-icons';
 import MarkdownWrapper from '@components/MarkdownWrapper';
 import EditLink from '@components/EditLink';
 import SubNav from '@components/SubNav';
 import RelatedResources from '@components/RelatedResources';
+import Contributors from '@components/Contributors';
+import Feedback from '@components/Feedback';
 import useSubNavForm from '../hooks/useSubNavForm';
 import GuidesLayout from '@layouts/GuidesLayout';
 import useStore from '../stores/store';
 import { GITHUB_EDIT_LINK } from '../utils/constants';
+
+const contributors = [
+  {
+    date: 'Nov, 24 2020',
+    name: '@philip',
+  },
+  {
+    date: 'Nov, 14 2020',
+    name: '@petrucatana',
+  },
+  {
+    date: 'Nov, 07 2020',
+    name: '@tiago',
+  },
+];
 
 const ResourceEditor = ({
   file,
@@ -72,6 +89,10 @@ const ResourceEditor = ({
           </Flex>
         </ThemeLink>
       </Flex>
+      <Grid gap={4}>
+        <Feedback />
+        <Contributors contributors={contributors} />
+      </Grid>
     </GuidesLayout>
   );
 };
