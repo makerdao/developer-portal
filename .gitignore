@@ -37,5 +37,4 @@ yarn-error.log*
 .vercel
 .mdx-data
 
-#temp
-content-bak
+cachefile

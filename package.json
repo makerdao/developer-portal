@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "dev-ipfs": "IPFS=true next dev",
-    "build": "GH_THROTTLE=true next build",
+    "build": "next build",
     "build-ipfs": "IPFS=true next build",
     "export": "next export",
     "start": "next start",

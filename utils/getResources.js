@@ -1,18 +1,6 @@
 import matter from 'gray-matter';
 import { getContent, getGithubPreviewProps, parseMarkdown } from 'next-tinacms-github';
-import { GH_REPOS_ENDPOINT } from './constants';
-import getFileCommits from './commitCache';
-
-const _commitsCache = {};
-let count = 0;
-
-const metadataCallbacks = {
-  author: (commits) => commits[commits.length - 1].commit.author,
-  dateCreated: (commits) => commits[commits.length - 1].commit.author.date,
-  lastModified: (commits) => commits[0].commit.author.date,
-};
-
-const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+import getFileCommits, { metadataCallbacks } from './getFileCommits';
 
 const getResources = async (preview, previewData, contentDir) => {
   const fs = require('fs');
@@ -59,28 +47,11 @@ const getResources = async (preview, previewData, contentDir) => {
           Object.keys(metadataCallbacks).includes(property)
         )
       ) {
-        // If not, fetch the commits and cache them
-        // if (!_commitsCache[file.fileRelativePath]) {
-        count++;
-        // console.log('fetched count:', count);
-        // console.log('commits cache', _commitsCache);
-        const commit = await getFileCommits(file.fileRelativePath);
-        // _commitsCache[file.fileRelativePath] = await getFileCommits(file.fileRelativePath);
-
-        // Must sleep to avoid Github API abuse detection mechanism when building
-        if (process.env.GH_THROTTLE) await sleep(500);
-        // }
-
-        // for (let cb in metadataCallbacks) {
-        //   // If the file frontmatter doesn't have the property, add it
-        //   if (!file.data.frontmatter[cb]) {
-        //     file.data.frontmatter[cb] = metadataCallbacks[cb](commit || []);
-        //   }
-        // }
+        // If so, fetch the properties from the commits and add to the frontmatter
+        const commitData = await getFileCommits(file.fileRelativePath);
+        file.data.frontmatter = { ...file.data.frontmatter, ...commitData };
       }
     }
-
-    // console.log('commits cache', _commitsCache);
 
     return filtered;
   } catch (e) {
