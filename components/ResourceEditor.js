@@ -17,21 +17,6 @@ import GuidesLayout from '@layouts/GuidesLayout';
 import useStore from '../stores/store';
 import { GITHUB_EDIT_LINK } from '../utils/constants';
 
-const contributors = [
-  {
-    date: 'Nov, 24 2020',
-    name: '@philip',
-  },
-  {
-    date: 'Nov, 14 2020',
-    name: '@petrucatana',
-  },
-  {
-    date: 'Nov, 07 2020',
-    name: '@tiago',
-  },
-];
-
 const ResourceEditor = ({
   file,
   navFile,
