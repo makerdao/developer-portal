@@ -1,24 +1,29 @@
 /** @jsx jsx */
 import { useState } from 'react';
-import { jsx, Text, Flex, Avatar } from 'theme-ui';
+import { jsx, Text, Flex, Avatar, Link as ThemeLink } from 'theme-ui';
 import { Icon } from '@makerdao/dai-ui-icons';
+import { toDateString } from '@utils/formatting';
 
 const LineItem = ({ date, author, avatar }) => {
   return (
-    <Flex sx={{ pb: 4 }}>
+    <Flex sx={{ pt: 4 }}>
       <Flex sx={{ alignItems: 'center' }}>
-        <Text variant="caps" sx={{ fontSize: 2 }}>
+        <Text variant="caps" sx={{ fontSize: 2, visibility: 'hidden' }}>
           Last Edit:
         </Text>
         <Text sx={{ pl: 3 }}>{date}</Text>
       </Flex>
       <Flex sx={{ ml: 4, alignItems: 'center' }}>
-        <Text variant="caps" sx={{ fontSize: 2 }}>
+        <Text variant="caps" sx={{ fontSize: 2, visibility: 'hidden' }}>
           By:
         </Text>
-        <Avatar sx={{ mx: 2 }} src={avatar} />
-        <Icon sx={{ ml: 'auto' }} color="primary" name="increase"></Icon>
-        <Text sx={{ pl: 2 }}>{author}</Text>
+        <ThemeLink href={`https://github.com/${author}`} target="_blank">
+          <Flex sx={{ alignItems: 'center' }}>
+            <Avatar sx={{ mx: 2 }} src={avatar} />
+            <Icon sx={{ ml: 'auto' }} color="primary" name="increase"></Icon>
+            <Text sx={{ color: 'text', pl: 2 }}>{author}</Text>
+          </Flex>
+        </ThemeLink>
       </Flex>
     </Flex>
   );
@@ -31,30 +36,67 @@ const Contributors = ({ contributors }) => {
   return (
     <Flex
       sx={{
-        pt: 4,
+        py: 3,
         px: 0,
         border: 'light',
         borderColor: 'mutedAlt',
         borderWidth: '1px 0 1px 0',
         cursor: 'pointer',
-        flexDirection: 'column',
       }}
     >
-      <Flex sx={{ justifyContent: 'space-between', alignItems: 'flex-start' }}>
-        <LineItem author={newest.username} date={newest.date} avatar={newest.avatar} />
-        <Flex sx={{ alignItems: 'center' }} onClick={() => setOpen(!open)}>
+      <Flex sx={{ flexDirection: 'column' }}>
+        <Flex sx={{ justifyContent: 'space-between', alignItems: 'flex-start' }}>
+          <Flex sx={{ pb: 0 }}>
+            <Flex sx={{ alignItems: 'center' }}>
+              <Text variant="caps" sx={{ color: 'onBackgroundMuted', fontSize: 2 }}>
+                Last Edit:
+              </Text>
+              <Text sx={{ pl: 3 }}>{toDateString(newest.date)}</Text>
+            </Flex>
+            <Flex sx={{ ml: 4, alignItems: 'center' }}>
+              <Text variant="caps" sx={{ color: 'onBackgroundMuted', fontSize: 2 }}>
+                By:
+              </Text>
+              <ThemeLink href={`https://github.com/${newest.username}`} target="_blank">
+                <Flex sx={{ alignItems: 'center' }}>
+                  <Avatar sx={{ mx: 2 }} src={newest.avatar} />
+                  <Icon sx={{ ml: 'auto' }} color="primary" name="increase"></Icon>
+                  <Text sx={{ color: 'text', pl: 2 }}>{newest.author}</Text>
+                </Flex>
+              </ThemeLink>
+            </Flex>
+          </Flex>
+        </Flex>
+        {open &&
+          rest.map(({ date, username, avatar }) => (
+            <LineItem key={username} date={toDateString(date)} author={username} avatar={avatar} />
+          ))}
+      </Flex>
+      <Flex
+        sx={{
+          justifyContent: 'space-between',
+          ml: 'auto',
+          flexDirection: 'column',
+        }}
+      >
+        <Flex
+          sx={{ justifyContent: 'center', alignItems: 'center', pt: 1 }}
+          onClick={() => setOpen(!open)}
+        >
           <Icon
             sx={{ ml: 'auto' }}
             color="primary"
             name={open ? 'arrow_up_thin' : 'arrow_down_thin'}
           ></Icon>
-          <Text>{`${open ? 'Hide' : 'Show'} All Contributors`}</Text>
+          <Text sx={{ pl: 2 }}>{`${open ? 'Hide' : 'Show'} All Contributors`}</Text>
         </Flex>
+        {open && (
+          <Flex sx={{ flexDirection: 'column', alignItems: 'flex-end' }}>
+            <Text>Thank you!</Text>
+            <Text sx={{ color: 'onBackgroundMuted' }}>To all contributors of this page.</Text>
+          </Flex>
+        )}
       </Flex>
-      {open &&
-        rest.map(({ date, username, avatar }) => (
-          <LineItem key={username} date={date} author={username} avatar={avatar} />
-        ))}
     </Flex>
   );
 };
