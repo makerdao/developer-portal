@@ -13,7 +13,7 @@ import RelatedResources from '@components/RelatedResources';
 import Contributors from '@components/Contributors';
 import Feedback from '@components/Feedback';
 import useSubNavForm from '../hooks/useSubNavForm';
-import GuidesLayout from '@layouts/GuidesLayout';
+import ResourcesLayout from '@layouts/ResourcesLayout';
 import useStore from '../stores/store';
 import { GITHUB_EDIT_LINK } from '../utils/constants';
 
@@ -41,7 +41,7 @@ const ResourceEditor = ({
   usePlugin(form);
 
   return (
-    <GuidesLayout
+    <ResourcesLayout
       resources={resources}
       slug={slug}
       toc={toc}
@@ -78,7 +78,7 @@ const ResourceEditor = ({
         <Feedback />
         <Contributors contributors={file.data.frontmatter.contributors} />
       </Grid>
-    </GuidesLayout>
+    </ResourcesLayout>
   );
 };
 
