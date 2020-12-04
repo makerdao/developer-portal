@@ -21,14 +21,17 @@ const contributors = [
   {
     date: 'Nov, 24 2020',
     name: '@philip',
+    avatar: 'https://avatars2.githubusercontent.com/u/13105602?v=4',
   },
   {
     date: 'Nov, 14 2020',
     name: '@petrucatana',
+    avatar: 'https://avatars2.githubusercontent.com/u/13105602?v=4',
   },
   {
     date: 'Nov, 07 2020',
     name: '@tiago',
+    avatar: 'https://avatars2.githubusercontent.com/u/13105602?v=4',
   },
 ];
 

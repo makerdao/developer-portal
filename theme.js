@@ -212,6 +212,14 @@ const theme = {
       bg: 'onBackgroundAlt',
     },
   },
+  images: {
+    ...makerTheme.images,
+    avatar: {
+      width: 36,
+      height: 36,
+      borderRadius: 99999,
+    },
+  },
   styles: {
     ...makerTheme.styles,
     fakeLi: {

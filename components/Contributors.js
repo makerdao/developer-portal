@@ -1,9 +1,9 @@
 /** @jsx jsx */
 import { useState } from 'react';
-import { jsx, Text, Flex } from 'theme-ui';
+import { jsx, Text, Flex, Avatar } from 'theme-ui';
 import { Icon } from '@makerdao/dai-ui-icons';
 
-const LineItem = ({ date, author }) => {
+const LineItem = ({ date, author, avatar }) => {
   return (
     <Flex sx={{ pb: 4 }}>
       <Flex sx={{ alignItems: 'center' }}>
@@ -16,8 +16,9 @@ const LineItem = ({ date, author }) => {
         <Text variant="caps" sx={{ fontSize: 2 }}>
           By:
         </Text>
+        <Avatar sx={{ mx: 2 }} src={avatar} />
         <Icon sx={{ ml: 'auto' }} color="primary" name="increase"></Icon>
-        <Text sx={{ pl: 3 }}>{author}</Text>
+        <Text sx={{ pl: 2 }}>{author}</Text>
       </Flex>
     </Flex>
   );
@@ -40,7 +41,7 @@ const Contributors = ({ contributors }) => {
       }}
     >
       <Flex sx={{ justifyContent: 'space-between', alignItems: 'flex-start' }}>
-        <LineItem author={first.name} date={first.date} />
+        <LineItem author={first.name} date={first.date} avatar={first.avatar} />
         <Flex sx={{ alignItems: 'center' }} onClick={() => setOpen(!open)}>
           <Icon
             sx={{ ml: 'auto' }}
@@ -51,7 +52,9 @@ const Contributors = ({ contributors }) => {
         </Flex>
       </Flex>
       {open &&
-        rest.map(({ date, name }) => <LineItem key={name + date} date={date} author={name} />)}
+        rest.map(({ date, name, avatar }) => (
+          <LineItem key={name + date} date={date} author={name} avatar={avatar} />
+        ))}
     </Flex>
   );
 };
