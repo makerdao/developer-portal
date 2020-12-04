@@ -31,7 +31,7 @@ const LineItem = ({ date, author, avatar }) => {
 
 const Contributors = ({ contributors }) => {
   const [open, setOpen] = useState(false);
-  const [newest, ...rest] = contributors;
+  const [newest, ...rest] = contributors.sort((a, b) => new Date(b.date) - new Date(a.date));
 
   return (
     <Flex
@@ -41,7 +41,6 @@ const Contributors = ({ contributors }) => {
         border: 'light',
         borderColor: 'mutedAlt',
         borderWidth: '1px 0 1px 0',
-        cursor: 'pointer',
       }}
     >
       <Flex sx={{ flexDirection: 'column' }}>
@@ -53,7 +52,7 @@ const Contributors = ({ contributors }) => {
               </Text>
               <Text sx={{ pl: 3 }}>{toDateString(newest.date)}</Text>
             </Flex>
-            <Flex sx={{ ml: 4, alignItems: 'center' }}>
+            <Flex sx={{ ml: 4, alignItems: 'center', cursor: 'pointer' }}>
               <Text variant="caps" sx={{ color: 'onBackgroundMuted', fontSize: 2 }}>
                 By:
               </Text>
@@ -72,31 +71,33 @@ const Contributors = ({ contributors }) => {
             <LineItem key={username} date={toDateString(date)} author={username} avatar={avatar} />
           ))}
       </Flex>
-      <Flex
-        sx={{
-          justifyContent: 'space-between',
-          ml: 'auto',
-          flexDirection: 'column',
-        }}
-      >
+      {rest.length > 0 && (
         <Flex
-          sx={{ justifyContent: 'center', alignItems: 'center', pt: 1 }}
-          onClick={() => setOpen(!open)}
+          sx={{
+            justifyContent: 'space-between',
+            ml: 'auto',
+            flexDirection: 'column',
+          }}
         >
-          <Icon
-            sx={{ ml: 'auto' }}
-            color="primary"
-            name={open ? 'arrow_up_thin' : 'arrow_down_thin'}
-          ></Icon>
-          <Text sx={{ pl: 2 }}>{`${open ? 'Hide' : 'Show'} All Contributors`}</Text>
-        </Flex>
-        {open && (
-          <Flex sx={{ flexDirection: 'column', alignItems: 'flex-end' }}>
-            <Text>Thank you!</Text>
-            <Text sx={{ color: 'onBackgroundMuted' }}>To all contributors of this page.</Text>
+          <Flex
+            sx={{ justifyContent: 'center', alignItems: 'center', pt: 1 }}
+            onClick={() => setOpen(!open)}
+          >
+            <Icon
+              sx={{ ml: 'auto' }}
+              color="primary"
+              name={open ? 'arrow_up_thin' : 'arrow_down_thin'}
+            ></Icon>
+            <Text sx={{ pl: 2 }}>{`${open ? 'Hide' : 'Show'} All Contributors`}</Text>
           </Flex>
-        )}
-      </Flex>
+          {open && (
+            <Flex sx={{ flexDirection: 'column', alignItems: 'flex-end' }}>
+              <Text>Thank you!</Text>
+              <Text sx={{ color: 'onBackgroundMuted' }}>To all contributors of this page.</Text>
+            </Flex>
+          )}
+        </Flex>
+      )}
     </Flex>
   );
 };
