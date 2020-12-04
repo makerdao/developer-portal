@@ -48,7 +48,7 @@ const getResources = async (preview, previewData, contentDir) => {
         )
       ) {
         // If so, fetch the properties from the commits and add to the frontmatter
-        const commitData = await getFileCommits(file.fileRelativePath);
+        const commitData = await getFileCommits(file);
         file.data.frontmatter = { ...file.data.frontmatter, ...commitData };
       }
     }

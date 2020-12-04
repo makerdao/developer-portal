@@ -47,9 +47,11 @@ const fetchCommits = async (path) => {
   return json;
 };
 
-const getFileCommits = async (path) => {
+const getFileCommits = async (file) => {
   const fs = require('fs');
   let cachedCommits = {};
+  const frontmatterKeys = Object.keys(file.data.frontmatter);
+  const path = file.fileRelativePath;
 
   if (USE_CACHE) {
     try {
@@ -66,7 +68,8 @@ const getFileCommits = async (path) => {
     const cacheEntry = { [path]: {} };
 
     for (let cb in metadataCallbacks) {
-      cacheEntry[path][cb] = metadataCallbacks[cb](commitsFetched || []);
+      if (!frontmatterKeys.includes(cb))
+        cacheEntry[path][cb] = metadataCallbacks[cb](commitsFetched || []);
     }
 
     if (USE_CACHE) {
