@@ -52,6 +52,11 @@ export const getStaticProps = async function ({ preview, previewData, params }) 
     if (typeof window === 'undefined') {
       toc = createToc(markdownFile.props.file.data.markdownBody);
     }
+
+    markdownFile.props.file.data.frontmatter = {
+      ...resource.data.frontmatter,
+      ...markdownFile.props.file.data.frontmatter,
+    };
     return {
       props: {
         navFile: {

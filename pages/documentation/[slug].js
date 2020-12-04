@@ -83,9 +83,6 @@ export const getStaticProps = async function ({ preview, previewData, params }) 
       toc = createToc(markdownFile.props.file.data.markdownBody);
     }
     // Merge in the additional frontmatter props that aren't hardcoded into the doc
-
-    // TODO: do this with the other dynamic pages
-
     markdownFile.props.file.data.frontmatter = {
       ...resource.data.frontmatter,
       ...markdownFile.props.file.data.frontmatter,
