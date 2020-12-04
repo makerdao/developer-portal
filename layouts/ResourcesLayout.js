@@ -10,14 +10,14 @@ import { ContentTypes } from '../utils/constants';
 const ResourcesLayout = ({ resources, resourcePath, slug: activeSlug, toc, subnav, children }) => {
   useGithubToolbarPlugins();
   const sidebar =
-    resourcePath === ContentTypes.GUIDES ? (
-      <SidebarGuides resources={resources} resourcePath={resourcePath} activeSlug={activeSlug} />
-    ) : (
+    resourcePath === ContentTypes.DOCUMENTATION ? (
       <SidebarDocumentation
         resources={resources}
         resourcePath={resourcePath}
         activeSlug={activeSlug}
       />
+    ) : (
+      <SidebarGuides resources={resources} resourcePath={resourcePath} activeSlug={activeSlug} />
     );
   return (
     <SingleLayout subnav={subnav}>

@@ -1,36 +1,35 @@
 /** @jsx jsx */
 import { Fragment } from 'react';
-import { jsx, Flex, NavLink, Grid } from 'theme-ui';
-import { Icon } from '@makerdao/dai-ui-icons';
+import { jsx, Flex, NavLink } from 'theme-ui';
 import Link from 'next/link';
 
-const ListItem = ({ title, root, activeSlug, resourcePath, slug, parent }) => {
+const ListItem = ({ title, root: isRoot, activeSlug, resourcePath, slug, parent: hasParent }) => {
   const active = slug === activeSlug;
+
+  const variableStyles = isRoot
+    ? { fontSize: 3, color: active ? 'primary' : 'text' }
+    : hasParent
+    ? { fontSize: 2, color: active ? 'primary' : 'onBackgroundMuted', ml: 3 }
+    : undefined;
+
   return (
-    <Fragment>
-      <Icon
-        name="arrow_right"
+    <Flex sx={{ p: 0, pt: isRoot ? 3 : 2 }}>
+      <Flex
         sx={{
-          m: 'auto',
-          visibility: active ? undefined : 'hidden',
-          color: active ? 'primary' : undefined,
+          flexDirection: 'row',
+          width: '100%',
+          border: active ? 'light' : undefined,
+          borderColor: 'primary',
+          borderWidth: '0 1px 0 0',
         }}
-      ></Icon>
-      <Link href={`/${resourcePath}/[slug]`} as={`/${resourcePath}/${slug}`} passHref>
-        <NavLink
-          sx={
-            root
-              ? { textTransform: 'uppercase', color: 'text' }
-              : parent
-              ? { color: 'textMuted', ml: 2 }
-              : undefined
-          }
-          variant="sidebar"
-        >
-          {title}
-        </NavLink>
-      </Link>
-    </Fragment>
+      >
+        <Link href={`/${resourcePath}/[slug]`} as={`/${resourcePath}/${slug}`} passHref>
+          <NavLink sx={{ ...variableStyles, ...{ py: 0 } }} variant="sidebar">
+            {title}
+          </NavLink>
+        </Link>
+      </Flex>
+    </Flex>
   );
 };
 
@@ -76,12 +75,10 @@ const List = ({ items, resourcePath, activeSlug }) => {
 
 const Sidebar = ({ resources, resourcePath, activeSlug }) => {
   return (
-    <Flex sx={{ p: 4, flexDirection: 'column' }}>
-      <Grid gap={0} columns={'20px auto'}>
-        {resources.map((resource, i) => (
-          <List key={i} items={resource} resourcePath={resourcePath} activeSlug={activeSlug} />
-        ))}
-      </Grid>
+    <Flex sx={{ p: 0, flexDirection: 'column' }}>
+      {resources.map((resource, i) => (
+        <List key={i} items={resource} resourcePath={resourcePath} activeSlug={activeSlug} />
+      ))}
     </Flex>
   );
 };
