@@ -21,7 +21,7 @@ root: true
   * [**Join**](https://github.com/makerdao/dss/blob/master/src/join.sol)
   * [**Flipper**](https://github.com/makerdao/dss/blob/master/src/flip.sol)
 
-## 1. Introduction \(Summary\)
+## 1. Introduction (Summary)
 
 The collateral module is deployed for every new `ilk` (collateral type) added to `Vat`. It contains all the adapters and auction contracts for one specific collateral type.
 
@@ -60,7 +60,7 @@ The Collateral Module has 2 core components consisting of the `Join` and `Flip` 
   * To cover the amount of total debt (minted Dai + accrued fees) of the Vault.
   * To return as much collateral back to the Vault owner as possible.
 
-## 4. Gotchas \(Potential sources of user error\)
+## 4. Gotchas (Potential sources of user error)
 
 * When a user desires to enter the system and interact with the `dss` contracts, they must use one of the `join` contracts.
 * If there was a contract bug in a `join` contract and a user was to call `join` by accident, they can still retrieve their tokens back through the corresponding `exit` call on the given `join` contract.

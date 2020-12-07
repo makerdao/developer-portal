@@ -23,7 +23,7 @@ root: true
 - [**Contract Source**](https://github.com/dapphub/ds-token/blob/master/src/token.sol)
 - [**Etherscan**](https://etherscan.io/address/0x9f8f72aa9304c8b593d555f12ef6589cc3a579a2)
 
-## 1. Introduction \(Summary\)
+## 1. Introduction (Summary)
 
 The MKR Module contains the MKR token, which is a deployed [Ds-Token](https://github.com/dapphub/ds-token) contract. It is an ERC20 token that provides a standard ERC20 token interface. It also contains logic for burning and authorized minting of MKR.
 
@@ -31,13 +31,13 @@ The MKR Module contains the MKR token, which is a deployed [Ds-Token](https://gi
 
 ## 2. Contract Details:
 
-### Glossary \(MKR\)
+### Glossary (MKR)
 
 - `guy` - user address
 - `wad` - a quantity of tokens, usually as a fixed point integer with 10^18 decimal places.
 - `dst` - refers to the destination address.
 
-### Key Functionalities \(as defined in the smart contract\)
+### Key Functionalities (as defined in the smart contract)
 
 `mint` - credit tokens at an address whilst simultaneously increasing totalSupply (requires auth).
 
@@ -85,10 +85,10 @@ Along with MKR having a standard ERC20 token interface, it also has the addition
 - **As a governance token:** MKR is used by MKR holders to vote for the risk management and business logic of the Maker Protocol. Tokens are a simple representation of voting power.
 - **As a recapitalization resource:** MKR can autonomously be minted by the Flopper auction house and sold for DAI, which is used to recap the Maker Protocol in times of insolvency.
 
-## 4. Gotchas \(Potential source of user error\)
+## 4. Gotchas (Potential source of user error)
 
 - The MKR token is an ERC-20 token created using DSToken. A key difference to note between Dai and most other popular ERC20 tokens is that both these fields use `bytes32` instead of the `string` type.
 
-## 5. Failure Modes \(Bounds on Operating Conditions & External Risk Factors\)
+## 5. Failure Modes (Bounds on Operating Conditions & External Risk Factors)
 
 - `MKR.stop` - ES cannot be triggered. MKR in the chief can still vote, but cannot join or exit.

@@ -16,8 +16,8 @@ The [Bug Bounty Program](https://hackerone.com/makerdao_bbp/hacktivity?order_dir
 
 ### Timeline
 
-- Initiated the Bug Bounty program privately for selected researchers \(Private testnet on June 3rd\).
-- Launched our public bug bounty program on [Hackerone](https://hackerone.com/makerdao_bbp) \(July 24th\).
+- Initiated the Bug Bounty program privately for selected researchers (Private testnet on June 3rd).
+- Launched our public bug bounty program on [Hackerone](https://hackerone.com/makerdao_bbp) (July 24th).
 - Bug Bounty Program to continue indefinitely.
 
 ### Program Scope
@@ -25,7 +25,7 @@ The [Bug Bounty Program](https://hackerone.com/makerdao_bbp/hacktivity?order_dir
 The bug bounty program currently contains two separate scopes, which share the same rules with a few exceptions as noted below:
 
 - Smart contracts for Multi-Collateral Dai.
-- Infrastructure for select public facing domains \(please see the "Ineligible Bugs" section in the **Policy** section on HackerOne, especially regarding third party software, before submitting a report\).
+- Infrastructure for select public facing domains (please see the "Ineligible Bugs" section in the **Policy** section on HackerOne, especially regarding third party software, before submitting a report).
 
 **Note:** The program may be expanded in the future to include more asset types such as frontends and apps.
 

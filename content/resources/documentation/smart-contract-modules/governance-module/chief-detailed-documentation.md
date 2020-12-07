@@ -18,7 +18,7 @@ parent: introduction-to-governance-module
 - [**Associated MCD System Diagram**](https://github.com/makerdao/dss/wiki#system-architecture)
 - [**Contract Source**](https://github.com/dapphub/ds-chief/blob/master/src/chief.sol)
 
-## 1. Introduction \(Summary\)
+## 1. Introduction (Summary)
 
 The `Ds-Chief` smart contract provides a method to elect a "chief" contract via an approval voting system. This may be combined with another contract, such as `DSAuthority`, to elect a ruleset for a smart contract system.
 
@@ -28,7 +28,7 @@ In short, voters will lock up their voting tokens in order to give their votes s
 
 ## 2. Contract Details
 
-### Glossary \(Chief\)
+### Glossary (Chief)
 
 `**DSChiefApprovals` provides the following public properties:
 
@@ -114,7 +114,7 @@ Most of the functions are decorated with the the `note` modifier from [ds-note](
 
 See [ds-roles](https://dapp.tools/dappsys/ds-roles.html) for inherited features.
 
-## 4. Gotchas \(Potential source of user error\)
+## 4. Gotchas (Potential source of user error)
 
 In general, when we refer to the **"hat"**, it can be any address — be it a single-use contract like ds-spell, a multi-use contract or an individual's wallet. Thus, ds-chief can work well as a method for selecting code for execution just as well as it can for realizing political processes.
 
@@ -144,7 +144,7 @@ If you are writing a front-end UI for this smart contract, please note that the 
 
 Using `[0x0, 0x1, 0x2, ...]` is valid but using `[0x1, 0x0, ...]` and `[0x0, 0x0, 0x1, ...]` is not. This ordering constraint allows the contract to cheaply ensure voters cannot multiply their weights by listing the same candidate on their slate multiple times.
 
-## 5. Failure Modes \(Bounds on Operating Conditions & External Risk Factors\)
+## 5. Failure Modes (Bounds on Operating Conditions & External Risk Factors)
 
 - **MKR users moving their votes from one spell to another**
   - One of the biggest potential failure modes occurs when people are moving their votes from one spell to another. This opens up a gap/period of time when only a small amount of MKR is needed to lift a random hat.

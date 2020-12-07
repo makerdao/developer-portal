@@ -66,9 +66,9 @@ We are proud to say that since the Maker Protocol is an open-source platform, al
 
 Auction Keepers participate in auctions as a result of liquidation events and thereby acquire collateral at attractive prices. An `auction-keeper` can participate in three different types of auctions:
 
-1. [Collateral Auction \(`flip`\)](https://github.com/makerdao/dss/blob/master/src/flip.sol)
-2. [Surplus Auction \(`flap`\)](https://github.com/makerdao/dss/blob/master/src/flap.sol)
-3. [Debt Auction \(`flop`\)](https://github.com/makerdao/dss/blob/master/src/flop.sol)
+1. [Collateral Auction (`flip`)](https://github.com/makerdao/dss/blob/master/src/flip.sol)
+2. [Surplus Auction (`flap`)](https://github.com/makerdao/dss/blob/master/src/flap.sol)
+3. [Debt Auction (`flop`)](https://github.com/makerdao/dss/blob/master/src/flop.sol)
 
 Auction Keepers have the unique ability to plug in external _bidding models_, which communicate information to the Keeper on when and how high to bid these types of Keepers can be left safely running in the background. Shortly after an Auction Keeper notices or starts a new auction, it will spawn a new instance of a _bidding model_ and act according to its specified instructions. Bidding models will be automatically terminated by the Auction Keeper the moment the auction expires.
 
@@ -118,7 +118,7 @@ Auction Keepers communicate with _bidding models_ via their standard input/stand
 {"id": "6", "flapper": " 0xf0afc3108bb8f196cf8d076c8c4877a4c53d4e7c ", "bid": "7.142857142857142857", "lot": "10000.000000000000000000", "beg": "1.050000000000000000", "guy": " 0x00531a10c4fbd906313768d277585292aa7c923a ", "era": 1530530620, "tic": 1530541420, "end": 1531135256, "price": "1400.000000000000000028"}
 ```
 
-### Glossary \(Bidding Models\):
+### Glossary (Bidding Models):
 
 - `id` - auction identifier.
 - `flipper` - Ethereum address of the `Flipper` contract only for `flip` auctions.
@@ -151,7 +151,7 @@ In the case of when Auction Keepers and Bidding Models communicate in terms of p
 
 Any messages written by a Bidding Model to **stderr** standard error will be passed through by the Auction Keeper to its logs. This is the most convenient way of implementing logging from Bidding Models.
 
-## 3. Setting up the Auction Keeper Bot \(Installation\)
+## 3. Setting up the Auction Keeper Bot (Installation)
 
 #### Prerequisite
 
@@ -210,7 +210,7 @@ For other known Ubuntu and macOS issues please visit the [pymaker](https://githu
 
 To change to your chosen version of the kovan release, copy/paste your preferred contract addresses in `kovan-addresses.json` in `lib/pymaker/config/kovan-addresses.json`
 
-#### 1. Creating your bidding model \(an example detailing the simplest possible bidding model\)
+#### 1. Creating your bidding model (an example detailing the simplest possible bidding model)
 
 The stdout (standard output) provides a price for the collateral for `flip` auctions or MKR for `flap` and `flop` auctions. The `sleep` locks the price in place for a minute, after which the keeper will restart the price model and read a new price consider this your price update interval.
 
@@ -224,7 +224,7 @@ The simplest possible _bidding model_ you can set up is when you use a fixed pri
 
 Once you have created your bidding model, save it as `model-eth.sh` or whatever name you feel seems appropriate.
 
-#### 2. Setting up an Auction Keeper for a Collateral \(Flip\) Auction
+#### 2. Setting up an Auction Keeper for a Collateral (Flip) Auction
 
 Collateral Auctions will be the most common type of auction that the community will want to create and operate Auction keepers for. This is due to the fact that Collateral auctions will occur much more frequently than Flap and Flop auctions.
 
@@ -345,7 +345,7 @@ MKR used to bid on `flap` auctions is directly withdrawn from your token balance
 
 ### Getting Kovan MCD DAI, MKR and other Collateral tokens
 
-#### 1. Getting MCD K-DAI \(K-MCD 0.2.12 Release\)
+#### 1. Getting MCD K-DAI (K-MCD 0.2.12 Release)
 
 **Contract address**: `0xb64964e9c0b658aa7b448cdbddfcdccab26cc584`
 
@@ -366,7 +366,7 @@ MKR used to bid on `flap` auctions is directly withdrawn from your token balance
 
 After all of these steps have been completed, you will have the generated MCD K-DAI and it will be present within your wallet. You can easily payback your DAI or generate more.
 
-#### 2. Getting MCD K-MKR \(K-MCD 1.0.2 Release\)
+#### 2. Getting MCD K-MKR (K-MCD 1.0.2 Release)
 
 **Contract address:** `0xaaf64bfcc32d0f15873a02163e7e500671a4ffcd`
 

@@ -21,7 +21,7 @@ root: true
   * [**Pause**](https://github.com/dapphub/ds-pause/blob/master/src/pause.sol)
   * [**Spell**](https://github.com/dapphub/ds-spell/blob/master/src/spell.sol)
 
-## 1. Introduction \(Summary\)
+## 1. Introduction (Summary)
 
 The Governance Module contains the contracts that facilitate MKR voting, proposal execution, and voting security of the Maker Protocol.
 
@@ -43,7 +43,7 @@ The Governance Module has 3 core components consisting of the `Chief`, `Pause` a
 * `Pause` - The `ds-pause` is a _delegatecall_ based proxy with an enforced delay. This allows authorized users to schedule function calls that can only be executed once a predetermined waiting period has elapsed. The configurable delay attribute sets the minimum wait time that will be used during the governance of the system.
 * `Spell` - A `DS-Spell` is an un-owned object that performs one action or series of atomic actions (multiple transactions) one time only. This can be thought of as a one-off DSProxy with no owner (no DSAuth mixing, it is not a DSThing).
 
-## 4. Gotchas \(Potential sources of user error\)
+## 4. Gotchas (Potential sources of user error)
 
 * `Chief`
   * In general, when we refer to the **"chief"**, it can be both addresses or people that represent contracts. Thus, ds-chief can work well as a method for selecting code for execution just as well as it can for realizing political processes.
@@ -55,7 +55,7 @@ The Governance Module has 3 core components consisting of the `Chief`, `Pause` a
 * `Spell`
   * The spell is only marked as "done" if the CALL it makes succeeds, meaning it did not end in an exceptional condition and it did not revert. Conversely, contracts that use return values instead of exceptions to signal errors could be successfully called without having the effect you might desire. "Approving" spells to take action on a system after the spell is deployed generally requires the system to use exception-based error handling to avoid griefing.
 
-## 5. Failure Modes \(Bounds on Operating Conditions & External Risk Factors\)
+## 5. Failure Modes (Bounds on Operating Conditions & External Risk Factors)
 
 * `Chief`
   * **MKR users moving their votes from one spell to another:** One of the biggest potential failure modes occurs when people are moving their votes from one spell to another. This opens up a gap/period of time when only a small amount of MKR is needed to lift a random hat.

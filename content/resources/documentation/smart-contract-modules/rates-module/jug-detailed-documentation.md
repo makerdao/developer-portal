@@ -93,7 +93,7 @@ where "now" represents the current time, "rate" is `Vat.ilks[ilk].rate`, "base" 
 
 Jug stores some sensitive parameters, particularly the base rate and collateral-specific risk premiums that determine the overall stability fee rate for each collateral type. Its built-in authorization mechanisms need to allow only authorized MakerDAO governance contracts/actors to set these values. See "Failure Modes" for a description of what can go wrong if parameters are set to unsafe values.
 
-## 4. Gotchas \(Potential Sources of User Error\)
+## 4. Gotchas (Potential Sources of User Error)
 
 ### Ilk Initialization
 
@@ -103,7 +103,7 @@ Jug stores some sensitive parameters, particularly the base rate and collateral-
 
 A call to `drip(bytes32 ilk)`will add the `base` rate to the `Ilk.duty` rate. The rate is a calculated compounded rate, so `rate(base + duty) != rate(base) + rate(duty)`. This means that if base is set, the duty will need to be set factoring the existing compounding factor in base, otherwise the result will be outside of the rate tolerance. Updates to the `base` value will require all of the `ilks` to be updated as well.
 
-## 5. Failure Modes \(Bounds on Operating Conditions & External Risk Factors\)
+## 5. Failure Modes (Bounds on Operating Conditions & External Risk Factors)
 
 ### Tragedy of the Commons
 

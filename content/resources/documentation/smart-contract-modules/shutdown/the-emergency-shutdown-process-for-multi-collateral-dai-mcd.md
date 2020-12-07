@@ -127,7 +127,7 @@ In case of Emergency Shutdown, non-custodial wallet providers should alert your 
   - Inform users to migrate their Dai on the [migration portal](https://migrate.makerdao.com/), or create an internal interface to handle the process locally.
   - Add featured support for new token(s).
 
-### **Decentralized Exchanges \(DEXs\)**
+### **Decentralized Exchanges (DEXs)**
 
 As a decentralized exchange, you can inform users with a banner about the current status of the Maker Protocol and direct them toward relevant communication channels to find out more. **You may choose one of the two following options to allow your users to carry out the ES redemption process:**
 
@@ -159,7 +159,7 @@ As a Vault integrator, it is very important that you integrate with Maker Protoc
 
 As a **non-custodial Vault integrator**, please make sure to integrate with the Maker Protocol contracts (end.sol). This allows you to be notified at the exact moment the Shutdown has been triggered. Otherwise, it is suggested that you inform your users on how they can free Collateral in Vaults. This can either be done in the non-custodial Vault integrator’s UI or you can direct them to [Oasis.app/borrow](https://oasis.app/borrow) if the users need to migrate their Vault. If you do decide to use your own services, you will need a UI that allows users to withdraw their Vaults from a proxy contract so it shows up on the [migration portal](https://migrate.makerdao.com/). Direct your users there. Alternatively, you may create an interface that will help users migrate their Dai in case of a new redeployment, or allow users to claim their Collateral in case of an only shutdown scenario.
 
-### **Decentralized Applications \(Dapps\)**
+### **Decentralized Applications (Dapps)**
 
 Dapps are suggested to integrate with Maker Protocol contracts (end.sol), which effectively provides a notification system that shows if Emergency Shutdown has been triggered. In terms of preparation, when ES has been triggered, have the following ready for your users:
 
@@ -183,7 +183,7 @@ As a market maker during ES, you may provide liquidity in the market so that Dai
 
 _This is an involved and stateful process that involves the following 9 steps._
 
-### **1. Locking the System and Initiating Shutdown of the Maker Protocol \(aka Caging the System\)**
+### **1. Locking the System and Initiating Shutdown of the Maker Protocol (aka Caging the System)**
 
 Locking the prices down for each collateral type is done by freezing the following user entry points:
 
@@ -249,7 +249,7 @@ The auctions that are in the second phase (reverse auctions) no longer affect an
 
 Note that both of these options are available in this implementation, with the canceling of the live auctions being enabled on a per-auction basis. When a Vault has been processed and has no debt remaining, the remaining Collateral can be removed.
 
-### **5. Removing the Remaining Collateral from a Settled Vault \(Only After There is no Debt in the Vault\)**
+### **5. Removing the Remaining Collateral from a Settled Vault (Only After There is no Debt in the Vault)**
 
 Next, the system will remove the Collateral from the Vault. After the Vaults have been settled at the set final price and the owed Dai from the Vault has been canceled, the Vault owner can call this process as needed. It will remove all of the Collateral remaining after step **3**—basically, all of the Collateral that was not backing the debt. If the user did not have debt in a Vault at the time of the End, he can bypass steps **3 and 4** and can proceed directly to this step to free his Collateral.
 
@@ -265,7 +265,7 @@ In this step, the calculation of the exchange price for a given collateral type 
 
 This step is when Collateral is dispensed to the Dai holders who have already locked their Dai in to be exchanged. The larger the amount of Dai locked in, the more Collateral can be released to the Dai holders.
 
-### **9. Exchanging the Locked Dai for Collateral \(Proportional to the Amount Locked\)**
+### **9. Exchanging the Locked Dai for Collateral (Proportional to the Amount Locked)**
 
 Lastly, the system will allow the exchange of some of the Dai that has been locked for specific collateral types. Note that the number of collateral tokens will be limited by how much locked Dai users have.
 

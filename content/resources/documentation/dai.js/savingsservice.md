@@ -23,7 +23,7 @@ const service = maker.service('mcd:savings');
 
 All the methods below are asynchronous. `join`, `exit`, and `exitAll` use a [proxy contract](advanced-configuration/using-ds-proxy.md).
 
-### join\(amount\)
+### join(amount)
 
 Deposit the specified amount of Dai into the Dai Savings Rate (DSR) contract.
 
@@ -31,26 +31,26 @@ Deposit the specified amount of Dai into the Dai Savings Rate (DSR) contract.
 await service.join(DAI(1000));
 ```
 
-### exit\(amount\)
+### exit(amount)
 
 Withdraw the specified amount of Dai from the DSR contract.
 
-### exitAll\(\)
+### exitAll()
 
 Withdraw all Dai owned by the current account from the DSR contract.
 
-### balance\(\)
+### balance()
 
 Return the amount of Dai in the DSR contract owned by the [current address](advanced-configuration/using-multiple-accounts.md). Strictly speaking, this method returns the amount of Dai owned by the proxy contract for the current address. to work with the methods above.
 
-### balanceOf\(address\)
+### balanceOf(address)
 
 Return the amount of Dai in the DSR contract owned by the specified address.
 
-### getTotalDai\(\)
+### getTotalDai()
 
 Get the total amount of Dai in the DSR contract for all users.
 
-### getYearlyRate\(\)
+### getYearlyRate()
 
 Get the current annual savings rate.

@@ -18,7 +18,7 @@ contentType: documentation
 - \*\*\*\*[**Contract Source**](https://github.com/makerdao/scd-mcd-migration/blob/master/src/ScdMcdMigration.sol)
 - \*\*\*\*[**Etherscan**](https://etherscan.io/address/0xc73e0383f3aff3215e6f04b0331d58cecf0ab849)
 
-## 1. Introduction \(Summary\)
+## 1. Introduction (Summary)
 
 The Migration contract's purpose is to allow moving SAI and CDPs from the SCD system to the MCD system, thus becoming DAI and Vaults. It also allows users to move SAI/DAI in both directions should they want to exit MCD and go back to SCD.
 
@@ -57,7 +57,7 @@ The Migration contract's purpose is to allow moving SAI and CDPs from the SCD sy
 1. Two-way exchange for SAI and DAI
 2. One-way transfer of Vaults
 
-#### 1. `constructor` \(setup\)
+#### 1. `constructor` (setup)
 
 #### 2. `swapSaiToDai`
 
@@ -77,7 +77,7 @@ Next the migration contract opens a Vault using the MCD CDP manager and `join`s 
 
 Lastly, the migration contract gives the MCD-Vault to the `msg.sender`.
 
-## 4. Gotchas \(Potential source of user error\)
+## 4. Gotchas (Potential source of user error)
 
 - Any special/unique information about the specific contract
 - Anything that it may rely on, especially if it is not obvious
@@ -104,7 +104,7 @@ One additional consideration, to close or migrate a `cup`, a user will have to p
 
 Before SCD shutdown: Users who took out a Vault in SCD and then used the DAI to purchase something will either have to buy SAI on the open market to pay back their SCD debt or they will have to migrate their collateral to MCD.
 
-## 5. Failure Modes \(Bounds on Operating Conditions & External Risk Factors\)
+## 5. Failure Modes (Bounds on Operating Conditions & External Risk Factors)
 
 - **Potential for error:** Governance parameters around SAI collateral
   - Collateralization ratio has to be set to a very low number

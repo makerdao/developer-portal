@@ -18,7 +18,7 @@ parent: introduction-to-oracle-module
 - [**Associated MCD System Diagram**](https://github.com/makerdao/dss/wiki)
 - [**Contract Source**](https://github.com/makerdao/median/blob/master/src/median.sol)
 
-## 1. Introduction \(Summary\)
+## 1. Introduction (Summary)
 
 The median provides Maker's trusted reference price. In short, it works by maintaining a whitelist of price feed contracts which are authorized to post price updates. Every time a new list of prices is received, the median of these is computed and used to update the stored value. The median has permissioning logic which is what enables the addition and removal of whitelisted price feed addresses that are controlled via governance. The permissioning logic allows governance to set other parameters that control the Median's behavior—for example, the `bar` parameter is the minimum number of prices necessary to accept a new median value.
 
@@ -30,9 +30,9 @@ The median provides Maker's trusted reference price. In short, it works by maint
 
 ## 2. Contract Details
 
-### Median \(Glossary\)
+### Median (Glossary)
 
-#### Key Functionalities \(as defined in the smart contract\)
+#### Key Functionalities (as defined in the smart contract)
 
 - `read` - Gets a non-zero price or fails.
 - `peek` - Gets the price and validity.
@@ -87,7 +87,7 @@ Due to the mechanism design of how the oracles work, the **quorum** has to be an
 - An example of what a governance proposal would look like in this case:
   - We are adding a new oracle and are proposing (the Foundation) a list of signers (that have been used in the past) and we already have an oracle but want to add someone new (e.g. Dharma or dydx). We would say that they want to be price signers, so these are their addresses and we want to lift those two addresses. They would vote for that, and we would need to keep a list of the already existing addresses and they would need to create an address that doesn't conflict with the existing ones.
 
-## 5. Failure Modes \(Bounds on Operating Conditions & External Risk Factors\)
+## 5. Failure Modes (Bounds on Operating Conditions & External Risk Factors)
 
 - By design, there is currently no way right now to turn off the oracle (failure or returns false) if all the oracles come together and sign a price of zero. This would result in the price being invalid and would return false on `peek`, telling us to not trust the value.
   - We are currently researching (Oracles ETH module) that would invalidate the price but there is no way to do this in the median today. This is due to the separation of concerns that DSS does not read directly from median, it reads from the OSM, but this may end up changing.

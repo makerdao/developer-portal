@@ -127,7 +127,7 @@ return await dai.transferFrom('0x...fr0m', '0x...t0', DAI(10));
 
 `transferFrom()` transfers `amount` of token from `from` address to `to` address. Transaction will fail if `msg.sender` does not have allowance to transfer the amount of tokens `from` the from address.
 
-## deposit \(WETH only\)
+## deposit (WETH only)
 
 ```javascript
 return await weth.deposit(ETH(10));
@@ -138,7 +138,7 @@ return await weth.deposit(ETH(10));
 
 `deposit` converts `amount` of Eth to `amount` of Weth.
 
-## withdraw \(WETH only\)
+## withdraw (WETH only)
 
 ```javascript
 return await weth.withdraw(WETH(10));
@@ -149,7 +149,7 @@ return await weth.withdraw(WETH(10));
 
 `withdraw` converts `amount` of Weth to `amount` of Eth.
 
-## join \(PETH only\)
+## join (PETH only)
 
 ```javascript
 return await peth.join(WETH(10));
@@ -160,7 +160,7 @@ return await peth.join(WETH(10));
 
 `join` converts `amount` of Weth to Peth, at the [Weth to Peth Ratio](https://makerdao.com/documentation/#getwethtopethratio).
 
-## exit \(PETH only\)
+## exit (PETH only)
 
 ```javascript
 return await peth.exit(PETH(10));

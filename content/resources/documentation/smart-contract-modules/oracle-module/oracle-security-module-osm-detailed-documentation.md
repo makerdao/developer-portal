@@ -26,7 +26,7 @@ The OSM (named via acronym from "Oracle Security Module") ensures that new price
 
 ![](/images/documentation/osm.png)
 
-## 2. Contract Details - Glossary \(OSM\)
+## 2. Contract Details - Glossary (OSM)
 
 ### Storage Layout
 
@@ -74,13 +74,13 @@ Other contracts, if whitelisted, may inspect the `cur` value via the `peek()` an
 
 The contract uses a dual-tier authorization scheme: addresses mapped to 1 in `wards` may start and stop, set the `src`, call `void()`, and add new readers; addresses mapped to 1 in `buds` may call `peek()`, `peep()`, and `read()`.
 
-## 4. Gotchas \(Potential Sources of User Error\)
+## 4. Gotchas (Potential Sources of User Error)
 
-### Confusing `peek()` for `peep()` \(or vice-versa\)
+### Confusing `peek()` for `peep()` (or vice-versa)
 
 The names of these methods differ by only a single character and in current linguistic usage, both "peek" and "peep" have essentially the same meaning. This makes it easy for a developer to confuse the two and call the wrong one. The effects of such an error are naturally context-dependent, but could e.g. completely invalidate the purpose of the OSM if the `peep()` is called where instead `peek()` should be used. A mnemonic to help distinguish them: "since 'k' comes before 'p' in the English alphabet, the value returned by `peek()` comes before the value returned by `peep()` in chronological order". Or: "`peek()` returns the current value".
 
-## 5. Failure Modes \(Bounds on Operating Conditions & External Risk Factors\)
+## 5. Failure Modes (Bounds on Operating Conditions & External Risk Factors)
 
 #### `poke()` is not called promptly, allowing malicious prices to be swiftly uptaken
 

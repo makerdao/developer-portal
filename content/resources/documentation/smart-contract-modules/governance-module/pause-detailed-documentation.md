@@ -18,7 +18,7 @@ parent: introduction-to-governance-module
 - [**Associated MCD System Diagram**](https://github.com/makerdao/dss/wiki#system-architecture)
 - [**Contract Source**](https://github.com/dapphub/ds-pause/blob/master/src/pause.sol)
 
-## 1. Introduction \(Summary\)
+## 1. Introduction (Summary)
 
 The `ds-pause` is a _delegatecall_ based proxy with an enforced delay. This allows authorized users to schedule function calls that can only be executed once a predetermined waiting period has elapsed. The configurable delay attribute sets the minimum wait time that will be used during the governance of the system.
 
@@ -26,7 +26,7 @@ The `ds-pause` is a _delegatecall_ based proxy with an enforced delay. This allo
 
 ## 2. Contract Details:
 
-#### Key Functionalities \(as defined in the smart contract\)
+#### Key Functionalities (as defined in the smart contract)
 
 **Plans** A plan describes a single _delegatecall_ operation and a unix timestamp `eta` before which it cannot be executed.
 
@@ -53,7 +53,7 @@ The `pause` contract contains the `DSPauseProxy` contract in order to allow plan
 
 The `ds-pause` was designed to be used as a component in the Maker Protocol’s governance system in order to give affected parties time to respond to decisions. If those affected by governance decisions have e.g. exit or veto rights, then the pause can serve as an effective check on governance power.
 
-## 4. Gotchas \(Potential source of user error\)
+## 4. Gotchas (Potential source of user error)
 
 #### **Identity & Trust**
 
@@ -61,7 +61,7 @@ In order to protect the internal storage of the pause from malicious writes duri
 
 This means that plans are executed with the identity of the `proxy`. Thus when integrating the pause into some auth scheme, you will want to trust the pause's proxy and not the pause itself.
 
-## 5. Failure Modes \(Bounds on Operating Conditions & External Risk Factors\)
+## 5. Failure Modes (Bounds on Operating Conditions & External Risk Factors)
 
 **A break of any of the following would be classified as a critical issue:**
 

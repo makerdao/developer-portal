@@ -19,7 +19,7 @@ parent: introduction-to-core-module
 - [**Contract Source**](https://github.com/makerdao/dss/blob/master/src/cat.sol)
 - [**Etherscan**](https://etherscan.io/address/0x78f2c2af65126834c51822f56be0d7469d7a523e)
 
-## 1. Introduction \(Summary\)
+## 1. Introduction (Summary)
 
 The `Cat` is the system's liquidation agent, it enables keepers to mark positions as unsafe and sends them to auction.
 
@@ -27,7 +27,7 @@ The `Cat` is the system's liquidation agent, it enables keepers to mark position
 
 ## 2. Contract Details
 
-### Glossary \(Cat\)
+### Glossary (Cat)
 
 #### **Math**
 
@@ -74,7 +74,7 @@ The values of all parameters here (except `vat`) are changeable by an address th
 - sets `live` to 0 (prevents `bite`). See [`End` documentation ](https://docs.makerdao.com/smart-contract-modules/shutdown/end-detailed-documentation)for further description.
 - Once `live=0` it cannot be set back to 1.
 
-#### **bite\(bytes32 ilk, address urn\)**
+#### **bite(bytes32 ilk, address urn)**
 
 - `bytes32 ilk` parameter represents the collateral type that is being bitten.
 - `address urn` the address that identifies the Vault being bitten.
@@ -175,7 +175,7 @@ Various file function signatures for administering `Cat`:
 
 The primary usage will be for keepers to call `bite` on a Vault they believe to be unsafe in order to start the auction process.
 
-## 4. Gotchas \(Potential source of user error\)
+## 4. Gotchas (Potential source of user error)
 
 - When the `Cat` is upgraded, there are multiple references to it that must be updated at the same time (`End`, `Vat.rely`, `Vow.rely`). It must also rely on the `End`, the system's `pause.proxy()`
 - A `Vat` upgrade will require a new `Cat`
@@ -184,7 +184,7 @@ The primary usage will be for keepers to call `bite` on a Vault they believe to 
 - `bite` needs to be called `n` times where `n = urn.ink / ilks[ilk].dunk` if `n > 1`. This allows for the possibility that the Vault becomes safe between `bite` calls either through increased collateral (in value or quantity), or decreased debt.
 - Calling `bite` returns the auction `id` and emits and event with the `id`. This is required to bid in the `Flipper` on the auction.
 
-## 5. Failure Modes \(Bounds on Operating Conditions & External Risk Factors\)
+## 5. Failure Modes (Bounds on Operating Conditions & External Risk Factors)
 
 #### **Coding Error**
 

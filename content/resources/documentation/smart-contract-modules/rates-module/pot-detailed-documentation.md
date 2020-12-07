@@ -19,7 +19,7 @@ parent: introduction-to-rates-module
 - [**Contract Source**](https://github.com/makerdao/dss/blob/master/src/pot.sol)
 - [**Etherscan**](https://etherscan.io/address/0x197e90f9fad81970ba7976f33cbd77088e5d7cf7)
 
-## 1. Introduction \(Summary\)
+## 1. Introduction (Summary)
 
 The Pot is the core of the`Dai Savings Rate`. It allows users to deposit `dai` and activate the Dai Savings Rate and earning savings on their `dai`. The DSR is set by Maker Governance, and will typically be less than the base stability fee to remain sustainable. The purpose of Pot is to offer another incentive for holding Dai.
 
@@ -34,13 +34,13 @@ The Pot is the core of the`Dai Savings Rate`. It allows users to deposit `dai` a
 
 #### Auth
 
-- `wards` are allowed to call protected functions \(Administration\)
+- `wards` are allowed to call protected functions (Administration)
 
 #### Storage
 
 - `pie` - stores the address' `Pot` balance.
 - `Pie` - stores the total balance in the `Pot`.
-- `dsr` - the `dai savings rate`. It starts as `1` \(`ONE = 10^27`\), but can be updated by governance.
+- `dsr` - the `dai savings rate`. It starts as `1` (`ONE = 10^27`), but can be updated by governance.
 - `chi` - the rate accumulator. This is the always increasing value which decides how much `dai` - given when `drip()` is called.
 - `vat` - an address that conforms to a `VatLike` interface. It is set during the constructor and **cannot be changed**.
 - `vow` - an address that conforms to a `VowLike` interface. Not set in constructor. Must be set by governance.
@@ -56,13 +56,13 @@ The values of `dsr` and `vow` can be changed by an authorized address in the con
 - A user should always make sure that this has been called before calling the `exit()` function.
 - drip has to be called before a user `join`s and it is in their interest to call it again before they `exit`, but there isn't a set rule for how often drip is called.
 
-#### join\(uint wad\)
+#### join(uint wad)
 
 - `uint wad` this parameter is based on the amount of dai (since `wad` = `dai`/ `chi` ) that you want to `join` to the `pot`. The `wad * chi` must be present in the `vat` and owned by the `msg.sender`.
 - the `msg.sender`'s `pie` amount is updated to include the `wad`.
 - the total `Pie` amount is also updated to include the `wad`.
 
-#### exit\(uint wad\)
+#### exit(uint wad)
 
 - `exit()` essentially functions as the exact opposite of `join()`.
 - `uint wad` this parameter is based on the amount of dai that you want to `exit` the `pot`. The `wad * chi` must be present in the `vat` and owned by the `pot` and must be less than `msg.sender`'s `pie` balance.

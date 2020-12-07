@@ -24,7 +24,7 @@ parent: introduction-to-collateral-module
   - [**Join Eth**](https://etherscan.io/address/0x2f0b23f53734252bda2277357e97e1517d6b042a)
   - [**Join Bat**](https://etherscan.io/address/0x3d0b1912b66114d4096f48a8cee3a56c231772ca)
 
-## 1. Introduction \(Summary\)
+## 1. Introduction (Summary)
 
 Join consists of three smart contracts: `GemJoin`, `ETHJoin`, and `DaiJoin:`
 
@@ -37,7 +37,7 @@ Each `join` contract is created specifically to allow the given token type to be
 
 ## 2. Contract Details:
 
-### Glossary \(Join\)
+### Glossary (Join)
 
 - `vat` - storage of the `Vat`’s address.
 - `ilk` - id of the Ilk for which a `GemJoin` is created for.
@@ -57,7 +57,7 @@ User balances for collateral tokens added to the system via `join` are accounted
 
 The `DaiJoin` contract serves a similar purpose. It manages the exchange of Dai that is tracked in the `Vat` and ERC-20 Dai that is tracked by `Dai.sol`. After a user draws Dai against their collateral, they will have a balance in `Vat.dai`. This Dai balance can be `exit`' ed from the Vat using the `DaiJoin` contract which holds the balance of `Vat.dai` and mint's ERC-20 Dai. When a user wants to move their Dai back into the `Vat` accounting system (to pay back debt, participate in auctions, pack `bag`'s in the `End`, or utilize the DSR, etc), they must call `DaiJoin.join`. By calling `DaiJoin.join` this effectively `burn`'s the ERC-20 Dai and transfers `Vat.dai` from the `DaiJoin`'s balance to the User's account in the `Vat`. Under normal operation of the system, the `Dai.totalSupply` should equal the `Vat.dai(DaiJoin)` balance. When the `DaiJoin` contract gets `cage`'d by an `auth`'ed address, it can move Dai back into the Vat but it can no longer `exit` Dai from the Vat.
 
-## 4. Gotchas \(Potential source of user error\)
+## 4. Gotchas (Potential source of user error)
 
 The main source of user error with the `Join` contract is that Users should never `transfer` tokens directly to the contracts, they **must** use the `join` functions or they will not be able to retrieve their tokens.
 
@@ -65,7 +65,7 @@ There are limited sources of user error in the `join` contract system due to the
 
 The main issue to be aware of here would be a well-executed phishing attack. As the system evolves and potentially more `join` contracts are created, or more user interfaces are made, there is the potential for a user to have their funds stolen by a malicious `join` contract which does not actually send tokens to the `vat`, but instead to some other contract or wallet.
 
-## 5. Failure Modes \(Bounds on Operating Conditions & External Risk Factors\)
+## 5. Failure Modes (Bounds on Operating Conditions & External Risk Factors)
 
 **There could potentially be a `vat` upgrade that would require new `join` contracts to be created.**
 

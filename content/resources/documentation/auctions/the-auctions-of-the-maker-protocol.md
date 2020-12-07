@@ -88,7 +88,7 @@ Bidders send DAI or MKR tokens from their addresses to the system/specific aucti
   - Provided there is a net surplus, the Surplus Auction is triggered when any user sends the `flap` transaction to the Vow contract.
 - When the auction begins, a fixed amount `lot` of Dai is put up for sale. Bidders then bid with MKR in increments greater than the minimum bid increase amount. The auction officially ends when the bid duration ends `ttl` without another bid OR when the auction duration `tau` has been reached. Once the auction ends, the MKR received for the surplus Dai is then sent to be burnt, thereby contracting the system’s MKR supply.
 
-### Collateral Auction \(Collateral Sale\)
+### Collateral Auction (Collateral Sale)
 
 **Summary**: Collateral Auctions serve as a means to recover debt in liquidated Vaults. Those Vaults are being liquidated because the value of the Vault collateral has fallen below a certain limit determined by the Maker Governance voters.
 

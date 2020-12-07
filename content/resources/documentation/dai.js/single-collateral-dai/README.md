@@ -62,7 +62,7 @@ The services and objects below are used to work with Single-Collateral Sai.
 * [System Status](system-status.md)
 * [Token Conversion](token-conversion.md)
 
-## openCdp\(\)
+## openCdp()
 
 * **Returns:** promise resolves to new CDP object once mined
 
@@ -73,7 +73,7 @@ const cdpService = await maker.service('cdp');
 const newCdp = await cdpService.openCdp();
 ```
 
-## getCdp\(int id\)
+## getCdp(int id)
 
 * **Returns:** promise resolves to CDP object
 

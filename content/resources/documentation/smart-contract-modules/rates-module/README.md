@@ -153,7 +153,7 @@ $$
 \text{chi}(t) \equiv \text{chi}0 \prod{i=t_0 + 1}^{t} \text{dsr}_i
 $$
 
-where chi\_0 is simply chi\(_t_\_0\).
+where chi\_0 is simply chi(_t_\_0).
 
 Suppose a user joins _N_ Dai into the Pot at time _t_\_0. Then, their internal savings Dai balance is set to:
 

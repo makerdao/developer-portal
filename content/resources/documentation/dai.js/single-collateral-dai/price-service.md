@@ -39,7 +39,7 @@ const mkrPrice = await price.getMkrPrice();
 
 ## getPethPrice
 
-Get the current USD price of PETH \(pooled ethereum\), as a `USD_PETH` [price unit](https://makerdao.com/documentation/#units).
+Get the current USD price of PETH (pooled ethereum), as a `USD_PETH` [price unit](https://makerdao.com/documentation/#units).
 
 ```javascript
 await pethPrice = price.getPethPrice();

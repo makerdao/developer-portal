@@ -34,7 +34,7 @@ service.cdpTypes.forEach((type) => console.log(type.ilk));
 
 ## Instance methods
 
-### getCdpType\(\)
+### getCdpType()
 
 Return the [collateral type instance](cdptypeservice.md#collateral-type-instances) for the specified currency and/or [ilk](cdptypeservice.md#ilk).
 

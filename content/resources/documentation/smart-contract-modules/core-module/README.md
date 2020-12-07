@@ -23,7 +23,7 @@ root: true
   * [**Cat**](https://github.com/makerdao/dss/blob/master/src/cat.sol)
   * [**Spot**](https://github.com/makerdao/dss/blob/master/src/spot.sol)
 
-## 1. Introduction \(Summary\)
+## 1. Introduction (Summary)
 
 The **Core Module** is crucial to the system as it contains the entire state of the Maker Protocol and controls the central mechanisms of the system while it is in the expected normal state of operation.
 
@@ -43,13 +43,13 @@ The **Core Module** is crucial to the system as it contains the entire state of 
   * **`bite(bytes32 ilk, address urn)` -** In charge of Vault Liquidation. It checks if the Vault is in an unsafe position and if it is, it starts a Flip auction for a piece of the collateral to cover a share of the debt.
 * `Spot` - `poke` is the only non-authenticated function in `spot`. The function takes in a `bytes32` of the `ilk` to be "poked". `poke` calls two `external` functions, `peek` and `file`.
 
-## 4. Gotchas \(Potential sources of user error\)
+## 4. Gotchas (Potential sources of user error)
 
 * The methods in the `Vat` are written to be as generic as possible and as such have interfaces that can be quite verbose. Care should be taken that you have not mixed the order of parameters. Any module that is `auth`ed against the `Vat` has full root access, and can, therefore, steal all collateral in the system. This means that the addition of a new collateral type (and associated adapter) carries considerable risk.
 * When the `Cat` is upgraded, there are multiple references to it that must be updated at the same time (`End`, `Vat.rely`, `Vow.rely`). It must also rely on the `End`, the system's `pause.proxy()`. Read more [here](https://docs.makerdao.com/smart-contract-modules/core-module/cat-detailed-documentation#4-gotchas-potential-source-of-user-error).
 * The methods in the `spotter` are relatively basic compared to most other portions of `dss`. There is not much room for user error in the single unauthed method `poke`. If an incorrect `bytes32` is supplied the call will fail. Any module that is authed against the `spot` has full root access, and can, therefore, add and remove which `ilks` can be "poked". While not completely breaking the system, this could cause considerable risk.
 
-## 5. Failure Modes \(Bounds on Operating Conditions & External Risk Factors\)
+## 5. Failure Modes (Bounds on Operating Conditions & External Risk Factors)
 
 ### Coding Errors
 

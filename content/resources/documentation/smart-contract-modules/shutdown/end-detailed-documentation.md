@@ -21,7 +21,7 @@ parent: introduction-to-es-module
 - [**Contract Source**](https://github.com/makerdao/dss/blob/master/src/end.sol)
 - [**Etherscan**](https://etherscan.io/address/0xab14d3ce3f733cacb76ec2abe7d2fcb00c99f3d5)
 
-## 1. Introduction \(Summary\)
+## 1. Introduction (Summary)
 
 The `End`'s purpose is to coordinate Shutdown. In short, Shutdown closes down the system and reimburses Dai holders. This process can occur during upgrades (Dai iterations), as well as for security reasons in the event that implementation flaws arise in both in the code and in the design.
 
@@ -29,9 +29,9 @@ The `End`'s purpose is to coordinate Shutdown. In short, Shutdown closes down th
 
 ## 2. Contract Details
 
-### Glossary \(Shutdown\)
+### Glossary (Shutdown)
 
-#### Key Functionalities \(as defined in the smart contract\)
+#### Key Functionalities (as defined in the smart contract)
 
 `cage` - Locks the system and initiates shutdown. This is done by freezing the user-facing actions, canceling `flap` and `flop` auctions, locking the rest of the system's contracts, disabling certain governance actions that could interfere with the settlement process, and starting the cool-down period.
 
@@ -107,7 +107,7 @@ The `End`'s purpose is to coordinate Shutdown. In short, Shutdown closes down th
 
 ![Note: The Vault owner must wait for skim to free collateral since it requires art == 0.](/images/documentation/emergency-shutdown-process.png)
 
-### Cage \(Summary\)
+### Cage (Summary)
 
 The `cage` is the most complex mechanism within the Maker Protocol. This is because the `cage` must alter the behavior of almost every component of the system as well as perform under a variety of possible undercollateralization regimes. Listed below are a number of key properties, such as Dai and Vault parity, or the lack of race conditions, which are **desirable (nice-to-have)** properties of Shutdown, and are not, in fact, all satisfied by the real-world implementation of Shutdown.
 
@@ -130,14 +130,14 @@ The `cage` is the most complex mechanism within the Maker Protocol. This is beca
 
 **Dai Redemption vs. Vault Redemption Discussion**
 
-Since in some edge cases it will not be possible to satisfy all desirable properties at once, a choice must be made about which to prioritize. For example, in the presence of Vaults that have become less than 100% collateralized, a choice must be made between prioritizing Dai holders and Vault holders. If Vault holders are prioritized, those with over-collateralized Vaults keep their excess collateral, while Dai holders receive less than $1 of value per Dai. If Dai holders are prioritized, some collateral must be taken from over-collateralized Vaults to ensure Dai holders receive as close to $1 per Dai as possible. When choosing between Dai vs. Vault priority, Vault priority was chosen because we want to first prioritize Vault holders, meaning that even with a processing period for auction settlement, all Vault holders above their Liquidation Ratio \(LR\) should be allowed to retrieve their over-collateralization \(This is accomplished by calling `skim` first on the Vault to remove the debt and the backing collateral and then calling `free` to release the remaining collateral from the Vault\).
+Since in some edge cases it will not be possible to satisfy all desirable properties at once, a choice must be made about which to prioritize. For example, in the presence of Vaults that have become less than 100% collateralized, a choice must be made between prioritizing Dai holders and Vault holders. If Vault holders are prioritized, those with over-collateralized Vaults keep their excess collateral, while Dai holders receive less than $1 of value per Dai. If Dai holders are prioritized, some collateral must be taken from over-collateralized Vaults to ensure Dai holders receive as close to $1 per Dai as possible. When choosing between Dai vs. Vault priority, Vault priority was chosen because we want to first prioritize Vault holders, meaning that even with a processing period for auction settlement, all Vault holders above their Liquidation Ratio (LR) should be allowed to retrieve their over-collateralization (This is accomplished by calling `skim` first on the Vault to remove the debt and the backing collateral and then calling `free` to release the remaining collateral from the Vault).
 
 #### **Auction Settlement**
 
-- There is a time delay in Shutdown that is configurable by governance. The time delay must expire before any cashing can take place. The general guidance is that it should be long enough to ensure all auctions either finish or get skipped, but there is no guarantee of this in the code. Note that anyone can cancel a `flip` auction at any time by calling `skip(ilk, auction-id)` after the `ilk` has been `cage`d \(with `cage(ilk)`\). Flap and flop auctions are frozen by the initial `cage()`. Both Flap and Flop auctions can be `yank`ed to return the bids to the last bidder.
+- There is a time delay in Shutdown that is configurable by governance. The time delay must expire before any cashing can take place. The general guidance is that it should be long enough to ensure all auctions either finish or get skipped, but there is no guarantee of this in the code. Note that anyone can cancel a `flip` auction at any time by calling `skip(ilk, auction-id)` after the `ilk` has been `cage`d (with `cage(ilk)`). Flap and flop auctions are frozen by the initial `cage()`. Both Flap and Flop auctions can be `yank`ed to return the bids to the last bidder.
 - It’s important to note that auction cancellation is not an immediate process as ecosystem participants must call `skip` for flip auctions or call `yank` directly for flap and flop auctions. If no one calls these functions, the auctions will not be canceled.
 
-### The Shutdown Mechanism \(9 Crucial Steps\)
+### The Shutdown Mechanism (9 Crucial Steps)
 
 As mentioned above, the `End`'s purpose is to coordinate the Shutdown of the system. This is an involved and stateful process that takes place over the nine following main steps.
 
@@ -226,7 +226,7 @@ The `pack(wad)` will place Dai into a bag in preparation for `cash`, which dispe
 
 Lastly, we use `cash(ilk, wad)` to exchange some of the Dai from your `bag` for gems from a specific ilk. Note that the number of gems will be limited by how much packed Dai you have (how big your `bag` is).
 
-## 4. Gotchas \(Potential source of user error\)
+## 4. Gotchas (Potential source of user error)
 
 #### Keepers
 
@@ -260,7 +260,7 @@ It is important to set the correct `wait` period. If you set an incorrect `wait`
   - Therefore the `wait` value should not be too large, so governance should advise for this at least.
 - Vault (Skim/End) Keeper - is a tool to skim underwater Vaults if not all undercollateralized Vaults are accounted for. This Keeper could be used by Maker Stakeholders such as large Dai holders/custodians, MKR governors, Redemption keepers and more.
 
-## 5. Failure Modes \(Bounds on Operating Conditions & External Risk Factors\)
+## 5. Failure Modes (Bounds on Operating Conditions & External Risk Factors)
 
 Since `End` will read the Collateral price from the `pip`, this can result in the collateral price being only as accurate as the last recorded price. If `pip` returns a bad price due to oracles getting hacked, the `End` will be affected.
 

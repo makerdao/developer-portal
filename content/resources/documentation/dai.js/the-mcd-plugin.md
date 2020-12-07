@@ -26,7 +26,7 @@ const mgr = maker.service('mcd:cdpManager');
 
 The methods below are all asynchronous.
 
-### getCdpIds\(\)
+### getCdpIds()
 
 Return an array describing the vaults owned by the specified address. Note that if the vaults were created in Oasis Borrow, the address of the proxy contract should be used.
 
@@ -37,7 +37,7 @@ const { id, ilk } = data[0];
 // e.g. id = 5, ilk = 'ETH-A'
 ```
 
-### getCdp\(\)
+### getCdp()
 
 Get an existing vault by its numerical ID. Returns a [Vault instance](the-mcd-plugin.md#vault-instances).
 
@@ -45,7 +45,7 @@ Get an existing vault by its numerical ID. Returns a [Vault instance](the-mcd-pl
 const vault = await mgr.getCdp(111);
 ```
 
-### open\(\)
+### open()
 
 Open a new vault with the specified [collateral type](cdptypeservice.md). Will create a [proxy](advanced-configuration/using-ds-proxy.md) if one does not already exist. Returns a [Vault instance](the-mcd-plugin.md#vault-instances). Works with the [transaction manager](advanced-configuration/transactions.md).
 
@@ -58,7 +58,7 @@ txMgr.listen(open, {
 const vault = await open;
 ```
 
-### openLockAndDraw\(\)
+### openLockAndDraw()
 
 Open a new vault, then lock and/or draw in a single transaction. Will create a [proxy](advanced-configuration/using-ds-proxy.md) if one does not already exist. Returns a [Vault instance](the-mcd-plugin.md#vault-instances).
 
@@ -109,42 +109,42 @@ import { ETH, DAI } from '@makerdao/dai-plugin-mcd';
 await vault.lockAndDraw(ETH(2), DAI(20));
 ```
 
-#### lockCollateral\(amount\)
+#### lockCollateral(amount)
 
 Deposit the specified amount of collateral.
 
-#### drawDai\(amount\)
+#### drawDai(amount)
 
 Generate the specified amount of Dai.
 
-#### lockAndDraw\(lockAmount, drawAmount\)
+#### lockAndDraw(lockAmount, drawAmount)
 
 Deposit some collateral and generate some Dai in a single transaction.
 
-#### wipeDai\(amount\)
+#### wipeDai(amount)
 
 Pay back the specified amount of Dai.
 
-#### wipeAll\(\)
+#### wipeAll()
 
 Pay back all debt. This method ensures that dust amounts do not remain.
 
-#### freeCollateral\(amount\)
+#### freeCollateral(amount)
 
 Withdraw the specified amount of collateral.
 
-#### wipeAndFree\(wipeAmount, freeAmount\)
+#### wipeAndFree(wipeAmount, freeAmount)
 
 Pay back some debt and withdraw some collateral in a single transaction.
 
-#### wipeAllAndFree\(freeAmount\)
+#### wipeAllAndFree(freeAmount)
 
 Pay back all debt, ensuring dust amounts do not remain, and withdraw a specified amount of collateral in a single transaction.
 
-#### give\(address\)
+#### give(address)
 
 Transfer ownership of this vault to `address`. Note that if the new owner plans to use this vault with Oasis Borrow, it should be transferred to their proxy with [giveToProxy](the-mcd-plugin.md#givetoproxy-address) instead.
 
-#### giveToProxy\(address\)
+#### giveToProxy(address)
 
 Look up the proxy contract owned by `address` and transfer ownership of this vault to that proxy.

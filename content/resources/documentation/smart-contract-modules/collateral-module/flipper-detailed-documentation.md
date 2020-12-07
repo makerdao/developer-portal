@@ -23,7 +23,7 @@ parent: introduction-to-collateral-module
   - \*\*\*\*[**Flip ETH-A**](https://etherscan.io/address/0xF32836B9E1f47a0515c6Ec431592D5EbC276407f)
   - \*\*\*\*[**Flip BAT-A**](https://etherscan.io/address/0xf7c569b2b271354179aacc9ff1e42390983110ba#code)
 
-## 1. Introduction \(Summary\)
+## 1. Introduction (Summary)
 
 **Summary:** Collateral Auctions are used to sell collateral from Vaults that have become undercollateralized in order to preserve the collateralization of the system. The Cat sends bitten collateral to the Flip module to be auctioned off to keepers. The collateral auction has two phases: `tend` and `dent`.
 
@@ -31,7 +31,7 @@ parent: introduction-to-collateral-module
 
 ## 2. Contract Details
 
-#### Flipper \(Glossary\)
+#### Flipper (Glossary)
 
 - `wards [usr: address]`, `rely`/`deny`/`auth` - Auth mechanisms
 - `Bid` - State of a specific Auction {`bid`, `lot`, `guy`, `tic`, `end`, `usr`, `gal`, `tab`}
@@ -59,7 +59,7 @@ parent: introduction-to-collateral-module
 - `yank` - used during Global Settlement to move `tend` phase auctions to the `End` by retrieving the collateral and repaying dai to the highest bidder.
 - `claw`: reduces the amount of litter in the Cat's box
 
-### **Parameters Set By Governance \(through `file`\)**
+### **Parameters Set By Governance (through `file`)**
 
 - `beg`
 - `ttl`
@@ -96,7 +96,7 @@ Once the auction's last bid has expired or the auction itself has reached the `e
 
 ![A diagram detailing the interactions a user has with Flipper, Cat and the Vow.](/images/documentation/flip_auction_diagram_interaction.png)
 
-## 4. Gotchas \(Potential Source of User Error\)
+## 4. Gotchas (Potential Source of User Error)
 
 #### **Keepers**
 
@@ -138,7 +138,7 @@ Start `dent` auction:
 
 In the case of Global Settlement, the `End` is able to call `yank` on the Flipper. `Yank` closes a `tend`-phase auction by returning the `guy`'s Dai bid and moving the Gems from the Flipper to the `End`. `dent`-phase auctions can continue to the `deal` phase as they have already raised the necessary Dai and are in the process of returning Gems to the original Vault holder.
 
-## 5. Failure Modes \(Bounds on Operating Conditions & External Risk Factors\)
+## 5. Failure Modes (Bounds on Operating Conditions & External Risk Factors)
 
 ### Bounds on Operating Conditions
 

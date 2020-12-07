@@ -70,7 +70,7 @@ Mcd is built on [Seth](https://github.com/dapphub/dapptools/tree/master/src/seth
 
 Similar to Seth, `mcd` also supports transaction signing with Ledger hardware wallets and can run against both local and remote nodes.
 
-Since `mcd` will always be used against a known deployment of the system, defaults can be loaded wherever possible. In most cases the only required configuration parameter is the `-C, --chain=<chain>` \(`MCD_CHAIN`\) option and `-F, --from=<address>` \(`ETH_FROM`\) sender account when not using a testnet.
+Since `mcd` will always be used against a known deployment of the system, defaults can be loaded wherever possible. In most cases the only required configuration parameter is the `-C, --chain=<chain>` (`MCD_CHAIN`) option and `-F, --from=<address>` (`ETH_FROM`) sender account when not using a testnet.
 
 Example `~/.sethrc`:
 
@@ -108,7 +108,7 @@ mcd dai join 100
 
 Run against a locally running instance of [Dapp testnet](https://github.com/dapphub/dapptools/tree/master/src/dapp) where the system has been deployed by setting the `C, --chain` option to `testnet`. Mcd will auto-configure account testings for `dapp testnet` so that no further configuration is required.
 
-By default, Mcd assumes that the output of the testchain deployment script is available at `~/.dapp/testnet/8545/config/addresses.json`. Configuration addresses can be loaded from a different location by setting the `--config` \(`MCD_CONFIG`\) option.
+By default, Mcd assumes that the output of the testchain deployment script is available at `~/.dapp/testnet/8545/config/addresses.json`. Configuration addresses can be loaded from a different location by setting the `--config` (`MCD_CONFIG`) option.
 
 ```bash
 export MCD_CONFIG=~/testchain-deployment-scripts/out/addresses.json

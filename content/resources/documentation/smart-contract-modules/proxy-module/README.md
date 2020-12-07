@@ -22,7 +22,7 @@ root: true
   * [**Vote Proxy**](https://github.com/makerdao/vote-proxy/blob/master/src/VoteProxy.sol)
   * [**Proxy Actions**](https://github.com/makerdao/dss-proxy-actions/blob/master/src/DssProxyActions.sol)
 
-## 1. Introduction \(Summary\)
+## 1. Introduction (Summary)
 
 The Proxy module was created in order to make it more convenient for users/developers to interact with the Maker Protocol. It contains contract interfaces, proxies, and aliases to functions necessary for both DSR and Vault management and Maker governance.
 
@@ -69,7 +69,7 @@ The `dss-proxy-actions` was designed to be used by the Ds-Proxy, which is owned 
 * **Call data**
   * Functions and parameters you want to execute.
 
-## 4. Gotchas \(Potential sources of user error\)
+## 4. Gotchas (Potential sources of user error)
 
 * **DSR Manager**
   * For developers who want to integrate with `DsrManager`, it is important to realize that user balances in the `pot` will be owned by the `DsrManager`, which has an internal mapping to determine user balances. Consequently the deposited Dai in DSR might not show up in solutions that are based on `ds-proxy` (such as [oasis.app/save](https://oasis.app/save))
@@ -84,7 +84,7 @@ The `dss-proxy-actions` was designed to be used by the Ds-Proxy, which is owned 
   * **Using dss-proxy-actions directly can result in the loss of control over your Vault:** If you open a new Vault via the dss proxy actions (centralized) without a ds proxy you would be creating a Vault that is owned by the dss proxy actions that anyone could call publicly. It would be owned by the dss proxy actions contact and anyone could execute actions on your Vault. Therefore, if you use the dss proxy actions directly it can be quite risky.
   * Read more [here](https://docs.makerdao.com/smart-contract-modules/proxy-module/proxy-actions-detailed-documentation).
 
-## 5. Failure Modes \(Bounds on Operating Conditions & External Risk Factors\)
+## 5. Failure Modes (Bounds on Operating Conditions & External Risk Factors)
 
 * **CDP Manager**
   * **Potential Issues around Chain Reorganization**

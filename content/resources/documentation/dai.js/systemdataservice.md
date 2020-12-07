@@ -21,7 +21,7 @@ const service = maker.service('mcd:systemData');
 
 ## Instance methods
 
-### getAnnualBaseRate\(\)
+### getAnnualBaseRate()
 
 Returns the base rate applied to all collateral types, in addition to their individual risk premiums.
 
@@ -29,7 +29,7 @@ Returns the base rate applied to all collateral types, in addition to their indi
 const base = await service.getAnnualBaseRate();
 ```
 
-### getSystemWideDebtCeiling\(\)
+### getSystemWideDebtCeiling()
 
 Returns the debt ceiling for the entire system.
 
@@ -37,7 +37,7 @@ Returns the debt ceiling for the entire system.
 const line = await service.getSystemWideDebtCeiling();
 ```
 
-### isGlobalSettlementInvoked\(\)
+### isGlobalSettlementInvoked()
 
 Returns a boolean that is true if emergency shutdown has been triggered.
 

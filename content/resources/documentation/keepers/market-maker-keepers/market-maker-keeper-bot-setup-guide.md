@@ -60,7 +60,7 @@ This guide is dedicated to showing you how to create your very own Market Maker 
   - This project requires _virtualenv_ to be installed if you want to use Maker's python tools. This helps with making sure that you are running the right version of python and checks that all of the pip packages that are installed in the [install.sh](http://install.sh/) are in the right place and have the right versions.
 - [X-code](https://apps.apple.com/ca/app/xcode/id497799835?mt=12) for macs
 
-## 3. Getting Started \(Installation\)
+## 3. Getting Started (Installation)
 
 **1. Clone the `market-maker-keeper` repository and switch into its directory:**
 
@@ -409,7 +409,7 @@ Additionally, we have a Uniswap price feed that can be used by Market Maker Keep
 
 Each Market Maker Keeper is a command-line tool which takes in generic command-line arguments such as `--config`, `--price-feed`, `--price-feed-expiry`, `--debug`, etc. as well as some arguments which are specific to that particular Keeper such as Ethereum node parameters, addresses, exchange API keys, etc.. All accepted command-line arguments are listed in the example section below. They can also be discovered by trying to start a Market Maker Keeper with the `--help` argument.
 
-#### Example \(Oasis Market Maker Keeper\)
+#### Example (Oasis Market Maker Keeper)
 
 In order to run `oasis-market-maker-keeper`, you will need to go through the following process:
 

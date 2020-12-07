@@ -15,6 +15,6 @@ parent: introduction-to-es-module
 
 # Emergency Shutdown for Partners
 
-## **For a quick overview of Emergency Shutdown within the Maker Protocol and the process to follow as an integration partner, please download and read the ES Partner Integration Slide Deck \(PDF\) below.**
+## **For a quick overview of Emergency Shutdown within the Maker Protocol and the process to follow as an integration partner, please download and read the ES Partner Integration Slide Deck (PDF) below.**
 
 [Download File](/images/documentation/emergency-shutdown-for-integration-partners-.pdf)

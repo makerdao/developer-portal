@@ -36,7 +36,7 @@ root: true
 - `Authority` - checks whether an address can call this method
 - `Kiss` - cancels out surplus and on-auction debt
 
-### **Vat \(Vault Engine\)**
+### **Vat (Vault Engine)**
 
 - `gem`: collateral tokens.
 - `dai`: stablecoin tokens.
@@ -101,7 +101,7 @@ root: true
 
 - `LogNote`: a general purpose log that can be added to any function from a contract.
 
-### **Jug \(Stability Fees\)**
+### **Jug (Stability Fees)**
 
 #### Structs
 
@@ -139,7 +139,7 @@ These methods require `wards[msg.sender] == 1` (i.e. only authorized users may c
 
 `drip(bytes32)`: collect stability fees for a given collateral type
 
-### **Cat \(Liquidations\)**
+### **Cat (Liquidations)**
 
 - `mat`: the liquidation ratio
 - `chop`: the liquidation penalty
@@ -147,7 +147,7 @@ These methods require `wards[msg.sender] == 1` (i.e. only authorized users may c
 - `bite`: initiate liquidation of a Vault
 - `flip`: liquidate collateral from a Vault to cover a fixed quantity of debt
 
-### **Vow \(Settlement\)**
+### **Vow (Settlement)**
 
 - `sin`: the system debt queue.
 - `Sin`: the total amount of debt in the queue.
@@ -164,7 +164,7 @@ These methods require `wards[msg.sender] == 1` (i.e. only authorized users may c
 - `kick`: starts an auction.
 - `woe`: indicates specifically bad debt, or be used as a variable name for any amount of debt.
 
-### Flipper \(Collateral Auctions\)
+### Flipper (Collateral Auctions)
 
 - `wards [usr: address]`, `rely`/`deny`/`auth`: Auth mechanisms
 - `Bid`: State of a specific Auction {`bid`, `lot`, `guy`, `tic`, `end`, `usr`, `gal`, `tab`}
@@ -191,7 +191,7 @@ These methods require `wards[msg.sender] == 1` (i.e. only authorized users may c
 - `deal`: claim a winning bid / settles a completed auction
 - `yank`: used during Global Settlement to move `tend` phase auctions to the `End` by retrieving the collateral and repaying dai to the highest bidder.
 
-### Flapper \(Surplus Auctions\)
+### Flapper (Surplus Auctions)
 
 - `Flap`: surplus auction (selling stablecoins for MKR) [contract]
 - `wards [usr: address]`: `rely`/`deny`/`auth` Auth Mechanisms [uint]
@@ -217,7 +217,7 @@ These methods require `wards[msg.sender] == 1` (i.e. only authorized users may c
 - `yank`: is used during Global Settlement to move `tend` phase auctions to the `End` by retrieving the collateral and repaying DAI to the highest bidder. [function]
 - `tick()`: resets the `end` value if there has been 0 bids and the original `end` has passed.
 
-### Flopper \(Debt Auctions\)
+### Flopper (Debt Auctions)
 
 - `flop`: debt auction (covering debt by inflating MKR and selling for stablecoins)
 - `lot`: quantity up for auction / gems for sale (MKR)
@@ -241,7 +241,7 @@ These methods require `wards[msg.sender] == 1` (i.e. only authorized users may c
 - `tic`: Bid expiry
 - `tick`: restarts an auction
 
-### **End \(Global Settlement / Shutdown\)**
+### **End (Global Settlement / Shutdown)**
 
 `cage`: Locks the system and initiates shutdown. This is done by freezing the user-facing actions, canceling `flap` and `flop` auctions, locking the rest of the system's contracts, disabling certain governance actions that could interfere with the settlement process, and starting the cool-down period.
 
@@ -313,7 +313,7 @@ These methods require `wards[msg.sender] == 1` (i.e. only authorized users may c
 
 `dent`: To make a bid, decreasing the lot size.
 
-### Join \(Token Adapters\)
+### Join (Token Adapters)
 
 - `vat`: storage of the `Vat`’s address.
 - `ilk`: id of the Ilk for which a `GemJoin` is created for.
@@ -323,7 +323,7 @@ These methods require `wards[msg.sender] == 1` (i.e. only authorized users may c
 - `live`: an access flag for the `join` adapter.
 - `dec`: decimals for the Gem.
 
-### Cat \(Liquidations\)
+### Cat (Liquidations)
 
 - `mul(uint, uint)`/`rmul(uint, uint)`: will revert on overflow or underflow
 - `bite(bytes32, address)`: will revert if `lot` or `art` are larger than or equal to 2^255.
@@ -346,7 +346,7 @@ These methods require `wards[msg.sender] == 1` (i.e. only authorized users may c
   - `flip`: address of the auction contract
   - `id`: ID of the auction in the `Flipper`
 
-### Spot \(Oracles and Contracts Liaison\)
+### Spot (Oracles and Contracts Liaison)
 
 - `ilk`: a given collateral type
 - `ilk.pip`: the contract which holds the current price of a given `ilk`
@@ -358,7 +358,7 @@ These methods require `wards[msg.sender] == 1` (i.e. only authorized users may c
 
 - Only authorized users can update any variables in contract
 
-### Pot \(Savings Dai\)
+### Pot (Savings Dai)
 
 **Math**
 
@@ -379,7 +379,7 @@ These methods require `wards[msg.sender] == 1` (i.e. only authorized users may c
 - `vow`: an address that conforms to a `VowLike` interface. Not set in constructor. Must be set by governance.
 - `rho`: the last time that drip is called.
 
-### Dai \(Stablecoin\)
+### Dai (Stablecoin)
 
 `name`: Dai Stablecoin
 

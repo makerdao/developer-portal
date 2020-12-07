@@ -21,7 +21,7 @@ parent: introduction-to-es-module
 - [**Contract Source**](https://github.com/makerdao/esm/blob/master/src/ESM.sol)
 - [**Etherscan**](https://etherscan.io/address/0x0581a0abe32aae9b5f0f68defab77c6759100085)
 
-## 1. Introduction \(Summary\)
+## 1. Introduction (Summary)
 
 The Emergency Shutdown Module (ESM) is a contract with the ability to call `End.cage()` to trigger the Shutdown of the Maker Protocol.
 
@@ -29,7 +29,7 @@ The Emergency Shutdown Module (ESM) is a contract with the ability to call `End.
 
 ## 2. Contract Details
 
-### ESM \(Glossary\)
+### ESM (Glossary)
 
 **Key Functionalities (as defined in the smart contract)**
 
@@ -68,7 +68,7 @@ In other cases, the remaining MKR holders may choose to refund the ESM joiners b
 
 **Note:** If governance wants to disarm the ESM, it can only do so by removing its authorization to call `end.cage()` before the ESM is triggered.
 
-## 4. Gotchas \(Potential Source of User Error\)
+## 4. Gotchas (Potential Source of User Error)
 
 ### Unrecoverable of Funds
 
@@ -86,7 +86,7 @@ If an entity with insufficient MKR wishes to trigger the ESM, it is better off f
 
 If an entity thinks others will join in before governance can react (e.g. if the delay for governance actions is very long), it is still possible that directly sending insufficient MKR to the ESM may work, but it carries a high degree of risk. Governance could even collude with miners to prevent `cage` calls, etc if they suspect an ESM triggering is being organized and wish to prevent it.
 
-## 5. Failure Modes \(Bounds on Operating Conditions & External Risk Factors\)
+## 5. Failure Modes (Bounds on Operating Conditions & External Risk Factors)
 
 ### Authorization Misconfigurations
 

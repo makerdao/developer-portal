@@ -51,7 +51,7 @@ function lockAndDraw(tubContractAddress, cdpId, daiAmount, ethAmount) {
 
 This makes it possible for users' token allowances to persist from one Maker application to another, and it allows users to [recover any funds](https://proxy-recover-funds.surge.sh/) mistakenly sent to the proxy's address. Many of the functions in `DSProxyService` will only be relevant to `power users`. All that is strictly required to automatically generate a function's calldata and find the correct profile proxy is the inclusion of `{ dsProxy: true }` in the options object for any transaction — provided the user has already deployed a profile proxy. If that's not certain, it may also be necessary to query the registry to determine if a user already owns a proxy, and to `build` one if they do not.
 
-## currentProxy\(\)
+## currentProxy()
 
 - **Params:** None
 - **Returns:** promise resolves to address **or** `null`
@@ -64,7 +64,7 @@ async function getProxy() {
 }
 ```
 
-## build\(\)
+## build()
 
 - **Params:** None
 - **Returns:** `TransactionObject`
@@ -80,7 +80,7 @@ async function buildProxy() {
 }
 ```
 
-## ensureProxy\(\)
+## ensureProxy()
 
 This convenience function will either return an existing proxy or create one.
 
@@ -88,7 +88,7 @@ This convenience function will either return an existing proxy or create one.
 const proxyAddress = await maker.service('proxy').ensureProxy();
 ```
 
-## getProxyAddress\(\)
+## getProxyAddress()
 
 - **Params:** Address optional
 - **Returns:** promise resolves to contract address
@@ -99,7 +99,7 @@ const proxyAddress = await maker.service('proxy').ensureProxy();
 const proxy = await maker.service('proxy').getProxyAddress('0x...');
 ```
 
-## getOwner\(\)
+## getOwner()
 
 - **Params:** Address
 - **Returns:** promise resolves to address
@@ -110,7 +110,7 @@ const proxy = await maker.service('proxy').getProxyAddress('0x...');
 const owner = await maker.service('proxy').getOwner('0x...');
 ```
 
-## setOwner\(\)
+## setOwner()
 
 - **Params:** Address of new owner, DSProxy address optional
 - **Returns:** `TransactionObject`

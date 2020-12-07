@@ -72,7 +72,7 @@ export LDFLAGS="-L$(brew --prefix openssl)/lib" CFLAGS="-I$(brew --prefix openss
 - `DSEthToken` ([https://github.com/dapphub/ds-eth-token](https://github.com/dapphub/ds-eth-token)),
 - `DSValue` ([https://github.com/dapphub/ds-value](https://github.com/dapphub/ds-value)),
 - `DSVault` ([https://github.com/dapphub/ds-vault](https://github.com/dapphub/ds-vault)),
-- `EtherDelta` ([https://github.com/etherdelta/etherdelta.github.io](https://github.com/etherdelta/etherdelta.github.io)\),
+- `EtherDelta` ([https://github.com/etherdelta/etherdelta.github.io](https://github.com/etherdelta/etherdelta.github.io)),
 - `0x v1` ([https://etherscan.io/address/0x12459c951127e0c374ff9105dda097662a027093\#code](https://etherscan.io/address/0x12459c951127e0c374ff9105dda097662a027093#code), [https://github.com/0xProject/standard-relayer-api](https://github.com/0xProject/standard-relayer-api)),
 - `0x v2`
 - `Dai Savings Rate (Pot)`([https://github.com/makerdao/pymaker/blob/master/tests/manual_test_dsr.py\#L29](https://github.com/makerdao/pymaker/blob/master/tests/manual_test_dsr.py#L29))

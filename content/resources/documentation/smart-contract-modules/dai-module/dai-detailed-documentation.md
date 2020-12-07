@@ -19,7 +19,7 @@ parent: introduction-to-dai-module
 - [**Contract Source**](https://github.com/makerdao/dss/blob/master/src/dai.sol)
 - [**Etherscan**](https://etherscan.io/address/0x6b175474e89094c44da98b954eedeac495271d0f)
 
-## 1. Introduction \(Summary\)
+## 1. Introduction (Summary)
 
 The `Dai` contract is the user-facing ERC20 token contract maintaining the accounting for external Dai balances. Most functions are standard for a token with changing supply, but it also notably features the ability to issue approvals for transfers based on signed messages.
 
@@ -27,7 +27,7 @@ The `Dai` contract is the user-facing ERC20 token contract maintaining the accou
 
 ## 2. Contract Details
 
-### DAI \(Glossary\)
+### DAI (Glossary)
 
 **Key Functionalities (as defined in the smart contract)**
 
@@ -78,7 +78,7 @@ For the most part, `dai.sol` functions as a typical ERC20 token. These tokens ha
 3. `permit` is a signature-based approval function. This allows for an end-user to sign a message which can then be relayed by another party to submit their approval. This can be useful for applications in which the end-user does not need to hold `ETH`.
    - In order to use this functionality, a user's address must sign a message with the `holder`, `spender`, `nonce`, `expiry` and the `allowed` amount. This can then be submitted to `Permit()` to update the user's approval.
 
-## 4. Gotchas \(Potential Source of User Error\)
+## 4. Gotchas (Potential Source of User Error)
 
 Unlimited allowance is a relatively uncommon practice (though becoming more common). This could be something used to trick a user by a malicious contract into giving access to all their DAI. This is concerning in upgradeable contracts where the contract may appear innocent until upgraded to a malicious contract.
 
@@ -90,6 +90,6 @@ There is a slight deviation in `transferFrom` functionality: If the `src == msg.
 
 The Dai token provides offchain approval, which means that as an owner of an ETH address, you can sign a permission (using the permit() function) which basically grants allowance to another ETH address. The ETH address that you provide permission to can then take care of the execution of the transfer but has an allowance.
 
-## 5. Failure Modes \(Bounds on Operating Conditions & External Risk Factors\)
+## 5. Failure Modes (Bounds on Operating Conditions & External Risk Factors)
 
 - N/a

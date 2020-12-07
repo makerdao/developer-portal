@@ -115,7 +115,7 @@ seth --from-wei $(seth call $MCD_ESM "min()" | seth --to-dec)
 # 50000.000000000000000000
 ```
 
-#### Deposit a small amount \(0.1 MKR\) into the ESM
+#### Deposit a small amount (0.1 MKR) into the ESM
 
 To deposit a small amount of MKR into the esm contract to test correct deposit function, we use the `join` function and specify a small amount.
 

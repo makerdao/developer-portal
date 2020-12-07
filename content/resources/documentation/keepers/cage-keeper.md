@@ -20,7 +20,7 @@ root: true
 
 The `cage-keeper` is used to help facilitate [Emergency Shutdown](https://blog.makerdao.com/introduction-to-emergency-shutdown-in-multi-collateral-dai/) of the [Maker Protocol](https://github.com/makerdao/dss). Emergency shutdown is an involved, deterministic process, requiring interaction from all user types: Vault owners, Dai holders, Redemption keepers, MKR governors, and other Maker Protocol Stakeholders. A high level overview is as follows:
 
-1. **System Caged** - The Emergency Security Module [\(ESM\)](https://github.com/makerdao/esm) calls `End.cage()` function, which freezes the USD price for each collateral type as well as many parts of the system.
+1. **System Caged** - The Emergency Security Module [(ESM)](https://github.com/makerdao/esm) calls `End.cage()` function, which freezes the USD price for each collateral type as well as many parts of the system.
 2. **Processing Period** - Next, Vault owners interact with End to settle their Vault and withdraw excess collateral. Auctions are left to conclude or are yanked before Dai redemption.
 3. **Dai Redemption** - After the processing period duration `End.wait` has elapsed, Vault settlement and all Dai generating processes auctions are assumed to have concluded. At this point, Dai holders can begin to claim a proportional amount of each collateral type at a fixed rate.
 

@@ -26,7 +26,7 @@ Overall, the MCD system's core contracts have been fully formally verified, and 
 **Big-step semantics:**
 
 - Maker DSL / State Machine
-- High-level system model \(K\)
+- High-level system model (K)
 - System-level invariants
 - Exhaustive behaviour checking
 - Executable system documentation
@@ -36,8 +36,8 @@ Overall, the MCD system's core contracts have been fully formally verified, and 
 - Core system
 - Dai token contract
 - Auction contracts
-- Dai Savings Rate \(DSR\)
-- Emergency shutdown module \(ESM\)
-- The Oracle security module \(OSM\) has been largely completed.
+- Dai Savings Rate (DSR)
+- Emergency shutdown module (ESM)
+- The Oracle security module (OSM) has been largely completed.
 
 Overall, the plan is to continue our formal verification efforts on the road to launching MCD, which includes updating past proofs based on the findings of our audits and bug findings.

@@ -23,10 +23,10 @@ With the new version of the **Maker Protocol**, Multi Collateral Dai (MCD), bein
 
 Additionally, there are a few other newly introduced features that come with the MCD upgrade. **These new features include:**
 
-* [New Dai token \($DAI\)](https://blog.makerdao.com/creating-the-brand-identity-for-the-worlds-first-unbiased-currency-dai/)
+* [New Dai token ($DAI)](https://blog.makerdao.com/creating-the-brand-identity-for-the-worlds-first-unbiased-currency-dai/)
 * Support for multiple Vault collateral types (Launching with ETH and BAT)
   * To open a Vault, head to [**Oasis Borrow**](https://oasis.app/borrow)
-* [Dai Savings Rate \(DSR\)](https://blog.makerdao.com/why-the-dai-savings-rate-is-a-game-changer-for-the-defi-ecosystem-and-beyond/) 
+* [Dai Savings Rate (DSR)](https://blog.makerdao.com/why-the-dai-savings-rate-is-a-game-changer-for-the-defi-ecosystem-and-beyond/) 
   * To use the DSR, head to [**Oasis Save**](https://oasis.app/save)
 * More robust peg ensuring mechanisms (MKR acting as backstop)
 * Stability fees paid every block, rather than on Dai repayment

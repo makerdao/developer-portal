@@ -20,7 +20,7 @@ parent: introduction-to-proxy-module
 - [**Contract Source**](https://github.com/makerdao/dss-cdp-manager/tree/master/src)
 - [**Etherscan**](https://etherscan.io/address/0x5ef30b9986345249bc32d8928b7ee64de9435e39)
 
-## 1. Introduction \(Summary\)
+## 1. Introduction (Summary)
 
 **Summary:** The `DssCdpManager` (aka `manager`) was created to enable a formalized process for Vaults to be transferred between owners, much like assets are transferred. It is recommended that all interactions with Vaults be done through the CDP Manager. Once unlocked collateral has been deposited into the Maker Protocol, users can make use of the following features:
 
@@ -33,7 +33,7 @@ parent: introduction-to-proxy-module
 
 ## 2. Contract Details
 
-### Key Functionalities \(as defined in the smart contract\)
+### Key Functionalities (as defined in the smart contract)
 
 - `cdpAllow(uint cdp, address usr, uint ok)`: Allow/Disallow (`ok`) a `usr` address to manage the `cdp`.
 - `urnAllow(address usr, uint ok)` : Allow/Disallow (`ok`) a `usr` address to interact with an urn for the purposes of either entering (`src`) or quitting `(dst).`
@@ -74,7 +74,7 @@ The CDP Manager was created as a way to enable Vaults to be treated more like as
 - The `manager` keeps a double linked list structure that allows the retrieval of all the Vaults that an `owner` has via on-chain calls.
   - In short, this is what the `GetCdps` is for. This contract is a helper contract that allows the fetching of all the Vaults in just one call.
 
-### CDP **Manager Usage Example \(common path\):**
+### CDP **Manager Usage Example (common path):**
 
 - A User executes `open` and gets a `CDPId` in return.
 - After this, the `CDPId` gets associated with an `urn` with `manager.urns(cdpId)` and then `join`'s collateral to it.
@@ -83,7 +83,7 @@ The CDP Manager was created as a way to enable Vaults to be treated more like as
   - Note that this is the same process for collateral that is freed after `frob` (for the `frob` function that doesn't require the `dst` address). The user can `flux` it to another address at a later time.
 - In the case where a user wants to abandon the `manager`, they can use `quit` as a way to migrate their position of their Vault to another `dst` address.
 
-## 4. Gotchas \(Potential source of user error\)
+## 4. Gotchas (Potential source of user error)
 
 - For the developers who want to integrate with the `manager`, they will need to understand that the Vault actions are still in the `urn` environment. Regardless of this, the `manager` tries to abstract the `urn` usage by a `CDPId`. This means that developers will need to get the `urn` (`urn = manager.urns(cdpId)`) to allow the `join`ing of collateral to that Vault.
 - As the `manager` assigns a specific `ilk` per `CDPId` and doesn't allow others to use it for theirs, there is a second `flux` function which expects an `ilk` parameter. This function has the simple purpose of taking out collateral that was wrongly sent to a Vault that can't handle it/is incompatible.
@@ -92,7 +92,7 @@ The CDP Manager was created as a way to enable Vaults to be treated more like as
   - If you use the `frob` function that has the destiny (`dst`) address, you are saying that you can send any Dai generated or collateral that has been freed. The second `frob` function is meant for leaving the collateral in the `urn` address because the `urn` is owned by the CDP manager. In this case, you would need to manually use the `flux` or `move` functions to get the DAI or collateral out. These functions (`flux` and `move`) may be more beneficial for a developer working with the proxy function, as it allows for more flexibility. For example, by using these functions you can move a specific amount of collateral and can use the other functions to do it. Overall, it can make working with it a little more flexible on specific developer needs.
 - As mentioned above in the summary, the [dss](https://github.com/makerdao/dss/tree/master/src) core contracts originally did not have the functionality to enable the transfer of Vault positions. Since then, the core contracts have also implemented a native transfer functionality called `fork` which allows the transferring of a Vault to another address. However, there is a restriction, which is that the address owner that will be receiving the Vault needs to provide authorization that they do in fact want to receive it. This was created for the situation when a user is transferring the collateral that is locked as well as the debt generated. If you are simply moving collateral to another address, there is no issue but in the case that you are also transferring the debt generated, there is a chance of putting a perfectly safe Vault in a risky position. This makes the contract functionality a little more restrictive. Therefore, the CDP manager is a good option to keep a simple way of transferring Vaults and recognizing them via a numeric ID.
 
-## 5. Failure Modes \(Bounds on Operating Conditions & External Risk Factors\)
+## 5. Failure Modes (Bounds on Operating Conditions & External Risk Factors)
 
 ### **Potential Issues around Chain Reorganization**
 

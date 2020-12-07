@@ -20,7 +20,7 @@ parent: introduction-to-core-module
 - [**Contract Source**](https://github.com/makerdao/dss/blob/master/src/vat.sol)
 - [**Etherscan**](https://etherscan.io/address/0x35d1b3f3d7966a1dfe207aa4514c12a259a0492b)
 
-## 1. Introduction \(Summary\)
+## 1. Introduction (Summary)
 
 The `Vat` is the core Vault engine of `dss`. It stores Vaults and tracks all the associated Dai and Collateral balances. It also defines the rules by which Vaults and balances can be manipulated. The rules defined in the `Vat` are immutable, so in some sense, the rules in the `Vat` can be viewed as the constitution of `dss`.
 
@@ -28,7 +28,7 @@ The `Vat` is the core Vault engine of `dss`. It stores Vaults and tracks all the
 
 ## 2. Contract Details
 
-### **Glossary \(Vat -** Vault **Engine\)**
+### **Glossary (Vat -** Vault **Engine)**
 
 - `gem`: collateral tokens.
 - `dai`: stablecoin tokens.

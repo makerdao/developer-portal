@@ -24,13 +24,13 @@ parent: introduction-to-proxy-module
   - [**Proxy Actions End** ](https://etherscan.io/address/0x069b2fb501b6f16d1f5fe245b16f6993808f1008)
   - [**Proxy Actions DSR**](https://etherscan.io/address/0x07ee93aeea0a36fff2a9b95dd22bd6049ee54f26)
 
-## 1. Introduction \(Summary\)
+## 1. Introduction (Summary)
 
 The Proxy Actions contract is a generalized wrapper for the Maker Protocol. It's basically a set of proxy functions for MCD (using dss-cdp-manager). The contract’s purpose is to be used via a personal ds-proxy and can be compared to the original Sag-Proxy as it offers the ability to execute a sequence of actions atomically.
 
 ## 2. Contract Details
 
-### Glossary \(Proxy Actions\)
+### Glossary (Proxy Actions)
 
 `manager` - enables a formalized process for CDPs to be transferred between owners.
 
@@ -56,7 +56,7 @@ The Proxy Actions contract is a generalized wrapper for the Maker Protocol. It's
 
 `daiJoin` - allows users to withdraw their Dai from the system into a standard ERC20 token.
 
-### Key Functionalities \(as defined in the smart contract\)
+### Key Functionalities (as defined in the smart contract)
 
 ### DssProxyActions
 
@@ -121,20 +121,20 @@ The `dss-proxy-actions` was designed to be used by the Ds-Proxy, which is owned 
 
 **Reference the ds-proxy for more information** [**here.**](https://github.com/dapphub/ds-proxy)
 
-#### **DSProxy Summary \(as it relates to the dss-proxy-actions contract\)**
+#### **DSProxy Summary (as it relates to the dss-proxy-actions contract)**
 
 The ds-proxy contact's purpose is to execute transactions and sequences of transactions by proxy. The contract allows code execution using a persistent identity. This can be very useful to execute a sequence of atomic actions. Since the owner of the proxy can be changed, this allows for dynamic ownership models, e.g. a multisig.
 
-- In the later example, we will see how the **execute function** works by using the proxy to execute calldata _data on contract _code.
+- In the later example, we will see how the **execute function** works by using the proxy to execute calldata \_data on contract \_code.
 - **The functions parameters are:**
-  - address _target
-  - bytes memory _data
+  - address \_target
+  - bytes memory \_data
 - For the address-target you pass in, that will be the library you want to use, in this case the proxy actions library.
 - For the Memory data you pass in, that will be the call data of what exactly you want to execute.
   - **Ex:** Want to open a Vault; then the bytes memory data you will pass in will be an ABI encoder that executes open function with certain parameters.
 - **Note:** This is used for both SCD and MCD.
 
-#### **Proxy Action Usage Example \(How a proxy call can look like\)**
+#### **Proxy Action Usage Example (How a proxy call can look like)**
 
 ```solidity
 proxy.execute(dssProxyActions, abi.encodeWithSignature("open(address,bytes32,address)", address(manager), bytes32("ETH-A"), address(0x123)))

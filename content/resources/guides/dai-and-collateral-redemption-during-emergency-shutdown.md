@@ -208,7 +208,7 @@ seth send $MYPROXY 'execute(address,bytes memory)' $PROXY_ACTIONS_END $cashETHca
 # [example](<http://ethtx.info/kovan/0x323ab9cd9817695089aea31eab369fa9f3c9b1a64743ed4c5c1b3ec4d7218cf8>) successful transaction
 ```
 
-#### 9. Alternative from step \(6\), Using **`cashGEM`**
+#### 9. Alternative from step (6), Using **`cashGEM`**
 
 It is also possible to use the `cashGEM` function in order to redeem different collateral types. In the below example we are referencing gemJoin as it relates to BAT.
 

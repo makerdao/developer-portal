@@ -80,7 +80,7 @@ const maker = await Maker.create('http', {
 
 ## Instance methods
 
-### service\(\)
+### service()
 
 * **Returns:** service object
 
