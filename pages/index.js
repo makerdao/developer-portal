@@ -13,7 +13,6 @@ import AboutThisSite from '@components/AboutThisSite';
 import PageLead from '@components/PageLead';
 import IntroText from '@components/IntroText';
 import ModulesList from '@components/ModulesList';
-import Dropdown from '@components/Dropdown';
 import useCreateDocument from '../hooks/useCreateDocument';
 import { getResources } from '@utils';
 import { usePlugin } from 'tinacms';
@@ -27,9 +26,9 @@ const Page = ({ file, guides, documentation }) => {
   useGithubToolbarPlugins();
   useCreateDocument([...guides, ...documentation]);
 
-  const [active, setActive] = useState('everything');
+  const [selected, setSelected] = useState('everything');
   const filteredResources = guides.filter((guide) =>
-    active === 'everything' ? Boolean : guide.data.frontmatter.components.includes(active)
+    selected === 'everything' ? Boolean : guide.data.frontmatter.components.includes(selected)
   );
   const componentNames = guides.reduce(
     (acc, guide) => {
@@ -52,18 +51,14 @@ const Page = ({ file, guides, documentation }) => {
             secondary="For Developers"
             cta="Learn more about the technology."
           />
-          <Flex sx={{ alignItems: 'center' }}>
-            <Heading sx={{ pb: 1 }} variant="mediumHeading">
-              Show me guides about
-            </Heading>
-            <Dropdown
-              sx={{ variant: 'text.mediumHeading' }}
-              options={componentNames}
-              activeGroup={active}
-              onChange={setActive}
-            />
-          </Flex>
-          <GuideList title="Guides" path="guides" guides={filteredResources} />
+          <GuideList
+            title="Show guides about"
+            path="guides"
+            guides={filteredResources}
+            options={componentNames}
+            selected={selected}
+            setSelected={setSelected}
+          />
 
           <IntroText />
 
