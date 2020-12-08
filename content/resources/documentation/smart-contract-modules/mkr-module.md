@@ -29,7 +29,7 @@ The MKR Module contains the MKR token, which is a deployed [Ds-Token](https://gi
 
 ![MKR Interactions with the Maker Protocol](/images/documentation/screen-shot-2019-11-17-at-2.10.06-pm.png)
 
-## 2. Contract Details:
+## 2. Contract Details
 
 ### Glossary (MKR)
 

@@ -134,6 +134,7 @@ const theme = {
         surface: '#340F35',
         // surface: '#ffffff08',
         text: '#EAEBF0',
+        textMuted: '#907B90',
         // text: '#fffff0',
         onBackground: '#EAEBF0',
         primary: '#F34181',
@@ -144,7 +145,7 @@ const theme = {
         // primary: '#F012BE',
         muted: '#694769',
         // muted: '#ffffff08',
-        mutedAlt: '#5a495c',
+        mutedAlt: '#694769',
         onBackgroundAlt: '#EAEBF0',
         // onBackgroundAlt: '#e1dfec',
         onBackgroundMuted: '#CFC3CF',
@@ -170,6 +171,11 @@ const theme = {
       fontSize: 4,
       color: 'text',
     },
+    caps: {
+      ...makerTheme.text.caps,
+      fontFamily: 'FT Base',
+      fontWeight: 'body',
+    },
   },
 
   links: {
@@ -180,7 +186,21 @@ const theme = {
     },
     sidebar: {
       variant: 'links.nav',
+      fontSize: 1, // DELETE if not needed
+    },
+    infobar: {
+      variant: 'links.nav',
+      color: 'onBackgroundMuted',
       fontSize: 1,
+      '&:hover': {
+        color: 'text',
+      },
+      // '&:active': {
+      //   color: 'text',
+      // },
+      '&:focus': {
+        color: 'text',
+      },
     },
   },
   cards: {

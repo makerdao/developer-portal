@@ -4,7 +4,7 @@ const useStore = create((set) => ({
   dsrRate: '0.00',
   totalSavingsDai: '0.00',
 
-  activeModule: '',
+  activeGroup: '',
 
   setDsrRate: (dsrRate) => {
     set({ dsrRate });
@@ -13,8 +13,8 @@ const useStore = create((set) => ({
     set({ totalSavingsDai });
   },
 
-  setActiveModule: (activeModule) => {
-    set({ activeModule });
+  setActiveGroup: (activeGroup) => {
+    set({ activeGroup });
   },
 }));
 

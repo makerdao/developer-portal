@@ -35,7 +35,7 @@ Each `join` contract is created specifically to allow the given token type to be
 
 ![Join Interactions with the Maker Protocol](/images/documentation/screen-shot-2019-11-17-at-2.05.06-pm.png)
 
-## 2. Contract Details:
+## 2. Contract Details
 
 ### Glossary (Join)
 

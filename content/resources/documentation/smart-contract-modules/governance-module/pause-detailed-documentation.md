@@ -24,7 +24,7 @@ The `ds-pause` is a _delegatecall_ based proxy with an enforced delay. This allo
 
 ![](/images/documentation/pause.png)
 
-## 2. Contract Details:
+## 2. Contract Details
 
 #### Key Functionalities (as defined in the smart contract)
 

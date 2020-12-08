@@ -8,7 +8,7 @@ import SingleLayout from '@layouts/SingleLayout';
 import { getResources } from '@utils';
 import { ContentTypes } from '@utils/constants';
 
-const PageLead = ({ options, activeModule, onChange }) => {
+const PageLead = ({ options, activeGroup, onChange }) => {
   return (
     <Container>
       <Flex sx={{ py: [4, 6], flexDirection: 'column' }}>
@@ -28,7 +28,7 @@ const PageLead = ({ options, activeModule, onChange }) => {
                 borderColor: (theme) => `transparent transparent ${theme.colors.text} transparent`,
               },
             }}
-            defaultValue={activeModule}
+            defaultValue={activeGroup}
             onChange={(e) => onChange(e.target.value)}
           >
             {options.map((opt) => (
@@ -51,7 +51,7 @@ const Page = ({ guides }) => {
 
   return (
     <SingleLayout>
-      <PageLead activeModule={active} onChange={setActive} options={componentNames} />
+      <PageLead activeGroup={active} onChange={setActive} options={componentNames} />
       <ArticlesList title="Guides" path="guides" resources={resources} />
     </SingleLayout>
   );

@@ -1,7 +1,9 @@
 /** @jsx jsx */
-import { Fragment } from 'react';
-import { jsx, Flex, NavLink } from 'theme-ui';
+import { Fragment, useState, useEffect } from 'react';
+import { jsx, Flex, NavLink, Text } from 'theme-ui';
 import Link from 'next/link';
+import useStore from '../stores/store';
+import { navItems } from '../data/resourcesSubNav.json';
 
 const ListItem = ({ title, root: isRoot, activeSlug, resourcePath, slug, parent: hasParent }) => {
   const active = slug === activeSlug;
@@ -74,8 +76,26 @@ const List = ({ items, resourcePath, activeSlug }) => {
 };
 
 const Sidebar = ({ resources, resourcePath, activeSlug }) => {
+  const activeGroup = useStore((state) => state.activeGroup);
+  const [name, setName] = useState(null);
+  useEffect(() => {
+    setName(navItems.find((ni) => ni.slug === activeGroup)?.name);
+  }, [activeGroup]);
+
   return (
-    <Flex sx={{ p: 0, flexDirection: 'column' }}>
+    <Flex
+      sx={{
+        p: 0,
+        pl: 4,
+        flexDirection: 'column',
+        border: 'light',
+        borderColor: 'mutedAlt',
+        borderWidth: '0 1px 0 0',
+      }}
+    >
+      <Text sx={{ px: 2, pt: 3, color: 'textMuted' }} variant="caps">
+        {name}
+      </Text>
       {resources.map((resource, i) => (
         <List key={i} items={resource} resourcePath={resourcePath} activeSlug={activeSlug} />
       ))}

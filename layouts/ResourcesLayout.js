@@ -23,7 +23,7 @@ const ResourcesLayout = ({ resources, resourcePath, slug: activeSlug, toc, subna
     <SingleLayout subnav={subnav}>
       <Grid columns={['auto', '300px auto 250px']} gap="0">
         {sidebar}
-        <Box sx={{ bg: 'surface', borderRadius: 0, py: 0, px: 4, pb: 4 }}>{children}</Box>
+        <Box sx={{ borderRadius: 0, py: 0, px: 4, pb: 4 }}>{children}</Box>
         <Infobar resourcePath={resourcePath} slug={activeSlug} toc={toc} />
       </Grid>
     </SingleLayout>

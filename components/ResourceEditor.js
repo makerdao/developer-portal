@@ -28,11 +28,11 @@ const ResourceEditor = ({
   toc,
 }) => {
   const cms = useCMS();
-  const setActiveModule = useStore((state) => state.setActiveModule);
+  const setActiveGroup = useStore((state) => state.setActiveGroup);
 
   useEffect(() => {
-    setActiveModule(file.data.frontmatter.group);
-  }, [setActiveModule, file.data.frontmatter.group]);
+    setActiveGroup(file.data.frontmatter.group);
+  }, [setActiveGroup, file.data.frontmatter.group]);
 
   const [navData, navForm] = useSubNavForm(navFile, preview);
   useFormScreenPlugin(navForm);

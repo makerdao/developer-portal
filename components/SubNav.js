@@ -4,7 +4,7 @@ import Link from 'next/link';
 import useStore from '../stores/store';
 
 const SubNav = ({ links, query }) => {
-  const activeModule = useStore((state) => state.activeModule);
+  const activeGroup = useStore((state) => state.activeGroup);
   return (
     <Box
       sx={{
@@ -30,7 +30,7 @@ const SubNav = ({ links, query }) => {
             <Link href={{ pathname: url, query }} passHref key={name}>
               <NavLink
                 sx={{
-                  color: slug === activeModule ? 'primary' : undefined,
+                  color: slug === activeGroup ? 'primary' : undefined,
                   minWidth: 'max-content',
                   pl: 2,
                   pr: 4,
