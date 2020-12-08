@@ -1,43 +1,43 @@
 /** @jsx jsx */
+import { useState } from 'react';
 import { getGithubPreviewProps, parseJson } from 'next-tinacms-github';
 import { useGithubToolbarPlugins, useGithubJsonForm } from 'react-tinacms-github';
-import { InlineForm, InlineText, InlineTextarea } from 'react-tinacms-inline';
+import { InlineForm, InlineTextarea } from 'react-tinacms-inline';
 import SingleLayout from '../layouts/SingleLayout.js';
-import GuideList from '../components/GuideList';
-import ArticlesList from '../components/ArticlesList';
-import Ecosystem from '../components/Ecosystem';
+import { Container, jsx, Box, Heading, Text, Grid, Flex, Link as ThemeLink } from 'theme-ui';
+import GuideList from '@components/GuideList';
+import Ecosystem from '@components/Ecosystem';
 import Link from 'next/link';
-import CommunityCta from '../components/CommunityCta';
-import CodeBox from '../components/CodeBox';
-import EditLink from '../components/EditLink';
-import {
-  Container,
-  jsx,
-  Card,
-  Box,
-  Button,
-  Heading,
-  Text,
-  Grid,
-  Flex,
-  Link as ThemeLink,
-} from 'theme-ui';
+import CommunityCta from '@components/CommunityCta';
+import AboutThisSite from '@components/AboutThisSite';
+import PageLead from '@components/PageLead';
+import IntroText from '@components/IntroText';
+import ModulesList from '@components/ModulesList';
+import Dropdown from '@components/Dropdown';
+import useCreateDocument from '../hooks/useCreateDocument';
 import { getResources } from '@utils';
 import { usePlugin } from 'tinacms';
 import { Icon } from '@makerdao/dai-ui-icons';
 import { ecosystem } from '../data/ecosystem.json';
 import { landingPageFormOptions } from '../data/formOptions';
-import AboutThisSite from '../components/AboutThisSite';
-import PageLead from '../components/PageLead';
-import IntroText from '../components/IntroText';
-import ModulesList from '../components/ModulesList';
-import useCreateDocument from '../hooks/useCreateDocument';
 
 const Page = ({ file, guides, documentation }) => {
   const [data, form] = useGithubJsonForm(file, landingPageFormOptions);
   usePlugin(form);
   useGithubToolbarPlugins();
   useCreateDocument([...guides, ...documentation]);
+
+  const [active, setActive] = useState('everything');
+  const filteredResources = guides.filter((guide) =>
+    active === 'everything' ? Boolean : guide.data.frontmatter.components.includes(active)
+  );
+  const componentNames = guides.reduce(
+    (acc, guide) => {
+      acc.push(...guide.data.frontmatter.components);
+      return [...new Set(acc)];
+    },
+    ['everything']
+  );
 
   return (
     <SingleLayout>
@@ -52,7 +52,18 @@ const Page = ({ file, guides, documentation }) => {
             secondary="For Developers"
             cta="Learn more about the technology."
           />
-          <GuideList title="Guides" path="guides" guides={guides} />
+          <Flex sx={{ alignItems: 'center' }}>
+            <Heading sx={{ pb: 1 }} variant="mediumHeading">
+              Show me guides about
+            </Heading>
+            <Dropdown
+              sx={{ variant: 'text.mediumHeading' }}
+              options={componentNames}
+              activeGroup={active}
+              onChange={setActive}
+            />
+          </Flex>
+          <GuideList title="Guides" path="guides" guides={filteredResources} />
 
           <IntroText />
 

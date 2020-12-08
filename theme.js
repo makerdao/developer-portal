@@ -231,6 +231,17 @@ const theme = {
       color: 'background',
       bg: 'onBackgroundAlt',
     },
+    select: {
+      color: 'primary',
+      fontWeight: 'bold',
+      border: 'none',
+      borderColor: (theme) => `transparent transparent ${theme.colors.text} transparent`,
+      '&:focus': {
+        color: 'primary',
+        borderColor: 'transparent',
+        outline: 'none',
+      },
+    },
   },
   images: {
     ...makerTheme.images,

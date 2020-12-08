@@ -1,9 +1,8 @@
 import { useState } from 'react';
 import { getGithubPreviewProps, parseJson } from 'next-tinacms-github';
-import { useGithubToolbarPlugins, useGithubJsonForm } from 'react-tinacms-github';
-import { InlineForm, InlineText, InlineTextarea } from 'react-tinacms-inline';
-import { Container, Heading, Flex, Select } from 'theme-ui';
+import { Container, Heading, Flex } from 'theme-ui';
 import ArticlesList from '@components/ArticlesList';
+import Dropdown from '@components/Dropdown';
 import SingleLayout from '@layouts/SingleLayout';
 import { getResources } from '@utils';
 import { ContentTypes } from '@utils/constants';
@@ -14,27 +13,15 @@ const PageLead = ({ options, activeGroup, onChange }) => {
       <Flex sx={{ py: [4, 6], flexDirection: 'column' }}>
         <Heading variant="megaHeading">Show me guides</Heading>
         <Flex sx={{ alignItems: 'center' }}>
-          <Heading sx={{ pr: 4 }} variant="megaHeading">
+          <Heading sx={{ pr: 4, pb: 2 }} variant="megaHeading">
             about
           </Heading>
-          <Select
-            sx={{
-              width: 'auto',
-              variant: 'text.megaHeading',
-              color: 'primary',
-              borderColor: (theme) => `transparent transparent ${theme.colors.text} transparent`,
-              '&:focus': {
-                color: 'primary',
-                borderColor: (theme) => `transparent transparent ${theme.colors.text} transparent`,
-              },
-            }}
-            defaultValue={activeGroup}
-            onChange={(e) => onChange(e.target.value)}
-          >
-            {options.map((opt) => (
-              <option key={opt}>{opt}</option>
-            ))}
-          </Select>
+          <Dropdown
+            sx={{ variant: 'text.megaHeading' }}
+            options={options}
+            activeGroup={activeGroup}
+            onChange={onChange}
+          />
         </Flex>
       </Flex>
     </Container>
