@@ -88,7 +88,7 @@ const GuideList = ({ guides, title, path, options, selected, setSelected }) => {
                           }}
                         >
                           <Icon color="primary" sx={{ mr: 2 }} name={'arrow_right'}></Icon>
-                          <ThemeLink sx={{ color: 'text', cursor: 'pointer' }}>View Docs</ThemeLink>
+                          <ThemeLink sx={{ color: 'text', cursor: 'pointer' }}>Read</ThemeLink>
                         </Flex>
                       </Flex>
                     </Link>
