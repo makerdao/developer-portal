@@ -1,6 +1,6 @@
 {
   "subtext": "Find all you need to build on top of the Maker Protocol integrate Dai, the decentralized stablecoin.",
-  "aboutSubheading": "The Maker Protocol, built on the Ethereum blockchain, enables users to create currency.",
+  "aboutSubheading": "The Maker Protocol, one of the largest decentralized applications (dapps) on the Ethereum blockchain, was the first decentralized finance (DeFi) application to earn significant adoption.",
   "aboutMakerProtocol": "The Maker Protocol, built on the Ethereum blockchain, enables users to create currency. Current elements of the Maker Protocol are the Dai stablecoin, Maker Collateral Vaults, Oracles, and Voting. MakerDAO governs the Maker Protocol by deciding on key parameters (e.g., stability fees, collateral types/rates, etc.) through the voting power of MKR holders.",
   "sdksAndToolsHeading": "Dai.js is a JavaScript library that makes it easy to build applications on top of MakerDAO's platform of smart contracts.",
   "sdksAndToolsText": "You can use Maker's contracts to open Vaults (formerly known as CDPs), deposit collateral and generate Dai, trade tokens on decentralized exchanges, and more. The library features a pluggable, service-based architecture, which allows users to easily integrate Maker functionality into their own apps.",
