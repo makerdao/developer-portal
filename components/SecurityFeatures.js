@@ -19,7 +19,7 @@ const SecurityFeatures = () => {
             mt: 4,
           }}
         >
-          <Icon name="security" size={7} sx={{ ml: 4 }} />
+          <Icon color="textMuted" name="security" size={7} sx={{ ml: 4 }} />
           <Flex sx={{ flexDirection: 'column', width: '66%', p: 5, ml: 4 }}>
             <Heading variant="mediumHeading" sx={{ pb: 3 }}>
               Security details

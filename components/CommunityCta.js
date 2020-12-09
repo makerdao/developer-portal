@@ -24,7 +24,49 @@ const CommunitySection = () => {
 
   return (
     <Container>
-      <Card sx={{ p: 0 }}>
+      <Card sx={{ p: 0, display: 'flex', width: '100%', position: 'relative' }}>
+        <Icon
+          color="textMuted"
+          name="tri_1"
+          size="150px"
+          sx={{
+            position: 'absolute',
+            top: '-70px',
+            left: '60px',
+          }}
+        />
+        <Icon
+          color="textMuted"
+          name="tri_2"
+          size="250px"
+          sx={{
+            position: 'absolute',
+            alignSelf: 'flex-end',
+            right: '-20px',
+            top: '-120px',
+          }}
+        />
+        <Icon
+          color="textMuted"
+          name="tri_3"
+          size="240px"
+          sx={{
+            position: 'absolute',
+            left: '-130px',
+            top: '240px',
+          }}
+        />
+        <Icon
+          color="textMuted"
+          name="tri_4"
+          size="90px"
+          sx={{
+            position: 'absolute',
+            alignSelf: 'flex-end',
+            right: '60px',
+            bottom: '-50px',
+          }}
+        />
         <Grid sx={{ p: 4, rowGap: 4 }}>
           <Flex sx={{ justifyContent: 'center' }}>
             <Heading variant="largeHeading">Join the Developer Community</Heading>
@@ -50,7 +92,7 @@ const CommunitySection = () => {
         </Grid>
       </Card>
       <Flex sx={{ justifyContent: 'center', alignItems: 'center', p: 4 }}>
-        <Icon name="smiley" size={6} />
+        <Icon color="textMuted" name="smiley" size={6} />
         <Flex sx={{ width: '50%', p: 4 }}>
           <Heading>
             <InlineTextarea name="communityCallout" />
