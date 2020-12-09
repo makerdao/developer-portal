@@ -1,38 +1,7 @@
 /** @jsx jsx */
-import {
-  jsx,
-  Card,
-  Heading,
-  Text,
-  Box,
-  Flex,
-  Grid,
-  Container,
-  Input,
-  Link as ThemeLink,
-} from 'theme-ui';
+import { jsx, Card, Heading, Text, Box, Flex, Grid, Container, Link as ThemeLink } from 'theme-ui';
 import { Icon } from '@makerdao/dai-ui-icons';
-import EmailSignup from './EmailSignup';
-
-const NewsletterSignup = ({ text, placeholder }) => {
-  return (
-    <Grid
-      columns={[1, 2]}
-      sx={{
-        px: [0, 6],
-      }}
-    >
-      <Box>
-        <Heading variant="microHeading">{text}</Heading>
-      </Box>
-      <Flex sx={{ justifyContent: 'center', alignItems: 'center' }}>
-        <Box sx={{ width: '100%' }}>
-          <EmailSignup placeholder={placeholder} />
-        </Box>
-      </Flex>
-    </Grid>
-  );
-};
+import { InlineTextarea } from 'react-tinacms-inline';
 
 const CommunitySection = () => {
   const ctaContent = [
@@ -55,36 +24,37 @@ const CommunitySection = () => {
 
   return (
     <Container>
-      <Card>
+      <Card sx={{ p: 0 }}>
         <Grid sx={{ p: 4, rowGap: 4 }}>
           <Flex sx={{ justifyContent: 'center' }}>
-            <Heading variant="mediumHeading">Join the Developer Community</Heading>
+            <Heading variant="largeHeading">Join the Developer Community</Heading>
           </Flex>
 
-          <Grid columns={[1, 3]}>
+          <Grid columns={[1, 3]} sx={{ py: 4 }}>
             {ctaContent.map(({ title, link, text }) => (
               <Card sx={{ p: 4, bg: 'onBackground' }} key={title}>
                 <Grid>
-                  <Heading sx={{ color: 'background' }} variant="microHeading">
-                    {title}
-                  </Heading>
+                  <Heading sx={{ color: 'background' }}>{title}</Heading>
                   <ThemeLink href={link} target="_blank">
                     <Flex sx={{ alignItems: 'center' }}>
-                      <Text sx={{ color: 'background' }}>{text}</Text>
                       <Icon name="increase"></Icon>
+                      <Text variant="largeText" sx={{ color: 'background', px: 2 }}>
+                        {text}
+                      </Text>
                     </Flex>
                   </ThemeLink>
                 </Grid>
               </Card>
             ))}
           </Grid>
-
-          <NewsletterSignup
-            text={'Want Maker dev updates dripping into your mailbox?'}
-            placeholder={'We saved a slot for your email'}
-          />
         </Grid>
       </Card>
+      <Flex sx={{ justifyContent: 'center', alignItems: 'center' }}>
+        <Icon name="smiley" size={6} />
+        <Heading>
+          <InlineTextarea name="communityCallout" />
+        </Heading>
+      </Flex>
     </Container>
   );
 };
