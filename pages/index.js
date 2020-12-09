@@ -13,6 +13,7 @@ import AboutThisSite from '@components/AboutThisSite';
 import PageLead from '@components/PageLead';
 import IntroText from '@components/IntroText';
 import ModulesList from '@components/ModulesList';
+import SecurityFeatures from '@components/SecurityFeatures';
 import useCreateDocument from '../hooks/useCreateDocument';
 import { getResources } from '@utils';
 import { usePlugin } from 'tinacms';
@@ -198,10 +199,10 @@ const Page = ({ file, guides, documentation }) => {
               </Grid>
             </Grid>
           </Container>
-
+          <SecurityFeatures />
           {/* <CodeBox cta="Dive in the code" sections={codeSections} /> */}
           {/* <ArticlesList title="Articles" path="guides" resources={guides} /> */}
-          <Ecosystem title={'Developer Ecosystem'} items={ecosystem} />
+          {/* <Ecosystem title={'Developer Ecosystem'} items={ecosystem} /> */}
 
           <CommunityCta />
           <AboutThisSite />
