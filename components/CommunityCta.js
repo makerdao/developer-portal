@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, Card, Heading, Text, Box, Flex, Grid, Container, Link as ThemeLink } from 'theme-ui';
+import { jsx, Card, Heading, Text, Flex, Grid, Container, Link as ThemeLink } from 'theme-ui';
 import { Icon } from '@makerdao/dai-ui-icons';
 import { InlineTextarea } from 'react-tinacms-inline';
 
@@ -49,11 +49,13 @@ const CommunitySection = () => {
           </Grid>
         </Grid>
       </Card>
-      <Flex sx={{ justifyContent: 'center', alignItems: 'center' }}>
+      <Flex sx={{ justifyContent: 'center', alignItems: 'center', p: 4 }}>
         <Icon name="smiley" size={6} />
-        <Heading>
-          <InlineTextarea name="communityCallout" />
-        </Heading>
+        <Flex sx={{ width: '50%', p: 4 }}>
+          <Heading>
+            <InlineTextarea name="communityCallout" />
+          </Heading>
+        </Flex>
       </Flex>
     </Container>
   );
