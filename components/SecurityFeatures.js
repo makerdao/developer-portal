@@ -2,6 +2,7 @@
 import { jsx, Container, Heading, Text, Flex } from 'theme-ui';
 import Link from 'next/link';
 import { Icon } from '@makerdao/dai-ui-icons';
+import { InlineTextarea } from 'react-tinacms-inline';
 
 const SecurityFeatures = () => {
   return (
@@ -24,8 +25,7 @@ const SecurityFeatures = () => {
               Security details
             </Heading>
             <Text sx={{ pb: 3, fontSize: 5 }}>
-              Is dedicated to providing transparency to our community with respect to the results of
-              our MCD Audits, our Bug Bounty Program, and Formal Verification.
+              <InlineTextarea name="securitySubtext" />
             </Text>
             <Link href="/security">
               <Flex sx={{ alignItems: 'center' }}>
