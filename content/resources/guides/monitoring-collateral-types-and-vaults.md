@@ -11,52 +11,63 @@ tags:
 slug: monitoring-collateral-types-and-vaults
 contentType: guides
 root: false
+author: pcatana
+dateCreated: '2020-11-09T16:57:58Z'
+lastModified: '2020-11-16T23:23:02Z'
+contributors:
+  - author: Phil Bain
+    date: '2020-11-16T23:23:02Z'
+    avatar: 'https://avatars2.githubusercontent.com/u/13105602?v=4'
+    username: b-pmcg
+  - author: pcatana
+    date: '2020-11-09T16:57:58Z'
+    avatar: 'https://avatars2.githubusercontent.com/u/19393057?v=4'
+    username: pcatana
 ---
-
 # Monitoring Collateral Types and Vaults
 
 Level: Intermediate  
 Estimated Time: 45 minutes
 
-- [Monitoring Collateral Types and Vaults](#monitoring-collateral-types-and-vaults)
-  - [Overview](#overview)
-  - [Learning objectives](#learning-objectives)
-  - [Pre-requisites](#pre-requisites)
-  - [Guide](#guide)
-    - [Collateral Types](#collateral-types)
-      - [Example](#example)
-    - [Vaults](#vaults)
-      - [Example](#example-1)
-  - [Summary](#summary)
-  - [Troubleshooting](#troubleshooting)
-  - [Next steps](#next-steps)
-  - [Resources](#resources)
+* [Monitoring Collateral Types and Vaults](#monitoring-collateral-types-and-vaults)
+  * [Overview](#overview)
+  * [Learning objectives](#learning-objectives)
+  * [Pre-requisites](#pre-requisites)
+  * [Guide](#guide)
+    * [Collateral Types](#collateral-types)
+      * [Example](#example)
+    * [Vaults](#vaults)
+      * [Example](#example-1)
+  * [Summary](#summary)
+  * [Troubleshooting](#troubleshooting)
+  * [Next steps](#next-steps)
+  * [Resources](#resources)
 
 ## Overview
 
-Monitoring part of the Maker Protocol state is an important part of servicing users of the protocol, such as Vault owners. Proactive monitoring is recommended and has the potential to save Vault owners from liquidation and high stability fees. This guide will highlight the locations of relevant data as implemented in smart contract Solidity code, so it is up to the reader to choose which API is used to access that data. Some notable APIs are Dai.js and Pymaker; more generalized Web3 libraries can be used, though without the valuable utility functions that are exposed in the former two APIs. Moreover, because they abstract away much of the complexity of data transformation, we strongly recommend trying to work with [Dai.js](https://docs.makerdao.com/dai.js) or [Pymaker](https://docs.makerdao.com/pymaker) before attempting to read the state directly.
+Monitoring part of the Maker Protocol state is an important part of servicing users of the protocol, such as Vault owners. Proactive monitoring is recommended and has the potential to save Vault owners from liquidation and high stability fees. This guide will highlight the locations of relevant data as implemented in smart contract Solidity code, so it is up to the reader to choose which API is used to access that data. Some notable APIs are Dai.js and Pymaker; more generalized Web3 libraries can also be used, though without the valuable utility functions that are exposed in the former two APIs. Moreover, because they abstract away much of the complexity of data transformation, we strongly recommend trying to work with [Dai.js](https://docs.makerdao.com/dai.js) or [Pymaker](https://docs.makerdao.com/pymaker) before attempting to read the state directly.
 
 ## Learning objectives
 
 After going through this guide, you will gain a better understanding of:
 
-- How to monitor the state and health of a particular Vault
-- How to monitor relevant risk parameters
+* How to monitor the state and health of a particular Vault
+* How to monitor relevant risk parameters
 
 ## Pre-requisites
 
 [Maker Protocol 101](https://github.com/makerdao/developerguides/blob/master/mcd/mcd-101/mcd-101.md), especially:
 
-- Vault basics.
-- Governance Risk parameters.
+* Vault basics.
+* Governance Risk parameters.
 
 ## Guide
 
 Mainnet addresses to contracts mentioned below can be found in the [latest release](https://changelog.makerdao.com/) of the Maker Protocol. To see the contract solidity code, go to etherscan.io, click on the `Contract` tab, and finally select the `Code` card. When reading numeric values, remember to account for their magnitudes. Of the fixed point integers:
 
-- `wad` - 18 decimal places
-- `ray` - 27 decimal places
-- `rad` - 45 decimal places
+* `wad` - 18 decimal places
+* `ray` - 27 decimal places
+* `rad` - 45 decimal places
 
 ### Collateral Types
 
