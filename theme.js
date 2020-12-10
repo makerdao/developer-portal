@@ -55,8 +55,13 @@ const theme = {
     },
     caps: {
       ...makerTheme.text.caps,
-      fontFamily: 'FT Base',
+      fontFamily: 'heading',
       fontWeight: 'body',
+    },
+    plainText: {
+      fontFamily: 'heading',
+      fontWeight: 'body',
+      fontSize: 5,
     },
   },
 

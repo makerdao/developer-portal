@@ -14,6 +14,7 @@ import PageLead from '@components/PageLead';
 import IntroText from '@components/IntroText';
 import ModulesList from '@components/ModulesList';
 import SecurityFeatures from '@components/SecurityFeatures';
+import NewsletterCallout from '@components/NewsletterCallout';
 import useCreateDocument from '../hooks/useCreateDocument';
 import { getResources } from '@utils';
 import { usePlugin } from 'tinacms';
@@ -206,6 +207,7 @@ const Page = ({ file, guides, documentation }) => {
 
           <CommunityCta />
           <AboutThisSite />
+          <NewsletterCallout />
         </Grid>
       </InlineForm>
     </SingleLayout>
