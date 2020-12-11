@@ -12,6 +12,7 @@ import SubNav from '@components/SubNav';
 import RelatedResources from '@components/RelatedResources';
 import Contributors from '@components/Contributors';
 import Feedback from '@components/Feedback';
+import ContributeCta from '@components/ContributeCta';
 import useSubNavForm from '../hooks/useSubNavForm';
 import ResourcesLayout from '@layouts/ResourcesLayout';
 import useStore from '../stores/store';
@@ -65,17 +66,9 @@ const ResourceEditor = ({
         </InlineWysiwyg>
       </InlineForm>
       <RelatedResources resources={relatedResources} contentType={contentType} />
-      <Flex sx={{ my: 4, flexDirection: 'column', alignItems: 'flex-start' }}>
-        <EditLink enterText="Edit This Page With TinaCMS" />
-        <ThemeLink href={`${GITHUB_EDIT_LINK}${file.fileRelativePath}`} target="_blank">
-          <Flex sx={{ alignItems: 'center', mt: 2 }}>
-            <Text sx={{ color: 'text', cursor: 'pointer' }}>Edit on Github</Text>
-            <Icon sx={{ ml: 2 }} color="primary" name={'arrow_right'}></Icon>
-          </Flex>
-        </ThemeLink>
-      </Flex>
       <Grid gap={4}>
         <Feedback />
+        <ContributeCta file={file} />
         <Contributors contributors={file.data.frontmatter.contributors} />
       </Grid>
     </ResourcesLayout>
