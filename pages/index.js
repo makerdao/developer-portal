@@ -16,6 +16,7 @@ import ModulesList from '@components/ModulesList';
 import SecurityFeatures from '@components/SecurityFeatures';
 import NewsletterCallout from '@components/NewsletterCallout';
 import Banner from '@components/Banner';
+import LibrariesSdks from '@components/LibrariesSdks';
 import useCreateDocument from '../hooks/useCreateDocument';
 import { getResources } from '@utils';
 import { usePlugin } from 'tinacms';
@@ -114,118 +115,7 @@ const Page = ({ file, guides, documentation }) => {
             </Container>
             <ModulesList />
           </Box>
-
-          <Container>
-            <Heading variant="mediumHeading" pb={3}>
-              SDKs and Tools
-            </Heading>
-
-            <Flex
-              sx={{
-                maxWidth: '100%',
-              }}
-            >
-              <Grid
-                sx={{
-                  rowGap: 3,
-                  mr: 3,
-                }}
-              >
-                <Heading variant="smallHeading">
-                  <InlineTextarea name="sdksAndToolsHeading" />
-                </Heading>
-                <Text
-                  sx={{
-                    color: 'onBackgroundMuted',
-                    columns: '2 200px',
-                  }}
-                >
-                  <InlineTextarea name="sdksAndToolsText" />
-                </Text>
-                <Link href="/technology">
-                  <Flex sx={{ alignItems: 'center' }}>
-                    <Icon sx={{ mr: 2 }} color="primary" name={'arrow_right'}></Icon>
-                    <Text sx={{ cursor: 'pointer' }}>View dai.js</Text>
-                  </Flex>
-                </Link>
-                <Grid columns={2}>
-                  <Box></Box>
-                  <Box>
-                    <Text>pyMaker</Text>
-                    <Text>
-                      <InlineTextarea name="pyMakerSubtext" />
-                    </Text>
-                    <Link href="/technology">
-                      <Flex sx={{ alignItems: 'center' }}>
-                        <Icon sx={{ mr: 2 }} color="primary" name={'arrow_right'}></Icon>
-                        <Text sx={{ cursor: 'pointer' }}>View pyMaker</Text>
-                      </Flex>
-                    </Link>
-                  </Box>
-                </Grid>
-              </Grid>
-              <Box
-                sx={{
-                  width: 200,
-                  position: 'relative',
-                  height: 200,
-                  pt: 4,
-                  pl: 2,
-                }}
-              >
-                <Icon
-                  name="codeCanvas"
-                  size={200}
-                  sx={{
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                  }}
-                />
-                <Text>//Dai.js</Text>
-              </Box>
-            </Flex>
-
-            <Grid
-              columns={2}
-              sx={{
-                pt: 4,
-              }}
-            >
-              <Grid
-                sx={{
-                  rowGap: 2,
-                }}
-              >
-                <Heading>Keepers</Heading>
-                <Text>
-                  <InlineTextarea name="keepersSubtext" />
-                </Text>
-                <Link href="/technology">
-                  <Flex sx={{ alignItems: 'center' }}>
-                    <Icon sx={{ mr: 2 }} color="primary" name={'arrow_right'}></Icon>
-                    <Text sx={{ cursor: 'pointer' }}>Learn more about Maker Keepers</Text>
-                  </Flex>
-                </Link>
-              </Grid>
-              <Grid
-                sx={{
-                  rowGap: 2,
-                }}
-              >
-                <Heading>CLIs</Heading>
-                <Text>
-                  <InlineTextarea name="CLIsSubtext" />
-                </Text>
-                <Link href="/technology">
-                  <Flex sx={{ alignItems: 'center' }}>
-                    <Icon sx={{ mr: 2 }} color="primary" name={'arrow_right'}></Icon>
-                    <Text sx={{ cursor: 'pointer' }}>Learn more about the CLIs</Text>
-                  </Flex>
-                </Link>
-              </Grid>
-            </Grid>
-          </Container>
+          <LibrariesSdks />
           <SecurityFeatures />
           {/* <CodeBox cta="Dive in the code" sections={codeSections} /> */}
           {/* <ArticlesList title="Articles" path="guides" resources={guides} /> */}
