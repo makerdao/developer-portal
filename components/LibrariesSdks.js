@@ -34,7 +34,7 @@ const LibrariesSdks = () => {
           >
             <InlineTextarea name="sdksAndToolsText" />
           </Text>
-          <Link href="/technology">
+          <Link href="/documentation/introduction-to-dai-js">
             <Flex sx={{ alignItems: 'center' }}>
               <Icon sx={{ mr: 2 }} color="primary" name={'arrow_right'}></Icon>
               <Text sx={{ cursor: 'pointer' }}>View Dai.js docs</Text>
@@ -47,7 +47,7 @@ const LibrariesSdks = () => {
               <Text>
                 <InlineTextarea name="pyMakerSubtext" />
               </Text>
-              <Link href="/technology">
+              <Link href="/documentation/pymaker">
                 <Flex sx={{ alignItems: 'center' }}>
                   <Icon sx={{ mr: 2 }} color="primary" name={'arrow_right'}></Icon>
                   <Text sx={{ cursor: 'pointer' }}>View pyMaker docs</Text>
@@ -95,12 +95,12 @@ const LibrariesSdks = () => {
             gridColumnStart: 2,
           }}
         >
-          <Icon name="security" color="textMuted" sx={{ width: '164px', height: '164px', mb: 4 }} />
+          <Icon name="keeper" color="textMuted" sx={{ width: '164px', height: '164px', mb: 4 }} />
           <Heading>Keepers</Heading>
           <Text sx={{ py: 3 }}>
             <InlineTextarea name="keepersSubtext" />
           </Text>
-          <Link href="/technology">
+          <Link href="/documentation/introduction-to-auction-keepers">
             <Flex sx={{ alignItems: 'center' }}>
               <Icon sx={{ mr: 2 }} color="primary" name={'arrow_right'}></Icon>
               <Text sx={{ cursor: 'pointer' }}>Learn more about Maker Keepers</Text>
@@ -112,12 +112,16 @@ const LibrariesSdks = () => {
             flexDirection: 'column',
           }}
         >
-          <Icon name="security" color="textMuted" sx={{ width: '164px', height: '164px', mb: 4 }} />
+          <Icon
+            name="wireframeGlobe"
+            color="textMuted"
+            sx={{ width: '164px', height: '164px', mb: 4 }}
+          />
           <Heading>CLIs</Heading>
           <Text sx={{ py: 3 }}>
             <InlineTextarea name="CLIsSubtext" />
           </Text>
-          <Link href="/technology">
+          <Link href="/documentation/introduction-to-dai-js">
             <Flex sx={{ alignItems: 'center', mt: 'auto' }}>
               <Icon sx={{ mr: 2 }} color="primary" name={'arrow_right'}></Icon>
               <Text sx={{ cursor: 'pointer' }}>Learn more about the CLIs</Text>
