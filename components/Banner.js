@@ -12,7 +12,7 @@ const Banner = ({ close, content }) => {
         borderColor: 'surface',
       }}
     >
-      <Close onClick={close} />
+      <Close sx={{ color: 'mutedAlt' }} onClick={close} />
       {typeof content === 'string' ? (
         <Text sx={{ variant: 'text.plainText', m: 'auto', fontSize: 1 }}>{content}</Text>
       ) : (
