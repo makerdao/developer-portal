@@ -1,5 +1,5 @@
 ---
-title: Cat - Detailed Documentation
+title: Cat
 description: The Maker Protocol's Liquidation Agent
 group: smart-contracts
 components:
@@ -11,7 +11,7 @@ contentType: documentation
 parent: introduction-to-core-module
 ---
 
-# Cat - Detailed Documentation
+# Cat
 
 - **Contract Name:** cat.sol
 - **Type/Category:** DSS

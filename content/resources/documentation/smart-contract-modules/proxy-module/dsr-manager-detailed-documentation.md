@@ -1,5 +1,5 @@
 ---
-title: DSR Manager - Detailed Documentation
+title: DSR Manager
 description: The simplest way to integrate DSR in smart contracts
 group: smart-contracts
 components:
@@ -13,7 +13,7 @@ contentType: documentation
 parent: introduction-to-proxy-module
 ---
 
-# DSR Manager - Detailed Documentation
+# DSR Manager
 
 The `DsrManager` provides an easy to use smart contract that allows service providers to deposit/withdraw dai into the DSR contract [pot](https://docs.makerdao.com/smart-contract-modules/rates-module/pot-detailed-documentation), and activate/deactivate the Dai Savings Rate to start earning savings on a pool of dai in a single function call. To understand the DsrManager, it is necessary to have an understanding of the [pot](https://docs.makerdao.com/smart-contract-modules/rates-module/pot-detailed-documentation) first. The DSR is set by Maker Governance, and will typically be less than the base stability fee to remain sustainable. The purpose of DSR is to offer another incentive for holding Dai.
 

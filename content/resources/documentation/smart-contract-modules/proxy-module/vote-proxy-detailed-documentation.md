@@ -1,5 +1,5 @@
 ---
-title: Vote Proxy - Detailed Documentation
+title: Vote Proxy
 description: Allowing MKR users to vote with a hot or cold wallet using a proxy voting identity
 group: smart-contracts
 components:
@@ -12,7 +12,7 @@ contentType: documentation
 parent: introduction-to-proxy-module
 ---
 
-# Vote Proxy - Detailed Documentation
+# Vote Proxy
 
 - **Contract Name:** VoteProxy.sol
 - **Type/Category:** Proxy Module

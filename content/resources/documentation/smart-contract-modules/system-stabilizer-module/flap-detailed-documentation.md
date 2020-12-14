@@ -1,5 +1,5 @@
 ---
-title: Flapper - Detailed Documentation
+title: Flapper
 description: The Maker Protocol's Surplus Auction House
 group: smart-contracts
 components:
@@ -13,7 +13,7 @@ contentType: documentation
 parent: introduction-to-system-stabilizer-module
 ---
 
-# Flapper - Detailed Documentation
+# Flapper
 
 - **Contract Name:** flap.sol
 - **Type/Category:** DSS —&gt; System Stabilizer Module

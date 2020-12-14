@@ -1,5 +1,5 @@
 ---
-title: Pause - Detailed Documentation
+title: Pause
 description: A delegatecall based proxy with an enforced delay
 group: smart-contracts
 components:
@@ -11,7 +11,7 @@ contentType: documentation
 parent: introduction-to-governance-module
 ---
 
-# Pause - Detailed Documentation
+# Pause
 
 - **Contract Name:** pause.sol
 - **Type/Category:** Governance Module

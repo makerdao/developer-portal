@@ -1,5 +1,5 @@
 ---
-title: Flopper - Detailed Documentation
+title: Flopper
 description: The Maker Protocol's Debt Auction House
 group: smart-contracts
 components:
@@ -13,7 +13,7 @@ contentType: documentation
 parent: introduction-to-system-stabilizer-module
 ---
 
-# Flopper - Detailed Documentation
+# Flopper
 
 - **Contract Name:** flop.sol
 - **Type/Category:** DSS —&gt; System Stabilizer Module

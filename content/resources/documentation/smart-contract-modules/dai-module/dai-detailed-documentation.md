@@ -1,5 +1,5 @@
 ---
-title: Dai - Detailed Documentation
+title: Dai
 description: The Dai Token Contract
 group: smart-contracts
 components:
@@ -11,7 +11,7 @@ contentType: documentation
 parent: introduction-to-dai-module
 ---
 
-# Dai - Detailed Documentation
+# Dai
 
 - **Contract Name:** dai.sol
 - **Type/Category:** DSS —&gt; Dai Module

@@ -1,5 +1,5 @@
 ---
-title: ESM - Detailed Documentation
+title: ESM
 description: The ESM is the trigger system for the shutdown of the Maker Protocol
 group: smart-contracts
 components:
@@ -13,7 +13,7 @@ contentType: documentation
 parent: introduction-to-es-module
 ---
 
-# ESM - Detailed Documentation
+# ESM
 
 - **Contract Name:** esm.sol
 - **Type/Category:** Emergency Shutdown Module

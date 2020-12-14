@@ -1,5 +1,5 @@
 ---
-title: Vow - Detailed Documentation
+title: Vow
 description: The Maker Protocol's Balance Sheet
 group: smart-contracts
 components:
@@ -13,7 +13,7 @@ contentType: documentation
 parent: introduction-to-system-stabilizer-module
 ---
 
-# Vow - Detailed Documentation
+# Vow
 
 - **Contract Name:** vow.sol
 - **Type/Category:** DSS —&gt; System Stabilizer Module

@@ -1,5 +1,5 @@
 ---
-title: Vat - Detailed Documentation
+title: Vat
 description: The Maker Protocol's Core Accounting System
 group: smart-contracts
 components:
@@ -12,7 +12,7 @@ contentType: documentation
 parent: introduction-to-core-module
 ---
 
-# Vat - Detailed Documentation
+# Vat
 
 - **Contract Name: Vat.sol**
 - **Type/Category:** DSS —&gt; Core System Accounting

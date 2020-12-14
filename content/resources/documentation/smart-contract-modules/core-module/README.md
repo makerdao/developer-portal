@@ -31,9 +31,9 @@ The **Core Module** is crucial to the system as it contains the entire state of 
 
 ### Core Module Components Documentation
 
-1. [**Vat - Detailed Documentation**](https://docs.makerdao.com/smart-contract-modules/core-module/vat-detailed-documentation)
-2. [**Cat - Detailed Documentation**](https://docs.makerdao.com/smart-contract-modules/core-module/cat-detailed-documentation)
-3. [**Spot - Detailed Documentation**](https://docs.makerdao.com/smart-contract-modules/core-module/spot-detailed-documentation)
+1. [**Vat**](https://docs.makerdao.com/smart-contract-modules/core-module/vat-detailed-documentation)
+2. [**Cat**](https://docs.makerdao.com/smart-contract-modules/core-module/cat-detailed-documentation)
+3. [**Spot**](https://docs.makerdao.com/smart-contract-modules/core-module/spot-detailed-documentation)
 
 ## 3. Key Mechanism and Concepts
 

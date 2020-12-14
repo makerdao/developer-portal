@@ -1,5 +1,5 @@
 ---
-title: Jug - Detailed Documentation
+title: Jug
 description: Accumulation of Stability Fees for Collateral Types
 group: smart-contracts
 components:
@@ -11,7 +11,7 @@ contentType: documentation
 parent: introduction-to-rates-module
 ---
 
-# Jug - Detailed Documentation
+# Jug
 
 - **Contract Name:** Jug
 - **Type/Category:** DSS —&gt; Rates Module

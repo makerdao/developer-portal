@@ -1,5 +1,5 @@
 ---
-title: Spot - Detailed Documentation
+title: Spot
 description: The Maker Protocol's liaison between the Oracles and Core Contracts
 group: smart-contracts
 components:
@@ -11,7 +11,7 @@ contentType: documentation
 parent: introduction-to-core-module
 ---
 
-# Spot - Detailed Documentation
+# Spot
 
 - **Contract Name:** spot.sol
 - **Type/Category:** DSS —&gt; Core Module
@@ -41,7 +41,7 @@ The `Spot` liaison between the `oracles` and the core contracts. It functions as
 - `ilk.pip` the contract which holds the current price of a given `ilk`
 - `ilk.mat` the liquidation ratio for a given `ilk`
 - `vat` the core of the mcd system
-- `par` value of DAI in the reference asset (e.g. $1 per DAI)
+- `par` value of DAI in the reference asset (e.g. \$1 per DAI)
 
 #### **Collateral**
 

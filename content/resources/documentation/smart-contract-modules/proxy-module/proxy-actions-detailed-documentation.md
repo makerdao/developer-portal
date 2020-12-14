@@ -1,5 +1,5 @@
 ---
-title: Proxy Actions - Detailed Documentation
+title: Proxy Actions
 description: A generalized wrapper for the Maker Protocol
 group: smart-contracts
 components:
@@ -13,7 +13,7 @@ contentType: documentation
 parent: introduction-to-proxy-module
 ---
 
-# Proxy Actions - Detailed Documentation
+# Proxy Actions
 
 - **Contract Name:** DssProxyActions.sol
 - **Type/Category:** Proxy Module

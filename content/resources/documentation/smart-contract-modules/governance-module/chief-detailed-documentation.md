@@ -1,5 +1,5 @@
 ---
-title: Chief - Detailed Documentation
+title: Chief
 description: Electing a Chief contract via an approval voting system
 group: smart-contracts
 components:
@@ -11,7 +11,7 @@ contentType: documentation
 parent: introduction-to-governance-module
 ---
 
-# Chief - Detailed Documentation
+# Chief
 
 - **Contract Name:** chief.sol
 - **Type/Category:** Governance Module

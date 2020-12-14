@@ -72,8 +72,8 @@ The origin of DAI was designed to represent any token that the core system consi
 
 ### Core Module Components Documentation
 
-1. [**Dai - Detailed Documentation**](https://docs.makerdao.com/smart-contract-modules/dai-module/dai-detailed-documentation)
-2. [**DaiJoin Documentation** ](https://docs.makerdao.com/smart-contract-modules/collateral-module/join-detailed-documentation#3-key-mechanisms-and-concepts)(referenced in Join - Detailed Documentation)
+1. [**Dai**](https://docs.makerdao.com/smart-contract-modules/dai-module/dai-detailed-documentation)
+2. [**DaiJoin Documentation** ](https://docs.makerdao.com/smart-contract-modules/collateral-module/join-detailed-documentation#3-key-mechanisms-and-concepts)(referenced in Join)
 
 ## 3. Key Mechanism and Concepts
 

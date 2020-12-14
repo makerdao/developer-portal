@@ -1,5 +1,5 @@
 ---
-title: Join - Detailed Documentation
+title: Join
 description: The Maker Protocol's Collateral Adapter
 group: smart-contracts
 components:
@@ -13,7 +13,7 @@ contentType: documentation
 parent: introduction-to-collateral-module
 ---
 
-# Join - Detailed Documentation
+# Join
 
 - **Contract Name:** join.sol
 - **Type/Category:** DSS —&gt; Token Adapter Module

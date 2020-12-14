@@ -32,10 +32,10 @@ The Proxy module was created in order to make it more convenient for users/devel
 
 ### Proxy Module Components Documentation
 
-1. [**DSR Manager - Detailed Documentation**](https://docs.makerdao.com/smart-contract-modules/proxy-module/dsr-manager-detailed-documentation)
-2. [**CDP Manager - Detailed Documentation**](https://docs.makerdao.com/smart-contract-modules/proxy-module/cdp-manager-detailed-documentation)
-3. [**Vote Proxy - Detailed Documentation**](https://docs.makerdao.com/smart-contract-modules/proxy-module/vote-proxy-detailed-documentation)
-4. [**Proxy Actions - Detailed Documentation**](https://docs.makerdao.com/smart-contract-modules/proxy-module/proxy-actions-detailed-documentation)
+1. [**DSR Manager**](https://docs.makerdao.com/smart-contract-modules/proxy-module/dsr-manager-detailed-documentation)
+2. [**CDP Manager**](https://docs.makerdao.com/smart-contract-modules/proxy-module/cdp-manager-detailed-documentation)
+3. [**Vote Proxy**](https://docs.makerdao.com/smart-contract-modules/proxy-module/vote-proxy-detailed-documentation)
+4. [**Proxy Actions**](https://docs.makerdao.com/smart-contract-modules/proxy-module/proxy-actions-detailed-documentation)
 
 ## 3. Key Mechanism and Concepts
 

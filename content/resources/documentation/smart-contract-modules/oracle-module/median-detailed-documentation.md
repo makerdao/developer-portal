@@ -1,5 +1,5 @@
 ---
-title: Median - Detailed Documentation
+title: Median
 description: The Maker Protocol's trusted reference price
 group: smart-contracts
 components:
@@ -11,7 +11,7 @@ contentType: documentation
 parent: introduction-to-oracle-module
 ---
 
-# Median - Detailed Documentation
+# Median
 
 - **Contract Name:** median.sol
 - **Type/Category:** Oracles Module

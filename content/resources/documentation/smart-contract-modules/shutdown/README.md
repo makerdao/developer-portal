@@ -31,7 +31,7 @@ In short, it allows Dai holders to directly redeem Dai for collateral after an E
 * Dai holders always receive the same relative amount of collateral from the system, whether they are among the first or last people to process their claims.
 * Dai holders may also sell their Dai to Keepers (if available) to avoid self-management of the different collateral types in the system.
 
-For more information about the Shutdown of the Maker Protocol, read the below **End - Detailed Documentation** as well as the [**Emergency Shutdown Module Documentation.**](https://docs.makerdao.com/smart-contract-modules/emergency-shutdown-module) 
+For more information about the Shutdown of the Maker Protocol, read the below **End** as well as the [**Emergency Shutdown Module Documentation.**](https://docs.makerdao.com/smart-contract-modules/emergency-shutdown-module) 
 
 
 

@@ -1,5 +1,5 @@
 ---
-title: End - Detailed Documentation
+title: End
 description: Shutdown
 group: smart-contracts
 components:
@@ -13,7 +13,7 @@ contentType: documentation
 parent: introduction-to-es-module
 ---
 
-# End - Detailed Documentation
+# End
 
 - **Contract Name:** end.sol
 - **Type/Category:** DSS

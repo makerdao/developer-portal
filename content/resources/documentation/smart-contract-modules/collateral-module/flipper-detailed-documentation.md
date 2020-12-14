@@ -1,5 +1,5 @@
 ---
-title: Flipper - Detailed Documentation
+title: Flipper
 description: The Maker Protocol's Collateral Auction House
 group: smart-contracts
 components:
@@ -13,7 +13,7 @@ contentType: documentation
 parent: introduction-to-collateral-module
 ---
 
-# Flipper - Detailed Documentation
+# Flipper
 
 - **Contract Name:** flip.sol
 - **Type/Category:** DSS —&gt; Collateral Auction Module

@@ -1,5 +1,5 @@
 ---
-title: Pot - Detailed Documentation
+title: Pot
 description: The Dai Savings Rate
 group: smart-contracts
 components:
@@ -11,7 +11,7 @@ contentType: documentation
 parent: introduction-to-rates-module
 ---
 
-# Pot - Detailed Documentation
+# Pot
 
 - **Contract Name:** pot.sol
 - **Type/Category:** DSS —&gt; Rates Module

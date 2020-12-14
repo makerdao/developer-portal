@@ -1,5 +1,5 @@
 ---
-title: CDP Manager - Detailed Documentation
+title: CDP Manager
 description: Managing Vaults to be transferred between users
 group: smart-contracts
 components:
@@ -12,7 +12,7 @@ contentType: documentation
 parent: introduction-to-proxy-module
 ---
 
-# CDP Manager - Detailed Documentation
+# CDP Manager
 
 - **Contract Name:** cdpManager.sol
 - **Type/Category:** Vault Management
