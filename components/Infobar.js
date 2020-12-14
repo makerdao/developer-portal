@@ -119,9 +119,10 @@ const Infobar = ({ resourcePath, slug, toc }) => {
           borderColor: 'mutedAlt',
           borderWidth: '0 0 1px 0',
           width: '100%',
+          p: 3,
         }}
       >
-        <Text sx={{ fontFamily: 'FT Base', p: 3, pl: 4 }} variant="microText">
+        <Text sx={{ fontFamily: 'FT Base', pl: 3 }} variant="microText">
           Contents
         </Text>
       </Box>
