@@ -3,6 +3,7 @@ title: Tracking Dai Supply
 description: Learn about how to count the Dai supply
 components:
   - dai
+  - dsr
 tags:
   - dai
   - total supply

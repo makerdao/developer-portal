@@ -4,6 +4,8 @@ description: Learm about DSR amd integrate it into your platform
 components:
   - dai
   - dsr
+  - dai-js
+  - keepers
 tags:
   - dai savings rate
   - earn savings in dai

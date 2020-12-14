@@ -8,6 +8,7 @@ tags:
   - wallet
   - integrate
   - wallet plugin
+  - sdks
 slug: how-to-build-a-dai-js-wallet-plugin
 contentType: guides
 root: false

@@ -24,6 +24,21 @@ import { Icon } from '@makerdao/dai-ui-icons';
 import { ecosystem } from '../data/ecosystem.json';
 import { landingPageFormOptions } from '../data/formOptions';
 
+// This function loops over a subset of resources and tries to match its tags with the tags from a larger set of resources
+const withTagsAlgo = (fullSet, subSet) => {
+  const withtags = [];
+  subSet.forEach((fGuide) => {
+    withtags.push(
+      ...fullSet.filter((guide) =>
+        guide.data.frontmatter.tags.some((t) => fGuide.data.frontmatter.tags.includes(t))
+      )
+    );
+  });
+  const uniqueWithTags = [...new Set(withtags)];
+  const uniqueAll = [...new Set([...subSet, ...uniqueWithTags])];
+  return uniqueAll;
+};
+
 const Page = ({ file, guides, documentation }) => {
   const [data, form] = useGithubJsonForm(file, landingPageFormOptions);
   usePlugin(form);
@@ -31,11 +46,17 @@ const Page = ({ file, guides, documentation }) => {
   useCreateDocument([...guides, ...documentation]);
 
   const [bannerOpen, setBannerOpen] = useState(true);
-
   const [selected, setSelected] = useState('everything');
-  const filteredResources = guides.filter((guide) =>
+
+  let filteredGuides = guides.filter((guide) =>
     selected === 'everything' ? Boolean : guide.data.frontmatter.components.includes(selected)
   );
+
+  // If the components filter doesn't return enough results, try to match deeper with tags
+  if (filteredGuides.length < 5) {
+    filteredGuides = withTagsAlgo(guides, filteredGuides);
+  }
+
   const componentNames = guides.reduce(
     (acc, guide) => {
       acc.push(...guide.data.frontmatter.components);
@@ -83,7 +104,7 @@ const Page = ({ file, guides, documentation }) => {
           <GuideList
             title="Show guides about"
             path="guides"
-            guides={filteredResources}
+            guides={filteredGuides}
             options={componentNames}
             selected={selected}
             setSelected={setSelected}

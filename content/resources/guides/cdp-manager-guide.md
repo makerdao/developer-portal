@@ -5,6 +5,7 @@ components:
   - vaults
 tags:
   - CDP Manager
+  - mcd
 slug: cdp-manager-guide
 contentType: guides
 root: false

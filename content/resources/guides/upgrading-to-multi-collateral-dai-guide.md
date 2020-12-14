@@ -4,8 +4,11 @@ description: This guide will focus on the Dai and CDP migration with a high leve
 components:
   - scd
   - mcd
+  - dai-js
 tags:
   - migration
+  - mcd
+  - exchange
 slug: upgrading-to-multi-collateral-dai-guide
 contentType: guides
 ---

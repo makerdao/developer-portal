@@ -7,6 +7,7 @@ tags:
   - vaults
   - vault integration diagrams
   - sequence diagram
+  - dsproxy
 slug: maker-vault-integration-sequence-diagrams
 contentType: guides
 root: false

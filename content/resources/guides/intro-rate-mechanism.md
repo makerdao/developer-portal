@@ -3,6 +3,7 @@ title: Intro to the Rate Mechanism
 description: Understand how the Maker Protocol Rate Mechanism works
 components:
   - mcd
+  - dsr
 tags:
   - mcd
   - Rate Mechanism

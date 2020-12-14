@@ -8,6 +8,8 @@ tags:
   - proxy contract
   - trade
   - decentralized
+  - exchange
+  - dsproxy
 slug: how-to-use-oasis-direct-proxy-on-oasisdex-protocol
 contentType: guides
 root: false

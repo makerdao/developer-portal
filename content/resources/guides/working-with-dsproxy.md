@@ -2,11 +2,12 @@
 title: Working with DSProxy
 description: Learn how DSProxy is used in Maker and apply it in your applications
 components:
-  - devtools
+  - mcd
 tags:
-  - proxy conntracts
-  - dsproxy
+  - proxy contracts
   - aggregate transactions
+  - devtools
+  - dsproxy
 slug: working-with-ds-proxy
 contentType: guides
 root: false

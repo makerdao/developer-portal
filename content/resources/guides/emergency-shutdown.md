@@ -8,6 +8,7 @@ tags:
   - emergency shutdown
   - mcd
   - shutdown process
+  - migration
 slug: emergency-shutdown-guide-mcd
 contentType: guides
 root: false

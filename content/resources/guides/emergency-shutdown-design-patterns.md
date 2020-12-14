@@ -4,6 +4,8 @@ description: Learn about design processes for the emergency shutdown process
 components:
   - mcd
   - esm
+  - keepers
+  - auctions
 tags:
   - emergency shutdown
   - mcd

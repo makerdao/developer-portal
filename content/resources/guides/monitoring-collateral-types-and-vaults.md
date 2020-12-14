@@ -3,6 +3,7 @@ title: Monitoring Collateral Types and Vaults
 description: Learn how to monitor Maker Protocol State
 components:
   - vaults
+  - dai-js
 tags:
   - vaults
   - protocol state

@@ -7,6 +7,7 @@ tags:
   - oasisdex
   - trade
   - decentralized
+  - exchange
 slug: intro-to-the-oasisdex-protocol
 contentType: guides
 root: false
