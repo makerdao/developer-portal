@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { Fragment, useState } from 'react';
+import { Fragment, useState, useEffect } from 'react';
 import { jsx, Box, NavLink, Text, Flex } from 'theme-ui';
 import Link from 'next/link';
 
@@ -59,6 +59,9 @@ const ContentsMenuItem = ({
 
 const FileContents = ({ resourcePath, slug, toc }) => {
   const [activeAnchor, setActiveAnchor] = useState(toc[0].slug);
+  useEffect(() => {
+    setActiveAnchor(toc[0].slug);
+  }, [toc]);
   const h1s = toc.filter((x) => x.lvl === 1);
   return toc.map(({ content: title, slug: anchor, lvl }, i) => {
     // Don't need nesting more than 3 levels deep for the TOC
