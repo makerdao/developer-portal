@@ -3,11 +3,14 @@ import { validateEmail } from '@utils';
 
 const useAddSubscriberEmail = ({ tags, metadata } = {}) => {
   const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(null);
   const inputEl = useRef(null);
 
   const subscribe = async (e) => {
     e.preventDefault();
-    if (!validateEmail(inputEl.current.value)) return alert('Please enter a valid email address.');
+    if (!validateEmail(inputEl.current.value))
+      return setErrorMessage('Please enter a valid email address.');
     setLoading(true);
 
     const res = await fetch('/api/subscribe', {
@@ -28,10 +31,15 @@ const useAddSubscriberEmail = ({ tags, metadata } = {}) => {
 
     if (error) {
       console.error(error);
+      error.includes('already subscribed')
+        ? setErrorMessage('This email is already subscribed')
+        : setErrorMessage('Please check email and try again');
+    } else {
+      setSuccess(true);
     }
   };
 
-  return { inputEl, subscribe, loading };
+  return { inputEl, subscribe, loading, success, errorMessage };
 };
 
 export default useAddSubscriberEmail;
