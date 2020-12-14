@@ -7,7 +7,7 @@ const SingleLayout = ({ subnav, children }) => {
     <Box>
       <Header subnav={subnav} />
       {children}
-      <Footer />
+      {/* <Footer /> */}
     </Box>
   );
 };
