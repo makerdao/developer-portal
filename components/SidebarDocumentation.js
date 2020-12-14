@@ -23,6 +23,8 @@ const ListItem = ({ title, root: isRoot, activeSlug, resourcePath, slug, parent:
           border: active ? 'light' : undefined,
           borderColor: 'primary',
           borderWidth: '0 1px 0 0',
+          position: 'relative',
+          left: '1px',
         }}
       >
         <Link href={`/${resourcePath}/[slug]`} as={`/${resourcePath}/${slug}`} passHref>

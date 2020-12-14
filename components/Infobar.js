@@ -14,36 +14,46 @@ const ContentsMenuItem = ({
 }) => {
   const active = activeAnchor === anchor;
   return (
-    <Box
+    <Flex
       as="li"
       sx={{
         variant: 'styles.fakeLi',
-        m: 0,
-        border: active ? 'light' : undefined,
-        borderColor: 'primary',
-        borderWidth: '0 0 0 1px',
+        my: 1,
+        position: 'relative',
+        right: '1px',
       }}
     >
-      <Link href={`/${resourcePath}/[slug]`} as={`/${resourcePath}/${slug}#${anchor}`} passHref>
-        <NavLink
-          variant="infobar"
-          onClick={() => setActiveAnchor(anchor)}
-          sx={{
-            textAlign: 'left',
-            color: active ? 'text' : undefined,
-            borderRadius: 'xs',
-            py: 1,
-            px: 4,
-            width: '100%',
-            whiteSpace: 'nowrap',
-            overflow: 'hidden',
-            textOverflow: 'ellipsis',
-          }}
-        >
-          {title}
-        </NavLink>
-      </Link>
-    </Box>
+      <Flex
+        sx={{
+          width: '100%',
+          pl: !root ? 3 : undefined,
+          border: active ? 'light' : undefined,
+          borderColor: 'primary',
+          borderWidth: '0 0 0 1px',
+        }}
+      >
+        <Link href={`/${resourcePath}/[slug]`} as={`/${resourcePath}/${slug}#${anchor}`} passHref>
+          <NavLink
+            variant="infobar"
+            onClick={() => setActiveAnchor(anchor)}
+            sx={{
+              textAlign: 'left',
+              color: active ? 'text' : undefined,
+              borderRadius: 'xs',
+              py: 0,
+              px: 4,
+              lineHeight: '21px',
+              width: '100%',
+              whiteSpace: 'nowrap',
+              overflow: 'hidden',
+              textOverflow: 'ellipsis',
+            }}
+          >
+            {title}
+          </NavLink>
+        </Link>
+      </Flex>
+    </Flex>
   );
 };
 
@@ -73,7 +83,6 @@ const FileContents = ({ resourcePath, slug, toc }) => {
             sx={{
               m: 0,
               p: 0,
-              pl: 3,
             }}
           >
             <ContentsMenuItem
@@ -84,6 +93,7 @@ const FileContents = ({ resourcePath, slug, toc }) => {
               anchor={anchor}
               activeAnchor={activeAnchor}
               setActiveAnchor={setActiveAnchor}
+              root={root}
             />
           </ul>
         )}

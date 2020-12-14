@@ -54,7 +54,9 @@ const NewsletterCallout = () => {
               <Text variant="plainText" sx={{ fontWeight: 'bold', fontSize: 4 }}>
                 Thank you for signing up!
               </Text>
-              <Text variant="smallText">Stay tuned, you will get dev updates soon.</Text>
+              <Text variant="plainText" sx={{ fontSize: 2 }}>
+                Stay tuned, you will get dev updates soon.
+              </Text>
             </Flex>
           </Card>
         ) : (
