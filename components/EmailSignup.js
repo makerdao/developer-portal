@@ -51,7 +51,7 @@ const EmailSignup = ({ placeholder, ...props }) => {
         </IconButton>
       </Flex>
       {errorMessage && (
-        <Text variant="plainText" sx={{ fontSize: 2, color: 'primary' }}>
+        <Text variant="plainText" sx={{ fontSize: 1, color: 'primary' }}>
           {errorMessage}
         </Text>
       )}
