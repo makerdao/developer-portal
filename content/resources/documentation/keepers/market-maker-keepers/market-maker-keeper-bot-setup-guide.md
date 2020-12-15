@@ -22,19 +22,19 @@ parent: introduction-to-market-maker-keepers
 
 ## Guide Agenda
 
-1. Introduction
-2. Prerequisites
-3. Installation
-4. Testing
-5. Bands and Bands Configuration
-   1. Example
-6. Order Rate Limitation
-7. Data Templating Language
-8. Price Feed Configuration
-   1. Example
-9. Running Keepers
-   1. Example Oasis Market Maker Keeper
-10. Support Information
+- Introduction
+- Prerequisites
+- Installation
+- Testing
+- Bands and Bands Configuration
+  - Example
+- Order Rate Limitation
+- Data Templating Language
+- Price Feed Configuration
+  - Example
+- Running Keepers
+  - Example Oasis Market Maker Keeper
+    - Support Information
 
 ## 1. Introduction
 
