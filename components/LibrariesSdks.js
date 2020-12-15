@@ -1,10 +1,26 @@
 /** @jsx jsx */
 import { jsx, Container, Heading, Text, Grid, Box, Flex } from 'theme-ui';
 import { Icon } from '@makerdao/dai-ui-icons';
-import { InlineForm, InlineTextarea } from 'react-tinacms-inline';
+import { InlineTextarea } from 'react-tinacms-inline';
 import Link from 'next/link';
+import CodeWrapper from '@components/CodeWrapper';
 
 const LibrariesSdks = () => {
+  const daijsCode = `
+  import Maker from '@makerdao/dai';
+
+  const maker = 
+    await Maker.create('http', {
+    url: myRpcUrl,
+    privateKey: myPrivateKey
+  });
+
+  const vault = 
+    await maker.service('mcd:cdpManager')
+  .openLockAndDraw(
+    'ETH-A', ETH(50), DAI(1000)
+    );
+  `;
   return (
     <Container>
       <Heading variant="megaHeading" pb={3}>
@@ -59,16 +75,16 @@ const LibrariesSdks = () => {
 
         <Flex
           sx={{
-            width: 200,
+            width: 300,
             position: 'relative',
-            height: 200,
-            pt: 4,
-            pl: 2,
+            height: 300,
+            pt: 3,
+            bg: 'surface',
           }}
         >
           <Icon
-            name="codeCanvas"
-            size={200}
+            name="code2"
+            size={300}
             color="textMuted"
             sx={{
               position: 'absolute',
@@ -76,7 +92,11 @@ const LibrariesSdks = () => {
               left: 0,
             }}
           />
-          <Text>//Dai.js</Text>
+          <CodeWrapper
+            sx={{ bg: 'surface', fontSize: 1, p: 0, selectable: 'true' }}
+            value={daijsCode}
+            language="js"
+          />
         </Flex>
       </Flex>
 

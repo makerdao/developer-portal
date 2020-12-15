@@ -299,6 +299,27 @@ const icons = {
       />
     ),
   },
+  code2: {
+    viewBox: '0 0 256 255',
+    path: (
+      <g>
+        <rect
+          x="1.29785"
+          y="0.640625"
+          width="253.441"
+          height="253.441"
+          rx="3.5"
+          fill="#340F35"
+          stroke="currentColor"
+          fillOpacity="0"
+        />
+        <line x1="0.797852" y1="27.7695" x2="255.239" y2="27.7695" stroke="currentColor" />
+        <circle cx="16.3817" cy="14.1239" r="5.48525" fill="#340F35" stroke="currentColor" />
+        <circle cx="35.7465" cy="14.1239" r="5.48525" fill="#340F35" stroke="currentColor" />
+        <circle cx="54.018" cy="14.1239" r="5.48525" fill="#340F35" stroke="currentColor" />
+      </g>
+    ),
+  },
 };
 
 export default icons;
