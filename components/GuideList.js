@@ -37,7 +37,7 @@ const GuideList = ({ guides, title, path, options, selected, setSelected }) => {
             gridAutoFlow: 'column',
             gridTemplateRows: singleRow ? 'auto' : 'auto auto',
             overflowX: 'auto',
-            pl: singleRow ? undefined : 'calc(50% - 1140px / 2)',
+            // pl: singleRow ? undefined : 'calc(50% - 1140px / 2)',
           }}
         >
           {guides.map(
@@ -63,7 +63,7 @@ const GuideList = ({ guides, title, path, options, selected, setSelected }) => {
                       borderColor: 'primary',
                     },
                     ':nth-of-type(2n)': {
-                      transform: singleRow ? undefined : 'translateX(50%)',
+                      transform: singleRow ? undefined : 'translateX(-50%)',
                     },
                   }}
                 >
