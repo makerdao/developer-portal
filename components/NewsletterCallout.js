@@ -1,21 +1,9 @@
 /** @jsx jsx */
 import { useState } from 'react';
-import {
-  Container,
-  Button,
-  jsx,
-  Input,
-  Heading,
-  Text,
-  Checkbox,
-  Label,
-  Grid,
-  Flex,
-  Card,
-  Link as ThemeLink,
-} from 'theme-ui';
+import { Container, Button, jsx, Input, Heading, Text, Grid, Flex, Card } from 'theme-ui';
 import { Icon } from '@makerdao/dai-ui-icons';
 import useEmailSubscribe from '../hooks/useEmailSubscribe';
+import TosCheck from '@components/TosCheck';
 
 const NewsletterCallout = () => {
   const [agreed, setAgreed] = useState(false);
@@ -103,13 +91,9 @@ const NewsletterCallout = () => {
                 </Text>
               )}
             </Flex>
-            <Label sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <Checkbox onChange={() => setAgreed(!agreed)} />
-              <Text variant="plainText" sx={{ fontSize: 4 }}>
-                I agree to the <ThemeLink>Terms of Service</ThemeLink> and the{' '}
-                <ThemeLink>Privacy Policy</ThemeLink>
-              </Text>
-            </Label>
+            <Flex sx={{ mx: 'auto' }}>
+              <TosCheck onChange={() => setAgreed(!agreed)} />
+            </Flex>
           </>
         )}
       </Grid>

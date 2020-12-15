@@ -3,7 +3,7 @@ import { jsx, Input, Flex, IconButton, Text } from 'theme-ui';
 import { Icon } from '@makerdao/dai-ui-icons';
 import useEmailSubscribe from '../hooks/useEmailSubscribe';
 
-const EmailSignup = ({ placeholder, ...props }) => {
+const EmailSignup = ({ placeholder, disabled, ...props }) => {
   const { inputEl, subscribe, loading, success, errorMessage } = useEmailSubscribe();
   return success ? (
     <Flex sx={{ alignItems: 'center' }}>
@@ -30,15 +30,15 @@ const EmailSignup = ({ placeholder, ...props }) => {
           ref={inputEl}
           type="email"
           placeholder={placeholder}
-          disabled={loading}
+          disabled={loading || disabled}
           sx={{
+            ...props.sx,
             fontFamily: 'body',
-            fontSize: 5,
             width: '350px',
             borderColor: (theme) => `transparent transparent ${theme.colors.muted} transparent`,
             '&:focus': {
               borderColor: (theme) => `transparent transparent ${theme.colors.muted} transparent`,
-              color: 'textMuted',
+              color: 'text',
             },
             '::placeholder': {
               color: 'textMuted',
@@ -46,7 +46,7 @@ const EmailSignup = ({ placeholder, ...props }) => {
             },
           }}
         ></Input>
-        <IconButton disabled={loading} onClick={subscribe} sx={{ m: 'auto' }}>
+        <IconButton disabled={loading || disabled} onClick={subscribe} sx={{ m: 'auto' }}>
           <Icon name="arrow_right" color="primary" />
         </IconButton>
       </Flex>
