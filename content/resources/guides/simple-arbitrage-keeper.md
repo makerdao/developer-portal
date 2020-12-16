@@ -1,3 +1,19 @@
+---
+title: Simple Abitrage Keeper Guide
+description: Learn how to run a simple arbitrage keeper
+components:
+  - keepers
+tags:
+  - arbitrage
+  - auctions
+  - keepers
+  - mcd
+slug: simple-arbitrage-keeper-gudie
+contentType: guides
+root: false
+---
+
+
 # Simple Arbitrage Keeper Guide
 
 Level: Intermediate  
