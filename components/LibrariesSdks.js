@@ -59,7 +59,7 @@ const LibrariesSdks = () => {
           <Grid columns={2}>
             <Box></Box>
             <Flex sx={{ flexDirection: 'column' }}>
-              <Text>pyMaker</Text>
+              <Text sx={{ fontWeight: 'bold' }}>pyMaker</Text>
               <Text>
                 <InlineTextarea name="pyMakerSubtext" />
               </Text>
@@ -107,7 +107,7 @@ const LibrariesSdks = () => {
         }}
       >
         <Heading variant="largeHeading" sx={{ py: 4, gridColumnStart: 2, gridColumnEnd: 4 }}>
-          Other Relevant Libraries
+          Other Relevant Tools
         </Heading>
         <Flex
           sx={{
@@ -141,7 +141,7 @@ const LibrariesSdks = () => {
           <Text sx={{ py: 3 }}>
             <InlineTextarea name="CLIsSubtext" />
           </Text>
-          <Link href="/documentation/introduction-to-dai-js">
+          <Link href="/documentation/mcd-cli">
             <Flex sx={{ alignItems: 'center', mt: 'auto' }}>
               <Icon sx={{ mr: 2 }} color="primary" name={'arrow_right'}></Icon>
               <Text sx={{ cursor: 'pointer' }}>Learn more about the CLIs</Text>

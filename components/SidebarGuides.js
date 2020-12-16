@@ -18,13 +18,7 @@ const ListItem = ({ title, root, activeSlug, resourcePath, slug, parent }) => {
       ></Icon>
       <Link href={`/${resourcePath}/[slug]`} as={`/${resourcePath}/${slug}`} passHref>
         <NavLink
-          sx={
-            root
-              ? { textTransform: 'uppercase', color: 'text' }
-              : parent
-              ? { color: 'textMuted', ml: 2 }
-              : undefined
-          }
+          sx={root ? { color: 'text' } : parent ? { color: 'textMuted', ml: 2 } : undefined}
           variant="sidebar"
         >
           {title}
