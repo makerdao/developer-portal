@@ -40,16 +40,18 @@ const getResources = async (preview, previewData, contentDir) => {
 
     const filtered = resources.filter((file) => file.data.frontmatter.slug);
 
-    for (let file of filtered) {
-      // Check if the file is missing the additional frontmatter properties we need
-      if (
-        !Object.keys(file.data.frontmatter).every((property) =>
-          Object.keys(metadataCallbacks).includes(property)
-        )
-      ) {
-        // If so, fetch the properties from the commits and add to the frontmatter
-        const commitData = await getFileCommits(file);
-        file.data.frontmatter = { ...file.data.frontmatter, ...commitData };
+    if (!preview) {
+      for (let file of filtered) {
+        // Check if the file is missing the additional frontmatter properties we need
+        if (
+          !Object.keys(file.data.frontmatter).every((property) =>
+            Object.keys(metadataCallbacks).includes(property)
+          )
+        ) {
+          // If so, fetch the properties from the commits and add to the frontmatter
+          const commitData = await getFileCommits(file);
+          file.data.frontmatter = { ...file.data.frontmatter, ...commitData };
+        }
       }
     }
 

@@ -124,7 +124,7 @@ const Page = ({ file, guides, documentation }) => {
               </Heading>
 
               <Flex sx={{ mb: 3, alignItems: 'center' }}>
-                <Heading variant="mediumHeading">Smart Contracts</Heading>
+                <Heading variant="mediumHeading">Documentation</Heading>
 
                 <Link href={'/guides'} passHref>
                   <Flex sx={{ ml: 3, alignItems: 'center' }}>

@@ -29,7 +29,7 @@ const LineItem = ({ date, author, avatar }) => {
   );
 };
 
-const Contributors = ({ contributors }) => {
+const Contributors = ({ contributors = [] }) => {
   const [open, setOpen] = useState(false);
   const [newest, ...rest] = contributors.sort((a, b) => new Date(b.date) - new Date(a.date));
 
@@ -50,24 +50,24 @@ const Contributors = ({ contributors }) => {
               <Text variant="caps" sx={{ color: 'onBackgroundMuted', fontSize: 2 }}>
                 Last Edit:
               </Text>
-              <Text sx={{ pl: 3 }}>{toDateString(newest.date)}</Text>
+              <Text sx={{ pl: 3 }}>{toDateString(newest?.date)}</Text>
             </Flex>
             <Flex sx={{ ml: 4, alignItems: 'center', cursor: 'pointer' }}>
               <Text variant="caps" sx={{ color: 'onBackgroundMuted', fontSize: 2 }}>
                 By:
               </Text>
-              <ThemeLink href={`https://github.com/${newest.username}`} target="_blank">
+              <ThemeLink href={`https://github.com/${newest?.username}`} target="_blank">
                 <Flex sx={{ alignItems: 'center' }}>
-                  <Avatar sx={{ mx: 2 }} src={newest.avatar} />
+                  <Avatar sx={{ mx: 2 }} src={newest?.avatar} />
                   <Icon sx={{ ml: 'auto' }} color="primary" name="increase"></Icon>
-                  <Text sx={{ color: 'text', pl: 2 }}>{newest.author}</Text>
+                  <Text sx={{ color: 'text', pl: 2 }}>{newest?.author}</Text>
                 </Flex>
               </ThemeLink>
             </Flex>
           </Flex>
         </Flex>
         {open &&
-          rest.map(({ date, username, avatar }) => (
+          rest?.map(({ date, username, avatar }) => (
             <LineItem key={username} date={toDateString(date)} author={username} avatar={avatar} />
           ))}
       </Flex>
