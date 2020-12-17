@@ -1,15 +1,15 @@
 {
-  "subtext": "Find all you need to build on top of the Maker Protocol integrate Dai, the decentralized stablecoin.",
+  "subtext": "Find all you need to build on top of the Maker Protocol integrate Dai, the decentralized stablecoin. And more!",
   "aboutSubheading": "The Maker Protocol, one of the largest decentralized applications (dapps) on the Ethereum blockchain, was the first decentralized finance (DeFi) application to earn significant adoption.",
   "aboutMakerProtocol": "The Maker Protocol, built on the Ethereum blockchain, enables users to create currency. Current elements of the Maker Protocol are the Dai stablecoin, Maker Collateral Vaults, Oracles, and Voting. MakerDAO governs the Maker Protocol by deciding on key parameters (e.g., stability fees, collateral types/rates, etc.) through the voting power of MKR holders.",
   "sdksAndToolsHeading": "Dai.js is a JavaScript library that makes it easy to build applications on top of MakerDAO's platform of smart contracts.",
-  "sdksAndToolsText": "You can use Maker's contracts to open Vaults (formerly known as CDPs), deposit collateral and generate Dai, trade tokens on decentralized exchanges, and more. The library features a pluggable, service-based architecture, which allows users to easily integrate Maker functionality into their own apps.",
+  "sdksAndToolsText": "You can use Maker's contracts to open Vaults (formerly known as CDPs), deposit collateral and generate Dai, trade tokens on decentralized exchanges, and more. Add new content whereevere!",
   "pyMakerSubtext": "Based on the Pymaker API, a set of reference Maker keepers is being developed.",
   "keepersSubtext": "Keepers are external actors that are incentivized by profit opportunities to contribute to decentralized systems. In the context of the Maker Protocol, these external agents are incentivized to automate certain operations around the Ethereum blockchain.",
   "CLIsSubtext": "The command-line interface mcd-cli will enable you to easily interact with the Multi-Collateral Dai contracts.",
   "aboutThisSiteSubheading": "To support the self-sustaining maker vision we want this site to be maintainable long-term by the community, so facilitating easy maintenance and upkeep is a priority.",
   "aboutThisSiteSubtext": "We want to encourage contributors and reduce the friction of making contributions. One of the exciting features we built into the site is using a tool called TinaCMS for content management. TinaCMS is a an open source content management framework that provides us with flexible features to help ensure ease of maintainability in the future. Using this system, we enable the superpower of allowing contributors to create and edit content simply by pressing a button on the site. This feature, called 'visual open authoring' provides an inline editor to make changes on the site itself. Because the site content is fetched from Github it requires no additional backend.",
-  "primaryNavHeader": "Maker Protocol",
+  "primaryNavHeader": "Maker Protocol_",
   "secondaryNavHeader": "For Developers",
   "securitySubtext": "Dedicated to providing transparency  to our community with respect to the results of our MCD Audits, our Bug Bounty Program, and Formal Verification.",
   "communityCallout": "Make the community proud with your  amazing contributions and achievements."
