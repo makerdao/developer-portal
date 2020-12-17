@@ -28,9 +28,9 @@ export const metadataCallbacks = {
 };
 
 const fetchCommits = async (path) => {
-  const { USERNAME_ISSUES, GH_TOKEN_ISSUES, REPO_ISSUES } = process.env;
+  const { USERNAME_ISSUES, GH_TOKEN_ISSUES, REPO_ISSUES, BASE_BRANCH } = process.env;
   const token = Buffer.from(`${USERNAME_ISSUES}:${GH_TOKEN_ISSUES}`, 'utf8').toString('base64');
-  const url = `${GH_REPOS_ENDPOINT}/${REPO_ISSUES}/commits?path=${path}`;
+  const url = `${GH_REPOS_ENDPOINT}/${REPO_ISSUES}/commits?sha=${BASE_BRANCH}&path=${path}`;
   const response = await fetch(url, {
     headers: {
       Authorization: `Basic ${token}`,
@@ -79,7 +79,7 @@ const getFileCommits = async (file) => {
           if (err) return console.log(err);
         });
         // Must sleep to avoid Github API abuse detection mechanism when building
-        await sleep(350);
+        await sleep(500);
       } catch (error) {
         // A cached file is not required
       }
