@@ -1,7 +1,5 @@
 import { GH_REPOS_ENDPOINT } from './constants';
 
-const USE_CACHE = process.env.USE_CACHE === 'true';
-
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 export const metadataCallbacks = {
@@ -47,13 +45,14 @@ const fetchCommits = async (path) => {
   return json;
 };
 
-const getFileCommits = async (file) => {
+const getFileCommits = async (file, useCache) => {
+  console.log('useCache', useCache);
   const fs = require('fs');
   let cachedCommits = {};
   const frontmatterKeys = Object.keys(file.data.frontmatter);
   const path = file.fileRelativePath;
 
-  if (USE_CACHE) {
+  if (useCache) {
     try {
       const commitsRead = fs.readFileSync('cachefile', 'utf8');
       cachedCommits = JSON.parse(commitsRead || {});
@@ -72,7 +71,7 @@ const getFileCommits = async (file) => {
         cacheEntry[path][cb] = metadataCallbacks[cb](commitsFetched || []);
     }
 
-    if (USE_CACHE) {
+    if (useCache) {
       const jsonifiedCommit = JSON.stringify({ ...cachedCommits, ...cacheEntry });
       try {
         await fs.writeFileSync('cachefile', jsonifiedCommit, function (err) {
