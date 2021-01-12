@@ -3,8 +3,6 @@ import { getContent, getGithubPreviewProps, parseMarkdown } from 'next-tinacms-g
 import getFileCommits, { metadataCallbacks } from './getFileCommits';
 
 const getResources = async (preview, previewData, contentDir) => {
-  const useCache = process.env.USE_CACHE === 'true' || preview;
-
   const fs = require('fs');
   const files = preview
     ? await getGithubFiles(contentDir, previewData)
@@ -51,7 +49,7 @@ const getResources = async (preview, previewData, contentDir) => {
           )
         ) {
           // If so, fetch the properties from the commits and add to the frontmatter
-          const commitData = await getFileCommits(file, useCache);
+          const commitData = await getFileCommits(file);
           file.data.frontmatter = { ...file.data.frontmatter, ...commitData };
         }
       }
