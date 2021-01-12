@@ -4,10 +4,8 @@ import { InlineForm } from 'react-tinacms-inline';
 import { useGithubMarkdownForm } from 'react-tinacms-github';
 import { InlineWysiwyg } from 'react-tinacms-editor';
 import { usePlugin, useCMS, useFormScreenPlugin } from 'tinacms';
-import { jsx, Text, Flex, Link as ThemeLink, Grid } from 'theme-ui';
-import { Icon } from '@makerdao/dai-ui-icons';
+import { jsx, Grid } from 'theme-ui';
 import MarkdownWrapper from '@components/MarkdownWrapper';
-import EditLink from '@components/EditLink';
 import SubNav from '@components/SubNav';
 import RelatedResources from '@components/RelatedResources';
 import Contributors from '@components/Contributors';
@@ -16,7 +14,7 @@ import ContributeCta from '@components/ContributeCta';
 import useSubNavForm from '../hooks/useSubNavForm';
 import ResourcesLayout from '@layouts/ResourcesLayout';
 import useStore from '../stores/store';
-import { GITHUB_EDIT_LINK } from '../utils/constants';
+import { useRouter } from 'next/router';
 
 const ResourceEditor = ({
   file,
@@ -29,6 +27,7 @@ const ResourceEditor = ({
   toc,
 }) => {
   const cms = useCMS();
+  const { asPath } = useRouter();
   const setActiveGroup = useStore((state) => state.setActiveGroup);
 
   useEffect(() => {
@@ -67,7 +66,7 @@ const ResourceEditor = ({
       </InlineForm>
       <RelatedResources resources={relatedResources} contentType={contentType} />
       <Grid gap={4}>
-        <Feedback />
+        <Feedback route={asPath} cms={cms} />
         <ContributeCta file={file} />
         <Contributors contributors={file.data.frontmatter.contributors} />
       </Grid>
