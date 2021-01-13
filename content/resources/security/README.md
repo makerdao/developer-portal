@@ -3,7 +3,7 @@ title: Multi-Collateral DAI (MCD) Security
 description: >-
   Dedicated to providing transparency to our community with respect to the
   results of our MCD Audits, our Bug Bounty Program, and Formal Verification
-group: security
+group: introduction
 components:
   - mcd
 tags:

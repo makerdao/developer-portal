@@ -6,7 +6,7 @@ import ResourcesLayout from '@layouts/ResourcesLayout';
 import SidebarGuides from '@components/SidebarGuides';
 import ResourcePresentation from '@components/ResourcePresentation';
 import { createToc, getResources } from '@utils';
-import { ContentTypes } from '../../utils/constants';
+import { ContentTypes } from '@utils/constants';
 
 const GuidesPage = ({ file, resources, navFile, preview, slug, toc }) => {
   const router = useRouter();

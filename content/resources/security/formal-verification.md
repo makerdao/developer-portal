@@ -1,7 +1,7 @@
 ---
 title: Formal Verification
 description: A key component of our strategy to maximize security testing by approaching it from different angles and multiple layers to ensure the security of the MCD smart contracts
-group: security
+group: formal-verification
 components:
   - mcd
 tags:

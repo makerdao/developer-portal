@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import Error from 'next/error';
 import { useRouter } from 'next/router';
 import matter from 'gray-matter';
@@ -6,22 +7,28 @@ import ResourcesLayout from '@layouts/ResourcesLayout';
 import SidebarDocumentation from '@components/SidebarDocumentation';
 import ResourcePresentation from '@components/ResourcePresentation';
 import { createToc, getResources } from '@utils';
-import { ContentTypes } from '../../utils/constants';
+import useStore from '@stores/store';
+import { ContentTypes } from '@utils/constants';
+
+const walk = (resources, array) => {
+  array.forEach((item) => {
+    const children = resources.filter(
+      (resource) => resource.data.frontmatter.parent === item.data.frontmatter.slug
+    );
+    if (children.length > 0) {
+      item.children = children;
+      walk(resources, item.children);
+    }
+  });
+};
 
 const DocsPage = ({ file, resources, navFile, preview, slug, toc }) => {
   const router = useRouter();
+  const setActiveGroup = useStore((state) => state.setActiveGroup);
 
-  const walk = (resources, array) => {
-    array.forEach((item) => {
-      const children = resources.filter(
-        (resource) => resource.data.frontmatter.parent === item.data.frontmatter.slug
-      );
-      if (children.length > 0) {
-        item.children = children;
-        walk(resources, item.children);
-      }
-    });
-  };
+  useEffect(() => {
+    setActiveGroup(file.data.frontmatter.group);
+  }, [setActiveGroup, file.data.frontmatter.group]);
 
   const moduleResources = resources
     ?.filter(

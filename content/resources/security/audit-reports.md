@@ -1,7 +1,7 @@
 ---
 title: MCD Security Audits
 description: To protect against logical errors and/or potential failure modes in the contract logic
-group: security
+group: audit-reports
 components:
   - mcd
 tags:

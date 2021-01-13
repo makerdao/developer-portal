@@ -3,13 +3,13 @@
     {
       "url": "/security/multi-collateral-dai-security",
       "name": "Introduction",
-      "slug": "multi-collateral-dai-security",
+      "slug": "introduction",
       "id": "1"
     },
     {
       "url": "/security/mcd-security-audits",
       "name": "Audit Reports",
-      "slug": "mcd-security-audits",
+      "slug": "audit-reports",
       "id": "2"
     },
     {

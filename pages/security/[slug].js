@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import Error from 'next/error';
 import { useRouter } from 'next/router';
 import matter from 'gray-matter';
@@ -5,10 +6,16 @@ import { getGithubPreviewProps, parseMarkdown, parseJson } from 'next-tinacms-gi
 import ResourcesLayout from '@layouts/ResourcesLayout';
 import ResourcePresentation from '@components/ResourcePresentation';
 import { createToc, getResources } from '@utils';
-import { ContentTypes } from '../../utils/constants';
+import useStore from '@stores/store';
+import { ContentTypes } from '@utils/constants';
 
 const GuidesPage = ({ file, navFile, preview, slug, toc }) => {
   const router = useRouter();
+  const setActiveGroup = useStore((state) => state.setActiveGroup);
+
+  useEffect(() => {
+    setActiveGroup(file.data.frontmatter.group);
+  }, [setActiveGroup, file.data.frontmatter.group]);
 
   return !file ? (
     <Error statusCode={404} />
