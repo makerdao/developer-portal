@@ -12,6 +12,7 @@ import Contributors from '@components/Contributors';
 import Feedback from '@components/Feedback';
 import ContributeCta from '@components/ContributeCta';
 import useSubNavForm from '../hooks/useSubNavForm';
+import useEditFrontmatterForm from '../hooks/useEditFrontmatterForm';
 import ResourcesLayout from '@layouts/ResourcesLayout';
 import useStore from '../stores/store';
 import { useRouter } from 'next/router';
@@ -36,6 +37,9 @@ const ResourceEditor = ({
 
   const [navData, navForm] = useSubNavForm(navFile, preview);
   useFormScreenPlugin(navForm);
+
+  const [fmData, fmForm] = useEditFrontmatterForm(file, preview);
+  useFormScreenPlugin(fmForm);
 
   const [data, form] = useGithubMarkdownForm(file);
   usePlugin(form);
