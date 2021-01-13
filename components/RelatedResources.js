@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, Text, Flex, Heading } from 'theme-ui';
+import { jsx, Text, Flex, Heading, Box } from 'theme-ui';
 import Link from 'next/link';
 import { Icon } from '@makerdao/dai-ui-icons';
 import { ContentTypes } from '../utils/constants';
@@ -8,7 +8,7 @@ const RelatedResources = ({ resources = [], contentType, show = 3 }) => {
   const nextType =
     contentType === ContentTypes.GUIDES ? ContentTypes.DOCUMENTATION : ContentTypes.GUIDES;
   return (
-    <>
+    <Box>
       <Heading variant="mediumHeading" sx={{ my: 4 }}>
         Related {nextType}
       </Heading>
@@ -35,7 +35,7 @@ const RelatedResources = ({ resources = [], contentType, show = 3 }) => {
           </Link>
         );
       })}
-    </>
+    </Box>
   );
 };
 

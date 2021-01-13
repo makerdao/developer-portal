@@ -1,6 +1,6 @@
 import { useGithubMarkdownForm } from 'react-tinacms-github';
 
-const useSubNavForm = (mdFile, preview) => {
+const useEditFrontmatterForm = (mdFile, preview) => {
   if (!preview) {
     // if we are not in preview return the mdFile and don't register the form
     return [mdFile.data, null];
@@ -46,4 +46,4 @@ const useSubNavForm = (mdFile, preview) => {
   return useGithubMarkdownForm(mdFile, navFormOptions);
 };
 
-export default useSubNavForm;
+export default useEditFrontmatterForm;

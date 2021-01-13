@@ -2,11 +2,13 @@ import Error from 'next/error';
 import { useRouter } from 'next/router';
 import matter from 'gray-matter';
 import { getGithubPreviewProps, parseMarkdown, parseJson } from 'next-tinacms-github';
-import ResourceEditor from '@components/ResourceEditor';
+import ResourcesLayout from '@layouts/ResourcesLayout';
+import SidebarGuides from '@components/SidebarGuides';
+import ResourcePresentation from '@components/ResourcePresentation';
 import { createToc, getResources } from '@utils';
 import { ContentTypes } from '../../utils/constants';
 
-const GuidesPage = ({ file, resources, ...props }) => {
+const GuidesPage = ({ file, resources, navFile, preview, slug, toc }) => {
   const router = useRouter();
 
   const moduleResources = resources?.filter(
@@ -26,13 +28,27 @@ const GuidesPage = ({ file, resources, ...props }) => {
   ) : router.isFallback ? (
     <div>Loading...</div>
   ) : (
-    <ResourceEditor
-      resources={moduleResources}
-      file={file}
-      contentType={ContentTypes.GUIDES}
-      relatedResources={relatedDocs}
-      {...props}
-    />
+    <ResourcesLayout
+      resourcePath={ContentTypes.GUIDES}
+      sidebar={
+        <SidebarGuides
+          resources={moduleResources}
+          resourcePath={ContentTypes.GUIDES}
+          activeSlug={slug}
+        />
+      }
+      slug={slug}
+      toc={toc}
+      navFile={navFile}
+    >
+      <ResourcePresentation
+        file={file}
+        relatedResources={relatedDocs}
+        contentType={ContentTypes.GUIDES}
+        navFile={navFile}
+        preview={preview}
+      />
+    </ResourcesLayout>
   );
 };
 
