@@ -14,47 +14,31 @@ const useSubNavForm = (mdFile, preview) => {
         label: 'Edit the title',
         name: 'frontmatter.title',
         component: 'text',
-        itemProps: (item) => ({
-          key: item.slug,
-          label: item.slug,
-        }),
       },
       {
         label: 'Edit the description',
         name: 'frontmatter.description',
         component: 'text',
-        itemProps: (item) => ({
-          key: item.slug,
-          label: item.slug,
-        }),
       },
       {
-        label: 'Edit the tags',
+        label: 'Add tags',
+        description:
+          'Keywords that describe the content and allow it to be cross-referenced with other documents.',
         name: 'frontmatter.tags',
         component: 'tags',
-        itemProps: (item) => ({
-          key: item.slug,
-          label: item.slug,
-        }),
       },
       {
-        label: 'Edit the components',
+        label: 'Add components',
         name: 'frontmatter.components',
+        description: 'A list of the different protocol modules to which this document relates.',
         component: 'tags',
-        itemProps: (item) => ({
-          key: item.slug,
-          label: item.slug,
-        }),
       },
       {
         label: 'Edit the contentType',
         name: 'frontmatter.contentType',
         component: 'select',
-        options: ['documentation', 'guides'],
-        itemProps: (item) => ({
-          key: item.slug,
-          label: item.slug,
-        }),
+        description: 'Categorizes the resource into different sections of the site.',
+        options: ['documentation', 'guides', 'security'],
       },
     ],
   };
