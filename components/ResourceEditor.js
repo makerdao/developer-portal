@@ -31,6 +31,8 @@ const ResourceEditor = ({
   const { asPath } = useRouter();
   const setActiveGroup = useStore((state) => state.setActiveGroup);
 
+  const contributors = file.data.frontmatter.contributors;
+
   useEffect(() => {
     setActiveGroup(file.data.frontmatter.group);
   }, [setActiveGroup, file.data.frontmatter.group]);
@@ -72,7 +74,7 @@ const ResourceEditor = ({
       <Grid gap={4}>
         <Feedback route={asPath} cms={cms} />
         <ContributeCta file={file} />
-        <Contributors contributors={file.data.frontmatter.contributors} />
+        {contributors && <Contributors contributors={contributors} />}
       </Grid>
     </ResourcesLayout>
   );
