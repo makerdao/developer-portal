@@ -13,7 +13,7 @@ const ResourcesLayout = ({ resourcePath, sidebar, slug, toc, navFile, preview, c
   return (
     <SingleLayout subnav={<SubNav links={navData.navItems} />}>
       <Grid columns={['auto', '300px auto 250px']} gap="0">
-        {sidebar}
+        {sidebar || <Box />}
         <Box sx={{ borderRadius: 0, py: 0, px: 4, pb: 4 }}>{children}</Box>
         <Infobar resourcePath={resourcePath} slug={slug} toc={toc} />
       </Grid>

@@ -4,40 +4,20 @@ import matter from 'gray-matter';
 import { getGithubPreviewProps, parseMarkdown, parseJson } from 'next-tinacms-github';
 import ResourcesLayout from '@layouts/ResourcesLayout';
 import ResourcePresentation from '@components/ResourcePresentation';
-import SidebarGuides from '@components/SidebarGuides';
 import { createToc, getResources } from '@utils';
 import { ContentTypes } from '../../utils/constants';
 
-const GuidesPage = ({ file, resources, navFile, preview, slug, toc }) => {
+const GuidesPage = ({ file, navFile, preview, slug, toc }) => {
   const router = useRouter();
-
-  const moduleResources = resources?.filter(
-    (r) =>
-      r.data.frontmatter.components.some((c) => file.data.frontmatter.components.includes(c)) &&
-      r.data.frontmatter.contentType === ContentTypes.SECURITY
-  );
 
   return !file ? (
     <Error statusCode={404} />
   ) : router.isFallback ? (
     <div>Loading...</div>
   ) : (
-    <ResourcesLayout
-      resourcePath={ContentTypes.SECURITY}
-      sidebar={
-        <SidebarGuides
-          resources={moduleResources}
-          resourcePath={ContentTypes.SECURITY}
-          activeSlug={slug}
-        />
-      }
-      slug={slug}
-      toc={toc}
-      navFile={navFile}
-    >
+    <ResourcesLayout resourcePath={ContentTypes.SECURITY} slug={slug} toc={toc} navFile={navFile}>
       <ResourcePresentation
         file={file}
-        // relatedResources={relatedGuides}
         contentType={ContentTypes.SECURITY}
         navFile={navFile}
         preview={preview}
