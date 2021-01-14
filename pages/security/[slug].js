@@ -9,13 +9,13 @@ import { createToc, getResources } from '@utils';
 import useStore from '@stores/store';
 import { ContentTypes } from '@utils/constants';
 
-const GuidesPage = ({ file, navFile, preview, slug, toc }) => {
+const SecurityPage = ({ file, navFile, preview, slug, toc }) => {
   const router = useRouter();
   const setActiveGroup = useStore((state) => state.setActiveGroup);
 
   useEffect(() => {
-    setActiveGroup(file.data.frontmatter.group);
-  }, [setActiveGroup, file.data.frontmatter.group]);
+    setActiveGroup(file?.data.frontmatter.group);
+  }, [setActiveGroup, file]);
 
   return !file ? (
     <Error statusCode={404} />
@@ -119,4 +119,4 @@ export const getStaticPaths = async function () {
   };
 };
 
-export default GuidesPage;
+export default SecurityPage;

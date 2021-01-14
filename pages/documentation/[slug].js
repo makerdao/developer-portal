@@ -27,8 +27,8 @@ const DocsPage = ({ file, resources, navFile, preview, slug, toc }) => {
   const setActiveGroup = useStore((state) => state.setActiveGroup);
 
   useEffect(() => {
-    setActiveGroup(file.data.frontmatter.group);
-  }, [setActiveGroup, file.data.frontmatter.group]);
+    setActiveGroup(file?.data.frontmatter.group);
+  }, [setActiveGroup, file]);
 
   const moduleResources = resources
     ?.filter(
