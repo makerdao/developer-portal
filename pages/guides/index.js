@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { getGithubPreviewProps, parseJson } from 'next-tinacms-github';
 import { Container, Heading, Flex } from 'theme-ui';
-import ArticlesList from '@components/ArticlesList';
+import GuideGrid from '@components/GuideGrid';
 import Dropdown from '@components/Dropdown';
 import SingleLayout from '@layouts/SingleLayout';
 import { getResources } from '@utils';
@@ -39,7 +39,7 @@ const Page = ({ guides }) => {
   return (
     <SingleLayout>
       <PageLead activeGroup={active} onChange={setActive} options={componentNames} />
-      <ArticlesList title="Guides" path="guides" resources={resources} />
+      <GuideGrid title="Guides" path="guides" resources={resources} />
     </SingleLayout>
   );
 };
