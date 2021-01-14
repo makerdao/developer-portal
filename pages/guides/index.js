@@ -29,12 +29,17 @@ const PageLead = ({ options, activeGroup, onChange }) => {
 };
 
 const Page = ({ guides }) => {
-  const [active, setActive] = useState('vaults');
-  const resources = guides.filter((guide) => guide.data.frontmatter.components.includes(active));
-  const componentNames = guides.reduce((acc, guide) => {
-    acc.push(...guide.data.frontmatter.components);
-    return [...new Set(acc)];
-  }, []);
+  const [active, setActive] = useState('everything');
+  const resources = guides.filter((guide) =>
+    active === 'everything' ? Boolean : guide.data.frontmatter.components.includes(active)
+  );
+  const componentNames = guides.reduce(
+    (acc, guide) => {
+      acc.push(...guide.data.frontmatter.components);
+      return [...new Set(acc)];
+    },
+    ['everything']
+  );
 
   return (
     <SingleLayout>
