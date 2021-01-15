@@ -5,7 +5,12 @@ import { jsx, Box } from 'theme-ui';
 const CodeWrapper = ({ value, language = 'jsx', ...otherProps }) => {
   return (
     <Box variant="styles.code" {...otherProps}>
-      <SyntaxHighlighter codeTagProps={null} useInlineStyles={false} language={language}>
+      <SyntaxHighlighter
+        codeTagProps={''}
+        useInlineStyles={false}
+        language={language}
+        showLineNumbers={true}
+      >
         {value}
       </SyntaxHighlighter>
     </Box>

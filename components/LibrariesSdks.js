@@ -5,9 +5,38 @@ import { InlineTextarea } from 'react-tinacms-inline';
 import Link from 'next/link';
 import CodeWrapper from '@components/CodeWrapper';
 
+const CodeWindow = ({ code }) => {
+  return (
+    <Flex
+      sx={{
+        width: 300,
+        position: 'relative',
+        height: 300,
+        pt: 3,
+        bg: 'surface',
+      }}
+    >
+      <Icon
+        name="code2"
+        size={300}
+        color="textMuted"
+        sx={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+        }}
+      />
+      <CodeWrapper
+        sx={{ bg: 'surface', fontSize: 1, p: 0, selectable: 'true', m: 'auto' }}
+        value={code}
+        language="js"
+      />
+    </Flex>
+  );
+};
+
 const LibrariesSdks = () => {
-  const daijsCode = `
-  import Maker from '@makerdao/dai';
+  const daijsCode = `import Maker from '@makerdao/dai';
 
   const maker = 
     await Maker.create('http', {
@@ -16,11 +45,11 @@ const LibrariesSdks = () => {
   });
 
   const vault = 
-    await maker.service('mcd:cdpManager')
-  .openLockAndDraw(
-    'ETH-A', ETH(50), DAI(1000)
-    );
-  `;
+    await maker
+      .service('mcd:cdpManager')
+      .openLockAndDraw(
+        'ETH-A', ETH(50), DAI(1000)
+      );`;
   return (
     <Container>
       <Heading variant="megaHeading" pb={3}>
@@ -72,32 +101,7 @@ const LibrariesSdks = () => {
             </Flex>
           </Grid>
         </Grid>
-
-        <Flex
-          sx={{
-            width: 300,
-            position: 'relative',
-            height: 300,
-            pt: 3,
-            bg: 'surface',
-          }}
-        >
-          <Icon
-            name="code2"
-            size={300}
-            color="textMuted"
-            sx={{
-              position: 'absolute',
-              top: 0,
-              left: 0,
-            }}
-          />
-          <CodeWrapper
-            sx={{ bg: 'surface', fontSize: 1, p: 0, selectable: 'true' }}
-            value={daijsCode}
-            language="js"
-          />
-        </Flex>
+        <CodeWindow code={daijsCode} />
       </Flex>
 
       <Grid

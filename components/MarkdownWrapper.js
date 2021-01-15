@@ -4,7 +4,7 @@ import { BaseStyles } from 'theme-ui';
 import ReactMarkdown from 'react-markdown';
 import { jsx, Image, Text, Flex, Grid } from 'theme-ui';
 import slugify from 'slugify';
-import CodeWrapper from '@components/CodeWrapper';
+import CodeContainer from '@components/CodeContainer';
 const $ = createElement;
 
 const ImageWrapper = ({ alt, src, title }) => {
@@ -79,7 +79,7 @@ const MarkdownWrapper = ({ source }) => (
     <ReactMarkdown
       source={source}
       renderers={{
-        code: CodeWrapper,
+        code: CodeContainer,
         heading: Heading,
         image: ImageWrapper,
         list: List,

@@ -161,6 +161,7 @@ const theme = {
     },
     pre: {
       bg: 'background',
+      m: 0,
     },
     code: {
       ...makerTheme.styles.code,
