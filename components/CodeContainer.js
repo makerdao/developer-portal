@@ -2,9 +2,9 @@
 import { jsx, Text, Grid, Box, Flex } from 'theme-ui';
 import CodeWrapper from '@components/CodeWrapper';
 
-export const CodeBox = ({ value, language = 'jsx', title = 'Code', codeProps, ...props }) => {
+export const CodeContainer = ({ value, language = 'jsx' }) => {
   return (
-    <Box sx={{ border: 'light', borderColor: 'muted' }}>
+    <Box sx={{ border: 'light', borderColor: 'muted', bg: 'surface' }}>
       <Flex
         sx={{
           p: 3,
@@ -25,4 +25,4 @@ export const CodeBox = ({ value, language = 'jsx', title = 'Code', codeProps, ..
   );
 };
 
-export default CodeBox;
+export default CodeContainer;

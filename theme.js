@@ -160,20 +160,17 @@ const theme = {
       pl: 4,
     },
     pre: {
-      bg: 'background',
       m: 0,
     },
     code: {
       ...makerTheme.styles.code,
       p: 0,
       m: 0,
+      bg: 'surface',
     },
     // applies to single-backticks
-    inlineCode: {
-      fontFamily: 'monospace',
-      fontSize: 3,
-      bg: 'primaryMuted',
-      color: 'primaryAlt',
+    'p > code': {
+      bg: 'surface',
       px: 1,
     },
   },
