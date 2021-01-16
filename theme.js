@@ -27,7 +27,7 @@ const theme = {
         // primary: '#F012BE',
         muted: '#694769',
         // muted: '#ffffff08',
-        mutedAlt: '#694769',
+        mutedAlt: '#8C738C',
         onBackgroundAlt: '#EAEBF0',
         // onBackgroundAlt: '#e1dfec',
         onBackgroundMuted: '#CFC3CF',

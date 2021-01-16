@@ -4,12 +4,12 @@ import Link from 'next/link';
 import { Icon } from '@makerdao/dai-ui-icons';
 import { useBreakpointIndex } from '@theme-ui/match-media';
 
-const ListItem = ({ title, link, linkText, description }) => {
+const ListItem = ({ title, link, linkText, description, icon }) => {
   return (
     <Box>
       <Link href={link} passHref>
         <Grid sx={{ height: '100%', gap: 3, gridTemplateRows: '50px auto 1fr auto' }}>
-          <Icon name="shape_1" sx={{ height: '50px', width: '50px' }}></Icon>
+          <Icon color="mutedAlt" name={icon} sx={{ height: '50px', width: '50px' }}></Icon>
           <Heading sx={{ cursor: 'pointer' }} variant="smallHeading">
             {title}
           </Heading>
@@ -28,13 +28,16 @@ const GuideGrid = ({ resources, path }) => {
   const bpi = useBreakpointIndex({ defaultIndex: 2 });
   return (
     <Container>
-      <Grid columns={4} gap={5}>
+      <Grid columns={4} gap={6}>
         {resources.map(
-          ({
-            data: {
-              frontmatter: { group, title, slug, description },
+          (
+            {
+              data: {
+                frontmatter: { group, title, slug, description },
+              },
             },
-          }) => {
+            i
+          ) => {
             return (
               <ListItem
                 key={title}
@@ -44,6 +47,7 @@ const GuideGrid = ({ resources, path }) => {
                 link={`/${path}/${slug}/`}
                 linkText={'Read'}
                 isMobile={bpi === 0}
+                icon={`stamp_${(i % 5) + 1}`}
               />
             );
           }

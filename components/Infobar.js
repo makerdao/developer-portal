@@ -110,7 +110,7 @@ const Infobar = ({ resourcePath, slug, toc }) => {
     <Box
       sx={{
         border: 'solid',
-        borderColor: 'mutedAlt',
+        borderColor: 'muted',
         borderWidth: '0 0 0 1px',
       }}
     >
@@ -119,7 +119,7 @@ const Infobar = ({ resourcePath, slug, toc }) => {
           alignItems: 'center',
           justifyContent: 'center',
           border: 'solid',
-          borderColor: 'mutedAlt',
+          borderColor: 'muted',
           borderWidth: '0 0 1px 0',
           width: '100%',
           p: 3,

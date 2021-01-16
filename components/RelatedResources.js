@@ -21,7 +21,7 @@ const RelatedResources = ({ resources = [], contentType, show = 3 }) => {
                 py: 3,
                 px: 0,
                 border: 'light',
-                borderColor: 'mutedAlt',
+                borderColor: 'muted',
                 borderWidth: '0 0 1px 0',
                 cursor: 'pointer',
               }}

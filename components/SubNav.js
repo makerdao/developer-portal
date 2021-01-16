@@ -9,7 +9,7 @@ const SubNav = ({ links, query }) => {
     <Box
       sx={{
         border: 'light',
-        borderColor: 'mutedAlt',
+        borderColor: 'muted',
         borderWidth: '1px 0 1px 0',
         '::-webkit-scrollbar': {
           width: '0px',

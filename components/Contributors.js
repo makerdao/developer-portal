@@ -39,7 +39,7 @@ const Contributors = ({ contributors = [] }) => {
         py: 3,
         px: 0,
         border: 'light',
-        borderColor: 'mutedAlt',
+        borderColor: 'muted',
         borderWidth: '1px 0 1px 0',
       }}
     >

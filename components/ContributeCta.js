@@ -11,7 +11,7 @@ const Contributors = ({ file }) => {
         py: 4,
         px: 5,
         border: 'light',
-        borderColor: 'mutedAlt',
+        borderColor: 'muted',
         borderRadius: 'small',
         width: '100%',
       }}

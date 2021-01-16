@@ -91,7 +91,7 @@ const Sidebar = ({ resources, resourcePath, activeSlug }) => {
         pl: 4,
         flexDirection: 'column',
         border: 'light',
-        borderColor: 'mutedAlt',
+        borderColor: 'muted',
         borderWidth: '0 1px 0 0',
       }}
     >
