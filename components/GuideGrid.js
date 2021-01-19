@@ -13,7 +13,18 @@ const ListItem = ({ title, link, linkText, description, icon }) => {
           <Heading sx={{ cursor: 'pointer' }} variant="smallHeading">
             {title}
           </Heading>
-          <Text sx={{ cursor: 'pointer' }}>{description}</Text>
+          <Text
+            sx={{
+              cursor: 'pointer',
+              display: '-webkit-inline-box',
+              overflow: 'hidden',
+              maxHeight: '70px',
+              WebkitLineClamp: 3,
+              WebkitBoxOrient: 'vertical',
+            }}
+          >
+            {description}
+          </Text>
           <Flex sx={{ alignItems: 'center', alignSelf: 'end' }}>
             <Icon name="arrow_right" color="primary" mr={2} />
             <Text sx={{ cursor: 'pointer' }}>{linkText}</Text>
@@ -28,7 +39,7 @@ const GuideGrid = ({ resources, path }) => {
   const bpi = useBreakpointIndex({ defaultIndex: 2 });
   return (
     <Container>
-      <Grid columns={4} gap={6}>
+      <Grid columns={4} gap={5}>
         {resources.map(
           (
             {
