@@ -114,7 +114,7 @@ const theme = {
   },
   forms: {
     ...makerTheme.forms,
-    contrastTextarea: {
+    contrastForm: {
       color: 'background',
       bg: 'onBackgroundAlt',
     },
