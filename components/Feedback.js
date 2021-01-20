@@ -30,12 +30,12 @@ const Feedback = ({ route, cms }) => {
 
   const { title, placeholder } = isNegative
     ? {
-        title: "We're sorry this document wasn't helpful",
+        title: "We're sorry this document wasn't helpful.",
         placeholder: 'Please let us know how we can improve it.',
       }
     : isPositive
     ? {
-        title: 'Glad this document was helpful',
+        title: 'Glad this document was helpful.',
         placeholder:
           'Please let us know if you have any suggestions how we can make it even better.',
       }
@@ -84,11 +84,20 @@ const Feedback = ({ route, cms }) => {
   }, [route]);
 
   return (
-    <Card sx={{ bg: 'onBackground' }}>
+    <Card
+      sx={{
+        bg: 'background',
+        border: 'light',
+        borderColor: 'muted',
+        borderRadius: 'small',
+        width: '100%',
+      }}
+    >
       <Flex sx={{ justifyContent: 'space-between', alignItems: 'center' }}>
-        <Heading sx={{ color: 'background' }} variant="microHeading">
-          {title}
-        </Heading>
+        <Flex sx={{ alignItems: 'center' }}>
+          <Icon sx={{ mr: 2 }} color="primary" name={'document'}></Icon>
+          <Heading variant="microHeading">{title}</Heading>
+        </Flex>
         {isSubmitted ? (
           <Flex
             sx={{
@@ -104,7 +113,14 @@ const Feedback = ({ route, cms }) => {
           </Flex>
         ) : (
           <Grid columns={2}>
-            <Button variant="contrastButtonSmall" onClick={() => setReaction('positive')}>
+            <Button
+              variant="contrastButtonSmall"
+              sx={{
+                bg: isPositive ? 'primary' : undefined,
+                color: isPositive ? 'onPrimary' : undefined,
+              }}
+              onClick={() => setReaction('positive')}
+            >
               Yes
             </Button>
             <Button
@@ -122,7 +138,7 @@ const Feedback = ({ route, cms }) => {
       </Flex>
       {(isNegative || isPositive) && (
         <Flex sx={{ flexDirection: 'column', alignItems: 'flex-start' }}>
-          <Text sx={{ color: 'background', fontWeight: 'body', mb: 2 }} variant="caps">
+          <Text sx={{ fontWeight: 'body', mb: 2, mt: 3 }} variant="caps">
             FEEDBACK
           </Text>
           <Textarea
@@ -130,18 +146,28 @@ const Feedback = ({ route, cms }) => {
             ref={ref}
             placeholder={placeholder}
             variant={'forms.contrastForm'}
-            sx={{ mb: 2 }}
+            sx={{
+              mb: 2,
+              bg: 'surface',
+              borderColor: 'muted',
+            }}
           ></Textarea>
-          <Text sx={{ color: 'background', fontWeight: 'body', mb: 2 }} variant="caps">
+          <Text sx={{ fontWeight: 'body', mb: 2, mt: 3 }} variant="caps">
             E-MAIL (OPTIONAL)
           </Text>
           <Grid columns={'2fr 1fr'} sx={{ width: '100%' }}>
             <Flex sx={{ flexDirection: 'column' }}>
               <Input
-                sx={{ mr: 3, fontFamily: 'body', fontSize: 2 }}
+                sx={{
+                  mr: 3,
+                  fontFamily: 'body',
+                  fontSize: 2,
+                  bg: 'surface',
+                  borderColor: 'muted',
+                }}
                 type="email"
                 aria-label="Feedback email"
-                placeholder="Email Address"
+                placeholder="Enter your e-mail address if you would like to be in contact."
                 variant={'forms.contrastForm'}
                 ref={emailRef}
                 onChange={(e) => handleOnChange(e.target.value)}

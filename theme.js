@@ -98,6 +98,11 @@ const theme = {
   },
   buttons: {
     ...makerTheme.buttons,
+    small: {
+      ...makerTheme.buttons.small,
+      fontFamily: 'body',
+      textTransform: undefined,
+    },
     contrastButtonSmall: {
       variant: 'buttons.small',
       bg: 'onBackgroundAlt',
@@ -114,6 +119,13 @@ const theme = {
   },
   forms: {
     ...makerTheme.forms,
+    input: {
+      ...makerTheme.forms.input,
+      '::placeholder': {
+        color: 'textMuted',
+        opacity: 1,
+      },
+    },
     contrastForm: {
       color: 'background',
       bg: 'onBackgroundAlt',

@@ -40,10 +40,6 @@ const EmailSignup = ({ placeholder, disabled, ...props }) => {
               borderColor: (theme) => `transparent transparent ${theme.colors.muted} transparent`,
               color: 'text',
             },
-            '::placeholder': {
-              color: 'textMuted',
-              opacity: 1,
-            },
           }}
         ></Input>
         <IconButton disabled={loading || disabled} onClick={subscribe} sx={{ m: 'auto' }}>
