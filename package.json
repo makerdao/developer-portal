@@ -31,7 +31,6 @@
     "@tinacms/git-client": "^0.33.0",
     "@zeit/next-sass": "^1.0.1",
     "algoliasearch": "^4.1.0",
-    "axios": "^0.19.2",
     "babel-plugin-import-glob-array": "^0.2.0",
     "bignumber.js": "^9.0.0",
     "cors": "^2.8.5",
