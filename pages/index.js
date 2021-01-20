@@ -15,7 +15,6 @@ import IntroText from '@components/IntroText';
 import ModulesList from '@components/ModulesList';
 import SecurityFeatures from '@components/SecurityFeatures';
 import NewsletterCallout from '@components/NewsletterCallout';
-import Banner from '@components/Banner';
 import LibrariesSdks from '@components/LibrariesSdks';
 import useCreateDocument from '../hooks/useCreateDocument';
 import { getResources } from '@utils';
@@ -45,7 +44,6 @@ const Page = ({ file, guides, documentation }) => {
   useGithubToolbarPlugins();
   useCreateDocument([...guides, ...documentation]);
 
-  const [bannerOpen, setBannerOpen] = useState(true);
   const [selected, setSelected] = useState('everything');
 
   let filteredGuides = guides.filter((guide) =>
@@ -67,29 +65,6 @@ const Page = ({ file, guides, documentation }) => {
 
   return (
     <SingleLayout>
-      {bannerOpen && (
-        <Banner
-          close={() => {
-            setBannerOpen(!bannerOpen);
-          }}
-          content={
-            <>
-              <Text sx={{ variant: 'text.plainText', m: 'auto', color: 'textMuted', fontSize: 1 }}>
-                Multi-collateral Dai <span sx={{ color: 'text', px: 1 }}>Release 1.2.0</span> Wed
-                11.25.2020
-              </Text>
-              <ThemeLink href={'https://changelog.makerdao.com/'} target="_blank">
-                <Flex sx={{ alignItems: 'center' }}>
-                  <Icon color="text" name="arrow_right"></Icon>
-                  <Text sx={{ color: 'text', pl: 2, fontWeight: 'body' }}>
-                    View all public releases
-                  </Text>
-                </Flex>
-              </ThemeLink>
-            </>
-          }
-        />
-      )}
       <InlineForm form={form}>
         <Grid
           sx={{
