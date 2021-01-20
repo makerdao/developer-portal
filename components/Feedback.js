@@ -150,6 +150,7 @@ const Feedback = ({ route, cms }) => {
               mb: 2,
               bg: 'surface',
               borderColor: 'muted',
+              color: 'text',
             }}
           ></Textarea>
           <Text sx={{ fontWeight: 'body', mb: 2, mt: 3 }} variant="caps">
@@ -164,6 +165,7 @@ const Feedback = ({ route, cms }) => {
                   fontSize: 2,
                   bg: 'surface',
                   borderColor: 'muted',
+                  color: 'text',
                 }}
                 type="email"
                 aria-label="Feedback email"
