@@ -2,13 +2,14 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
 import { Button, jsx, Card, Heading, Text, Textarea, Grid, Flex, Input } from 'theme-ui';
 import { Icon } from '@makerdao/dai-ui-icons';
-import { toMarkdownString } from '@utils';
+import { toMarkdownString, validateEmail } from '@utils';
 
 const Feedback = ({ route, cms }) => {
   const ref = useRef(null);
   const emailRef = useRef(null);
 
   const [reaction, setReaction] = useState(null);
+  const [emailValid, setEmailValid] = useState(true);
 
   const isNegative = reaction === 'negative';
   const isPositive = reaction === 'positive';
@@ -20,8 +21,13 @@ const Feedback = ({ route, cms }) => {
     ? 'Thank you for your feedback'
     : 'Was this document helpful?';
 
+  const handleOnChange = (value) => {
+    if (!validateEmail(value) && value) setEmailValid(false);
+    else if (validateEmail(value) || !value) setEmailValid(true);
+  };
+
   const sendFeedback = useCallback(async () => {
-    const md = toMarkdownString({
+    const markdown = toMarkdownString({
       rawFrontmatter: { email: emailRef?.current?.value },
       rawMarkdownBody: `# Feedback Received
 from: ${emailRef?.current?.value}
@@ -33,7 +39,7 @@ ${ref.current?.value}`,
       const response = await fetch(process.env.FEEDBACK_ENDPOINT || '/api/feedback', {
         body: JSON.stringify({
           reaction,
-          comment: ref.current?.value === '' ? '👎' : ref.current?.value ? md : '👍',
+          comment: ref.current?.value === '' ? '👎' : ref.current?.value ? markdown : '👍',
           tags: ['feedback', window.location.pathname],
         }),
         headers: {
@@ -106,18 +112,26 @@ ${ref.current?.value}`,
           <Text sx={{ color: 'background', fontWeight: 'body', mb: 2 }} variant="caps">
             FEEDBACK
           </Text>
-          <Flex sx={{ alignItems: 'center' }}>
-            <Input
-              sx={{ my: 3, mr: 3, fontFamily: 'body', fontSize: 2 }}
-              type="email"
-              aria-label="Feedback email"
-              placeholder="Email Address"
-              variant={'forms.contrastForm'}
-              ref={emailRef}
-            ></Input>
-            <Text sx={{ color: 'background' }}>
-              Optionally enter your email if you would like to be in contact.
-            </Text>
+          <Flex sx={{ flexDirection: 'column', my: 3 }}>
+            <Flex sx={{ alignItems: 'center' }}>
+              <Input
+                sx={{ mr: 3, fontFamily: 'body', fontSize: 2 }}
+                type="email"
+                aria-label="Feedback email"
+                placeholder="Email Address"
+                variant={'forms.contrastForm'}
+                ref={emailRef}
+                onChange={(e) => handleOnChange(e.target.value)}
+              ></Input>
+              <Text sx={{ color: 'background' }}>
+                Optionally enter your email if you would like to be in contact.
+              </Text>
+            </Flex>
+            {!emailValid && (
+              <Text variant="plainText" sx={{ fontSize: 1, color: 'primary' }}>
+                Please enter a valid email address
+              </Text>
+            )}
           </Flex>
           <Textarea
             aria-label="Feedback textarea"
@@ -127,10 +141,13 @@ ${ref.current?.value}`,
             sx={{ mb: 2 }}
           ></Textarea>
           <Grid columns={2}>
-            <Button variant="small" onClick={sendFeedback}>
+            <Button variant="small" onClick={sendFeedback} disabled={!emailValid}>
               Submit
             </Button>
-            <Button variant="contrastButtonSmall" onClick={() => setReaction(null)}>
+            <Button
+              variant="contrastButtonSmall"
+              onClick={() => setReaction(null) || setEmailValid(true)}
+            >
               Cancel
             </Button>
           </Grid>
