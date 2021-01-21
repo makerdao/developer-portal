@@ -39,7 +39,7 @@ const GuideGrid = ({ resources, path }) => {
   const bpi = useBreakpointIndex({ defaultIndex: 2 });
   return (
     <Container>
-      <Grid columns={4} gap={5}>
+      <Grid columns={4} sx={{ gridRowGap: 6, gridColumnGap: 5 }}>
         {resources.map(
           (
             {
