@@ -3,12 +3,13 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { Container, jsx, Box, Heading, Grid, Flex, Link as ThemeLink } from 'theme-ui';
 import { Icon } from '@makerdao/dai-ui-icons';
-import { usePlugin } from 'tinacms';
+import { usePlugin, useFormScreenPlugin } from 'tinacms';
 import { getGithubPreviewProps, parseJson } from 'next-tinacms-github';
 import { useGithubToolbarPlugins, useGithubJsonForm } from 'react-tinacms-github';
 import { InlineForm } from 'react-tinacms-inline';
 import SingleLayout from '@layouts/SingleLayout.js';
 import useCreateDocument from '@hooks/useCreateDocument';
+import useBannerForm from '@hooks/useBannerForm';
 import GuideList from '@components/GuideList';
 import CommunityCta from '@components/CommunityCta';
 import AboutThisSite from '@components/AboutThisSite';
@@ -36,8 +37,11 @@ const withTagsAlgo = (fullSet, subSet) => {
   return uniqueAll;
 };
 
-const Page = ({ file, guides, documentation }) => {
+const Page = ({ file, guides, documentation, bannerFile, preview }) => {
   const [data, form] = useGithubJsonForm(file, landingPageFormOptions);
+  const [bannerData, bannerForm] = useBannerForm(bannerFile, preview);
+
+  useFormScreenPlugin(bannerForm);
   usePlugin(form);
   useGithubToolbarPlugins();
   useCreateDocument([...guides, ...documentation]);
@@ -62,7 +66,7 @@ const Page = ({ file, guides, documentation }) => {
   );
 
   return (
-    <SingleLayout>
+    <SingleLayout bannerData={bannerData.banner}>
       <InlineForm form={form}>
         <Grid
           sx={{
@@ -134,19 +138,27 @@ export const getStaticProps = async function ({ preview, previewData }) {
 
   if (preview) {
     // get data from github
-    const file = (
-      await getGithubPreviewProps({
-        ...previewData,
-        fileRelativePath: 'data/landingPage.json',
-        parse: parseJson,
-      })
-    ).props;
+    const file = await getGithubPreviewProps({
+      ...previewData,
+      fileRelativePath: 'data/landingPage.json',
+      parse: parseJson,
+    });
+
+    const bannerFile = await getGithubPreviewProps({
+      ...previewData,
+      fileRelativePath: 'data/banner.json',
+      parse: parseJson,
+    });
 
     return {
       props: {
-        ...file,
+        file: { ...file.props.file },
+        bannerFile: {
+          ...bannerFile.props.file,
+        },
         guides,
         documentation,
+        preview,
       },
     };
   }
@@ -158,6 +170,10 @@ export const getStaticProps = async function ({ preview, previewData }) {
       file: {
         fileRelativePath: 'data/landingPage.json',
         data: (await import('../data/landingPage.json')).default,
+      },
+      bannerFile: {
+        fileRelativePath: 'data/banner.json',
+        data: (await import('../data/banner.json')).default,
       },
       guides,
       documentation,

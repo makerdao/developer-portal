@@ -67,12 +67,6 @@ export const getStaticProps = async function ({ preview, previewData, params }) 
       parse: parseJson,
     });
 
-    const bannerFile = await getGithubPreviewProps({
-      ...previewData,
-      fileRelativePath: 'data/banner.json',
-      parse: parseJson,
-    });
-
     const markdownFile = await getGithubPreviewProps({
       ...previewData,
       fileRelativePath,
@@ -92,9 +86,6 @@ export const getStaticProps = async function ({ preview, previewData, params }) 
         navFile: {
           ...navFile.props.file,
         },
-        bannerFile: {
-          ...bannerFile.props.file,
-        },
         resources,
         toc,
         previewURL: `https://raw.githubusercontent.com/${previewData.working_repo_full_name}/${previewData.head_branch}`,
@@ -111,10 +102,6 @@ export const getStaticProps = async function ({ preview, previewData, params }) 
       navFile: {
         fileRelativePath: 'data/resourcesSubNav.json',
         data: (await import('../../data/resourcesSubNav.json')).default,
-      },
-      bannerFile: {
-        fileRelativePath: 'data/banner.json',
-        data: (await import('../../data/banner.json')).default,
       },
       slug,
       resources,

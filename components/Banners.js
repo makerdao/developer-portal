@@ -3,10 +3,11 @@ import { useState } from 'react';
 import { jsx, Text, Flex, Link as ThemeLink } from 'theme-ui';
 import { Icon } from '@makerdao/dai-ui-icons';
 import Banner from '@components/Banner';
+import { banner as bannerJson } from '../data/banner.json';
 
 const Banners = ({ bannerData }) => {
   const [bannerOpen, setBannerOpen] = useState(true);
-  const [changelog] = bannerData;
+  const [changelog] = bannerData || bannerJson;
 
   return (
     bannerOpen && (
