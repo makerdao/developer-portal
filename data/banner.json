@@ -3,7 +3,8 @@
     {
       "url": "https://changelog.makerdao.com",
       "slug": "changelog",
-      "text": "Multi-collateral Dai Release 1.2.0 Wed 11.25.2020",
+      "text": "Multi-collateral Dai **Release 1.2.0** Wed 11.25.2020",
+      "linkText": "View all public releases",
       "id": "1"
     }
   ]

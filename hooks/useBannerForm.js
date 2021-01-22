@@ -4,7 +4,6 @@ import { getRandID } from '@utils';
 const useBannerForm = (jsonFile, preview) => {
   if (!preview) {
     // if we are not in preview return the jsonfile and don't register the form
-    // return [jsonFile, null];
     return [jsonFile.data, null];
   }
 
@@ -28,13 +27,18 @@ const useBannerForm = (jsonFile, preview) => {
         }),
         fields: [
           {
-            label: 'text',
+            label: 'Text',
             name: 'text',
             component: 'text',
           },
           {
-            label: 'url',
+            label: 'URL',
             name: 'url',
+            component: 'text',
+          },
+          {
+            label: 'Link Text',
+            name: 'linkText',
             component: 'text',
           },
         ],

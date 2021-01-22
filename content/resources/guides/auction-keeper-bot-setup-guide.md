@@ -1,6 +1,6 @@
 ---
 title: Auction Keeper Bot Setup Guide
-description: Learn how to setup an auciton keeper bot
+description: Learn how to setup an auction keeper bot
 components:
   - keepers
   - auctions
