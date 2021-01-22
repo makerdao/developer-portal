@@ -139,6 +139,7 @@ const icons = {
             fillRule="evenodd"
             clipRule="evenodd"
             d="M16.3142 18.4609V79.9994H77.8521C77.8521 79.9993 77.8521 79.9992 77.8521 79.999C77.8521 46.0126 50.3006 18.4611 16.3142 18.4609Z"
+            fill="gold"
           />
         </mask>
         <path
@@ -146,14 +147,7 @@ const icons = {
           fill="currentColor"
           mask="url(#path-2-inside-1)"
         />
-        <circle
-          cx="77.082"
-          cy="22.3076"
-          r="21.8076"
-          stroke="currentColor"
-          fill="currentColor"
-          fillOpacity="0"
-        />
+        <circle cx="77.082" cy="22.3076" r="21.8076" stroke="currentColor" fillOpacity="0" />
       </g>
     ),
   },
@@ -166,6 +160,7 @@ const icons = {
             fillRule="evenodd"
             clipRule="evenodd"
             d="M2.81641 41.1594C2.81641 41.1594 2.81642 41.1593 2.81642 41.1592C2.81642 20.2118 20.2121 3.22311 41.6957 3.15967H41.8164V41.1594H2.81641Z"
+            fill="gold"
           />
         </mask>
         <path
@@ -178,6 +173,7 @@ const icons = {
             fillRule="evenodd"
             clipRule="evenodd"
             d="M41.8162 20.5759V41.1597H20.6914C20.6914 41.1595 20.6914 41.1593 20.6914 41.1591C20.6914 29.7914 30.1493 20.576 41.8162 20.5759Z"
+            fill="gold"
           />
         </mask>
         <path
@@ -212,11 +208,12 @@ const icons = {
     viewBox: '0 0 57 51',
     path: (
       <g>
-        <mask id="path-1-inside-1_s4" fill="currentColor">
+        <mask id="path-1-inside-1_s4">
           <path
             fillRule="evenodd"
             clipRule="evenodd"
             d="M32.9267 3.16064V41.1606C15.9779 41.1606 2.23828 24.1475 2.23828 3.16064H32.9267Z"
+            fill="gold"
           />
         </mask>
         <path

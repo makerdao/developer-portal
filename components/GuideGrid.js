@@ -9,7 +9,7 @@ const ListItem = ({ title, link, linkText, description, icon }) => {
     <Box>
       <Link href={link} passHref>
         <Grid sx={{ height: '100%', gap: 3, gridTemplateRows: '50px auto 1fr auto' }}>
-          <Icon color="mutedAlt" name={icon} sx={{ height: '50px', width: '50px' }}></Icon>
+          <Icon color="mutedAlt" name={icon} size={5}></Icon>
           <Heading sx={{ cursor: 'pointer' }} variant="smallHeading">
             {title}
           </Heading>
