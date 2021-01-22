@@ -4,8 +4,9 @@ import { jsx, Text, Flex, Link as ThemeLink } from 'theme-ui';
 import { Icon } from '@makerdao/dai-ui-icons';
 import Banner from '@components/Banner';
 
-const Banners = () => {
+const Banners = ({ bannerData }) => {
   const [bannerOpen, setBannerOpen] = useState(true);
+  const [changelog] = bannerData;
 
   return (
     bannerOpen && (
@@ -16,10 +17,9 @@ const Banners = () => {
         content={
           <>
             <Text sx={{ variant: 'text.plainText', m: 'auto', color: 'textMuted', fontSize: 1 }}>
-              Multi-collateral Dai <span sx={{ color: 'text', px: 1 }}>Release 1.2.0</span> Wed
-              11.25.2020
+              {changelog.text}
             </Text>
-            <ThemeLink href={'https://changelog.makerdao.com/'} target="_blank">
+            <ThemeLink href={changelog.url} target="_blank">
               <Flex sx={{ alignItems: 'center' }}>
                 <Icon color="text" name="arrow_right"></Icon>
                 <Text sx={{ color: 'text', pl: 2, fontWeight: 'body' }}>

@@ -1,17 +1,30 @@
 /** @jsx jsx */
 import { jsx, Box, Grid } from 'theme-ui';
 import SingleLayout from '@layouts/SingleLayout';
+import useBannerForm from '@hooks/useBannerForm';
 import Infobar from '@components/Infobar';
 import useSubNavForm from '@hooks/useSubNavForm';
 import { useFormScreenPlugin } from 'tinacms';
 import SubNav from '@components/SubNav';
 
-const ResourcesLayout = ({ resourcePath, sidebar, slug, toc, navFile, preview, children }) => {
+const ResourcesLayout = ({
+  resourcePath,
+  sidebar,
+  slug,
+  toc,
+  navFile,
+  bannerFile,
+  preview,
+  children,
+}) => {
   const [navData, navForm] = useSubNavForm(navFile, preview);
   useFormScreenPlugin(navForm);
 
+  const [bannerData, bannerForm] = useBannerForm(bannerFile, preview);
+  useFormScreenPlugin(bannerForm);
+
   return (
-    <SingleLayout subnav={<SubNav links={navData.navItems} />}>
+    <SingleLayout bannerData={bannerData.banner} subnav={<SubNav links={navData.navItems} />}>
       <Grid columns={['auto', '300px auto 250px']} gap="0">
         {sidebar || <Box />}
         <Box sx={{ borderRadius: 0, py: 0, px: 4, pb: 4 }}>{children}</Box>

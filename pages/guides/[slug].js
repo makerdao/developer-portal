@@ -8,7 +8,7 @@ import ResourcePresentation from '@components/ResourcePresentation';
 import { createToc, getResources } from '@utils';
 import { ContentTypes } from '@utils/constants';
 
-const GuidesPage = ({ file, resources, navFile, preview, slug, toc }) => {
+const GuidesPage = ({ file, resources, navFile, bannerFile, preview, slug, toc }) => {
   const router = useRouter();
 
   const moduleResources = resources?.filter(
@@ -40,12 +40,12 @@ const GuidesPage = ({ file, resources, navFile, preview, slug, toc }) => {
       slug={slug}
       toc={toc}
       navFile={navFile}
+      bannerFile={bannerFile}
     >
       <ResourcePresentation
         file={file}
         relatedResources={relatedDocs}
         contentType={ContentTypes.GUIDES}
-        navFile={navFile}
         preview={preview}
       />
     </ResourcesLayout>
@@ -64,6 +64,12 @@ export const getStaticProps = async function ({ preview, previewData, params }) 
     const navFile = await getGithubPreviewProps({
       ...previewData,
       fileRelativePath: 'data/resourcesSubNav.json',
+      parse: parseJson,
+    });
+
+    const bannerFile = await getGithubPreviewProps({
+      ...previewData,
+      fileRelativePath: 'data/banner.json',
       parse: parseJson,
     });
 
@@ -86,6 +92,9 @@ export const getStaticProps = async function ({ preview, previewData, params }) 
         navFile: {
           ...navFile.props.file,
         },
+        bannerFile: {
+          ...bannerFile.props.file,
+        },
         resources,
         toc,
         previewURL: `https://raw.githubusercontent.com/${previewData.working_repo_full_name}/${previewData.head_branch}`,
@@ -102,6 +111,10 @@ export const getStaticProps = async function ({ preview, previewData, params }) 
       navFile: {
         fileRelativePath: 'data/resourcesSubNav.json',
         data: (await import('../../data/resourcesSubNav.json')).default,
+      },
+      bannerFile: {
+        fileRelativePath: 'data/banner.json',
+        data: (await import('../../data/banner.json')).default,
       },
       slug,
       resources,

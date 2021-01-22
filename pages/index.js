@@ -1,13 +1,15 @@
 /** @jsx jsx */
 import { useState } from 'react';
+import Link from 'next/link';
+import { Container, jsx, Box, Heading, Grid, Flex, Link as ThemeLink } from 'theme-ui';
+import { Icon } from '@makerdao/dai-ui-icons';
+import { usePlugin } from 'tinacms';
 import { getGithubPreviewProps, parseJson } from 'next-tinacms-github';
 import { useGithubToolbarPlugins, useGithubJsonForm } from 'react-tinacms-github';
-import { InlineForm, InlineTextarea } from 'react-tinacms-inline';
-import SingleLayout from '../layouts/SingleLayout.js';
-import { Container, jsx, Box, Heading, Text, Grid, Flex, Link as ThemeLink } from 'theme-ui';
+import { InlineForm } from 'react-tinacms-inline';
+import SingleLayout from '@layouts/SingleLayout.js';
+import useCreateDocument from '@hooks/useCreateDocument';
 import GuideList from '@components/GuideList';
-import Ecosystem from '@components/Ecosystem';
-import Link from 'next/link';
 import CommunityCta from '@components/CommunityCta';
 import AboutThisSite from '@components/AboutThisSite';
 import PageLead from '@components/PageLead';
@@ -16,11 +18,7 @@ import ModulesList from '@components/ModulesList';
 import SecurityFeatures from '@components/SecurityFeatures';
 import NewsletterCallout from '@components/NewsletterCallout';
 import LibrariesSdks from '@components/LibrariesSdks';
-import useCreateDocument from '../hooks/useCreateDocument';
 import { getResources } from '@utils';
-import { usePlugin } from 'tinacms';
-import { Icon } from '@makerdao/dai-ui-icons';
-import { ecosystem } from '../data/ecosystem.json';
 import { landingPageFormOptions } from '../data/formOptions';
 
 // This function loops over a subset of resources and tries to match its tags with the tags from a larger set of resources
