@@ -1,30 +1,27 @@
 /** @jsx jsx */
-import { useState } from 'react';
-import { jsx, Text, Flex, Link as ThemeLink } from 'theme-ui';
+import { jsx, Text, Flex, Link as ThemeLink, Container } from 'theme-ui';
 import { Icon } from '@makerdao/dai-ui-icons';
 import ReactMarkdown from 'react-markdown';
 import Banner from '@components/Banner';
 import { banner as bannerJson } from '../data/banner.json';
 
 const Banners = ({ bannerData }) => {
-  const [bannerOpen, setBannerOpen] = useState(true);
   const [changelog] = bannerData || bannerJson;
 
   return (
-    bannerOpen && (
-      <Banner
-        close={() => {
-          setBannerOpen(!bannerOpen);
-        }}
-        content={
-          <>
+    <Banner
+      content={
+        <Container>
+          <Flex sx={{ width: '100%', justifyContent: 'space-between' }}>
             <Text
               sx={{
                 fontWeight: 'body',
-                m: 'auto',
-                color: 'textMuted',
+                color: 'onBackgroundMuted',
                 fontSize: 2,
                 '& strong': { color: 'text', px: 1, fontWeight: 'body' },
+                '& p': {
+                  m: 0,
+                },
               }}
             >
               <ReactMarkdown source={changelog.text} />
@@ -35,10 +32,10 @@ const Banners = ({ bannerData }) => {
                 <Text sx={{ color: 'text', pl: 2, fontWeight: 'body' }}>{changelog.linkText}</Text>
               </Flex>
             </ThemeLink>
-          </>
-        }
-      />
-    )
+          </Flex>
+        </Container>
+      }
+    />
   );
 };
 

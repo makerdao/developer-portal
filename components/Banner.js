@@ -1,20 +1,17 @@
 /** @jsx jsx */
-import { jsx, Text, Alert, Close } from 'theme-ui';
+import { jsx, Text, Alert } from 'theme-ui';
 
-const Banner = ({ close, content }) => {
+const Banner = ({ content }) => {
   return (
     <Alert
       sx={{
-        px: 3,
-        py: 0,
         borderRadius: 0,
         bg: 'surface',
         borderColor: 'surface',
       }}
     >
-      <Close sx={{ color: 'muted' }} onClick={close} />
       {typeof content === 'string' ? (
-        <Text sx={{ variant: 'text.plainText', m: 'auto', fontSize: 1 }}>{content}</Text>
+        <Text sx={{ m: 'auto', fontSize: 2, fontWeight: 'body' }}>{content}</Text>
       ) : (
         content
       )}
