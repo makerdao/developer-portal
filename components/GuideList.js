@@ -69,7 +69,7 @@ const GuideList = ({ guides, title, path, options, selected, setSelected }) => {
                 >
                   <Grid columns={['80px auto']} sx={{ height: '100%', p: 0 }}>
                     <Flex>
-                      <Icon name="stamp_1" size={5}></Icon>
+                      <Icon name="shape_1" size={5}></Icon>
                     </Flex>
                     <Link key={title} href={`/${path}/${slug}/`}>
                       <Flex
