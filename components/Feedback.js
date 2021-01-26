@@ -2,14 +2,14 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
 import { Button, jsx, Card, Heading, Text, Textarea, Grid, Flex, Input } from 'theme-ui';
 import { Icon } from '@makerdao/dai-ui-icons';
-import { toMarkdownString, validateEmail } from '@utils';
+import { toMarkdownString } from '@utils';
 
-const constructMarkdownString = (reaction, email, content) => {
+const constructMarkdownString = (reaction, handle, content) => {
   let rawFrontmatter;
   let rawMarkdownBody = `# ${reaction[0].toUpperCase() + reaction.slice(1)} Feedback Recieved`;
-  if (email) {
-    rawMarkdownBody = rawMarkdownBody.concat(`\nfrom: ${email}`);
-    rawFrontmatter = { email };
+  if (handle) {
+    rawMarkdownBody = rawMarkdownBody.concat(`\nfrom Rocket Chat user: ${handle}`);
+    rawFrontmatter = { handle };
   }
   if (content) rawMarkdownBody = rawMarkdownBody.concat(`\n\n${content}`);
   if (rawFrontmatter) return toMarkdownString({ rawFrontmatter, rawMarkdownBody });
@@ -19,10 +19,9 @@ const constructMarkdownString = (reaction, email, content) => {
 
 const Feedback = ({ route, cms }) => {
   const ref = useRef(null);
-  const emailRef = useRef(null);
+  const rcRef = useRef(null);
 
   const [reaction, setReaction] = useState(null);
-  const [emailValid, setEmailValid] = useState(true);
 
   const isNegative = reaction === 'negative';
   const isPositive = reaction === 'positive';
@@ -43,13 +42,8 @@ const Feedback = ({ route, cms }) => {
     ? { title: 'Thank you for your feedback' }
     : { title: 'Was this document helpful?' };
 
-  const handleOnChange = (value) => {
-    if (!validateEmail(value) && value) setEmailValid(false);
-    else if (validateEmail(value) || !value) setEmailValid(true);
-  };
-
   const sendFeedback = useCallback(async () => {
-    const markdown = constructMarkdownString(reaction, emailRef.current?.value, ref.current?.value);
+    const markdown = constructMarkdownString(reaction, rcRef.current?.value, ref.current?.value);
 
     try {
       const response = await fetch(process.env.FEEDBACK_ENDPOINT || '/api/feedback', {
@@ -80,7 +74,6 @@ const Feedback = ({ route, cms }) => {
 
   useEffect(() => {
     setReaction(null);
-    setEmailValid(true);
   }, [route]);
 
   return (
@@ -175,18 +168,12 @@ const Feedback = ({ route, cms }) => {
               type="email"
               aria-label="Feedback handle"
               placeholder="Enter your Rocket Chat handle if you would like to be in contact."
-              ref={emailRef}
-              onChange={(e) => handleOnChange(e.target.value)}
+              ref={rcRef}
             ></Input>
-            <Button sx={{ px: 4 }} variant="small" onClick={sendFeedback} disabled={!emailValid}>
+            <Button sx={{ px: 4 }} variant="small" onClick={sendFeedback}>
               Submit
             </Button>
           </Flex>
-          {!emailValid && (
-            <Text variant="plainText" sx={{ fontSize: 1, color: 'primary' }}>
-              Please enter a valid email address
-            </Text>
-          )}
         </Flex>
       )}
     </Card>
