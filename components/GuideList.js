@@ -19,7 +19,7 @@ const GuideList = ({ guides, title, path, options, selected, setSelected }) => {
               {title}
             </Heading>
             <Dropdown
-              sx={{ variant: 'text.mediumHeading' }}
+              sx={{ variant: 'text.mediumHeading', width: 7 }}
               options={options}
               activeGroup={selected}
               onChange={setSelected}

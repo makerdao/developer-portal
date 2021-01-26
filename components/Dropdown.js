@@ -9,7 +9,8 @@ const Dropdown = ({ options, activeGroup, onChange, ...props }) => {
         <Icon
           sx={{
             alignSelf: 'center',
-            pointerEvents: 'auto',
+            ml: -28,
+            pointerEvents: 'none',
           }}
           name="chevron_down"
           size={3}

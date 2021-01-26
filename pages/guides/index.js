@@ -1,29 +1,55 @@
 import { useState } from 'react';
 import { getGithubPreviewProps, parseJson } from 'next-tinacms-github';
-import { Container, Heading, Flex } from 'theme-ui';
+import { Container, Grid, Text, Flex } from 'theme-ui';
 import GuideGrid from '@components/GuideGrid';
 import Dropdown from '@components/Dropdown';
 import SingleLayout from '@layouts/SingleLayout';
 import { getResources } from '@utils';
 import { ContentTypes } from '@utils/constants';
 
-const PageLead = ({ options, activeGroup, onChange }) => {
+const Filter = ({ options, activeGroup, onChange, count }) => {
   return (
-    <Container>
-      <Flex sx={{ py: [4, 6], flexDirection: 'column' }}>
-        <Heading variant="megaHeading">Show me guides</Heading>
-        <Flex sx={{ alignItems: 'center' }}>
-          <Heading sx={{ pr: 4, pb: 2 }} variant="megaHeading">
-            about
-          </Heading>
+    <Container sx={{ pb: 7 }}>
+      <Grid
+        columns="1fr 2fr 1fr"
+        sx={{
+          border: 'light',
+          borderColor: 'muted',
+          borderWidth: '1px 0 0 0',
+        }}
+      >
+        <Text variant="plainText" sx={{ fontSize: 3, py: 2 }}>
+          Show me guides about:
+        </Text>
+        <Flex
+          sx={{
+            border: 'light',
+            borderColor: 'muted',
+            borderWidth: '0 0 0 1px',
+            px: 4,
+          }}
+        >
           <Dropdown
-            sx={{ variant: 'text.megaHeading' }}
+            sx={{ width: 8 }}
             options={options}
             activeGroup={activeGroup}
             onChange={onChange}
           />
         </Flex>
-      </Flex>
+        <Text
+          variant="plainText"
+          sx={{
+            fontSize: 3,
+            py: 2,
+            px: 4,
+            border: 'light',
+            borderColor: 'muted',
+            borderWidth: '0 0 0 1px',
+          }}
+        >
+          {count} featured
+        </Text>
+      </Grid>
     </Container>
   );
 };
@@ -43,7 +69,12 @@ const Page = ({ guides }) => {
 
   return (
     <SingleLayout>
-      <PageLead activeGroup={active} onChange={setActive} options={componentNames} />
+      <Filter
+        activeGroup={active}
+        onChange={setActive}
+        options={componentNames}
+        count={resources.length}
+      />
       <GuideGrid title="Guides" path="guides" resources={resources} />
     </SingleLayout>
   );
