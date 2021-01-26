@@ -95,8 +95,15 @@ const Feedback = ({ route, cms }) => {
     >
       <Flex sx={{ justifyContent: 'space-between', alignItems: 'center' }}>
         <Flex sx={{ alignItems: 'center' }}>
-          <Icon sx={{ mr: 2 }} color="primary" name={'document'}></Icon>
-          <Heading variant="microHeading">{title}</Heading>
+          <Icon
+            sx={{ mr: 2 }}
+            color="primary"
+            size="auto"
+            height="20px"
+            width="20px"
+            name="document"
+          ></Icon>
+          <Heading variant="smallHeading">{title}</Heading>
         </Flex>
         {isSubmitted ? (
           <Flex
@@ -145,48 +152,36 @@ const Feedback = ({ route, cms }) => {
             aria-label="Feedback textarea"
             ref={ref}
             placeholder={placeholder}
-            variant={'forms.contrastForm'}
             sx={{
               mb: 2,
               bg: 'surface',
               borderColor: 'muted',
-              color: 'text',
+              fontSize: 3,
             }}
           ></Textarea>
           <Text sx={{ fontWeight: 'body', mb: 2, mt: 3 }} variant="caps">
-            E-MAIL (OPTIONAL)
+            ROCKET CHAT HANDLE (OPTIONAL)
           </Text>
-          <Grid columns={'2fr 1fr'} sx={{ width: '100%' }}>
-            <Flex sx={{ flexDirection: 'column' }}>
-              <Input
-                sx={{
-                  mr: 3,
-                  fontFamily: 'body',
-                  fontSize: 2,
-                  bg: 'surface',
-                  borderColor: 'muted',
-                  color: 'text',
-                }}
-                type="email"
-                aria-label="Feedback email"
-                placeholder="Enter your e-mail address if you would like to be in contact."
-                variant={'forms.contrastForm'}
-                ref={emailRef}
-                onChange={(e) => handleOnChange(e.target.value)}
-              ></Input>
-            </Flex>
-            <Grid columns={2}>
-              <Button variant="small" onClick={sendFeedback} disabled={!emailValid}>
-                Submit
-              </Button>
-              <Button
-                variant="contrastButtonSmall"
-                onClick={() => setReaction(null) || setEmailValid(true)}
-              >
-                Cancel
-              </Button>
-            </Grid>
-          </Grid>
+          <Flex sx={{ justifyContent: 'space-between', width: '100%' }}>
+            <Input
+              sx={{
+                mr: 3,
+                fontFamily: 'body',
+                fontSize: 3,
+                bg: 'surface',
+                borderColor: 'muted',
+                width: '100%',
+              }}
+              type="email"
+              aria-label="Feedback handle"
+              placeholder="Enter your Rocket Chat handle if you would like to be in contact."
+              ref={emailRef}
+              onChange={(e) => handleOnChange(e.target.value)}
+            ></Input>
+            <Button sx={{ px: 4 }} variant="small" onClick={sendFeedback} disabled={!emailValid}>
+              Submit
+            </Button>
+          </Flex>
           {!emailValid && (
             <Text variant="plainText" sx={{ fontSize: 1, color: 'primary' }}>
               Please enter a valid email address

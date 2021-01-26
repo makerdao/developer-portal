@@ -99,8 +99,13 @@ const theme = {
   },
   buttons: {
     ...makerTheme.buttons,
+    primary: {
+      ...makerTheme.buttons.primary,
+      fontSize: 3,
+    },
     small: {
       ...makerTheme.buttons.small,
+      fontSize: 3,
       fontFamily: 'body',
       textTransform: undefined,
     },
@@ -122,6 +127,13 @@ const theme = {
     ...makerTheme.forms,
     input: {
       ...makerTheme.forms.input,
+      '::placeholder': {
+        color: 'textMuted',
+        opacity: 1,
+      },
+    },
+    textarea: {
+      ...makerTheme.forms.textarea,
       '::placeholder': {
         color: 'textMuted',
         opacity: 1,
