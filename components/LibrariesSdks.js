@@ -59,13 +59,14 @@ const LibrariesSdks = () => {
       <Flex
         sx={{
           maxWidth: '100%',
+          flexWrap: 'wrap',
         }}
       >
         <Grid
           sx={{
             rowGap: 3,
             mr: 3,
-            width: '66%',
+            width: ['100%', '66%'],
           }}
         >
           <Heading variant="smallHeading">
@@ -86,8 +87,7 @@ const LibrariesSdks = () => {
             </Flex>
           </Link>
           <Grid columns={2}>
-            <Box></Box>
-            <Flex sx={{ flexDirection: 'column' }}>
+            <Flex sx={{ flexDirection: 'column', gridColumnStart: [1, 2], gridColumnEnd: 3 }}>
               <Text sx={{ fontWeight: 'bold' }}>pyMaker</Text>
               <Text>
                 <InlineTextarea name="pyMakerSubtext" />
@@ -105,18 +105,21 @@ const LibrariesSdks = () => {
       </Flex>
 
       <Grid
-        columns={3}
+        columns={[1, 3]}
         sx={{
           pt: 4,
         }}
       >
-        <Heading variant="largeHeading" sx={{ py: 4, gridColumnStart: 2, gridColumnEnd: 4 }}>
+        <Heading
+          variant="largeHeading"
+          sx={{ py: 4, gridColumnStart: [1, 2], gridColumnEnd: [2, 4] }}
+        >
           Other Relevant Tools
         </Heading>
         <Flex
           sx={{
             flexDirection: 'column',
-            gridColumnStart: 2,
+            gridColumnStart: [1, 2],
           }}
         >
           <Icon name="keeper" color="textMuted" sx={{ width: '164px', height: '164px', mb: 4 }} />
@@ -134,6 +137,7 @@ const LibrariesSdks = () => {
         <Flex
           sx={{
             flexDirection: 'column',
+            gridColumnStart: [1, 3],
           }}
         >
           <Icon

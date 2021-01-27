@@ -20,7 +20,7 @@ const IntroText = () => {
           variant="megaHeading"
           pb="4"
           sx={{
-            minWidth: 600,
+            minWidth: ['50vw', 600],
           }}
         >
           About <br />
@@ -36,10 +36,10 @@ const IntroText = () => {
           <InlineTextarea name="aboutSubheading" />
         </Heading>
       </Flex>
-      <Flex>
+      <Flex sx={{ flexWrap: 'wrap' }}>
         <Text
           sx={{
-            width: '50%',
+            width: ['100%', '50%'],
             pb: 4,
             color: 'onBackgroundMuted',
           }}
