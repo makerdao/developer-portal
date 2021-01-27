@@ -77,9 +77,9 @@ class MyApp extends App {
             onLogout={exitEditMode}
             error={pageProps.error}
           >
-            <MakerProvider>
-              <Component {...pageProps} />
-            </MakerProvider>
+            {/* <MakerProvider> */}
+            <Component {...pageProps} />
+            {/* </MakerProvider> */}
           </TinacmsGithubProvider>
         </TinaProvider>
       </ThemeProvider>
