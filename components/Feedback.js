@@ -1,6 +1,17 @@
 /** @jsx jsx */
 import { useState, useRef, useEffect, useCallback } from 'react';
-import { Button, jsx, Card, Heading, Text, Textarea, Grid, Flex, Input } from 'theme-ui';
+import {
+  Button,
+  jsx,
+  Card,
+  Heading,
+  Text,
+  Textarea,
+  Grid,
+  Flex,
+  Input,
+  Link as ThemeLink,
+} from 'theme-ui';
 import { Icon } from '@makerdao/dai-ui-icons';
 import { toMarkdownString } from '@utils';
 
@@ -174,6 +185,17 @@ const Feedback = ({ route, cms }) => {
               Submit
             </Button>
           </Flex>
+          <Grid columns="auto auto" sx={{ pt: 3 }}>
+            <Text sx={{ color: 'onBackgroundMuted' }}>
+              If you need additional help, join the Rocket Chat #dev channel.
+            </Text>
+            <ThemeLink href={'https://chat.makerdao.com/channel/dev'} target="_blank">
+              <Flex sx={{ alignItems: 'center' }}>
+                <Icon sx={{ mr: 2 }} color="primary" name="chat"></Icon>
+                <Text sx={{ color: 'text', cursor: 'pointer' }}>chat.makerdao.com</Text>
+              </Flex>
+            </ThemeLink>
+          </Grid>
         </Flex>
       )}
     </Card>

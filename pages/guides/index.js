@@ -9,7 +9,7 @@ import { ContentTypes } from '@utils/constants';
 
 const Filter = ({ options, activeGroup, onChange, count }) => {
   return (
-    <Container sx={{ pb: 7 }}>
+    <Container sx={{ pb: 6 }}>
       <Grid
         columns="1fr 2fr 1fr"
         sx={{
