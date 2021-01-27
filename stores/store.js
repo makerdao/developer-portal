@@ -5,6 +5,7 @@ const useStore = create((set) => ({
   totalSavingsDai: '0.00',
 
   activeGroup: '',
+  activeParent: '',
 
   setDsrRate: (dsrRate) => {
     set({ dsrRate });
@@ -15,6 +16,9 @@ const useStore = create((set) => ({
 
   setActiveGroup: (activeGroup) => {
     set({ activeGroup });
+  },
+  setActiveParent: (activeParent) => {
+    set({ activeParent });
   },
 }));
 

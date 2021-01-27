@@ -11,12 +11,16 @@ import { ContentTypes } from '@utils/constants';
 
 const SecurityPage = ({ file, navFile, preview, slug, toc }) => {
   const router = useRouter();
-  const setActiveGroup = useStore((state) => state.setActiveGroup);
+  const [setActiveGroup, setActiveParent] = useStore((state) => [
+    state.setActiveGroup,
+    state.setActiveParent,
+  ]);
 
   useEffect(() => {
     setActiveGroup(file?.data.frontmatter.group);
-    return () => setActiveGroup(null);
-  }, [setActiveGroup, file]);
+    setActiveParent(file?.data.frontmatter.parent);
+    return () => setActiveGroup(null) || setActiveParent(null);
+  }, [setActiveGroup, setActiveParent, file]);
 
   return !file ? (
     <Error statusCode={404} />

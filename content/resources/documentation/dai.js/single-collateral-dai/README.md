@@ -9,7 +9,6 @@ tags:
 slug: dai-js-scd-plugin
 contentType: documentation
 root: true
-parent: introduction-to-dai-js
 ---
 
 # Single-Collateral Sai

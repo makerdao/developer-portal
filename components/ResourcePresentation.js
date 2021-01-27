@@ -11,16 +11,22 @@ import ContributeCta from '@components/ContributeCta';
 import BreadCrumbs from '@components/BreadCrumbs';
 import { navItems } from '../data/resourcesSubNav.json';
 
-const ResourcePresentation = ({ file, relatedResources, contentType, preview }) => {
+const ResourcePresentation = ({ file, resources, relatedResources, contentType, preview }) => {
   const cms = useCMS();
   const { asPath } = useRouter();
   const contributors = file.data.frontmatter.contributors;
-  const activeGroup = useStore((state) => state.activeGroup);
+  const [activeGroup, activeParent] = useStore((state) => [state.activeGroup, state.activeParent]);
   const group = navItems.find(({ slug }) => activeGroup === slug);
+  const parent = resources?.find((r) => r.data.frontmatter.slug === activeParent)?.data.frontmatter;
 
   return (
     <>
-      <BreadCrumbs contentType={contentType} group={group} title={file.data.frontmatter.title} />
+      <BreadCrumbs
+        contentType={contentType}
+        group={group}
+        parent={parent}
+        title={file.data.frontmatter.title}
+      />
       <ResourceEditor file={file} preview={preview} cms={cms} />
       <Grid gap={4}>
         {relatedResources && (

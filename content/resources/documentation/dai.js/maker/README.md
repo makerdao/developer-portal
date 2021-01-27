@@ -9,7 +9,6 @@ tags:
 slug: maker-object-introduction
 contentType: documentation
 root: true
-parent: introduction-to-dai-js
 ---
 
 # Configuration

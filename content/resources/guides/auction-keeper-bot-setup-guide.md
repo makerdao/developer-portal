@@ -7,7 +7,7 @@ components:
 tags:
   - bot
   - setup guide
-slug: auction-keeper-bot-setup-guide
+slug: auction-keeper-bot-setup-guide-2
 contentType: guides
 root: false
 ---

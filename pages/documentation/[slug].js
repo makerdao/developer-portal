@@ -24,12 +24,16 @@ const walk = (resources, array) => {
 
 const DocsPage = ({ file, resources, navFile, preview, slug, toc }) => {
   const router = useRouter();
-  const setActiveGroup = useStore((state) => state.setActiveGroup);
+  const [setActiveGroup, setActiveParent] = useStore((state) => [
+    state.setActiveGroup,
+    state.setActiveParent,
+  ]);
 
   useEffect(() => {
     setActiveGroup(file?.data.frontmatter.group);
-    return () => setActiveGroup(null);
-  }, [setActiveGroup, file]);
+    setActiveParent(file?.data.frontmatter.parent);
+    return () => setActiveGroup(null) || setActiveParent(null);
+  }, [setActiveGroup, setActiveParent, file]);
 
   const moduleResources = resources
     ?.filter(
@@ -74,6 +78,7 @@ const DocsPage = ({ file, resources, navFile, preview, slug, toc }) => {
     >
       <ResourcePresentation
         file={file}
+        resources={resources}
         relatedResources={relatedGuides}
         contentType={ContentTypes.DOCUMENTATION}
         navFile={navFile}

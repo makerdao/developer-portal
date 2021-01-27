@@ -6,23 +6,24 @@ import { capitalize } from '@utils';
 const Crumb = ({ url, text }) => (
   <>
     <Link href={url}>
-      <Text variant="plainText" sx={{ fontSize: 1, cursor: 'pointer' }}>
+      <Text variant="caps" sx={{ color: 'onBackgroundMuted', cursor: 'pointer' }}>
         {text}
       </Text>
     </Link>
-    <Text variant="plainText" sx={{ fontSize: 1, color: 'textMuted', px: 2, cursor: 'pointer' }}>
+    <Text variant="caps" sx={{ color: 'textMuted', px: 1, cursor: 'pointer' }}>
       {'>'}
     </Text>
   </>
 );
 
-const BreadCrumbs = ({ contentType, group, title }) => {
+const BreadCrumbs = ({ contentType, group, parent, title }) => {
   return (
-    <Flex sx={{ color: 'onBackgroundMuted', pt: 3 }}>
+    <Flex sx={{ pt: 3 }}>
       <Crumb url="/" text="Home" />
       <Crumb url={`/${contentType}`} text={capitalize(contentType)} />
       {group && <Crumb url={`${group.url}`} text={group.name} />}
-      <Text variant="plainText" sx={{ color: 'textMuted', fontSize: 1, cursor: 'pointer' }}>
+      {parent && <Crumb url={`${parent.slug}`} text={parent.title} />}
+      <Text variant="caps" sx={{ color: 'textMuted' }}>
         {title}
       </Text>
     </Flex>
