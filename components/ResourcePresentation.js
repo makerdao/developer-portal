@@ -2,19 +2,25 @@
 import { useRouter } from 'next/router';
 import { jsx, Grid } from 'theme-ui';
 import { useCMS } from 'tinacms';
+import useStore from '@stores/store';
 import RelatedResources from '@components/RelatedResources';
 import ResourceEditor from '@components/ResourceEditor';
 import Contributors from '@components/Contributors';
 import Feedback from '@components/Feedback';
 import ContributeCta from '@components/ContributeCta';
+import BreadCrumbs from '@components/BreadCrumbs';
+import { navItems } from '../data/resourcesSubNav.json';
 
 const ResourcePresentation = ({ file, relatedResources, contentType, preview }) => {
   const cms = useCMS();
   const { asPath } = useRouter();
   const contributors = file.data.frontmatter.contributors;
+  const activeGroup = useStore((state) => state.activeGroup);
+  const group = navItems.find(({ slug }) => activeGroup === slug);
 
   return (
     <>
+      <BreadCrumbs contentType={contentType} group={group} title={file.data.frontmatter.title} />
       <ResourceEditor file={file} preview={preview} cms={cms} />
       <Grid gap={4}>
         {relatedResources && (

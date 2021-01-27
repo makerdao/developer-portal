@@ -15,6 +15,7 @@ const SecurityPage = ({ file, navFile, preview, slug, toc }) => {
 
   useEffect(() => {
     setActiveGroup(file?.data.frontmatter.group);
+    return () => setActiveGroup(null);
   }, [setActiveGroup, file]);
 
   return !file ? (

@@ -13,11 +13,11 @@ import {
   Link as ThemeLink,
 } from 'theme-ui';
 import { Icon } from '@makerdao/dai-ui-icons';
-import { toMarkdownString } from '@utils';
+import { toMarkdownString, capitalize } from '@utils';
 
 const constructMarkdownString = (reaction, handle, content) => {
   let rawFrontmatter;
-  let rawMarkdownBody = `# ${reaction[0].toUpperCase() + reaction.slice(1)} Feedback Recieved`;
+  let rawMarkdownBody = `# ${capitalize(reaction)} Feedback Recieved`;
   if (handle) {
     rawMarkdownBody = rawMarkdownBody.concat(`\nfrom Rocket Chat user: ${handle}`);
     rawFrontmatter = { handle };
