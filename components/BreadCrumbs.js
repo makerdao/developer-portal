@@ -18,7 +18,7 @@ const Crumb = ({ url, text }) => (
 
 const BreadCrumbs = ({ contentType, group, parent, title }) => {
   return (
-    <Flex sx={{ pt: 3 }}>
+    <Flex sx={{ pt: 3, flexWrap: 'wrap' }}>
       <Crumb url="/" text="Home" />
       <Crumb url={`/${contentType}`} text={capitalize(contentType)} />
       {group && <Crumb url={`${group.url}`} text={group.name} />}

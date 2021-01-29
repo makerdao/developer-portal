@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import Error from 'next/error';
 import { useRouter } from 'next/router';
+import { useBreakpointIndex } from '@theme-ui/match-media';
 import matter from 'gray-matter';
 import { getGithubPreviewProps, parseMarkdown, parseJson } from 'next-tinacms-github';
 import ResourcesLayout from '@layouts/ResourcesLayout';
@@ -24,6 +25,9 @@ const walk = (resources, array) => {
 
 const DocsPage = ({ file, resources, navFile, preview, slug, toc }) => {
   const router = useRouter();
+  const bpi = useBreakpointIndex({ defaultIndex: 2 });
+  const mobile = bpi === 0;
+
   const [setActiveGroup, setActiveParent] = useStore((state) => [
     state.setActiveGroup,
     state.setActiveParent,
@@ -83,6 +87,7 @@ const DocsPage = ({ file, resources, navFile, preview, slug, toc }) => {
         contentType={ContentTypes.DOCUMENTATION}
         navFile={navFile}
         preview={preview}
+        mobile={mobile}
       />
     </ResourcesLayout>
   );

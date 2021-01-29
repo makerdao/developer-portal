@@ -1,5 +1,6 @@
 import Error from 'next/error';
 import { useRouter } from 'next/router';
+import { useBreakpointIndex } from '@theme-ui/match-media';
 import matter from 'gray-matter';
 import { getGithubPreviewProps, parseMarkdown, parseJson } from 'next-tinacms-github';
 import ResourcesLayout from '@layouts/ResourcesLayout';
@@ -10,6 +11,8 @@ import { ContentTypes } from '@utils/constants';
 
 const GuidesPage = ({ file, resources, navFile, bannerFile, preview, slug, toc }) => {
   const router = useRouter();
+  const bpi = useBreakpointIndex({ defaultIndex: 2 });
+  const mobile = bpi === 0;
 
   const moduleResources = resources?.filter(
     (r) =>
@@ -47,6 +50,7 @@ const GuidesPage = ({ file, resources, navFile, bannerFile, preview, slug, toc }
         relatedResources={relatedDocs}
         contentType={ContentTypes.GUIDES}
         preview={preview}
+        mobile={mobile}
       />
     </ResourcesLayout>
   );

@@ -11,7 +11,14 @@ import ContributeCta from '@components/ContributeCta';
 import BreadCrumbs from '@components/BreadCrumbs';
 import { navItems } from '../data/resourcesSubNav.json';
 
-const ResourcePresentation = ({ file, resources, relatedResources, contentType, preview }) => {
+const ResourcePresentation = ({
+  file,
+  resources,
+  relatedResources,
+  contentType,
+  preview,
+  mobile,
+}) => {
   const cms = useCMS();
   const { asPath } = useRouter();
   const contributors = file.data.frontmatter.contributors;
@@ -33,8 +40,8 @@ const ResourcePresentation = ({ file, resources, relatedResources, contentType, 
           <RelatedResources resources={relatedResources} contentType={contentType} />
         )}
         <Feedback route={asPath} cms={cms} />
-        <ContributeCta file={file} />
-        {contributors && <Contributors contributors={contributors} />}
+        <ContributeCta file={file} mobile={mobile} />
+        {contributors && <Contributors contributors={contributors} mobile={mobile} />}
       </Grid>
     </>
   );

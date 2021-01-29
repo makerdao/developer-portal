@@ -4,16 +4,16 @@ import { jsx, Text, Flex, Avatar, Link as ThemeLink } from 'theme-ui';
 import { Icon } from '@makerdao/dai-ui-icons';
 import { toDateString } from '@utils/formatting';
 
-const LineItem = ({ date, author, avatar }) => {
+const LineItem = ({ date, author, avatar, mobile }) => {
   return (
-    <Flex sx={{ pt: 4 }}>
+    <Flex sx={{ pt: 4, flexWrap: mobile ? 'wrap' : 'nowrap' }}>
       <Flex sx={{ alignItems: 'center' }}>
         <Text variant="caps" sx={{ fontSize: 2, visibility: 'hidden' }}>
           Last Edit:
         </Text>
         <Text sx={{ pl: 3 }}>{date}</Text>
       </Flex>
-      <Flex sx={{ ml: 4, alignItems: 'center' }}>
+      <Flex sx={{ ml: [0, 4], alignItems: 'center' }}>
         <Text variant="caps" sx={{ fontSize: 2, visibility: 'hidden' }}>
           By:
         </Text>
@@ -29,7 +29,7 @@ const LineItem = ({ date, author, avatar }) => {
   );
 };
 
-const Contributors = ({ contributors = [] }) => {
+const Contributors = ({ contributors = [], mobile }) => {
   const [open, setOpen] = useState(false);
   const [newest, ...rest] = contributors.sort((a, b) => new Date(b.date) - new Date(a.date));
 
@@ -45,14 +45,14 @@ const Contributors = ({ contributors = [] }) => {
     >
       <Flex sx={{ flexDirection: 'column' }}>
         <Flex sx={{ justifyContent: 'space-between', alignItems: 'flex-start' }}>
-          <Flex sx={{ pb: 0 }}>
+          <Flex sx={{ pb: 0, flexWrap: mobile ? 'wrap' : 'nowrap' }}>
             <Flex sx={{ alignItems: 'center' }}>
               <Text variant="caps" sx={{ color: 'onBackgroundMuted', fontSize: 2 }}>
                 Last Edit:
               </Text>
               <Text sx={{ pl: 3 }}>{toDateString(newest?.date)}</Text>
             </Flex>
-            <Flex sx={{ ml: 4, alignItems: 'center', cursor: 'pointer' }}>
+            <Flex sx={{ ml: [0, 4], alignItems: 'center', cursor: 'pointer' }}>
               <Text variant="caps" sx={{ color: 'onBackgroundMuted', fontSize: 2 }}>
                 By:
               </Text>
@@ -68,7 +68,13 @@ const Contributors = ({ contributors = [] }) => {
         </Flex>
         {open &&
           rest?.map(({ date, username, avatar }) => (
-            <LineItem key={username} date={toDateString(date)} author={username} avatar={avatar} />
+            <LineItem
+              key={username}
+              date={toDateString(date)}
+              author={username}
+              avatar={avatar}
+              mobile={mobile}
+            />
           ))}
       </Flex>
       {rest.length > 0 && (
@@ -80,7 +86,7 @@ const Contributors = ({ contributors = [] }) => {
           }}
         >
           <Flex
-            sx={{ justifyContent: 'center', alignItems: 'center', pt: 1 }}
+            sx={{ justifyContent: 'center', alignItems: 'center', pt: [0, 1] }}
             onClick={() => setOpen(!open)}
           >
             <Icon
@@ -90,7 +96,7 @@ const Contributors = ({ contributors = [] }) => {
             ></Icon>
             <Text sx={{ pl: 2 }}>{`${open ? 'Hide' : 'Show'} All Contributors`}</Text>
           </Flex>
-          {open && (
+          {open && !mobile && (
             <Flex sx={{ flexDirection: 'column', alignItems: 'flex-end' }}>
               <Text>Thank you!</Text>
               <Text sx={{ color: 'onBackgroundMuted' }}>To all contributors of this page.</Text>
