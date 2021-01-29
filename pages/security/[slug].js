@@ -31,7 +31,13 @@ const SecurityPage = ({ file, navFile, preview, slug, toc }) => {
   ) : router.isFallback ? (
     <div>Loading...</div>
   ) : (
-    <ResourcesLayout resourcePath={ContentTypes.SECURITY} slug={slug} toc={toc} navFile={navFile}>
+    <ResourcesLayout
+      resourcePath={ContentTypes.SECURITY}
+      slug={slug}
+      toc={toc}
+      navFile={navFile}
+      mobile={mobile}
+    >
       <ResourcePresentation
         file={file}
         contentType={ContentTypes.SECURITY}

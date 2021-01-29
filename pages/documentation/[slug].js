@@ -79,6 +79,7 @@ const DocsPage = ({ file, resources, navFile, preview, slug, toc }) => {
       slug={slug}
       toc={toc}
       navFile={navFile}
+      mobile={mobile}
     >
       <ResourcePresentation
         file={file}

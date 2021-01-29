@@ -6,12 +6,21 @@ import useSubNavForm from '@hooks/useSubNavForm';
 import { useFormScreenPlugin } from 'tinacms';
 import SubNav from '@components/SubNav';
 
-const ResourcesLayout = ({ resourcePath, sidebar, slug, toc, navFile, preview, children }) => {
+const ResourcesLayout = ({
+  resourcePath,
+  sidebar,
+  slug,
+  toc,
+  navFile,
+  preview,
+  mobile,
+  children,
+}) => {
   const [navData, navForm] = useSubNavForm(navFile, preview);
   useFormScreenPlugin(navForm);
 
   return (
-    <SingleLayout subnav={<SubNav links={navData.navItems} />}>
+    <SingleLayout subnav={<SubNav links={navData.navItems} mobile={mobile} />}>
       <Grid columns={['auto', '300px auto 250px']} gap="0">
         {sidebar || <Box />}
         <Box sx={{ borderRadius: 0, py: 0, px: 4, pb: 4 }}>{children}</Box>

@@ -44,6 +44,7 @@ const GuidesPage = ({ file, resources, navFile, bannerFile, preview, slug, toc }
       toc={toc}
       navFile={navFile}
       bannerFile={bannerFile}
+      mobile={mobile}
     >
       <ResourcePresentation
         file={file}
