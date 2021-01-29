@@ -2,7 +2,6 @@
 import { jsx, Box, Heading, Text, Container, Flex, Grid } from 'theme-ui';
 import Link from 'next/link';
 import { Icon } from '@makerdao/dai-ui-icons';
-import { useBreakpointIndex } from '@theme-ui/match-media';
 
 const ListItem = ({ title, link, linkText, description, icon }) => {
   return (
@@ -36,10 +35,9 @@ const ListItem = ({ title, link, linkText, description, icon }) => {
 };
 
 const GuideGrid = ({ resources, path }) => {
-  const bpi = useBreakpointIndex({ defaultIndex: 2 });
   return (
     <Container>
-      <Grid columns={4} sx={{ gridRowGap: 6, gridColumnGap: 5 }}>
+      <Grid columns={[1, 4]} sx={{ gridRowGap: [5, 6], gridColumnGap: 5 }}>
         {resources.map(
           (
             {
@@ -57,7 +55,6 @@ const GuideGrid = ({ resources, path }) => {
                 description={description}
                 link={`/${path}/${slug}/`}
                 linkText={'Read'}
-                isMobile={bpi === 0}
                 icon={`stamp_${(i % 5) + 1}`}
               />
             );
