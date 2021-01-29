@@ -86,10 +86,10 @@ const LibrariesSdks = () => {
               <Text sx={{ cursor: 'pointer' }}>View Dai.js docs</Text>
             </Flex>
           </Link>
-          <Grid columns={2}>
+          <Grid columns={2} sx={{ py: [3, 0] }}>
             <Flex sx={{ flexDirection: 'column', gridColumnStart: [1, 2], gridColumnEnd: 3 }}>
               <Text sx={{ fontWeight: 'bold' }}>pyMaker</Text>
-              <Text>
+              <Text sx={{ py: [3, 0] }}>
                 <InlineTextarea name="pyMakerSubtext" />
               </Text>
               <Link href="/documentation/pymaker">

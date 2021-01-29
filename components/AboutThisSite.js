@@ -1,17 +1,6 @@
-import {
-  Container,
-  jsx,
-  Card,
-  Box,
-  Button,
-  Heading,
-  Text,
-  Grid,
-  Flex,
-  Link as ThemeLink,
-} from 'theme-ui';
+import { Container, Box, Heading, Text, Flex } from 'theme-ui';
 import EditLink from '../components/EditLink';
-import { InlineForm, InlineText, InlineTextarea } from 'react-tinacms-inline';
+import { InlineTextarea } from 'react-tinacms-inline';
 
 const AboutThisSite = () => {
   return (
@@ -19,11 +8,12 @@ const AboutThisSite = () => {
       <Flex
         sx={{
           pb: 3,
+          flexWrap: 'wrap',
         }}
       >
         <Box
           sx={{
-            maxWidth: '60%',
+            maxWidth: ['100%', '60%'],
           }}
         >
           <Heading variant="largeHeading" pb={3}>
@@ -36,8 +26,9 @@ const AboutThisSite = () => {
         </Box>
         <Box
           sx={{
-            ml: 'auto',
-            p: 4,
+            ml: [0, 'auto'],
+            px: [0, 4],
+            py: 4,
           }}
         >
           <EditLink />

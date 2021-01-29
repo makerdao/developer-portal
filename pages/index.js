@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { Container, jsx, Box, Heading, Grid, Flex, Link as ThemeLink } from 'theme-ui';
+import { useBreakpointIndex } from '@theme-ui/match-media';
 import { Icon } from '@makerdao/dai-ui-icons';
 import { usePlugin, useFormScreenPlugin } from 'tinacms';
 import { getGithubPreviewProps, parseJson } from 'next-tinacms-github';
@@ -38,6 +39,9 @@ const withTagsAlgo = (fullSet, subSet) => {
 };
 
 const Page = ({ file, guides, documentation, bannerFile, preview }) => {
+  const bpi = useBreakpointIndex({ defaultIndex: 2 });
+  const mobile = bpi === 0;
+
   const [data, form] = useGithubJsonForm(file, landingPageFormOptions);
   const [bannerData, bannerForm] = useBannerForm(bannerFile, preview);
 
@@ -66,7 +70,7 @@ const Page = ({ file, guides, documentation, bannerFile, preview }) => {
   );
 
   return (
-    <SingleLayout bannerData={bannerData.banner}>
+    <SingleLayout bannerData={bannerData.banner} mobile={mobile}>
       <InlineForm form={form}>
         <Grid
           sx={{
@@ -87,7 +91,7 @@ const Page = ({ file, guides, documentation, bannerFile, preview }) => {
             setSelected={setSelected}
           />
 
-          <IntroText />
+          <IntroText mobile={mobile} />
 
           <Box>
             <Container>

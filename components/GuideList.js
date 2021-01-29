@@ -13,13 +13,14 @@ const GuideList = ({ guides, title, path, options, selected, setSelected }) => {
           <Flex
             sx={{
               alignItems: 'center',
+              flexWrap: 'wrap',
             }}
           >
-            <Heading sx={{ pb: 1 }} variant="mediumHeading">
+            <Heading sx={{ pb: 1, pr: 2 }} variant="mediumHeading">
               {title}
             </Heading>
             <Dropdown
-              sx={{ variant: 'text.mediumHeading', width: 7 }}
+              sx={{ variant: 'text.mediumHeading', width: 7, pl: 0 }}
               options={options}
               activeGroup={selected}
               onChange={setSelected}

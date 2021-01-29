@@ -51,7 +51,7 @@ const theme = {
       fontSize: [8, 10],
     },
     largeText: {
-      fontSize: 5,
+      fontSize: [4, 5],
       color: 'text',
     },
     caps: {
@@ -74,7 +74,6 @@ const theme = {
     },
     sidebar: {
       variant: 'links.nav',
-      fontSize: 1, // DELETE if not needed
     },
     infobar: {
       variant: 'links.nav',
@@ -83,9 +82,6 @@ const theme = {
       '&:hover': {
         color: 'text',
       },
-      // '&:active': {
-      //   color: 'text',
-      // },
       '&:focus': {
         color: 'text',
       },

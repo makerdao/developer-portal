@@ -1,19 +1,20 @@
 /** @jsx jsx */
 import { useState } from 'react';
-import { Container, jsx, Heading, Text, Flex } from 'theme-ui';
+import { Container, jsx, Heading, Text, Flex, Grid } from 'theme-ui';
 import Link from 'next/link';
 import EmailSignup from '@components/EmailSignup';
 import { InlineTextarea } from 'react-tinacms-inline';
 import { Icon } from '@makerdao/dai-ui-icons';
 import TosCheck from '@components/TosCheck';
 
-const IntroText = () => {
+const IntroText = ({ mobile }) => {
   const [agreed, setAgreed] = useState(false);
   return (
     <Container>
       <Flex
         sx={{
           alignItems: 'center',
+          flexWrap: mobile ? 'wrap' : 'nowrap',
         }}
       >
         <Heading
@@ -36,16 +37,23 @@ const IntroText = () => {
           <InlineTextarea name="aboutSubheading" />
         </Heading>
       </Flex>
-      <Flex sx={{ flexWrap: 'wrap' }}>
-        <Text
-          sx={{
-            width: ['100%', '50%'],
-            pb: 4,
-            color: 'onBackgroundMuted',
-          }}
-        >
-          <InlineTextarea name="aboutMakerProtocol" />
-        </Text>
+      <Grid columns={[1, 2]}>
+        <Flex sx={{ flexDirection: 'column', width: '100%' }}>
+          <Text
+            sx={{
+              pb: 4,
+              color: 'onBackgroundMuted',
+            }}
+          >
+            <InlineTextarea name="aboutMakerProtocol" />
+          </Text>
+          <Link href="/technology">
+            <Flex sx={{ alignItems: 'center', pb: [5, 0] }}>
+              <Icon sx={{ mr: 2 }} color="primary" name={'arrow_right'}></Icon>
+              <Text sx={{ cursor: 'pointer' }}>Learn more about the Maker Protocol.</Text>
+            </Flex>
+          </Link>
+        </Flex>
         <Flex sx={{ px: 4, flexDirection: 'column' }}>
           <Heading sx={{ pb: 3 }}>
             Want Maker dev updates <br />
@@ -58,14 +66,7 @@ const IntroText = () => {
           />
           <TosCheck sx={{ pl: 0, fontSize: 2 }} onChange={() => setAgreed(!agreed)} />
         </Flex>
-      </Flex>
-
-      <Link href="/technology">
-        <Flex sx={{ alignItems: 'center' }}>
-          <Icon sx={{ mr: 2 }} color="primary" name={'arrow_right'}></Icon>
-          <Text sx={{ cursor: 'pointer' }}>Learn more about the Maker Protocol.</Text>
-        </Flex>
-      </Link>
+      </Grid>
     </Container>
   );
 };
