@@ -6,7 +6,7 @@ import { TinacmsGithubProvider } from 'react-tinacms-github';
 import { AlpacaGitHubClient } from '../utils/githubClient';
 import { NextGithubMediaStore } from 'next-tinacms-github';
 import theme from '../theme';
-import MakerProvider from '../providers/MakerProvider';
+import { GlobalStyles as TinaStyles } from '@tinacms/styles';
 
 import Head from 'next/head';
 import { Global, css } from '@emotion/core';
@@ -77,9 +77,8 @@ class MyApp extends App {
             onLogout={exitEditMode}
             error={pageProps.error}
           >
-            {/* <MakerProvider> */}
+            <TinaStyles />
             <Component {...pageProps} />
-            {/* </MakerProvider> */}
           </TinacmsGithubProvider>
         </TinaProvider>
       </ThemeProvider>
