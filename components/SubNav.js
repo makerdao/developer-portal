@@ -15,6 +15,7 @@ const SubNav = ({ links, query }) => {
           width: '0px',
         },
         scrollbarWidth: 'none',
+        bg: 'background',
       }}
     >
       <Container sx={{ mt: 2 }}>

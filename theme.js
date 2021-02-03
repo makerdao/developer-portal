@@ -72,6 +72,12 @@ const theme = {
       ...makerTheme.links.nav,
       fontFamily: 'heading',
     },
+    mobileNav: {
+      ...makerTheme.links.nav,
+      fontFamily: 'heading',
+      fontSize: 6,
+      fontWeight: 'bold',
+    },
     sidebar: {
       variant: 'links.nav',
     },

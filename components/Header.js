@@ -1,23 +1,18 @@
 /** @jsx jsx */
 import { useState } from 'react';
 import {
-  Container,
   jsx,
+  Box,
+  Container,
   Link as ThemeLink,
   NavLink,
   Flex,
-  Text,
-  Card,
-  Grid,
   useColorMode,
-  Button,
   IconButton,
-  Input,
-  Box,
 } from 'theme-ui';
 import Link from 'next/link';
 import { Icon } from '@makerdao/dai-ui-icons';
-import { Fragment } from 'react';
+import Banners from '@components/Banners';
 
 const ColorModeToggle = (props) => {
   const [mode, setMode] = useColorMode();
@@ -42,7 +37,7 @@ const LINKS = [
 
 const MobileMenu = ({ close, query }) => {
   return (
-    <Container mt={2} sx={{ bg: 'background', width: '100vw', height: '100vh', position: 'fixed' }}>
+    <Container sx={{ bg: 'background', width: '100vw', height: '100vh', position: 'fixed' }}>
       <Flex sx={{ justifyContent: 'space-between', mb: [0, 3] }}>
         <Link href="/" passHref>
           <ThemeLink>
@@ -57,8 +52,6 @@ const MobileMenu = ({ close, query }) => {
             sx={{
               display: ['block', 'none'],
               cursor: 'pointer',
-              position: 'relative',
-              zIndex: 1,
               height: 20,
               width: 20,
             }}
@@ -66,17 +59,15 @@ const MobileMenu = ({ close, query }) => {
           />
         </IconButton>
       </Flex>
-      <Flex sx={{ flexDirection: 'column', alignItems: 'center' }}>
+      <Flex as="nav" sx={{ flexDirection: 'column', alignItems: 'center' }}>
         {LINKS.map(({ name, url }) => (
           <Link href={{ pathname: url, query }} passHref key={name}>
             <NavLink
               key={name}
               sx={{
-                fontSize: 6,
-                fontWeight: 'bold',
                 py: 4,
               }}
-              variant="links.nav"
+              variant="links.mobileNav"
             >
               {name}
             </NavLink>
@@ -87,14 +78,15 @@ const MobileMenu = ({ close, query }) => {
   );
 };
 
-const Header = ({ query, subnav }) => {
+const Header = ({ query, subnav, bannerData, mobile }) => {
   const [mobileOpened, setMobileOpened] = useState(false);
   return (
-    <>
+    <Box sx={{ width: '100%', position: ['fixed', 'initial'] }}>
+      <Banners bannerData={bannerData} mobile={mobile} />
       {mobileOpened ? (
         <MobileMenu close={() => setMobileOpened(false)} />
       ) : (
-        <Container as="header" mt={2}>
+        <Container as="header" mt={[0, 2]} sx={{ bg: 'background' }}>
           <Flex
             sx={{
               alignItems: 'center',
@@ -119,7 +111,7 @@ const Header = ({ query, subnav }) => {
                     <NavLink
                       key={name}
                       sx={{
-                        display: ['none', 'block'], //TODO don't need this
+                        display: ['none', 'block'],
                         pr: 4,
                         '&:last-child': { pr: [null, 0] },
                       }}
@@ -131,15 +123,12 @@ const Header = ({ query, subnav }) => {
                 ))}
                 <ColorModeToggle />
               </Flex>
-              <IconButton>
+              <IconButton sx={{ display: ['block', 'none'], cursor: 'pointer' }}>
                 <Icon
                   name="dp_menu"
                   size="auto"
                   color="text"
                   sx={{
-                    display: ['block', 'none'],
-                    cursor: 'pointer',
-                    position: 'relative',
                     height: 24,
                     width: 19,
                   }}
@@ -151,7 +140,7 @@ const Header = ({ query, subnav }) => {
         </Container>
       )}
       {subnav ?? null}
-    </>
+    </Box>
   );
 };
 
