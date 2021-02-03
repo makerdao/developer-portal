@@ -466,6 +466,56 @@ const icons = {
       </g>
     ),
   },
+  dp_close: {
+    viewBox: '0 0 20 20',
+    path: (
+      <g>
+        <path
+          fillRule="evenodd"
+          clipRule="evenodd"
+          d="M10.1079 8.98645L18.9459 0.148438L19.9736 1.17611L11.1356 10.0141L19.9736 18.8521L18.9459 19.8798L10.1079 11.0418L1.26986 19.8798L0.242188 18.8521L9.0802 10.0141L0.242188 1.17611L1.26986 0.148438L10.1079 8.98645Z"
+          fill="currentColor"
+        />
+        <path
+          fillRule="evenodd"
+          clipRule="evenodd"
+          d="M10.1079 8.98645L18.9459 0.148438L19.9736 1.17611L11.1356 10.0141L19.9736 18.8521L18.9459 19.8798L10.1079 11.0418L1.26986 19.8798L0.242188 18.8521L9.0802 10.0141L0.242188 1.17611L1.26986 0.148438L10.1079 8.98645Z"
+          fill="currentColor"
+        />
+      </g>
+    ),
+  },
+  dp_menu: {
+    viewBox: '0 0 25 19',
+    path: (
+      <g>
+        <line
+          x1="0.911133"
+          y1="17.5823"
+          x2="24.9678"
+          y2="17.5823"
+          stroke="currentColor"
+          strokeWidth="1.5"
+        />
+        <line
+          x1="24.9678"
+          y1="9.2085"
+          x2="0.910618"
+          y2="9.2085"
+          stroke="currentColor"
+          strokeWidth="1.5"
+        />
+        <line
+          x1="24.9668"
+          y1="1.3396"
+          x2="0.910107"
+          y2="1.3396"
+          stroke="currentColor"
+          strokeWidth="1.5"
+        />
+      </g>
+    ),
+  },
 };
 
 export default icons;
