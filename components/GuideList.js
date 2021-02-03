@@ -5,7 +5,6 @@ import { Icon } from '@makerdao/dai-ui-icons';
 import Dropdown from '@components/Dropdown';
 
 const GuideList = ({ guides, title, path, options, selected, setSelected }) => {
-  const singleRow = guides.length < 5;
   return (
     <Flex>
       <Box sx={{ minWidth: '100vw' }}>
@@ -36,9 +35,8 @@ const GuideList = ({ guides, title, path, options, selected, setSelected }) => {
         <Grid
           sx={{
             gridAutoFlow: 'column',
-            gridTemplateRows: singleRow ? 'auto' : 'auto auto',
             overflowX: 'auto',
-            // pl: singleRow ? undefined : 'calc(50% - 1140px / 2)',
+            pl: [2, 'calc(50% - 1140px / 2)'],
           }}
         >
           {guides.map(
@@ -62,9 +60,6 @@ const GuideList = ({ guides, title, path, options, selected, setSelected }) => {
                     p: 4,
                     '&:hover': {
                       borderColor: 'primary',
-                    },
-                    ':nth-of-type(2n)': {
-                      transform: singleRow ? undefined : 'translateX(-50%)',
                     },
                   }}
                 >
