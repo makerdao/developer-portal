@@ -9,6 +9,7 @@ import {
   Flex,
   useColorMode,
   IconButton,
+  Grid,
 } from 'theme-ui';
 import Link from 'next/link';
 import { Icon } from '@makerdao/dai-ui-icons';
@@ -20,12 +21,21 @@ const ColorModeToggle = (props) => {
     <Icon
       name={'moon'}
       color="text"
-      size={3}
+      size="auto"
+      sx={{ height: 20, width: 20 }}
       onClick={(e) => {
         const next = mode === 'dark' ? 'light' : 'dark';
         setMode(next);
       }}
     />
+  );
+};
+
+const IconLink = ({ name, url }) => {
+  return (
+    <ThemeLink href={url} target="_blank">
+      <Icon name={name} color="text" size="auto" sx={{ height: 20, width: 20 }} />
+    </ThemeLink>
   );
 };
 
@@ -44,9 +54,12 @@ const MobileMenu = ({ close, query }) => {
             <Icon name="maker" color="text" size={4} />
           </ThemeLink>
         </Link>
-        <IconButton>
+        <Grid columns={4} sx={{ pt: 2 }}>
+          <IconLink name="chat" url="https://chat.makerdao.com/channel/dev" />
+          <IconLink name="github" url="https://github.com/makerdao/" />
+          <ColorModeToggle />
           <Icon
-            name={'dp_close'}
+            name="dp_close"
             size="auto"
             color="text"
             sx={{
@@ -57,7 +70,7 @@ const MobileMenu = ({ close, query }) => {
             }}
             onClick={close}
           />
-        </IconButton>
+        </Grid>
       </Flex>
       <Flex as="nav" sx={{ flexDirection: 'column', alignItems: 'center' }}>
         {LINKS.map(({ name, url }) => (
