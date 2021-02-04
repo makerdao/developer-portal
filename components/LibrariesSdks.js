@@ -14,6 +14,7 @@ const CodeWindow = ({ code }) => {
         height: 300,
         pt: 3,
         bg: 'surface',
+        zIndex: -1,
       }}
     >
       <Icon

@@ -24,7 +24,7 @@ const CommunitySection = () => {
 
   return (
     <Container>
-      <Card sx={{ p: 0, display: 'flex', width: '100%', position: 'relative' }}>
+      <Card sx={{ p: 0, display: 'flex', width: '100%', position: 'relative', zIndex: -1 }}>
         <Icon
           color="textMuted"
           name="tri_1"

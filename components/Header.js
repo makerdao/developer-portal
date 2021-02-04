@@ -47,7 +47,9 @@ const LINKS = [
 
 const MobileMenu = ({ close, query }) => {
   return (
-    <Container sx={{ bg: 'background', width: '100vw', height: '100vh', position: 'fixed' }}>
+    <Container
+      sx={{ bg: 'background', width: '100vw', height: '100vh', position: 'fixed', zIndex: 1 }}
+    >
       <Flex sx={{ justifyContent: 'space-between', mb: [0, 3] }}>
         <Link href="/" passHref>
           <ThemeLink>
