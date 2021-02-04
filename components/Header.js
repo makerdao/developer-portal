@@ -56,10 +56,7 @@ const MobileMenu = ({ close, query }) => {
             <Icon name="maker" color="text" size={4} />
           </ThemeLink>
         </Link>
-        <Grid columns={4} sx={{ pt: 2 }}>
-          <IconLink name="chat" url="https://chat.makerdao.com/channel/dev" />
-          <IconLink name="github" url="https://github.com/makerdao/" />
-          <ColorModeToggle />
+        <IconButton sx={{ cursor: 'pointer', pt: 3 }}>
           <Icon
             name="dp_close"
             size="auto"
@@ -72,7 +69,7 @@ const MobileMenu = ({ close, query }) => {
             }}
             onClick={close}
           />
-        </Grid>
+        </IconButton>
       </Flex>
       <Flex as="nav" sx={{ flexDirection: 'column', alignItems: 'center' }}>
         {LINKS.map(({ name, url }) => (
@@ -96,7 +93,7 @@ const MobileMenu = ({ close, query }) => {
 const Header = ({ query, subnav, bannerData, mobile }) => {
   const [mobileOpened, setMobileOpened] = useState(false);
   return (
-    <Box sx={{ width: '100%', position: ['fixed', 'initial'] }}>
+    <Box sx={{ width: '100%', position: [mobileOpened ? 'fixed' : 'initial', 'initial'] }}>
       <Banners bannerData={bannerData} mobile={mobile} />
       {mobileOpened ? (
         <MobileMenu close={() => setMobileOpened(false)} />
