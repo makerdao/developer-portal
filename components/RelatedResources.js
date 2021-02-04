@@ -30,7 +30,7 @@ const RelatedResources = ({ resources = [], contentType, show = 3 }) => {
               <Text variant="largeText" sx={{ pl: 3 }}>
                 {data.frontmatter.title}
               </Text>
-              <Icon sx={{ ml: 'auto' }} color="primary" name={'increase'}></Icon>
+              <Icon sx={{ ml: 'auto' }} color="primary" name={'arrow_right'}></Icon>
             </Flex>
           </Link>
         );
