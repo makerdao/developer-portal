@@ -56,7 +56,7 @@ const Contributors = ({ file }) => {
             </Flex>
           </Flex>
           <Icon
-            sx={{ transform: 'rotate(45deg)', width: 'auto', ml: 'auto' }}
+            sx={{ transform: 'rotate(45deg)', width: 'auto', ml: 'auto', zIndex: -1 }}
             name="smiley"
             size={6}
           />

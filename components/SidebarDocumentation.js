@@ -25,6 +25,7 @@ const ListItem = ({ title, root: isRoot, activeSlug, resourcePath, slug, parent:
           borderWidth: '0 1px 0 0',
           position: 'relative',
           left: '1px',
+          zIndex: -1,
         }}
       >
         <Link href={`/${resourcePath}/[slug]`} as={`/${resourcePath}/${slug}`} passHref>
@@ -93,6 +94,8 @@ const Sidebar = ({ resources, resourcePath, activeSlug }) => {
         border: 'light',
         borderColor: 'muted',
         borderWidth: '0 1px 0 0',
+        position: 'relative',
+        zIndex: -2,
       }}
     >
       <Text sx={{ px: 2, pt: 3, color: 'textMuted' }} variant="caps">
