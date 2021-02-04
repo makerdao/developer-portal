@@ -29,7 +29,7 @@ const Banners = ({ bannerData, mobile }) => {
               </Text>
               {!mobile && (
                 <Flex sx={{ alignItems: 'center' }}>
-                  <Icon color="text" name="arrow_right"></Icon>
+                  <Icon color="text" name="increase"></Icon>
                   <Text sx={{ color: 'text', pl: 2, fontWeight: 'body' }}>
                     {changelog.linkText}
                   </Text>
