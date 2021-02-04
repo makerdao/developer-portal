@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Error from 'next/error';
 import { useRouter } from 'next/router';
 import { useBreakpointIndex } from '@theme-ui/match-media';
@@ -12,13 +12,17 @@ import { ContentTypes } from '@utils/constants';
 
 const SecurityPage = ({ file, navFile, preview, slug, toc }) => {
   const router = useRouter();
+  const [mobile, setMobile] = useState(false);
   const bpi = useBreakpointIndex({ defaultIndex: 2 });
-  const mobile = bpi === 0;
 
   const [setActiveGroup, setActiveParent] = useStore((state) => [
     state.setActiveGroup,
     state.setActiveParent,
   ]);
+
+  useEffect(() => {
+    setMobile(bpi === 0);
+  }, [bpi]);
 
   useEffect(() => {
     setActiveGroup(file?.data.frontmatter.group);

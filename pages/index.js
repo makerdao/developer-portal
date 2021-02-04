@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Container, jsx, Box, Heading, Grid, Flex, Link as ThemeLink } from 'theme-ui';
 import { useBreakpointIndex } from '@theme-ui/match-media';
@@ -39,8 +39,8 @@ const withTagsAlgo = (fullSet, subSet) => {
 };
 
 const Page = ({ file, guides, documentation, bannerFile, preview }) => {
+  const [mobile, setMobile] = useState(false);
   const bpi = useBreakpointIndex({ defaultIndex: 2 });
-  const mobile = bpi === 0;
 
   const [data, form] = useGithubJsonForm(file, landingPageFormOptions);
   const [bannerData, bannerForm] = useBannerForm(bannerFile, preview);
@@ -51,6 +51,10 @@ const Page = ({ file, guides, documentation, bannerFile, preview }) => {
   useCreateDocument([...guides, ...documentation]);
 
   const [selected, setSelected] = useState('everything');
+
+  useEffect(() => {
+    setMobile(bpi === 0);
+  }, [bpi]);
 
   let filteredGuides = guides.filter((guide) =>
     selected === 'everything' ? Boolean : guide.data.frontmatter.components.includes(selected)

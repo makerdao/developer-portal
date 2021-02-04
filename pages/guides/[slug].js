@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import Error from 'next/error';
 import { useRouter } from 'next/router';
 import { useBreakpointIndex } from '@theme-ui/match-media';
@@ -11,8 +12,12 @@ import { ContentTypes } from '@utils/constants';
 
 const GuidesPage = ({ file, resources, navFile, bannerFile, preview, slug, toc }) => {
   const router = useRouter();
+  const [mobile, setMobile] = useState(false);
   const bpi = useBreakpointIndex({ defaultIndex: 2 });
-  const mobile = bpi === 0;
+
+  useEffect(() => {
+    setMobile(bpi === 0);
+  }, [bpi]);
 
   const moduleResources = resources?.filter(
     (r) =>

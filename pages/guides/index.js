@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { getGithubPreviewProps, parseJson } from 'next-tinacms-github';
 import { Container, Grid, Text, Flex } from 'theme-ui';
 import { useBreakpointIndex } from '@theme-ui/match-media';
@@ -57,8 +57,12 @@ const Filter = ({ options, activeGroup, onChange, count, mobile }) => {
 
 const Page = ({ guides }) => {
   const [active, setActive] = useState('everything');
+  const [mobile, setMobile] = useState(false);
   const bpi = useBreakpointIndex({ defaultIndex: 2 });
-  const mobile = bpi === 0;
+
+  useEffect(() => {
+    setMobile(bpi === 0);
+  }, [bpi]);
 
   const resources = guides.filter((guide) =>
     active === 'everything' ? Boolean : guide.data.frontmatter.components.includes(active)
