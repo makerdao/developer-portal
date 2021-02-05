@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   jsx,
   Box,
@@ -9,7 +9,6 @@ import {
   Flex,
   useColorMode,
   IconButton,
-  Grid,
 } from 'theme-ui';
 import Link from 'next/link';
 import { Icon } from '@makerdao/dai-ui-icons';
@@ -90,8 +89,12 @@ const MobileMenu = ({ close, query }) => {
   );
 };
 
-const Header = ({ query, subnav, bannerData, mobile }) => {
+const Header = ({ query, subnav, bannerData, mobile, router }) => {
   const [mobileOpened, setMobileOpened] = useState(false);
+
+  useEffect(() => {
+    setMobileOpened(false);
+  }, [router?.asPath]);
   return (
     <Box sx={{ width: '100%', position: [mobileOpened ? 'fixed' : 'initial', 'initial'] }}>
       <Banners bannerData={bannerData} mobile={mobile} />

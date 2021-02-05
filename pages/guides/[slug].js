@@ -50,6 +50,7 @@ const GuidesPage = ({ file, resources, navFile, bannerFile, preview, slug, toc }
       navFile={navFile}
       bannerFile={bannerFile}
       mobile={mobile}
+      router={router}
     >
       <ResourcePresentation
         file={file}

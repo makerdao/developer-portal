@@ -14,13 +14,14 @@ const ResourcesLayout = ({
   navFile,
   preview,
   mobile,
+  router,
   children,
 }) => {
   const [navData, navForm] = useSubNavForm(navFile, preview);
   useFormScreenPlugin(navForm);
 
   return (
-    <SingleLayout mobile={mobile} subnav={<SubNav links={navData.navItems} />}>
+    <SingleLayout mobile={mobile} subnav={<SubNav links={navData.navItems} />} router={router}>
       <Grid columns={['auto', '300px auto 250px']} gap="0">
         {sidebar || <Box />}
         <Box sx={{ borderRadius: 0, py: 0, px: 4, pb: 4 }}>{children}</Box>

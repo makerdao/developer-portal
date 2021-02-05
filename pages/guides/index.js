@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 import { getGithubPreviewProps, parseJson } from 'next-tinacms-github';
 import { Container, Grid, Text, Flex } from 'theme-ui';
 import { useBreakpointIndex } from '@theme-ui/match-media';
@@ -59,6 +60,7 @@ const Page = ({ guides }) => {
   const [active, setActive] = useState('everything');
   const [mobile, setMobile] = useState(false);
   const bpi = useBreakpointIndex({ defaultIndex: 2 });
+  const router = useRouter();
 
   useEffect(() => {
     setMobile(bpi === 0);
@@ -76,7 +78,7 @@ const Page = ({ guides }) => {
   );
 
   return (
-    <SingleLayout mobile={mobile}>
+    <SingleLayout mobile={mobile} router={router}>
       <Filter
         activeGroup={active}
         onChange={setActive}

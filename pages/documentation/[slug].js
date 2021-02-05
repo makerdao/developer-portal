@@ -84,6 +84,7 @@ const DocsPage = ({ file, resources, navFile, preview, slug, toc }) => {
       toc={toc}
       navFile={navFile}
       mobile={mobile}
+      router={router}
     >
       <ResourcePresentation
         file={file}

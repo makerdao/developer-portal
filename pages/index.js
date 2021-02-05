@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { Container, jsx, Box, Heading, Grid, Flex, Link as ThemeLink } from 'theme-ui';
 import { useBreakpointIndex } from '@theme-ui/match-media';
 import { Icon } from '@makerdao/dai-ui-icons';
@@ -41,6 +42,7 @@ const withTagsAlgo = (fullSet, subSet) => {
 const Page = ({ file, guides, documentation, bannerFile, preview }) => {
   const [mobile, setMobile] = useState(false);
   const bpi = useBreakpointIndex({ defaultIndex: 2 });
+  const router = useRouter();
 
   const [data, form] = useGithubJsonForm(file, landingPageFormOptions);
   const [bannerData, bannerForm] = useBannerForm(bannerFile, preview);
@@ -74,7 +76,7 @@ const Page = ({ file, guides, documentation, bannerFile, preview }) => {
   );
 
   return (
-    <SingleLayout bannerData={bannerData.banner} mobile={mobile}>
+    <SingleLayout bannerData={bannerData.banner} mobile={mobile} router={router}>
       <InlineForm form={form}>
         <Grid
           sx={{
