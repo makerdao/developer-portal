@@ -13,7 +13,7 @@ const Banners = ({ bannerData, mobile }) => {
       content={
         <Container>
           <ThemeLink href={changelog.url} target="_blank">
-            <Flex sx={{ width: '100%', justifyContent: mobile ? 'center' : 'space-between' }}>
+            <Flex sx={{ width: '100%', justifyContent: 'space-between' }}>
               <Text
                 sx={{
                   fontWeight: 'body',

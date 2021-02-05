@@ -1,42 +1,9 @@
 /** @jsx jsx */
 import { useEffect, useState } from 'react';
-import {
-  jsx,
-  Box,
-  Container,
-  Link as ThemeLink,
-  NavLink,
-  Flex,
-  useColorMode,
-  IconButton,
-} from 'theme-ui';
+import { jsx, Box, Container, Link as ThemeLink, NavLink, Flex, IconButton } from 'theme-ui';
 import Link from 'next/link';
 import { Icon } from '@makerdao/dai-ui-icons';
 import Banners from '@components/Banners';
-
-const ColorModeToggle = (props) => {
-  const [mode, setMode] = useColorMode();
-  return (
-    <Icon
-      name={'moon'}
-      color="text"
-      size="auto"
-      sx={{ height: 20, width: 20 }}
-      onClick={(e) => {
-        const next = mode === 'dark' ? 'light' : 'dark';
-        setMode(next);
-      }}
-    />
-  );
-};
-
-const IconLink = ({ name, url }) => {
-  return (
-    <ThemeLink href={url} target="_blank">
-      <Icon name={name} color="text" size="auto" sx={{ height: 20, width: 20 }} />
-    </ThemeLink>
-  );
-};
 
 const LINKS = [
   { url: '/documentation', name: 'Documentation' },
@@ -138,7 +105,6 @@ const Header = ({ query, subnav, bannerData, mobile, router }) => {
                       </NavLink>
                     </Link>
                   ))}
-                  <ColorModeToggle />
                 </Flex>
                 <IconButton sx={{ display: ['block', 'none'], cursor: 'pointer' }}>
                   <Icon
