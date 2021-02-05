@@ -47,21 +47,22 @@ const LINKS = [
 const MobileMenu = ({ close, query }) => {
   return (
     <Container
-      sx={{ bg: 'background', width: '100vw', height: '100vh', position: 'fixed', zIndex: 1 }}
+      sx={{
+        bg: 'background',
+        width: '100vw',
+        height: '100vh',
+        position: 'fixed',
+        zIndex: 1,
+        pt: 4,
+      }}
     >
-      <Flex sx={{ justifyContent: 'space-between', mb: [0, 3] }}>
-        <Link href="/" passHref>
-          <ThemeLink>
-            <Icon name="maker" color="text" size={4} />
-          </ThemeLink>
-        </Link>
+      <Flex sx={{ justifyContent: 'flex-end', mb: 0 }}>
         <IconButton sx={{ cursor: 'pointer', pt: 3 }}>
           <Icon
             name="dp_close"
             size="auto"
             color="text"
             sx={{
-              display: ['block', 'none'],
               cursor: 'pointer',
               height: 20,
               width: 20,
@@ -97,62 +98,64 @@ const Header = ({ query, subnav, bannerData, mobile, router }) => {
   }, [router?.asPath]);
   return (
     <Box sx={{ width: '100%', position: [mobileOpened ? 'fixed' : 'initial', 'initial'] }}>
-      <Banners bannerData={bannerData} mobile={mobile} />
       {mobileOpened ? (
         <MobileMenu close={() => setMobileOpened(false)} />
       ) : (
-        <Container as="header" mt={[0, 2]} sx={{ bg: 'background' }}>
-          <Flex
-            sx={{
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              mb: [0, 3],
-            }}
-          >
-            <Link href="/" passHref>
-              <ThemeLink>
-                <Icon name="maker" color="text" size={4} />
-              </ThemeLink>
-            </Link>
-            <Flex sx={{ alignItems: 'center' }}>
-              <Flex
-                as="nav"
-                sx={{
-                  alignItems: 'center',
-                }}
-              >
-                {LINKS.map(({ name, url }) => (
-                  <Link href={{ pathname: url, query }} passHref key={name}>
-                    <NavLink
-                      key={name}
-                      sx={{
-                        display: ['none', 'block'],
-                        pr: 4,
-                        '&:last-child': { pr: [null, 0] },
-                      }}
-                      variant="links.nav"
-                    >
-                      {name}
-                    </NavLink>
-                  </Link>
-                ))}
-                <ColorModeToggle />
-              </Flex>
-              <IconButton sx={{ display: ['block', 'none'], cursor: 'pointer' }}>
-                <Icon
-                  name="dp_menu"
-                  size="auto"
-                  color="text"
+        <>
+          <Banners bannerData={bannerData} mobile={mobile} />
+          <Container as="header" mt={[0, 2]} sx={{ bg: 'background' }}>
+            <Flex
+              sx={{
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                mb: [0, 3],
+              }}
+            >
+              <Link href="/" passHref>
+                <ThemeLink>
+                  <Icon name="maker" color="text" size={4} />
+                </ThemeLink>
+              </Link>
+              <Flex sx={{ alignItems: 'center' }}>
+                <Flex
+                  as="nav"
                   sx={{
-                    height: 24,
-                    width: 19,
+                    alignItems: 'center',
                   }}
-                  onClick={() => setMobileOpened(!mobileOpened)}
-                />
-              </IconButton>
+                >
+                  {LINKS.map(({ name, url }) => (
+                    <Link href={{ pathname: url, query }} passHref key={name}>
+                      <NavLink
+                        key={name}
+                        sx={{
+                          display: ['none', 'block'],
+                          pr: 4,
+                          '&:last-child': { pr: [null, 0] },
+                        }}
+                        variant="links.nav"
+                      >
+                        {name}
+                      </NavLink>
+                    </Link>
+                  ))}
+                  <ColorModeToggle />
+                </Flex>
+                <IconButton sx={{ display: ['block', 'none'], cursor: 'pointer' }}>
+                  <Icon
+                    name="dp_menu"
+                    size="auto"
+                    color="text"
+                    sx={{
+                      height: 24,
+                      width: 19,
+                    }}
+                    onClick={() => setMobileOpened(!mobileOpened)}
+                  />
+                </IconButton>
+              </Flex>
             </Flex>
-          </Flex>
-        </Container>
+          </Container>
+        </>
       )}
       {subnav ?? null}
     </Box>
