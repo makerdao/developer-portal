@@ -1,10 +1,20 @@
 /** @jsx jsx */
+import { useMemo, createRef, useEffect } from 'react';
 import { Container, jsx, NavLink, Flex, Box } from 'theme-ui';
 import Link from 'next/link';
 import useStore from '../stores/store';
 
 const SubNav = ({ links, query }) => {
   const activeGroup = useStore((state) => state.activeGroup);
+  const activeLink = links.find((link) => link.slug === activeGroup);
+  const refs = useMemo(() => Array.from({ length: links.length }).map(() => createRef()), [
+    links.length,
+  ]);
+
+  useEffect(() => {
+    const idx = links.indexOf(activeLink);
+    refs[idx]?.current.scrollIntoView({ behavior: 'smooth', inline: 'center' });
+  }, [activeLink, links, refs]);
   return (
     <Box
       sx={{
@@ -27,9 +37,10 @@ const SubNav = ({ links, query }) => {
             overflow: 'auto',
           }}
         >
-          {links.map(({ name, url, slug }) => (
+          {links.map(({ name, url, slug }, i) => (
             <Link href={{ pathname: url, query }} passHref key={name}>
               <NavLink
+                ref={refs[i]}
                 sx={{
                   color: slug === activeGroup ? 'primary' : undefined,
                   minWidth: 'max-content',
