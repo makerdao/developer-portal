@@ -21,7 +21,11 @@ const ResourcesLayout = ({
   useFormScreenPlugin(navForm);
 
   return (
-    <SingleLayout mobile={mobile} subnav={<SubNav links={navData.navItems} />} router={router}>
+    <SingleLayout
+      mobile={mobile}
+      subnav={<SubNav links={navData.navItems} router={router} />}
+      router={router}
+    >
       <Grid columns={['auto', '300px auto 250px']} gap="0">
         {sidebar || <Box />}
         <Box sx={{ borderRadius: 0, py: 0, px: 4, pb: 4 }}>{children}</Box>

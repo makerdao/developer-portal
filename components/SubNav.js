@@ -4,7 +4,7 @@ import { Container, jsx, NavLink, Flex, Box } from 'theme-ui';
 import Link from 'next/link';
 import useStore from '../stores/store';
 
-const SubNav = ({ links, query }) => {
+const SubNav = ({ links, query, router }) => {
   const activeGroup = useStore((state) => state.activeGroup);
   const activeLink = links.find((link) => link.slug === activeGroup);
   const refs = useMemo(() => Array.from({ length: links.length }).map(() => createRef()), [
@@ -12,9 +12,16 @@ const SubNav = ({ links, query }) => {
   ]);
 
   useEffect(() => {
-    const idx = links.indexOf(activeLink);
-    refs[idx]?.current.scrollIntoView({ behavior: 'smooth', inline: 'center' });
-  }, [activeLink, links, refs]);
+    setTimeout(() => {
+      const idx = links.indexOf(activeLink);
+      refs[idx]?.current?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'nearest',
+        inline: 'center',
+      });
+    }, 200);
+  }, [activeLink, links, refs, router.asPath]);
+
   return (
     <Box
       sx={{
