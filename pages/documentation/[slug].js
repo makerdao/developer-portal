@@ -78,6 +78,8 @@ const DocsPage = ({ file, resources, navFile, preview, slug, toc }) => {
           resources={moduleResources}
           resourcePath={ContentTypes.DOCUMENTATION}
           activeSlug={slug}
+          mobile={mobile}
+          router={router}
         />
       }
       slug={slug}

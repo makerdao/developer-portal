@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import { Fragment, useState, useEffect } from 'react';
-import { jsx, Flex, NavLink, Text } from 'theme-ui';
+import { jsx, Flex, NavLink, Text, Box } from 'theme-ui';
+import { Icon } from '@makerdao/dai-ui-icons';
 import Link from 'next/link';
 import useStore from '../stores/store';
 import { navItems } from '../data/resourcesSubNav.json';
@@ -77,31 +78,72 @@ const List = ({ items, resourcePath, activeSlug }) => {
   );
 };
 
-const Sidebar = ({ resources, resourcePath, activeSlug }) => {
+const MobileSidebar = ({ open, onClick }) => {
+  return (
+    <Box
+      sx={{
+        border: 'light',
+        borderColor: 'muted',
+        borderWidth: '0 0 1px 0',
+        p: 2,
+      }}
+      onClick={() => onClick(!open)}
+    >
+      <Flex sx={{ justifyContent: 'space-between', alignItems: 'center' }}>
+        <NavLink sx={{ px: 0 }}>Topics</NavLink>
+        <Icon
+          name={open ? 'dp_arrow_up' : 'dp_arrow_down'}
+          size="auto"
+          color="primary"
+          sx={{
+            cursor: 'pointer',
+            height: 20,
+            width: 20,
+          }}
+        />
+      </Flex>
+    </Box>
+  );
+};
+
+const Sidebar = ({ resources, resourcePath, activeSlug, mobile, router }) => {
   const activeGroup = useStore((state) => state.activeGroup);
   const [name, setName] = useState(null);
+  const [mobileOpen, setMobileOpen] = useState(false);
+
   useEffect(() => {
     setName(navItems.find((ni) => ni.slug === activeGroup)?.name);
   }, [activeGroup]);
 
+  useEffect(() => {
+    if (mobile) {
+      setMobileOpen(false);
+    }
+  }, [mobile, router?.asPath]);
+
   return (
-    <Flex
-      sx={{
-        p: 0,
-        pl: 4,
-        flexDirection: 'column',
-        border: 'light',
-        borderColor: 'muted',
-        borderWidth: '0 1px 0 0',
-      }}
-    >
-      <Text sx={{ px: 2, pt: 3, color: 'textMuted' }} variant="caps">
-        {name}
-      </Text>
-      {resources.map((resource, i) => (
-        <List key={i} items={resource} resourcePath={resourcePath} activeSlug={activeSlug} />
-      ))}
-    </Flex>
+    <>
+      {mobile && <MobileSidebar open={mobileOpen} onClick={setMobileOpen} />}
+      {mobileOpen || !mobile ? (
+        <Flex
+          sx={{
+            p: 0,
+            pl: 4,
+            flexDirection: 'column',
+            border: 'light',
+            borderColor: 'muted',
+            borderWidth: '0 1px 0 0',
+          }}
+        >
+          <Text sx={{ px: 2, pt: 3, color: 'textMuted' }} variant="caps">
+            {name}
+          </Text>
+          {resources.map((resource, i) => (
+            <List key={i} items={resource} resourcePath={resourcePath} activeSlug={activeSlug} />
+          ))}
+        </Flex>
+      ) : null}
+    </>
   );
 };
 

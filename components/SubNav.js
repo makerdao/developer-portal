@@ -20,7 +20,7 @@ const SubNav = ({ links, query, router }) => {
         inline: 'center',
       });
     }, 200);
-  }, [activeLink, links, refs, router.asPath]);
+  }, [activeLink, links, refs, router?.asPath]);
 
   return (
     <Box
