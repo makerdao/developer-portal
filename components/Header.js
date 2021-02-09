@@ -64,7 +64,7 @@ const Header = ({ query, subnav, bannerData, mobile, router }) => {
     setMobileOpened(false);
   }, [router?.asPath]);
   return (
-    <Box sx={{ width: '100%', position: [mobileOpened ? 'fixed' : 'initial', 'initial'] }}>
+    <Box sx={{ width: '100%', position: [mobileOpened ? 'fixed' : undefined, undefined] }}>
       {mobileOpened ? (
         <MobileMenu close={() => setMobileOpened(false)} />
       ) : (
