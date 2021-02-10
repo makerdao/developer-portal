@@ -199,6 +199,7 @@ const theme = {
     'p > code': {
       bg: 'surface',
       px: 1,
+      overflowWrap: 'break-word',
     },
   },
 };
