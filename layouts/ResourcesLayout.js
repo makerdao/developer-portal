@@ -26,7 +26,7 @@ const ResourcesLayout = ({
       subnav={<SubNav links={navData.navItems} router={router} />}
       router={router}
     >
-      <Grid columns={['auto', '300px auto 250px']} gap="0">
+      <Grid columns={['auto', 'auto', '1fr 4fr 1fr']} gap="0">
         {sidebar || <Box />}
         <Box sx={{ borderRadius: 0, py: 0, px: 4, pb: 4 }}>{children}</Box>
         {!mobile && <Infobar resourcePath={resourcePath} slug={slug} toc={toc} />}

@@ -95,7 +95,7 @@ const Header = ({ query, subnav, bannerData, mobile, router }) => {
                       <NavLink
                         key={name}
                         sx={{
-                          display: ['none', 'block'],
+                          display: ['none', 'none', 'block'],
                           pr: 4,
                           '&:last-child': { pr: [null, 0] },
                         }}
@@ -106,7 +106,7 @@ const Header = ({ query, subnav, bannerData, mobile, router }) => {
                     </Link>
                   ))}
                 </Flex>
-                <IconButton sx={{ display: ['block', 'none'], cursor: 'pointer' }}>
+                <IconButton sx={{ display: ['block', 'block', 'none'], cursor: 'pointer' }}>
                   <Icon
                     name="dp_menu"
                     size="auto"

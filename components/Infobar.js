@@ -41,7 +41,7 @@ const ContentsMenuItem = ({
               color: active ? 'text' : undefined,
               borderRadius: 'xs',
               py: 0,
-              px: 4,
+              px: [2, 2, 2, 4],
               lineHeight: '21px',
               width: '100%',
               whiteSpace: 'nowrap',
@@ -130,7 +130,7 @@ const Infobar = ({ resourcePath, slug, toc }) => {
         </Text>
       </Box>
       <Box sx={{ pl: 0, pr: 3, pt: 3 }}>
-        <Text sx={{ pl: 4, pt: 0, pb: 2, color: 'textMuted' }} variant="caps">
+        <Text sx={{ pl: [2, 2, 2, 4], pt: 0, pb: 2, color: 'textMuted' }} variant="caps">
           On This Page
         </Text>
         <FileContents resourcePath={resourcePath} slug={slug} toc={toc} />

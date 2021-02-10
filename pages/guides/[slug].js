@@ -16,7 +16,7 @@ const GuidesPage = ({ file, resources, navFile, bannerFile, preview, slug, toc }
   const bpi = useBreakpointIndex({ defaultIndex: 2 });
 
   useEffect(() => {
-    setMobile(bpi === 0);
+    setMobile(bpi < 2);
   }, [bpi]);
 
   const moduleResources = resources?.filter(

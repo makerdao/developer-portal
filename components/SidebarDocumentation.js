@@ -24,7 +24,7 @@ const ListItem = ({ title, root: isRoot, activeSlug, resourcePath, slug, parent:
           border: active ? 'light' : undefined,
           borderColor: 'primary',
           borderWidth: '0 1px 0 0',
-          position: [undefined, 'relative'],
+          position: [undefined, undefined, 'relative'],
           left: '1px',
         }}
       >
@@ -128,11 +128,12 @@ const Sidebar = ({ resources, resourcePath, activeSlug, mobile, router }) => {
         <Flex
           sx={{
             p: 0,
-            pl: 4,
+            pl: [0, 0, 0, 4],
             flexDirection: 'column',
             border: 'light',
             borderColor: 'muted',
             borderWidth: '0 1px 0 0',
+            minWidth: '200px',
           }}
         >
           <Text sx={{ px: 2, pt: 3, color: 'textMuted' }} variant="caps">

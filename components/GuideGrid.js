@@ -37,7 +37,7 @@ const ListItem = ({ title, link, linkText, description, icon }) => {
 const GuideGrid = ({ resources, path }) => {
   return (
     <Container>
-      <Grid columns={[1, 4]} sx={{ gridRowGap: [5, 6], gridColumnGap: 5 }}>
+      <Grid columns={[1, 3, 4]} sx={{ gridRowGap: [5, 6], gridColumnGap: 5 }}>
         {resources.map(
           (
             {

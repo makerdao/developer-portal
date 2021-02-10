@@ -55,7 +55,7 @@ const Page = ({ file, guides, documentation, bannerFile, preview }) => {
   const [selected, setSelected] = useState('everything');
 
   useEffect(() => {
-    setMobile(bpi === 0);
+    setMobile(bpi < 2);
   }, [bpi]);
 
   let filteredGuides = guides.filter((guide) =>

@@ -8,8 +8,8 @@ const Contributors = ({ file }) => {
   return (
     <Flex
       sx={{
-        py: [3, 4],
-        px: [3, 5],
+        py: [3, 3, 3, 4],
+        px: [3, 3, 3, 5],
         border: 'light',
         borderColor: 'muted',
         borderRadius: 'small',

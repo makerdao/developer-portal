@@ -63,7 +63,7 @@ const Page = ({ guides }) => {
   const router = useRouter();
 
   useEffect(() => {
-    setMobile(bpi === 0);
+    setMobile(bpi < 2);
   }, [bpi]);
 
   const resources = guides.filter((guide) =>

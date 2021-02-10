@@ -66,7 +66,7 @@ const ArticlesList = ({ resources, title, path }) => {
                   description={description}
                   link={`/${path}/${slug}/`}
                   linkText={'Read'}
-                  isMobile={bpi === 0}
+                  isMobile={bpi < 2}
                 />
               );
             }

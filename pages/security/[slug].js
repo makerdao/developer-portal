@@ -21,7 +21,7 @@ const SecurityPage = ({ file, navFile, preview, slug, toc }) => {
   ]);
 
   useEffect(() => {
-    setMobile(bpi === 0);
+    setMobile(bpi < 2);
   }, [bpi]);
 
   useEffect(() => {
