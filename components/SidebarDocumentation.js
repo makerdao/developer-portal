@@ -6,7 +6,15 @@ import Link from 'next/link';
 import useStore from '../stores/store';
 import { navItems } from '../data/resourcesSubNav.json';
 
-const ListItem = ({ title, root: isRoot, activeSlug, resourcePath, slug, parent: hasParent }) => {
+const ListItem = ({
+  title,
+  root: isRoot,
+  activeSlug,
+  resourcePath,
+  slug,
+  parent: hasParent,
+  mobile,
+}) => {
   const active = slug === activeSlug;
 
   const variableStyles = isRoot
@@ -21,7 +29,7 @@ const ListItem = ({ title, root: isRoot, activeSlug, resourcePath, slug, parent:
         sx={{
           flexDirection: 'row',
           width: '100%',
-          border: active ? 'light' : undefined,
+          border: mobile ? undefined : active ? 'light' : undefined,
           borderColor: 'primary',
           borderWidth: '0 1px 0 0',
           position: [undefined, undefined, 'relative'],
@@ -38,7 +46,7 @@ const ListItem = ({ title, root: isRoot, activeSlug, resourcePath, slug, parent:
   );
 };
 
-const List = ({ items, resourcePath, activeSlug }) => {
+const List = ({ items, resourcePath, activeSlug, mobile }) => {
   return Array.isArray(items) ? (
     items.map(
       ({
@@ -56,6 +64,7 @@ const List = ({ items, resourcePath, activeSlug }) => {
               resourcePath={resourcePath}
               slug={slug}
               parent={parent}
+              mobile={mobile}
             />
             {children && (
               <List items={children} resourcePath={resourcePath} activeSlug={activeSlug} />
@@ -130,7 +139,7 @@ const Sidebar = ({ resources, resourcePath, activeSlug, mobile, router }) => {
             p: 0,
             pl: [0, 0, 0, 4],
             flexDirection: 'column',
-            border: 'light',
+            border: mobile ? undefined : 'light',
             borderColor: 'muted',
             borderWidth: '0 1px 0 0',
             minWidth: '200px',
@@ -140,7 +149,13 @@ const Sidebar = ({ resources, resourcePath, activeSlug, mobile, router }) => {
             {name}
           </Text>
           {resources.map((resource, i) => (
-            <List key={i} items={resource} resourcePath={resourcePath} activeSlug={activeSlug} />
+            <List
+              key={i}
+              items={resource}
+              resourcePath={resourcePath}
+              activeSlug={activeSlug}
+              mobile={mobile}
+            />
           ))}
         </Flex>
       ) : null}

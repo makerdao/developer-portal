@@ -195,11 +195,13 @@ const theme = {
       m: 0,
       bg: 'surface',
     },
+    p: {
+      overflowWrap: 'break-word',
+    },
     // applies to single-backticks
     'p > code': {
       bg: 'surface',
       px: 1,
-      overflowWrap: 'break-word',
     },
   },
 };
