@@ -5,7 +5,7 @@ import ReactMarkdown from 'react-markdown';
 import Banner from '@components/Banner';
 import { banner as bannerJson } from '../data/banner.json';
 
-const Banners = ({ bannerData, mobile }) => {
+const Banners = ({ bannerData }) => {
   const [changelog] = bannerData || bannerJson;
 
   return (
@@ -13,7 +13,12 @@ const Banners = ({ bannerData, mobile }) => {
       content={
         <Container>
           <ThemeLink href={changelog.url} target="_blank">
-            <Flex sx={{ width: '100%', justifyContent: 'space-between' }}>
+            <Flex
+              sx={{
+                width: '100%',
+                justifyContent: 'space-between',
+              }}
+            >
               <Text
                 sx={{
                   fontWeight: 'body',
@@ -27,14 +32,10 @@ const Banners = ({ bannerData, mobile }) => {
               >
                 <ReactMarkdown source={changelog.text} />
               </Text>
-              {!mobile && (
-                <Flex sx={{ alignItems: 'center' }}>
-                  <Icon color="text" name="increase"></Icon>
-                  <Text sx={{ color: 'text', pl: 2, fontWeight: 'body' }}>
-                    {changelog.linkText}
-                  </Text>
-                </Flex>
-              )}
+              <Flex sx={{ alignItems: 'center', justifyContent: 'flex-end', width: '33%' }}>
+                <Icon color="text" name="increase"></Icon>
+                <Text sx={{ color: 'text', pl: 2, fontWeight: 'body' }}>{changelog.linkText}</Text>
+              </Flex>
             </Flex>
           </ThemeLink>
         </Container>

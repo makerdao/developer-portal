@@ -8,6 +8,7 @@ const Banner = ({ content }) => {
         borderRadius: 0,
         bg: 'surface',
         borderColor: 'surface',
+        px: 0,
       }}
     >
       {typeof content === 'string' ? (
