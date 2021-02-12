@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { getGithubPreviewProps, parseJson } from 'next-tinacms-github';
-import { Container, Grid, Text, Flex } from 'theme-ui';
+import { Container, Grid, Text, Flex, Box } from 'theme-ui';
 import { useBreakpointIndex } from '@theme-ui/match-media';
 import GuideGrid from '@components/GuideGrid';
 import Dropdown from '@components/Dropdown';
@@ -9,50 +9,52 @@ import SingleLayout from '@layouts/SingleLayout';
 import { getResources } from '@utils';
 import { ContentTypes } from '@utils/constants';
 
+const FeaturedCount = ({ count, ...props }) => {
+  return (
+    <Text
+      variant="plainText"
+      sx={{
+        fontSize: 3,
+        my: 'auto',
+        ...props.sx,
+      }}
+    >
+      {count} featured
+    </Text>
+  );
+};
+
 const Filter = ({ options, activeGroup, onChange, count, mobile }) => {
   return (
-    <Container sx={{ pb: 6 }}>
-      <Grid
-        columns={[2, '1fr 2fr 1fr']}
-        sx={{
-          border: 'light',
-          borderColor: 'muted',
-          borderWidth: '1px 0 0 0',
-        }}
-      >
-        <Text variant="plainText" sx={{ fontSize: 3, py: 2 }}>
-          Show me guides about:
-        </Text>
-        <Flex
-          sx={{
-            border: 'light',
-            borderColor: 'muted',
-            borderWidth: '0 0 0 1px',
-            px: 4,
-          }}
-        >
-          <Dropdown
-            sx={{ width: [7, 8] }}
-            options={options}
-            activeGroup={activeGroup}
-            onChange={onChange}
-          />
-        </Flex>
-        <Text
-          variant="plainText"
-          sx={{
-            fontSize: 3,
-            py: [0, 2],
-            px: [0, 4],
-            border: mobile ? undefined : 'light',
-            borderColor: 'muted',
-            borderWidth: '0 0 0 1px',
-          }}
-        >
-          {count} featured
-        </Text>
-      </Grid>
-    </Container>
+    <Box sx={{ mb: 6 }}>
+      <Box sx={{ border: 'light', borderColor: 'muted', borderWidth: '1px 0 1px 0', mb: 2 }}>
+        <Container sx={{ p: 0 }}>
+          <Grid columns={[2, '1fr 2fr 1fr']}>
+            <Text variant="plainText" sx={{ fontSize: 3, p: 2, my: 'auto' }}>
+              Show me guides about:
+            </Text>
+            <Flex
+              sx={{
+                border: 'light',
+                borderColor: 'muted',
+                borderWidth: mobile ? '0 0 0 1px' : '0 1px 0 1px',
+                px: 4,
+                py: 2,
+              }}
+            >
+              <Dropdown
+                sx={{ width: [7, 8] }}
+                options={options}
+                activeGroup={activeGroup}
+                onChange={onChange}
+              />
+            </Flex>
+            {!mobile && <FeaturedCount count={count} sx={{ py: 2, px: 4 }} />}
+          </Grid>
+        </Container>
+      </Box>
+      {mobile && <FeaturedCount count={count} sx={{ px: 2 }} />}
+    </Box>
   );
 };
 
