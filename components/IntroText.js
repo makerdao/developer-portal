@@ -14,16 +14,17 @@ const IntroText = ({ mobile }) => {
           flexWrap: mobile ? 'wrap' : 'nowrap',
         }}
       >
-        <Heading
-          variant="megaHeading"
-          pb="4"
-          sx={{
-            minWidth: ['50vw', 600],
-          }}
-        >
-          About <br />
-          The Protocol
-        </Heading>
+        <Flex pb="4" sx={{ width: '100%', flexDirection: 'column', minWidth: ['50vw', 600] }}>
+          <Heading variant="megaHeading">About</Heading>
+          <Heading
+            variant="megaHeading"
+            sx={{
+              color: 'onBackgroundMuted',
+            }}
+          >
+            The Protocol
+          </Heading>
+        </Flex>
 
         <Heading
           sx={{
