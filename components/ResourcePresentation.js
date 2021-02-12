@@ -39,7 +39,7 @@ const ResourcePresentation = ({
         {relatedResources && (
           <RelatedResources resources={relatedResources} contentType={contentType} />
         )}
-        <Feedback route={asPath} cms={cms} />
+        <Feedback route={asPath} cms={cms} mobile={mobile} />
         <ContributeCta file={file} mobile={mobile} />
         {contributors && <Contributors contributors={contributors} mobile={mobile} />}
       </Grid>

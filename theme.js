@@ -199,7 +199,8 @@ const theme = {
       overflowWrap: 'break-word',
     },
     // applies to single-backticks
-    'p > code': {
+    'p > code, li > code': {
+      overflowWrap: 'break-word',
       bg: 'surface',
       px: 1,
     },

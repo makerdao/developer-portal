@@ -28,7 +28,7 @@ const constructMarkdownString = (reaction, handle, content) => {
   return rawMarkdownBody;
 };
 
-const Feedback = ({ route, cms }) => {
+const Feedback = ({ route, cms, mobile }) => {
   const ref = useRef(null);
   const rcRef = useRef(null);
 
@@ -40,18 +40,17 @@ const Feedback = ({ route, cms }) => {
 
   const { title, placeholder } = isNegative
     ? {
-        title: "We're sorry this document wasn't helpful.",
+        title: mobile ? "We're sorry" : "We're sorry this document wasn't helpful.",
         placeholder: 'Please let us know how we can improve it.',
       }
     : isPositive
     ? {
-        title: 'Glad this document was helpful.',
-        placeholder:
-          'Please let us know if you have any suggestions how we can make it even better.',
+        title: mobile ? 'Glad to hear' : 'Glad this document was helpful.',
+        placeholder: 'Please let us know how we can make it even better.',
       }
     : isSubmitted
-    ? { title: 'Thank you for your feedback' }
-    : { title: 'Was this document helpful?' };
+    ? { title: mobile ? 'Thank you' : 'Thank you for your feedback' }
+    : { title: mobile ? 'Was this helpful?' : 'Was this document helpful?' };
 
   const sendFeedback = useCallback(async () => {
     const markdown = constructMarkdownString(reaction, rcRef.current?.value, ref.current?.value);
@@ -129,6 +128,7 @@ const Feedback = ({ route, cms }) => {
               sx={{
                 bg: isPositive ? 'primary' : undefined,
                 color: isPositive ? 'onPrimary' : undefined,
+                minWidth: 42,
               }}
               onClick={() => setReaction('positive')}
             >
@@ -139,6 +139,7 @@ const Feedback = ({ route, cms }) => {
               sx={{
                 bg: isNegative ? 'primary' : undefined,
                 color: isNegative ? 'onPrimary' : undefined,
+                minWidth: 42,
               }}
               onClick={() => setReaction('negative')}
             >
@@ -174,19 +175,23 @@ const Feedback = ({ route, cms }) => {
                 fontSize: 3,
                 bg: 'surface',
                 borderColor: 'muted',
-                width: '100%',
+                width: ['66%', '100%'],
               }}
               type="email"
               aria-label="Feedback handle"
               placeholder="Enter your Rocket Chat handle if you would like to be in contact."
               ref={rcRef}
             ></Input>
-            <Button sx={{ px: 4 }} variant="small" onClick={sendFeedback}>
+            <Button
+              sx={{ px: [2, 4], width: ['33%', 'initial'] }}
+              variant="small"
+              onClick={sendFeedback}
+            >
               Submit
             </Button>
           </Flex>
-          <Grid columns="auto auto" sx={{ pt: 3 }}>
-            <Text sx={{ color: 'onBackgroundMuted' }}>
+          <Flex sx={{ pt: 3, flexWrap: 'wrap' }}>
+            <Text sx={{ color: 'onBackgroundMuted', pr: 3 }}>
               If you need additional help, join the Rocket Chat #dev channel.
             </Text>
             <ThemeLink href={'https://chat.makerdao.com/channel/dev'} target="_blank">
@@ -195,7 +200,7 @@ const Feedback = ({ route, cms }) => {
                 <Text sx={{ color: 'text', cursor: 'pointer' }}>chat.makerdao.com</Text>
               </Flex>
             </ThemeLink>
-          </Grid>
+          </Flex>
         </Flex>
       )}
     </Card>
