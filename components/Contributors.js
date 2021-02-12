@@ -97,9 +97,8 @@ const Contributors = ({ contributors = [], mobile }) => {
             <Text sx={{ pl: 2 }}>{`${open ? 'Hide' : 'Show'} All Contributors`}</Text>
           </Flex>
           {open && !mobile && (
-            <Flex sx={{ flexDirection: 'column', alignItems: 'flex-end' }}>
-              <Text>Thank you!</Text>
-              <Text sx={{ color: 'onBackgroundMuted' }}>To all contributors of this page.</Text>
+            <Flex sx={{ flexDirection: 'column', alignItems: 'flex-end', pl: 5 }}>
+              <Text sx={{ color: 'onBackgroundMuted' }}>Thanks to all contributors!</Text>
             </Flex>
           )}
         </Flex>
