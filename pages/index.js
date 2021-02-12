@@ -17,7 +17,7 @@ import CommunityCta from '@components/CommunityCta';
 import AboutThisSite from '@components/AboutThisSite';
 import PageLead from '@components/PageLead';
 import IntroText from '@components/IntroText';
-import ModulesList from '@components/ModulesList';
+import DocumentationList from '@components/DocumentationList';
 import SecurityFeatures from '@components/SecurityFeatures';
 import NewsletterCallout from '@components/NewsletterCallout';
 import LibrariesSdks from '@components/LibrariesSdks';
@@ -102,33 +102,19 @@ const Page = ({ file, guides, documentation, bannerFile, preview }) => {
           <Box>
             <Container>
               <Heading
-                variant="largeHeading"
+                variant="megaHeading"
                 sx={{
-                  pb: 3,
+                  display: 'flex',
+                  justifyContent: 'center',
                 }}
               >
-                Get Started With
+                Get Started&nbsp;<span sx={{ color: 'onBackgroundMuted' }}>With</span>
               </Heading>
-
-              <Flex sx={{ mb: 3, alignItems: 'center' }}>
-                <Heading variant="mediumHeading">Documentation</Heading>
-
-                <Link href={'/guides'} passHref>
-                  <Flex sx={{ ml: 3, alignItems: 'center' }}>
-                    <Icon sx={{ mr: 2 }} color="primary" name={'arrow_right'}></Icon>
-                    <ThemeLink sx={{ color: 'text', cursor: 'pointer' }}>View All</ThemeLink>
-                  </Flex>
-                </Link>
-              </Flex>
             </Container>
-            <ModulesList />
           </Box>
+          <DocumentationList />
           <LibrariesSdks />
           <SecurityFeatures />
-          {/* <CodeBox cta="Dive in the code" sections={codeSections} /> */}
-          {/* <ArticlesList title="Articles" path="guides" resources={guides} /> */}
-          {/* <Ecosystem title={'Developer Ecosystem'} items={ecosystem} /> */}
-
           <CommunityCta />
           <AboutThisSite />
           <NewsletterCallout />

@@ -53,8 +53,8 @@ const LibrariesSdks = () => {
       );`;
   return (
     <Container>
-      <Heading variant="megaHeading" pb={3}>
-        Libraries to get started
+      <Heading variant="largeHeading" pb={3}>
+        Libraries
       </Heading>
 
       <Flex
