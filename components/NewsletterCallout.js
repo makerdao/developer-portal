@@ -1,12 +1,9 @@
 /** @jsx jsx */
-import { useState } from 'react';
 import { Container, Button, jsx, Input, Heading, Text, Grid, Flex, Card } from 'theme-ui';
 import { Icon } from '@makerdao/dai-ui-icons';
 import useEmailSubscribe from '../hooks/useEmailSubscribe';
-import TosCheck from '@components/TosCheck';
 
 const NewsletterCallout = () => {
-  const [agreed, setAgreed] = useState(false);
   const { inputEl, subscribe, loading, success, errorMessage } = useEmailSubscribe();
   return (
     <Container sx={{ display: 'flex', justifyContent: 'center', pb: 6 }}>
@@ -56,7 +53,7 @@ const NewsletterCallout = () => {
                   ref={inputEl}
                   type="email"
                   placeholder="Email"
-                  disabled={!agreed || loading}
+                  disabled={loading}
                   sx={{
                     fontFamily: 'heading',
                     fontSize: 5,
@@ -71,7 +68,7 @@ const NewsletterCallout = () => {
                   }}
                 ></Input>
                 <Button
-                  disabled={!agreed || loading}
+                  disabled={loading}
                   onClick={subscribe}
                   sx={{
                     borderColor: 'primary',
@@ -90,9 +87,6 @@ const NewsletterCallout = () => {
                   {errorMessage}
                 </Text>
               )}
-            </Flex>
-            <Flex sx={{ mx: 'auto' }}>
-              <TosCheck onChange={() => setAgreed(!agreed)} />
             </Flex>
           </>
         )}

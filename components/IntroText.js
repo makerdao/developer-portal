@@ -1,14 +1,11 @@
 /** @jsx jsx */
-import { useState } from 'react';
 import { Container, jsx, Heading, Text, Flex, Grid } from 'theme-ui';
 import Link from 'next/link';
 import EmailSignup from '@components/EmailSignup';
 import { InlineTextarea } from 'react-tinacms-inline';
 import { Icon } from '@makerdao/dai-ui-icons';
-import TosCheck from '@components/TosCheck';
 
 const IntroText = ({ mobile }) => {
-  const [agreed, setAgreed] = useState(false);
   return (
     <Container>
       <Flex
@@ -59,12 +56,7 @@ const IntroText = ({ mobile }) => {
             Want Maker dev updates <br />
             dripping into your inbox?
           </Heading>
-          <EmailSignup
-            disabled={!agreed}
-            sx={{ fontSize: 5 }}
-            placeholder="We saved a slot for your email"
-          />
-          <TosCheck sx={{ pl: 0, fontSize: 2 }} onChange={() => setAgreed(!agreed)} />
+          <EmailSignup sx={{ fontSize: 5 }} placeholder="We saved a slot for your email" />
         </Flex>
       </Grid>
     </Container>
