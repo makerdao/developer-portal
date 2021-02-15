@@ -25,7 +25,7 @@ const SecurityFeatures = () => {
             <Heading variant="mediumHeading" sx={{ pb: 3 }}>
               Security details
             </Heading>
-            <Text sx={{ pb: 3, fontSize: 5 }}>
+            <Text sx={{ pb: 3, fontSize: [4, 5], color: 'onBackgroundMuted' }}>
               <InlineTextarea name="securitySubtext" />
             </Text>
             <Link href="/security">

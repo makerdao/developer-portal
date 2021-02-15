@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, Container, Heading, Text, Grid, Box, Flex } from 'theme-ui';
+import { jsx, Container, Heading, Text, Grid, Flex } from 'theme-ui';
 import { Icon } from '@makerdao/dai-ui-icons';
 import { InlineTextarea } from 'react-tinacms-inline';
 import Link from 'next/link';
@@ -57,54 +57,67 @@ const LibrariesSdks = () => {
       <Heading variant="largeHeading" pb={3}>
         Libraries
       </Heading>
-
-      <Flex
-        sx={{
-          maxWidth: '100%',
-          flexWrap: 'wrap',
-        }}
-      >
-        <Grid
-          sx={{
-            rowGap: 3,
-            mr: 3,
-            width: ['100%', '66%'],
-          }}
-        >
-          <Heading variant="smallHeading">
-            <InlineTextarea name="sdksAndToolsHeading" />
-          </Heading>
-          <Text
+      <Grid columns={[1, '1fr auto']} sx={{ gridColumnGap: 4, gridRowGap: [4, 'auto'] }}>
+        <CodeWindow code={daijsCode} />
+        <Grid columns={[1, 2]} sx={{ gridRowGap: 3, gridTemplateRows: '2em' }}>
+          <Heading variant="smallHeading">Dai.js</Heading>
+          <Flex
             sx={{
-              color: 'onBackgroundMuted',
-              columns: '2 200px',
+              flexDirection: 'column',
+              gridRowStart: 2,
+              justifyContent: 'space-between',
+              pb: [4, 0],
             }}
           >
-            <InlineTextarea name="sdksAndToolsText" />
-          </Text>
-          <Link href="/documentation/introduction-to-dai-js">
-            <Flex sx={{ alignItems: 'center' }}>
-              <Icon sx={{ mr: 2 }} color="primary" name={'arrow_right'}></Icon>
-              <Text sx={{ cursor: 'pointer' }}>View Dai.js docs</Text>
+            <Flex sx={{ flexDirection: 'column', color: 'onBackgroundMuted' }}>
+              <Text
+                variant="plainText"
+                sx={{
+                  pb: 2,
+                }}
+              >
+                <InlineTextarea name="sdksAndToolsHeading" />
+              </Text>
+              <Text>
+                <InlineTextarea name="sdksAndToolsText" />
+              </Text>
             </Flex>
-          </Link>
-          <Grid columns={2} sx={{ py: [3, 0] }}>
-            <Flex sx={{ flexDirection: 'column', gridColumnStart: [1, 2], gridColumnEnd: 3 }}>
-              <Text sx={{ fontWeight: 'bold' }}>pyMaker</Text>
-              <Text sx={{ py: [3, 0] }}>
+            <Link href="/documentation/introduction-to-dai-js">
+              <Flex sx={{ alignItems: 'center', py: [3, 0] }}>
+                <Icon sx={{ mr: 2 }} color="primary" name={'arrow_right'}></Icon>
+                <Text sx={{ cursor: 'pointer' }}>View Dai.js docs</Text>
+              </Flex>
+            </Link>
+          </Flex>
+          <Flex
+            sx={{
+              flexDirection: 'column',
+              gridRowStart: ['auto', 2],
+              gridColumnStart: [1, 2],
+            }}
+          >
+            <Flex
+              sx={{
+                flexDirection: 'column',
+                color: 'onBackgroundMuted',
+              }}
+            >
+              <Text sx={{ pb: 2, fontSize: [4, 5] }}>
+                <InlineTextarea name="pyMakerHeading" />
+              </Text>
+              <Text>
                 <InlineTextarea name="pyMakerSubtext" />
               </Text>
-              <Link href="/documentation/pymaker">
-                <Flex sx={{ alignItems: 'center' }}>
-                  <Icon sx={{ mr: 2 }} color="primary" name={'arrow_right'}></Icon>
-                  <Text sx={{ cursor: 'pointer' }}>View pyMaker docs</Text>
-                </Flex>
-              </Link>
             </Flex>
-          </Grid>
+            <Link href="/documentation/pymaker">
+              <Flex sx={{ alignItems: 'center', py: [3, 4] }}>
+                <Icon sx={{ mr: 2 }} color="primary" name={'arrow_right'}></Icon>
+                <Text sx={{ cursor: 'pointer' }}>View pyMaker docs</Text>
+              </Flex>
+            </Link>
+          </Flex>
         </Grid>
-        <CodeWindow code={daijsCode} />
-      </Flex>
+      </Grid>
 
       <Grid
         columns={[1, 3]}
@@ -116,7 +129,7 @@ const LibrariesSdks = () => {
           variant="largeHeading"
           sx={{ py: 4, gridColumnStart: [1, 2], gridColumnEnd: [2, 4] }}
         >
-          Other Relevant Tools
+          <InlineTextarea name="toolsHeading" />
         </Heading>
         <Flex
           sx={{
@@ -126,7 +139,7 @@ const LibrariesSdks = () => {
         >
           <Icon name="keeper" color="textMuted" sx={{ width: '164px', height: '164px', mb: 4 }} />
           <Heading>Keepers</Heading>
-          <Text sx={{ py: 3 }}>
+          <Text sx={{ py: 3, color: 'onBackgroundMuted' }}>
             <InlineTextarea name="keepersSubtext" />
           </Text>
           <Link href="/documentation/introduction-to-auction-keepers">
@@ -148,7 +161,7 @@ const LibrariesSdks = () => {
             sx={{ width: '164px', height: '164px', mb: 4 }}
           />
           <Heading>CLIs</Heading>
-          <Text sx={{ py: 3 }}>
+          <Text sx={{ py: 3, color: 'onBackgroundMuted' }}>
             <InlineTextarea name="CLIsSubtext" />
           </Text>
           <Link href="/documentation/mcd-cli">

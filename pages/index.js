@@ -99,21 +99,21 @@ const Page = ({ file, guides, documentation, bannerFile, preview }) => {
 
           <IntroText mobile={mobile} />
 
-          <Box>
+          <Grid>
             <Container>
-              <Heading
-                variant="megaHeading"
-                sx={{
-                  display: 'flex',
-                  justifyContent: 'center',
-                }}
-              >
+              <Heading variant="megaHeading">
                 Get Started&nbsp;<span sx={{ color: 'onBackgroundMuted' }}>With</span>
               </Heading>
             </Container>
-          </Box>
-          <DocumentationList />
-          <LibrariesSdks />
+            <Grid
+              sx={{
+                rowGap: 5,
+              }}
+            >
+              <DocumentationList />
+              <LibrariesSdks />
+            </Grid>
+          </Grid>
           <SecurityFeatures />
           <CommunityCta />
           <AboutThisSite />
