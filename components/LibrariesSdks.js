@@ -31,6 +31,7 @@ const CodeWindow = ({ code }) => {
         sx={{ bg: 'surface', fontSize: 1, p: 0, selectable: 'true', m: 'auto' }}
         value={code}
         language="js"
+        showLineNumbers={true}
       />
     </Flex>
   );

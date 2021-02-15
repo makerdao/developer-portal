@@ -2,14 +2,14 @@
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { jsx, Box } from 'theme-ui';
 
-const CodeWrapper = ({ value, language = 'jsx', ...otherProps }) => {
+const CodeWrapper = ({ value, language = 'jsx', showLineNumbers, ...otherProps }) => {
   return (
     <Box variant="styles.code" {...otherProps}>
       <SyntaxHighlighter
         codeTagProps={''}
         useInlineStyles={false}
         language={language}
-        showLineNumbers={true}
+        showLineNumbers={showLineNumbers}
       >
         {value}
       </SyntaxHighlighter>
