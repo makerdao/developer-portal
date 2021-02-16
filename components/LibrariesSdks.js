@@ -12,7 +12,6 @@ const CodeWindow = ({ code }) => {
         width: 300,
         position: 'relative',
         height: 300,
-        pt: 3,
         bg: 'surface',
         zIndex: -1,
       }}
@@ -28,7 +27,16 @@ const CodeWindow = ({ code }) => {
         }}
       />
       <CodeWrapper
-        sx={{ bg: 'surface', fontSize: 1, p: 0, selectable: 'true', m: 'auto' }}
+        sx={{
+          bg: 'transparent',
+          fontSize: 1,
+          pt: 4,
+          selectable: 'true',
+          m: 'auto',
+          '::-webkit-scrollbar': {
+            width: 0,
+          },
+        }}
         value={code}
         language="js"
         showLineNumbers={true}
