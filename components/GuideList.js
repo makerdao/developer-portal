@@ -1,10 +1,10 @@
 /** @jsx jsx */
-import { jsx, Heading, Text, Box, Flex, Grid, Container, Card, Link as ThemeLink } from 'theme-ui';
+import { jsx, Heading, Box, Flex, Grid, Container, Link as ThemeLink } from 'theme-ui';
 import Link from 'next/link';
 import { Icon } from '@makerdao/dai-ui-icons';
-import Dropdown from '@components/Dropdown';
+import GuideCard from '@components/GuideCard';
 
-const GuideList = ({ guides, title, path, options, selected, setSelected }) => {
+const GuideList = ({ guides, title, path }) => {
   return (
     <Flex>
       <Box sx={{ minWidth: '100vw' }}>
@@ -13,17 +13,11 @@ const GuideList = ({ guides, title, path, options, selected, setSelected }) => {
             sx={{
               alignItems: 'center',
               flexWrap: 'wrap',
+              mb: 3,
             }}
           >
-            <Heading sx={{ pb: 1, pr: 2 }} variant="mediumHeading">
-              {title}
-            </Heading>
-            <Dropdown
-              sx={{ variant: 'text.mediumHeading', width: 7, pl: 0 }}
-              options={options}
-              activeGroup={selected}
-              onChange={setSelected}
-            />
+            <Heading variant="largeHeading">{title}</Heading>
+
             <Link href={'/guides'} passHref>
               <Flex sx={{ ml: 'auto', alignItems: 'center' }}>
                 <Icon sx={{ mr: 2 }} color="primary" name={'arrow_right'}></Icon>
@@ -33,67 +27,44 @@ const GuideList = ({ guides, title, path, options, selected, setSelected }) => {
           </Flex>
         </Container>
         <Grid
+          gap={4}
           sx={{
+            ml: [0, 2],
             gridAutoFlow: 'column',
             overflowX: 'auto',
             pl: [2, 'calc(50% - 1140px / 2)'],
+            '::-webkit-scrollbar': {
+              width: '0px',
+            },
           }}
         >
           {guides.map(
             (
               {
                 data: {
-                  frontmatter: { title, description, slug },
+                  frontmatter: { group, title, slug, description, tags },
                 },
               },
               i
             ) => {
               return (
-                <Card
-                  key={slug}
+                <GuideCard
+                  key={title}
+                  title={title}
+                  type={group}
+                  description={description}
+                  link={`/${path}/${slug}/`}
+                  linkText={'Read'}
+                  icon={`stamp_${(i % 5) + 1}`}
+                  tags={tags}
                   sx={{
-                    bg: 'background',
-                    width: 8,
-                    height: 7,
+                    width: 7,
                     border: 'light',
                     borderColor: 'muted',
-                    p: 4,
-                    '&:hover': {
-                      borderColor: 'primary',
-                    },
+                    borderRadius: 'small',
+                    p: 3,
                   }}
-                >
-                  <Grid columns={['80px auto']} sx={{ height: '100%', p: 0 }}>
-                    <Flex>
-                      <Icon name="shape_1" size={5}></Icon>
-                    </Flex>
-                    <Link key={title} href={`/${path}/${slug}/`}>
-                      <Flex
-                        sx={{
-                          flexDirection: 'column',
-                          justifyContent: 'space-between',
-                          height: '100%',
-                        }}
-                      >
-                        <Flex sx={{ flexDirection: 'column' }}>
-                          <Heading as="a" sx={{ cursor: 'pointer', mb: 2 }}>
-                            {title}
-                          </Heading>
-                          <Text>{description}</Text>
-                        </Flex>
-                        <Flex
-                          sx={{
-                            alignItems: 'center',
-                            gridColumnStart: 2,
-                          }}
-                        >
-                          <Icon color="primary" sx={{ mr: 2 }} name={'arrow_right'}></Icon>
-                          <ThemeLink sx={{ color: 'text', cursor: 'pointer' }}>Read</ThemeLink>
-                        </Flex>
-                      </Flex>
-                    </Link>
-                  </Grid>
-                </Card>
+                />
               );
             }
           )}

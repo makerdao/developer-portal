@@ -38,22 +38,12 @@ const Page = ({ file, guides, documentation, bannerFile, featGuidesFile, preview
   useGithubToolbarPlugins();
   useCreateDocument([...guides, ...documentation]);
 
-  const [selected, setSelected] = useState('everything');
-
   useEffect(() => {
     setMobile(bpi < 2);
   }, [bpi]);
 
   const featuredGuides = featGuidesData.featuredGuides.map((slug) =>
     guides.find(({ data }) => data.frontmatter.slug === slug)
-  );
-
-  const componentNames = guides.reduce(
-    (acc, guide) => {
-      acc.push(...guide.data.frontmatter.components);
-      return [...new Set(acc)];
-    },
-    ['everything']
   );
 
   return (
@@ -69,14 +59,7 @@ const Page = ({ file, guides, documentation, bannerFile, featGuidesFile, preview
             secondary="For Developers"
             cta="Learn more about the technology."
           />
-          <GuideList
-            title="Show guides about"
-            path="guides"
-            guides={featuredGuides}
-            options={componentNames}
-            selected={selected}
-            setSelected={setSelected}
-          />
+          <GuideList title="Featured Guides" path="guides" guides={featuredGuides} />
 
           <IntroText mobile={mobile} />
 
