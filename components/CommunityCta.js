@@ -3,7 +3,7 @@ import { jsx, Card, Heading, Text, Flex, Grid, Container, Link as ThemeLink } fr
 import { Icon } from '@makerdao/dai-ui-icons';
 import { InlineTextarea } from 'react-tinacms-inline';
 
-const CommunitySection = () => {
+const CommunitySection = ({ mobile }) => {
   const ctaContent = [
     {
       title: 'Join our dev community',
@@ -33,6 +33,7 @@ const CommunitySection = () => {
             position: 'absolute',
             top: '-70px',
             left: '60px',
+            transform: mobile ? 'scale(0.5, 0.5)' : undefined,
           }}
         />
         <Icon
@@ -44,6 +45,7 @@ const CommunitySection = () => {
             alignSelf: 'flex-end',
             right: '-20px',
             top: '-120px',
+            transform: mobile ? 'scale(0.5, 0.5)' : undefined,
           }}
         />
         <Icon
@@ -91,9 +93,16 @@ const CommunitySection = () => {
           </Grid>
         </Grid>
       </Card>
-      <Flex sx={{ justifyContent: 'center', alignItems: 'center', p: 4 }}>
+      <Flex
+        sx={{
+          justifyContent: mobile ? 'space-between' : 'center',
+          alignItems: 'center',
+          px: [0, 4],
+          py: [5, 4],
+        }}
+      >
         <Icon color="textMuted" name="smiley" size={6} />
-        <Flex sx={{ width: '50%', p: 4 }}>
+        <Flex sx={{ width: '50%', p: [0, 4] }}>
           <Heading>
             <InlineTextarea name="communityCallout" />
           </Heading>

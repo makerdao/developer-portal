@@ -115,7 +115,7 @@ const Page = ({ file, guides, documentation, bannerFile, preview }) => {
             </Grid>
           </Grid>
           <SecurityFeatures />
-          <CommunityCta />
+          <CommunityCta mobile={mobile} />
           <AboutThisSite />
           <NewsletterCallout />
         </Grid>
