@@ -1,48 +1,57 @@
-import { Container, Box, Heading, Text, Flex } from 'theme-ui';
+import { Container, Box, Heading, Text, Flex, Grid, Link as ThemeLink } from 'theme-ui';
 import EditLink from '../components/EditLink';
 import { InlineTextarea } from 'react-tinacms-inline';
+import { Icon } from '@makerdao/dai-ui-icons';
 
 const AboutThisSite = () => {
   return (
     <Container>
-      <Flex
-        sx={{
-          pb: 3,
-          flexWrap: 'wrap',
-        }}
-      >
-        <Box
-          sx={{
-            maxWidth: ['100%', '60%'],
-          }}
-        >
-          <Heading variant="largeHeading" pb={3}>
-            About this site
+      <Grid columns={[1, 2]}>
+        <Flex sx={{ flexDirection: 'column', alignSelf: 'end' }}>
+          <Heading
+            variant="megaHeading"
+            sx={{
+              color: 'onBackgroundMuted',
+            }}
+          >
+            About
           </Heading>
-
-          <Text>
-            <InlineTextarea name="aboutThisSiteSubheading" />
-          </Text>
-        </Box>
-        <Box
+          <Heading variant="megaHeading">This Site</Heading>
+        </Flex>
+        <Heading sx={{ alignSelf: 'end', pb: 3 }}>
+          <InlineTextarea name="aboutThisSiteSubheading" />
+        </Heading>
+      </Grid>
+      <Flex>
+        <Text
           sx={{
-            ml: [0, 'auto'],
-            px: [0, 4],
-            py: 4,
+            py: [0, 4],
+            color: 'onBackgroundMuted',
+            columns: '2 200px',
           }}
         >
-          <EditLink />
-        </Box>
+          <InlineTextarea name="aboutThisSiteSubtext" />
+        </Text>
       </Flex>
-      <Text
-        sx={{
-          pb: 4,
-          color: 'onBackgroundMuted',
-          columns: '2 200px',
-        }}
-      >
-        <InlineTextarea name="aboutThisSiteSubtext" />
-      </Text>
+      <Flex sx={{ width: '100%', justifyContent: 'center' }}>
+        <Flex sx={{ flexDirection: 'column', pt: 2, justifyContent: 'center' }}>
+          <Box
+            sx={{
+              ml: [0, 'auto'],
+              px: [0, 4],
+              py: 4,
+            }}
+          >
+            <EditLink />
+          </Box>
+          <ThemeLink href={'/'} target="_blank">
+            <Flex sx={{ alignItems: 'center', justifyContent: 'center' }}>
+              <Icon sx={{ mr: 2 }} color="primary" name="github"></Icon>
+              <Text sx={{ color: 'text', cursor: 'pointer' }}>Edit on Github</Text>
+            </Flex>
+          </ThemeLink>
+        </Flex>
+      </Flex>
     </Container>
   );
 };
