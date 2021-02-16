@@ -1,10 +1,8 @@
 /** @jsx jsx */
 import { useState, useEffect } from 'react';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { Container, jsx, Box, Heading, Grid, Flex, Link as ThemeLink } from 'theme-ui';
+import { Container, jsx, Heading, Grid } from 'theme-ui';
 import { useBreakpointIndex } from '@theme-ui/match-media';
-import { Icon } from '@makerdao/dai-ui-icons';
 import { usePlugin, useFormScreenPlugin } from 'tinacms';
 import { getGithubPreviewProps, parseJson } from 'next-tinacms-github';
 import { useGithubToolbarPlugins, useGithubJsonForm } from 'react-tinacms-github';
@@ -12,6 +10,7 @@ import { InlineForm } from 'react-tinacms-inline';
 import SingleLayout from '@layouts/SingleLayout.js';
 import useCreateDocument from '@hooks/useCreateDocument';
 import useBannerForm from '@hooks/useBannerForm';
+import useFeaturedGuidesForm from '@hooks/useFeaturedGuidesForm';
 import GuideList from '@components/GuideList';
 import CommunityCta from '@components/CommunityCta';
 import AboutThisSite from '@components/AboutThisSite';
@@ -24,30 +23,17 @@ import LibrariesSdks from '@components/LibrariesSdks';
 import { getResources } from '@utils';
 import { landingPageFormOptions } from '../data/formOptions';
 
-// This function loops over a subset of resources and tries to match its tags with the tags from a larger set of resources
-const withTagsAlgo = (fullSet, subSet) => {
-  const withtags = [];
-  subSet.forEach((fGuide) => {
-    withtags.push(
-      ...fullSet.filter((guide) =>
-        guide.data.frontmatter.tags.some((t) => fGuide.data.frontmatter.tags.includes(t))
-      )
-    );
-  });
-  const uniqueWithTags = [...new Set(withtags)];
-  const uniqueAll = [...new Set([...subSet, ...uniqueWithTags])];
-  return uniqueAll;
-};
-
-const Page = ({ file, guides, documentation, bannerFile, preview }) => {
+const Page = ({ file, guides, documentation, bannerFile, featGuidesFile, preview }) => {
   const [mobile, setMobile] = useState(false);
   const bpi = useBreakpointIndex({ defaultIndex: 2 });
   const router = useRouter();
 
   const [data, form] = useGithubJsonForm(file, landingPageFormOptions);
   const [bannerData, bannerForm] = useBannerForm(bannerFile, preview);
+  const [featGuidesData, featGuidesForm] = useFeaturedGuidesForm(featGuidesFile, preview);
 
   useFormScreenPlugin(bannerForm);
+  useFormScreenPlugin(featGuidesForm);
   usePlugin(form);
   useGithubToolbarPlugins();
   useCreateDocument([...guides, ...documentation]);
@@ -58,14 +44,9 @@ const Page = ({ file, guides, documentation, bannerFile, preview }) => {
     setMobile(bpi < 2);
   }, [bpi]);
 
-  let filteredGuides = guides.filter((guide) =>
-    selected === 'everything' ? Boolean : guide.data.frontmatter.components.includes(selected)
+  const featuredGuides = featGuidesData.featuredGuides.map((slug) =>
+    guides.find(({ data }) => data.frontmatter.slug === slug)
   );
-
-  // If the components filter doesn't return enough results, try to match deeper with tags
-  if (filteredGuides.length < 5) {
-    filteredGuides = withTagsAlgo(guides, filteredGuides);
-  }
 
   const componentNames = guides.reduce(
     (acc, guide) => {
@@ -91,7 +72,7 @@ const Page = ({ file, guides, documentation, bannerFile, preview }) => {
           <GuideList
             title="Show guides about"
             path="guides"
-            guides={filteredGuides}
+            guides={featuredGuides}
             options={componentNames}
             selected={selected}
             setSelected={setSelected}
@@ -146,11 +127,20 @@ export const getStaticProps = async function ({ preview, previewData }) {
       parse: parseJson,
     });
 
+    const featGuidesFile = await getGithubPreviewProps({
+      ...previewData,
+      fileRelativePath: 'data/featuredGuides.json',
+      parse: parseJson,
+    });
+
     return {
       props: {
         file: { ...file.props.file },
         bannerFile: {
           ...bannerFile.props.file,
+        },
+        featGuidesFile: {
+          ...featGuidesFile.props.file,
         },
         guides,
         documentation,
@@ -170,6 +160,10 @@ export const getStaticProps = async function ({ preview, previewData }) {
       bannerFile: {
         fileRelativePath: 'data/banner.json',
         data: (await import('../data/banner.json')).default,
+      },
+      featGuidesFile: {
+        fileRelativePath: 'data/featuredGuides.json',
+        data: (await import('../data/featuredGuides.json')).default,
       },
       guides,
       documentation,
