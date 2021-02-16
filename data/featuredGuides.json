@@ -1,10 +1,10 @@
 {
   "featuredGuides": [
-    { "name": "auction-keeper-bot-setup-guide-2" },
-    { "name": "dsr-manager-guide" },
-    { "name": "how-to-build-a-dai-js-wallet-plugin" },
-    { "name": "introduction-to-seth" },
-    { "name": "emergency-shutdown-es-cli" },
-    { "name": "dai-token" }
+    "auction-keeper-bot-setup-guide-2",
+    "dsr-manager-guide",
+    "how-to-build-a-dai-js-wallet-plugin",
+    "introduction-to-seth",
+    "emergency-shutdown-es-cli",
+    "dai-token"
   ]
 }
