@@ -1,7 +1,7 @@
 {
   "featuredGuides": [
-    "auction-keeper-bot-setup-guide-2",
     "dsr-manager-guide",
+    "auction-keeper-bot-setup-guide-2",
     "how-to-build-a-dai-js-wallet-plugin",
     "introduction-to-seth",
     "emergency-shutdown-es-cli",
