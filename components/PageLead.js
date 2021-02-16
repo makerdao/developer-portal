@@ -24,7 +24,7 @@ const PageLead = ({ cta }) => {
         <Heading sx={{ color: 'onBackgroundMuted' }} variant="megaHeading">
           <InlineText name="secondaryNavHeader" />
         </Heading>
-        <Flex sx={{ flexDirection: 'column', pl: [5, 7], mt: 3 }}>
+        <Flex sx={{ flexDirection: 'column', pl: [5, 7], mt: 3, width: ['100%', '75%'] }}>
           <Text
             className="subtext"
             sx={{

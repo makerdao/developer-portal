@@ -1,5 +1,4 @@
 import { useGithubJsonForm } from 'react-tinacms-github';
-import { getRandID } from '@utils';
 
 const useFeaturedGuidesForm = (jsonFile, preview) => {
   if (!preview) {
@@ -17,13 +16,7 @@ const useFeaturedGuidesForm = (jsonFile, preview) => {
         component: 'list',
         description: 'You can edit or re-arrange the menu items.',
         itemProps: (item) => ({
-          key: item.id,
-          label: item.slug,
-        }),
-        defaultItem: () => ({
-          name: 'New Featured Guide',
-          url: '/',
-          id: getRandID(),
+          key: item,
         }),
         field: {
           component: 'text',

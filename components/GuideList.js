@@ -38,36 +38,33 @@ const GuideList = ({ guides, title, path }) => {
             },
           }}
         >
-          {guides.map(
-            (
-              {
-                data: {
-                  frontmatter: { group, title, slug, description, tags },
-                },
+          {guides.map((guide, i) => {
+            if (!guide) return null;
+            const {
+              data: {
+                frontmatter: { group, title, slug, description, tags },
               },
-              i
-            ) => {
-              return (
-                <GuideCard
-                  key={title}
-                  title={title}
-                  type={group}
-                  description={description}
-                  link={`/${path}/${slug}/`}
-                  linkText={'Read'}
-                  icon={`stamp_${(i % 5) + 1}`}
-                  tags={tags}
-                  sx={{
-                    width: 7,
-                    border: 'light',
-                    borderColor: 'muted',
-                    borderRadius: 'small',
-                    p: 3,
-                  }}
-                />
-              );
-            }
-          )}
+            } = guide;
+            return (
+              <GuideCard
+                key={title}
+                title={title}
+                type={group}
+                description={description}
+                link={`/${path}/${slug}/`}
+                linkText={'Read'}
+                icon={`stamp_${(i % 5) + 1}`}
+                tags={tags}
+                sx={{
+                  width: 7,
+                  border: 'light',
+                  borderColor: 'muted',
+                  borderRadius: 'small',
+                  p: 3,
+                }}
+              />
+            );
+          })}
         </Grid>
       </Box>
     </Flex>
