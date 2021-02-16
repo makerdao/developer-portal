@@ -1,1 +1,10 @@
-["maker-protocol-introduction", "pymaker"]
+{
+  "featuredGuides": [
+    { "name": "auction-keeper-bot-setup-guide-2" },
+    { "name": "dsr-manager-guide" },
+    { "name": "how-to-build-a-dai-js-wallet-plugin" },
+    { "name": "introduction-to-seth" },
+    { "name": "emergency-shutdown-es-cli" },
+    { "name": "dai-token" }
+  ]
+}
