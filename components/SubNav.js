@@ -20,7 +20,7 @@ const SubNav = ({ links, query, router }) => {
         inline: 'center',
       });
     }, 200);
-  }, [activeLink, links, refs, router?.asPath]);
+  }, [activeLink, links, refs, router?.query.slug]);
 
   return (
     <Box
@@ -28,10 +28,6 @@ const SubNav = ({ links, query, router }) => {
         border: 'light',
         borderColor: 'muted',
         borderWidth: '1px 0 1px 0',
-        '::-webkit-scrollbar': {
-          width: '0px',
-        },
-        scrollbarWidth: 'none',
         bg: 'background',
       }}
     >
@@ -42,6 +38,10 @@ const SubNav = ({ links, query, router }) => {
             alignItems: 'center',
             pb: 2,
             overflow: 'auto',
+            '::-webkit-scrollbar': {
+              display: 'none',
+            },
+            // scrollbarWidth: 'none', //do i need this?
           }}
         >
           {links.map(({ name, url, slug }, i) => (

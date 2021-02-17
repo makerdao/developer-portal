@@ -34,8 +34,9 @@ const GuideList = ({ guides, title, path }) => {
             overflowX: 'auto',
             pl: [2, 'calc(50% - 1140px / 2)'],
             '::-webkit-scrollbar': {
-              width: '0px',
+              display: 'none',
             },
+            scrollbarWidth: 'none',
           }}
         >
           {guides.map((guide, i) => {

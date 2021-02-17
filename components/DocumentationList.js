@@ -26,8 +26,9 @@ const DocumentationList = () => {
           overflowX: 'auto',
           pl: [2, 'calc(50% - 1140px / 2)'],
           '::-webkit-scrollbar': {
-            width: '0px',
+            display: 'none',
           },
+          scrollbarWidth: 'none',
 
           gridTemplateRows: 'auto',
 

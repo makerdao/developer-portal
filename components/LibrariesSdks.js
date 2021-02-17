@@ -34,8 +34,9 @@ const CodeWindow = ({ code }) => {
           selectable: 'true',
           m: 'auto',
           '::-webkit-scrollbar': {
-            width: 0,
+            display: 'none',
           },
+          scrollbarWidth: 'none',
         }}
         value={code}
         language="js"
