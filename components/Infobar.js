@@ -107,13 +107,7 @@ const FileContents = ({ resourcePath, slug, toc }) => {
 
 const Infobar = ({ resourcePath, slug, toc }) => {
   return (
-    <Box
-      sx={{
-        border: 'solid',
-        borderColor: 'muted',
-        borderWidth: '0 0 0 1px',
-      }}
-    >
+    <Box>
       <Box
         sx={{
           alignItems: 'center',
