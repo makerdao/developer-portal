@@ -1,26 +1,27 @@
 /** @jsx jsx */
-import { jsx, Text, Grid, Box, Flex } from 'theme-ui';
+import { jsx, Text, Box, Flex } from 'theme-ui';
 import CodeWrapper from '@components/CodeWrapper';
+import { capitalize } from '@utils';
 
-export const CodeContainer = ({ value, language = 'jsx' }) => {
+export const CodeContainer = ({ value, language }) => {
   return (
-    <Box sx={{ border: 'light', borderColor: 'muted', bg: 'surface' }}>
+    <Box sx={{}}>
       <Flex
         sx={{
-          p: 3,
-          border: 'light',
-          borderColor: (theme) => `transparent transparent ${theme.colors.muted} transparent`,
-          alignItems: 'center',
+          ml: 3,
+          borderRadius: '4px 4px 0px 0px',
+          py: 2,
+          bg: 'surface',
+          width: 6,
         }}
       >
-        <Grid columns={3} gap={1} sx={{ pr: 3 }}>
-          <Box sx={{ border: 'light', borderColor: 'muted', borderRadius: 'round', size: 3 }}></Box>
-          <Box sx={{ border: 'light', borderColor: 'muted', borderRadius: 'round', size: 3 }}></Box>
-          <Box sx={{ border: 'light', borderColor: 'muted', borderRadius: 'round', size: 3 }}></Box>
-        </Grid>
-        <Text>{language}</Text>
+        <Text sx={{ mx: 'auto' }}>{capitalize(language) || 'code'}</Text>
       </Flex>
-      <CodeWrapper sx={{ p: 3, maxHeight: 8 }} value={value} language={language} />
+      <CodeWrapper
+        sx={{ p: 3, maxHeight: 8, borderRadius: 'small' }}
+        value={value}
+        language={language}
+      />
     </Box>
   );
 };
