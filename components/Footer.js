@@ -24,38 +24,38 @@ const links = [
   [
     'Documentation',
     [
-      ['Introduction', '/introduction'],
-      ['Smart Contracts', '/smart-contracts'],
-      ['Auctions', '/auctions'],
-      ['Keepers', '/auctions'],
-      ['SDKs', '/auctions'],
-      ['CLIs', '/auctions'],
-      ['Glossary', '/auctions'],
+      ['Introduction', '/documentation/introduction-to-the-maker-protocol'],
+      ['Smart Contracts', '/documentation/introduction-to-core-module'],
+      ['Auctions', '/documentation/the-auctions-of-the-maker-protocol'],
+      ['Keepers', '/documentation/introduction-to-auction-keepers'],
+      ['SDKs', '/documentation/introduction-to-dai-js'],
+      ['CLIs', '/documentation/mcd-cli'],
+      ['Glossary', '/documentation/mcd-glossaries'],
     ],
   ],
   [
     'Security',
     [
-      ['Introduction', '/introduction'],
-      ['Audit Reports', '/smart-contracts'],
-      ['Bug Bounty Program', '/auctions'],
-      ['Formal Verification', '/auctions'],
+      ['Introduction', '/security/multi-collateral-dai-security'],
+      ['Audit Reports', '/security/mcd-security-audits'],
+      ['Bug Bounty Program', '/security/bug-bounty-program'],
+      ['Formal Verification', '/security/formal-verification'],
     ],
   ],
   [
     'Libraries',
     [
-      ['Dai.js', '/introduction'],
-      ['Pymaker', '/smart-contracts'],
+      ['Dai.js', '/documentation/introduction-to-dai-js'],
+      ['Pymaker', '/documentation/pymaker'],
     ],
   ],
   [
     'Community',
     [
-      ['Comm Dev Portal', '/introduction'],
-      ['Blog', '/smart-contracts'],
-      ['Forum', '/auctions'],
-      ['Events', '/auctions'],
+      ['Comm Dev Portal', 'https://community-development.makerdao.com/en/'],
+      ['Blog', 'https://blog.makerdao.com/'],
+      ['Forum', 'https://forum.makerdao.com/c/devs/19'],
+      ['Events', 'https://makerdao.com/en/events'],
     ],
   ],
 ];
@@ -91,7 +91,17 @@ const Section = ({ title, content }) => {
         {title}
       </Text>
       {content.map(([name, url]) => {
-        return (
+        return url.indexOf('http') === 0 ? (
+          <NavLink
+            key={name}
+            href={url}
+            target="_blank"
+            sx={{ px: 0, py: 1, fontSize: 3, color: 'onBackgroundMuted' }}
+            variant="sidebar"
+          >
+            {name}
+          </NavLink>
+        ) : (
           <Link key={name} href={url} passHref>
             <NavLink
               sx={{ px: 0, py: 1, fontSize: 3, color: 'onBackgroundMuted' }}
