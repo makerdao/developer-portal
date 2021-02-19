@@ -22,6 +22,14 @@ export const landingPageFormOptions = {
       component: 'textarea',
     },
     {
+      name: 'toolsHeading',
+      component: 'text',
+    },
+    {
+      name: 'pyMakerHeading',
+      component: 'text',
+    },
+    {
       name: 'pyMakerSubtext',
       component: 'textarea',
     },
