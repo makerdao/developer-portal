@@ -41,6 +41,7 @@ const Contributors = ({ contributors = [], mobile }) => {
         border: 'light',
         borderColor: 'muted',
         borderWidth: '1px 0 1px 0',
+        flexDirection: mobile ? 'column' : 'row',
       }}
     >
       <Flex sx={{ flexDirection: 'column' }}>
@@ -81,16 +82,23 @@ const Contributors = ({ contributors = [], mobile }) => {
         <Flex
           sx={{
             justifyContent: 'space-between',
-            ml: 'auto',
+            ml: [0, 0, 'auto'],
             flexDirection: 'column',
+            pt: [4, 4, 0],
           }}
         >
           <Flex
-            sx={{ justifyContent: 'center', alignItems: 'center', pt: [0, 1] }}
+            sx={{
+              justifyContent: mobile ? 'flex-start' : 'center',
+              alignItems: 'center',
+              pt: [0, 0, 1],
+            }}
             onClick={() => setOpen(!open)}
           >
             <Icon
-              sx={{ ml: 'auto' }}
+              sx={{
+                ml: [0, 0, 'auto'],
+              }}
               color="primary"
               name={open ? 'arrow_up_thin' : 'arrow_down_thin'}
             ></Icon>
