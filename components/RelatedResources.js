@@ -26,11 +26,11 @@ const RelatedResources = ({ resources = [], contentType, show = 3 }) => {
                 cursor: 'pointer',
               }}
             >
-              <Icon sx={{ size: 4 }} name={`num_${i + 1}`} />
+              <Icon sx={{ size: 4, minWidth: 32 }} name={`num_${i + 1}`} />
               <Text variant="largeText" sx={{ pl: 3 }}>
                 {data.frontmatter.title}
               </Text>
-              <Icon sx={{ ml: 'auto' }} color="primary" name={'arrow_right'}></Icon>
+              <Icon sx={{ ml: 'auto', minWidth: 16 }} color="primary" name={'arrow_right'}></Icon>
             </Flex>
           </Link>
         );

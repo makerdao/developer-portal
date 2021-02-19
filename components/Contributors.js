@@ -19,7 +19,7 @@ const LineItem = ({ date, author, avatar, mobile }) => {
         </Text>
         <ThemeLink href={`https://github.com/${author}`} target="_blank">
           <Flex sx={{ alignItems: 'center' }}>
-            <Avatar sx={{ mx: 2 }} src={avatar} />
+            <Avatar sx={{ mx: 2, minWidth: 36, minHeight: 36 }} src={avatar} />
             <Icon sx={{ ml: 'auto' }} color="primary" name="increase"></Icon>
             <Text sx={{ color: 'text', pl: 2 }}>{author}</Text>
           </Flex>
@@ -59,7 +59,14 @@ const Contributors = ({ contributors = [], mobile }) => {
               </Text>
               <ThemeLink href={`https://github.com/${newest?.username}`} target="_blank">
                 <Flex sx={{ alignItems: 'center' }}>
-                  <Avatar sx={{ mx: 2 }} src={newest?.avatar} />
+                  <Avatar
+                    sx={{
+                      mx: 2,
+                      minWidth: 36,
+                      minHeight: 36,
+                    }}
+                    src={newest?.avatar}
+                  />
                   <Icon sx={{ ml: 'auto' }} color="primary" name="increase"></Icon>
                   <Text sx={{ color: 'text', pl: 2 }}>{newest?.author}</Text>
                 </Flex>
