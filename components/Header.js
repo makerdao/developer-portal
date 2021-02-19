@@ -1,9 +1,10 @@
 /** @jsx jsx */
 import { useEffect, useState } from 'react';
-import { jsx, Box, Container, Link as ThemeLink, NavLink, Flex, IconButton } from 'theme-ui';
+import { jsx, Box, Container, Link as ThemeLink, NavLink, Flex, IconButton, Text } from 'theme-ui';
 import Link from 'next/link';
 import { Icon } from '@makerdao/dai-ui-icons';
 import Banners from '@components/Banners';
+import { banner as bannerData } from '../data/banner.json';
 
 const LINKS = [
   { url: '/documentation', name: 'Documentation' },
@@ -11,19 +12,23 @@ const LINKS = [
   { url: '/security', name: 'Security' },
 ];
 
-const MobileMenu = ({ close, query }) => {
+const MobileMenu = ({ close, query, bannerData }) => {
+  const [{ linkText, url, text }] = bannerData;
   return (
     <Container
       sx={{
         bg: 'background',
-        width: '100vw',
-        height: '100vh',
+        height: '100%',
         position: 'fixed',
         zIndex: 1,
-        pt: 4,
       }}
     >
-      <Flex sx={{ justifyContent: 'flex-end', mb: 0 }}>
+      <Flex sx={{ justifyContent: 'space-between', mb: 6, py: 2 }}>
+        <Link href="/" passHref>
+          <ThemeLink>
+            <Icon name="maker" color="text" size={4} />
+          </ThemeLink>
+        </Link>
         <IconButton sx={{ cursor: 'pointer', pt: 3 }}>
           <Icon
             name="dp_close"
@@ -38,13 +43,21 @@ const MobileMenu = ({ close, query }) => {
           />
         </IconButton>
       </Flex>
-      <Flex as="nav" sx={{ flexDirection: 'column', alignItems: 'center' }}>
+      <Flex as="nav" sx={{ flexDirection: 'column', px: 2 }}>
+        <ThemeLink href={url} target="_blank">
+          <Flex sx={{ alignItems: 'center', px: 2 }}>
+            <Icon color="primary" name="increase"></Icon>
+            <Text sx={{ px: 2, fontSize: 5, color: 'text' }}>{linkText}</Text>
+          </Flex>
+        </ThemeLink>
+        <Text sx={{ px: 2, fontSize: 2, color: 'onBackgroundMuted' }}>{text}</Text>
         {LINKS.map(({ name, url }) => (
           <Link href={{ pathname: url, query }} passHref key={name}>
             <NavLink
               key={name}
               sx={{
                 py: 4,
+                fontSize: 7,
               }}
               variant="links.mobileNav"
             >
@@ -57,7 +70,7 @@ const MobileMenu = ({ close, query }) => {
   );
 };
 
-const Header = ({ query, subnav, bannerData, mobile, router }) => {
+const Header = ({ query, subnav, mobile, router }) => {
   const [mobileOpened, setMobileOpened] = useState(false);
 
   useEffect(() => {
@@ -66,16 +79,17 @@ const Header = ({ query, subnav, bannerData, mobile, router }) => {
   return (
     <Box sx={{ width: '100%', position: [mobileOpened ? 'fixed' : undefined, undefined] }}>
       {mobileOpened ? (
-        <MobileMenu close={() => setMobileOpened(false)} />
+        <MobileMenu close={() => setMobileOpened(false)} bannerData={bannerData} />
       ) : (
         <>
-          <Banners bannerData={bannerData} mobile={mobile} />
+          {!mobile && <Banners bannerData={bannerData} />}
           <Container as="header" mt={[0, 2]} sx={{ bg: 'background' }}>
             <Flex
               sx={{
                 alignItems: 'center',
                 justifyContent: 'space-between',
                 mb: [0, 3],
+                py: [2, 0],
               }}
             >
               <Link href="/" passHref>

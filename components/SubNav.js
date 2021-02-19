@@ -41,7 +41,7 @@ const SubNav = ({ links, query, router }) => {
             '::-webkit-scrollbar': {
               display: 'none',
             },
-            // scrollbarWidth: 'none', //do i need this?
+            scrollbarWidth: 'none',
           }}
         >
           {links.map(({ name, url, slug }, i) => (
