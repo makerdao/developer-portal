@@ -118,9 +118,9 @@ const Section = ({ title, content }) => {
 
 const Footer = () => {
   return (
-    <Container as="footer">
-      <Grid sx={{ pb: 4 }} columns={[2, 6]} gap={4}>
-        <Flex sx={{ flexDirection: 'column' }}>
+    <Container as="footer" sx={{ pt: 6 }}>
+      <Grid sx={{ pb: 4 }} columns={[2, 3, 6]} gap={4}>
+        <Flex sx={{ flexDirection: 'column', height: ['100%', '50%', '50%'] }}>
           <Flex sx={{ pb: 2 }}>
             <IconLink name="maker_full" url="https://www.makerdao.com" width={127} />
           </Flex>
