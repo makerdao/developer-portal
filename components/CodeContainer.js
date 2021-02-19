@@ -15,7 +15,7 @@ export const CodeContainer = ({ value, language }) => {
           width: 6,
         }}
       >
-        <Text sx={{ mx: 'auto' }}>{capitalize(language) || 'code'}</Text>
+        <Text sx={{ mx: 'auto' }}>{capitalize(language || 'code')}</Text>
       </Flex>
       <CodeWrapper
         sx={{ p: 3, maxHeight: 8, borderRadius: 'small' }}
