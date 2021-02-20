@@ -91,7 +91,7 @@ const MobileSidebar = ({ open, onClick }) => {
   return (
     <Box
       sx={{
-        border: 'light',
+        border: open ? undefined : 'light',
         borderColor: 'muted',
         borderWidth: '0 0 1px 0',
         p: 2,
@@ -138,10 +138,11 @@ const Sidebar = ({ resources, resourcePath, activeSlug, mobile, router }) => {
           sx={{
             p: 0,
             pl: [0, 0, 0, 4],
+            pb: [3, 0],
             flexDirection: 'column',
-            border: mobile ? undefined : 'light',
+            border: 'light',
             borderColor: 'muted',
-            borderWidth: '0 1px 0 0',
+            borderWidth: mobile ? '0 0 1px 0' : '0 1px 0 0',
             minWidth: '200px',
           }}
         >
