@@ -68,7 +68,7 @@ const LibrariesSdks = () => {
       </Heading>
       <Grid columns={[1, '1fr auto']} sx={{ gridColumnGap: 4, gridRowGap: [4, 'auto'] }}>
         <CodeWindow code={daijsCode} />
-        <Grid columns={[1, 2]} sx={{ gridRowGap: 3, gridTemplateRows: '2em' }}>
+        <Grid columns={[1, 'auto', 2]} sx={{ gridRowGap: 3, gridTemplateRows: '2em' }}>
           <Heading variant="smallHeading">Dai.js</Heading>
           <Flex
             sx={{
@@ -92,7 +92,7 @@ const LibrariesSdks = () => {
               </Text>
             </Flex>
             <Link href="/documentation/introduction-to-dai-js">
-              <Flex sx={{ alignItems: 'center', py: [3, 0] }}>
+              <Flex sx={{ alignItems: 'center', py: [3, 3, 0] }}>
                 <Icon sx={{ mr: 2 }} color="primary" name={'arrow_right'}></Icon>
                 <Text sx={{ cursor: 'pointer' }}>View Dai.js docs</Text>
               </Flex>
@@ -101,8 +101,8 @@ const LibrariesSdks = () => {
           <Flex
             sx={{
               flexDirection: 'column',
-              gridRowStart: ['auto', 2],
-              gridColumnStart: [1, 2],
+              gridRowStart: ['auto', 4, 2],
+              gridColumnStart: [1, 1, 2],
             }}
           >
             <Flex
@@ -119,7 +119,7 @@ const LibrariesSdks = () => {
               </Text>
             </Flex>
             <Link href="/documentation/pymaker">
-              <Flex sx={{ alignItems: 'center', py: [3, 4] }}>
+              <Flex sx={{ alignItems: 'center', py: [3, 3, 4] }}>
                 <Icon sx={{ mr: 2 }} color="primary" name={'arrow_right'}></Icon>
                 <Text sx={{ cursor: 'pointer' }}>View pyMaker docs</Text>
               </Flex>
@@ -129,7 +129,7 @@ const LibrariesSdks = () => {
       </Grid>
 
       <Grid
-        columns={[1, 3]}
+        columns={[1, 'auto', 3]}
         sx={{
           pt: 4,
         }}
@@ -162,6 +162,7 @@ const LibrariesSdks = () => {
           sx={{
             flexDirection: 'column',
             gridColumnStart: [1, 3],
+            mt: [4, 0],
           }}
         >
           <Icon

@@ -57,7 +57,7 @@ const Page = ({ file, guides, documentation, bannerFile, featGuidesFile, preview
           <PageLead
             primary="Maker Protocol"
             secondary="For Developers"
-            cta="Learn more about the technology."
+            cta="Start learning about the Maker Protocol"
           />
           <GuideList title="Featured Guides" path="guides" guides={featuredGuides} />
 

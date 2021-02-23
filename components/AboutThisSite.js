@@ -39,7 +39,7 @@ const AboutThisSite = () => {
             sx={{
               ml: [0, 'auto'],
               px: [0, 4],
-              py: 4,
+              py: [3, 3, 4],
             }}
           >
             <EditLink />

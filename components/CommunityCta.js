@@ -76,10 +76,10 @@ const CommunitySection = ({ mobile }) => {
 
           <Grid columns={[1, 3]} sx={{ py: 4 }}>
             {ctaContent.map(({ title, link, text }) => (
-              <Card sx={{ p: 4, bg: 'onBackground' }} key={title}>
-                <Grid>
+              <Card sx={{ p: [3, 3, 4], bg: 'onBackground' }} key={title}>
+                <Grid sx={{ height: '100%' }}>
                   <Heading sx={{ color: 'background' }}>{title}</Heading>
-                  <ThemeLink href={link} target="_blank">
+                  <ThemeLink sx={{ alignSelf: 'end' }} href={link} target="_blank">
                     <Flex sx={{ alignItems: 'center' }}>
                       <Icon name="increase"></Icon>
                       <Text variant="largeText" sx={{ color: 'background', px: 2 }}>
@@ -97,12 +97,12 @@ const CommunitySection = ({ mobile }) => {
         sx={{
           justifyContent: mobile ? 'space-between' : 'center',
           alignItems: 'center',
-          px: [0, 4],
+          px: [0, 5, 4],
           py: [5, 4],
         }}
       >
         <Icon color="textMuted" name="smiley" size={6} />
-        <Flex sx={{ width: '50%', p: [0, 4] }}>
+        <Flex sx={{ width: ['50%', '100%', '50%'], p: [0, 4] }}>
           <Heading>
             <InlineTextarea name="communityCallout" />
           </Heading>
