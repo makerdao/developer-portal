@@ -2,7 +2,7 @@
 import { jsx, Text, Flex, Link as ThemeLink, Grid, Heading } from 'theme-ui';
 import { Icon } from '@makerdao/dai-ui-icons';
 import EditLink from '@components/EditLink';
-import { GITHUB_EDIT_LINK } from '../utils/constants';
+import { GITHUB_EDIT_LINK } from '@utils/constants';
 
 const Contributors = ({ file }) => {
   return (

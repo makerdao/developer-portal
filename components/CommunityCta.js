@@ -24,7 +24,7 @@ const CommunitySection = ({ mobile }) => {
 
   return (
     <Container>
-      <Card sx={{ p: 0, display: 'flex', width: '100%', position: 'relative', zIndex: -1 }}>
+      <Card sx={{ p: 0, display: 'flex', width: '100%', position: 'relative', zIndex: 0 }}>
         <Icon
           color="textMuted"
           name="tri_1"

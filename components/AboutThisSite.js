@@ -2,6 +2,7 @@ import { Container, Box, Heading, Text, Flex, Grid, Link as ThemeLink } from 'th
 import EditLink from '../components/EditLink';
 import { InlineTextarea } from 'react-tinacms-inline';
 import { Icon } from '@makerdao/dai-ui-icons';
+import { GITHUB_EDIT_LINK } from '@utils/constants';
 
 const AboutThisSite = () => {
   return (
@@ -44,7 +45,7 @@ const AboutThisSite = () => {
           >
             <EditLink />
           </Box>
-          <ThemeLink href={'/'} target="_blank">
+          <ThemeLink href={`${GITHUB_EDIT_LINK}/data/landingPage.json`} target="_blank">
             <Flex sx={{ alignItems: 'center', justifyContent: 'center' }}>
               <Icon sx={{ mr: 2 }} color="primary" name="github"></Icon>
               <Text sx={{ color: 'text', cursor: 'pointer' }}>Edit on Github</Text>
