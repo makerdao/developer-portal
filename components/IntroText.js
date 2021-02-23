@@ -45,7 +45,7 @@ const IntroText = ({ mobile }) => {
           >
             <InlineTextarea name="aboutMakerProtocol" />
           </Text>
-          <Link href="/technology">
+          <Link href="/documentation/introduction-to-the-maker-protocol">
             <Flex sx={{ alignItems: 'center', pb: [5, 0] }}>
               <Icon sx={{ mr: 2 }} color="primary" name={'arrow_right'}></Icon>
               <Text sx={{ cursor: 'pointer' }}>Learn more about the Maker Protocol.</Text>

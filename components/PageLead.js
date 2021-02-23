@@ -34,7 +34,7 @@ const PageLead = ({ cta }) => {
           >
             <InlineText name="subtext" />
           </Text>
-          <Link href="/technology">
+          <Link href="/documentation/introduction-to-the-maker-protocol">
             <Flex sx={{ alignItems: 'center' }}>
               <Icon sx={{ mr: 2 }} color="primary" name={'arrow_right'}></Icon>
               <Text sx={{ cursor: 'pointer' }}>{cta}</Text>
