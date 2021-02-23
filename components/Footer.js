@@ -63,16 +63,18 @@ const links = [
 const ColorModeToggle = (props) => {
   const [mode, setMode] = useColorMode();
   return (
-    <Icon
-      name={'moon'}
-      color="text"
-      size="auto"
-      sx={{ height: 20, width: 20, cursor: 'pointer' }}
+    <Flex
+      sx={{ mt: 'auto', alignItems: 'center', cursor: 'pointer' }}
       onClick={(e) => {
         const next = mode === 'dark' ? 'light' : 'dark';
         setMode(next);
       }}
-    />
+    >
+      <Icon name={'moon'} color="text" size="auto" sx={{ height: 20, width: 20 }} />
+      <Text variant="plainText" sx={{ fontSize: 3, pl: 2 }}>
+        Color Mode
+      </Text>
+    </Flex>
   );
 };
 
@@ -132,12 +134,7 @@ const Footer = () => {
               <IconLink name="rocketchat" url="https://chat.makerdao.com/channel/dev" />
             </Flex>
           </Flex>
-          <Flex sx={{ mt: 'auto', alignItems: 'center' }}>
-            <ColorModeToggle />
-            <Text variant="plainText" sx={{ fontSize: 3, pl: 2 }}>
-              Color Mode
-            </Text>
-          </Flex>
+          <ColorModeToggle />
         </Flex>
         {links.map(([title, content]) => {
           return <Section key={title} title={title} content={content} />;
