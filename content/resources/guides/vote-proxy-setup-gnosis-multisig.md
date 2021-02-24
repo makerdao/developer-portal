@@ -3,6 +3,7 @@ title: VoteProxy Setup through Gnosis Multisig
 description: Learn how to setup your voting proxy with Gnosis Multisig
 components:
   - gnosis
+  - voteproxy
 tags:
   - gnosis multisig
   - vote proxy
