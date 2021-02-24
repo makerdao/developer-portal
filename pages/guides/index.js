@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
+import Head from 'next/head';
 import { getGithubPreviewProps, parseJson } from 'next-tinacms-github';
 import { Container, Grid, Text, Flex, Box } from 'theme-ui';
 import { useBreakpointIndex } from '@theme-ui/match-media';
@@ -81,6 +82,9 @@ const Page = ({ guides }) => {
 
   return (
     <SingleLayout mobile={mobile} router={router}>
+      <Head>
+        <title>Maker Protocol Developer Portal - Guides</title>
+      </Head>
       <Filter
         activeGroup={active}
         onChange={setActive}

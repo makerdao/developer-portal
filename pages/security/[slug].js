@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import Error from 'next/error';
 import { useRouter } from 'next/router';
+import Head from 'next/head';
 import { useBreakpointIndex } from '@theme-ui/match-media';
 import matter from 'gray-matter';
 import { getGithubPreviewProps, parseMarkdown, parseJson } from 'next-tinacms-github';
@@ -30,6 +31,8 @@ const SecurityPage = ({ file, navFile, preview, slug, toc }) => {
     return () => setActiveGroup(null) || setActiveParent(null);
   }, [setActiveGroup, setActiveParent, file]);
 
+  const title = file?.data?.frontmatter?.title;
+
   return !file ? (
     <Error statusCode={404} />
   ) : router.isFallback ? (
@@ -43,6 +46,9 @@ const SecurityPage = ({ file, navFile, preview, slug, toc }) => {
       mobile={mobile}
       router={router}
     >
+      <Head>
+        <title>{title || 'Maker Protocol Developer Portal'}</title>
+      </Head>
       <ResourcePresentation
         file={file}
         contentType={ContentTypes.SECURITY}

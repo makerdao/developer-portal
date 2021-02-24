@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
+import Head from 'next/head';
 import { Container, jsx, Heading, Grid } from 'theme-ui';
 import { useBreakpointIndex } from '@theme-ui/match-media';
 import { usePlugin, useFormScreenPlugin } from 'tinacms';
@@ -48,6 +49,9 @@ const Page = ({ file, guides, documentation, bannerFile, featGuidesFile, preview
 
   return (
     <SingleLayout bannerData={bannerData.banner} mobile={mobile} router={router}>
+      <Head>
+        <title>Maker Protocol Developer Portal</title>
+      </Head>
       <InlineForm form={form}>
         <Grid
           sx={{
