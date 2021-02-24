@@ -36,7 +36,7 @@ const ResourcePresentation = ({
       />
       <ResourceEditor file={file} preview={preview} cms={cms} />
       <Grid gap={4}>
-        {relatedResources && (
+        {relatedResources && relatedResources.length > 0 && (
           <RelatedResources resources={relatedResources} contentType={contentType} />
         )}
         <Feedback route={asPath} cms={cms} mobile={mobile} />

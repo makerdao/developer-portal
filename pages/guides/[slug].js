@@ -11,7 +11,7 @@ import ResourcePresentation from '@components/ResourcePresentation';
 import { createToc, getResources } from '@utils';
 import { ContentTypes } from '@utils/constants';
 
-const GuidesPage = ({ file, resources, navFile, bannerFile, preview, slug, toc }) => {
+const GuidesPage = ({ file, resources, navFile, preview, slug, toc }) => {
   const router = useRouter();
   const [mobile, setMobile] = useState(false);
   const bpi = useBreakpointIndex({ defaultIndex: 2 });
@@ -51,7 +51,6 @@ const GuidesPage = ({ file, resources, navFile, bannerFile, preview, slug, toc }
       slug={slug}
       toc={toc}
       navFile={navFile}
-      bannerFile={bannerFile}
       mobile={mobile}
       router={router}
     >

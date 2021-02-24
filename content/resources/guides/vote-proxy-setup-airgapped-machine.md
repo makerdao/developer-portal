@@ -3,6 +3,7 @@ title: VoteProxy Setup Air-gapped Machine
 description: Learn how to setup voteproxy through an air gapped machine
 components:
   - voteproxy
+  - governance
 tags:
   - air gapped machine
   - setup
