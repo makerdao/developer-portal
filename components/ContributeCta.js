@@ -19,7 +19,7 @@ const Contributors = ({ file }) => {
       <Flex sx={{ flexDirection: 'column', width: '100%' }}>
         <Heading>Edit this page</Heading>
         <Heading sx={{ width: '100%' }}>Make the community proud with your contributions</Heading>
-        <Grid columns={[1, '1fr 1fr 100px']} sx={{ width: '100%' }}>
+        <Grid columns={[1, '1fr 1fr auto']} sx={{ width: '100%' }}>
           <Flex
             sx={{
               mt: 3,

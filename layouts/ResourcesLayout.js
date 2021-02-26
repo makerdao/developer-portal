@@ -36,7 +36,7 @@ const ResourcesLayout = ({
             py: 0,
             px: 4,
             pb: 4,
-            border: 'solid',
+            border: mobile ? undefined : 'solid',
             borderColor: 'muted',
             borderWidth: '0 1px 0 0',
           }}
@@ -60,7 +60,7 @@ const ResourcesLayout = ({
               border: mobile ? undefined : 'solid',
               borderColor: 'muted',
               borderWidth: '0 1px 0 0',
-              pr: [0, 4],
+              pr: [0, 0, 4],
             }}
           >
             {children}
