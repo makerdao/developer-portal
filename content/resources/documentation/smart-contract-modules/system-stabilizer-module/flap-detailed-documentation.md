@@ -77,7 +77,7 @@ The Maker Governance voters determine the surplus limit. The surplus auction is 
 
 The mechanism begins with the MKR holders (Maker Governance Voters) of the system. MKR holders will specify the amount of surplus allowed in the system through the voting system. Once they come to an agreement on what it should be set to, surplus auctions are triggered when the system has a surplus of DAI above the amount decided during the vote. System surplus is determined in the `Vow` when the `Vow` has [no system debt](https://github.com/makerdao/dss/blob/master/src/vow.sol#L128) and has accumulated enough DAI to [exceed the Surplus auction size (`bump`) plus the buffer (`hump`)](https://github.com/makerdao/dss/blob/master/src/vow.sol#L127)
 
-In order to determine whether the system has a net surplus, both the income and debt in the system must be reconciled. In short, any user can do this by sending the [heal transaction](https://docs.makerdao.com/smart-contract-modules/system-stabilizer-module/vow-detailed-documentation#liquidations-manager) to the system contract named the "Vow". Provided there is a net surplus in the system, the surplus auction will begin when any user sends the **flap** transaction to the [Vow contract](https://docs.makerdao.com/smart-contract-modules/system-stabilizer-module/vow-detailed-documentation).
+In order to determine whether the system has a net surplus, both the income and debt in the system must be reconciled. In short, any user can do this by sending the [heal transaction](/documentation/vow-detailed-documentation) to the system contract named the "Vow". Provided there is a net surplus in the system, the surplus auction will begin when any user sends the **flap** transaction to the [Vow contract](/documentation/vow-detailed-documentation).
 
 Once the auction has begun, a fixed amount (`lot`) of DAI is put up for sale. Bidders then complete for a fixed `lot` amount of DAI with increasing `bid` amounts of MKR. In other words, this means that bidders will keep placing MKR bid amounts in increments greater than the minimum bid increase amount that has been set (this is the `beg` in action).
 
@@ -118,7 +118,7 @@ Bidders send MKR tokens from their addresses to the system/specific auction. If 
 
 ## 5. Failure Modes (Bounds on Operating Conditions & External Risk Factors)
 
-#### 1. See [System Stabilizer Module Documentation](https://docs.makerdao.com/smart-contract-modules/system-stabilizer-module)
+#### 1. See [System Stabilizer Module Documentation](/documentation/introduction-to-system-stabilizer-module
 
 #### 2. Other Failure Modes
 

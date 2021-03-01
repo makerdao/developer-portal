@@ -46,8 +46,8 @@ The `Cat` is the system's liquidation agent, it enables keepers to mark position
 - `live` must be `1` for the `Cat` to `bite`. (see `cage` in mechanisms)
 - `box` the limit on the debt and penalty fees available for auction. [RAD]
 - `dunk` ("debt chunk") amount of debt plus penalty fee per auction, in Dai. [RAD]
-- `vat` address that conforms to a `VatLike` interface (see [`vat` documentation](https://docs.makerdao.com/smart-contract-modules/core-module/vat-detailed-documentation) for more info). It is set during the constructor and **cannot be changed**.
-- `vow` address that conforms to a `VowLike` interface (see [`vow` documentation](https://docs.makerdao.com/smart-contract-modules/system-stabilizer-module/vow-detailed-documentation) for more info).
+- `vat` address that conforms to a `VatLike` interface (see [`vat` documentation](/documentation/vat-detailed-documentation) for more info). It is set during the constructor and **cannot be changed**.
+- `vow` address that conforms to a `VowLike` interface (see [`vow` documentation](/documentation/vow-detailed-documentation) for more info).
 
 The values of all parameters here (except `vat`) are changeable by an address that is `rely`ed on. For instance, the `End` module should be `auth`ed to allow for it to call `cage()` and update `live` from 1 to 0. Governance (through an `auth`ed address) should be able to add collateral types to `Cat`, update their parameters, and change the `vow`.
 
@@ -71,7 +71,7 @@ The values of all parameters here (except `vat`) are changeable by an address th
 #### **cage()**
 
 - `auth`
-- sets `live` to 0 (prevents `bite`). See [`End` documentation ](https://docs.makerdao.com/smart-contract-modules/shutdown/end-detailed-documentation)for further description.
+- sets `live` to 0 (prevents `bite`). See [`End` documentation ](/documentation/end-proxy-detailed-documentation)for further description.
 - Once `live=0` it cannot be set back to 1.
 
 #### **bite(bytes32 ilk, address urn)**

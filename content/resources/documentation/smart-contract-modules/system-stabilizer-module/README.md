@@ -39,9 +39,9 @@ The System Stabilizer Module has 3 core components consisting of the `Vow`, `Flo
 
 #### System Stabilizer Components Documentation
 
-* [**Vow Documentation**](https://docs.makerdao.com/smart-contract-modules/system-stabilizer-module/vow-detailed-documentation)
-* [**Flop Documentation**](https://docs.makerdao.com/smart-contract-modules/system-stabilizer-module/flop-detailed-documentation)
-* [**Flap Documentation**](https://docs.makerdao.com/smart-contract-modules/system-stabilizer-module/flap-detailed-documentation)
+* [**Vow Documentation**](/documentation/vow-detailed-documentation)
+* [**Flop Documentation**](/documentation/flopper-detailed-documentation)
+* [**Flap Documentation**](/documentation/flapper-detailed-documentation)
 
 ## 3. Key Mechanisms & Concepts
 

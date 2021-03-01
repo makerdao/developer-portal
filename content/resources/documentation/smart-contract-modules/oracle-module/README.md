@@ -30,8 +30,8 @@ The Oracle Module has 2 core components consisting of the `Median` and `OSM` con
 
 ### Oracle Module Components Documentation
 
-* [**Median Documentation**](https://docs.makerdao.com/smart-contract-modules/oracle-module/median-detailed-documentation)
-* [**OSM Documentation**](https://docs.makerdao.com/smart-contract-modules/oracle-module/oracle-security-module-osm-detailed-documentation)
+* [**Median Documentation**](/documentation/median-detailed-documentation)
+* [**OSM Documentation**](/documentation/osm-detailed-documentation)
 
 ## 3. Key Mechanism and Concepts
 
@@ -61,4 +61,4 @@ The Oracle Module has 2 core components consisting of the `Median` and `OSM` con
 * `OSM`
   * `poke()` is not called promptly, allowing malicious prices to be swiftly uptaken.
   * Authorization Attacks and Misconfigurations.
-  * Read more [here.](https://docs.makerdao.com/smart-contract-modules/oracle-module/oracle-security-module-osm-detailed-documentation#5-failure-modes-bounds-on-operating-conditions-and-external-risk-factors)
+  * Read more [here.](/documentation/osm-detailed-documentation)

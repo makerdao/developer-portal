@@ -79,7 +79,7 @@ In this guide, we will help you understand the impact Emergency Shutdown will ha
 
 # Pre-requisites
 
-- Basic knowledge of the MakerDAO: Dai and/or Vault system. [See the MCD 101 guide, especially section 1 and 2.](https://docs.makerdao.com/maker-protocol-101)
+- Basic knowledge of the MakerDAO: Dai and/or Vault system. [See the MCD 101 guide, especially section 1 and 2.](/documentation/maker-protocol-101)
 
 - Emergency Shutdown in the Maker Protocol. [Emergency Shutdown guide](https://github.com/makerdao/developerguides/blob/master/mcd/emergency-shutdown/emergency-shutdown-guide.md)
 
@@ -136,7 +136,7 @@ All calculations necessary for emergency shutdown are performed on-chain. While 
 
 The Maker Protocol completely halts its operations after emergency shutdown is triggered and operates only in a settlement mode that ensures various stakeholders can safely retrieve assets. Please note that you are free to use different criteria and features in your protocol and communicate those expectations to your users.
 
-We suggest reading the following documents for an overview of the Emergency Shutdown Mechanism and how various users will interact with the Maker Protocol- [ES Documentation](https://docs.makerdao.com/smart-contract-modules/shutdown/the-emergency-shutdown-process-for-multi-collateral-dai-mcd), [ES Guide](https://github.com/makerdao/developerguides/blob/master/mcd/emergency-shutdown/emergency-shutdown-guide.md), and [Cage Keeper Documentation](https://github.com/makerdao/cage-keeper#cage-keeper).
+We suggest reading the following documents for an overview of the Emergency Shutdown Mechanism and how various users will interact with the Maker Protocol- [ES Documentation](/documentation/the-emergency-shutdown-process-for-multi-collateral-dai-mcd), [ES Guide](https://github.com/makerdao/developerguides/blob/master/mcd/emergency-shutdown/emergency-shutdown-guide.md), and [Cage Keeper Documentation](https://github.com/makerdao/cage-keeper#cage-keeper).
 
 # Monitoring
 
@@ -312,5 +312,5 @@ While we have discussed many patterns, you can use the following rule of thumb t
 
 # Resources
 
-- [Emergency Shutdown Documentation](https://docs.makerdao.com/smart-contract-modules/shutdown/the-emergency-shutdown-process-for-multi-collateral-dai-mcd)
+- [Emergency Shutdown Documentation](/documentation/the-emergency-shutdown-process-for-multi-collateral-dai-mcd)
 - Reach us at [Rocket Chat](https://chat.makerdao.com/channel/dev) or contact Integrations Team: integrate@makerdao.com

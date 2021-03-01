@@ -31,9 +31,9 @@ The Governance Module has 3 core components consisting of the `Chief`, `Pause` a
 
 ### Governance Module Components Documentation
 
-* [**Chief**](https://docs.makerdao.com/smart-contract-modules/governance-module/chief-detailed-documentation)
-* [**Pause**](https://docs.makerdao.com/smart-contract-modules/governance-module/pause-detailed-documentation)
-* [**Spell**](https://docs.makerdao.com/smart-contract-modules/governance-module/spell-detailed-documentation)
+* [**Chief**](/documentation/chief-detailed-documentation)
+* [**Pause**](/documentation/pause-detailed-documentation)
+* [**Spell**](/documentation/spell-detailed-documentation)
 
 ## 3. Key Mechanism and Concepts
 
@@ -48,8 +48,8 @@ The Governance Module has 3 core components consisting of the `Chief`, `Pause` a
 * `Chief`
   * In general, when we refer to the **"chief"**, it can be both addresses or people that represent contracts. Thus, ds-chief can work well as a method for selecting code for execution just as well as it can for realizing political processes.
   * **IOU Token:** The purpose of the IOU token is to allow for the chaining of governance contracts. In other words, this allows you to have a number of `DSChief`, `DSPrism`, or other similar contracts use the same governance token by means of accepting the IOU token of the `DSChief` contract before it is a governance token.
-  * **Approval Voting:** This type of voting is when each voter selects which candidates they approve of, with the top n "most approved" candidates being then elected. Each voter can cast up to n + k votes, where k equals some non-zero positive integer. Read more [here](https://docs.makerdao.com/smart-contract-modules/governance-module/chief-detailed-documentation#approval-voting).
-  * **Implementations:** If you are writing a front-end UI for this smart contract, please note that the address[] parameters that are passed to the `etch` and `vote` functions must be byte-ordered sets. Read more [here.](https://docs.makerdao.com/smart-contract-modules/governance-module/chief-detailed-documentation#implementations)
+  * **Approval Voting:** This type of voting is when each voter selects which candidates they approve of, with the top n "most approved" candidates being then elected. Each voter can cast up to n + k votes, where k equals some non-zero positive integer. Read more [here](/documentation/chief-detailed-documentation).
+  * **Implementations:** If you are writing a front-end UI for this smart contract, please note that the address[] parameters that are passed to the `etch` and `vote` functions must be byte-ordered sets. Read more [here.](/documentation/chief-detailed-documentation)
 * `Pause`
   * **Identity & Trust:** In order to protect the internal storage of the pause from malicious writes during plan execution, a _delegatecall_ operation is performed in a separate contract with an isolated storage context (DSPauseProxy), where each pause has its own individual proxy. This means that plans are executed with the identity of the `proxy`. Thus when integrating the pause into some auth scheme, you will want to trust the pause's proxy and not the pause itself.
 * `Spell`
@@ -63,7 +63,7 @@ The Governance Module has 3 core components consisting of the `Chief`, `Pause` a
   * There is no way to bypass the delay.
   * The code executed by the _delegatecall_ cannot directly modify storage on the pause.
   * The pause will always retain ownership of it's proxy.
-  * Read more [here.](https://docs.makerdao.com/smart-contract-modules/governance-module/pause-detailed-documentation#5-failure-modes-bounds-on-operating-conditions-and-external-risk-factors)
+  * Read more [here.](/documentation/pause-detailed-documentation)
 * `Spell`
   * The main failure mode of the `spell` arises when there is an instance of the spell remaining uncast when it has an amount of MKR voting for it that later becomes a target.
   

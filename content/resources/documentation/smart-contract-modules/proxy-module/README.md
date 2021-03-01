@@ -32,10 +32,10 @@ The Proxy module was created in order to make it more convenient for users/devel
 
 ### Proxy Module Components Documentation
 
-1. [**DSR Manager**](https://docs.makerdao.com/smart-contract-modules/proxy-module/dsr-manager-detailed-documentation)
-2. [**CDP Manager**](https://docs.makerdao.com/smart-contract-modules/proxy-module/cdp-manager-detailed-documentation)
-3. [**Vote Proxy**](https://docs.makerdao.com/smart-contract-modules/proxy-module/vote-proxy-detailed-documentation)
-4. [**Proxy Actions**](https://docs.makerdao.com/smart-contract-modules/proxy-module/proxy-actions-detailed-documentation)
+1. [**DSR Manager**](/documentation/dsr-manager-detailed-documentation)
+2. [**CDP Manager**](/documentation/cdp-manager-detailed-documentation)
+3. [**Vote Proxy**](/documentation/vote-proxy-detailed-documentation)
+4. [**Proxy Actions**](/documentation/proxy-actions-detailed-documentation)
 
 ## 3. Key Mechanism and Concepts
 
@@ -43,7 +43,7 @@ The Proxy module was created in order to make it more convenient for users/devel
 
 #### **DSR Manager**
 
-The `DsrManager` provides an easy to use smart contract that allows service providers to deposit/withdraw `dai` into the contract [pot](https://docs.makerdao.com/smart-contract-modules/rates-module/pot-detailed-documentation), to start earning the Dai Saving Rate on a pool of dai in a single function call without the need of a `ds-proxy` contract. This is useful for smart contracts integrating DSR functionality. 
+The `DsrManager` provides an easy to use smart contract that allows service providers to deposit/withdraw `dai` into the contract [pot](/documentation/pot-proxy-detailed-documentation), to start earning the Dai Saving Rate on a pool of dai in a single function call without the need of a `ds-proxy` contract. This is useful for smart contracts integrating DSR functionality. 
 
 #### **CDP Manager**
 
@@ -73,23 +73,23 @@ The `dss-proxy-actions` was designed to be used by the Ds-Proxy, which is owned 
 
 * **DSR Manager**
   * For developers who want to integrate with `DsrManager`, it is important to realize that user balances in the `pot` will be owned by the `DsrManager`, which has an internal mapping to determine user balances. Consequently the deposited Dai in DSR might not show up in solutions that are based on `ds-proxy` (such as [oasis.app/save](https://oasis.app/save))
-  * Read more [here](https://docs.makerdao.com/smart-contract-modules/proxy-module/dsr-manager-detailed-documentation).
+  * Read more [here](/documentation/dsr-manager-detailed-documentation).
 * **CDP Manager**
   * For the developers who want to integrate with the `manager`, they will need to understand that the Vault actions are still in the `urn` environment. Regardless of this, the `manager` tries to abstract the `urn` usage by a `CDPId`. This means that developers will need to get the `urn` (`urn = manager.urns(cdpId)`) to allow the `join`ing of collateral to that Vault.
-  * Read more [here](https://docs.makerdao.com/smart-contract-modules/proxy-module/cdp-manager-detailed-documentation).
+  * Read more [here](/documentation/cdp-manager-detailed-documentation).
 * **Vote Proxy**
   * **One-time proxy setup cost:** As a new proxy contract user, you will need to set it up before you can use it for future voting. The price of the setup will depend on the current Ethereum gas price but will ultimately make voting easier and safer for users.
-  * Read more [here](https://docs.makerdao.com/smart-contract-modules/proxy-module/vote-proxy-detailed-documentation).
+  * Read more [here](/documentation/vote-proxy-detailed-documentation).
 * **Proxy Actions**
   * **Using dss-proxy-actions directly can result in the loss of control over your Vault:** If you open a new Vault via the dss proxy actions (centralized) without a ds proxy you would be creating a Vault that is owned by the dss proxy actions that anyone could call publicly. It would be owned by the dss proxy actions contact and anyone could execute actions on your Vault. Therefore, if you use the dss proxy actions directly it can be quite risky.
-  * Read more [here](https://docs.makerdao.com/smart-contract-modules/proxy-module/proxy-actions-detailed-documentation).
+  * Read more [here](/documentation/proxy-actions-detailed-documentation).
 
 ## 5. Failure Modes (Bounds on Operating Conditions & External Risk Factors)
 
 * **CDP Manager**
   * **Potential Issues around Chain Reorganization**
     * When `open` is executed, a new `urn` is created and a `cdpId` is assigned to it for a specific `owner`. If the user uses `join` to add collateral to the `urn` immediately after the transaction is mined, there is a chance that a reorganization of the chain occurs. This would result in the user losing the ownership of that `cdpId`/`urn` pair, therefore losing their collateral. However, this issue can only arise when avoiding the use of the [proxy functions](https://github.com/makerdao/dss-proxy-actions) via a [profile proxy](https://github.com/dapphub/ds-proxy) as the user will `open` the `cdp` and `join` collateral in the same transaction.
-  * Read more [here](https://docs.makerdao.com/smart-contract-modules/proxy-module/cdp-manager-detailed-documentation#5-failure-modes-bounds-on-operating-conditions-and-external-risk-factors).
+  * Read more [here](/documentation/cdp-manager-detailed-documentation).
 * **Vote Proxy**
   * The loss of private keys for both the hot and cold wallet will prevent you from voting.
 * **Proxy Actions**

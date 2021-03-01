@@ -138,9 +138,9 @@ Referenced sequenced diagrams of each transaction operation with DSProxy can be 
 
 In the example of a custodial exchange, using the CDP Manager could bring more options to operate with the MCD system on the exchange, as this allows easy control of the Vault lifecycle. The exchange can open Vaults for the users and link the Vault Id to the user Id, hence having a link to the user for accountability.
 
-##### [Dai.js](https://docs.makerdao.com/building-on-top-of-the-maker-protocol/dai.js-wiki)
+##### [Dai.js](/documentation/introduction-to-dai-js)
 
-Link to documentation: [Dai.js](https://docs.makerdao.com/building-on-top-of-the-maker-protocol/dai.js-wiki)
+Link to documentation: [Dai.js](/documentation/introduction-to-dai-js)
 
 By opting the Dai.js route, you will have a library full of ready to use features that can be plugged into your own infrastructure. This library supports both frontend and backend applications and is also used in products delivered by the Maker Foundation. It allows you to focus mostly on your product design and not much on the internal plumbing on managing a web3 instance with contract ABIs.
 
@@ -148,7 +148,7 @@ Nonetheless, you will have to depend on the Dai.js maintainers to build new feat
 
 ###### MCD Dai.js Example
 
-Currently, Dai.js has a plugin that enables interaction with the MCD deployment, the [dai-plugin-mcd](https://github.com/makerdao/dai.js/tree/dev/packages/dai-plugin-mcd). This plugin uses the DS-Proxy via the [CDP Manager](https://docs.makerdao.com/smart-contract-modules/proxy-module/cdp-manager-detailed-documentation). It can be used with the [Kovan 0.2.17](https://changelog.makerdao.com/releases/kovan/0.2.17/contracts.json) deployment or with the [mainnet deployment](https://changelog.makerdao.com/releases/mainnet/1.0.0/contracts.json).
+Currently, Dai.js has a plugin that enables interaction with the MCD deployment, the [dai-plugin-mcd](https://github.com/makerdao/dai.js/tree/dev/packages/dai-plugin-mcd). This plugin uses the DS-Proxy via the [CDP Manager](/documentation/cdp-manager-detailed-documentation). It can be used with the [Kovan 0.2.17](https://changelog.makerdao.com/releases/kovan/0.2.17/contracts.json) deployment or with the [mainnet deployment](https://changelog.makerdao.com/releases/mainnet/1.0.0/contracts.json).
 
 A quick example of opening a Vault with Dai.js would look like this:
 Make sure to run [node 11.10](https://nodejs.org/download/release/v11.10.0/) and follow install [instructions](https://github.com/makerdao/dai.js).
@@ -335,16 +335,16 @@ The CDPManager is a smart contract, created to enable a formalized process for V
 One potential integration worth considering is incorporating Vaults as a method of offering margin to your users. With the CDPManager, one could deploy a DSProxy, use Dss-Proxy-Actions to call multi-step atomic transactions, and successfully monitor as well as manage multiple margin positions from a hot wallet. Let us begin:
 
 1. Become knowledgeable of the Maker Protocol
-   - [Maker Protocol 101](https://docs.makerdao.com/maker-protocol-101)
+   - [Maker Protocol 101](/documentation/maker-protocol-101)
 2. Be exposed to the various types of Vault Integrations
    - [Types of Vault integrations](https://github.com/makerdao/developerguides/blob/master/vault/vault-integration-guide/vault-integration-guide.md#guide)
 3. Understand what a Vault Lifecycle is:
    - [Vault Lifecycle](https://github.com/makerdao/developerguides/blob/master/vault/vault-integration-guide/vault-integration-guide.md#vault-lifecycle)
 4. Learn at a high level what proxy identities help us within the Maker Protocol
-   - [Proxy Identities within the Maker Protocol](https://docs.makerdao.com/smart-contract-modules/proxy-module)
+   - [Proxy Identities within the Maker Protocol](/documentation/introduction-to-proxy-module)
 5. Understand how the CDPManager and Dss-Proxy-Actions work
-   - [CDPManager Documentation](https://docs.makerdao.com/smart-contract-modules/proxy-module/cdp-manager-detailed-documentation)
-   - [DSS-Proxy-Actions](https://docs.makerdao.com/smart-contract-modules/proxy-module/cdp-manager-detailed-documentation)
+   - [CDPManager Documentation](/documentation/cdp-manager-detailed-documentation)
+   - [DSS-Proxy-Actions](/documentation/proxy-actions-detailed-documentation)
 6. Learn about the DSProxy design pattern
    - [Working with DSProxy](https://github.com/makerdao/developerguides/blob/master/devtools/working-with-dsproxy/working-with-dsproxy.md)
 7. Become familiar with our recommended Single Vault User Flow

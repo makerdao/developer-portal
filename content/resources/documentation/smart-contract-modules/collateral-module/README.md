@@ -36,8 +36,8 @@ The Collateral Module has 2 core components consisting of the `Join` and `Flip` 
 
 ### The Collateral Module is built up of two components:
 
-1. [**Join Documentation**](https://docs.makerdao.com/smart-contract-modules/collateral-module/join-detailed-documentation)
-2. [**Flip Documentation**](https://docs.makerdao.com/smart-contract-modules/collateral-module/flipper-detailed-documentation)
+1. [**Join Documentation**](/documentation/join-detailed-documentation)
+2. [**Flip Documentation**](/documentation/flipper-detailed-documentation)
 
 ## 3. Key Mechanism and Concepts
 
@@ -51,7 +51,7 @@ The Collateral Module has 2 core components consisting of the `Join` and `Flip` 
 
   Each of the `join` contracts are specifically used for the given token type to be `join`'ed to the `vat`. Due to this fact, each `join` contract has slightly different logic to account for the different types of tokens within the system.
 
-* `Flipper` - collateral Auctions are used to sell collateral from Vaults that have become undercollateralized in order to preserve the collateralization of the system. The `Cat` sends bitten collateral to the Flip module to be auctioned off to Keepers. The collateral auction has two phases: `tend` and `dent`. See the **Gotchas** section of the Flipper's [documentation](https://docs.makerdao.com/smart-contract-modules/collateral-module/flipper-detailed-documentation) for more on the `tend` and `dent` auction phases.
+* `Flipper` - collateral Auctions are used to sell collateral from Vaults that have become undercollateralized in order to preserve the collateralization of the system. The `Cat` sends bitten collateral to the Flip module to be auctioned off to Keepers. The collateral auction has two phases: `tend` and `dent`. See the **Gotchas** section of the Flipper's [documentation](/documentation/flipper-detailed-documentation) for more on the `tend` and `dent` auction phases.
 
 #### How exactly do the `Join` and `Flipper` contracts help the MCD system operate?
 

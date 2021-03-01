@@ -79,7 +79,7 @@ Further information about the ERC20 Token standard can be found [here](https://e
 
 Along with MKR having a standard ERC20 token interface, it also has the addition of DSAuth-protected mint and burn functions; binary approval via MAX_UINT; as well as a push, pull and move aliases for transferFrom operations.
 
-**The MKR token has 3 methods of use within the Maker Protocol (reference** [**Maker Protocol 101 Presentation**](https://docs.makerdao.com/maker-protocol-101)**):**
+**The MKR token has 3 methods of use within the Maker Protocol (reference** [**Maker Protocol 101 Presentation**](/documentation/maker-protocol-101)**):**
 
 - **As a utility token:** As Dai stability fees earned on Vaults accrue within the Maker Protocol, MKR holders can use MKR to vote to enable the Flapper auction house to sell Dai surplus for MKR. Once the auction is complete the Maker protocol burns the MKR.
 - **As a governance token:** MKR is used by MKR holders to vote for the risk management and business logic of the Maker Protocol. Tokens are a simple representation of voting power.

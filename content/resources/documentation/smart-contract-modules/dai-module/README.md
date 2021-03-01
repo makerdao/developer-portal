@@ -3,9 +3,9 @@ title: Dai Module
 description: The DAI token contract and all of the adapters DaiJoin adapters.
 group: smart-contracts
 components:
-   - dai
+  - dai
 tags:
-   - token
+  - token
 slug: introduction-to-dai-module
 contentType: documentation
 root: true
@@ -72,8 +72,8 @@ The origin of DAI was designed to represent any token that the core system consi
 
 ### Core Module Components Documentation
 
-1. [**Dai**](https://docs.makerdao.com/smart-contract-modules/dai-module/dai-detailed-documentation)
-2. [**DaiJoin Documentation** ](https://docs.makerdao.com/smart-contract-modules/collateral-module/join-detailed-documentation#3-key-mechanisms-and-concepts)(referenced in Join)
+1. [**Dai**](/documentation/dai-detailed-documentation)
+2. [**DaiJoin Documentation** ](/documentation/join-detailed-documentation#3.-key-mechanisms-and-concepts)(referenced in Join)
 
 ## 3. Key Mechanism and Concepts
 

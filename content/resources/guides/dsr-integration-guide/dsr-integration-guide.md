@@ -71,9 +71,9 @@ This guide will explain the Dai Savings Rate and how to integrate DSR into your 
 
 - [Working with DSProxy](https://github.com/makerdao/developerguides/blob/master/devtools/working-with-dsproxy/working-with-dsproxy.md)
 
-- [Working with Dai.js SDK](https://docs.makerdao.com/building-on-top-of-the-maker-protocol/dai.js-wiki)
+- [Working with Dai.js SDK](/documentation/introduction-to-dai-js)
 
-- [Working seth](https://docs.makerdao.com/clis/seth)
+- [Working with seth](documentation/seth)
 
 ## What is DSR
 
@@ -119,7 +119,7 @@ The 1.0.2 contracts we are going to cover in the following are:
 
 ### How to integrate DSR using DsrManager
 
-The `DsrManager` is an easy-to-use smart contract that allows service providers to deposit/withdraw Dai into the DSR contract [pot](https://docs.makerdao.com/smart-contract-modules/rates-module/pot-detailed-documentation), and activate/deactivate the Dai Savings Rate to start earning savings on Dai within a single function call.
+The `DsrManager` is an easy-to-use smart contract that allows service providers to deposit/withdraw Dai into the DSR contract [pot](/documentation/pot-proxy-detailed-documentation), and activate/deactivate the Dai Savings Rate to start earning savings on Dai within a single function call.
 
 Other than integrating DSR through the Maker Protocol’s core, interacting with `DsrManager` is very similar to the other integration methods; in fact, the only difference is the former doesn’t require the Ethereum address to build and own a proxy contract.
 
@@ -154,7 +154,7 @@ By using DsrManager, you can avoid having to use a DS-Proxy contract to deposit 
 
 The Maker Protocol has been developed with formal verification in mind. Therefore, the core smart contracts only contains functions that carry out singular simple actions. Consequently, in order to carry out meaningful invocations on the protocol, you must string together a series of core function calls. Instead of having to send a series of transactions, Maker’s proxy contracts atomically invoke a series of function calls that are used to interact with the Maker core in a safe and easy way. This is done through using a proxy identity for the user called [DS-Proxy](https://github.com/dapphub/ds-proxy). This library is therefore only safe if you execute actions through this proxy identity, since the proxy manages access rights. Therefore, if you execute functions directly on the proxy library DSS-Proxy-Actions-DSR, and not through DS-Proxy, there will be no access management, and funds can therefore be lost, so it is very important you only execute functions through a DS-Proxy. The good thing is that anyone who integrates the DS-Proxy will be able to reflect the same user identity as in the Maker frontends, such as [oasis.app](http://oasis.app). So if you are building a similar product suite and you want to carry over existing users, and their vaults and access to DSR from the Maker frontends, you should integrate using DS-Proxy and the proxy libraries.
 
-In the case of a DSR integration, we want to interact with the core DSR contract called `pot` ([detailed documentation here](https://docs.makerdao.com/smart-contract-modules/rates-module/pot-detailed-documentation)) by executing function calls on a proxy contract called `dss-proxy-actions-dsr` using the [ds-proxy](https://github.com/dapphub/ds-proxy) contract.
+In the case of a DSR integration, we want to interact with the core DSR contract called `pot` ([detailed documentation here](/documentation/pot-proxy-detailed-documentation)) by executing function calls on a proxy contract called `dss-proxy-actions-dsr` using the [ds-proxy](https://github.com/dapphub/ds-proxy) contract.
 
 **IMPORTANT! You should be familiar with working with ds-proxy before you attempt this integration, so it is very important that you are [well acquainted with the concepts in this guide](https://github.com/makerdao/developerguides/blob/master/devtools/working-with-dsproxy/working-with-dsproxy.md) before you proceed to ensure that you do not risk funds.**
 
@@ -269,7 +269,7 @@ Call the `execute` function in your proxy contract to withdraw the remaining Dai
 
 In order to integrate DSR by interacting directly with the core, you need to implement a smart contract that invokes functions in the `pot` contract.
 
-`pot` is the Dai Savings Rate contract, and you can read [detailed documentation of the contract here](https://docs.makerdao.com/smart-contract-modules/rates-module/pot-detailed-documentation). In order to earn savings on Dai, you must call the function [join](https://github.com/makerdao/dss/blob/master/src/pot.sol#L150) with the amount of Dai you want to earn savings on. However, in order for this function call to succeed you must first call [drip](https://github.com/makerdao/dss/blob/master/src/pot.sol#L140) to update the state of the system, to ensure internal balances are calculated correctly. Therefore to activate savings on x amount of Dai, you must call `pot.drip()` and then `pot.join(x)`, where `x` is a `uint256` in the same transaction. In order to do this atomically you need to implement these calls in a smart contract that can carry out both function calls in a single transaction. If you use a smart contract to carry out these function calls, since the DSR contract uses `msg.sender` as the depositor, `msg.sender` will be the only one able to retrieve Dai from DSR. So, ensure that only you have access to withdraw Dai from the DSR contract by implementing the necessary access mappings.
+`pot` is the Dai Savings Rate contract, and you can read [detailed documentation of the contract here](/documentation/pot-proxy-detailed-documentation). In order to earn savings on Dai, you must call the function [join](https://github.com/makerdao/dss/blob/master/src/pot.sol#L150) with the amount of Dai you want to earn savings on. However, in order for this function call to succeed you must first call [drip](https://github.com/makerdao/dss/blob/master/src/pot.sol#L140) to update the state of the system, to ensure internal balances are calculated correctly. Therefore to activate savings on x amount of Dai, you must call `pot.drip()` and then `pot.join(x)`, where `x` is a `uint256` in the same transaction. In order to do this atomically you need to implement these calls in a smart contract that can carry out both function calls in a single transaction. If you use a smart contract to carry out these function calls, since the DSR contract uses `msg.sender` as the depositor, `msg.sender` will be the only one able to retrieve Dai from DSR. So, ensure that only you have access to withdraw Dai from the DSR contract by implementing the necessary access mappings.
 
 A simple DSR example of how to interact with the Maker core can be found [here](https://github.com/makerdao/developerguides/blob/master/dai/dsr-integration-guide/dsr.sol). **NOTE: This is just an example and has not been audited**. In this example, you can see how to properly call the `pot.join(x)`, `pot.exit(x)` and `pot.exitAll()` functions. Give close attention to the helper math functions, as they convert the Dai ERC-20 token 18 decimal into the internal accounting 27 decimal numbers.
 
@@ -340,7 +340,7 @@ The above equation makes it trivial to see that when `chi` grows, Dai balance of
 
 You can read more about rates here:
 
-- [https://docs.makerdao.com/smart-contract-modules/rates-module#dai-savings-rate-accumulation](https://docs.makerdao.com/smart-contract-modules/rates-module#dai-savings-rate-accumulation)
+- [DSR Accumulation](/documentation/introduction-to-rates-module#dai-savings-rate-accumulation)
 
 - [https://github.com/makerdao/developerguides/blob/master/mcd/intro-rate-mechanism/intro-rate-mechanism.md](https://github.com/makerdao/developerguides/blob/master/mcd/intro-rate-mechanism/intro-rate-mechanism.md)
 
@@ -395,7 +395,7 @@ The following assumptions about your system’s design and operation:
 
 - Will not need to interact with adjacent systems that require a [proxy identity](https://github.com/makerdao/developerguides/blob/master/devtools/working-with-dsproxy/working-with-dsproxy.md).
 
-With these assumptions, the following integration story is relieved of the proxy-identity requirement and prioritizes simplicity for the centralized exchange. In the following steps, we build up the prerequisite knowledge of the DSR and outline the steps to integrate the `DsrManager` before concluding with some recommendations. Considered as the simplest and most secure way of adding Dai to the DSR, the `DsrManager` is a smart contract that allows service providers to deposit/withdraw Dai into the DSR contract ([Pot contract](https://docs.makerdao.com/smart-contract-modules/rates-module/pot-detailed-documentation)), and activate/deactivate the Dai Savings Rate to start earning savings on a pool of Dai in a single function call. Let us begin:
+With these assumptions, the following integration story is relieved of the proxy-identity requirement and prioritizes simplicity for the centralized exchange. In the following steps, we build up the prerequisite knowledge of the DSR and outline the steps to integrate the `DsrManager` before concluding with some recommendations. Considered as the simplest and most secure way of adding Dai to the DSR, the `DsrManager` is a smart contract that allows service providers to deposit/withdraw Dai into the DSR contract ([Pot contract](/documentation/pot-proxy-detailed-documentation)), and activate/deactivate the Dai Savings Rate to start earning savings on a pool of Dai in a single function call. Let us begin:
 
 1. Become knowledgeable of the DSR
    - [What is DSR?](#what-is-dsr)
@@ -425,7 +425,7 @@ In this guide, we covered the basics of DSR, and how to properly integrate DSR, 
 
 - [https://github.com/makerdao/dss](https://github.com/makerdao/dss)
 
-- [https://docs.makerdao.com/](https://docs.makerdao.com/)
+- [Developer Portal Documentation](/documentation)
 
 ## Need help
 

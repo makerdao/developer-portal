@@ -18,7 +18,7 @@ parent: introduction-to-es-module
 
 The Maker Protocol, which powers Multi-Collateral Dai (Dai), backs and stabilizes the value of Dai to a Target Price of 1 US Dollar, translating to a 1:1 US Dollar soft peg. The stabilization mechanism is handled through an autonomous system of smart contracts, a dynamic combination of Vaults, and appropriately incentivized external actors, such as Keepers.
 
-[Keepers](https://docs.makerdao.com/keepers/auction-keepers) play a critical role in maintaining the health of the system and Dai stability. In March 2020, the Maker Foundation [underlined](https://blog.makerdao.com/recent-market-activity-and-next-steps/) the need for a more developed Keeper ecosystem. An increase in Keeper participation would ultimately improve the health and function of the Maker Protocol. For more information on how to get a Keeper up and running, see this[ guide](https://docs.makerdao.com/keepers/auction-keepers/auction-keeper-bot-setup-guide).
+[Keepers](/documentation/introduction-to-auction-keepers) play a critical role in maintaining the health of the system and Dai stability. In March 2020, the Maker Foundation [underlined](https://blog.makerdao.com/recent-market-activity-and-next-steps/) the need for a more developed Keeper ecosystem. An increase in Keeper participation would ultimately improve the health and function of the Maker Protocol. For more information on how to get a Keeper up and running, see this[ guide](/documentation/auction-keeper-bot-setup-guide).
 
 The Maker Protocol has an **Emergency Shutdown (ES)** procedure that can be triggered as a last resort to protect the system and its users against a serious threat or to facilitate a Protocol upgrade.
 
@@ -30,7 +30,7 @@ The Maker Protocol has an **Emergency Shutdown (ES)** procedure that can be trig
 
 Emergency Shutdown is intended to be triggered in the case of a system upgrade or serious emergencies, such as long-term market irrationality, a hack, or a security breach. When triggered, ES stops and shuts down the Maker Protocol while ensuring that all users, both Dai holders, and Vault users, receive the net value of assets they are entitled to under the Protocol’s smart contract logic. However, the value of Collateral that Dai holders can redeem may vary, depending on the system surplus or deficit at the time of ES. It is, therefore, possible that Dai holders will receive less or more than 1 USD worth of Collateral for 1 Dai.
 
-The process of initiating ES is decentralized and controlled by MKR voters, who can trigger it by depositing MKR into the[ Emergency Shutdown Module (ESM)](https://docs.makerdao.com/smart-contract-modules/emergency-shutdown-module), a contract with the ability to call [**End.cage**](https://github.com/makerdao/dss/blob/44330065999621834b08de1edf3b962f6bbd74c6/src/end.sol#L264) or by an Executive Vote. In the case of the ESM method, 50,000 MKR must be deposited into the ESM to trigger ES. Additionally, once users deposit MKR into the ESM, it is immediately burned. Whether through the ESM or Executive Vote method, when Cage is called, it must alter the behavior of almost every component of the system, as well as perform under a variety of possible undercollateralization scenarios.
+The process of initiating ES is decentralized and controlled by MKR voters, who can trigger it by depositing MKR into the[ Emergency Shutdown Module (ESM)](/documentation/esm-proxy-detailed-documentation), a contract with the ability to call [**End.cage**](https://github.com/makerdao/dss/blob/44330065999621834b08de1edf3b962f6bbd74c6/src/end.sol#L264) or by an Executive Vote. In the case of the ESM method, 50,000 MKR must be deposited into the ESM to trigger ES. Additionally, once users deposit MKR into the ESM, it is immediately burned. Whether through the ESM or Executive Vote method, when Cage is called, it must alter the behavior of almost every component of the system, as well as perform under a variety of possible undercollateralization scenarios.
 
 ### **The Implementation Properties of Emergency Shutdown**
 
@@ -87,7 +87,7 @@ If you are a user of a third-party interface, such as [DefiSaver](http://defisav
 
 ### **MKR Holders**
 
-MKR holders may vote on polls and executive votes as it relates to the Emergency Shutdown triggering process. This is done in the Emergency Shutdown Module (ESM) frontend or directly through the [ES CLI](https://docs.makerdao.com/clis/emergency-shutdown-es-cli). Additionally, MKR holders may also vote as it relates to a future redeployment of the Maker Protocol on the [Governance Portal](http://vote.makerdao.com/).
+MKR holders may vote on polls and executive votes as it relates to the Emergency Shutdown triggering process. This is done in the Emergency Shutdown Module (ESM) frontend or directly through the [ES CLI](/guides/emergency-shutdown-es-cli). Additionally, MKR holders may also vote as it relates to a future redeployment of the Maker Protocol on the [Governance Portal](http://vote.makerdao.com/).
 
 ### **Centralized Exchange or Custodial Wallet**
 
@@ -287,10 +287,10 @@ Lastly, the system will allow the exchange of some of the Dai that has been lock
 ### **Other Resources and Documentation**
 
 - [Introduction to Emergency Shutdown Blog post](https://blog.makerdao.com/introduction-to-emergency-shutdown-in-multi-collateral-dai/)
-- [End Documentation ](https://docs.makerdao.com/smart-contract-modules/shutdown/end-detailed-documentation)
-- [Emergency Shutdown Module Documentation ](https://docs.makerdao.com/smart-contract-modules/emergency-shutdown-module)
+- [End Documentation ](/documentation/end-proxy-detailed-documentation)
+- [Emergency Shutdown Module Documentation ](/documentation/esm-proxy-detailed-documentation)
 - [Emergency Shutdown Guide - MCD](https://github.com/makerdao/developerguides/blob/master/mcd/emergency-shutdown/emergency-shutdown-guide.md)
-- [Emergency Shutdown CLI ](https://docs.makerdao.com/clis/emergency-shutdown-es-cli)
-- [Dai and Collateral Redemption during Emergency Shutdown CLI](https://docs.makerdao.com/clis/dai-and-collateral-redemption-during-emergency-shutdown)
-- [Cage Keeper](https://docs.makerdao.com/keepers/cage-keeper#introduction)
+- [Emergency Shutdown CLI ](/documentation/introduction-to-es-module)
+- [Dai and Collateral Redemption during Emergency Shutdown CLI](/guides/dai-and-collateral-redemption-during-emergency-shutdown)
+- [Cage Keeper](/documentation/cage-keeper#introduction)
 - [Emergency Shutdown FAQ](https://github.com/makerdao/community/blob/master/faqs/emergency-shutdown.md)

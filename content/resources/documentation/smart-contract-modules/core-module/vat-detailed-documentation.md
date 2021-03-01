@@ -125,8 +125,8 @@ An ilk's `rate` is the conversion factor between any normalized debt (`art`) dra
 
 For more information on Rates and System Stabilization, see the Rates Module and System Stabilizer Module documentation below:
 
-- [Rates Module](https://docs.makerdao.com/smart-contract-modules/rates-module)
-- [System Stabilizer ](https://docs.makerdao.com/smart-contract-modules/system-stabilizer-module)
+- [Rates Module](/documentation/introduction-to-rates-module)
+- [System Stabilizer ](/documentation/introduction-to-system-stabilizer-module)
 
 ## 4. Gotchas
 

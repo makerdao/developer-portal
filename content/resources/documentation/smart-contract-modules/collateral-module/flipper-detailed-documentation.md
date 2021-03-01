@@ -144,7 +144,7 @@ In the case of Global Settlement, the `End` is able to call `yank` on the Flippe
 
 Because `Flip.tend` compares the bidder's `bid` with the previous `bid * beg`, it will compare the two numbers at 10^63 precision (`rad * wad`). This means that any `bid` that is greater than 115,792,089,237,316 will cause an overflow. Governance should endeavour to not set `beg` or `lot` (via `Cat.ilks[ilk].dunk`) so that it is likely that an auction keeper would end up `bid`'ding that much DAI during the `tend` phase. This is very unlikely so long as the target price of Dai remains 1 USD, but is included here for awareness.
 
-#### 1. [**See System Stabilizer Module Documentation**](https://docs.makerdao.com/smart-contract-modules/system-stabilizer-module)\*\*\*\*
+#### 1. [**See System Stabilizer Module Documentation**](/documentation/introduction-to-system-stabilizer-module)\*\*\*\*
 
 #### 2. Last Minute Auction/Low Keeper Participation Risks
 

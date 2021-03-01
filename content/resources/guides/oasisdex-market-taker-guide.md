@@ -203,7 +203,7 @@ function exchange(
 Other than through Solidity and Web3, as seen in the above integrations, here are other API libraries that can be used to interact with OasisDEX:
 
 - [Pymaker](https://github.com/makerdao/pymaker/blob/master/pymaker/oasis.py)
-- [Dai.js](https://docs.makerdao.com/dai.js/single-collateral-dai/exchange-service)
+- [Dai.js](/documentation/dai-js-exchange-service)
 
 ## Summary
 

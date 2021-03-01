@@ -55,7 +55,7 @@ Understand the permit function and how to use it in your dApp for gasless Dai tr
 
 Knowledge of:
 
-- [Dai token contract](https://docs.makerdao.com/smart-contract-modules/dai-module/dai-detailed-documentation)
+- [Dai token contract](/documentation/dai-detailed-documentation)
 - [Solidity](https://solidity.readthedocs.io/)
 - [Web3js](https://web3js.readthedocs.io/)
 

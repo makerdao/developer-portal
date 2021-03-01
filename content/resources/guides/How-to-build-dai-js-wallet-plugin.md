@@ -52,7 +52,7 @@ Knowledge in:
 
 - [Web3 wallets](https://ethereum.org/use/#3-what-is-a-wallet-and-which-one-should-i-use)
 - Javascript
-- [Dai.js](https://docs.makerdao.com/building-on-top-of-the-maker-protocol/dai.js-wiki)
+- [Dai.js](/documentation/introduction-to-dai-js)
 
 ## Sections
 

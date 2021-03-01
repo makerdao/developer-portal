@@ -15,7 +15,7 @@ root: true
 
 ## Introduction
 
-Understanding the various terms used in our smart contracts can involve a significant time investment for developers looking at the codebase for the first time. Due to this fact, we need resources in various formats to ensure they can get up and running quickly. We believe, in order to complement the technical documentation on docs.makerdao.com, that highlighting sections of the codebase and annotating it with comments can surface relevant information developers need while reading the raw contracts in order to understand the contracts better.
+Understanding the various terms used in our smart contracts can involve a significant time investment for developers looking at the codebase for the first time. Due to this fact, we need resources in various formats to ensure they can get up and running quickly. We believe, in order to complement the technical documentation on the developer portal, that highlighting sections of the codebase and annotating it with comments can surface relevant information developers need while reading the raw contracts in order to understand the contracts better.
 
 **Examples of how annotations may be useful for developers:**
 

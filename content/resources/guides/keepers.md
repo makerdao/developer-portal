@@ -40,7 +40,7 @@ This document assumes familiarity with Ethereum, and in-depth knowledge of the M
 
 ### [Auction Keeper](https://github.com/makerdao/auction-keeper)
 
-The `auction-keeper` enables automatic interaction with flip auctions, flap auctions, and flop auctions. You can read more about the different auction types [here](https://docs.makerdao.com/auctions/the-auctions-of-the-maker-protocol).
+The `auction-keeper` enables automatic interaction with flip auctions, flap auctions, and flop auctions. You can read more about the different auction types [here](/documentation/the-auctions-of-the-maker-protocol).
 
 This is automated by specifying bidding models that define the decision making process, such as when to bid, how high to bid etc.
 
@@ -56,7 +56,7 @@ Its purpose is to lift the hat in DSChief as well as streamline executive action
 
 ### [Cage Keeper](https://github.com/makerdao/cage-keeper)
 
-The `cage-keeper` is used to help facilitate [Emergency Shutdown](https://docs.makerdao.com/smart-contract-modules/shutdown/the-emergency-shutdown-process-for-multi-collateral-dai-mcd) of the [Maker Protocol](https://github.com/makerdao/dss).
+The `cage-keeper` is used to help facilitate [Emergency Shutdown](/documentation/the-emergency-shutdown-process-for-multi-collateral-dai-mcd) of the [Maker Protocol](https://github.com/makerdao/dss).
 
 ### [Pymaker](https://github.com/makerdao/pymaker)
 
@@ -76,7 +76,7 @@ The Simple Arbitrage Keeper executes atomic multi-trade transactions between Oas
 
 **Current Dai credit system implementation (Multi Collateral Dai):**
 
-- Docs: [https://docs.makerdao.com/](https://docs.makerdao.com/)
+- Docs: [Developer Portal Documentation](/documentation)
 
 - Source: [https://github.com/makerdao/dss](https://github.com/makerdao/dss)
 

@@ -28,7 +28,7 @@ To prevent a race-condition for Dai holders during Step 3, it's imperative that 
 
 ### Prerequisites
 
-The following section assumes familiarity with Emergency Shutdown. Good places to start is the Emergency Shutdown Module in Section 3 and Section 4 of the [Maker Protocol 101](https://docs.makerdao.com/maker-protocol-101) as well as a more thorough, [technical description](https://docs.makerdao.com/smart-contract-modules/shutdown). Functions mentioned are from the implementation contained by the `End` contract, which is [located here](https://github.com/makerdao/dss/blob/master/src/end.sol).
+The following section assumes familiarity with Emergency Shutdown. Good places to start is the Emergency Shutdown Module in Section 3 and Section 4 of the [Maker Protocol 101](/documentation/maker-protocol-101) as well as a more thorough, [technical description](/documentation/introduction-to-es-module). Functions mentioned are from the implementation contained by the `End` contract, which is [located here](https://github.com/makerdao/dss/blob/master/src/end.sol).
 
 **To be consistent with the Protocol's technical terminology for the rest of this description:**
 

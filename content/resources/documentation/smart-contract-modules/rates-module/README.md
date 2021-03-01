@@ -57,7 +57,7 @@ Detailed explanations of the two accumulation mechanisms may be found below.
 
 ### Overview
 
-Stability fee accumulation in MCD is largely an interplay between two contracts: the [Vat](https://www.notion.so/makerdao/Vat-Core-Accounting-5314995c98e544c4aaa0ebedb01988ad) (the system's central accounting ledger) and the [Jug](https://docs.makerdao.com/smart-contract-modules/rates-module/jug-detailed-documentation) (a specialized module for updating the cumulative rate), with the [Vow](https://docs.makerdao.com/smart-contract-modules/system-stabilizer-module/vow-detailed-documentation) involved only as the address to which the accumulated fees are credited.
+Stability fee accumulation in MCD is largely an interplay between two contracts: the [Vat](https://www.notion.so/makerdao/Vat-Core-Accounting-5314995c98e544c4aaa0ebedb01988ad) (the system's central accounting ledger) and the [Jug](/documentation/jug-proxy-detailed-documentation) (a specialized module for updating the cumulative rate), with the [Vow](/documentation/vow-detailed-documentation) involved only as the address to which the accumulated fees are credited.
 
 ![](/images/documentation/rates.png)
 
@@ -143,7 +143,7 @@ Depending on whether _f_ &gt; _g_ or _g_ &gt; _f_, the net value of fees accrued
 
 ### Overview
 
-DSR accumulation is very similar to stability fee accumulation. It is implemented via the [Pot](https://docs.makerdao.com/smart-contract-modules/rates-module/pot-detailed-documentation), which interacts with the Vat (and again the Vow's address is used for accounting for the Dai created). The Pot tracks normalized deposits on a per-user basis (`pie[usr]`) and maintains a cumulative interest rate parameter (`chi`). A `drip` function analogous to that of Jug is called intermittently by economic actors to trigger savings accumulation.
+DSR accumulation is very similar to stability fee accumulation. It is implemented via the [Pot](/documentation/pot-proxy-detailed-documentation), which interacts with the Vat (and again the Vow's address is used for accounting for the Dai created). The Pot tracks normalized deposits on a per-user basis (`pie[usr]`) and maintains a cumulative interest rate parameter (`chi`). A `drip` function analogous to that of Jug is called intermittently by economic actors to trigger savings accumulation.
 
 ![](/images/documentation/blank_diagram_-3-.png)
 

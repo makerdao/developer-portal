@@ -1,3 +1,5 @@
+import matter from 'gray-matter';
+import { toMarkdownString } from '@utils';
 import { GH_REPOS_ENDPOINT } from './constants';
 
 const USE_CACHE = process.env.USE_CACHE === 'true';
@@ -89,6 +91,83 @@ const getFileCommits = async (file) => {
   } else {
     return cachedCommits[path];
   }
+};
+
+/**
+ * This takes a file, searches it for old links to docs.makerdao.com and
+ * replaces those links with the correct new path using the slug.
+ * It will need to be run several times, once for each reference to the gitbook url within
+ * each file.
+ */
+export const updateGitbookUrl = async (file) => {
+  const fs = require('fs');
+  const fg = require('fast-glob');
+  const str = file.data.markdownBody;
+
+  const reg = /\(https:\/\/docs.makerdao(.*?)\)/;
+
+  // find the URL we need to change
+  const [matchedUrlUntrim] = str.match(reg);
+
+  // trim off the parens
+  const matchedUrl = matchedUrlUntrim.substring(1, matchedUrlUntrim.length - 1);
+
+  // get the filename of the new file we need to find
+  const [fileNameA] = matchedUrl.split('/').slice(-1);
+
+  // split possible anchor links
+  const [fileNameB] = fileNameA.split('#');
+
+  if (!fileNameB || fileNameB === '') return null;
+
+  // fastglob the new file to get the full path
+  let newFile = null;
+  try {
+    newFile = await fg(`content/resources/documentation/**/${fileNameB}.md`);
+  } catch (e) {
+    console.error(`Error trying to fetch file named: ${fileNameB}`, e);
+  }
+
+  if (!newFile || newFile === '' || newFile.length < 1) {
+    console.log('not found for filename:', fileNameA, 'original file:', file.fileRelativePath);
+    return null;
+  }
+
+  // read the new file & run it through gray matter to get some metadata
+  let fileContent;
+  try {
+    fileContent = fs.readFileSync(`${newFile}`, 'utf8');
+  } catch (e) {
+    console.error(`^^^Error trying to readFileSync newFile: "${newFile}"`, e);
+  }
+  const { data, content } = matter(fileContent);
+
+  // content type and slug will become the new path for our URL
+  const contentType = data.contentType;
+  const slug = data.slug;
+
+  // replace the old URL with the new URL
+  const newStr = file.data.markdownBody.replace(reg, `(/${contentType}/${slug})`);
+
+  // we delete these props because they're added dynamically and we don't need to store them at this time
+  delete file.data.frontmatter.author;
+  delete file.data.frontmatter.dateCreated;
+  delete file.data.frontmatter.lastModified;
+  delete file.data.frontmatter.contributors;
+
+  // create a markdown string to replace our initial file content with content that has the updated URLs
+  const mdStr = toMarkdownString({
+    rawFrontmatter: file.data.frontmatter,
+    rawMarkdownBody: newStr,
+  });
+
+  // Finally write the file
+  try {
+    await fs.writeFileSync(file.fileRelativePath, mdStr, function (err) {
+      if (err) return console.log(err);
+    });
+    await sleep(200);
+  } catch (error) {}
 };
 
 export default getFileCommits;

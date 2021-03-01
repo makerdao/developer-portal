@@ -63,7 +63,7 @@ parent: introduction-to-system-stabilizer-module
 
 ## 3. Key Mechanisms & Concepts
 
-The Flop Auction process begins with Maker Governance voters determining the system debt limit ([`Vow.sump`](https://docs.makerdao.com/smart-contract-modules/system-stabilizer-module/vow-detailed-documentation#auctions)). Debt Auctions are then triggered when the system has Dai debt that has passed that specified debt limit.
+The Flop Auction process begins with Maker Governance voters determining the system debt limit ([`Vow.sump`](/documentation/vow-detailed-documentation)). Debt Auctions are then triggered when the system has Dai debt that has passed that specified debt limit.
 
 In order to determine whether the system has net debt, the surplus, accrued stability fees, and debt must be reconciled. Any user can do this by sending the `heal` transaction to the system contract named [Vow.sol](https://github.com/makerdao/dss/blob/master/src/vow.sol). Provided there is sufficient debt (i.e. debt after healing &gt; `Vow.sump`), any user can send a `Vow.flop` transaction to trigger a debt auction.
 
@@ -106,4 +106,4 @@ In the context of running a keeper (more info [here](https://github.com/makerdao
 ## 5. Failure Modes (Bounds on Operating Conditions & External Risk Factors)
 
 1. `Flopper` has the potential to issue an excessively huge amount of MKR and despite the mitigation efforts (the addition of the `dump` and `pad` parameters), if `dump` is not set correctly by governance, the huge issuance of MKR could still occur.
-2. See [System Stabilizer Module Documentation](https://docs.makerdao.com/smart-contract-modules/system-stabilizer-module).
+2. See [System Stabilizer Module Documentation](/documentation/introduction-to-system-stabilizer-module).

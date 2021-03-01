@@ -74,7 +74,7 @@ In this guide you will learn what steps to take according to your user profile i
 
 # Pre-requisites
 
-- Basic knowledge of the MakerDAO: Dai and/or Vault system. [See the MCD 101 guide, especially section 1 and 2.](https://docs.makerdao.com/maker-protocol-101)
+- Basic knowledge of the MakerDAO: Dai and/or Vault system. [See the MCD 101 guide, especially section 1 and 2.](/documentation/maker-protocol-101)
 
 # Sections
 
@@ -91,7 +91,7 @@ In short, it allows Dai holders to directly claim an equivalent dollar-amount of
 - The process of initiating Emergency Shutdown is controlled by MKR voters, who can trigger it by depositing MKR into the Emergency Shutdown Module.
 - Emergency Shutdown is supposed to be triggered in the case of serious emergencies, such as long-term market irrationality, hacks, or security breaches.
 - Emergency Shutdown stops and winds down the Maker Protocol while ensuring that all users, both Dai holders and Vault users, receive the net value of assets they are entitled to.
-- Vault owners have priority over Dai holders for claiming a proportional amount of underlying collateral (currently ETH and BAT). After Emergency Shutdown has been triggered, Vault owners can free excess collateral from their vaults at [migrate.makerdao.com](https://migrate.makerdao.com/) or by using [command-line tools](https://docs.makerdao.com/clis/emergency-shutdown-es-cli).
+- Vault owners have priority over Dai holders for claiming a proportional amount of underlying collateral (currently ETH and BAT). After Emergency Shutdown has been triggered, Vault owners can free excess collateral from their vaults at [migrate.makerdao.com](https://migrate.makerdao.com/) or by using [command-line tools](/guides/emergency-shutdown-es-cli).
 - Dai holders, will need to wait for a cool down period of approximately 73 hours for the system to be settled. Once this is completed, the user will be able to, per one unit of Dai, claim a proportional amount of all underlying collateral at [migrate.makerdao.com](https://migrate.makerdao.com/). It is worth noting that the user will not be able to choose any particular collateral type over another and will instead receive an equal distribution of supported collateral per quantity of Dai that they hold.
 - Dai holders always receive the same relative amount of collateral from the system, whether they are among the first or last people to process their claims. In other words, there is no race condition.
 - Dai holders may also sell their Dai to Keepers (if available) to avoid self-management of the different collateral types in the system.
@@ -340,7 +340,7 @@ Through [our Dai.js library](https://github.com/makerdao/dai.js/tree/dev/package
 
 ### Using smart contracts
 
-If your implementation requires communicating directly with the smart contracts, then you will find all the necessary data in the [END module](https://docs.makerdao.com/smart-contract-modules/shutdown/end-detailed-documentation) of the Maker Protocol. The END contract has a parameter called [`live`](https://github.com/makerdao/dss/blob/44330065999621834b08de1edf3b962f6bbd74c6/src/end.sol#L202) which is the Emergency Shutdown flag of the system.
+If your implementation requires communicating directly with the smart contracts, then you will find all the necessary data in the [END module](/documentation/end-proxy-detailed-documentation) of the Maker Protocol. The END contract has a parameter called [`live`](https://github.com/makerdao/dss/blob/44330065999621834b08de1edf3b962f6bbd74c6/src/end.sol#L202) which is the Emergency Shutdown flag of the system.
 
 When the system is running normally, the parameter [live is equal to one](https://etherscan.io/address/0xab14d3ce3f733cacb76ec2abe7d2fcb00c99f3d5#readContract), `live = 1`. In case of an Emergency Shutdown, the live parameter will equal to zero, as `live = 0`.
 
@@ -354,7 +354,7 @@ In this guide you have learned how to act in case of an Emergency Shutdown event
 
 # Additional Resources
 
-- If you’re curious to understand in more detail how the ES module works, head towards [our documentation page](https://docs.makerdao.com/smart-contract-modules/emergency-shutdown-module).
+- If you’re curious to understand in more detail how the ES module works, head towards [our documentation page](/documentation/esm-proxy-detailed-documentation).
 - [We also have a CLI guide](https://github.com/makerdao/developerguides/blob/master/governance/Collateral%20Redemption%20during%20Emergency%20Shutdown.md) on how to do the claiming of Dai equivalent collateral or claiming excess collateral from your vault.
 
 # Help

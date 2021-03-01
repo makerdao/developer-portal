@@ -119,4 +119,4 @@ Debt Auctions are triggered when the system has Dai debt that has passed the spe
 
 This is a reverse auction, where Keepers bid on how little MKR they are willing to accept for the fixed Dai amount `lot` they have to pay at auction settlement. The auction ends when the bid duration `ttl` has passed OR when the auction duration `tau` has been reached. Once the auction is over, the Dai, paid into the system by bidders in exchange for newly minted MKR, reduces the original debt balance in the system.
 
-**To participate as a Keeper in MCD, please visit thee Auction Keeper Bot Setup Guide [here](https://docs.makerdao.com/keepers/auction-keepers/auction-keeper-bot-setup-guide).**
+**To participate as a Keeper in MCD, please visit thee Auction Keeper Bot Setup Guide [here](/documentation/auction-keeper-bot-setup-guide).**

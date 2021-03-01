@@ -40,7 +40,7 @@ root: false
 
 ## Overview
 
-This guide is intended to give an introduction on how to use test chain. The test chain has all of the Maker Protocol's smart contracts deployed on it, so you as a developer can start building your dApps on top of the Maker Protocol. In addition, you can also use [dai.js](https://docs.makerdao.com/building-on-top-of-the-maker-protocol/dai.js-wiki) library with this test chain.
+This guide is intended to give an introduction on how to use test chain. The test chain has all of the Maker Protocol's smart contracts deployed on it, so you as a developer can start building your dApps on top of the Maker Protocol. In addition, you can also use [dai.js](/documentation/introduction-to-dai-js) library with this test chain.
 
 ## Learning Objectives
 
@@ -139,9 +139,9 @@ For more options check out this [repo](https://github.com/makerdao/testchain#opt
 
 ## Interacting with Maker Protocol contracts
 
-You’ll find all the necessary Maker Protocol contract addresses in the `out/addresses-mcd.json` file in the testchain folder. You can use these addresses to develop your own tools that interact with Maker Protocol contracts. Use [dai.js](https://docs.makerdao.com/building-on-top-of-the-maker-protocol/dai.js-wiki) library or interact through the command line with [seth](https://dapp.tools/seth/). You will go be introduced to both of these methods now.
+You’ll find all the necessary Maker Protocol contract addresses in the `out/addresses-mcd.json` file in the testchain folder. You can use these addresses to develop your own tools that interact with Maker Protocol contracts. Use [dai.js](/documentation/introduction-to-dai-js) library or interact through the command line with [seth](https://dapp.tools/seth/). You will go be introduced to both of these methods now.
 
-### Open a Vault with [dai.js](https://docs.makerdao.com/building-on-top-of-the-maker-protocol/dai.js-wiki)
+### Open a Vault with [dai.js](/documentation/introduction-to-dai-js)
 
 To start from scratch:
 

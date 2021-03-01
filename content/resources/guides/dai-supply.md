@@ -83,7 +83,7 @@ As such, every ERC-20 Dai is backed by exactly one internal-Dai. We could repres
 
 #### Dai in DSR
 
-Dai locked in DSR differs from the other two types of Dai in the sense that it is not directly transferable. Dai locked in DSR is a Dai balance held inside [the `pot` contract](https://docs.makerdao.com/smart-contract-modules/rates-module/pot-detailed-documentation).
+Dai locked in DSR differs from the other two types of Dai in the sense that it is not directly transferable. Dai locked in DSR is a Dai balance held inside [the `pot` contract](/documentation/pot-proxy-detailed-documentation).
 
 When a user activates DSR on its Dai:
 
@@ -184,9 +184,9 @@ You can learn more about how rates are calculated in the Maker Protocol [in this
 
 - [DSR Integration Guide](https://github.com/makerdao/developerguides/blob/master/dai/dsr-integration-guide/dsr-integration-guide-01.md)
 - [Intro to the Rate mechanism](https://github.com/makerdao/developerguides/blob/master/mcd/intro-rate-mechanism/intro-rate-mechanism.md)
-- [MCD Docs: Rates Module](https://docs.makerdao.com/smart-contract-modules/rates-module)
-- [MCD Docs: Dai Module](https://docs.makerdao.com/smart-contract-modules/dai-module)
-- [Maker Protocol 101](https://docs.makerdao.com/maker-protocol-101)
+- [MCD Docs: Rates Module](documentation/introduction-to-rates-module)
+- [MCD Docs: Dai Module](documentation/introduction-to-dai-module)
+- [Maker Protocol 101](documentation/maker-protocol-101)
 
 ## Resources
 

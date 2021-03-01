@@ -81,7 +81,7 @@ The `vow` contract calls `kick` on `flop` and `flap` to start an auction (debt a
 
 #### Debt (**SIN) Queue**
 
-When a Vault is liquidated (`bite` - [documentation](https://docs.makerdao.com/smart-contract-modules/core-module/cat-detailed-documentation#bite-bytes32-ilk-address-urn)), the seized debt is put in a queue for an auction in a `Vow` (labeled as `sin[timestamp]`- the system debt unit). This occurs at the block timestamp of the `bite` action. It can be released for auction via `flog` (`flog` releases queued debt for the auction) once the allotted `Vow.wait` (the flop delay) time has expired.
+When a Vault is liquidated (`bite` - [documentation](/documentation/cat-detailed-documentation)), the seized debt is put in a queue for an auction in a `Vow` (labeled as `sin[timestamp]`- the system debt unit). This occurs at the block timestamp of the `bite` action. It can be released for auction via `flog` (`flog` releases queued debt for the auction) once the allotted `Vow.wait` (the flop delay) time has expired.
 
 The `Sin` is stored when it's in the debt queue, but the debt available to auction isn't explicitly stored anywhere. This is because the debt that is eligible for auction is derived by comparing the `Sin` (i.e. debt on the holding queue) with the dai balance of the `Vow` as recorded in `Vat.dai[Vow]`. For instance, if `Vat.sin[Vow]` is greater than the sum of `Vow.Sin` and the `Ash` (debt currently on auction), then the difference may be eligible for a `Flop` auction.
 

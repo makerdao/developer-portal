@@ -53,7 +53,7 @@ The `Spot` liaison between the `oracles` and the core contracts. It functions as
 
 `poke` is the only non-authenticated function in `spot`. The function takes in a `bytes32` of the `ilk` to be "poked". `poke` calls two `external` functions:
 
-1. `peek` calls the [OSM](https://docs.makerdao.com/smart-contract-modules/oracle-module/oracle-security-module-osm-detailed-documentation) for the given `ilk` and takes back in the `val` and `has` (a boolean which is false if there was an error in the `osm`). The second external call only happens if `has == true`.
+1. `peek` calls the [OSM](/documentation/osm-detailed-documentation) for the given `ilk` and takes back in the `val` and `has` (a boolean which is false if there was an error in the `osm`). The second external call only happens if `has == true`.
 2. When calculating the `spot`, the `par` is crucial to this calculation as it defines the relationship between DAI and 1 unit of value in the price. The `val` is then divided by the `par`(to get a ratio of `val` to `DAI`) and then the resulting value is divided by the `ilk.mat`. This gives us the current `spot` price for the given `ilk`.
 3. `file` is then called after calculating the `spot`. This updates the `vat` with the current liquidation price of the `ilk` which the function was called for.
 
