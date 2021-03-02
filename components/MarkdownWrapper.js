@@ -71,7 +71,18 @@ const Heading = ({ children, level }) => {
     .map((child) => child.props.value || child.props.children[0].props.value)
     .join('');
   const slug = slugify(value, { lower: true });
-  return <Heading id={slug}>{children}</Heading>;
+  return (
+    <Heading
+      sx={{
+        fontFamily: 'heading',
+        lineHeight: 'heading',
+        fontWeight: 'heading',
+      }}
+      id={slug}
+    >
+      {children}
+    </Heading>
+  );
 };
 
 const MarkdownWrapper = ({ source }) => (
