@@ -4,7 +4,9 @@ import { useRouter } from 'next/router';
 import Head from 'next/head';
 import { useBreakpointIndex } from '@theme-ui/match-media';
 import matter from 'gray-matter';
+import { useFormScreenPlugin } from 'tinacms';
 import { getGithubPreviewProps, parseMarkdown, parseJson } from 'next-tinacms-github';
+import useSubNavForm from '@hooks/useSubNavForm';
 import ResourcesLayout from '@layouts/ResourcesLayout';
 import SidebarDocumentation from '@components/SidebarDocumentation';
 import ResourcePresentation from '@components/ResourcePresentation';
@@ -25,6 +27,8 @@ const walk = (resources, array) => {
 };
 
 const DocsPage = ({ file, resources, navFile, preview, slug, toc }) => {
+  const [navData, navForm] = useSubNavForm(navFile, preview);
+  useFormScreenPlugin(navForm);
   const router = useRouter();
   const [mobile, setMobile] = useState(false);
   const bpi = useBreakpointIndex({ defaultIndex: 2 });
@@ -76,6 +80,11 @@ const DocsPage = ({ file, resources, navFile, preview, slug, toc }) => {
   ) : (
     <ResourcesLayout
       resourcePath={ContentTypes.DOCUMENTATION}
+      slug={slug}
+      toc={toc}
+      mobile={mobile}
+      router={router}
+      navData={navData}
       sidebar={
         <SidebarDocumentation
           resources={moduleResources}
@@ -85,11 +94,6 @@ const DocsPage = ({ file, resources, navFile, preview, slug, toc }) => {
           router={router}
         />
       }
-      slug={slug}
-      toc={toc}
-      navFile={navFile}
-      mobile={mobile}
-      router={router}
     >
       <Head>
         <title>{title || 'Maker Protocol Developer Portal'}</title>

@@ -4,7 +4,9 @@ import { useRouter } from 'next/router';
 import Head from 'next/head';
 import { useBreakpointIndex } from '@theme-ui/match-media';
 import matter from 'gray-matter';
+import { useFormScreenPlugin } from 'tinacms';
 import { getGithubPreviewProps, parseMarkdown, parseJson } from 'next-tinacms-github';
+import useSubNavForm from '@hooks/useSubNavForm';
 import ResourcesLayout from '@layouts/ResourcesLayout';
 import ResourcePresentation from '@components/ResourcePresentation';
 import { createToc, getResources } from '@utils';
@@ -12,6 +14,8 @@ import useStore from '@stores/store';
 import { ContentTypes } from '@utils/constants';
 
 const SecurityPage = ({ file, navFile, preview, slug, toc }) => {
+  const [navData, navForm] = useSubNavForm(navFile, preview);
+  useFormScreenPlugin(navForm);
   const router = useRouter();
   const [mobile, setMobile] = useState(false);
   const bpi = useBreakpointIndex({ defaultIndex: 2 });
@@ -42,9 +46,9 @@ const SecurityPage = ({ file, navFile, preview, slug, toc }) => {
       resourcePath={ContentTypes.SECURITY}
       slug={slug}
       toc={toc}
-      navFile={navFile}
       mobile={mobile}
       router={router}
+      navData={navData}
     >
       <Head>
         <title>{title || 'Maker Protocol Developer Portal'}</title>

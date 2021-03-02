@@ -3,8 +3,6 @@ import { jsx, Box, Grid, Container } from 'theme-ui';
 import SingleLayout from '@layouts/SingleLayout';
 import GuidesLayout from '@layouts/GuidesLayout';
 import Infobar from '@components/Infobar';
-import useSubNavForm from '@hooks/useSubNavForm';
-import { useFormScreenPlugin } from 'tinacms';
 import SubNav from '@components/SubNav';
 import { ContentTypes } from '@utils/constants';
 
@@ -13,15 +11,11 @@ const ResourcesLayout = ({
   sidebar,
   slug,
   toc,
-  navFile,
-  preview,
+  navData,
   mobile,
   router,
   children,
 }) => {
-  const [navData, navForm] = useSubNavForm(navFile, preview);
-  useFormScreenPlugin(navForm);
-
   return resourcePath === ContentTypes.DOCUMENTATION ? (
     <SingleLayout
       mobile={mobile}

@@ -4,7 +4,9 @@ import { useRouter } from 'next/router';
 import Head from 'next/head';
 import { useBreakpointIndex } from '@theme-ui/match-media';
 import matter from 'gray-matter';
+import { useFormScreenPlugin } from 'tinacms';
 import { getGithubPreviewProps, parseMarkdown, parseJson } from 'next-tinacms-github';
+import useSubNavForm from '@hooks/useSubNavForm';
 import ResourcesLayout from '@layouts/ResourcesLayout';
 import SidebarGuides from '@components/SidebarGuides';
 import ResourcePresentation from '@components/ResourcePresentation';
@@ -12,6 +14,8 @@ import { createToc, getResources } from '@utils';
 import { ContentTypes } from '@utils/constants';
 
 const GuidesPage = ({ file, resources, navFile, preview, slug, toc }) => {
+  const [navData, navForm] = useSubNavForm(navFile, preview);
+  useFormScreenPlugin(navForm);
   const router = useRouter();
   const [mobile, setMobile] = useState(false);
   const bpi = useBreakpointIndex({ defaultIndex: 2 });
@@ -41,6 +45,11 @@ const GuidesPage = ({ file, resources, navFile, preview, slug, toc }) => {
   ) : (
     <ResourcesLayout
       resourcePath={ContentTypes.GUIDES}
+      slug={slug}
+      toc={toc}
+      mobile={mobile}
+      router={router}
+      navData={navData}
       sidebar={
         <SidebarGuides
           resources={moduleResources}
@@ -48,11 +57,6 @@ const GuidesPage = ({ file, resources, navFile, preview, slug, toc }) => {
           activeSlug={slug}
         />
       }
-      slug={slug}
-      toc={toc}
-      navFile={navFile}
-      mobile={mobile}
-      router={router}
     >
       <Head>
         <title>{title || 'Maker Protocol Developer Portal'}</title>
