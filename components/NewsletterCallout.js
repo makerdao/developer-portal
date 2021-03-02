@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { Container, Button, jsx, Input, Heading, Text, Grid, Flex, Card } from 'theme-ui';
 import { Icon } from '@makerdao/dai-ui-icons';
-import { InlineText } from 'react-tinacms-inline';
+import { InlineText, InlineTextarea } from 'react-tinacms-inline';
 import useEmailSubscribe from '../hooks/useEmailSubscribe';
 
 const NewsletterCallout = () => {
@@ -14,10 +14,10 @@ const NewsletterCallout = () => {
         </Heading>
         <Flex sx={{ flexDirection: 'column', justifyContent: 'center' }}>
           <Text variant="plainText" sx={{ alignSelf: 'center' }}>
-            <InlineText name="devUpdatesSubtext1" />
+            <InlineTextarea name="devUpdatesSubtext1" />
           </Text>
           <Text sx={{ alignSelf: 'center', pb: 3 }} variant="plainText">
-            <InlineText name="devUpdatesSubtext2" />
+            <InlineTextarea name="devUpdatesSubtext2" />
           </Text>
         </Flex>
         {success ? (

@@ -4,7 +4,7 @@ import { InlineTextarea } from 'react-tinacms-inline';
 import { Icon } from '@makerdao/dai-ui-icons';
 import { GITHUB_EDIT_LINK } from '@utils/constants';
 
-const AboutThisSite = () => {
+const AboutThisSite = ({ preview }) => {
   return (
     <Container>
       <Grid columns={[1, 2]}>
@@ -28,7 +28,8 @@ const AboutThisSite = () => {
           sx={{
             py: [0, 4],
             color: 'onBackgroundMuted',
-            columns: '2 200px',
+            columns: preview ? undefined : '2 200px',
+            width: '100%',
           }}
         >
           <InlineTextarea name="aboutThisSiteSubtext" />

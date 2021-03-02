@@ -84,7 +84,7 @@ const Page = ({ file, guides, documentation, bannerFile, featGuidesFile, preview
           </Grid>
           <SecurityFeatures />
           <CommunityCta mobile={mobile} />
-          <AboutThisSite />
+          <AboutThisSite preview={preview} />
           <NewsletterCallout />
         </Grid>
       </InlineForm>
