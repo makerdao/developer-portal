@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import { Container, Button, jsx, Input, Heading, Text, Grid, Flex, Card } from 'theme-ui';
 import { Icon } from '@makerdao/dai-ui-icons';
+import { InlineText } from 'react-tinacms-inline';
 import useEmailSubscribe from '../hooks/useEmailSubscribe';
 
 const NewsletterCallout = () => {
@@ -13,10 +14,10 @@ const NewsletterCallout = () => {
         </Heading>
         <Flex sx={{ flexDirection: 'column', justifyContent: 'center' }}>
           <Text variant="plainText" sx={{ alignSelf: 'center' }}>
-            Stay updated with the latest developments from the Maker community.
+            <InlineText name="devUpdatesSubtext1" />
           </Text>
           <Text sx={{ alignSelf: 'center', pb: 3 }} variant="plainText">
-            News, stories, announcements, tips and code snippets.
+            <InlineText name="devUpdatesSubtext2" />
           </Text>
         </Flex>
         {success ? (

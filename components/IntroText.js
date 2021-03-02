@@ -2,7 +2,7 @@
 import { Container, jsx, Heading, Text, Flex, Grid } from 'theme-ui';
 import Link from 'next/link';
 import EmailSignup from '@components/EmailSignup';
-import { InlineTextarea } from 'react-tinacms-inline';
+import { InlineTextarea, InlineText } from 'react-tinacms-inline';
 import { Icon } from '@makerdao/dai-ui-icons';
 
 const IntroText = ({ mobile }) => {
@@ -53,9 +53,8 @@ const IntroText = ({ mobile }) => {
           </Link>
         </Flex>
         <Flex sx={{ px: 4, flexDirection: 'column' }}>
-          <Heading sx={{ pb: 3 }}>
-            Want Maker dev updates <br />
-            dripping into your inbox?
+          <Heading sx={{ pb: 3, pr: [0, 0, 6] }}>
+            <InlineText name="devUpdates1" />
           </Heading>
           <EmailSignup sx={{ fontSize: 5 }} placeholder="We saved a slot for your email" />
         </Flex>

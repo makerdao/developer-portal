@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx, Card, Heading, Text, Flex, Grid, Container, Link as ThemeLink } from 'theme-ui';
 import { Icon } from '@makerdao/dai-ui-icons';
-import { InlineTextarea } from 'react-tinacms-inline';
+import { InlineTextarea, InlineText } from 'react-tinacms-inline';
 
 const CommunitySection = ({ mobile }) => {
   const ctaContent = [
@@ -71,7 +71,9 @@ const CommunitySection = ({ mobile }) => {
         />
         <Grid sx={{ p: 4, rowGap: 4 }}>
           <Flex sx={{ justifyContent: 'center' }}>
-            <Heading variant="largeHeading">Join the Developer Community</Heading>
+            <Heading variant="largeHeading">
+              <InlineText name="joinUs" />
+            </Heading>
           </Flex>
 
           <Grid columns={[1, 3]} sx={{ py: 4 }}>
