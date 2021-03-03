@@ -197,7 +197,17 @@ const Feedback = ({ route, cms, mobile }) => {
             <ThemeLink href={'https://chat.makerdao.com/channel/dev'} target="_blank">
               <Flex sx={{ alignItems: 'center' }}>
                 <Icon sx={{ mr: 2 }} color="primary" name="chat"></Icon>
-                <Text sx={{ color: 'text', cursor: 'pointer' }}>chat.makerdao.com</Text>
+                <Text
+                  sx={{
+                    color: 'text',
+                    cursor: 'pointer',
+                    '&:hover': {
+                      color: 'primaryEmphasis',
+                    },
+                  }}
+                >
+                  chat.makerdao.com
+                </Text>
               </Flex>
             </ThemeLink>
           </Flex>

@@ -61,6 +61,9 @@ const GuideList = ({ guides, title, path }) => {
                   border: 'light',
                   borderColor: 'muted',
                   borderRadius: 'small',
+                  '&:hover': {
+                    borderColor: 'primaryEmphasis',
+                  },
                   p: 3,
                 }}
               />

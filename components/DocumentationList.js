@@ -37,31 +37,34 @@ const DocumentationList = () => {
       >
         {docLinks.map(({ name, url }) => {
           return (
-            <Card
-              key={name}
-              sx={{
-                width: 180,
-                border: 'light',
-                bg: 'background',
-                borderColor: 'muted',
-              }}
-            >
-              <Flex
+            <Link key={name} href={`${url}`} passHref>
+              <Card
                 sx={{
-                  flexDirection: 'column',
-                  justifyContent: 'space-between',
-                  height: '100%',
+                  width: 180,
+                  border: 'light',
+                  bg: 'background',
+                  borderColor: 'muted',
+                  cursor: 'pointer',
+                  '&:hover': {
+                    borderColor: 'primaryEmphasis',
+                  },
                 }}
               >
-                <Heading>{name}</Heading>
-                <Link href={`${url}`} passHref>
+                <Flex
+                  sx={{
+                    flexDirection: 'column',
+                    justifyContent: 'space-between',
+                    height: '100%',
+                  }}
+                >
+                  <Heading>{name}</Heading>
                   <Flex sx={{ alignItems: 'center' }}>
                     <Icon sx={{ mr: 2 }} color="primary" name={'arrow_right'}></Icon>
                     <ThemeLink sx={{ color: 'text', cursor: 'pointer' }}>View Docs</ThemeLink>
                   </Flex>
-                </Link>
-              </Flex>
-            </Card>
+                </Flex>
+              </Card>
+            </Link>
           );
         })}
       </Grid>
