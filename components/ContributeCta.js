@@ -8,17 +8,27 @@ const Contributors = ({ file }) => {
   return (
     <Flex
       sx={{
-        py: [3, 3, 3, 4],
-        px: [3, 3, 3, 5],
+        py: 3,
+        px: 3,
         border: 'light',
         borderColor: 'muted',
         borderRadius: 'small',
         width: '100%',
       }}
     >
+      <Icon
+        name="edit"
+        sx={{ mr: 2, mb: 'auto', pt: 1 }}
+        color="primary"
+        size="auto"
+        height="24px"
+        width="24px"
+      ></Icon>
       <Flex sx={{ flexDirection: 'column', width: '100%' }}>
         <Heading>Edit this page</Heading>
-        <Heading sx={{ width: '100%' }}>Make the community proud with your contributions</Heading>
+        <Heading sx={{ width: '100%', color: 'onBackgroundMuted' }}>
+          Make the community proud with your contributions
+        </Heading>
         <Grid columns={[1, '1fr 1fr auto']} sx={{ width: '100%' }}>
           <Flex
             sx={{
