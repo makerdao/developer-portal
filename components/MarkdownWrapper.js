@@ -2,7 +2,7 @@
 import { createElement } from 'react';
 import { BaseStyles } from 'theme-ui';
 import ReactMarkdown from 'react-markdown';
-import { jsx, Image, Text, Flex, Grid } from 'theme-ui';
+import { jsx, Image, Text, Flex, Grid, Link as ThemeLink } from 'theme-ui';
 import slugify from 'slugify';
 import CodeContainer from '@components/CodeContainer';
 const $ = createElement;
@@ -85,6 +85,8 @@ const Heading = ({ children, level }) => {
   );
 };
 
+const Link = ({ children }) => <ThemeLink sx={{ color: 'primary' }}>{children}</ThemeLink>;
+
 const MarkdownWrapper = ({ source }) => (
   <BaseStyles>
     <ReactMarkdown
@@ -95,6 +97,7 @@ const MarkdownWrapper = ({ source }) => (
         image: ImageWrapper,
         list: List,
         listItem: ListItem,
+        link: Link,
       }}
     />
   </BaseStyles>

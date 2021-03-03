@@ -83,7 +83,7 @@ const CommunitySection = ({ mobile }) => {
                   <Heading sx={{ color: 'background' }}>{title}</Heading>
                   <ThemeLink sx={{ alignSelf: 'end' }} href={link} target="_blank">
                     <Flex sx={{ alignItems: 'center' }}>
-                      <Icon name="increase"></Icon>
+                      <Icon name="increase" color="primary"></Icon>
                       <Text variant="largeText" sx={{ color: 'background', px: 2 }}>
                         {text}
                       </Text>

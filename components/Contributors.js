@@ -21,7 +21,17 @@ const LineItem = ({ date, author, avatar, mobile }) => {
           <Flex sx={{ alignItems: 'center' }}>
             <Avatar sx={{ mx: 2, minWidth: 36, minHeight: 36 }} src={avatar} />
             <Icon sx={{ ml: 'auto' }} color="primary" name="increase"></Icon>
-            <Text sx={{ color: 'text', pl: 2 }}>{author}</Text>
+            <Text
+              sx={{
+                color: 'text',
+                pl: 2,
+                '&:hover': {
+                  color: 'primaryEmphasis',
+                },
+              }}
+            >
+              {author}
+            </Text>
           </Flex>
         </ThemeLink>
       </Flex>
@@ -68,7 +78,17 @@ const Contributors = ({ contributors = [], mobile }) => {
                     src={newest?.avatar}
                   />
                   <Icon sx={{ ml: 'auto' }} color="primary" name="increase"></Icon>
-                  <Text sx={{ color: 'text', pl: 2 }}>{newest?.author}</Text>
+                  <Text
+                    sx={{
+                      color: 'text',
+                      pl: 2,
+                      '&:hover': {
+                        color: 'primaryEmphasis',
+                      },
+                    }}
+                  >
+                    {newest?.author}
+                  </Text>
                 </Flex>
               </ThemeLink>
             </Flex>
@@ -109,7 +129,15 @@ const Contributors = ({ contributors = [], mobile }) => {
               color="primary"
               name={open ? 'arrow_up_thin' : 'arrow_down_thin'}
             ></Icon>
-            <Text sx={{ pl: 2 }}>{`${open ? 'Hide' : 'Show'} All Contributors`}</Text>
+            <Text
+              sx={{
+                pl: 2,
+                cursor: 'pointer',
+                '&:hover': {
+                  color: 'primaryEmphasis',
+                },
+              }}
+            >{`${open ? 'Hide' : 'Show'} All Contributors`}</Text>
           </Flex>
           {open && !mobile && (
             <Flex sx={{ flexDirection: 'column', alignItems: 'flex-end', pl: 5 }}>

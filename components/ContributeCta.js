@@ -37,7 +37,17 @@ const Contributors = ({ file }) => {
               <ThemeLink href={`${GITHUB_EDIT_LINK}${file.fileRelativePath}`} target="_blank">
                 <Flex sx={{ alignItems: 'center', mt: 2, pl: 3 }}>
                   <Icon sx={{ mr: 2 }} color="primary" name="github"></Icon>
-                  <Text sx={{ color: 'text', cursor: 'pointer' }}>Edit on Github</Text>
+                  <Text
+                    sx={{
+                      color: 'text',
+                      cursor: 'pointer',
+                      '&:hover': {
+                        color: 'primaryEmphasis',
+                      },
+                    }}
+                  >
+                    Edit on Github
+                  </Text>
                 </Flex>
               </ThemeLink>
             </Flex>
@@ -50,7 +60,17 @@ const Contributors = ({ file }) => {
               <ThemeLink href={'https://chat.makerdao.com/channel/dev'} target="_blank">
                 <Flex sx={{ alignItems: 'center', mt: 2 }}>
                   <Icon sx={{ mr: 2 }} color="primary" name="chat"></Icon>
-                  <Text sx={{ color: 'text', cursor: 'pointer' }}>chat.makerdao.com</Text>
+                  <Text
+                    sx={{
+                      color: 'text',
+                      cursor: 'pointer',
+                      '&:hover': {
+                        color: 'primaryEmphasis',
+                      },
+                    }}
+                  >
+                    chat.makerdao.com
+                  </Text>
                 </Flex>
               </ThemeLink>
             </Flex>

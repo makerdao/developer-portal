@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, Container, Heading, Text, Flex, Grid } from 'theme-ui';
+import { jsx, Container, Heading, Text, Flex, Grid, Link as ThemeLink } from 'theme-ui';
 import Link from 'next/link';
 import { Icon } from '@makerdao/dai-ui-icons';
 import { InlineTextarea } from 'react-tinacms-inline';
@@ -38,7 +38,7 @@ const SecurityFeatures = () => {
               <Link href="/security">
                 <Flex sx={{ alignItems: 'center' }}>
                   <Icon sx={{ mr: 2 }} color="primary" name={'arrow_right'}></Icon>
-                  <Text sx={{ cursor: 'pointer' }}>Learn more about Security</Text>
+                  <ThemeLink>Learn more about Security</ThemeLink>
                 </Flex>
               </Link>
             </Flex>

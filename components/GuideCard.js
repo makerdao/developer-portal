@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, Heading, Text, Box, Flex, Grid } from 'theme-ui';
+import { jsx, Heading, Text, Box, Flex, Grid, Link as ThemeLink } from 'theme-ui';
 import Link from 'next/link';
 import { Icon } from '@makerdao/dai-ui-icons';
 
@@ -37,7 +37,7 @@ const GuideCard = ({ title, link, linkText, description, icon, tags, ...props })
           <TagList tags={tags} />
           <Flex sx={{ alignItems: 'center', alignSelf: 'end' }}>
             <Icon name="arrow_right" color="primary" mr={2} />
-            <Text sx={{ cursor: 'pointer' }}>{linkText}</Text>
+            <ThemeLink>{linkText}</ThemeLink>
           </Flex>
         </Grid>
       </Link>

@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, Container, Heading, Text, Grid, Flex } from 'theme-ui';
+import { jsx, Container, Heading, Text, Grid, Flex, Link as ThemeLink } from 'theme-ui';
 import { Icon } from '@makerdao/dai-ui-icons';
 import { InlineTextarea } from 'react-tinacms-inline';
 import Link from 'next/link';
@@ -94,7 +94,7 @@ const LibrariesSdks = () => {
             <Link href="/documentation/introduction-to-dai-js">
               <Flex sx={{ alignItems: 'center', py: [3, 3, 0] }}>
                 <Icon sx={{ mr: 2 }} color="primary" name={'arrow_right'}></Icon>
-                <Text sx={{ cursor: 'pointer' }}>View Dai.js docs</Text>
+                <ThemeLink>View Dai.js docs</ThemeLink>
               </Flex>
             </Link>
           </Flex>
@@ -121,7 +121,7 @@ const LibrariesSdks = () => {
             <Link href="/documentation/pymaker">
               <Flex sx={{ alignItems: 'center', py: [3, 3, 4] }}>
                 <Icon sx={{ mr: 2 }} color="primary" name={'arrow_right'}></Icon>
-                <Text sx={{ cursor: 'pointer' }}>View pyMaker docs</Text>
+                <ThemeLink>View pyMaker docs</ThemeLink>
               </Flex>
             </Link>
           </Flex>
@@ -154,7 +154,7 @@ const LibrariesSdks = () => {
           <Link href="/documentation/introduction-to-auction-keepers">
             <Flex sx={{ alignItems: 'center' }}>
               <Icon sx={{ mr: 2 }} color="primary" name={'arrow_right'}></Icon>
-              <Text sx={{ cursor: 'pointer' }}>Learn more about Maker Keepers</Text>
+              <ThemeLink>Learn more about Maker Keepers</ThemeLink>
             </Flex>
           </Link>
         </Flex>
@@ -177,7 +177,7 @@ const LibrariesSdks = () => {
           <Link href="/documentation/mcd-cli">
             <Flex sx={{ alignItems: 'center', mt: 'auto' }}>
               <Icon sx={{ mr: 2 }} color="primary" name={'arrow_right'}></Icon>
-              <Text sx={{ cursor: 'pointer' }}>Learn more about the CLIs</Text>
+              <ThemeLink>Learn more about the CLIs</ThemeLink>
             </Flex>
           </Link>
         </Flex>

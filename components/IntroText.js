@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { Container, jsx, Heading, Text, Flex, Grid } from 'theme-ui';
+import { Container, jsx, Heading, Text, Flex, Grid, Link as ThemeLink } from 'theme-ui';
 import Link from 'next/link';
 import EmailSignup from '@components/EmailSignup';
 import { InlineTextarea, InlineText } from 'react-tinacms-inline';
@@ -48,7 +48,7 @@ const IntroText = ({ mobile }) => {
           <Link href="/documentation/introduction-to-the-maker-protocol">
             <Flex sx={{ alignItems: 'center', pb: [5, 0] }}>
               <Icon sx={{ mr: 2 }} color="primary" name={'arrow_right'}></Icon>
-              <Text sx={{ cursor: 'pointer' }}>Learn more about the Maker Protocol.</Text>
+              <ThemeLink>Learn more about the Maker Protocol.</ThemeLink>
             </Flex>
           </Link>
         </Flex>

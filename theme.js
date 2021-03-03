@@ -177,7 +177,7 @@ const theme = {
     },
 
     a: {
-      color: 'primary',
+      cursor: 'pointer',
       textDecoration: 'none',
       '&:hover': {
         color: 'primaryEmphasis',
