@@ -12,24 +12,26 @@ const Banners = ({ bannerData }) => {
     <Banner
       content={
         <Container>
-          <ThemeLink href={changelog.url} target="_blank">
+          <ThemeLink
+            sx={{
+              fontWeight: 'body',
+              color: 'onBackgroundMuted',
+              fontSize: 2,
+              '& strong': { color: 'text', px: 1, fontWeight: 'body' },
+              '& p': {
+                m: 0,
+              },
+            }}
+            href={changelog.url}
+            target="_blank"
+          >
             <Flex
               sx={{
                 width: '100%',
                 justifyContent: 'space-between',
               }}
             >
-              <Text
-                sx={{
-                  fontWeight: 'body',
-                  color: 'onBackgroundMuted',
-                  fontSize: 2,
-                  '& strong': { color: 'text', px: 1, fontWeight: 'body' },
-                  '& p': {
-                    m: 0,
-                  },
-                }}
-              >
+              <Text>
                 <ReactMarkdown source={changelog.text} />
               </Text>
               <Flex sx={{ alignItems: 'center', justifyContent: 'flex-end', width: '33%' }}>
