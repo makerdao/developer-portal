@@ -10,6 +10,7 @@ const theme = {
   colors: {
     ...makerTheme.colors,
     textMuted: '#7E7E88',
+    onBackgroundMuted: '#434358',
 
     modes: {
       dark: {
