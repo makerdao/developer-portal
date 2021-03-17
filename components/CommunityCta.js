@@ -43,7 +43,7 @@ const CommunitySection = ({ mobile }) => {
           sx={{
             position: 'absolute',
             alignSelf: 'flex-end',
-            right: '-20px',
+            right: '5px',
             top: '-120px',
             transform: mobile ? 'scale(0.5, 0.5)' : undefined,
           }}
