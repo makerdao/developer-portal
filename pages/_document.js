@@ -2,7 +2,8 @@ import React from 'react';
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 import { InitializeColorMode } from 'theme-ui';
 import { ServerStyleSheet } from 'styled-components';
-import { GA_TRACKING_ID } from '../utils/gtag';
+
+const GA_TRACKING_ID = process.env.GA_TRACKING_ID;
 
 const TITLE = 'Maker Protocol Developer Portal';
 const DESCRIPTION = 'Resources for developing on the Maker Protocol';
