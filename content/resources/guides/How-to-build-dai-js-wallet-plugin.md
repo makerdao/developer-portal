@@ -85,7 +85,7 @@ This is the main pattern for how to integrate a third party wallet into the Dai.
 
 ## Examples of partners integrating with the plugin
 
-![](/images/\[object Object\])
+![](/images/guides/dai_venn.png)
 
 There are different levels of complexity with which a third wallet provider could integrate with the Dai.js SDK. The level of complexity depends on the compatibility of this third party wallet provider with the SDK. The more compatible the easier it is to integrate.
 
