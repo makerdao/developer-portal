@@ -288,4 +288,4 @@ For any help, you can reach us at:
 * [#dev](https://chat.makerdao.com/channel/dev) chat in [chat.makerdao.com](https://chat.makerdao.com/channel/dev).
 * Contact Integrations Team: [integrate@makerdao.com](mailto:integrate@makerdao.com)
 
-![](/images/\[object Object\])
+![](/multi-collateral-dai-dai-logo.png)
