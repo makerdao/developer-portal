@@ -18,10 +18,10 @@ const ResourceEditor = ({ file, preview, cms }) => {
     <InlineForm form={form}>
       <InlineWysiwyg
         name="markdownBody"
-        sticky={'calc(var(--tina-toolbar-height) + var(--tina-padding-small))'}
+        sticky="62px"
         imageProps={{
-          directory: 'public/images/',
-          parse: (filename) => '/images/' + filename,
+          uploadDir: () => '/images/',
+          parse: ({ id }) => id,
           previewSrc(src) {
             return cms.media.previewSrc(src);
           },
