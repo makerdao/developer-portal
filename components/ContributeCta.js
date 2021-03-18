@@ -43,7 +43,7 @@ const Contributors = ({ file }) => {
               or directly on Github.
             </Text>
             <Flex sx={{ flexDirection: 'column', pt: 4 }}>
-              <EditLink enterText="Edit With TinaCMS" />
+              <EditLink enterText="Edit This Page" sx={{ px: 3 }} />
               <ThemeLink href={`${GITHUB_EDIT_LINK}${file.fileRelativePath}`} target="_blank">
                 <Flex sx={{ alignItems: 'center', mt: 2, pl: 3 }}>
                   <Icon sx={{ mr: 2 }} color="primary" name="github"></Icon>
