@@ -85,8 +85,6 @@ This is the main pattern for how to integrate a third party wallet into the Dai.
 
 ## Examples of partners integrating with the plugin
 
-![](/images/guides/dai_venn.png)
-
 There are different levels of complexity with which a third wallet provider could integrate with the Dai.js SDK. The level of complexity depends on the compatibility of this third party wallet provider with the SDK. The more compatible the easier it is to integrate.
 
 The compatibility depends on the web3 provider engine. Dai.js mostly works with the [Hooked Wallet Provider](https://github.com/MetaMask/web3-provider-engine/blob/master/subproviders/hooked-wallet.js) engine from Metamask. Below, you’ll see three examples of web3 engine providers that are and aren’t compatible with the SDK and how they have been integrated. Tier 1 is the easiest example, while tier 2 and 3 grow in complexity.
@@ -180,8 +178,6 @@ export default function (maker) {
 ```
 
 In this example, the ledger subprovider is also compatible with the Dai.js SDK. Here, the code logic seems larger but it does the same function as compared to the WalletConnect. All the extra code is for setting up the Ledger provider to extract the user’s address and pass it down in the return object.
-
-![](/images/\[object Object\])
 
 ### Tier 3
 
@@ -287,5 +283,3 @@ For any help, you can reach us at:
 
 * [#dev](https://chat.makerdao.com/channel/dev) chat in [chat.makerdao.com](https://chat.makerdao.com/channel/dev).
 * Contact Integrations Team: [integrate@makerdao.com](mailto:integrate@makerdao.com)
-
-![](/multi-collateral-dai-dai-logo.png)

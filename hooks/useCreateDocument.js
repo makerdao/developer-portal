@@ -110,7 +110,8 @@ const useCreateDocument = (resources) => {
             cms.alerts.success(`Document committed successfully to branch: ${github.branchName}.`);
           })
           .catch((e) => {
-            cms.alerts.error(`Error committing document: ${e.message()}`);
+            cms.alerts.error('Error committing document');
+            console.error(`Error committing document: ${e}`);
             return { [FORM_ERROR]: e };
           });
       },
