@@ -85,7 +85,11 @@ const Heading = ({ children, level }) => {
   );
 };
 
-const Link = ({ children }) => <ThemeLink sx={{ color: 'primary' }}>{children}</ThemeLink>;
+const Link = ({ href, children }) => (
+  <ThemeLink href={href} sx={{ color: 'primary' }}>
+    {children}
+  </ThemeLink>
+);
 
 const MarkdownWrapper = ({ source }) => (
   <BaseStyles>

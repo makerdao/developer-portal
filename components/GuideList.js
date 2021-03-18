@@ -7,7 +7,7 @@ import GuideCard from '@components/GuideCard';
 const GuideList = ({ guides, title, path }) => {
   return (
     <Flex>
-      <Box sx={{}}>
+      <Box>
         <Container>
           <Flex
             sx={{
