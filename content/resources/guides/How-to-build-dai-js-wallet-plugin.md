@@ -13,26 +13,25 @@ slug: how-to-build-a-dai-js-wallet-plugin
 contentType: guides
 root: false
 ---
-
 # How to build a Dai.js wallet plugin
 
 **Level:** Intermediate  
 **Estimated Time:** 30 - 45 min
 
-- [How to build a Dai.js wallet plugin](#how-to-build-a-daijs-wallet-plugin)
-  - [Overview](#overview)
-  - [Learning Objectives](#learning-objectives)
-  - [Pre-requisites](#pre-requisites)
-  - [Sections](#sections)
-    - [Understand Dai.js wallet provider requirements](#understand-daijs-wallet-provider-requirements)
-  - [Examples of partners integrating with the plugin](#examples-of-partners-integrating-with-the-plugin)
-    - [Tier 1](#tier-1)
-    - [Tier 2](#tier-2)
-    - [Tier 3](#tier-3)
-  - [Front-End Dai.js plugin implementation](#front-end-daijs-plugin-implementation)
-  - [Summary](#summary)
-  - [Additional Resources](#additional-resources)
-  - [Help](#help)
+* [How to build a Dai.js wallet plugin](#how-to-build-a-daijs-wallet-plugin)
+  * [Overview](#overview)
+  * [Learning Objectives](#learning-objectives)
+  * [Pre-requisites](#pre-requisites)
+  * [Sections](#sections)
+    * [Understand Dai.js wallet provider requirements](#understand-daijs-wallet-provider-requirements)
+  * [Examples of partners integrating with the plugin](#examples-of-partners-integrating-with-the-plugin)
+    * [Tier 1](#tier-1)
+    * [Tier 2](#tier-2)
+    * [Tier 3](#tier-3)
+  * [Front-End Dai.js plugin implementation](#front-end-daijs-plugin-implementation)
+  * [Summary](#summary)
+  * [Additional Resources](#additional-resources)
+  * [Help](#help)
 
 ## Overview
 
@@ -42,17 +41,17 @@ In this guide, we’ll walk you through building your own Dai.js plugin that int
 
 Here you’ll learn how to integrate your wallet into the Dai.js SDK by creating a Dai.js wallet plugin.
 
-- Understand Dai.js wallet provider requirements
-- Example of partners integrating with the plugin
-- Front-End Dai.js plugin implementation
+* Understand Dai.js wallet provider requirements
+* Example of partners integrating with the plugin
+* Front-End Dai.js plugin implementation
 
 ## Pre-requisites
 
 Knowledge in:
 
-- [Web3 wallets](https://ethereum.org/use/#3-what-is-a-wallet-and-which-one-should-i-use)
-- Javascript
-- [Dai.js](/documentation/introduction-to-dai-js)
+* [Web3 wallets](https://ethereum.org/use/#3-what-is-a-wallet-and-which-one-should-i-use)
+* Javascript
+* [Dai.js](/documentation/introduction-to-dai-js)
 
 ## Sections
 
@@ -85,6 +84,8 @@ Anytime the user will choose your account type to initialise the wallet from the
 This is the main pattern for how to integrate a third party wallet into the Dai.js SDK. Next, you will see some examples of how different partners have integrated.
 
 ## Examples of partners integrating with the plugin
+
+![](/images/\[object Object\])
 
 There are different levels of complexity with which a third wallet provider could integrate with the Dai.js SDK. The level of complexity depends on the compatibility of this third party wallet provider with the SDK. The more compatible the easier it is to integrate.
 
@@ -179,6 +180,8 @@ export default function (maker) {
 ```
 
 In this example, the ledger subprovider is also compatible with the Dai.js SDK. Here, the code logic seems larger but it does the same function as compared to the WalletConnect. All the extra code is for setting up the Ledger provider to extract the user’s address and pass it down in the return object.
+
+![](/images/\[object Object\])
 
 ### Tier 3
 
@@ -282,5 +285,7 @@ If you want to dive deeper into the web3 providers, have a look at Metamask’s 
 
 For any help, you can reach us at:
 
-- [#dev](https://chat.makerdao.com/channel/dev) chat in [chat.makerdao.com](https://chat.makerdao.com/channel/dev).
-- Contact Integrations Team: <integrate@makerdao.com>
+* [#dev](https://chat.makerdao.com/channel/dev) chat in [chat.makerdao.com](https://chat.makerdao.com/channel/dev).
+* Contact Integrations Team: [integrate@makerdao.com](mailto:integrate@makerdao.com)
+
+![](/images/\[object Object\])
