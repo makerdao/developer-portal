@@ -2,15 +2,15 @@
 import { jsx, Text, Flex, Heading, Box } from 'theme-ui';
 import Link from 'next/link';
 import { Icon } from '@makerdao/dai-ui-icons';
+import { InlineText } from 'react-tinacms-inline';
 import { ContentTypes } from '../utils/constants';
 
 const RelatedResources = ({ resources = [], contentType, show = 3 }) => {
-  const nextType =
-    contentType === ContentTypes.GUIDES ? ContentTypes.DOCUMENTATION : ContentTypes.GUIDES;
+  const nextType = contentType === ContentTypes.GUIDES ? 'relatedGuides' : 'relatedDocs';
   return (
     <Box>
       <Heading variant="mediumHeading" sx={{ my: 4 }}>
-        Related {nextType}
+        <InlineText name={nextType} />
       </Heading>
       {resources.slice(0, show).map(({ data }, i) => {
         return (

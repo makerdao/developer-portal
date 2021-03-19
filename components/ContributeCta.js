@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import { jsx, Text, Flex, Link as ThemeLink, Grid, Heading } from 'theme-ui';
 import { Icon } from '@makerdao/dai-ui-icons';
+import { InlineText, InlineTextarea } from 'react-tinacms-inline';
 import EditLink from '@components/EditLink';
 import { GITHUB_EDIT_LINK } from '@utils/constants';
 
@@ -25,9 +26,11 @@ const Contributors = ({ file }) => {
         width="24px"
       ></Icon>
       <Flex sx={{ flexDirection: 'column', width: '100%' }}>
-        <Heading>Edit this page</Heading>
+        <Heading>
+          <InlineText name="edit" />
+        </Heading>
         <Heading sx={{ width: '100%', color: 'onBackgroundMuted' }}>
-          Make the community proud with your contributions
+          <InlineText name="editSub" />
         </Heading>
         <Grid columns={[1, '1fr 1fr auto']} sx={{ width: '100%' }}>
           <Flex
@@ -39,8 +42,7 @@ const Contributors = ({ file }) => {
             }}
           >
             <Text>
-              Expert on this topic? If you want to contribute, you can edit this page using Tina CMS
-              or directly on Github.
+              <InlineTextarea name="editLCol" />
             </Text>
             <Flex sx={{ flexDirection: 'column', pt: 4 }}>
               <EditLink enterText="Edit This Page" sx={{ px: 3 }} />
@@ -63,7 +65,9 @@ const Contributors = ({ file }) => {
             </Flex>
           </Flex>
           <Flex sx={{ mt: 3, flexDirection: 'column', alignItems: 'flex-start' }}>
-            <Text>You'll be credited and you'll be helping the Maker community.</Text>
+            <Text>
+              <InlineTextarea name="editRCol" />
+            </Text>
             <Flex sx={{ flexDirection: 'column', mt: 'auto' }}>
               <Text sx={{ fontWeight: 'bold' }}>Questions?</Text>
               <Text>Ask us in the #dev channel</Text>

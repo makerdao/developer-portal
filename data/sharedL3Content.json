@@ -1,0 +1,17 @@
+{
+  "relatedGuides": "Related Documentation",
+  "relatedDocs": "Related guides",
+  "helpful": "Was this document helpful?",
+  "helpfulMobile": "Was this helpful?",
+  "glad": "Glad this document was helpful.",
+  "gladMobile": "Glad to hear",
+  "sorry": "We're sorry this document wasn't helpful.",
+  "sorryMobile": "We're sorry",
+  "thanks": "We're sorry this document wasn't helpful.",
+  "thanksMobile": "We're sorry",
+  "additional": "If you need additional help, join the Rocket Chat #dev channel.",
+  "edit": "Edit this page",
+  "editSub": "Make the community proud with your contributions",
+  "editLCol": "Expert on this topic? If you want to contribute, you can edit this page using Tina CMS or directly on Github.",
+  "editRCol": "You'll be credited and you'll be helping the Maker community."
+}
