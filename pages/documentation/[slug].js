@@ -26,7 +26,7 @@ const walk = (resources, array) => {
   });
 };
 
-const DocsPage = ({ file, resources, navFile, preview, slug, toc }) => {
+const DocsPage = ({ file, resources, navFile, sharedContentfile, preview, slug, toc }) => {
   const [navData, navForm] = useSubNavForm(navFile, preview);
   useFormScreenPlugin(navForm);
   const router = useRouter();
@@ -106,6 +106,7 @@ const DocsPage = ({ file, resources, navFile, preview, slug, toc }) => {
         navFile={navFile}
         preview={preview}
         mobile={mobile}
+        sharedContentfile={sharedContentfile}
       />
     </ResourcesLayout>
   );
@@ -120,6 +121,12 @@ export const getStaticProps = async function ({ preview, previewData, params }) 
   const fileRelativePath = resource.fileRelativePath;
 
   if (preview) {
+    const sharedContentfile = await getGithubPreviewProps({
+      ...previewData,
+      fileRelativePath: 'data/sharedL3Content.json',
+      parse: parseJson,
+    });
+
     const navFile = await getGithubPreviewProps({
       ...previewData,
       fileRelativePath: 'data/resourcesSubNav.json',
@@ -141,6 +148,7 @@ export const getStaticProps = async function ({ preview, previewData, params }) 
     };
     return {
       props: {
+        sharedContentfile: { ...sharedContentfile.props.file },
         navFile: {
           ...navFile.props.file,
         },
@@ -157,6 +165,10 @@ export const getStaticProps = async function ({ preview, previewData, params }) 
   }
   return {
     props: {
+      sharedContentfile: {
+        fileRelativePath: 'data/sharedL3Content.json',
+        data: (await import('../../data/sharedL3Content.json')).default,
+      },
       navFile: {
         fileRelativePath: 'data/resourcesSubNav.json',
         data: (await import('../../data/resourcesSubNav.json')).default,

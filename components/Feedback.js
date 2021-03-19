@@ -12,6 +12,7 @@ import {
   Input,
   Link as ThemeLink,
 } from 'theme-ui';
+import { InlineText } from 'react-tinacms-inline';
 import { Icon } from '@makerdao/dai-ui-icons';
 import { toMarkdownString, capitalize } from '@utils';
 
@@ -40,17 +41,17 @@ const Feedback = ({ route, cms, mobile }) => {
 
   const { title, placeholder } = isNegative
     ? {
-        title: mobile ? "We're sorry" : "We're sorry this document wasn't helpful.",
+        title: mobile ? 'sorryMobile' : 'sorry',
         placeholder: 'Please let us know how we can improve it.',
       }
     : isPositive
     ? {
-        title: mobile ? 'Glad to hear' : 'Glad this document was helpful.',
+        title: mobile ? 'gladMobile' : 'glad',
         placeholder: 'Please let us know how we can make it even better.',
       }
     : isSubmitted
-    ? { title: mobile ? 'Thank you' : 'Thank you for your feedback' }
-    : { title: mobile ? 'Was this helpful?' : 'Was this document helpful?' };
+    ? { title: mobile ? 'thanksMobile' : 'thanks' }
+    : { title: mobile ? 'helpfulMobile' : 'helpful' };
 
   const sendFeedback = useCallback(async () => {
     const markdown = constructMarkdownString(reaction, rcRef.current?.value, ref.current?.value);
@@ -106,7 +107,9 @@ const Feedback = ({ route, cms, mobile }) => {
             width="20px"
             name="document"
           ></Icon>
-          <Heading variant="smallHeading">{title}</Heading>
+          <Heading variant="smallHeading">
+            <InlineText name={title} />
+          </Heading>
         </Flex>
         {isSubmitted ? (
           <Flex
@@ -192,7 +195,7 @@ const Feedback = ({ route, cms, mobile }) => {
           </Flex>
           <Flex sx={{ pt: 3, flexWrap: 'wrap' }}>
             <Text sx={{ color: 'onBackgroundMuted', pr: 3 }}>
-              If you need additional help, join the Rocket Chat #dev channel.
+              <InlineText name="additional" />
             </Text>
             <ThemeLink href={'https://chat.makerdao.com/channel/dev'} target="_blank">
               <Flex sx={{ alignItems: 'center' }}>

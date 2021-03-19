@@ -1,7 +1,9 @@
 /** @jsx jsx */
 import { useRouter } from 'next/router';
 import { jsx, Grid } from 'theme-ui';
-import { useCMS } from 'tinacms';
+import { useCMS, usePlugin } from 'tinacms';
+import { InlineForm } from 'react-tinacms-inline';
+import { useGithubToolbarPlugins, useGithubJsonForm } from 'react-tinacms-github';
 import useStore from '@stores/store';
 import RelatedResources from '@components/RelatedResources';
 import ResourceEditor from '@components/ResourceEditor';
@@ -13,6 +15,7 @@ import { navItems } from '../data/resourcesSubNav.json';
 
 const ResourcePresentation = ({
   file,
+  sharedContentfile,
   resources,
   relatedResources,
   contentType,
@@ -21,13 +24,18 @@ const ResourcePresentation = ({
 }) => {
   const cms = useCMS();
   const { asPath } = useRouter();
+
+  const [data, form] = useGithubJsonForm(sharedContentfile);
+  usePlugin(form);
+  useGithubToolbarPlugins();
+
   const contributors = file.data.frontmatter.contributors;
   const [activeGroup, activeParent] = useStore((state) => [state.activeGroup, state.activeParent]);
   const group = navItems.find(({ slug }) => activeGroup === slug);
   const parent = resources?.find((r) => r.data.frontmatter.slug === activeParent)?.data.frontmatter;
 
   return (
-    <>
+    <InlineForm form={form}>
       <BreadCrumbs
         contentType={contentType}
         group={group}
@@ -43,7 +51,7 @@ const ResourcePresentation = ({
         <ContributeCta file={file} mobile={mobile} />
         {contributors && <Contributors contributors={contributors} mobile={mobile} />}
       </Grid>
-    </>
+    </InlineForm>
   );
 };
 
