@@ -79,6 +79,7 @@ const useCreateDocument = (resources) => {
         {
           name: 'body',
           label: 'Document Body',
+          description: 'Use the rich text editor to compose or copy and paste markdown content.',
           component: 'markdown',
         },
       ],
