@@ -53,31 +53,17 @@ const Page = ({ file, guides, documentation, bannerFile, featGuidesFile, preview
         <title>Maker Protocol Developer Portal</title>
       </Head>
       <InlineForm form={form}>
-        <Grid
-          sx={{
-            rowGap: 6,
-          }}
-        >
-          <PageLead
-            primary="Maker Protocol"
-            secondary="For Developers"
-            cta="Start learning about the Maker Protocol"
-          />
+        <Grid sx={{ rowGap: 6 }}>
+          <PageLead cta="Start learning about the Maker Protocol" mobile={mobile} />
           <GuideList title="Featured Guides" path="guides" guides={featuredGuides} />
-
           <IntroText mobile={mobile} />
-
           <Grid>
             <Container>
               <Heading variant="megaHeading">
                 Get Started&nbsp;<span sx={{ color: 'onBackgroundMuted' }}>With</span>
               </Heading>
             </Container>
-            <Grid
-              sx={{
-                rowGap: 5,
-              }}
-            >
+            <Grid sx={{ rowGap: 5 }}>
               <DocumentationList />
               <LibrariesSdks />
             </Grid>
