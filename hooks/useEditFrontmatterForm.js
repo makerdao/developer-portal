@@ -40,6 +40,21 @@ const useEditFrontmatterForm = (mdFile, preview) => {
         description: 'Categorizes the resource into different sections of the site.',
         options: ['documentation', 'guides', 'security'],
       },
+      {
+        label: 'Edit the group',
+        name: 'frontmatter.group',
+        component: 'text',
+      },
+      {
+        label: 'Edit the parent',
+        name: 'frontmatter.parent',
+        component: 'text',
+      },
+      {
+        label: 'Edit the "root" property',
+        name: 'frontmatter.root',
+        component: 'toggle',
+      },
     ],
   };
 
