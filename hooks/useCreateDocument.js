@@ -56,7 +56,7 @@ const useCreateDocument = (resources) => {
           component: 'tags',
           label: 'Components',
           required: true,
-          description: 'Add keywords for which parts of the Maker Protocoll this file relates to',
+          description: 'Add keywords for which parts of the Maker Protocol this file relates to',
           validate(value, allValues, meta, field) {
             if (!value) {
               return 'Components are required';
