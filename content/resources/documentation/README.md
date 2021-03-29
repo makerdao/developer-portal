@@ -1,14 +1,15 @@
 ---
 title: Introduction to the Maker Protocol
-description: MakerDAO is a decentralized organization dedicated to bringing stability to the cryptocurrency economy
+description: >-
+  MakerDAO is a decentralized organization dedicated to bringing stability to
+  the cryptocurrency economy
 group: maker-protocol-introduction
 components:
   - mcd
-tags:
-  - mcd
+tags: []
 slug: introduction-to-the-maker-protocol
 contentType: documentation
-root: true
+root: false
 ---
 
 # Introduction to the Maker Protocol
