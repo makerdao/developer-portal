@@ -1,10 +1,15 @@
 {
   "navItems": [
     {
-      "url": "/documentation/the-auctions-of-the-maker-protocol",
-      "name": "Auctions",
-      "slug": "auctions",
-      "id": "3"
+      "name": "Demo Item",
+      "url": "/demo",
+      "id": "inygmb17c"
+    },
+    {
+      "url": "/documentation/introduction-to-the-maker-protocol",
+      "name": "Introduction",
+      "slug": "maker-protocol-introduction",
+      "id": "1"
     },
     {
       "url": "/documentation/introduction-to-auction-keepers",
@@ -13,10 +18,10 @@
       "id": "4"
     },
     {
-      "url": "/documentation/introduction-to-the-maker-protocol",
-      "name": "Introduction",
-      "slug": "maker-protocol-introduction",
-      "id": "1"
+      "url": "/documentation/the-auctions-of-the-maker-protocol",
+      "name": "Auctions",
+      "slug": "auctions",
+      "id": "3"
     },
     {
       "url": "/documentation/introduction-to-smart-contracts",
