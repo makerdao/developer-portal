@@ -1,18 +1,6 @@
 {
   "navItems": [
     {
-      "url": "/documentation/introduction-to-the-maker-protocol",
-      "name": "Introduction",
-      "slug": "maker-protocol-introduction",
-      "id": "1"
-    },
-    {
-      "url": "/documentation/introduction-to-core-module",
-      "name": "Smart Contracts",
-      "slug": "smart-contracts",
-      "id": "2"
-    },
-    {
       "url": "/documentation/the-auctions-of-the-maker-protocol",
       "name": "Auctions",
       "slug": "auctions",
@@ -23,6 +11,18 @@
       "name": "Keepers",
       "slug": "keepers",
       "id": "4"
+    },
+    {
+      "url": "/documentation/introduction-to-the-maker-protocol",
+      "name": "Introduction",
+      "slug": "maker-protocol-introduction",
+      "id": "1"
+    },
+    {
+      "url": "/documentation/introduction-to-smart-contracts",
+      "name": "Smart Contracts",
+      "slug": "smart-contracts",
+      "id": "2"
     },
     {
       "url": "/documentation/introduction-to-dai-js",
