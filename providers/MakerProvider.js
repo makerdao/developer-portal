@@ -8,7 +8,7 @@ export const MakerObjectContext = createContext();
 
 const createReadOnlyMaker = async () => {
   const maker = await Maker.create('http', {
-    url: 'https://mainnet.infura.io/v3/c9a64b295c3f4cec9944a9e79b89314f',
+    url: 'https://mainnet.infura.io/v3/1808ee2f15ff4d60b333a4327cab39ff',
     plugins: [mcdPlugin],
   });
   return maker;
