@@ -52,7 +52,7 @@
     "next-tinacms-github": "^0.38.0",
     "next-tinacms-json": "^0.38.0",
     "next-tinacms-markdown": "^0.38.0",
-    "node-sass": "^4.13.1",
+    "node-sass": "^7.0.0",
     "prismjs": "^1.20.0",
     "ramda": "^0.27.0",
     "raw-loader": "^4.0.1",
